@@ -71,51 +71,9 @@ export default function HeroSection() {
     }
   }
 
-  const floatingVariants = {
-    animate: {
-      y: [-10, 10, -10],
-      rotate: [0, 5, 0, -5, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-      {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse delay-500"></div>
-      </div>
-
-      {/* Floating Icons */}
-      <motion.div
-        className="absolute top-20 left-10 text-blue-500 opacity-20"
-        variants={floatingVariants}
-        animate="animate"
-      >
-        <Code className="w-8 h-8" />
-      </motion.div>
-      <motion.div
-        className="absolute top-40 right-20 text-purple-500 opacity-20"
-        variants={floatingVariants}
-        animate="animate"
-        transition={{ delay: 1 }}
-      >
-        <Zap className="w-6 h-6" />
-      </motion.div>
-      <motion.div
-        className="absolute bottom-40 left-20 text-cyan-500 opacity-20"
-        variants={floatingVariants}
-        animate="animate"
-        transition={{ delay: 2 }}
-      >
-        <Globe className="w-7 h-7" />
-      </motion.div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">

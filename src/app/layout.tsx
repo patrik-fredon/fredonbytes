@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import CookieConsentBanner from "./components/common/CookieConsentBanner";
+import AnimatedBackground from "./components/common/AnimatedBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,10 +61,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col relative`}
       >
+        <AnimatedBackground />
         <Header />
-        <main className="flex-1 pt-16 lg:pt-20">
+        <main className="flex-1 pt-16 lg:pt-20 relative z-10">
           {children}
         </main>
         <Footer />

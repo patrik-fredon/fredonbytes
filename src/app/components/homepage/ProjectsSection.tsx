@@ -151,7 +151,7 @@ export default function ProjectsSection() {
   }
 
   return (
-    <section id="projects" className="py-20 lg:py-24 bg-white dark:bg-slate-900">
+    <section id="projects" className="py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
