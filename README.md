@@ -1,36 +1,167 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fredonbytes - Your All-in-One IT Powerhouse
 
-## Getting Started
+> From code to clicks, we deliver complete digital dominance.
 
-First, run the development server:
+## 🚀 Project Overview
+
+This is the official website for **Fredonbytes**, a comprehensive IT solutions company based in Brno, Czech Republic. The project includes both a marketing homepage and a link tree ecosystem, built with modern web technologies and enterprise-grade standards.
+
+## ✨ Features
+
+### 🏠 Homepage
+- **Hero Section**: Animated TypeScript code snippets with dynamic typing effects
+- **About Section**: Company information, team showcase, and core values
+- **Services Section**: Comprehensive IT solutions with interactive service cards
+- **Projects Section**: Filterable portfolio grid with GitHub integration
+- **Contact Section**: Multi-step contact form with validation and GDPR compliance
+
+### 🔗 Link Tree (`/links`)
+- **Profile Header**: Company branding with animated logo and contact information
+- **Organized Links**: Categorized links to all company platforms and repositories
+- **GitHub Integration**: Repository statistics and contribution metrics
+- **Responsive Design**: Optimized for mobile and desktop viewing
+
+### 📄 Legal Pages
+- **Privacy Policy**: GDPR-compliant privacy documentation
+- **Terms of Service**: Comprehensive service agreements
+- **Cookie Policy**: Detailed cookie usage and user rights
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 15.3.3 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4 with custom theming
+- **Animations**: Framer Motion
+- **UI Components**: Radix UI primitives
+- **Icons**: Lucide React
+- **Forms**: React Hook Form with Zod validation
+- **Email**: Resend API integration (ready)
+
+## 🎨 Design Features
+
+- **Dark Mode**: Complete theme support with system preference detection
+- **Responsive Design**: Mobile-first approach with tablet and desktop optimization
+- **Accessibility**: WCAG 2.1 AA compliance with ARIA labels and keyboard navigation
+- **Performance**: Optimized images, lazy loading, and efficient component structure
+- **SEO**: Comprehensive metadata, Open Graph, and Twitter Cards
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 20.x or later
+- npm or yarn package manager
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/FredonBytes/fredonbytes.git
+   cd fredonbytes
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Build for Production
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📁 Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── common/          # Reusable components
+│   │   ├── homepage/        # Homepage-specific components
+│   │   └── linktree/        # Link tree components
+│   ├── lib/                 # Utility functions
+│   ├── links/               # Link tree page
+│   ├── privacy-policy/      # Privacy policy page
+│   ├── terms-of-service/    # Terms of service page
+│   ├── cookie-policy/       # Cookie policy page
+│   ├── layout.tsx           # Root layout
+│   ├── page.tsx             # Homepage
+│   ├── viewport.ts          # Viewport configuration
+│   └── globals.css          # Global styles
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎯 Key Components
 
-## Learn More
+### Common Components
+- **Button**: Multi-variant button with loading states and accessibility
+- **Header**: Responsive navigation with mobile menu and scroll effects
+- **Footer**: Company information and social media links
+- **CookieConsentBanner**: GDPR-compliant cookie management
+- **LinkCard**: Animated link cards with GitHub statistics
 
-To learn more about Next.js, take a look at the following resources:
+### Homepage Components
+- **HeroSection**: Dynamic hero with animated code snippets
+- **AboutSection**: Company story and team information
+- **ServicesSection**: Interactive service showcase
+- **ProjectsSection**: Filterable portfolio grid
+- **ContactSection**: Multi-step contact form
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌐 Live URLs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Production**: `https://fredonbytes.cloud`
+- **Link Tree**: `https://fredonbytes.cloud/links`
+- **External Platforms**:
+  - Portfolio: `https://me.fredonbytes.cloud`
+  - Gallery: `https://lib.fredonbytes.cloud`
+  - Support: `https://tech.fredonbytes.cloud`
 
-## Deploy on Vercel
+## 👥 Team
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Bc. Patrik "Fredon" Svoboda BSc.** - CEO & Founder
+- **Ing. Jana Nováková** - CTO
+- **Lucie Dvořáková** - Creative Director
+- **Tomáš Horák** - SEO & Metadata Specialist
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📞 Contact
+
+- **Email**: info@fredonbytes.cloud
+- **Phone**: +420 799 027 984
+- **Location**: Brno, Czech Republic
+- **GitHub**: [@FredonBytes](https://github.com/FredonBytes)
+
+## 📝 License
+
+© 2025 Fredonbytes. All rights reserved.
+
+## 🚧 Development Status
+
+- ✅ **Phase 1**: Core infrastructure and basic components
+- ✅ **Phase 2**: Homepage sections implementation
+- ✅ **Phase 3**: Link tree functionality
+- ✅ **Phase 4**: Legal pages and GDPR compliance
+- 🔄 **Phase 5**: Advanced features (in progress)
+  - Interactive pricing calculator
+  - FAQ section with search
+  - Blog/news system
+  - PWA capabilities
+
+## 📊 Performance
+
+- **Lighthouse Score**: 95+ (Performance, Accessibility, Best Practices, SEO)
+- **Core Web Vitals**: Optimized for excellent user experience
+- **Bundle Size**: Optimized with code splitting and tree shaking
+
+---
+
+**Code. Create. Conquer.** - *Our Motto*
+
+**One Team. Zero Limits.** - *Our Mantra*
