@@ -16,7 +16,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fredonbytes.cloud"),
   title: "Fredonbytes - Your All-in-One IT Powerhouse",
   description: "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
   keywords: "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic",
@@ -48,6 +47,8 @@ export const metadata: Metadata = {
     description: "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
     images: ["/FredonBytes_GraphicLogo.png"],
   },
+  viewport: "width=device-width, initial-scale=1",
+  themeColor: "#0f172a",
   manifest: "/site.webmanifest",
 };
 
