@@ -1,7 +1,7 @@
 'use client'
 
 import { useLocale } from '../contexts/LocaleContext';
-import { t, formatMessage, getTranslations, type Locale } from '../lib/i18n';
+import { t, formatMessage, getTranslations, hasTranslation, type Locale } from '../lib/i18n';
 
 /**
  * Enhanced translation hook with additional utility methods
@@ -46,9 +46,8 @@ export function useTranslations() {
    * Check if a translation key exists
    * @param key - Translation key to check
    */
-  const hasTranslation = (key: string): boolean => {
-    const result = t(key, locale);
-    return result !== key;
+  const hasTranslationKey = (key: string): boolean => {
+    return hasTranslation(key, locale);
   };
 
   /**
@@ -83,7 +82,7 @@ export function useTranslations() {
     
     // Utility functions
     getAllTranslations,
-    hasTranslation,
+    hasTranslation: hasTranslationKey,
     getTranslationForLocale,
     translatePlural,
     

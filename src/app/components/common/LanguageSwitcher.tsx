@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocale } from '../../contexts/LocaleContext';
-import { Locale } from '../../lib/i18n';
+import { Locale, getLocaleDisplayName } from '../../lib/i18n';
 import { Globe, Check, Loader2 } from 'lucide-react';
 
 export default function LanguageSwitcher() {
@@ -10,14 +10,31 @@ export default function LanguageSwitcher() {
     locale,
     setLocale,
     isTransitioning,
-    availableLocales,
-    getLocaleDisplayName
+    availableLocales
   } = useLocale();
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Prevent hydration mismatches by waiting for client mount
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const languageFlags: Record<Locale, string> = {
     en: '🇺🇸',
     de: '🇩🇪'
   };
+
+  // Don't render until mounted to prevent hydration mismatches
+  if (!isMounted) {
+    return (
+      <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
+        <Globe className="w-4 h-4" />
+        <span className="hidden sm:inline">🇺🇸 English</span>
+        <span className="sm:hidden">🇺🇸</span>
+      </div>
+    );
+  }
 
   return (
     <div className="relative group">

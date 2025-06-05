@@ -33,19 +33,27 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
   const [currentTranslations, setCurrentTranslations] = useState<TranslationData>(() =>
     getTranslations(defaultLocale)
   );
+  const [isInitialized, setIsInitialized] = useState(false);
   
   const router = useRouter();
   const pathname = usePathname();
 
-  // Initialize locale from URL or localStorage on mount
+  // Initialize locale from URL or localStorage on mount - but only on client
   useEffect(() => {
     const initializeLocale = () => {
+      if (typeof window === 'undefined') return;
+      
       // Check URL parameters first
       const urlParams = new URLSearchParams(window.location.search);
       const urlLocale = urlParams.get('lang') as Locale;
       
       // Check localStorage
-      const storedLocale = localStorage.getItem('preferred-locale') as Locale;
+      let storedLocale: Locale | null = null;
+      try {
+        storedLocale = localStorage.getItem('preferred-locale') as Locale;
+      } catch {
+        // localStorage not available
+      }
       
       // Determine the locale to use
       let initialLocale = defaultLocale;
@@ -56,49 +64,71 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
         initialLocale = storedLocale;
       } else {
         // Try to detect from browser language
-        const browserLocale = navigator.language.split('-')[0] as Locale;
-        if (locales.includes(browserLocale)) {
-          initialLocale = browserLocale;
+        try {
+          const browserLocale = navigator.language.split('-')[0] as Locale;
+          if (locales.includes(browserLocale)) {
+            initialLocale = browserLocale;
+          }
+        } catch {
+          // navigator not available
         }
       }
       
-      if (initialLocale !== locale) {
+      // Update state only if different from current and not already initialized
+      if (initialLocale !== locale && !isInitialized) {
         setLocaleState(initialLocale);
         setCurrentTranslations(getTranslations(initialLocale));
         
         // Store the detected/selected locale
-        localStorage.setItem('preferred-locale', initialLocale);
+        try {
+          localStorage.setItem('preferred-locale', initialLocale);
+        } catch {
+          // localStorage not available
+        }
       }
+      
+      setIsInitialized(true);
     };
 
     initializeLocale();
-  }, [locale]);
+  }, []); // Remove locale dependency to prevent infinite loops
 
-  // Update translations when locale changes
+  // Update translations when locale changes (after initialization)
   useEffect(() => {
-    setCurrentTranslations(getTranslations(locale));
-  }, [locale]);
+    if (isInitialized) {
+      setCurrentTranslations(getTranslations(locale));
+    }
+  }, [locale, isInitialized]);
 
   /**
-   * Enhanced locale setter with improved transition handling
+   * Enhanced locale setter with improved transition handling and SSR safety
    */
   const setLocale = useCallback((newLocale: Locale) => {
     if (newLocale === locale || !locales.includes(newLocale)) return;
+    if (typeof window === 'undefined') return; // SSR safety
     
     setIsTransitioning(true);
     
-    // Store the preference in localStorage
-    localStorage.setItem('preferred-locale', newLocale);
+    // Store the preference in localStorage (with error handling)
+    try {
+      localStorage.setItem('preferred-locale', newLocale);
+    } catch (error) {
+      console.debug('Could not save locale preference:', error);
+    }
     
     // Update the state
     setLocaleState(newLocale);
     
     // Update URL params to reflect locale change (for analytics/tracking)
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', newLocale);
-    
-    // Use router.replace to update URL without page reload
-    router.replace(`${pathname}?${url.searchParams.toString()}`, { scroll: false });
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', newLocale);
+      
+      // Use router.replace to update URL without page reload
+      router.replace(`${pathname}?${url.searchParams.toString()}`, { scroll: false });
+    } catch (error) {
+      console.debug('Could not update URL:', error);
+    }
     
     // Reset transition state after a brief delay
     setTimeout(() => {
