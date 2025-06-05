@@ -1,28 +1,35 @@
-import en from '../locales/en/common.json';
-import de from '../locales/de/common.json';
+import enRaw from "../locales/en/common.json";
+import deRaw from "../locales/de/common.json";
+import csRaw from "../locales/cs/common.json";
 
-export type Locale = 'en' | 'de';
+const en = enRaw as unknown as Record<string, unknown>;
+const de = deRaw as unknown as Record<string, unknown>;
+const cs = csRaw as unknown as Record<string, unknown>;
 
-export const defaultLocale: Locale = 'en';
-export const locales: Locale[] = ['en', 'de'];
+export type Locale = "en" | "de" | "cs";
 
-<<<<<<< HEAD
+export const defaultLocale: Locale = "en";
+export const locales: Locale[] = ["en", "de", "cs"];
+
 // Cached translations for performance
 const translationCache = new Map<Locale, Record<string, unknown>>();
 
-const translations = {
+const translations: Record<Locale, Record<string, unknown>> = {
   en,
   de,
-} as const;
+  cs,
+};
 
 /**
  * Get translations with caching for performance
  */
-export function getTranslations(locale: Locale = defaultLocale): Record<string, unknown> {
+export function getTranslations(
+  locale: Locale = defaultLocale
+): Record<string, unknown> {
   if (translationCache.has(locale)) {
     return translationCache.get(locale)!;
   }
-  
+
   const translation = translations[locale] || translations[defaultLocale];
   translationCache.set(locale, translation);
   return translation;
@@ -34,18 +41,18 @@ export function getTranslations(locale: Locale = defaultLocale): Record<string, 
 export function t(key: string, locale: Locale = defaultLocale): string {
   try {
     const translation = getTranslations(locale);
-    const keys = key.split('.');
-    
+    const keys = key.split(".");
+
     let result: unknown = translation;
     for (const k of keys) {
-      if (result && typeof result === 'object') {
+      if (result && typeof result === "object") {
         result = (result as Record<string, unknown>)[k];
       } else {
         return key; // Early return if path is invalid
       }
     }
-    
-    return typeof result === 'string' ? result : key;
+
+    return typeof result === "string" ? result : key;
   } catch (error) {
     console.debug(`Translation error for key "${key}":`, error);
     return key;
@@ -55,18 +62,21 @@ export function t(key: string, locale: Locale = defaultLocale): string {
 /**
  * Enhanced message formatting with better performance
  */
-export function formatMessage(template: string, values: Record<string, string | number>): string {
-  if (!template || typeof template !== 'string') {
-    return template || '';
+export function formatMessage(
+  template: string,
+  values: Record<string, string | number>
+): string {
+  if (!template || typeof template !== "string") {
+    return template || "";
   }
-  
+
   try {
     return template.replace(/{(\w+)}/g, (match, key) => {
       const value = values[key];
       return value !== undefined && value !== null ? value.toString() : match;
     });
   } catch (error) {
-    console.debug('Message formatting error:', error);
+    console.debug("Message formatting error:", error);
     return template;
   }
 }
@@ -74,21 +84,24 @@ export function formatMessage(template: string, values: Record<string, string | 
 /**
  * Check if translation exists for key
  */
-export function hasTranslation(key: string, locale: Locale = defaultLocale): boolean {
+export function hasTranslation(
+  key: string,
+  locale: Locale = defaultLocale
+): boolean {
   try {
     const translation = getTranslations(locale);
-    const keys = key.split('.');
-    
+    const keys = key.split(".");
+
     let result: unknown = translation;
     for (const k of keys) {
-      if (result && typeof result === 'object') {
+      if (result && typeof result === "object") {
         result = (result as Record<string, unknown>)[k];
       } else {
         return false;
       }
     }
-    
-    return typeof result === 'string';
+
+    return typeof result === "string";
   } catch {
     return false;
   }
@@ -98,7 +111,7 @@ export function hasTranslation(key: string, locale: Locale = defaultLocale): boo
  * Preload translations for better performance
  */
 export function preloadTranslations(): void {
-  locales.forEach(locale => {
+  locales.forEach((locale) => {
     getTranslations(locale);
   });
 }
@@ -108,8 +121,9 @@ export function preloadTranslations(): void {
  */
 export function getLocaleDisplayName(locale: Locale): string {
   const displayNames: Record<Locale, string> = {
-    en: 'English',
-    de: 'Deutsch'
+    en: "English",
+    de: "Deutsch",
+    cs: "Čeština",
   };
   return displayNames[locale] || locale;
 }
@@ -119,31 +133,4 @@ export function getLocaleDisplayName(locale: Locale): string {
  */
 export function isValidLocale(locale: string): locale is Locale {
   return locales.includes(locale as Locale);
-=======
-const translations = {
-  en,
-  de,
-};
-
-export function getTranslations(locale: Locale = defaultLocale) {
-  return translations[locale] || translations[defaultLocale];
-}
-
-export function t(key: string, locale: Locale = defaultLocale): string {
-  const translation = getTranslations(locale);
-  const keys = key.split('.');
-  
-  let result: unknown = translation;
-  for (const k of keys) {
-    result = (result as Record<string, unknown>)?.[k];
-  }
-  
-  return (typeof result === 'string' ? result : key);
-}
-
-export function formatMessage(template: string, values: Record<string, string | number>): string {
-  return template.replace(/{(\w+)}/g, (match, key) => {
-    return values[key]?.toString() || match;
-  });
->>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
 }

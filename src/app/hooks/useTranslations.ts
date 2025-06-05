@@ -1,11 +1,13 @@
-'use client'
+"use client";
 
-import { useLocale } from '../contexts/LocaleContext';
-<<<<<<< HEAD
-import { t, formatMessage, getTranslations, hasTranslation, type Locale } from '../lib/i18n';
-=======
-import { t, formatMessage, getTranslations, type Locale } from '../lib/i18n';
->>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+import { useLocale } from "../contexts/LocaleContext";
+import {
+  t,
+  formatMessage,
+  getTranslations,
+  hasTranslation,
+  type Locale,
+} from "../lib/i18n";
 
 /**
  * Enhanced translation hook with additional utility methods
@@ -30,7 +32,11 @@ export function useTranslations() {
    * @param values - Object with values to interpolate
    * @param fallback - Optional fallback text
    */
-  const translateWithFormat = (key: string, values: Record<string, string | number>, fallback?: string): string => {
+  const translateWithFormat = (
+    key: string,
+    values: Record<string, string | number>,
+    fallback?: string
+  ): string => {
     const template = t(key, locale);
     if (template === key && fallback) {
       return formatMessage(fallback, values);
@@ -50,14 +56,8 @@ export function useTranslations() {
    * Check if a translation key exists
    * @param key - Translation key to check
    */
-<<<<<<< HEAD
   const hasTranslationKey = (key: string): boolean => {
     return hasTranslation(key, locale);
-=======
-  const hasTranslation = (key: string): boolean => {
-    const result = t(key, locale);
-    return result !== key;
->>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
   };
 
   /**
@@ -65,7 +65,10 @@ export function useTranslations() {
    * @param key - Translation key
    * @param targetLocale - Target locale
    */
-  const getTranslationForLocale = (key: string, targetLocale: Locale): string => {
+  const getTranslationForLocale = (
+    key: string,
+    targetLocale: Locale
+  ): string => {
     return t(key, targetLocale);
   };
 
@@ -75,13 +78,17 @@ export function useTranslations() {
    * @param count - Number for pluralization
    * @param values - Additional interpolation values
    */
-  const translatePlural = (key: string, count: number, values: Record<string, string | number> = {}): string => {
+  const translatePlural = (
+    key: string,
+    count: number,
+    values: Record<string, string | number> = {}
+  ): string => {
     const pluralKey = count === 1 ? `${key}.singular` : `${key}.plural`;
     const fallbackKey = key;
-    
+
     const result = t(pluralKey, locale);
     const template = result === pluralKey ? t(fallbackKey, locale) : result;
-    
+
     return formatMessage(template, { count, ...values });
   };
 
@@ -89,25 +96,21 @@ export function useTranslations() {
     // Core translation functions
     t: translate,
     format: translateWithFormat,
-    
+
     // Utility functions
     getAllTranslations,
-<<<<<<< HEAD
     hasTranslation: hasTranslationKey,
-=======
-    hasTranslation,
->>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
     getTranslationForLocale,
     translatePlural,
-    
+
     // Locale management
     locale,
     setLocale,
     isTransitioning,
-    
+
     // Legacy support - kept for backward compatibility
     translate,
-    translateWithFormat
+    translateWithFormat,
   };
 }
 

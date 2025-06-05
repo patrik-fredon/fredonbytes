@@ -1,0 +1,562 @@
+{
+  "navigation": {
+    "about": "O nás",
+    "services": "Služby",
+    "projects": "Projekty",
+    "pricing": "Ceny",
+    "contact": "Kontakt",
+    "links": "Odkazy",
+    "portfolio": "Portfolio",
+    "gallery": "Galerie",
+    "support": "Podpora",
+    "allLinks": "Všechny odkazy",
+    "getStarted": "Začít"
+  },
+  "hero": {
+    "title": "Vaše All-in-One",
+    "titleHighlight": "IT centrum",
+    "subtitle": "Od kódu po kliknutí, dodáváme kompletní digitální dominanci. Odstraňte složitost a posilte potenciál své značky s našimi sjednocenými IT řešeními.",
+    "codeComments": {
+      "creating": "Vytváření digitální dokonalosti...",
+      "snippets": [
+        "const uspech = await vytvorUzasnyWeb();",
+        "function vytvorDigitálníDominanci() { return \"Fredonbytes\"; }",
+        "const inovace = () => kod + kreativita + strategie;",
+        "export default class Fredonbytes extends Dokonalost {}"
+      ]
+    },
+    "valueProps": {
+      "development": "Vývoj",
+      "design": "Design",
+      "marketing": "Marketing"
+    },
+    "cta": {
+      "startProject": "Začít projekt",
+      "viewWork": "Zobrazit naši práci"
+    },
+    "stats": {
+      "founded": "Založeno",
+      "coreServices": "Hlavní služby",
+      "clientFocus": "Zaměření na klienta"
+    }
+  },
+  "footer": {
+    "description": "Vaše All-in-One IT centrum. Od kódu po kliknutí, dodáváme kompletní digitální dominanci.",
+    "contact": {
+      "location": "Brno, Česká republika",
+      "phone": "+420 799 027 984",
+      "email": "info@fredonbytes.cloud"
+    },
+    "sections": {
+      "quickLinks": "Rychlé odkazy",
+      "ourPlatforms": "Naše platformy",
+      "legalSocial": "Právní & Sociální"
+    },
+    "links": {
+      "aboutUs": "O nás",
+      "personalPortfolio": "Osobní portfolio",
+      "projectGallery": "Galerie projektů",
+      "technicalSupport": "Technická podpora",
+      "privacyPolicy": "Zásady ochrany osobních údajů",
+      "termsOfService": "Podmínky služby",
+      "cookiePolicy": "Zásady cookies"
+    },
+    "social": {
+      "githubFredon": "GitHub - FredonBytes",
+      "githubPatrik": "GitHub - Patrik Fredon",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "copyright": "© {year} Fredonbytes. Všechna práva vyhrazena.",
+    "taglines": {
+      "madeWith": "Vyrobeno s ❤️ v České republice",
+      "motto": "Kód. Tvoř. Dobývej."
+    }
+  },
+  "external": {
+    "externalLinks": "Externí odkazy"
+  },
+  "seo": {
+    "defaultTitle": "Fredonbytes - Vaše All-in-One IT centrum",
+    "defaultDescription": "Od kódu po kliknutí, dodáváme kompletní digitální dominanci. Komplexní IT řešení včetně vývoje softwaru, grafického designu, SEO a marketingu na sociálních sítích.",
+    "keywords": "webový vývoj, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika",
+    "siteName": "Fredonbytes",
+    "twitterHandle": "@Fredonbytes",
+    "twitterCreator": "@FredonBytes"
+  },
+  "jsonLd": {
+    "organizationName": "Fredonbytes",
+    "organizationDescription": "Poskytovatel komplexních IT řešení se specializací na vývoj softwaru, grafický design, SEO a marketing na sociálních sítích",
+    "organizationType": "TechnologyCompany",
+    "address": {
+      "streetAddress": "",
+      "addressLocality": "Brno",
+      "addressRegion": "Jihomoravský kraj",
+      "postalCode": "",
+      "addressCountry": "CZ"
+    },
+    "contactPoint": {
+      "telephone": "+420799027984",
+      "contactType": "zákaznický servis",
+      "email": "info@fredonbytes.cloud"
+    },
+    "services": [
+      "Vývoj softwaru",
+      "Webový vývoj",
+      "Grafický design",
+      "SEO služby",
+      "Marketing na sociálních sítích",
+      "IT poradenství"
+    ],
+    "founder": "Patrik Fredon",
+    "foundingDate": "2023"
+  },
+  "about": {
+    "title": "O {company}",
+    "subtitle": "Založeno v roce {year}, eliminujeme potřebu více dodavatelů tím, že se staneme vaší {highlight} digitální armádou{/highlight}, zajišťující bezproblémové a efektivní výsledky pod jednou střechou.",
+    "highlight": " digitální armádou",
+    "mission": {
+      "title": "Naše mise",
+      "description": "Posilovat firmy sjednocenými, špičkovými IT řešeními—dodávat rychlost, kreativitu a neúnavnou efektivitu."
+    },
+    "vision": {
+      "title": "Naše vize",
+      "description": "Svět, kde značky prosperují digitálně bez fragmentace—Fredonbytes jako globální standard pro integrovanou technologickou excelenci."
+    },
+    "values": {
+      "title": "Naše hodnoty",
+      "unifiedExcellence": {
+        "title": "Sjednocená excelence",
+        "description": "Jeden tým, nekonečná řešení."
+      },
+      "clientCentric": {
+        "title": "Agilita zaměřená na klienta",
+        "description": "Vaše cíle řídí naši technologii."
+      },
+      "innovation": {
+        "title": "Inovace bez kompromisů",
+        "description": "Odvážné nápady, dokonalá realizace."
+      },
+      "transparency": {
+        "title": "Transparentnost & Důvěra",
+        "description": "Žádné černé skříňky, jen výsledky."
+      }
+    },
+    "motto": {
+      "title": "Kód. Tvoř. Dobývej.",
+      "subtitle": "Naše motto"
+    },
+    "team": {
+      "title": "Seznamte se s naším týmem",
+      "members": {
+        "patrik": {
+          "name": "Bc. Patrik \"Fredon\" Svoboda BSc.",
+          "role": "CEO & Zakladatel",
+          "expertise": "Full-Stack vývoj, Digitální strategie",
+          "quote": "Efektivita je nová inovace."
+        },
+        "jana": {
+          "name": "Ing. Jana Nováková",
+          "role": "CTO",
+          "expertise": "AI, Cloudová architektura",
+          "quote": "Pokud to není škálovatelné, není to udržitelné."
+        },
+        "lucie": {
+          "name": "Lucie Dvořáková",
+          "role": "Creative Director",
+          "expertise": "Branding, UX/UI Design",
+          "quote": "Pixel-perfect není cíl—je to základ."
+        },
+        "tomas": {
+          "name": "Tomáš Horák",
+          "role": "SEO & Metadata specialista",
+          "expertise": "Datová analytika, SEM",
+          "quote": "Viditelnost bez strategie je jen hluk."
+        }
+      }
+    },
+    "founderQuote": {
+      "quote": "V roztříštěném digitálním světě jsme lepidlem—spojujeme kreativitu, technologie a strategii v jednu nezastavitelnou sílu.",
+      "author": "Bc. Patrik \"Fredon\" Svoboda BSc., CEO & Zakladatel"
+    },
+    "mantra": "Jeden tým. Žádné limity."
+  },
+  "services": {
+    "title": "Naše {highlight}Služby{/highlight}",
+    "subtitle": "Nabízíme komplexní sadu IT řešení navržených tak, aby eliminovala potřebu více dodavatelů. Od vývoje po marketing, máme vás pokryté.",
+    "items": {
+      "development": {
+        "title": "Vývoj softwaru",
+        "description": "Vlastní webové aplikace, mobilní aplikace a podniková řešení postavená na špičkových technologiích.",
+        "features": [
+          "Full-Stack vývoj",
+          "Mobilní aplikace",
+          "API integrace",
+          "Cloudová řešení"
+        ]
+      },
+      "design": {
+        "title": "Grafický & UX/UI design",
+        "description": "Ohromující vizuální identity, uživatelská rozhraní a značkové zážitky, které zaujmou a konvertují.",
+        "features": [
+          "Branding",
+          "UX/UI design",
+          "Prototypování",
+          "Design systémy"
+        ]
+      },
+      "seo": {
+        "title": "SEO & Digitální marketing",
+        "description": "Datově řízené strategie pro zvýšení vaší online viditelnosti a přivedení cílené návštěvnosti.",
+        "features": [
+          "Optimalizace pro vyhledávače",
+          "Content strategie",
+          "Analytika & Reporting",
+          "PPC kampaně"
+        ]
+      },
+      "social": {
+        "title": "Správa sociálních sítí",
+        "description": "Tvorba obsahu a strategické kampaně na sociálních sítích, které budují komunitu a podporují růst.",
+        "features": [
+          "Tvorba obsahu",
+          "Správa komunity",
+          "Reklamy na sociálních sítích",
+          "Růstové strategie"
+        ]
+      },
+      "consulting": {
+        "title": "IT poradenství & Kybernetická bezpečnost",
+        "description": "Strategické technologické poradenství a robustní bezpečnostní řešení pro ochranu a optimalizaci vaší digitální infrastruktury.",
+        "features": [
+          "Bezpečnostní audity",
+          "Plánování infrastruktury",
+          "Technologické poradenství",
+          "Hodnocení rizik"
+        ]
+      }
+    },
+    "stats": {
+      "satisfaction": {
+        "number": "100%",
+        "label": "Spokojenost klientů"
+      },
+      "coreServices": {
+        "number": "5+",
+        "label": "Hlavní služby"
+      },
+      "support": {
+        "number": "24/7",
+        "label": "Podpora k dispozici"
+      },
+      "team": {
+        "number": "1",
+        "label": "Sjednocený tým"
+      }
+    },
+    "cta": "Zjistěte, jak vám můžeme pomoci"
+  },
+  "contact": {
+    "title": "Pojďme pracovat {highlight}společně{/highlight}",
+    "subtitle": "Připraveni transformovat vaši digitální přítomnost? Pojďme probrat váš projekt a společně vytvořit něco úžasného.",
+    "info": {
+      "title": "Kontaktujte nás",
+      "email": {
+        "title": "E-mail",
+        "value": "info@fredonbytes.cloud"
+      },
+      "phone": {
+        "title": "Telefon",
+        "value": "+420 799 027 984"
+      },
+      "location": {
+        "title": "Lokalita",
+        "value": "Brno, Česká republika"
+      },
+      "responseTime": {
+        "title": "Doba odezvy",
+        "value": "Do 24 hodin"
+      }
+    },
+    "security": {
+      "title": "Bezpečné & Důvěrné",
+      "description": "Vaše informace jsou šifrovány a chráněny. Respektujeme vaše soukromí a nikdy vaše údaje neposkytneme třetím stranám."
+    },
+    "form": {
+      "steps": {
+        "step": "Krok {current} z {total}",
+        "progress": "{percent}% Hotovo"
+      },
+      "basicInfo": {
+        "title": "Základní informace",
+        "firstName": {
+          "label": "Jméno",
+          "placeholder": "Jan",
+          "required": true
+        },
+        "lastName": {
+          "label": "Příjmení",
+          "placeholder": "Novák",
+          "required": true
+        },
+        "email": {
+          "label": "E-mailová adresa",
+          "placeholder": "jan@priklad.cz",
+          "required": true
+        },
+        "phone": {
+          "label": "Telefonní číslo",
+          "placeholder": "+420 123 456 789",
+          "required": true
+        }
+      },
+      "projectDetails": {
+        "title": "Detaily projektu",
+        "company": {
+          "label": "Název společnosti",
+          "placeholder": "Vaše společnost (volitelné)"
+        },
+        "projectType": {
+          "label": "Typ projektu",
+          "placeholder": "Jaký typ projektu potřebujete?",
+          "required": true,
+          "options": [
+            "Vývoj webu",
+            "Vývoj mobilní aplikace",
+            "E-commerce platforma",
+            "Brand design & identita",
+            "SEO & digitální marketing",
+            "Správa sociálních sítí",
+            "IT poradenství",
+            "Vlastní software",
+            "Jiné"
+          ]
+        },
+        "budget": {
+          "label": "Rozpočet",
+          "placeholder": "Jaký je váš rozpočet na tento projekt?",
+          "required": true,
+          "options": [
+            "Pod 5 000 Kč",
+            "5 000 - 15 000 Kč",
+            "15 000 - 50 000 Kč",
+            "50 000 - 100 000 Kč",
+            "Nad 100 000 Kč",
+            "Zatím nevím"
+          ]
+        },
+        "timeline": {
+          "label": "Časový rámec",
+          "placeholder": "Kdy potřebujete dokončit?",
+          "required": true,
+          "options": [
+            "Co nejdříve (expresní projekt)",
+            "1-2 měsíce",
+            "3-6 měsíců",
+            "6-12 měsíců",
+            "Více než 12 měsíců",
+            "Flexibilní časový rámec"
+          ]
+        }
+      },
+      "requirements": {
+        "title": "Požadavky projektu",
+        "message": {
+          "label": "Detaily projektu",
+          "placeholder": "Řekněte nám více o vašich požadavcích, cílech a specifických funkcích...",
+          "required": true
+        },
+        "features": {
+          "label": "Požadované funkce (volitelné)",
+          "options": [
+            "Responzivní design",
+            "E-commerce funkce",
+            "Správa obsahu",
+            "Uživatelská autentizace",
+            "Platební integrace",
+            "Analytika & Reporting",
+            "Integrace třetích stran",
+            "Podpora více jazyků"
+          ]
+        },
+        "newsletter": {
+          "label": "Přihlaste se k odběru novinek a tipů"
+        },
+        "privacy": {
+          "label": "Souhlasím s {link}zásadami ochrany osobních údajů{/link}",
+          "required": true
+        }
+      },
+      "actions": {
+        "next": "Další krok",
+        "previous": "Zpět",
+        "submit": "Odeslat zprávu",
+        "submitting": "Odesílání..."
+      }
+    },
+    "success": {
+      "title": "Děkujeme!",
+      "message": "Vaše zpráva byla úspěšně odeslána. Ozveme se vám do 24 hodin.",
+      "cta": "Odeslat další zprávu"
+    },
+    "errors": {
+      "firstName": "Jméno musí mít alespoň 2 znaky",
+      "lastName": "Příjmení musí mít alespoň 2 znaky",
+      "email": "Zadejte platnou e-mailovou adresu",
+      "phone": "Zadejte platné telefonní číslo",
+      "projectType": "Vyberte typ projektu",
+      "budget": "Vyberte rozpočet",
+      "timeline": "Vyberte časový rámec",
+      "message": "Uveďte více detailů o projektu",
+      "privacy": "Musíte přijmout zásady ochrany osobních údajů"
+    }
+  },
+  "pricing": {
+    "title": "Vyberte si svůj {highlight}plán{/highlight}",
+    "subtitle": "Transparentní ceny bez skrytých poplatků. Rozšiřte své podnikání s našimi flexibilními řešeními.",
+    "toggle": {
+      "monthly": "Měsíčně",
+      "annual": "Ročně",
+      "savings": "Ušetříte {percent}%"
+    },
+    "plans": {
+      "starter": {
+        "name": "Start",
+        "description": "Ideální pro malé firmy a startupy, které chtějí založit svou digitální přítomnost.",
+        "cta": "Začít",
+        "features": [
+          "Responzivní webdesign",
+          "Základní SEO optimalizace",
+          "Integrace kontaktního formuláře",
+          "3 měsíce podpory",
+          "Optimalizace pro mobily",
+          "Nastavení analytiky"
+        ]
+      },
+      "professional": {
+        "name": "Professional",
+        "description": "Komplexní řešení pro rostoucí firmy, které potřebují pokročilé funkce a marketingovou podporu.",
+        "cta": "Nejoblíbenější",
+        "popular": true,
+        "features": [
+          "Vlastní webová aplikace",
+          "Pokročilé SEO & marketing",
+          "Správa sociálních sítí",
+          "E-commerce integrace",
+          "6 měsíců prioritní podpory",
+          "Optimalizace výkonu",
+          "Systém pro správu obsahu",
+          "Nastavení e-mailového marketingu"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "Kompletní digitální transformace s dedikovanou podporou a řešeními na míru.",
+        "cta": "Kontaktujte obchod",
+        "price": "Na míru",
+        "features": [
+          "Vývoj softwaru na míru",
+          "Dedikovaný projektový manažer",
+          "24/7 prioritní podpora",
+          "Pokročilé bezpečnostní funkce",
+          "Škálovatelná architektura",
+          "Podpora integrace",
+          "Školení & dokumentace",
+          "SLA záruky"
+        ]
+      }
+    },
+    "calculator": {
+      "title": "Kalkulačka projektu",
+      "description": "Získejte okamžitý odhad pro váš projekt výběrem potřebných služeb.",
+      "toggle": "Vypočítat individuální nabídku",
+      "services": {
+        "webDevelopment": {
+          "name": "Webový vývoj",
+          "description": "Vlastní weby a webové aplikace"
+        },
+        "mobileApp": {
+          "name": "Mobilní aplikace",
+          "description": "Aplikace pro iOS a Android"
+        },
+        "design": {
+          "name": "Designové služby",
+          "description": "UI/UX a grafický design"
+        },
+        "seo": {
+          "name": "SEO & Marketing",
+          "description": "Optimalizace pro vyhledávače a digitální marketing"
+        },
+        "ecommerce": {
+          "name": "E-commerce",
+          "description": "Vývoj online obchodu"
+        },
+        "consulting": {
+          "name": "IT poradenství",
+          "description": "Strategické technologické poradenství"
+        }
+      },
+      "total": "Odhadovaná celková cena",
+      "note": "Konečná cena se může lišit podle konkrétních požadavků a složitosti.",
+      "cta": "Získat detailní nabídku"
+    },
+    "guarantee": {
+      "title": "30denní záruka vrácení peněz",
+      "description": "Nejste spokojeni? Získejte plnou refundaci do 30 dnů, bez otázek."
+    }
+  },
+  "projects": {
+    "title": "Naše {highlight}portfolio{/highlight}",
+    "subtitle": "Prozkoumejte naši nejnovější práci a zjistěte, jak jsme pomohli firmám transformovat jejich digitální přítomnost.",
+    "categories": {
+      "all": "Všechny projekty",
+      "web": "Webový vývoj",
+      "mobile": "Mobilní aplikace",
+      "design": "Design",
+      "ecommerce": "E-commerce"
+    },
+    "cta": {
+      "viewProject": "Zobrazit projekt",
+      "liveDemo": "Živá ukázka",
+      "caseStudy": "Případová studie"
+    },
+    "loadMore": "Načíst další projekty"
+  },
+  "common": {
+    "buttons": {
+      "getStarted": "Začít",
+      "learnMore": "Zjistit více",
+      "viewMore": "Zobrazit více",
+      "contactUs": "Kontaktujte nás",
+      "tryFree": "Vyzkoušet zdarma",
+      "readMore": "Číst více",
+      "close": "Zavřít",
+      "next": "Další",
+      "previous": "Předchozí",
+      "submit": "Odeslat",
+      "cancel": "Zrušit",
+      "save": "Uložit",
+      "edit": "Upravit",
+      "delete": "Smazat",
+      "loading": "Načítání...",
+      "viewAll": "Zobrazit vše"
+    },
+    "status": {
+      "success": "Úspěch",
+      "error": "Chyba",
+      "warning": "Varování",
+      "info": "Info",
+      "loading": "Načítání"
+    },
+    "labels": {
+      "required": "Povinné",
+      "optional": "Volitelné",
+      "name": "Jméno",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "message": "Zpráva",
+      "company": "Společnost",
+      "website": "Web"
+    }
+  }
+}

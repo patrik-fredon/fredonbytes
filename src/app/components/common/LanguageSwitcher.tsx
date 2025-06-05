@@ -1,23 +1,17 @@
-'use client'
+"use client";
 
-<<<<<<< HEAD
-import React, { useState, useEffect } from 'react';
-import { useLocale } from '../../contexts/LocaleContext';
-import { Locale, getLocaleDisplayName } from '../../lib/i18n';
-=======
-import React from 'react';
-import { useLocale } from '../../contexts/LocaleContext';
-import { Locale } from '../../lib/i18n';
->>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
-import { Globe, Check, Loader2 } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { useLocale } from "../../contexts/LocaleContext";
+import { Locale } from "../../lib/i18n";
+import { Globe, Check, Loader2 } from "lucide-react";
 
 export default function LanguageSwitcher() {
   const {
     locale,
     setLocale,
     isTransitioning,
-<<<<<<< HEAD
-    availableLocales
+    availableLocales,
+    getLocaleDisplayName,
   } = useLocale();
 
   const [isMounted, setIsMounted] = useState(false);
@@ -27,18 +21,12 @@ export default function LanguageSwitcher() {
     setIsMounted(true);
   }, []);
 
-=======
-    availableLocales,
-    getLocaleDisplayName
-  } = useLocale();
-
->>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
   const languageFlags: Record<Locale, string> = {
-    en: '🇺🇸',
-    de: '🇩🇪'
+    en: "🇺🇸",
+    de: "🇩🇪",
+    cs: "🇨🇿",
   };
 
-<<<<<<< HEAD
   // Don't render until mounted to prevent hydration mismatches
   if (!isMounted) {
     return (
@@ -50,8 +38,6 @@ export default function LanguageSwitcher() {
     );
   }
 
-=======
->>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
   return (
     <div className="relative group">
       <button
@@ -69,7 +55,7 @@ export default function LanguageSwitcher() {
         </span>
         <span className="sm:hidden">{languageFlags[locale]}</span>
       </button>
-      
+
       <div className="absolute top-full right-0 mt-2 w-36 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
         {availableLocales.map((lang: Locale) => (
           <button
@@ -77,8 +63,10 @@ export default function LanguageSwitcher() {
             onClick={() => setLocale(lang)}
             disabled={isTransitioning}
             className={`w-full text-left px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 first:rounded-t-lg last:rounded-b-lg transition-colors duration-200 flex items-center justify-between ${
-              locale === lang ? 'bg-slate-100 dark:bg-slate-700 font-medium' : ''
-            } ${isTransitioning ? 'opacity-50 cursor-not-allowed' : ''}`}
+              locale === lang
+                ? "bg-slate-100 dark:bg-slate-700 font-medium"
+                : ""
+            } ${isTransitioning ? "opacity-50 cursor-not-allowed" : ""}`}
             aria-label={`Switch to ${getLocaleDisplayName(lang)}`}
           >
             <div className="flex items-center space-x-2">
