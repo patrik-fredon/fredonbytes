@@ -561,54 +561,54 @@
   },
   "pages": {
     "home": {
-      "title": "TODO: Translate home page title",
-      "description": "TODO: Translate home page description",
-      "keywords": "TODO: Translate home page keywords"
+      "title": "Fredonbytes - Ihr All-in-One IT-Kraftzentrum",
+      "description": "Von Code bis Klicks liefern wir komplette digitale Dominanz. Vollspektrum-IT-Lösungen einschließlich Softwareentwicklung, Grafikdesign, SEO und Social Media Marketing.",
+      "keywords": "Webentwicklung, Softwareentwicklung, IT-Lösungen, Grafikdesign, SEO, Social Media Marketing, Brünn, Tschechische Republik"
     },
     "about": {
-      "title": "TODO: Translate about page title",
-      "description": "TODO: Translate about page description",
-      "keywords": "TODO: Translate about page keywords"
+      "title": "Über Fredonbytes - Ihr Partner für digitale Transformation",
+      "description": "Gegründet 2023, eliminiert Fredonbytes die Notwendigkeit mehrerer Anbieter, indem wir Ihre digitale All-in-One-Armee werden und nahtlose, wirkungsvolle Ergebnisse unter einem Dach gewährleisten.",
+      "keywords": "über fredonbytes, digitale Transformation, IT-Unternehmen, Softwareentwicklungsteam, Brünn Tech"
     },
     "services": {
-      "title": "TODO: Translate services page title",
-      "description": "TODO: Translate services page description",
-      "keywords": "TODO: Translate services page keywords"
+      "title": "IT-Dienstleistungen - Softwareentwicklung, Design & Marketing",
+      "description": "Umfassende IT-Lösungen von der Entwicklung bis zum Marketing. Beseitigen Sie Komplexität mit unserem vereinheitlichten Ansatz für Softwareentwicklung, Design, SEO und Social Media Management.",
+      "keywords": "IT-Dienstleistungen, Softwareentwicklung, Webentwicklung, Grafikdesign, SEO-Services, Social Media Marketing"
     },
     "projects": {
-      "title": "TODO: Translate projects page title",
-      "description": "TODO: Translate projects page description",
-      "keywords": "TODO: Translate projects page keywords"
+      "title": "Unser Portfolio - Fredonbytes Projektgalerie",
+      "description": "Entdecken Sie unsere neuesten Arbeiten und sehen Sie, wie wir Unternehmen dabei geholfen haben, ihre digitale Präsenz mit modernsten Lösungen zu transformieren.",
+      "keywords": "Portfolio, Webentwicklungsprojekte, Softwareprojekte, Design-Showcase, Fallstudien"
     },
     "pricing": {
-      "title": "TODO: Translate pricing page title",
-      "description": "TODO: Translate pricing page description",
-      "keywords": "TODO: Translate pricing page keywords"
+      "title": "Transparente Preispläne - Wählen Sie Ihre IT-Lösung",
+      "description": "Transparente Preise ohne versteckte Gebühren. Skalieren Sie Ihr Unternehmen mit unseren flexiblen IT-Lösungen vom Starter- bis zum Enterprise-Plan.",
+      "keywords": "Preise, IT-Services Kosten, Webentwicklung Preise, transparente Preise, Geschäftspläne"
     },
     "contact": {
-      "title": "TODO: Translate contact page title",
-      "description": "TODO: Translate contact page description",
-      "keywords": "TODO: Translate contact page keywords"
+      "title": "Kontakt Fredonbytes - Lassen Sie uns zusammenarbeiten",
+      "description": "Bereit, Ihre digitale Präsenz zu transformieren? Kontaktieren Sie unser Team in Brünn, Tschechische Republik für eine kostenlose Beratung zu Ihrem nächsten IT-Projekt.",
+      "keywords": "Kontakt, Brünn IT-Unternehmen, kostenlose Beratung, Projektanfrage, Tschechische Republik Tech"
     },
     "links": {
-      "title": "TODO: Translate links page title",
-      "description": "TODO: Translate links page description",
-      "keywords": "TODO: Translate links page keywords"
+      "title": "Fredonbytes Links - Verbinden Sie sich überall mit uns",
+      "description": "All unsere wichtigen Links an einem Ort. Verbinden Sie sich mit Fredonbytes auf Social Media, GitHub und unseren verschiedenen Plattformen.",
+      "keywords": "Social Links, GitHub, LinkedIn, Kontakt-Links, Fredonbytes Plattformen"
     },
     "privacy-policy": {
-      "title": "TODO: Translate privacy policy page title",
-      "description": "TODO: Translate privacy policy page description",
-      "keywords": "TODO: Translate privacy policy page keywords"
+      "title": "Datenschutzrichtlinie - Wie wir Ihre Daten schützen",
+      "description": "Erfahren Sie, wie Fredonbytes Ihre persönlichen Informationen sammelt, verwendet und schützt. Wir sind verpflichtet, Ihre Privatsphäre und Datensicherheit zu wahren.",
+      "keywords": "Datenschutzrichtlinie, Datenschutz, DSGVO-Konformität, persönliche Informationen, Datensicherheit"
     },
     "terms-of-service": {
-      "title": "TODO: Translate terms of service page title",
-      "description": "TODO: Translate terms of service page description",
-      "keywords": "TODO: Translate terms of service page keywords"
+      "title": "Nutzungsbedingungen - Fredonbytes Nutzungsvereinbarung",
+      "description": "Geschäftsbedingungen für die Nutzung der Fredonbytes-Services. Verstehen Sie Ihre Rechte und Pflichten bei der Zusammenarbeit mit unseren IT-Lösungen.",
+      "keywords": "Nutzungsbedingungen, Nutzungsvereinbarung, Service-Bedingungen, rechtliche Bedingungen, Konditionen"
     },
     "cookie-policy": {
-      "title": "TODO: Translate cookie policy page title",
-      "description": "TODO: Translate cookie policy page description",
-      "keywords": "TODO: Translate cookie policy page keywords"
+      "title": "Cookie-Richtlinie - Wie wir Cookies verwenden",
+      "description": "Informationen darüber, wie Fredonbytes Cookies verwendet, um Ihr Browsing-Erlebnis zu verbessern und die Website-Nutzung zu analysieren.",
+      "keywords": "Cookie-Richtlinie, Website-Cookies, Tracking, Analytics, Benutzererfahrung"
     }
   }
 }

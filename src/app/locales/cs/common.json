@@ -561,54 +561,54 @@
   },
   "pages": {
     "home": {
-      "title": "TODO: Translate home page title",
-      "description": "TODO: Translate home page description",
-      "keywords": "TODO: Translate home page keywords"
+      "title": "Fredonbytes - Vaše All-in-One IT centrum",
+      "description": "Od kódu po kliknutí, dodáváme kompletní digitální dominanci. Komplexní IT řešení včetně vývoje softwaru, grafického designu, SEO a marketingu na sociálních sítích.",
+      "keywords": "webový vývoj, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika"
     },
     "about": {
-      "title": "TODO: Translate about page title",
-      "description": "TODO: Translate about page description",
-      "keywords": "TODO: Translate about page keywords"
+      "title": "O Fredonbytes - Váš partner pro digitální transformaci",
+      "description": "Založeno v roce 2023, Fredonbytes eliminuje potřebu více dodavatelů tím, že se stane vaší digitální armádou na jednom místě, zajišťující bezproblémové a vysoce účinné výsledky pod jednou střechou.",
+      "keywords": "o fredonbytes, digitální transformace, IT společnost, tým pro vývoj softwaru, brno technologie"
     },
     "services": {
-      "title": "TODO: Translate services page title",
-      "description": "TODO: Translate services page description",
-      "keywords": "TODO: Translate services page keywords"
+      "title": "IT služby - Vývoj softwaru, Design a Marketing",
+      "description": "Komplexní IT řešení od vývoje po marketing. Eliminujte složitost našim sjednoceným přístupem k vývoji softwaru, designu, SEO a správě sociálních sítí.",
+      "keywords": "IT služby, vývoj softwaru, webový vývoj, grafický design, SEO služby, marketing na sociálních sítích"
     },
     "projects": {
-      "title": "TODO: Translate projects page title",
-      "description": "TODO: Translate projects page description",
-      "keywords": "TODO: Translate projects page keywords"
+      "title": "Naše portfolio - Galerie projektů Fredonbytes",
+      "description": "Prozkoumejte naši nejnovější práci a zjistěte, jak jsme pomohli firmám transformovat jejich digitální přítomnost s nejmodernějšími řešeními.",
+      "keywords": "portfolio, projekty webového vývoje, softwarové projekty, designová ukázka, případové studie"
     },
     "pricing": {
-      "title": "TODO: Translate pricing page title",
-      "description": "TODO: Translate pricing page description",
-      "keywords": "TODO: Translate pricing page keywords"
+      "title": "Transparentní cenové plány - Vyberte si své IT řešení",
+      "description": "Transparentní ceny bez skrytých poplatků. Rozšiřte své podnikání s našimi flexibilními IT řešeními od startovacích po podnikové plány.",
+      "keywords": "ceny, náklady na IT služby, ceny webového vývoje, transparentní ceny, obchodní plány"
     },
     "contact": {
-      "title": "TODO: Translate contact page title",
-      "description": "TODO: Translate contact page description",
-      "keywords": "TODO: Translate contact page keywords"
+      "title": "Kontaktujte Fredonbytes - Pojďme pracovat společně",
+      "description": "Připraveni transformovat vaši digitální přítomnost? Kontaktujte náš tým v Brně, Česká republika pro bezplatnou konzultaci vašeho dalšího IT projektu.",
+      "keywords": "kontakt, brno IT společnost, bezplatná konzultace, poptávka projektu, česká republika technologie"
     },
     "links": {
-      "title": "TODO: Translate links page title",
-      "description": "TODO: Translate links page description",
-      "keywords": "TODO: Translate links page keywords"
+      "title": "Fredonbytes odkazy - Spojte se s námi všude",
+      "description": "Všechny naše důležité odkazy na jednom místě. Spojte se s Fredonbytes na sociálních sítích, GitHubu a našich různých platformách.",
+      "keywords": "sociální odkazy, GitHub, LinkedIn, kontaktní odkazy, Fredonbytes platformy"
     },
     "privacy-policy": {
-      "title": "TODO: Translate privacy policy page title",
-      "description": "TODO: Translate privacy policy page description",
-      "keywords": "TODO: Translate privacy policy page keywords"
+      "title": "Zásady ochrany osobních údajů - Jak chráníme vaše data",
+      "description": "Zjistěte, jak Fredonbytes shromažďuje, používá a chrání vaše osobní údaje. Jsme odhodláni udržovat vaše soukromí a bezpečnost údajů.",
+      "keywords": "zásady ochrany osobních údajů, ochrana dat, GDPR soulad, osobní údaje, bezpečnost dat"
     },
     "terms-of-service": {
-      "title": "TODO: Translate terms of service page title",
-      "description": "TODO: Translate terms of service page description",
-      "keywords": "TODO: Translate terms of service page keywords"
+      "title": "Podmínky služby - Smlouva o používání Fredonbytes",
+      "description": "Podmínky pro používání služeb Fredonbytes. Porozumějte svým právům a povinnostem při práci s našimi IT řešeními.",
+      "keywords": "podmínky služby, smlouva o použití, podmínky služby, právní podmínky, podmínky"
     },
     "cookie-policy": {
-      "title": "TODO: Translate cookie policy page title",
-      "description": "TODO: Translate cookie policy page description",
-      "keywords": "TODO: Translate cookie policy page keywords"
+      "title": "Zásady cookies - Jak používáme cookies",
+      "description": "Informace o tom, jak Fredonbytes používá cookies ke zlepšení vašeho procházení a analýze používání webu.",
+      "keywords": "zásady cookies, cookies webu, sledování, analytika, uživatelská zkušenost"
     }
   }
 }
