@@ -1,7 +1,11 @@
 {
   "navigation": {
     "about": "Über uns",
+<<<<<<< HEAD
     "services": "Dienstleistungen",
+=======
+    "services": "Dienstleistungen", 
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
     "projects": "Projekte",
     "pricing": "Preise",
     "contact": "Kontakt",
@@ -27,7 +31,11 @@
     },
     "valueProps": {
       "development": "Entwicklung",
+<<<<<<< HEAD
       "design": "Design",
+=======
+      "design": "Design", 
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
       "marketing": "Marketing"
     },
     "cta": {
@@ -55,7 +63,11 @@
     "links": {
       "aboutUs": "Über uns",
       "personalPortfolio": "Persönliches Portfolio",
+<<<<<<< HEAD
       "projectGallery": "Projektgalerie",
+=======
+      "projectGallery": "Projektgalerie", 
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
       "technicalSupport": "Technischer Support",
       "privacyPolicy": "Datenschutzrichtlinie",
       "termsOfService": "Nutzungsbedingungen",
@@ -102,7 +114,11 @@
     },
     "services": [
       "Softwareentwicklung",
+<<<<<<< HEAD
       "Webentwicklung",
+=======
+      "Webentwicklung", 
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
       "Grafikdesign",
       "SEO-Dienstleistungen",
       "Social Media Marketing",
@@ -110,6 +126,7 @@
     ],
     "founder": "Patrik Fredon",
     "foundingDate": "2023"
+<<<<<<< HEAD
   },
   "about": {
     "title": "Über {company}",
@@ -560,3 +577,7 @@
     }
   }
 }
+=======
+  }
+}
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)

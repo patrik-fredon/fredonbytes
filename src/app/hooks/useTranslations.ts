@@ -1,7 +1,11 @@
 'use client'
 
 import { useLocale } from '../contexts/LocaleContext';
+<<<<<<< HEAD
 import { t, formatMessage, getTranslations, hasTranslation, type Locale } from '../lib/i18n';
+=======
+import { t, formatMessage, getTranslations, type Locale } from '../lib/i18n';
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
 
 /**
  * Enhanced translation hook with additional utility methods
@@ -46,8 +50,14 @@ export function useTranslations() {
    * Check if a translation key exists
    * @param key - Translation key to check
    */
+<<<<<<< HEAD
   const hasTranslationKey = (key: string): boolean => {
     return hasTranslation(key, locale);
+=======
+  const hasTranslation = (key: string): boolean => {
+    const result = t(key, locale);
+    return result !== key;
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
   };
 
   /**
@@ -82,7 +92,11 @@ export function useTranslations() {
     
     // Utility functions
     getAllTranslations,
+<<<<<<< HEAD
     hasTranslation: hasTranslationKey,
+=======
+    hasTranslation,
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
     getTranslationForLocale,
     translatePlural,
     

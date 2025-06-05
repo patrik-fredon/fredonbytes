@@ -33,27 +33,40 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
   const [currentTranslations, setCurrentTranslations] = useState<TranslationData>(() =>
     getTranslations(defaultLocale)
   );
+<<<<<<< HEAD
   const [isInitialized, setIsInitialized] = useState(false);
+=======
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
   
   const router = useRouter();
   const pathname = usePathname();
 
+<<<<<<< HEAD
   // Initialize locale from URL or localStorage on mount - but only on client
   useEffect(() => {
     const initializeLocale = () => {
       if (typeof window === 'undefined') return;
       
+=======
+  // Initialize locale from URL or localStorage on mount
+  useEffect(() => {
+    const initializeLocale = () => {
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
       // Check URL parameters first
       const urlParams = new URLSearchParams(window.location.search);
       const urlLocale = urlParams.get('lang') as Locale;
       
       // Check localStorage
+<<<<<<< HEAD
       let storedLocale: Locale | null = null;
       try {
         storedLocale = localStorage.getItem('preferred-locale') as Locale;
       } catch {
         // localStorage not available
       }
+=======
+      const storedLocale = localStorage.getItem('preferred-locale') as Locale;
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
       
       // Determine the locale to use
       let initialLocale = defaultLocale;
@@ -64,6 +77,7 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
         initialLocale = storedLocale;
       } else {
         // Try to detect from browser language
+<<<<<<< HEAD
         try {
           const browserLocale = navigator.language.split('-')[0] as Locale;
           if (locales.includes(browserLocale)) {
@@ -76,10 +90,20 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
       
       // Update state only if different from current and not already initialized
       if (initialLocale !== locale && !isInitialized) {
+=======
+        const browserLocale = navigator.language.split('-')[0] as Locale;
+        if (locales.includes(browserLocale)) {
+          initialLocale = browserLocale;
+        }
+      }
+      
+      if (initialLocale !== locale) {
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
         setLocaleState(initialLocale);
         setCurrentTranslations(getTranslations(initialLocale));
         
         // Store the detected/selected locale
+<<<<<<< HEAD
         try {
           localStorage.setItem('preferred-locale', initialLocale);
         } catch {
@@ -115,11 +139,36 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
     } catch (error) {
       console.debug('Could not save locale preference:', error);
     }
+=======
+        localStorage.setItem('preferred-locale', initialLocale);
+      }
+    };
+
+    initializeLocale();
+  }, [locale]);
+
+  // Update translations when locale changes
+  useEffect(() => {
+    setCurrentTranslations(getTranslations(locale));
+  }, [locale]);
+
+  /**
+   * Enhanced locale setter with improved transition handling
+   */
+  const setLocale = useCallback((newLocale: Locale) => {
+    if (newLocale === locale || !locales.includes(newLocale)) return;
+    
+    setIsTransitioning(true);
+    
+    // Store the preference in localStorage
+    localStorage.setItem('preferred-locale', newLocale);
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
     
     // Update the state
     setLocaleState(newLocale);
     
     // Update URL params to reflect locale change (for analytics/tracking)
+<<<<<<< HEAD
     try {
       const url = new URL(window.location.href);
       url.searchParams.set('lang', newLocale);
@@ -129,6 +178,13 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
     } catch (error) {
       console.debug('Could not update URL:', error);
     }
+=======
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', newLocale);
+    
+    // Use router.replace to update URL without page reload
+    router.replace(`${pathname}?${url.searchParams.toString()}`, { scroll: false });
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
     
     // Reset transition state after a brief delay
     setTimeout(() => {

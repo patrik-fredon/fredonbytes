@@ -1,8 +1,14 @@
 'use client'
 
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { useLocale } from '../../contexts/LocaleContext';
 import { Locale, getLocaleDisplayName } from '../../lib/i18n';
+=======
+import React from 'react';
+import { useLocale } from '../../contexts/LocaleContext';
+import { Locale } from '../../lib/i18n';
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
 import { Globe, Check, Loader2 } from 'lucide-react';
 
 export default function LanguageSwitcher() {
@@ -10,6 +16,7 @@ export default function LanguageSwitcher() {
     locale,
     setLocale,
     isTransitioning,
+<<<<<<< HEAD
     availableLocales
   } = useLocale();
 
@@ -20,11 +27,18 @@ export default function LanguageSwitcher() {
     setIsMounted(true);
   }, []);
 
+=======
+    availableLocales,
+    getLocaleDisplayName
+  } = useLocale();
+
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
   const languageFlags: Record<Locale, string> = {
     en: '🇺🇸',
     de: '🇩🇪'
   };
 
+<<<<<<< HEAD
   // Don't render until mounted to prevent hydration mismatches
   if (!isMounted) {
     return (
@@ -36,6 +50,8 @@ export default function LanguageSwitcher() {
     );
   }
 
+=======
+>>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
   return (
     <div className="relative group">
       <button
