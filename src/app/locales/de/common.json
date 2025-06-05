@@ -1,7 +1,7 @@
 {
   "navigation": {
     "about": "Über uns",
-    "services": "Dienstleistungen", 
+    "services": "Dienstleistungen",
     "projects": "Projekte",
     "pricing": "Preise",
     "contact": "Kontakt",
@@ -27,7 +27,7 @@
     },
     "valueProps": {
       "development": "Entwicklung",
-      "design": "Design", 
+      "design": "Design",
       "marketing": "Marketing"
     },
     "cta": {
@@ -55,7 +55,7 @@
     "links": {
       "aboutUs": "Über uns",
       "personalPortfolio": "Persönliches Portfolio",
-      "projectGallery": "Projektgalerie", 
+      "projectGallery": "Projektgalerie",
       "technicalSupport": "Technischer Support",
       "privacyPolicy": "Datenschutzrichtlinie",
       "termsOfService": "Nutzungsbedingungen",
@@ -102,7 +102,7 @@
     },
     "services": [
       "Softwareentwicklung",
-      "Webentwicklung", 
+      "Webentwicklung",
       "Grafikdesign",
       "SEO-Dienstleistungen",
       "Social Media Marketing",
@@ -110,5 +110,453 @@
     ],
     "founder": "Patrik Fredon",
     "foundingDate": "2023"
+  },
+  "about": {
+    "title": "Über {company}",
+    "subtitle": "Gegründet im Jahr {year}, eliminieren wir die Notwendigkeit mehrerer Anbieter, indem wir Ihre {highlight} digitale All-in-One-Armee{/highlight} werden und nahtlose, wirkungsvolle Ergebnisse unter einem Dach gewährleisten.",
+    "highlight": " digitale All-in-One-Armee",
+    "mission": {
+      "title": "Unsere Mission",
+      "description": "Unternehmen mit vereinten, modernsten IT-Lösungen zu stärken—Geschwindigkeit, Kreativität und unermüdliche Effizienz zu liefern."
+    },
+    "vision": {
+      "title": "Unsere Vision",
+      "description": "Eine Welt, in der Marken digital ohne Fragmentierung gedeihen—Fredonbytes als globaler Standard für integrierte Tech-Exzellenz."
+    },
+    "values": {
+      "title": "Unsere Grundwerte",
+      "unifiedExcellence": {
+        "title": "Vereinte Exzellenz",
+        "description": "Ein Team, unendliche Lösungen."
+      },
+      "clientCentric": {
+        "title": "Kundenorientierte Agilität",
+        "description": "Ihre Ziele treiben unsere Technik an."
+      },
+      "innovation": {
+        "title": "Innovation ohne Kompromisse",
+        "description": "Mutige Ideen, perfekte Ausführung."
+      },
+      "transparency": {
+        "title": "Transparenz & Vertrauen",
+        "description": "Keine Black Boxes, nur Ergebnisse."
+      }
+    },
+    "motto": {
+      "title": "Code. Erstellen. Erobern.",
+      "subtitle": "Unser Motto"
+    },
+    "team": {
+      "title": "Lernen Sie unser Team kennen",
+      "members": {
+        "patrik": {
+          "name": "Bc. Patrik \"Fredon\" Svoboda BSc.",
+          "role": "CEO & Gründer",
+          "expertise": "Full-Stack-Entwicklung, Digitale Strategie",
+          "quote": "Effizienz ist die neue Innovation."
+        },
+        "jana": {
+          "name": "Ing. Jana Nováková",
+          "role": "CTO",
+          "expertise": "KI, Cloud-Architektur",
+          "quote": "Wenn es nicht skalierbar ist, ist es nicht nachhaltig."
+        },
+        "lucie": {
+          "name": "Lucie Dvořáková",
+          "role": "Creative Director",
+          "expertise": "Markenbildung, UX/UI-Design",
+          "quote": "Pixelperfekt ist kein Ziel—es ist die Grundlage."
+        },
+        "tomas": {
+          "name": "Tomáš Horák",
+          "role": "SEO & Metadata-Spezialist",
+          "expertise": "Datenanalyse, SEM",
+          "quote": "Sichtbarkeit ohne Strategie ist nur Lärm."
+        }
+      }
+    },
+    "founderQuote": {
+      "quote": "In einer fragmentierten digitalen Welt sind wir der Klebstoff—verschmelzen Kreativität, Technologie und Strategie zu einer unaufhaltsamen Kraft.",
+      "author": "Bc. Patrik \"Fredon\" Svoboda BSc., CEO & Gründer"
+    },
+    "mantra": "Ein Team. Keine Grenzen."
+  },
+  "services": {
+    "title": "Unsere {highlight}Dienstleistungen{/highlight}",
+    "subtitle": "Wir bieten eine umfassende Suite von IT-Lösungen, die darauf ausgelegt sind, die Notwendigkeit mehrerer Anbieter zu eliminieren. Von der Entwicklung bis zum Marketing haben wir Sie abgedeckt.",
+    "items": {
+      "development": {
+        "title": "Softwareentwicklung",
+        "description": "Maßgeschneiderte Webanwendungen, mobile Apps und Unternehmenslösungen mit modernsten Technologien entwickelt.",
+        "features": [
+          "Full-Stack-Entwicklung",
+          "Mobile Anwendungen",
+          "API-Integration",
+          "Cloud-Lösungen"
+        ]
+      },
+      "design": {
+        "title": "Grafik & UX/UI-Design",
+        "description": "Atemberaubende visuelle Identitäten, Benutzeroberflächen und Markenerlebnisse, die fesseln und konvertieren.",
+        "features": [
+          "Markenidentität",
+          "UX/UI-Design",
+          "Prototyping",
+          "Design-Systeme"
+        ]
+      },
+      "seo": {
+        "title": "SEO & Digitales Marketing",
+        "description": "Datengesteuerte Strategien zur Steigerung Ihrer Online-Sichtbarkeit und zur Generierung gezielten Traffics für Ihr Unternehmen.",
+        "features": [
+          "Suchmaschinenoptimierung",
+          "Content-Strategie",
+          "Analytics & Reporting",
+          "PPC-Kampagnen"
+        ]
+      },
+      "social": {
+        "title": "Social Media Management",
+        "description": "Ansprechende Content-Erstellung und strategische Social Media Kampagnen, die Communities aufbauen und Wachstum fördern.",
+        "features": [
+          "Content-Erstellung",
+          "Community-Management",
+          "Social Media Anzeigen",
+          "Wachstumsstrategien"
+        ]
+      },
+      "consulting": {
+        "title": "IT-Beratung & Cybersicherheit",
+        "description": "Strategische Technologieberatung und robuste Sicherheitslösungen zum Schutz und zur Optimierung Ihrer digitalen Infrastruktur.",
+        "features": [
+          "Sicherheitsaudits",
+          "Infrastrukturplanung",
+          "Technologieberatung",
+          "Risikobewertung"
+        ]
+      }
+    },
+    "stats": {
+      "satisfaction": {
+        "number": "100%",
+        "label": "Kundenzufriedenheit"
+      },
+      "coreServices": {
+        "number": "5+",
+        "label": "Kerndienstleistungen"
+      },
+      "support": {
+        "number": "24/7",
+        "label": "Support verfügbar"
+      },
+      "team": {
+        "number": "1",
+        "label": "Vereintes Team"
+      }
+    },
+    "cta": "Entdecken Sie, wie wir Ihnen helfen können"
+  },
+  "contact": {
+    "title": "Lassen Sie uns {highlight}zusammenarbeiten{/highlight}",
+    "subtitle": "Bereit, Ihre digitale Präsenz zu transformieren? Lassen Sie uns über Ihr Projekt sprechen und gemeinsam etwas Erstaunliches schaffen.",
+    "info": {
+      "title": "Kontakt aufnehmen",
+      "email": {
+        "title": "E-Mail",
+        "value": "info@fredonbytes.cloud"
+      },
+      "phone": {
+        "title": "Telefon",
+        "value": "+420 799 027 984"
+      },
+      "location": {
+        "title": "Standort",
+        "value": "Brünn, Tschechische Republik"
+      },
+      "responseTime": {
+        "title": "Antwortzeit",
+        "value": "Innerhalb von 24 Stunden"
+      }
+    },
+    "security": {
+      "title": "Sicher & Vertraulich",
+      "description": "Ihre Informationen sind verschlüsselt und geschützt. Wir respektieren Ihre Privatsphäre und werden Ihre Daten niemals an Dritte weitergeben."
+    },
+    "form": {
+      "steps": {
+        "step": "Schritt {current} von {total}",
+        "progress": "{percent}% Abgeschlossen"
+      },
+      "basicInfo": {
+        "title": "Grundinformationen",
+        "firstName": {
+          "label": "Vorname",
+          "placeholder": "Max",
+          "required": true
+        },
+        "lastName": {
+          "label": "Nachname",
+          "placeholder": "Mustermann",
+          "required": true
+        },
+        "email": {
+          "label": "E-Mail-Adresse",
+          "placeholder": "max@beispiel.de",
+          "required": true
+        },
+        "phone": {
+          "label": "Telefonnummer",
+          "placeholder": "+420 123 456 789",
+          "required": true
+        }
+      },
+      "projectDetails": {
+        "title": "Projektdetails",
+        "company": {
+          "label": "Firmenname",
+          "placeholder": "Ihr Unternehmen (Optional)"
+        },
+        "projectType": {
+          "label": "Projekttyp",
+          "placeholder": "Welche Art von Projekt benötigen Sie?",
+          "required": true,
+          "options": [
+            "Website-Entwicklung",
+            "Mobile App-Entwicklung",
+            "E-Commerce-Plattform",
+            "Markendesign & Identität",
+            "SEO & Digitales Marketing",
+            "Social Media Management",
+            "IT-Beratung",
+            "Individuelle Software",
+            "Sonstiges"
+          ]
+        },
+        "budget": {
+          "label": "Budgetbereich",
+          "placeholder": "Wie hoch ist Ihr Budget für dieses Projekt?",
+          "required": true,
+          "options": [
+            "Unter $5.000",
+            "$5.000 - $15.000",
+            "$15.000 - $50.000",
+            "$50.000 - $100.000",
+            "Über $100.000",
+            "Noch unsicher"
+          ]
+        },
+        "timeline": {
+          "label": "Zeitrahmen",
+          "placeholder": "Wann soll dies fertiggestellt werden?",
+          "required": true,
+          "options": [
+            "So schnell wie möglich (Eilprojekt)",
+            "1-2 Monate",
+            "3-6 Monate",
+            "6-12 Monate",
+            "Mehr als 12 Monate",
+            "Flexibler Zeitrahmen"
+          ]
+        }
+      },
+      "requirements": {
+        "title": "Projektanforderungen",
+        "message": {
+          "label": "Projektdetails",
+          "placeholder": "Erzählen Sie uns mehr über Ihre Projektanforderungen, Ziele und spezifische Funktionen, die Sie benötigen...",
+          "required": true
+        },
+        "features": {
+          "label": "Erforderliche Funktionen (Optional)",
+          "options": [
+            "Responsive Design",
+            "E-Commerce-Funktionalität",
+            "Content-Management",
+            "Benutzerauthentifizierung",
+            "Zahlungsintegration",
+            "Analytics & Reporting",
+            "Drittanbieter-Integrationen",
+            "Mehrsprachige Unterstützung"
+          ]
+        },
+        "newsletter": {
+          "label": "Abonnieren Sie unseren Newsletter für Updates und Tipps"
+        },
+        "privacy": {
+          "label": "Ich akzeptiere die {link}Datenschutzrichtlinie{/link}",
+          "required": true
+        }
+      },
+      "actions": {
+        "next": "Nächster Schritt",
+        "previous": "Zurück",
+        "submit": "Nachricht senden",
+        "submitting": "Wird gesendet..."
+      }
+    },
+    "success": {
+      "title": "Vielen Dank!",
+      "message": "Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+      "cta": "Weitere Nachricht senden"
+    },
+    "errors": {
+      "firstName": "Der Vorname muss mindestens 2 Zeichen lang sein",
+      "lastName": "Der Nachname muss mindestens 2 Zeichen lang sein",
+      "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "phone": "Bitte geben Sie eine gültige Telefonnummer ein",
+      "projectType": "Bitte wählen Sie einen Projekttyp aus",
+      "budget": "Bitte wählen Sie einen Budgetbereich aus",
+      "timeline": "Bitte wählen Sie einen Zeitrahmen aus",
+      "message": "Bitte geben Sie weitere Details zu Ihrem Projekt an",
+      "privacy": "Sie müssen die Datenschutzrichtlinie akzeptieren"
+    }
+  },
+  "pricing": {
+    "title": "Wählen Sie Ihren {highlight}Plan{/highlight}",
+    "subtitle": "Transparente Preise ohne versteckte Gebühren. Skalieren Sie Ihr Unternehmen mit unseren flexiblen Lösungen.",
+    "toggle": {
+      "monthly": "Monatlich",
+      "annual": "Jährlich",
+      "savings": "Sparen Sie {percent}%"
+    },
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "description": "Perfekt für kleine Unternehmen und Startups, die ihre digitale Präsenz etablieren möchten.",
+        "cta": "Loslegen",
+        "features": [
+          "Responsive Website-Design",
+          "Grundlegende SEO-Optimierung",
+          "Kontaktformular-Integration",
+          "3 Monate Support",
+          "Mobile Optimierung",
+          "Analytics-Setup"
+        ]
+      },
+      "professional": {
+        "name": "Professional",
+        "description": "Umfassende Lösung für wachsende Unternehmen, die erweiterte Funktionen und Marketing-Support benötigen.",
+        "cta": "Am beliebtesten",
+        "popular": true,
+        "features": [
+          "Individuelle Webanwendung",
+          "Erweiterte SEO & Marketing",
+          "Social Media Management",
+          "E-Commerce-Integration",
+          "6 Monate Priority Support",
+          "Performance-Optimierung",
+          "Content-Management-System",
+          "E-Mail-Marketing-Setup"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "Vollständige digitale Transformation mit dediziertem Support und individuellen Lösungen, die auf Ihre Bedürfnisse zugeschnitten sind.",
+        "cta": "Vertrieb kontaktieren",
+        "price": "Individuell",
+        "features": [
+          "Individuelle Softwareentwicklung",
+          "Dedicated Project Manager",
+          "24/7 Priority Support",
+          "Erweiterte Sicherheitsfeatures",
+          "Skalierbare Architektur",
+          "Integrations-Support",
+          "Schulung & Dokumentation",
+          "SLA-Garantien"
+        ]
+      }
+    },
+    "calculator": {
+      "title": "Projektkalkulator",
+      "description": "Erhalten Sie sofort eine Schätzung für Ihr individuelles Projekt, indem Sie die benötigten Services auswählen.",
+      "toggle": "Individuelles Angebot berechnen",
+      "services": {
+        "webDevelopment": {
+          "name": "Webentwicklung",
+          "description": "Individuelle Websites und Webanwendungen"
+        },
+        "mobileApp": {
+          "name": "Mobile App",
+          "description": "iOS- und Android-Anwendungen"
+        },
+        "design": {
+          "name": "Design-Services",
+          "description": "UI/UX- und Grafikdesign"
+        },
+        "seo": {
+          "name": "SEO & Marketing",
+          "description": "Suchoptimierung und digitales Marketing"
+        },
+        "ecommerce": {
+          "name": "E-Commerce",
+          "description": "Online-Shop-Entwicklung"
+        },
+        "consulting": {
+          "name": "IT-Beratung",
+          "description": "Strategische Technologieberatung"
+        }
+      },
+      "total": "Geschätzte Gesamtkosten",
+      "note": "Der endgültige Preis kann je nach spezifischen Anforderungen und Komplexität variieren.",
+      "cta": "Detailliertes Angebot erhalten"
+    },
+    "guarantee": {
+      "title": "30-Tage-Geld-zurück-Garantie",
+      "description": "Nicht zufrieden? Erhalten Sie eine vollständige Rückerstattung innerhalb von 30 Tagen, ohne Fragen."
+    }
+  },
+  "projects": {
+    "title": "Unser {highlight}Portfolio{/highlight}",
+    "subtitle": "Entdecken Sie unsere neuesten Arbeiten und sehen Sie, wie wir Unternehmen dabei geholfen haben, ihre digitale Präsenz zu transformieren.",
+    "categories": {
+      "all": "Alle Projekte",
+      "web": "Webentwicklung",
+      "mobile": "Mobile Apps",
+      "design": "Design",
+      "ecommerce": "E-Commerce"
+    },
+    "cta": {
+      "viewProject": "Projekt ansehen",
+      "liveDemo": "Live-Demo",
+      "caseStudy": "Fallstudie"
+    },
+    "loadMore": "Weitere Projekte laden"
+  },
+  "common": {
+    "buttons": {
+      "getStarted": "Loslegen",
+      "learnMore": "Mehr erfahren",
+      "viewMore": "Mehr anzeigen",
+      "contactUs": "Kontakt aufnehmen",
+      "tryFree": "Kostenlos testen",
+      "readMore": "Weiterlesen",
+      "close": "Schließen",
+      "next": "Weiter",
+      "previous": "Zurück",
+      "submit": "Absenden",
+      "cancel": "Abbrechen",
+      "save": "Speichern",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "loading": "Lädt...",
+      "viewAll": "Alle anzeigen"
+    },
+    "status": {
+      "success": "Erfolg",
+      "error": "Fehler",
+      "warning": "Warnung",
+      "info": "Info",
+      "loading": "Lädt"
+    },
+    "labels": {
+      "required": "Erforderlich",
+      "optional": "Optional",
+      "name": "Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "message": "Nachricht",
+      "company": "Unternehmen",
+      "website": "Website"
+    }
   }
 }
