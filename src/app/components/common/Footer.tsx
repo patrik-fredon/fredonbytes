@@ -1,65 +1,74 @@
-'use client'
+"use client";
 
-import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Github, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react'
-import { useTranslations } from '@/app/hooks/useTranslations'
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Github, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import { useTranslations } from "@/app/hooks/useTranslations";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
-  const { t, format } = useTranslations()
+  const currentYear = new Date().getFullYear();
+  const { t, format } = useTranslations();
 
   const socialLinks = [
     {
-      href: 'https://github.com/FredonBytes',
+      href: "https://github.com/FredonBytes",
       icon: Github,
-      label: t('footer.social.githubFredon'),
-      external: true
+      label: t("footer.social.githubFredon"),
+      external: true,
     },
     {
-      href: 'https://github.com/patrik-fredon',
+      href: "https://github.com/patrik-fredon",
       icon: Github,
-      label: t('footer.social.githubPatrik'),
-      external: true
+      label: t("footer.social.githubPatrik"),
+      external: true,
     },
     {
-      href: 'https://linkedin.com/company/fredonbytes',
+      href: "https://linkedin.com/company/fredonbytes",
       icon: Linkedin,
-      label: t('footer.social.linkedin'),
-      external: true
+      label: t("footer.social.linkedin"),
+      external: true,
     },
     {
-      href: 'https://twitter.com/fredonbytes',
+      href: "https://twitter.com/fredonbytes",
       icon: Twitter,
-      label: t('footer.social.twitter'),
-      external: true
+      label: t("footer.social.twitter"),
+      external: true,
     },
-  ]
+  ];
 
   const quickLinks = [
-    { href: '#about', label: t('footer.links.aboutUs') },
-    { href: '#services', label: t('navigation.services') },
-    { href: '#projects', label: t('navigation.projects') },
-    { href: '#pricing', label: t('navigation.pricing') },
-    { href: '#contact', label: t('navigation.contact') },
-  ]
+    { href: "#about", label: t("footer.links.aboutUs") },
+    { href: "#services", label: t("navigation.services") },
+    { href: "#projects", label: t("navigation.projects") },
+    { href: "#pricing", label: t("navigation.pricing") },
+    { href: "#contact", label: t("navigation.contact") },
+  ];
 
   const externalLinks = [
-    { href: 'https://me.fredonbytes.cloud', label: t('footer.links.personalPortfolio') },
-    { href: 'https://lib.fredonbytes.cloud', label: t('footer.links.projectGallery') },
-    { href: 'https://tech.fredonbytes.cloud', label: t('footer.links.technicalSupport') },
-    { href: '/links', label: t('navigation.allLinks') },
-  ]
+    {
+      href: "https://me.fredonbytes.cloud",
+      label: t("footer.links.personalPortfolio"),
+    },
+    {
+      href: "https://lib.fredonbytes.cloud",
+      label: t("footer.links.projectGallery"),
+    },
+    {
+      href: "https://tech.fredonbytes.cloud",
+      label: t("footer.links.technicalSupport"),
+    },
+    { href: "/links", label: t("navigation.allLinks") },
+  ];
 
   const legalLinks = [
-    { href: '/privacy-policy', label: t('footer.links.privacyPolicy') },
-    { href: '/terms-of-service', label: t('footer.links.termsOfService') },
-    { href: '/cookie-policy', label: t('footer.links.cookiePolicy') },
-  ]
+    { href: "/privacy-policy", label: t("footer.links.privacyPolicy") },
+    { href: "/terms-of-service", label: t("footer.links.termsOfService") },
+    { href: "/cookie-policy", label: t("footer.links.cookiePolicy") },
+  ];
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="bg-slate-900 text-white z-90">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
@@ -75,16 +84,18 @@ export default function Footer() {
               </div>
               <span className="text-xl font-bold">Fredonbytes</span>
             </Link>
-            
+
             <p className="text-slate-300 mb-6 leading-relaxed">
-              {t('footer.description')}
+              {t("footer.description")}
             </p>
 
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                <span className="text-slate-300 text-sm">{t('footer.contact.location')}</span>
+                <span className="text-slate-300 text-sm">
+                  {t("footer.contact.location")}
+                </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-blue-400 flex-shrink-0" />
@@ -92,7 +103,7 @@ export default function Footer() {
                   href="tel:+420799027984"
                   className="text-slate-300 text-sm hover:text-white transition-colors duration-200"
                 >
-                  {t('footer.contact.phone')}
+                  {t("footer.contact.phone")}
                 </a>
               </div>
               <div className="flex items-center space-x-3">
@@ -101,7 +112,7 @@ export default function Footer() {
                   href="mailto:info@fredonbytes.cloud"
                   className="text-slate-300 text-sm hover:text-white transition-colors duration-200"
                 >
-                  {t('footer.contact.email')}
+                  {t("footer.contact.email")}
                 </a>
               </div>
             </div>
@@ -109,7 +120,9 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">{t('footer.sections.quickLinks')}</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {t("footer.sections.quickLinks")}
+            </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -126,16 +139,20 @@ export default function Footer() {
 
           {/* External Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">{t('footer.sections.ourPlatforms')}</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {t("footer.sections.ourPlatforms")}
+            </h3>
             <ul className="space-y-2">
               {externalLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    {...(link.href.startsWith('http') ? {
-                      target: '_blank',
-                      rel: 'noopener noreferrer'
-                    } : {})}
+                    {...(link.href.startsWith("http")
+                      ? {
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        }
+                      : {})}
                     className="text-slate-300 hover:text-white transition-colors duration-200 text-sm"
                   >
                     {link.label}
@@ -147,7 +164,9 @@ export default function Footer() {
 
           {/* Legal & Social */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">{t('footer.sections.legalSocial')}</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {t("footer.sections.legalSocial")}
+            </h3>
             <ul className="space-y-2 mb-6">
               {legalLinks.map((link) => (
                 <li key={link.href}>
@@ -164,7 +183,7 @@ export default function Footer() {
             {/* Social Media */}
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
-                const Icon = social.icon
+                const Icon = social.icon;
                 return (
                   <a
                     key={social.href}
@@ -176,7 +195,7 @@ export default function Footer() {
                   >
                     <Icon className="w-5 h-5" />
                   </a>
-                )
+                );
               })}
             </div>
           </div>
@@ -186,16 +205,16 @@ export default function Footer() {
         <div className="border-t border-slate-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-slate-400 text-sm">
-              {format('footer.copyright', { year: currentYear })}
+              {format("footer.copyright", { year: currentYear })}
             </div>
             <div className="flex items-center space-x-6 text-slate-400 text-sm">
-              <span>{t('footer.taglines.madeWith')}</span>
+              <span>{t("footer.taglines.madeWith")}</span>
               <span>•</span>
-              <span>{t('footer.taglines.motto')}</span>
+              <span>{t("footer.taglines.motto")}</span>
             </div>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
