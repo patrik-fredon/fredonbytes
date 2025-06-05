@@ -150,12 +150,9 @@ export default function ServicesSection() {
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              {t("services.title")
-                .replace(
-                  "{highlight}",
-                  '<span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">'
-                )
-                .replace("{/highlight}", "</span>")}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                {t("services.title")}
+              </span>
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
               {t("services.subtitle")}
