@@ -231,7 +231,7 @@ export default function PricingSection() {
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 {t("pricing.title")}
               </span>
             </h2>
@@ -349,7 +349,7 @@ export default function PricingSection() {
                 {t("pricing.toggle.annual")}
               </button>
               <span className="ml-2 text-green-600 font-semibold">
-                {t("pricing.toggle.savings", { percent: "20" })}
+                {t("pricing.toggle.savings", "20%")}
               </span>
             </div>
 
