@@ -87,5 +87,12 @@ package-lock.json
 =======
 =======
 package-lock.json
+<<<<<<< HEAD
 >>>>>>> f8f8293 (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
+<<<<<<< HEAD
 >>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
+=======
+=======
+package-lock.json
+>>>>>>> abaf107 (fix: update package-lock.json to reflect version changes for resolver bindings)
+>>>>>>> 3171e8b (fix: update package-lock.json to reflect version changes for resolver bindings)
