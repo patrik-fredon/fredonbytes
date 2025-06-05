@@ -201,6 +201,7 @@ No migration required for existing implementations.
 
 - [x] Complete Czech translations
 - [x] Complete German translations
+- TBA
 
 ---
 
