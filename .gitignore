@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+.roo/*
+.clinerules
+handoff-manager-installer.js
+.roomodes
+handoffs/
+single-script/handoff-installer-readme.md
+package-lock.json

@@ -1,0 +1,114 @@
+{
+  "navigation": {
+    "about": "Über uns",
+    "services": "Dienstleistungen", 
+    "projects": "Projekte",
+    "pricing": "Preise",
+    "contact": "Kontakt",
+    "links": "Links",
+    "portfolio": "Portfolio",
+    "gallery": "Galerie",
+    "support": "Support",
+    "allLinks": "Alle Links",
+    "getStarted": "Loslegen"
+  },
+  "hero": {
+    "title": "Ihr All-in-One",
+    "titleHighlight": "IT-Kraftzentrum",
+    "subtitle": "Von Code bis Klicks liefern wir komplette digitale Dominanz. Beseitigen Sie Komplexität und stärken Sie das Potenzial Ihrer Marke mit unseren vereinheitlichten IT-Lösungen.",
+    "codeComments": {
+      "creating": "Digitale Exzellenz schaffen...",
+      "snippets": [
+        "const erfolg = await erstelleGrandioseWebsite();",
+        "function erschaffeDigitaleDominanz() { return \"Fredonbytes\"; }",
+        "const innovation = () => code + kreativitaet + strategie;",
+        "export default class Fredonbytes extends Exzellenz {}"
+      ]
+    },
+    "valueProps": {
+      "development": "Entwicklung",
+      "design": "Design", 
+      "marketing": "Marketing"
+    },
+    "cta": {
+      "startProject": "Projekt starten",
+      "viewWork": "Unsere Arbeit ansehen"
+    },
+    "stats": {
+      "founded": "Gegründet",
+      "coreServices": "Kerndienstleistungen",
+      "clientFocus": "Kundenfokus"
+    }
+  },
+  "footer": {
+    "description": "Ihr All-in-One IT-Kraftzentrum. Von Code bis Klicks liefern wir komplette digitale Dominanz.",
+    "contact": {
+      "location": "Brünn, Tschechische Republik",
+      "phone": "+420 799 027 984",
+      "email": "info@fredonbytes.cloud"
+    },
+    "sections": {
+      "quickLinks": "Schnellzugriff",
+      "ourPlatforms": "Unsere Plattformen",
+      "legalSocial": "Rechtliches & Soziales"
+    },
+    "links": {
+      "aboutUs": "Über uns",
+      "personalPortfolio": "Persönliches Portfolio",
+      "projectGallery": "Projektgalerie", 
+      "technicalSupport": "Technischer Support",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "termsOfService": "Nutzungsbedingungen",
+      "cookiePolicy": "Cookie-Richtlinie"
+    },
+    "social": {
+      "githubFredon": "GitHub - FredonBytes",
+      "githubPatrik": "GitHub - Patrik Fredon",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "copyright": "© {year} Fredonbytes. Alle Rechte vorbehalten.",
+    "taglines": {
+      "madeWith": "Mit ❤️ in Tschechien erstellt",
+      "motto": "Code. Erstellen. Erobern."
+    }
+  },
+  "external": {
+    "externalLinks": "Externe Links"
+  },
+  "seo": {
+    "defaultTitle": "Fredonbytes - Ihr All-in-One IT-Kraftzentrum",
+    "defaultDescription": "Von Code bis Klicks liefern wir komplette digitale Dominanz. Vollspektrum-IT-Lösungen einschließlich Softwareentwicklung, Grafikdesign, SEO und Social Media Marketing.",
+    "keywords": "Webentwicklung, Softwareentwicklung, IT-Lösungen, Grafikdesign, SEO, Social Media Marketing, Brünn, Tschechische Republik",
+    "siteName": "Fredonbytes",
+    "twitterHandle": "@Fredonbytes",
+    "twitterCreator": "@FredonBytes"
+  },
+  "jsonLd": {
+    "organizationName": "Fredonbytes",
+    "organizationDescription": "Vollspektrum-IT-Lösungsanbieter spezialisiert auf Softwareentwicklung, Grafikdesign, SEO und Social Media Marketing",
+    "organizationType": "TechnologyCompany",
+    "address": {
+      "streetAddress": "",
+      "addressLocality": "Brünn",
+      "addressRegion": "Südmährische Region",
+      "postalCode": "",
+      "addressCountry": "CZ"
+    },
+    "contactPoint": {
+      "telephone": "+420799027984",
+      "contactType": "Kundendienst",
+      "email": "info@fredonbytes.cloud"
+    },
+    "services": [
+      "Softwareentwicklung",
+      "Webentwicklung", 
+      "Grafikdesign",
+      "SEO-Dienstleistungen",
+      "Social Media Marketing",
+      "IT-Beratung"
+    ],
+    "founder": "Patrik Fredon",
+    "foundingDate": "2023"
+  }
+}

@@ -6,6 +6,8 @@ import Image from 'next/image'
 import { Button } from './Button'
 import { cn } from '@/app/lib/utils'
 import { Menu, X, ExternalLink } from 'lucide-react'
+import LanguageSwitcher from './LanguageSwitcher'
+import { useTranslations } from '@/app/hooks/useTranslations'
 
 interface HeaderProps {
   className?: string
@@ -14,6 +16,7 @@ interface HeaderProps {
 export default function Header({ className }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const { t } = useTranslations()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,17 +36,17 @@ export default function Header({ className }: HeaderProps) {
   }
 
   const navItems = [
-    { href: '#about', label: 'About' },
-    { href: '#services', label: 'Services' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#pricing', label: 'Pricing' },
-    { href: '#contact', label: 'Contact' },
+    { href: '#about', key: 'navigation.about' },
+    { href: '#services', key: 'navigation.services' },
+    { href: '#projects', key: 'navigation.projects' },
+    { href: '#pricing', key: 'navigation.pricing' },
+    { href: '#contact', key: 'navigation.contact' },
   ]
 
   const externalLinks = [
-    { href: 'https://me.fredonbytes.cloud', label: 'Portfolio', external: true },
-    { href: 'https://lib.fredonbytes.cloud', label: 'Gallery', external: true },
-    { href: 'https://tech.fredonbytes.cloud', label: 'Support', external: true },
+    { href: 'https://me.fredonbytes.cloud', key: 'navigation.portfolio', external: true },
+    { href: 'https://lib.fredonbytes.cloud', key: 'navigation.gallery', external: true },
+    { href: 'https://tech.fredonbytes.cloud', key: 'navigation.support', external: true },
   ]
 
   return (
@@ -82,14 +85,14 @@ export default function Header({ className }: HeaderProps) {
                 href={item.href}
                 className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium"
               >
-                {item.label}
+                {t(item.key)}
               </a>
             ))}
             
             {/* External Links Dropdown */}
             <div className="relative group">
               <button className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium flex items-center space-x-1">
-                <span>Links</span>
+                <span>{t('navigation.links')}</span>
                 <ExternalLink className="w-4 h-4" />
               </button>
               <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
@@ -101,23 +104,26 @@ export default function Header({ className }: HeaderProps) {
                     rel="noopener noreferrer"
                     className="block px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 first:rounded-t-lg last:rounded-b-lg transition-colors duration-200"
                   >
-                    {link.label}
+                    {t(link.key)}
                   </a>
                 ))}
                 <Link
                   href="/links"
                   className="block px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 last:rounded-b-lg transition-colors duration-200 border-t border-slate-200 dark:border-slate-600"
                 >
-                  All Links
+                  {t('navigation.allLinks')}
                 </Link>
               </div>
             </div>
+            
+            {/* Language Switcher */}
+            <LanguageSwitcher />
           </div>
 
           {/* CTA Button */}
           <div className="hidden lg:block">
             <a href="#contact">
-              <Button variant="gradient" size="lg">Get Started</Button>
+              <Button variant="gradient" size="lg">{t('navigation.getStarted')}</Button>
             </a>
           </div>
 
@@ -142,12 +148,12 @@ export default function Header({ className }: HeaderProps) {
                   onClick={closeMenu}
                   className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium"
                 >
-                  {item.label}
+                  {t(item.key)}
                 </a>
               ))}
               
               <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
-                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-2">External Links</p>
+                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-2">{t('external.externalLinks')}</p>
                 {externalLinks.map((link) => (
                   <a
                     key={link.href}
@@ -157,7 +163,7 @@ export default function Header({ className }: HeaderProps) {
                     onClick={closeMenu}
                     className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-1"
                   >
-                    {link.label}
+                    {t(link.key)}
                   </a>
                 ))}
                 <Link
@@ -165,13 +171,17 @@ export default function Header({ className }: HeaderProps) {
                   onClick={closeMenu}
                   className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-1"
                 >
-                  All Links
+                  {t('navigation.allLinks')}
                 </Link>
+              </div>
+              
+              <div className="border-t border-slate-200 dark:border-slate-700 pt-4 mb-4">
+                <LanguageSwitcher />
               </div>
               
               <div className="pt-4">
                 <a href="#contact" onClick={closeMenu} className="block">
-                  <Button variant="gradient" size="lg" className="w-full">Get Started</Button>
+                  <Button variant="gradient" size="lg" className="w-full">{t('navigation.getStarted')}</Button>
                 </a>
               </div>
             </div>
