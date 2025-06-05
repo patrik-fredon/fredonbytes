@@ -558,5 +558,57 @@
       "company": "Společnost",
       "website": "Web"
     }
+  },
+  "pages": {
+    "home": {
+      "title": "TODO: Translate home page title",
+      "description": "TODO: Translate home page description",
+      "keywords": "TODO: Translate home page keywords"
+    },
+    "about": {
+      "title": "TODO: Translate about page title",
+      "description": "TODO: Translate about page description",
+      "keywords": "TODO: Translate about page keywords"
+    },
+    "services": {
+      "title": "TODO: Translate services page title",
+      "description": "TODO: Translate services page description",
+      "keywords": "TODO: Translate services page keywords"
+    },
+    "projects": {
+      "title": "TODO: Translate projects page title",
+      "description": "TODO: Translate projects page description",
+      "keywords": "TODO: Translate projects page keywords"
+    },
+    "pricing": {
+      "title": "TODO: Translate pricing page title",
+      "description": "TODO: Translate pricing page description",
+      "keywords": "TODO: Translate pricing page keywords"
+    },
+    "contact": {
+      "title": "TODO: Translate contact page title",
+      "description": "TODO: Translate contact page description",
+      "keywords": "TODO: Translate contact page keywords"
+    },
+    "links": {
+      "title": "TODO: Translate links page title",
+      "description": "TODO: Translate links page description",
+      "keywords": "TODO: Translate links page keywords"
+    },
+    "privacy-policy": {
+      "title": "TODO: Translate privacy policy page title",
+      "description": "TODO: Translate privacy policy page description",
+      "keywords": "TODO: Translate privacy policy page keywords"
+    },
+    "terms-of-service": {
+      "title": "TODO: Translate terms of service page title",
+      "description": "TODO: Translate terms of service page description",
+      "keywords": "TODO: Translate terms of service page keywords"
+    },
+    "cookie-policy": {
+      "title": "TODO: Translate cookie policy page title",
+      "description": "TODO: Translate cookie policy page description",
+      "keywords": "TODO: Translate cookie policy page keywords"
+    }
   }
 }
