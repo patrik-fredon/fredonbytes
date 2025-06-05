@@ -39,8 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 
 .roo/*
@@ -52,9 +50,7 @@ single-script/handoff-installer-readme.md
 package-lock.json
 package-lock.json
 package-lock.json
-=======
-=======
->>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+
 .roomodes
 .roo/generate_mcp_yaml.py
 .roo/install_rooflow_conport.sh
@@ -67,10 +63,7 @@ package-lock.json
 .roo/system-prompt-flow-debug
 .roo/system-prompt-flow-orchestrator
 logs/conport.log
-<<<<<<< HEAD
->>>>>>> 2cf2cb8 (feat: add additional files and directories to .gitignore for improved project cleanliness)
-=======
-=======
+
 
 
 .roo/*
@@ -80,19 +73,8 @@ handoff-manager-installer.js
 handoffs/
 single-script/handoff-installer-readme.md
 package-lock.json
-<<<<<<< HEAD
->>>>>>> d47da3e (Centralized en,de translation, refactor of codebase.)
-<<<<<<< HEAD
->>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
-=======
-=======
+
 package-lock.json
-<<<<<<< HEAD
->>>>>>> f8f8293 (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
-<<<<<<< HEAD
->>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
-=======
-=======
+
 package-lock.json
->>>>>>> abaf107 (fix: update package-lock.json to reflect version changes for resolver bindings)
->>>>>>> 3171e8b (fix: update package-lock.json to reflect version changes for resolver bindings)
+
