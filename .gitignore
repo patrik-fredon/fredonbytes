@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.roomodes
+.roo/generate_mcp_yaml.py
+.roo/install_rooflow_conport.sh
+.roo/install_rooflow.sh
+.roo/mcp.json
+.roo/system_prompt.md
+.roo/system-prompt-flow-architect
+.roo/system-prompt-flow-ask
+.roo/system-prompt-flow-code
+.roo/system-prompt-flow-debug
+.roo/system-prompt-flow-orchestrator
+logs/conport.log
