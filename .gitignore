@@ -39,6 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+.roo/*
+.clinerules
+handoff-manager-installer.js
+.roomodes
+handoffs/
+single-script/handoff-installer-readme.md
+package-lock.json
+package-lock.json
+package-lock.json
+
 .roomodes
 .roo/generate_mcp_yaml.py
 .roo/install_rooflow_conport.sh
@@ -51,3 +63,18 @@ next-env.d.ts
 .roo/system-prompt-flow-debug
 .roo/system-prompt-flow-orchestrator
 logs/conport.log
+
+
+
+.roo/*
+.clinerules
+handoff-manager-installer.js
+.roomodes
+handoffs/
+single-script/handoff-installer-readme.md
+package-lock.json
+
+package-lock.json
+
+package-lock.json
+

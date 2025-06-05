@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Button } from '../common/Button'
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "../common/Button";
+import {
+  Mail,
+  Phone,
+  MapPin,
   Clock,
   ArrowRight,
   ArrowLeft,
@@ -14,48 +14,52 @@ import {
   User,
   Building,
   MessageSquare,
-  Shield
-} from 'lucide-react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
+  Shield,
+} from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { useTranslations } from "@/app/hooks/useTranslations";
 
 const contactSchema = z.object({
   // Step 1: Basic Info
-  firstName: z.string().min(2, 'First name must be at least 2 characters'),
-  lastName: z.string().min(2, 'Last name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  phone: z.string().min(10, 'Please enter a valid phone number'),
-  
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(10, "Please enter a valid phone number"),
+
   // Step 2: Project Details
   company: z.string().optional(),
-  projectType: z.string().min(1, 'Please select a project type'),
-  budget: z.string().min(1, 'Please select a budget range'),
-  timeline: z.string().min(1, 'Please select a timeline'),
-  
+  projectType: z.string().min(1, "Please select a project type"),
+  budget: z.string().min(1, "Please select a budget range"),
+  timeline: z.string().min(1, "Please select a timeline"),
+
   // Step 3: Requirements
-  message: z.string().min(10, 'Please provide more details about your project'),
+  message: z.string().min(10, "Please provide more details about your project"),
   requirements: z.array(z.string()).optional(),
   newsletter: z.boolean().optional(),
-  privacy: z.boolean().refine(val => val === true, 'You must accept the privacy policy')
-})
+  privacy: z
+    .boolean()
+    .refine((val) => val === true, "You must accept the privacy policy"),
+});
 
-type ContactFormData = z.infer<typeof contactSchema>
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactSection() {
-  const [currentStep, setCurrentStep] = useState(1)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const { t } = useTranslations();
+  const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    trigger
+    trigger,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    mode: 'onChange'
-  })
+    mode: "onChange",
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -63,10 +67,10 @@ export default function ContactSection() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  }
+        delayChildren: 0.2,
+      },
+    },
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -75,98 +79,98 @@ export default function ContactSection() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  }
+        ease: "easeOut",
+      },
+    },
+  };
 
   const projectTypes = [
-    'Website Development',
-    'Mobile App Development',
-    'E-commerce Platform',
-    'Brand Design & Identity',
-    'SEO & Digital Marketing',
-    'Social Media Management',
-    'IT Consulting',
-    'Custom Software',
-    'Other'
-  ]
+    t("contact.form.projectDetails.projectType.options.0"),
+    t("contact.form.projectDetails.projectType.options.1"),
+    t("contact.form.projectDetails.projectType.options.2"),
+    t("contact.form.projectDetails.projectType.options.3"),
+    t("contact.form.projectDetails.projectType.options.4"),
+    t("contact.form.projectDetails.projectType.options.5"),
+    t("contact.form.projectDetails.projectType.options.6"),
+    t("contact.form.projectDetails.projectType.options.7"),
+    t("contact.form.projectDetails.projectType.options.8"),
+  ];
 
   const budgetRanges = [
-    'Under $5,000',
-    '$5,000 - $15,000',
-    '$15,000 - $50,000',
-    '$50,000 - $100,000',
-    'Over $100,000',
-    'Not sure yet'
-  ]
+    t("contact.form.projectDetails.budget.options.0"),
+    t("contact.form.projectDetails.budget.options.1"),
+    t("contact.form.projectDetails.budget.options.2"),
+    t("contact.form.projectDetails.budget.options.3"),
+    t("contact.form.projectDetails.budget.options.4"),
+    t("contact.form.projectDetails.budget.options.5"),
+  ];
 
   const timelines = [
-    'ASAP (Rush project)',
-    '1-2 months',
-    '3-6 months',
-    '6-12 months',
-    'More than 12 months',
-    'Flexible timeline'
-  ]
+    t("contact.form.projectDetails.timeline.options.0"),
+    t("contact.form.projectDetails.timeline.options.1"),
+    t("contact.form.projectDetails.timeline.options.2"),
+    t("contact.form.projectDetails.timeline.options.3"),
+    t("contact.form.projectDetails.timeline.options.4"),
+    t("contact.form.projectDetails.timeline.options.5"),
+  ];
 
   const requirements = [
-    'Responsive Design',
-    'E-commerce Functionality',
-    'Content Management',
-    'User Authentication',
-    'Payment Integration',
-    'Analytics & Reporting',
-    'Third-party Integrations',
-    'Multi-language Support'
-  ]
+    t("contact.form.requirements.features.options.0"),
+    t("contact.form.requirements.features.options.1"),
+    t("contact.form.requirements.features.options.2"),
+    t("contact.form.requirements.features.options.3"),
+    t("contact.form.requirements.features.options.4"),
+    t("contact.form.requirements.features.options.5"),
+    t("contact.form.requirements.features.options.6"),
+    t("contact.form.requirements.features.options.7"),
+  ];
 
   const nextStep = async () => {
-    let fieldsToValidate: (keyof ContactFormData)[] = []
-    
+    let fieldsToValidate: (keyof ContactFormData)[] = [];
+
     if (currentStep === 1) {
-      fieldsToValidate = ['firstName', 'lastName', 'email', 'phone']
+      fieldsToValidate = ["firstName", "lastName", "email", "phone"];
     } else if (currentStep === 2) {
-      fieldsToValidate = ['projectType', 'budget', 'timeline']
+      fieldsToValidate = ["projectType", "budget", "timeline"];
     }
-    
-    const isStepValid = await trigger(fieldsToValidate)
+
+    const isStepValid = await trigger(fieldsToValidate);
     if (isStepValid && currentStep < 3) {
-      setCurrentStep(currentStep + 1)
+      setCurrentStep(currentStep + 1);
     }
-  }
+  };
 
   const prevStep = () => {
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1)
+      setCurrentStep(currentStep - 1);
     }
-  }
+  };
 
   const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true)
-    
+    setIsSubmitting(true);
+
     try {
       // Here you would integrate with Resend API
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      })
+      });
 
       if (response.ok) {
-        setIsSubmitted(true)
+        setIsSubmitted(true);
       } else {
-        throw new Error('Failed to submit form')
+        throw new Error("Failed to submit form");
       }
     } catch (error) {
-      console.error('Error submitting form:', error)
+      console.error("Error submitting form:", error);
       // Handle error (show notification, etc.)
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   if (isSubmitted) {
     return (
@@ -181,24 +185,24 @@ export default function ContactSection() {
               <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
-              Thank You!
+              {t("contact.success.title")}
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 mb-8">
-              Your message has been sent successfully. We&apos;ll get back to you within 24 hours.
+              {t("contact.success.message")}
             </p>
             <Button
               variant="gradient"
               onClick={() => {
-                setIsSubmitted(false)
-                setCurrentStep(1)
+                setIsSubmitted(false);
+                setCurrentStep(1);
               }}
             >
-              Send Another Message
+              {t("contact.success.cta")}
             </Button>
           </motion.div>
         </div>
       </section>
-    )
+    );
   }
 
   return (
@@ -213,10 +217,10 @@ export default function ContactSection() {
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              Let&apos;s Work <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Together</span>
+              {t("contact.sectionTitle")}
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Ready to transform your digital presence? Let&apos;s discuss your project and create something amazing together.
+              {t("contact.sectionDescription")}
             </p>
           </motion.div>
 
@@ -225,7 +229,7 @@ export default function ContactSection() {
             <motion.div variants={itemVariants} className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
-                  Get in Touch
+                  {t("contact.getInTouch")}
                 </h3>
                 <div className="space-y-6">
                   {/* Email */}
@@ -234,9 +238,11 @@ export default function ContactSection() {
                       <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">Email</h4>
-                      <a 
-                        href="mailto:info@fredonbytes.cloud" 
+                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        {t("contact.email")}
+                      </h4>
+                      <a
+                        href="mailto:info@fredonbytes.cloud"
                         className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
                         info@fredonbytes.cloud
@@ -250,9 +256,11 @@ export default function ContactSection() {
                       <Phone className="w-6 h-6 text-green-600 dark:text-green-400" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">Phone</h4>
-                      <a 
-                        href="tel:+420799027984" 
+                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        {t("contact.phone")}
+                      </h4>
+                      <a
+                        href="tel:+420799027984"
                         className="text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                       >
                         +420 799 027 984
@@ -266,8 +274,12 @@ export default function ContactSection() {
                       <MapPin className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">Location</h4>
-                      <p className="text-slate-600 dark:text-slate-400">Brno, Czech Republic</p>
+                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        {t("contact.location")}
+                      </h4>
+                      <p className="text-slate-600 dark:text-slate-400">
+                        Brno, Czech Republic
+                      </p>
                     </div>
                   </div>
 
@@ -277,8 +289,12 @@ export default function ContactSection() {
                       <Clock className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">Response Time</h4>
-                      <p className="text-slate-600 dark:text-slate-400">Within 24 hours</p>
+                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        {t("contact.responseTime")}
+                      </h4>
+                      <p className="text-slate-600 dark:text-slate-400">
+                        {t("contact.responseTimeValue")}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -288,10 +304,12 @@ export default function ContactSection() {
               <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-3">
                   <Shield className="w-5 h-5 text-green-600" />
-                  <h4 className="font-semibold text-slate-900 dark:text-white">Secure & Confidential</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-white">
+                    {t("contact.secureConfidential.title")}
+                  </h4>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Your information is encrypted and protected. We respect your privacy and will never share your details with third parties.
+                  {t("contact.secureConfidential.message")}
                 </p>
               </div>
             </motion.div>
@@ -303,14 +321,15 @@ export default function ContactSection() {
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
-                      Step {currentStep} of 3
+                      {t("contact.step")} {currentStep} {t("contact.of")} 3
                     </span>
                     <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
-                      {Math.round((currentStep / 3) * 100)}% Complete
+                      {Math.round((currentStep / 3) * 100)}%{" "}
+                      {t("contact.complete")}
                     </span>
                   </div>
                   <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
-                    <div 
+                    <div
                       className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full transition-all duration-500"
                       style={{ width: `${(currentStep / 3) * 100}%` }}
                     />
@@ -328,66 +347,76 @@ export default function ContactSection() {
                     >
                       <div className="flex items-center space-x-3 mb-6">
                         <User className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">Basic Information</h3>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                          {t("contact.basicInfo")}
+                        </h3>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            First Name *
+                            {t("contact.firstName")} *
                           </label>
                           <input
-                            {...register('firstName')}
+                            {...register("firstName")}
                             className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                            placeholder="John"
+                            placeholder={t("contact.firstNamePlaceholder")}
                           />
                           {errors.firstName && (
-                            <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>
+                            <p className="mt-1 text-sm text-red-600">
+                              {errors.firstName.message}
+                            </p>
                           )}
                         </div>
 
                         <div>
                           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            Last Name *
+                            {t("contact.lastName")} *
                           </label>
                           <input
-                            {...register('lastName')}
+                            {...register("lastName")}
                             className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                            placeholder="Doe"
+                            placeholder={t("contact.lastNamePlaceholder")}
                           />
                           {errors.lastName && (
-                            <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>
+                            <p className="mt-1 text-sm text-red-600">
+                              {errors.lastName.message}
+                            </p>
                           )}
                         </div>
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                          Email Address *
+                          {t("contact.email")} *
                         </label>
                         <input
-                          {...register('email')}
+                          {...register("email")}
                           type="email"
                           className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder="john@example.com"
+                          placeholder={t("contact.emailPlaceholder")}
                         />
                         {errors.email && (
-                          <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.email.message}
+                          </p>
                         )}
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                          Phone Number *
+                          {t("contact.phone")} *
                         </label>
                         <input
-                          {...register('phone')}
+                          {...register("phone")}
                           type="tel"
                           className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder="+420 123 456 789"
+                          placeholder={t("contact.phonePlaceholder")}
                         />
                         {errors.phone && (
-                          <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.phone.message}
+                          </p>
                         )}
                       </div>
 
@@ -399,7 +428,7 @@ export default function ContactSection() {
                         onClick={nextStep}
                         rightIcon={<ArrowRight className="w-4 h-4" />}
                       >
-                        Continue
+                        {t("contact.continue")}
                       </Button>
                     </motion.div>
                   )}
@@ -414,72 +443,92 @@ export default function ContactSection() {
                     >
                       <div className="flex items-center space-x-3 mb-6">
                         <Building className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">Project Details</h3>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                          {t("contact.projectDetails")}
+                        </h3>
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                          Company (Optional)
+                          {t("contact.company")}
                         </label>
                         <input
-                          {...register('company')}
+                          {...register("company")}
                           className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder="Your Company Name"
+                          placeholder={t("contact.companyPlaceholder")}
                         />
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                          Project Type *
+                          {t("contact.projectType")} *
                         </label>
                         <select
-                          {...register('projectType')}
+                          {...register("projectType")}
                           className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
                         >
-                          <option value="">Select a project type</option>
+                          <option value="">
+                            {t("contact.selectProjectType")}
+                          </option>
                           {projectTypes.map((type) => (
-                            <option key={type} value={type}>{type}</option>
+                            <option key={type} value={type}>
+                              {type}
+                            </option>
                           ))}
                         </select>
                         {errors.projectType && (
-                          <p className="mt-1 text-sm text-red-600">{errors.projectType.message}</p>
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.projectType.message}
+                          </p>
                         )}
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            Budget Range *
+                            {t("contact.budget")} *
                           </label>
                           <select
-                            {...register('budget')}
+                            {...register("budget")}
                             className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
                           >
-                            <option value="">Select budget</option>
+                            <option value="">
+                              {t("contact.selectBudget")}
+                            </option>
                             {budgetRanges.map((range) => (
-                              <option key={range} value={range}>{range}</option>
+                              <option key={range} value={range}>
+                                {range}
+                              </option>
                             ))}
                           </select>
                           {errors.budget && (
-                            <p className="mt-1 text-sm text-red-600">{errors.budget.message}</p>
+                            <p className="mt-1 text-sm text-red-600">
+                              {errors.budget.message}
+                            </p>
                           )}
                         </div>
 
                         <div>
                           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            Timeline *
+                            {t("contact.timeline")} *
                           </label>
                           <select
-                            {...register('timeline')}
+                            {...register("timeline")}
                             className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
                           >
-                            <option value="">Select timeline</option>
+                            <option value="">
+                              {t("contact.selectTimeline")}
+                            </option>
                             {timelines.map((timeline) => (
-                              <option key={timeline} value={timeline}>{timeline}</option>
+                              <option key={timeline} value={timeline}>
+                                {timeline}
+                              </option>
                             ))}
                           </select>
                           {errors.timeline && (
-                            <p className="mt-1 text-sm text-red-600">{errors.timeline.message}</p>
+                            <p className="mt-1 text-sm text-red-600">
+                              {errors.timeline.message}
+                            </p>
                           )}
                         </div>
                       </div>
@@ -493,7 +542,7 @@ export default function ContactSection() {
                           onClick={prevStep}
                           leftIcon={<ArrowLeft className="w-4 h-4" />}
                         >
-                          Back
+                          {t("contact.back")}
                         </Button>
                         <Button
                           type="button"
@@ -503,7 +552,7 @@ export default function ContactSection() {
                           onClick={nextStep}
                           rightIcon={<ArrowRight className="w-4 h-4" />}
                         >
-                          Continue
+                          {t("contact.continue")}
                         </Button>
                       </div>
                     </motion.div>
@@ -519,38 +568,49 @@ export default function ContactSection() {
                     >
                       <div className="flex items-center space-x-3 mb-6">
                         <MessageSquare className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">Project Requirements</h3>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                          {t("contact.projectRequirements")}
+                        </h3>
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                          Project Description *
+                          {t("contact.projectDescription")} *
                         </label>
                         <textarea
-                          {...register('message')}
+                          {...register("message")}
                           rows={4}
                           className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder="Tell us about your project, goals, and any specific requirements..."
+                          placeholder={t(
+                            "contact.projectDescriptionPlaceholder"
+                          )}
                         />
                         {errors.message && (
-                          <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+                          <p className="mt-1 text-sm text-red-600">
+                            {errors.message.message}
+                          </p>
                         )}
                       </div>
 
                       <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
-                          Additional Requirements (Optional)
+                          {t("contact.additionalRequirements")}
                         </label>
                         <div className="grid grid-cols-2 gap-3">
                           {requirements.map((req) => (
-                            <label key={req} className="flex items-center space-x-2 cursor-pointer">
+                            <label
+                              key={req}
+                              className="flex items-center space-x-2 cursor-pointer"
+                            >
                               <input
                                 type="checkbox"
                                 value={req}
-                                {...register('requirements')}
+                                {...register("requirements")}
                                 className="w-4 h-4 text-blue-600 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 rounded focus:ring-blue-500"
                               />
-                              <span className="text-sm text-slate-700 dark:text-slate-300">{req}</span>
+                              <span className="text-sm text-slate-700 dark:text-slate-300">
+                                {req}
+                              </span>
                             </label>
                           ))}
                         </div>
@@ -560,27 +620,28 @@ export default function ContactSection() {
                         <label className="flex items-center space-x-2 cursor-pointer">
                           <input
                             type="checkbox"
-                            {...register('newsletter')}
+                            {...register("newsletter")}
                             className="w-4 h-4 text-blue-600 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 rounded focus:ring-blue-500"
                           />
                           <span className="text-sm text-slate-700 dark:text-slate-300">
-                            Subscribe to our newsletter for updates and tips
+                            {t("contact.subscribeNewsletter")}
                           </span>
                         </label>
 
                         <label className="flex items-start space-x-2 cursor-pointer">
                           <input
                             type="checkbox"
-                            {...register('privacy')}
+                            {...register("privacy")}
                             className="w-4 h-4 mt-1 text-blue-600 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 rounded focus:ring-blue-500"
                           />
                           <span className="text-sm text-slate-700 dark:text-slate-300">
-                            I agree to the <a href="/privacy-policy" className="text-blue-600 hover:underline">Privacy Policy</a> and 
-                            <a href="/terms-of-service" className="text-blue-600 hover:underline ml-1">Terms of Service</a> *
+                            {t("contact.agreePolicies")}
                           </span>
                         </label>
                         {errors.privacy && (
-                          <p className="text-sm text-red-600">{errors.privacy.message}</p>
+                          <p className="text-sm text-red-600">
+                            {errors.privacy.message}
+                          </p>
                         )}
                       </div>
 
@@ -593,7 +654,7 @@ export default function ContactSection() {
                           onClick={prevStep}
                           leftIcon={<ArrowLeft className="w-4 h-4" />}
                         >
-                          Back
+                          {t("contact.back")}
                         </Button>
                         <Button
                           type="submit"
@@ -603,7 +664,7 @@ export default function ContactSection() {
                           loading={isSubmitting}
                           disabled={!isValid}
                         >
-                          Send Message
+                          {t("contact.sendMessage")}
                         </Button>
                       </div>
                     </motion.div>
@@ -615,5 +676,5 @@ export default function ContactSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

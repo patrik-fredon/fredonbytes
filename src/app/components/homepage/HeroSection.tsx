@@ -4,19 +4,31 @@ import React, { useState, useEffect } from 'react'
 import { Button } from '../common/Button'
 import { ArrowRight, Code, Zap, Globe } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useTranslations } from '@/app/hooks/useTranslations'
 
 export default function HeroSection() {
+  const { t } = useTranslations()
   const [typedText, setTypedText] = useState('')
   const [currentLineIndex, setCurrentLineIndex] = useState(0)
   const [charIndex, setCharIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
 
-  const codeSnippets = [
-    'const success = await buildAmazingWebsite();',
-    'function createDigitalDominance() { return "Fredonbytes"; }',
-    'const innovation = () => code + creativity + strategy;',
-    'export default class Fredonbytes extends Excellence {}',
-  ]
+  // Get code snippets from translations with proper type handling
+  const getCodeSnippets = (): string[] => {
+    const snippets = t('hero.codeComments.snippets');
+    if (Array.isArray(snippets)) {
+      return snippets as string[];
+    }
+    // Fallback snippets
+    return [
+      'const success = await buildAmazingWebsite();',
+      'function createDigitalDominance() { return "Fredonbytes"; }',
+      'const innovation = () => code + creativity + strategy;',
+      'export default class Fredonbytes extends Excellence {}',
+    ];
+  };
+
+  const codeSnippets = getCodeSnippets();
 
   useEffect(() => {
     const currentLine = codeSnippets[currentLineIndex]
@@ -98,7 +110,7 @@ export default function HeroSection() {
               <div className="text-green-400 font-mono text-sm">
                 <span className="text-gray-500">1</span>
                 <span className="ml-4 text-blue-400">{'//'} </span>
-                <span className="text-gray-400">Creating digital excellence...</span>
+                <span className="text-gray-400">{t('hero.codeComments.creating')}</span>
               </div>
               <div className="text-green-400 font-mono text-sm mt-1">
                 <span className="text-gray-500">2</span>
@@ -113,9 +125,9 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-4xl sm:text-5xl lg:text-7xl font-bold text-slate-900 dark:text-white mb-6 leading-tight"
           >
-            Your All-in-One
+            {t('hero.title')}
             <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
-              IT Powerhouse
+              {t('hero.titleHighlight')}
             </span>
           </motion.h1>
 
@@ -124,8 +136,7 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-xl sm:text-2xl text-slate-600 dark:text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            From <strong>code to clicks</strong>, we deliver complete digital dominance. 
-            Eliminate complexity and supercharge your brand&apos;s potential with our unified IT solutions.
+            {t('hero.subtitle')}
           </motion.p>
 
           {/* Value Proposition */}
@@ -135,15 +146,15 @@ export default function HeroSection() {
           >
             <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
               <Code className="w-5 h-5 text-blue-500" />
-              <span className="font-medium">Development</span>
+              <span className="font-medium">{t('hero.valueProps.development')}</span>
             </div>
             <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
               <Zap className="w-5 h-5 text-purple-500" />
-              <span className="font-medium">Design</span>
+              <span className="font-medium">{t('hero.valueProps.design')}</span>
             </div>
             <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
               <Globe className="w-5 h-5 text-cyan-500" />
-              <span className="font-medium">Marketing</span>
+              <span className="font-medium">{t('hero.valueProps.marketing')}</span>
             </div>
           </motion.div>
 
@@ -158,14 +169,14 @@ export default function HeroSection() {
               onClick={() => scrollToSection('contact')}
               rightIcon={<ArrowRight className="w-5 h-5" />}
             >
-              Start Your Project
+              {t('hero.cta.startProject')}
             </Button>
             <Button
               variant="outline"
               size="xl"
               onClick={() => scrollToSection('projects')}
             >
-              View Our Work
+              {t('hero.cta.viewWork')}
             </Button>
           </motion.div>
 
@@ -179,7 +190,7 @@ export default function HeroSection() {
                 2023
               </div>
               <div className="text-slate-600 dark:text-slate-400 text-sm">
-                Founded
+                {t('hero.stats.founded')}
               </div>
             </div>
             <div className="text-center">
@@ -187,7 +198,7 @@ export default function HeroSection() {
                 5+
               </div>
               <div className="text-slate-600 dark:text-slate-400 text-sm">
-                Core Services
+                {t('hero.stats.coreServices')}
               </div>
             </div>
             <div className="text-center">
@@ -195,7 +206,7 @@ export default function HeroSection() {
                 100%
               </div>
               <div className="text-slate-600 dark:text-slate-400 text-sm">
-                Client Focus
+                {t('hero.stats.clientFocus')}
               </div>
             </div>
           </motion.div>

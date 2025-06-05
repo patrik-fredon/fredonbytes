@@ -1,0 +1,614 @@
+{
+  "navigation": {
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "links": "Links",
+    "portfolio": "Portfolio",
+    "gallery": "Gallery",
+    "support": "Support",
+    "allLinks": "All Links",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "title": "Your All-in-One",
+    "titleHighlight": "IT Powerhouse",
+    "subtitle": "From code to clicks, we deliver complete digital dominance. Eliminate complexity and supercharge your brand's potential with our unified IT solutions.",
+    "codeComments": {
+      "creating": "Creating digital excellence...",
+      "snippets": [
+        "const success = await buildAmazingWebsite();",
+        "function createDigitalDominance() { return \"Fredonbytes\"; }",
+        "const innovation = () => code + creativity + strategy;",
+        "export default class Fredonbytes extends Excellence {}"
+      ]
+    },
+    "valueProps": {
+      "development": "Development",
+      "design": "Design",
+      "marketing": "Marketing"
+    },
+    "cta": {
+      "startProject": "Start Your Project",
+      "viewWork": "View Our Work"
+    },
+    "stats": {
+      "founded": "Founded",
+      "coreServices": "Core Services",
+      "clientFocus": "Client Focus"
+    }
+  },
+  "footer": {
+    "description": "Your All-in-One IT Powerhouse. From code to clicks, we deliver complete digital dominance.",
+    "contact": {
+      "location": "Brno, Czech Republic",
+      "phone": "+420 799 027 984",
+      "email": "info@fredonbytes.cloud"
+    },
+    "sections": {
+      "quickLinks": "Quick Links",
+      "ourPlatforms": "Our Platforms",
+      "legalSocial": "Legal & Social"
+    },
+    "links": {
+      "aboutUs": "About Us",
+      "personalPortfolio": "Personal Portfolio",
+      "projectGallery": "Project Gallery",
+      "technicalSupport": "Technical Support",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "cookiePolicy": "Cookie Policy"
+    },
+    "social": {
+      "githubFredon": "GitHub - FredonBytes",
+      "githubPatrik": "GitHub - Patrik Fredon",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "copyright": "© {year} Fredonbytes. All rights reserved.",
+    "taglines": {
+      "madeWith": "Made with ❤️ in Czech Republic",
+      "motto": "Code. Create. Conquer."
+    }
+  },
+  "external": {
+    "externalLinks": "External Links"
+  },
+  "seo": {
+    "defaultTitle": "Fredonbytes - Your All-in-One IT Powerhouse",
+    "defaultDescription": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
+    "keywords": "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic",
+    "siteName": "Fredonbytes",
+    "twitterHandle": "@Fredonbytes",
+    "twitterCreator": "@FredonBytes"
+  },
+  "jsonLd": {
+    "organizationName": "Fredonbytes",
+    "organizationDescription": "Full-spectrum IT solutions provider specializing in software development, graphic design, SEO, and social media marketing",
+    "organizationType": "TechnologyCompany",
+    "address": {
+      "streetAddress": "",
+      "addressLocality": "Brno",
+      "addressRegion": "South Moravian Region",
+      "postalCode": "",
+      "addressCountry": "CZ"
+    },
+    "contactPoint": {
+      "telephone": "+420799027984",
+      "contactType": "customer service",
+      "email": "info@fredonbytes.cloud"
+    },
+    "services": [
+      "Software Development",
+      "Web Development",
+      "Graphic Design",
+      "SEO Services",
+      "Social Media Marketing",
+      "IT Consulting"
+    ],
+    "founder": "Patrik Fredon",
+    "foundingDate": "2023"
+  },
+  "about": {
+    "title": "About {company}",
+    "subtitle": "Founded in {year}, we eliminate the need for multiple vendors by becoming your {highlight} one-stop digital army{/highlight}, ensuring seamless, high-impact results under one roof.",
+    "highlight": " one-stop digital army",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To empower businesses with unified, cutting-edge IT solutions—delivering speed, creativity, and relentless efficiency."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "A world where brands thrive digitally without fragmentation—Fredonbytes as the global standard for integrated tech excellence."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "unifiedExcellence": {
+        "title": "Unified Excellence",
+        "description": "One team, infinite solutions."
+      },
+      "clientCentric": {
+        "title": "Client-Centric Agility",
+        "description": "Your goals drive our tech."
+      },
+      "innovation": {
+        "title": "Innovation Without Compromise",
+        "description": "Bold ideas, flawless execution."
+      },
+      "transparency": {
+        "title": "Transparency & Trust",
+        "description": "No black boxes, just results."
+      }
+    },
+    "motto": {
+      "title": "Code. Create. Conquer.",
+      "subtitle": "Our Motto"
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "members": {
+        "patrik": {
+          "name": "Bc. Patrik \"Fredon\" Svoboda BSc.",
+          "role": "CEO & Founder",
+          "expertise": "Full-Stack Development, Digital Strategy",
+          "quote": "Efficiency is the new innovation."
+        },
+        "jana": {
+          "name": "Ing. Jana Nováková",
+          "role": "CTO",
+          "expertise": "AI, Cloud Architecture",
+          "quote": "If it's not scalable, it's not sustainable."
+        },
+        "lucie": {
+          "name": "Lucie Dvořáková",
+          "role": "Creative Director",
+          "expertise": "Branding, UX/UI Design",
+          "quote": "Pixel-perfect isn't a goal—it's the baseline."
+        },
+        "tomas": {
+          "name": "Tomáš Horák",
+          "role": "SEO & Metadata Specialist",
+          "expertise": "Data Analytics, SEM",
+          "quote": "Visibility without strategy is just noise."
+        }
+      }
+    },
+    "founderQuote": {
+      "quote": "In a fragmented digital world, we are the glue—merging creativity, technology, and strategy into one unstoppable force.",
+      "author": "Bc. Patrik \"Fredon\" Svoboda BSc., CEO & Founder"
+    },
+    "mantra": "One Team. Zero Limits."
+  },
+  "services": {
+    "title": "Our {highlight}Services{/highlight}",
+    "subtitle": "We offer a comprehensive suite of IT solutions designed to eliminate the need for multiple vendors. From development to marketing, we've got you covered.",
+    "items": {
+      "development": {
+        "title": "Software Development",
+        "description": "Custom web applications, mobile apps, and enterprise solutions built with cutting-edge technologies.",
+        "features": [
+          "Full-Stack Development",
+          "Mobile Applications",
+          "API Integration",
+          "Cloud Solutions"
+        ]
+      },
+      "design": {
+        "title": "Graphic & UX/UI Design",
+        "description": "Stunning visual identities, user interfaces, and brand experiences that captivate and convert.",
+        "features": [
+          "Brand Identity",
+          "UX/UI Design",
+          "Prototyping",
+          "Design Systems"
+        ]
+      },
+      "seo": {
+        "title": "SEO & Digital Marketing",
+        "description": "Data-driven strategies to boost your online visibility and drive targeted traffic to your business.",
+        "features": [
+          "Search Engine Optimization",
+          "Content Strategy",
+          "Analytics & Reporting",
+          "PPC Campaigns"
+        ]
+      },
+      "social": {
+        "title": "Social Media Management",
+        "description": "Engaging content creation and strategic social media campaigns that build communities and drive growth.",
+        "features": [
+          "Content Creation",
+          "Community Management",
+          "Social Media Ads",
+          "Growth Strategies"
+        ]
+      },
+      "consulting": {
+        "title": "IT Consulting & Cybersecurity",
+        "description": "Strategic technology guidance and robust security solutions to protect and optimize your digital infrastructure.",
+        "features": [
+          "Security Audits",
+          "Infrastructure Planning",
+          "Technology Consulting",
+          "Risk Assessment"
+        ]
+      }
+    },
+    "stats": {
+      "satisfaction": {
+        "number": "100%",
+        "label": "Client Satisfaction"
+      },
+      "coreServices": {
+        "number": "5+",
+        "label": "Core Services"
+      },
+      "support": {
+        "number": "24/7",
+        "label": "Support Available"
+      },
+      "team": {
+        "number": "1",
+        "label": "Unified Team"
+      }
+    },
+    "cta": "Discover How We Can Help You"
+  },
+  "contact": {
+    "title": "Let's Work {highlight}Together{/highlight}",
+    "subtitle": "Ready to transform your digital presence? Let's discuss your project and create something amazing together.",
+    "info": {
+      "title": "Get in Touch",
+      "email": {
+        "title": "Email",
+        "value": "info@fredonbytes.cloud"
+      },
+      "phone": {
+        "title": "Phone",
+        "value": "+420 799 027 984"
+      },
+      "location": {
+        "title": "Location",
+        "value": "Brno, Czech Republic"
+      },
+      "responseTime": {
+        "title": "Response Time",
+        "value": "Within 24 hours"
+      }
+    },
+    "security": {
+      "title": "Secure & Confidential",
+      "description": "Your information is encrypted and protected. We respect your privacy and will never share your details with third parties."
+    },
+    "form": {
+      "steps": {
+        "step": "Step {current} of {total}",
+        "progress": "{percent}% Complete"
+      },
+      "basicInfo": {
+        "title": "Basic Information",
+        "firstName": {
+          "label": "First Name",
+          "placeholder": "John",
+          "required": true
+        },
+        "lastName": {
+          "label": "Last Name",
+          "placeholder": "Doe",
+          "required": true
+        },
+        "email": {
+          "label": "Email Address",
+          "placeholder": "john@example.com",
+          "required": true
+        },
+        "phone": {
+          "label": "Phone Number",
+          "placeholder": "+420 123 456 789",
+          "required": true
+        }
+      },
+      "projectDetails": {
+        "title": "Project Details",
+        "company": {
+          "label": "Company Name",
+          "placeholder": "Your Company (Optional)"
+        },
+        "projectType": {
+          "label": "Project Type",
+          "placeholder": "What type of project do you need?",
+          "required": true,
+          "options": [
+            "Website Development",
+            "Mobile App Development",
+            "E-commerce Platform",
+            "Brand Design & Identity",
+            "SEO & Digital Marketing",
+            "Social Media Management",
+            "IT Consulting",
+            "Custom Software",
+            "Other"
+          ]
+        },
+        "budget": {
+          "label": "Budget Range",
+          "placeholder": "What's your budget for this project?",
+          "required": true,
+          "options": [
+            "Under $5,000",
+            "$5,000 - $15,000",
+            "$15,000 - $50,000",
+            "$50,000 - $100,000",
+            "Over $100,000",
+            "Not sure yet"
+          ]
+        },
+        "timeline": {
+          "label": "Timeline",
+          "placeholder": "When do you need this completed?",
+          "required": true,
+          "options": [
+            "ASAP (Rush project)",
+            "1-2 months",
+            "3-6 months",
+            "6-12 months",
+            "More than 12 months",
+            "Flexible timeline"
+          ]
+        }
+      },
+      "requirements": {
+        "title": "Project Requirements",
+        "message": {
+          "label": "Project Details",
+          "placeholder": "Tell us more about your project requirements, goals, and any specific features you need...",
+          "required": true
+        },
+        "features": {
+          "label": "Required Features (Optional)",
+          "options": [
+            "Responsive Design",
+            "E-commerce Functionality",
+            "Content Management",
+            "User Authentication",
+            "Payment Integration",
+            "Analytics & Reporting",
+            "Third-party Integrations",
+            "Multi-language Support"
+          ]
+        },
+        "newsletter": {
+          "label": "Subscribe to our newsletter for updates and tips"
+        },
+        "privacy": {
+          "label": "I accept the {link}Privacy Policy{/link}",
+          "required": true
+        }
+      },
+      "actions": {
+        "next": "Next Step",
+        "previous": "Previous",
+        "submit": "Send Message",
+        "submitting": "Sending..."
+      }
+    },
+    "success": {
+      "title": "Thank You!",
+      "message": "Your message has been sent successfully. We'll get back to you within 24 hours.",
+      "cta": "Send Another Message"
+    },
+    "errors": {
+      "firstName": "First name must be at least 2 characters",
+      "lastName": "Last name must be at least 2 characters",
+      "email": "Please enter a valid email address",
+      "phone": "Please enter a valid phone number",
+      "projectType": "Please select a project type",
+      "budget": "Please select a budget range",
+      "timeline": "Please select a timeline",
+      "message": "Please provide more details about your project",
+      "privacy": "You must accept the privacy policy"
+    }
+  },
+  "pricing": {
+    "title": "Choose Your {highlight}Plan{/highlight}",
+    "subtitle": "Transparent pricing with no hidden fees. Scale your business with our flexible solutions.",
+    "toggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "savings": "Save {percent}%"
+    },
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "description": "Perfect for small businesses and startups looking to establish their digital presence.",
+        "cta": "Get Started",
+        "features": [
+          "Responsive Website Design",
+          "Basic SEO Optimization",
+          "Contact Form Integration",
+          "3 Months Support",
+          "Mobile Optimization",
+          "Analytics Setup"
+        ]
+      },
+      "professional": {
+        "name": "Professional",
+        "description": "Comprehensive solution for growing businesses that need advanced features and marketing support.",
+        "cta": "Most Popular",
+        "popular": true,
+        "features": [
+          "Custom Web Application",
+          "Advanced SEO & Marketing",
+          "Social Media Management",
+          "E-commerce Integration",
+          "6 Months Priority Support",
+          "Performance Optimization",
+          "Content Management System",
+          "Email Marketing Setup"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "Full-scale digital transformation with dedicated support and custom solutions tailored to your needs.",
+        "cta": "Contact Sales",
+        "price": "Custom",
+        "features": [
+          "Custom Software Development",
+          "Dedicated Project Manager",
+          "24/7 Priority Support",
+          "Advanced Security Features",
+          "Scalable Architecture",
+          "Integration Support",
+          "Training & Documentation",
+          "SLA Guarantees"
+        ]
+      }
+    },
+    "calculator": {
+      "title": "Project Calculator",
+      "description": "Get an instant estimate for your custom project by selecting the services you need.",
+      "toggle": "Calculate Custom Quote",
+      "services": {
+        "webDevelopment": {
+          "name": "Web Development",
+          "description": "Custom websites and web applications"
+        },
+        "mobileApp": {
+          "name": "Mobile App",
+          "description": "iOS and Android applications"
+        },
+        "design": {
+          "name": "Design Services",
+          "description": "UI/UX and graphic design"
+        },
+        "seo": {
+          "name": "SEO & Marketing",
+          "description": "Search optimization and digital marketing"
+        },
+        "ecommerce": {
+          "name": "E-commerce",
+          "description": "Online store development"
+        },
+        "consulting": {
+          "name": "IT Consulting",
+          "description": "Strategic technology guidance"
+        }
+      },
+      "total": "Estimated Total",
+      "note": "Final price may vary based on specific requirements and complexity.",
+      "cta": "Get Detailed Quote"
+    },
+    "guarantee": {
+      "title": "30-Day Money-Back Guarantee",
+      "description": "Not satisfied? Get a full refund within 30 days, no questions asked."
+    }
+  },
+  "projects": {
+    "title": "Our {highlight}Portfolio{/highlight}",
+    "subtitle": "Explore our latest work and see how we've helped businesses transform their digital presence.",
+    "categories": {
+      "all": "All Projects",
+      "web": "Web Development",
+      "mobile": "Mobile Apps",
+      "design": "Design",
+      "ecommerce": "E-commerce"
+    },
+    "cta": {
+      "viewProject": "View Project",
+      "liveDemo": "Live Demo",
+      "caseStudy": "Case Study"
+    },
+    "loadMore": "Load More Projects"
+  },
+  "common": {
+    "buttons": {
+      "getStarted": "Get Started",
+      "learnMore": "Learn More",
+      "viewMore": "View More",
+      "contactUs": "Contact Us",
+      "tryFree": "Try Free",
+      "readMore": "Read More",
+      "close": "Close",
+      "next": "Next",
+      "previous": "Previous",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "save": "Save",
+      "edit": "Edit",
+      "delete": "Delete",
+      "loading": "Loading...",
+      "viewAll": "View All"
+    },
+    "status": {
+      "success": "Success",
+      "error": "Error",
+      "warning": "Warning",
+      "info": "Info",
+      "loading": "Loading"
+    },
+    "labels": {
+      "required": "Required",
+      "optional": "Optional",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "company": "Company",
+      "website": "Website"
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Fredonbytes - Your All-in-One IT Powerhouse",
+      "description": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
+      "keywords": "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic"
+    },
+    "about": {
+      "title": "About Fredonbytes - Your Digital Transformation Partner",
+      "description": "Founded in 2023, Fredonbytes eliminates the need for multiple vendors by becoming your one-stop digital army, ensuring seamless, high-impact results under one roof.",
+      "keywords": "about fredonbytes, digital transformation, IT company, software development team, Brno tech"
+    },
+    "services": {
+      "title": "IT Services - Software Development, Design & Marketing",
+      "description": "Comprehensive IT solutions from development to marketing. Eliminate complexity with our unified approach to software development, design, SEO, and social media management.",
+      "keywords": "IT services, software development, web development, graphic design, SEO services, social media marketing"
+    },
+    "projects": {
+      "title": "Our Portfolio - Fredonbytes Project Gallery",
+      "description": "Explore our latest work and see how we've helped businesses transform their digital presence with cutting-edge solutions.",
+      "keywords": "portfolio, web development projects, software projects, design showcase, case studies"
+    },
+    "pricing": {
+      "title": "Transparent Pricing Plans - Choose Your IT Solution",
+      "description": "Transparent pricing with no hidden fees. Scale your business with our flexible IT solutions from starter to enterprise plans.",
+      "keywords": "pricing, IT services cost, web development pricing, transparent pricing, business plans"
+    },
+    "contact": {
+      "title": "Contact Fredonbytes - Let's Work Together",
+      "description": "Ready to transform your digital presence? Contact our team in Brno, Czech Republic for a free consultation on your next IT project.",
+      "keywords": "contact, Brno IT company, free consultation, project inquiry, Czech Republic tech"
+    },
+    "links": {
+      "title": "Fredonbytes Links - Connect With Us Everywhere",
+      "description": "All our important links in one place. Connect with Fredonbytes on social media, GitHub, and our various platforms.",
+      "keywords": "social links, GitHub, LinkedIn, contact links, Fredonbytes platforms"
+    },
+    "privacy-policy": {
+      "title": "Privacy Policy - How We Protect Your Data",
+      "description": "Learn how Fredonbytes collects, uses, and protects your personal information. We are committed to maintaining your privacy and data security.",
+      "keywords": "privacy policy, data protection, GDPR compliance, personal information, data security"
+    },
+    "terms-of-service": {
+      "title": "Terms of Service - Fredonbytes Usage Agreement",
+      "description": "Terms and conditions for using Fredonbytes services. Understand your rights and obligations when working with our IT solutions.",
+      "keywords": "terms of service, usage agreement, service terms, legal terms, conditions"
+    },
+    "cookie-policy": {
+      "title": "Cookie Policy - How We Use Cookies",
+      "description": "Information about how Fredonbytes uses cookies to improve your browsing experience and analyze website usage.",
+      "keywords": "cookie policy, website cookies, tracking, analytics, user experience"
+    }
+  }
+}
