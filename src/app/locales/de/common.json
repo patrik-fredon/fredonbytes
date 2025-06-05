@@ -2,10 +2,14 @@
   "navigation": {
     "about": "Über uns",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "services": "Dienstleistungen",
 =======
     "services": "Dienstleistungen", 
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+    "services": "Dienstleistungen",
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
     "projects": "Projekte",
     "pricing": "Preise",
     "contact": "Kontakt",
@@ -32,10 +36,14 @@
     "valueProps": {
       "development": "Entwicklung",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "design": "Design",
 =======
       "design": "Design", 
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+      "design": "Design",
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
       "marketing": "Marketing"
     },
     "cta": {
@@ -64,10 +72,14 @@
       "aboutUs": "Über uns",
       "personalPortfolio": "Persönliches Portfolio",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "projectGallery": "Projektgalerie",
 =======
       "projectGallery": "Projektgalerie", 
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+      "projectGallery": "Projektgalerie",
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
       "technicalSupport": "Technischer Support",
       "privacyPolicy": "Datenschutzrichtlinie",
       "termsOfService": "Nutzungsbedingungen",
@@ -115,10 +127,14 @@
     "services": [
       "Softwareentwicklung",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "Webentwicklung",
 =======
       "Webentwicklung", 
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+      "Webentwicklung",
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
       "Grafikdesign",
       "SEO-Dienstleistungen",
       "Social Media Marketing",
@@ -127,6 +143,9 @@
     "founder": "Patrik Fredon",
     "foundingDate": "2023"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
   },
   "about": {
     "title": "Über {company}",
@@ -577,7 +596,10 @@
     }
   }
 }
+<<<<<<< HEAD
 =======
   }
 }
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)

@@ -80,5 +80,12 @@ handoff-manager-installer.js
 handoffs/
 single-script/handoff-installer-readme.md
 package-lock.json
+<<<<<<< HEAD
 >>>>>>> d47da3e (Centralized en,de translation, refactor of codebase.)
+<<<<<<< HEAD
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+=======
+package-lock.json
+>>>>>>> f8f8293 (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)

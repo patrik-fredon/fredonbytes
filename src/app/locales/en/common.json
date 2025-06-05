@@ -2,10 +2,14 @@
   "navigation": {
     "about": "About",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "services": "Services",
 =======
     "services": "Services", 
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+    "services": "Services",
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
     "projects": "Projects",
     "pricing": "Pricing",
     "contact": "Contact",
@@ -32,10 +36,14 @@
     "valueProps": {
       "development": "Development",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "design": "Design",
 =======
       "design": "Design", 
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+      "design": "Design",
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
       "marketing": "Marketing"
     },
     "cta": {
@@ -64,10 +72,14 @@
       "aboutUs": "About Us",
       "personalPortfolio": "Personal Portfolio",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "projectGallery": "Project Gallery",
 =======
       "projectGallery": "Project Gallery", 
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+      "projectGallery": "Project Gallery",
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
       "technicalSupport": "Technical Support",
       "privacyPolicy": "Privacy Policy",
       "termsOfService": "Terms of Service",
@@ -115,10 +127,14 @@
     "services": [
       "Software Development",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "Web Development",
 =======
       "Web Development", 
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+      "Web Development",
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
       "Graphic Design",
       "SEO Services",
       "Social Media Marketing",
@@ -128,6 +144,9 @@
     "foundingDate": "2023"
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
   "about": {
     "title": "About {company}",
     "subtitle": "Founded in {year}, we eliminate the need for multiple vendors by becoming your {highlight} one-stop digital army{/highlight}, ensuring seamless, high-impact results under one roof.",
@@ -157,6 +176,7 @@
       "transparency": {
         "title": "Transparency & Trust",
         "description": "No black boxes, just results."
+<<<<<<< HEAD
       }
     },
     "motto": {
@@ -583,449 +603,429 @@
       "meta": {
         "title": "Fredonbytes - Your All-in-One IT Powerhouse",
         "description": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing."
+=======
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
       }
     },
-    "cookiePolicy": {
-      "meta": {
-        "title": "Cookie Policy - Fredonbytes",
-        "description": "Learn about how Fredonbytes uses cookies and similar technologies to enhance your browsing experience and provide personalized services."
-      },
-      "header": {
-        "title": "Cookie Policy",
-        "subtitle": "How we use cookies and similar technologies",
-        "lastUpdated": "Last updated: January 6, 2025"
-      },
-      "overview": {
-        "title": "Cookie Overview",
-        "description": "This policy explains how Fredonbytes uses cookies and similar technologies when you visit our website, and your choices regarding these technologies."
-      },
-      "whatAreCookies": {
-        "title": "1. What Are Cookies?",
-        "description1": "Cookies are small text files that are stored on your device when you visit a website. They help websites remember information about your visit, which can make it easier to visit the site again and make the site more useful to you.",
-        "description2": "We also use similar technologies such as web beacons, pixels, and local storage, which we collectively refer to as \"cookies\" in this policy."
-      },
-      "typesOfCookies": {
-        "title": "2. Types of Cookies We Use",
-        "essential": {
-          "title": "🔧 Essential Cookies",
-          "purpose": "Purpose: Required for basic website functionality",
-          "canDisable": "Can be disabled: No - these are necessary for the site to work",
-          "description": "These cookies enable core functionality such as page navigation, access to secure areas, and remembering your cookie preferences."
+    "motto": {
+      "title": "Code. Create. Conquer.",
+      "subtitle": "Our Motto"
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "members": {
+        "patrik": {
+          "name": "Bc. Patrik \"Fredon\" Svoboda BSc.",
+          "role": "CEO & Founder",
+          "expertise": "Full-Stack Development, Digital Strategy",
+          "quote": "Efficiency is the new innovation."
         },
-        "analytics": {
-          "title": "📊 Analytics Cookies",
-          "purpose": "Purpose: Help us understand website usage",
-          "canDisable": "Can be disabled: Yes - through our cookie banner",
-          "description": "These cookies collect information about how visitors use our website, such as which pages are visited most often."
+        "jana": {
+          "name": "Ing. Jana Nováková",
+          "role": "CTO",
+          "expertise": "AI, Cloud Architecture",
+          "quote": "If it's not scalable, it's not sustainable."
         },
-        "marketing": {
-          "title": "🎯 Marketing Cookies",
-          "purpose": "Purpose: Deliver relevant advertisements",
-          "canDisable": "Can be disabled: Yes - through our cookie banner",
-          "description": "These cookies track your browsing habits to show you relevant ads and measure advertising effectiveness."
+        "lucie": {
+          "name": "Lucie Dvořáková",
+          "role": "Creative Director",
+          "expertise": "Branding, UX/UI Design",
+          "quote": "Pixel-perfect isn't a goal—it's the baseline."
         },
-        "preference": {
-          "title": "⚙️ Preference Cookies",
-          "purpose": "Purpose: Remember your settings and preferences",
-          "canDisable": "Can be disabled: Yes - through our cookie banner",
-          "description": "These cookies remember your preferences such as language, region, or theme settings for a personalized experience."
+        "tomas": {
+          "name": "Tomáš Horák",
+          "role": "SEO & Metadata Specialist",
+          "expertise": "Data Analytics, SEM",
+          "quote": "Visibility without strategy is just noise."
+        }
+      }
+    },
+    "founderQuote": {
+      "quote": "In a fragmented digital world, we are the glue—merging creativity, technology, and strategy into one unstoppable force.",
+      "author": "Bc. Patrik \"Fredon\" Svoboda BSc., CEO & Founder"
+    },
+    "mantra": "One Team. Zero Limits."
+  },
+  "services": {
+    "title": "Our {highlight}Services{/highlight}",
+    "subtitle": "We offer a comprehensive suite of IT solutions designed to eliminate the need for multiple vendors. From development to marketing, we've got you covered.",
+    "items": {
+      "development": {
+        "title": "Software Development",
+        "description": "Custom web applications, mobile apps, and enterprise solutions built with cutting-edge technologies.",
+        "features": [
+          "Full-Stack Development",
+          "Mobile Applications",
+          "API Integration",
+          "Cloud Solutions"
+        ]
+      },
+      "design": {
+        "title": "Graphic & UX/UI Design",
+        "description": "Stunning visual identities, user interfaces, and brand experiences that captivate and convert.",
+        "features": [
+          "Brand Identity",
+          "UX/UI Design",
+          "Prototyping",
+          "Design Systems"
+        ]
+      },
+      "seo": {
+        "title": "SEO & Digital Marketing",
+        "description": "Data-driven strategies to boost your online visibility and drive targeted traffic to your business.",
+        "features": [
+          "Search Engine Optimization",
+          "Content Strategy",
+          "Analytics & Reporting",
+          "PPC Campaigns"
+        ]
+      },
+      "social": {
+        "title": "Social Media Management",
+        "description": "Engaging content creation and strategic social media campaigns that build communities and drive growth.",
+        "features": [
+          "Content Creation",
+          "Community Management",
+          "Social Media Ads",
+          "Growth Strategies"
+        ]
+      },
+      "consulting": {
+        "title": "IT Consulting & Cybersecurity",
+        "description": "Strategic technology guidance and robust security solutions to protect and optimize your digital infrastructure.",
+        "features": [
+          "Security Audits",
+          "Infrastructure Planning",
+          "Technology Consulting",
+          "Risk Assessment"
+        ]
+      }
+    },
+    "stats": {
+      "satisfaction": {
+        "number": "100%",
+        "label": "Client Satisfaction"
+      },
+      "coreServices": {
+        "number": "5+",
+        "label": "Core Services"
+      },
+      "support": {
+        "number": "24/7",
+        "label": "Support Available"
+      },
+      "team": {
+        "number": "1",
+        "label": "Unified Team"
+      }
+    },
+    "cta": "Discover How We Can Help You"
+  },
+  "contact": {
+    "title": "Let's Work {highlight}Together{/highlight}",
+    "subtitle": "Ready to transform your digital presence? Let's discuss your project and create something amazing together.",
+    "info": {
+      "title": "Get in Touch",
+      "email": {
+        "title": "Email",
+        "value": "info@fredonbytes.cloud"
+      },
+      "phone": {
+        "title": "Phone",
+        "value": "+420 799 027 984"
+      },
+      "location": {
+        "title": "Location",
+        "value": "Brno, Czech Republic"
+      },
+      "responseTime": {
+        "title": "Response Time",
+        "value": "Within 24 hours"
+      }
+    },
+    "security": {
+      "title": "Secure & Confidential",
+      "description": "Your information is encrypted and protected. We respect your privacy and will never share your details with third parties."
+    },
+    "form": {
+      "steps": {
+        "step": "Step {current} of {total}",
+        "progress": "{percent}% Complete"
+      },
+      "basicInfo": {
+        "title": "Basic Information",
+        "firstName": {
+          "label": "First Name",
+          "placeholder": "John",
+          "required": true
+        },
+        "lastName": {
+          "label": "Last Name",
+          "placeholder": "Doe",
+          "required": true
+        },
+        "email": {
+          "label": "Email Address",
+          "placeholder": "john@example.com",
+          "required": true
+        },
+        "phone": {
+          "label": "Phone Number",
+          "placeholder": "+420 123 456 789",
+          "required": true
         }
       },
-      "specificCookies": {
-        "title": "3. Specific Cookies We Use",
-        "tableHeaders": {
-          "cookieName": "Cookie Name",
-          "purpose": "Purpose",
-          "type": "Type",
-          "duration": "Duration"
+      "projectDetails": {
+        "title": "Project Details",
+        "company": {
+          "label": "Company Name",
+          "placeholder": "Your Company (Optional)"
         },
-        "cookies": {
-          "cookieConsent": {
-            "name": "cookie-consent",
-            "purpose": "Stores your cookie preferences",
-            "type": "Essential",
-            "duration": "1 year"
-          },
-          "ga": {
-            "name": "_ga",
-            "purpose": "Google Analytics - distinguishes users",
-            "type": "Analytics",
-            "duration": "2 years"
-          },
-          "gid": {
-            "name": "_gid",
-            "purpose": "Google Analytics - distinguishes users",
-            "type": "Analytics",
-            "duration": "24 hours"
-          },
-          "themePreference": {
-            "name": "theme-preference",
-            "purpose": "Remembers dark/light mode preference",
-            "type": "Preference",
-            "duration": "1 year"
-          },
-          "fbp": {
-            "name": "_fbp",
-            "purpose": "Facebook Pixel - tracks conversions",
-            "type": "Marketing",
-            "duration": "3 months"
-          }
-        }
-      },
-      "thirdPartyCookies": {
-        "title": "4. Third-Party Cookies",
-        "description": "Some cookies are placed by third-party services that appear on our pages. We use the following third-party services:",
-        "googleAnalytics": {
-          "title": "Google Analytics",
-          "description": "Helps us understand how visitors interact with our website by collecting and reporting information anonymously.",
-          "privacyLink": "Google Privacy Policy"
-        },
-        "googleFonts": {
-          "title": "Google Fonts",
-          "description": "Provides web fonts to enhance the visual design of our website.",
-          "privacyLink": "Google Privacy Policy"
-        },
-        "socialMedia": {
-          "title": "Social Media Platforms",
-          "description": "When you interact with social media buttons or embedded content, those platforms may set their own cookies.",
-          "note": "Please refer to the respective privacy policies of each platform."
-        }
-      },
-      "howToControl": {
-        "title": "5. How to Control Cookies",
-        "cookieBanner": {
-          "title": "Our Cookie Banner",
-          "description": "When you first visit our website, you'll see a cookie banner that allows you to:",
+        "projectType": {
+          "label": "Project Type",
+          "placeholder": "What type of project do you need?",
+          "required": true,
           "options": [
-            "Accept all cookies",
-            "Accept only necessary cookies",
-            "Customize your cookie preferences",
-            "Learn more about each type of cookie"
+            "Website Development",
+            "Mobile App Development",
+            "E-commerce Platform",
+            "Brand Design & Identity",
+            "SEO & Digital Marketing",
+            "Social Media Management",
+            "IT Consulting",
+            "Custom Software",
+            "Other"
           ]
         },
-        "browserSettings": {
-          "title": "Browser Settings",
-          "description": "You can also control cookies through your browser settings:",
-          "browsers": [
-            "Chrome: Settings → Privacy and security → Cookies and other site data",
-            "Firefox: Settings → Privacy & Security → Cookies and Site Data",
-            "Safari: Preferences → Privacy → Manage Website Data",
-            "Edge: Settings → Cookies and site permissions → Cookies and site data"
+        "budget": {
+          "label": "Budget Range",
+          "placeholder": "What's your budget for this project?",
+          "required": true,
+          "options": [
+            "Under $5,000",
+            "$5,000 - $15,000",
+            "$15,000 - $50,000",
+            "$50,000 - $100,000",
+            "Over $100,000",
+            "Not sure yet"
           ]
         },
-        "optOutLinks": {
-          "title": "Opt-Out Links",
-          "googleAnalytics": "Google Analytics: Google Analytics Opt-out Browser Add-on",
-          "facebook": "Facebook: Facebook Ad Preferences",
-          "generalAdvertising": "General Advertising: Your Online Choices"
+        "timeline": {
+          "label": "Timeline",
+          "placeholder": "When do you need this completed?",
+          "required": true,
+          "options": [
+            "ASAP (Rush project)",
+            "1-2 months",
+            "3-6 months",
+            "6-12 months",
+            "More than 12 months",
+            "Flexible timeline"
+          ]
         }
       },
-      "impactOfDisabling": {
-        "title": "6. Impact of Disabling Cookies",
-        "description": "If you choose to disable certain cookies, some features of our website may not function properly:",
-        "impacts": [
-          "You may need to re-enter information on each visit",
-          "Some personalized features may not be available",
-          "You may see less relevant advertisements",
-          "Website analytics may be incomplete"
-        ]
+      "requirements": {
+        "title": "Project Requirements",
+        "message": {
+          "label": "Project Details",
+          "placeholder": "Tell us more about your project requirements, goals, and any specific features you need...",
+          "required": true
+        },
+        "features": {
+          "label": "Required Features (Optional)",
+          "options": [
+            "Responsive Design",
+            "E-commerce Functionality",
+            "Content Management",
+            "User Authentication",
+            "Payment Integration",
+            "Analytics & Reporting",
+            "Third-party Integrations",
+            "Multi-language Support"
+          ]
+        },
+        "newsletter": {
+          "label": "Subscribe to our newsletter for updates and tips"
+        },
+        "privacy": {
+          "label": "I accept the {link}Privacy Policy{/link}",
+          "required": true
+        }
       },
-      "updates": {
-        "title": "7. Updates to This Policy",
-        "description": "We may update this Cookie Policy from time to time to reflect changes in our practices or for legal, regulatory, or operational reasons. We will notify you of any material changes by posting the updated policy on our website and updating the \"Last updated\" date."
-      },
-      "contact": {
-        "title": "8. Contact Us",
-        "description": "If you have any questions about our use of cookies, please contact us:",
-        "company": "Fredonbytes",
-        "email": "privacy@fredonbytes.cloud",
-        "phone": "+420 799 027 984",
-        "address": "Brno, Czech Republic"
-      },
-      "changePreferences": {
-        "title": "🍪 Need to Change Your Cookie Preferences?",
-        "description": "You can update your cookie preferences at any time by clicking the cookie settings button in the bottom corner of any page on our website.",
-        "button": "Manage Cookie Preferences"
+      "actions": {
+        "next": "Next Step",
+        "previous": "Previous",
+        "submit": "Send Message",
+        "submitting": "Sending..."
       }
     },
-    "privacyPolicy": {
-      "meta": {
-        "title": "Privacy Policy - Fredonbytes",
-        "description": "Learn how Fredonbytes collects, uses, and protects your personal information. Our comprehensive privacy policy explains your rights and our data practices."
-      },
-      "header": {
-        "title": "Privacy Policy",
-        "subtitle": "How we collect, use, and protect your information",
-        "lastUpdated": "Last updated: January 6, 2025"
-      },
-      "summary": {
-        "title": "Summary",
-        "description": "We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you visit our website or use our services."
-      },
-      "informationWeCollect": {
-        "title": "1. Information We Collect",
-        "personalInformation": {
-          "title": "Personal Information",
-          "description": "We may collect the following personal information when you contact us or use our services:",
-          "items": [
-            "Name and contact information (email address, phone number)",
-            "Company information and job title",
-            "Project requirements and preferences",
-            "Communication history and correspondence"
-          ]
-        },
-        "technicalInformation": {
-          "title": "Technical Information",
-          "description": "We automatically collect certain technical information when you visit our website:",
-          "items": [
-            "IP address and browser type",
-            "Device information and operating system",
-            "Pages visited and time spent on our site",
-            "Referral source and exit pages"
-          ]
-        }
-      },
-      "howWeUse": {
-        "title": "2. How We Use Your Information",
-        "description": "We use your personal information for the following purposes:",
-        "purposes": [
-          "To respond to your inquiries and provide our services",
-          "To communicate with you about your projects",
-          "To improve our website and services",
-          "To send you newsletters and updates (with your consent)",
-          "To comply with legal obligations"
+    "success": {
+      "title": "Thank You!",
+      "message": "Your message has been sent successfully. We'll get back to you within 24 hours.",
+      "cta": "Send Another Message"
+    },
+    "errors": {
+      "firstName": "First name must be at least 2 characters",
+      "lastName": "Last name must be at least 2 characters",
+      "email": "Please enter a valid email address",
+      "phone": "Please enter a valid phone number",
+      "projectType": "Please select a project type",
+      "budget": "Please select a budget range",
+      "timeline": "Please select a timeline",
+      "message": "Please provide more details about your project",
+      "privacy": "You must accept the privacy policy"
+    }
+  },
+  "pricing": {
+    "title": "Choose Your {highlight}Plan{/highlight}",
+    "subtitle": "Transparent pricing with no hidden fees. Scale your business with our flexible solutions.",
+    "toggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "savings": "Save {percent}%"
+    },
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "description": "Perfect for small businesses and startups looking to establish their digital presence.",
+        "cta": "Get Started",
+        "features": [
+          "Responsive Website Design",
+          "Basic SEO Optimization",
+          "Contact Form Integration",
+          "3 Months Support",
+          "Mobile Optimization",
+          "Analytics Setup"
         ]
       },
-      "cookiesTracking": {
-        "title": "3. Cookies and Tracking Technologies",
-        "description": "We use cookies and similar technologies to enhance your browsing experience:",
-        "essential": {
-          "title": "Essential Cookies",
-          "description": "Required for basic website functionality and cannot be disabled."
-        },
-        "analytics": {
-          "title": "Analytics Cookies",
-          "description": "Help us understand how visitors interact with our website to improve user experience."
-        },
-        "marketing": {
-          "title": "Marketing Cookies",
-          "description": "Used to deliver relevant advertisements and measure campaign effectiveness."
-        }
-      },
-      "dataSharing": {
-        "title": "4. Data Sharing and Disclosure",
-        "description": "We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:",
-        "circumstances": [
-          "With trusted service providers who assist in delivering our services",
-          "When required by law or to protect our legal rights",
-          "In connection with a business transfer or acquisition",
-          "With your explicit consent"
+      "professional": {
+        "name": "Professional",
+        "description": "Comprehensive solution for growing businesses that need advanced features and marketing support.",
+        "cta": "Most Popular",
+        "popular": true,
+        "features": [
+          "Custom Web Application",
+          "Advanced SEO & Marketing",
+          "Social Media Management",
+          "E-commerce Integration",
+          "6 Months Priority Support",
+          "Performance Optimization",
+          "Content Management System",
+          "Email Marketing Setup"
         ]
       },
-      "dataSecurity": {
-        "title": "5. Data Security",
-        "description": "We implement appropriate technical and organizational measures to protect your personal data:",
-        "measures": [
-          "Encryption of data in transit and at rest",
-          "Regular security assessments and updates",
-          "Access controls and authentication measures",
-          "Staff training on data protection practices"
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "Full-scale digital transformation with dedicated support and custom solutions tailored to your needs.",
+        "cta": "Contact Sales",
+        "price": "Custom",
+        "features": [
+          "Custom Software Development",
+          "Dedicated Project Manager",
+          "24/7 Priority Support",
+          "Advanced Security Features",
+          "Scalable Architecture",
+          "Integration Support",
+          "Training & Documentation",
+          "SLA Guarantees"
         ]
-      },
-      "yourRights": {
-        "title": "6. Your Rights",
-        "description": "Under applicable data protection laws, you have the following rights:",
-        "rights": [
-          "Access: Request copies of your personal data",
-          "Rectification: Request correction of inaccurate data",
-          "Erasure: Request deletion of your personal data",
-          "Portability: Request transfer of your data",
-          "Objection: Object to processing of your data",
-          "Restriction: Request restriction of processing"
-        ]
-      },
-      "dataRetention": {
-        "title": "7. Data Retention",
-        "description": "We retain your personal data only as long as necessary for the purposes outlined in this policy or as required by law. Generally, we retain client information for 7 years after the completion of services for business and legal purposes."
-      },
-      "internationalTransfers": {
-        "title": "8. International Transfers",
-        "description": "As we are based in the Czech Republic (EU), your data is processed within the European Economic Area. Any transfers outside the EEA will be subject to appropriate safeguards and legal protections."
-      },
-      "updates": {
-        "title": "9. Updates to This Policy",
-        "description": "We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on our website and updating the \"Last updated\" date. Your continued use of our services after such changes constitutes acceptance of the updated policy."
-      },
-      "contact": {
-        "title": "10. Contact Us",
-        "description": "If you have any questions about this privacy policy or wish to exercise your rights, please contact us:",
-        "company": "Fredonbytes",
-        "email": "privacy@fredonbytes.cloud",
-        "phone": "+420 799 027 984",
-        "address": "Brno, Czech Republic"
-      },
-      "questions": {
-        "title": "Questions?",
-        "description": "We're committed to transparency and protecting your privacy. If you have any questions or concerns about how we handle your data, don't hesitate to reach out to us."
       }
     },
-    "termsOfService": {
-      "meta": {
-        "title": "Terms of Service - Fredonbytes",
-        "description": "Read our terms of service to understand the legal framework governing the use of Fredonbytes services and website."
-      },
-      "header": {
-        "title": "Terms of Service",
-        "subtitle": "Legal terms governing the use of our services",
-        "lastUpdated": "Last updated: January 6, 2025"
-      },
-      "agreementOverview": {
-        "title": "Agreement Overview",
-        "description": "By accessing our website or using our services, you agree to be bound by these terms. Please read them carefully before proceeding."
-      },
-      "acceptanceOfTerms": {
-        "title": "1. Acceptance of Terms",
-        "description1": "By accessing or using the Fredonbytes website and services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, please do not use our services.",
-        "description2": "These terms apply to all visitors, users, and others who access or use our services."
-      },
-      "servicesDescription": {
-        "title": "2. Services Description",
-        "description": "Fredonbytes provides comprehensive IT solutions including:",
-        "services": [
-          "Software development and web applications",
-          "Graphic design and brand identity services",
-          "SEO and digital marketing solutions",
-          "Social media management",
-          "IT consulting and cybersecurity services",
-          "Related technical support and maintenance"
-        ]
-      },
-      "userResponsibilities": {
-        "title": "3. User Responsibilities",
-        "description": "When using our services, you agree to:",
-        "responsibilities": [
-          "Provide accurate and truthful information",
-          "Use our services for lawful purposes only",
-          "Respect intellectual property rights",
-          "Not engage in harmful or disruptive activities",
-          "Maintain the confidentiality of any login credentials"
-        ],
-        "prohibitedUses": {
-          "title": "Prohibited Uses",
-          "description": "You may not use our services to:",
-          "items": [
-            "Violate any applicable laws or regulations",
-            "Infringe upon the rights of others",
-            "Distribute malware or harmful code",
-            "Engage in unauthorized data collection",
-            "Attempt to gain unauthorized access to our systems"
-          ]
-        }
-      },
-      "serviceAgreements": {
-        "title": "4. Service Agreements and Contracts",
-        "description": "Specific projects and services will be governed by separate written agreements that detail:",
-        "details": [
-          "Project scope and deliverables",
-          "Timeline and milestones",
-          "Payment terms and conditions",
-          "Intellectual property ownership",
-          "Confidentiality provisions"
-        ],
-        "note": "In case of conflict between these Terms of Service and a specific service agreement, the service agreement shall prevail."
-      },
-      "paymentTerms": {
-        "title": "5. Payment Terms",
-        "pricingInvoicing": {
-          "title": "Pricing and Invoicing",
-          "items": [
-            "All prices are quoted in USD or EUR as specified",
-            "Invoices are payable within 30 days of issue date",
-            "Late payments may incur additional charges",
-            "We reserve the right to suspend services for overdue accounts"
-          ]
+    "calculator": {
+      "title": "Project Calculator",
+      "description": "Get an instant estimate for your custom project by selecting the services you need.",
+      "toggle": "Calculate Custom Quote",
+      "services": {
+        "webDevelopment": {
+          "name": "Web Development",
+          "description": "Custom websites and web applications"
         },
-        "refundsCancellations": {
-          "title": "Refunds and Cancellations",
-          "items": [
-            "Refund policies are specified in individual service agreements",
-            "Work completed prior to cancellation is non-refundable",
-            "Cancellation requests must be submitted in writing",
-            "Custom development work may have different cancellation terms"
-          ]
-        }
-      },
-      "intellectualProperty": {
-        "title": "6. Intellectual Property",
-        "ourProperty": {
-          "title": "Our Intellectual Property",
-          "description": "The Fredonbytes website, logo, content, and methodologies are protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our written permission."
+        "mobileApp": {
+          "name": "Mobile App",
+          "description": "iOS and Android applications"
         },
-        "clientProperty": {
-          "title": "Client Intellectual Property",
-          "description": "Ownership of deliverables and intellectual property created for clients will be specified in the relevant service agreement. Generally, clients retain ownership of their content and branding materials, while custom development may involve shared or transferred ownership rights."
-        }
-      },
-      "confidentiality": {
-        "title": "7. Confidentiality",
-        "description": "We understand the importance of protecting confidential information. We commit to:",
-        "commitments": [
-          "Maintaining strict confidentiality of client information",
-          "Using client information only for authorized purposes",
-          "Implementing appropriate security measures",
-          "Not disclosing confidential information to third parties",
-          "Returning or destroying confidential information upon request"
-        ]
-      },
-      "disclaimersLimitations": {
-        "title": "8. Disclaimers and Limitations",
-        "serviceAvailability": {
-          "title": "Service Availability",
-          "description": "While we strive for high availability, we cannot guarantee uninterrupted access to our website or services. We reserve the right to modify, suspend, or discontinue services with reasonable notice."
+        "design": {
+          "name": "Design Services",
+          "description": "UI/UX and graphic design"
         },
-        "limitationOfLiability": {
-          "title": "Limitation of Liability",
-          "description": "Our liability is limited to the amount paid for the specific service giving rise to the claim. We are not liable for indirect, incidental, or consequential damages, including but not limited to loss of profits, data, or business opportunities."
+        "seo": {
+          "name": "SEO & Marketing",
+          "description": "Search optimization and digital marketing"
+        },
+        "ecommerce": {
+          "name": "E-commerce",
+          "description": "Online store development"
+        },
+        "consulting": {
+          "name": "IT Consulting",
+          "description": "Strategic technology guidance"
         }
       },
-      "dataProtectionPrivacy": {
-        "title": "9. Data Protection and Privacy",
-        "description1": "We are committed to protecting your privacy and complying with applicable data protection laws, including GDPR. Our data practices are detailed in our Privacy Policy, which forms an integral part of these terms.",
-        "description2": "By using our services, you consent to the collection, use, and processing of your data as described in our Privacy Policy."
-      },
-      "governingLawDisputes": {
-        "title": "10. Governing Law and Disputes",
-        "description1": "These terms are governed by the laws of the Czech Republic. Any disputes arising from these terms or our services will be subject to the exclusive jurisdiction of the courts in Brno, Czech Republic.",
-        "description2": "We encourage resolving disputes through direct communication before pursuing legal action."
-      },
-      "changesToTerms": {
-        "title": "11. Changes to Terms",
-        "description1": "We reserve the right to modify these terms at any time. Changes will be effective upon posting on our website. We will notify users of material changes via email or website notice.",
-        "description2": "Your continued use of our services after changes constitutes acceptance of the modified terms."
-      },
-      "termination": {
-        "title": "12. Termination",
-        "description": "Either party may terminate the service relationship with appropriate notice as specified in the relevant service agreement. Upon termination:",
-        "consequences": [
-          "All outstanding invoices become immediately due",
-          "Access to our services and systems will be revoked",
-          "Confidentiality obligations remain in effect",
-          "Data return or destruction will be handled as agreed"
-        ]
-      },
-      "contact": {
-        "title": "13. Contact Information",
-        "description": "For questions about these Terms of Service, please contact us:",
-        "company": "Fredonbytes",
-        "email": "legal@fredonbytes.cloud",
-        "phone": "+420 799 027 984",
-        "address": "Brno, Czech Republic"
-      },
-      "legalNotice": {
-        "title": "Legal Notice",
-        "description": "These terms constitute a legally binding agreement. If you do not agree to these terms, please discontinue use of our website and services immediately."
-      }
+      "total": "Estimated Total",
+      "note": "Final price may vary based on specific requirements and complexity.",
+      "cta": "Get Detailed Quote"
+    },
+    "guarantee": {
+      "title": "30-Day Money-Back Guarantee",
+      "description": "Not satisfied? Get a full refund within 30 days, no questions asked."
+    }
+  },
+  "projects": {
+    "title": "Our {highlight}Portfolio{/highlight}",
+    "subtitle": "Explore our latest work and see how we've helped businesses transform their digital presence.",
+    "categories": {
+      "all": "All Projects",
+      "web": "Web Development",
+      "mobile": "Mobile Apps",
+      "design": "Design",
+      "ecommerce": "E-commerce"
+    },
+    "cta": {
+      "viewProject": "View Project",
+      "liveDemo": "Live Demo",
+      "caseStudy": "Case Study"
+    },
+    "loadMore": "Load More Projects"
+  },
+  "common": {
+    "buttons": {
+      "getStarted": "Get Started",
+      "learnMore": "Learn More",
+      "viewMore": "View More",
+      "contactUs": "Contact Us",
+      "tryFree": "Try Free",
+      "readMore": "Read More",
+      "close": "Close",
+      "next": "Next",
+      "previous": "Previous",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "save": "Save",
+      "edit": "Edit",
+      "delete": "Delete",
+      "loading": "Loading...",
+      "viewAll": "View All"
+    },
+    "status": {
+      "success": "Success",
+      "error": "Error",
+      "warning": "Warning",
+      "info": "Info",
+      "loading": "Loading"
+    },
+    "labels": {
+      "required": "Required",
+      "optional": "Optional",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "company": "Company",
+      "website": "Website"
     }
   }
 }
+<<<<<<< HEAD
 >>>>>>> 085c2fc (Centralized en,de translation, refactor of codebase.)
+=======
+>>>>>>> 15ff38e (feat(locales): update English translations and add new content for services, about, contact, and pricing sections)
