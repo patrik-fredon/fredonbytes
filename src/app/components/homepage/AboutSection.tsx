@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Users, Award, Target, Heart } from "lucide-react";
+import { Users, Award, Target, Heart, User } from "lucide-react";
 import { useTranslations } from "@/app/hooks/useTranslations";
 
 export default function AboutSection() {
@@ -71,21 +71,21 @@ export default function AboutSection() {
       role: t("about.team.members.jana.role"),
       expertise: t("about.team.members.jana.expertise"),
       quote: t("about.team.members.jana.quote"),
-      image: "/placeholder-project-fredon.png",
+      image: "user-placeholder",
     },
     {
       name: t("about.team.members.lucie.name"),
       role: t("about.team.members.lucie.role"),
       expertise: t("about.team.members.lucie.expertise"),
       quote: t("about.team.members.lucie.quote"),
-      image: "/placeholder-project-fredon.png",
+      image: "user-placeholder",
     },
     {
       name: t("about.team.members.tomas.name"),
       role: t("about.team.members.tomas.role"),
       expertise: t("about.team.members.tomas.expertise"),
       quote: t("about.team.members.tomas.quote"),
-      image: "/placeholder-project-fredon.png",
+      image: "user-placeholder",
     },
   ];
 
@@ -196,12 +196,18 @@ export default function AboutSection() {
                   className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
                 >
                   <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
+                    {member.image === "user-placeholder" ? (
+                      <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center">
+                        <User className="w-12 h-12 text-slate-500 dark:text-slate-400" />
+                      </div>
+                    ) : (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    )}
                   </div>
                   <h4 className="text-lg font-semibold text-slate-900 dark:text-white text-center mb-1">
                     {member.name}

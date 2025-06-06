@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Hero Section Logo Enhancement**: Large, responsive FredonBytes logo prominently displayed in hero section
+- **Employee Image Standardization**: User icon placeholder implementation for all team members except Patrik Svoboda
 - Complete Czech translation implementation with all 30 SEO-specific TODO items resolved
 - Complete German translation implementation with all 30 remaining SEO-specific TODO items resolved
 - Comprehensive internationalization (i18n) system with support for English, Czech, and German
@@ -52,6 +54,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Reduced project size and eliminated potential confusion from unused assets
 
 ### Enhanced
+
+- **Logo & Branding**
+
+  - Hero section now features a prominent, responsive FredonBytes logo
+  - Logo optimized for all device sizes with proper aspect ratio preservation
+  - Professional logo placement enhancing brand visibility and recognition
+
+- **Team Member Presentation**
+
+  - Standardized employee image display with consistent user icon placeholders
+  - Maintained Patrik Svoboda's profile picture while applying placeholders to other team members
+  - Improved visual consistency across team member cards
+  - Professional gradient background for placeholder icons
 
 - **Translation System**
 

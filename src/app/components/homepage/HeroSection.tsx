@@ -1,64 +1,65 @@
-'use client'
+"use client";
 
-import React, { useState, useEffect } from 'react'
-import { Button } from '../common/Button'
-import { ArrowRight, Code, Zap, Globe } from 'lucide-react'
-import { motion } from 'framer-motion'
-import { useTranslations } from '@/app/hooks/useTranslations'
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { Button } from "../common/Button";
+import { ArrowRight, Code, Zap, Globe } from "lucide-react";
+import { motion } from "framer-motion";
+import { useTranslations } from "@/app/hooks/useTranslations";
 
 export default function HeroSection() {
-  const { t } = useTranslations()
-  const [typedText, setTypedText] = useState('')
-  const [currentLineIndex, setCurrentLineIndex] = useState(0)
-  const [charIndex, setCharIndex] = useState(0)
-  const [isDeleting, setIsDeleting] = useState(false)
+  const { t } = useTranslations();
+  const [typedText, setTypedText] = useState("");
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   // Get code snippets from translations with proper type handling
   const getCodeSnippets = (): string[] => {
-    const snippets = t('hero.codeComments.snippets');
+    const snippets = t("hero.codeComments.snippets");
     if (Array.isArray(snippets)) {
       return snippets as string[];
     }
     // Fallback snippets
     return [
-      'const success = await buildAmazingWebsite();',
+      "const success = await buildAmazingWebsite();",
       'function createDigitalDominance() { return "Fredonbytes"; }',
-      'const innovation = () => code + creativity + strategy;',
-      'export default class Fredonbytes extends Excellence {}',
+      "const innovation = () => code + creativity + strategy;",
+      "export default class Fredonbytes extends Excellence {}",
     ];
   };
 
   const codeSnippets = getCodeSnippets();
 
   useEffect(() => {
-    const currentLine = codeSnippets[currentLineIndex]
-    const typingSpeed = isDeleting ? 50 : 100
-    const pauseTime = isDeleting ? 1000 : 2000
+    const currentLine = codeSnippets[currentLineIndex];
+    const typingSpeed = isDeleting ? 50 : 100;
+    const pauseTime = isDeleting ? 1000 : 2000;
 
     const timer = setTimeout(() => {
       if (!isDeleting && charIndex < currentLine.length) {
-        setTypedText(currentLine.substring(0, charIndex + 1))
-        setCharIndex(charIndex + 1)
+        setTypedText(currentLine.substring(0, charIndex + 1));
+        setCharIndex(charIndex + 1);
       } else if (isDeleting && charIndex > 0) {
-        setTypedText(currentLine.substring(0, charIndex - 1))
-        setCharIndex(charIndex - 1)
+        setTypedText(currentLine.substring(0, charIndex - 1));
+        setCharIndex(charIndex - 1);
       } else if (!isDeleting && charIndex === currentLine.length) {
-        setTimeout(() => setIsDeleting(true), pauseTime)
+        setTimeout(() => setIsDeleting(true), pauseTime);
       } else if (isDeleting && charIndex === 0) {
-        setIsDeleting(false)
-        setCurrentLineIndex((prev) => (prev + 1) % codeSnippets.length)
+        setIsDeleting(false);
+        setCurrentLineIndex((prev) => (prev + 1) % codeSnippets.length);
       }
-    }, typingSpeed)
+    }, typingSpeed);
 
-    return () => clearTimeout(timer)
-  }, [charIndex, isDeleting, currentLineIndex, codeSnippets])
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, currentLineIndex, codeSnippets]);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,10 +67,10 @@ export default function HeroSection() {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
-  }
+        delayChildren: 0.1,
+      },
+    },
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -78,15 +79,13 @@ export default function HeroSection() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  }
-
+        ease: "easeOut",
+      },
+    },
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
@@ -95,6 +94,22 @@ export default function HeroSection() {
           animate="visible"
           className="max-w-4xl mx-auto"
         >
+          {/* FredonBytes Logo */}
+          <motion.div
+            variants={itemVariants}
+            className="mb-10 mx-auto max-w-md"
+          >
+            <div className="relative w-full h-64 sm:h-40 lg:h-72 mx-auto">
+              <Image
+                src="/FredonBytes_GraphicLogo.png"
+                alt="FredonBytes Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </motion.div>
+
           {/* Code Editor Mockup */}
           <motion.div
             variants={itemVariants}
@@ -105,12 +120,16 @@ export default function HeroSection() {
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-slate-400 text-xs ml-4">fredonbytes.ts</span>
+                <span className="text-slate-400 text-xs ml-4">
+                  fredonbytes.ts
+                </span>
               </div>
               <div className="text-green-400 font-mono text-sm">
                 <span className="text-gray-500">1</span>
-                <span className="ml-4 text-blue-400">{'//'} </span>
-                <span className="text-gray-400">{t('hero.codeComments.creating')}</span>
+                <span className="ml-4 text-blue-400">{"//"} </span>
+                <span className="text-gray-400">
+                  {t("hero.codeComments.creating")}
+                </span>
               </div>
               <div className="text-green-400 font-mono text-sm mt-1">
                 <span className="text-gray-500">2</span>
@@ -125,9 +144,9 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-4xl sm:text-5xl lg:text-7xl font-bold text-slate-900 dark:text-white mb-6 leading-tight"
           >
-            {t('hero.title')}
+            {t("hero.title")}
             <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
-              {t('hero.titleHighlight')}
+              {t("hero.titleHighlight")}
             </span>
           </motion.h1>
 
@@ -136,7 +155,7 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-xl sm:text-2xl text-slate-600 dark:text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            {t('hero.subtitle')}
+            {t("hero.subtitle")}
           </motion.p>
 
           {/* Value Proposition */}
@@ -146,15 +165,19 @@ export default function HeroSection() {
           >
             <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
               <Code className="w-5 h-5 text-blue-500" />
-              <span className="font-medium">{t('hero.valueProps.development')}</span>
+              <span className="font-medium">
+                {t("hero.valueProps.development")}
+              </span>
             </div>
             <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
               <Zap className="w-5 h-5 text-purple-500" />
-              <span className="font-medium">{t('hero.valueProps.design')}</span>
+              <span className="font-medium">{t("hero.valueProps.design")}</span>
             </div>
             <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
               <Globe className="w-5 h-5 text-cyan-500" />
-              <span className="font-medium">{t('hero.valueProps.marketing')}</span>
+              <span className="font-medium">
+                {t("hero.valueProps.marketing")}
+              </span>
             </div>
           </motion.div>
 
@@ -166,17 +189,17 @@ export default function HeroSection() {
             <Button
               variant="gradient"
               size="xl"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection("contact")}
               rightIcon={<ArrowRight className="w-5 h-5" />}
             >
-              {t('hero.cta.startProject')}
+              {t("hero.cta.startProject")}
             </Button>
             <Button
               variant="outline"
               size="xl"
-              onClick={() => scrollToSection('projects')}
+              onClick={() => scrollToSection("projects")}
             >
-              {t('hero.cta.viewWork')}
+              {t("hero.cta.viewWork")}
             </Button>
           </motion.div>
 
@@ -190,7 +213,7 @@ export default function HeroSection() {
                 2023
               </div>
               <div className="text-slate-600 dark:text-slate-400 text-sm">
-                {t('hero.stats.founded')}
+                {t("hero.stats.founded")}
               </div>
             </div>
             <div className="text-center">
@@ -198,7 +221,7 @@ export default function HeroSection() {
                 5+
               </div>
               <div className="text-slate-600 dark:text-slate-400 text-sm">
-                {t('hero.stats.coreServices')}
+                {t("hero.stats.coreServices")}
               </div>
             </div>
             <div className="text-center">
@@ -206,7 +229,7 @@ export default function HeroSection() {
                 100%
               </div>
               <div className="text-slate-600 dark:text-slate-400 text-sm">
-                {t('hero.stats.clientFocus')}
+                {t("hero.stats.clientFocus")}
               </div>
             </div>
           </motion.div>
@@ -224,5 +247,5 @@ export default function HeroSection() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }
