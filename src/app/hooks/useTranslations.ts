@@ -23,6 +23,14 @@ export function useTranslations() {
    */
   const translate = (key: string, fallback?: string): string => {
     const result = t(key, locale);
+
+    // Log missing translations in development mode
+    if (process.env.NODE_ENV === "development" && result === key) {
+      console.warn(
+        `🌐 Missing translation for key: "${key}" in locale: "${locale}"`
+      );
+    }
+
     return result === key && fallback ? fallback : result;
   };
 

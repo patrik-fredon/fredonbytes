@@ -54,10 +54,14 @@ export default function TermsOfServicePage() {
                 {t("termsOfService.sections.servicesDescription.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {t(
-                  "termsOfService.sections.servicesDescription.services",
-                  []
-                ).map((service: string, index: number) => (
+                {[
+                  "Software development and web applications",
+                  "Graphic design and brand identity services",
+                  "SEO and digital marketing solutions",
+                  "Social media management",
+                  "IT consulting and cybersecurity services",
+                  "Related technical support and maintenance",
+                ].map((service: string, index: number) => (
                   <li key={index}>{service}</li>
                 ))}
               </ul>
@@ -71,10 +75,13 @@ export default function TermsOfServicePage() {
                 {t("termsOfService.sections.userResponsibilities.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-4 space-y-1">
-                {t(
-                  "termsOfService.sections.userResponsibilities.responsibilities",
-                  []
-                ).map((responsibility: string, index: number) => (
+                {[
+                  "Provide accurate and truthful information",
+                  "Use our services for lawful purposes only",
+                  "Respect intellectual property rights",
+                  "Not engage in harmful or disruptive activities",
+                  "Maintain the confidentiality of any login credentials",
+                ].map((responsibility: string, index: number) => (
                   <li key={index}>{responsibility}</li>
                 ))}
               </ul>

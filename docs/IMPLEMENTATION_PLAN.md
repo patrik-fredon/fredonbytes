@@ -1,249 +1,166 @@
-# 1.1 Text Extraction
-
-## Context
-
-This subtask is part of Phase 1 (I18N Implementation) of the "Project Refinement" initiative. It aims to prepare the codebase for internationalization by extracting all visible UI text, enabling future translation and localization efforts.
-
-## Scope
-
-- Scan the entire codebase for visible text in UI components.
-- Identify all user-facing strings, including labels, buttons, headings, and messages.
-- Exclude non-UI or backend-only text.
-- Document each string and its source location.
-
-## Expected Output
-
-- `text_strings.json`: A JSON file containing all extracted UI text strings.
-- `i18n_key_mapping`: A mapping of original text to i18n keys for integration.
-- All UI text elements identified and extracted.
-
-## Additional Resources
-
-- Reference best practices for i18n text extraction in React/Next.js projects.
-- Consider using tools like i18next-scanner or custom scripts for automation.
+# PLAN-001: Multilingual Support & Build Optimization Implementation Plan
 
 ---
 
-goal: >
-Extract all visible UI text from the codebase to enable internationalization.
+## 1. Context & Goals
 
-source_insights:
-
-- artifact_id: 1.1_text_extraction
-  summary: >
-  Task Map for Project Refinement specifies initial extraction of UI text as the foundation for I18N.
-
-expected_token_cost: low
-reasoning_phase: discovery
-priority: high
-boomerang_return_to: orchestrator
+- **Tech Stack:** Next.js (TypeScript), custom i18n (JSON, hooks, scripts), automated translation validation, SEO integration.
+- **Goals:**
+  - Robust, maintainable multilingual support (EN/CS/DE)
+  - Automated translation completeness/quality
+  - Efficient, scalable Next.js builds (bundle size, static assets, performance)
+  - Clear documentation and changelog updates
 
 ---
 
-# 1.2 Translation Integration
+## 2. System Overview
 
-## Context
+### 2.1 Context Diagram
 
-This subtask follows text extraction and focuses on integrating translations into the UI. It ensures that all user-facing elements render content based on locale files, supporting multiple languages.
+```
+[User]
+   |
+   v
+[Next.js App]
+   |         \
+[i18n Layer]  [Build Pipeline]
+   |             |
+[Locales JSON] [Static Assets, Images]
+   |             |
+[Translation Scripts] [next.config.ts]
+```
 
-## Scope
+### 2.2 Key Components
 
-- Implement translation files for supported locales.
-- Update UI components to use i18n keys instead of hardcoded text.
-- Exclude non-UI and backend-only text from translation.
-- Validate that all UI elements render translated content.
-
-## Expected Output
-
-- `locale_files`: Translation files for each supported language.
-- `i18n_config_updates`: Configuration changes to enable i18n in the application.
-- All UI elements render translated content.
-
-## Additional Resources
-
-- Reference i18n integration guides for Next.js/React.
-- Use automated tests to verify translation coverage.
-
----
-
-goal: >
-Integrate translation files and update UI components to support multiple languages.
-
-source_insights:
-
-- artifact_id: 1.2_translation_integration
-  summary: >
-  Task Map for Project Refinement requires translation integration after text extraction.
-
-expected_token_cost: medium
-reasoning_phase: synthesis
-priority: high
-boomerang_return_to: orchestrator
+- `src/app/locales/` — Translation files (en/cs/de)
+- `src/app/hooks/useTranslations.ts` — Translation hook
+- `src/app/components/common/LanguageSwitcher.tsx` — Language switcher UI
+- `scripts/translation-manager.js` — Translation sync/validation
+- `next.config.ts` — Build and i18n config
 
 ---
 
-# 2.1 Duplicate Removal
+## 3. Implementation Steps
 
-## Context
+### 3.1 Multilingual Support
 
-This subtask is part of Phase 2 (Codebase Optimization) and aims to improve maintainability by eliminating duplicate files, folders, and code segments across the project.
+**A. Audit & Improve i18n Workflow**
 
-## Scope
+- Review all UI for hardcoded strings; replace with translation keys.
+- Ensure all translation keys exist in all locales (use `translation-manager.js`).
+- Validate fallback logic in `useTranslations.ts` and context provider.
+- Audit `LanguageSwitcher.tsx` for UX (dropdown, accessibility, URL sync).
 
-- Identify duplicate files, folders, and code segments in the codebase.
-- Remove or consolidate duplicates while preserving functionality.
-- Document all removals and changes for traceability.
+**B. Expand Translation Coverage & Automate Validation**
 
-## Expected Output
+- Run `node scripts/translation-manager.js` to sync and report missing keys.
+- Use `npm run test:translations` and `npm run validate:locales` for automated checks.
+- Add CI step for translation validation (fail build if incomplete).
+- Document translation workflow in [`docs/I18N_WORKFLOW.md`](docs/I18N_WORKFLOW.md).
 
-- `deduplicated_code`: Cleaned codebase with duplicates removed.
-- `removed_files_log`: Log file detailing all removed or consolidated items.
-- Zero duplicated files/functions in codebase.
+**C. Enhance Language Switching**
 
-## Additional Resources
+- Ensure URL-based language switching is robust (`?lang=xx`).
+- Add locale detection (browser/Accept-Language) fallback.
+- Improve LanguageSwitcher accessibility (ARIA, keyboard nav).
 
-- Use code analysis tools to detect duplicates.
-- Reference refactoring best practices.
+**D. Improve Fallback Logic**
 
----
-
-goal: >
-Remove all duplicate files, folders, and code segments to optimize the codebase.
-
-source_insights:
-
-- artifact_id: 2.1_duplicate_removal
-  summary: >
-  Task Map for Project Refinement specifies deduplication as a prerequisite for further optimization.
-
-expected_token_cost: medium
-reasoning_phase: analysis
-priority: high
-boomerang_return_to: orchestrator
+- Ensure missing keys fall back to English or display a clear placeholder.
+- Log missing translations in dev mode for rapid feedback.
 
 ---
 
-# 2.2 Package Optimization
+### 3.2 Build Optimization
 
-## Context
+**A. Analyze Bundle**
 
-This subtask focuses on auditing and optimizing project dependencies to reduce bundle size and improve build performance as part of Phase 2 (Codebase Optimization).
+- Use `next build` and `next analyze` (add `@next/bundle-analyzer` if not present).
+- Identify large dependencies and opportunities for code splitting.
 
-## Scope
+**B. Enable Code Splitting**
 
-- Audit all dependencies in `package.json`.
-- Remove unused or redundant packages.
-- Update dependency versions as needed for security and performance.
-- Ensure production build succeeds after changes.
+- Use dynamic imports for large/rarely-used components.
+- Refactor shared code into smaller modules where possible.
 
-## Expected Output
+**C. Optimize Images & Static Assets**
 
-- `updated_package.json`: Cleaned and optimized dependency list.
-- `bundle_size_report`: Report showing reduced bundle size after optimization.
-- Production build succeeds with reduced dependencies.
+- Use Next.js `<Image />` for all images.
+- Audit `public/` for unused or oversized assets.
+- Enable image optimization in `next.config.ts` (domains, formats, sizes).
 
-## Additional Resources
+**D. Tune next.config.ts**
 
-- Use tools like depcheck or npm-check for unused dependencies.
-- Reference best practices for dependency management.
+- Enable/verify i18n config (if not already present).
+- Enable SWC minification, React 18 features, and experimental optimizations as appropriate.
+- Set up static asset caching headers.
 
----
+**E. Validate & Document**
 
-goal: >
-Optimize project dependencies and reduce bundle size for better performance.
-
-source_insights:
-
-- artifact_id: 2.2_package_optimization
-  summary: >
-  Task Map for Project Refinement requires dependency optimization after deduplication.
-
-expected_token_cost: medium
-reasoning_phase: synthesis
-priority: high
-boomerang_return_to: orchestrator
+- Run Lighthouse and Next.js build reports.
+- Document optimization steps and results in `docs/IMPLEMENTATION_PLAN.md` and update `CHANGELOG.md`.
 
 ---
 
-# 2.3 Visual Validation
+## 4. Tooling & Configuration Recommendations
 
-## Context
-
-This subtask ensures the visual integrity and accessibility of the UI after codebase and package optimizations, as part of Phase 2 (Codebase Optimization).
-
-## Scope
-
-- Verify consistent rendering across browsers and breakpoints.
-- Check color schemes, spacing, and typography for visual consistency.
-- Generate UI screenshots and accessibility reports.
-- Validate accessibility compliance.
-
-## Expected Output
-
-- `ui_screenshots`: Screenshots of key UI screens across breakpoints.
-- `accessibility_report`: Report on accessibility compliance and issues.
-- Consistent rendering across browsers/breakpoints.
-
-## Additional Resources
-
-- Use tools like Axe, Lighthouse, or Storybook for validation.
-- Reference accessibility standards (WCAG).
+- **Translation Management:**
+  - Use `scripts/translation-manager.js` for syncing and reporting.
+  - Add pre-commit or CI hook for translation validation.
+- **Bundle Analysis:**
+  - Add `@next/bundle-analyzer` to devDependencies.
+  - Use `ANALYZE=true next build` for bundle inspection.
+- **Image Optimization:**
+  - Use Next.js `<Image />` everywhere.
+  - Configure `images` in `next.config.ts`.
+- **Code Quality:**
+  - Enforce ESLint rules for no hardcoded strings.
+  - Add tests for language switching and fallback.
 
 ---
 
-goal: >
-Validate visual integrity and accessibility after optimizations.
+## 5. Quality Criteria
 
-source_insights:
-
-- artifact_id: 2.3_visual_validation
-  summary: >
-  Task Map for Project Refinement requires visual and accessibility validation after code and package changes.
-
-expected_token_cost: medium
-reasoning_phase: validation
-priority: high
-boomerang_return_to: orchestrator
-
----
-
-# 3.1 Metadata Optimization
-
-## Context
-
-This subtask is part of Phase 3 (SEO Performance) and focuses on optimizing meta tags and structured data for improved search engine visibility.
-
-## Scope
-
-- Optimize title tags and meta descriptions for all pages.
-- Implement or update schema markup for structured data.
-- Ensure meta tags are correct in the page HTML output.
-
-## Expected Output
-
-- `meta_tag_updates`: Updated meta tags for all relevant pages.
-- `structured_data`: Implemented or updated schema markup.
-- Correct meta tags in page HTML output.
-
-## Additional Resources
-
-- Reference SEO best practices for meta tags and schema.
-- Use tools like Google Search Console for validation.
+- **Maintainability:**
+  - All translations managed via scripts, no manual JSON editing.
+  - Automated validation in CI.
+- **Scalability:**
+  - Easy to add new languages (single source of truth, automated sync).
+  - Build optimizations support growth in assets/pages.
+- **Performance:**
+  - Minimal bundle size, optimized images, code splitting.
+- **Documentation:**
+  - All changes and workflows documented in Markdown and CHANGELOG.
 
 ---
 
-goal: >
-Optimize meta tags and structured data for SEO performance.
+## 6. Task Breakdown for Code Mode
 
-source_insights:
-
-- artifact_id: 3.1_metadata_optimization
-  summary: >
-  Task Map for Project Refinement requires metadata and schema optimization for SEO.
-
-expected_token_cost: medium
-reasoning_phase: synthesis
-priority: high
-boomerang_return_to: orchestrator
+1. **i18n Audit:**
+   - Search for hardcoded strings, replace with translation keys.
+   - Run translation sync/validation scripts.
+2. **Language Switcher:**
+   - Refactor for accessibility and robust URL handling.
+3. **Fallback Logic:**
+   - Update translation hooks/context for better fallback and logging.
+4. **Translation Validation:**
+   - Add/verify CI step for translation completeness.
+5. **Bundle Optimization:**
+   - Add bundle analyzer, refactor for code splitting.
+   - Audit and optimize images/assets.
+   - Update `next.config.ts` for best practices.
+6. **Documentation:**
+   - Update `docs/I18N_WORKFLOW.md` and `CHANGELOG.md` with all changes.
 
 ---
+
+## 7. Documentation & Changelog
+
+- Record all implementation steps, rationale, and results in:
+  - [`docs/IMPLEMENTATION_PLAN.md`](docs/IMPLEMENTATION_PLAN.md)
+  - [`CHANGELOG.md`](CHANGELOG.md)
+- Ensure documentation covers workflow, validation, and optimization steps.
+
+---
+
+**This plan is ready for implementation.**

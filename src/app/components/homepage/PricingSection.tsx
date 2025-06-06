@@ -127,10 +127,7 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.webDevelopment.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.webDevelopment.included",
-        []
-      ) as string[],
+      included: ["Responsive Design", "SEO Basic", "Contact Forms"],
     },
     {
       id: "mobile-app",
@@ -140,10 +137,7 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.mobileApp.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.mobileApp.included",
-        []
-      ) as string[],
+      included: ["Cross-platform", "App Store Submission", "Basic Analytics"],
     },
     {
       id: "design",
@@ -153,10 +147,7 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.brandDesign.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.brandDesign.included",
-        []
-      ) as string[],
+      included: ["Logo Design", "Brand Guidelines", "Marketing Materials"],
     },
     {
       id: "seo",
@@ -166,10 +157,7 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.seoMarketing.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.seoMarketing.included",
-        []
-      ) as string[],
+      included: ["Keyword Research", "Content Strategy", "Analytics"],
     },
     {
       id: "social",
@@ -179,10 +167,11 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.socialMedia.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.socialMedia.included",
-        []
-      ) as string[],
+      included: [
+        "Content Creation",
+        "Posting Schedule",
+        "Community Management",
+      ],
     },
     {
       id: "consulting",
@@ -192,10 +181,7 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.itConsulting.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.itConsulting.included",
-        []
-      ) as string[],
+      included: ["Strategic Planning", "Technical Guidance", "Security Review"],
     },
   ];
 

@@ -68,14 +68,27 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
       } else if (storedLocale && locales.includes(storedLocale)) {
         initialLocale = storedLocale;
       } else {
-        // Try to detect from browser language
+        // Try to detect from browser language with fallback chain
         try {
-          const browserLocale = navigator.language.split("-")[0] as Locale;
-          if (locales.includes(browserLocale)) {
-            initialLocale = browserLocale;
+          // Check primary browser language
+          const primaryLang = navigator.language.split("-")[0] as Locale;
+          if (locales.includes(primaryLang)) {
+            initialLocale = primaryLang;
+          } else {
+            // Check all browser languages
+            const browserLanguages = navigator.languages || [
+              navigator.language,
+            ];
+            for (const lang of browserLanguages) {
+              const langCode = lang.split("-")[0] as Locale;
+              if (locales.includes(langCode)) {
+                initialLocale = langCode;
+                break;
+              }
+            }
           }
         } catch {
-          // navigator not available
+          // navigator not available - keep default
         }
       }
 

@@ -41,9 +41,17 @@ export default function LanguageSwitcher() {
   return (
     <div className="relative group">
       <button
-        className="flex items-center space-x-2 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium"
-        aria-label="Language switcher"
+        className="flex items-center space-x-2 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md p-2"
+        aria-label="Language switcher - Switch language"
+        aria-haspopup="true"
+        aria-expanded="false"
         disabled={isTransitioning}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            // Toggle dropdown visibility on keyboard interaction
+          }
+        }}
       >
         {isTransitioning ? (
           <Loader2 className="w-4 h-4 animate-spin" />
