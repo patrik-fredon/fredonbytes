@@ -121,55 +121,81 @@ export default function PricingSection() {
   const serviceOptions: ServiceOption[] = [
     {
       id: "web-dev",
-      name: "Web Development",
+      name: t("pricingSection.calculator.services.webDevelopment.name"),
       icon: Code,
       basePrice: 2500,
-      description: "Custom website or web application",
-      included: ["Responsive Design", "SEO Basic", "Contact Forms"],
+      description: t(
+        "pricingSection.calculator.services.webDevelopment.description"
+      ),
+      included: t(
+        "pricingSection.calculator.services.webDevelopment.included",
+        []
+      ) as string[],
     },
     {
       id: "mobile-app",
-      name: "Mobile App",
+      name: t("pricingSection.calculator.services.mobileApp.name"),
       icon: Code,
       basePrice: 5000,
-      description: "iOS/Android mobile application",
-      included: ["Cross-platform", "App Store Submission", "Basic Analytics"],
+      description: t(
+        "pricingSection.calculator.services.mobileApp.description"
+      ),
+      included: t(
+        "pricingSection.calculator.services.mobileApp.included",
+        []
+      ) as string[],
     },
     {
       id: "design",
-      name: "Brand & Design",
+      name: t("pricingSection.calculator.services.brandDesign.name"),
       icon: Palette,
       basePrice: 1500,
-      description: "Complete brand identity and design system",
-      included: ["Logo Design", "Brand Guidelines", "Marketing Materials"],
+      description: t(
+        "pricingSection.calculator.services.brandDesign.description"
+      ),
+      included: t(
+        "pricingSection.calculator.services.brandDesign.included",
+        []
+      ) as string[],
     },
     {
       id: "seo",
-      name: "SEO & Marketing",
+      name: t("pricingSection.calculator.services.seoMarketing.name"),
       icon: Search,
       basePrice: 800,
-      description: "Monthly SEO and digital marketing services",
-      included: ["Keyword Research", "Content Strategy", "Analytics"],
+      description: t(
+        "pricingSection.calculator.services.seoMarketing.description"
+      ),
+      included: t(
+        "pricingSection.calculator.services.seoMarketing.included",
+        []
+      ) as string[],
     },
     {
       id: "social",
-      name: "Social Media",
+      name: t("pricingSection.calculator.services.socialMedia.name"),
       icon: Share2,
       basePrice: 600,
-      description: "Monthly social media management",
-      included: [
-        "Content Creation",
-        "Posting Schedule",
-        "Community Management",
-      ],
+      description: t(
+        "pricingSection.calculator.services.socialMedia.description"
+      ),
+      included: t(
+        "pricingSection.calculator.services.socialMedia.included",
+        []
+      ) as string[],
     },
     {
       id: "consulting",
-      name: "IT Consulting",
+      name: t("pricingSection.calculator.services.itConsulting.name"),
       icon: Shield,
       basePrice: 150,
-      description: "Hourly consulting and strategy sessions",
-      included: ["Strategic Planning", "Technical Guidance", "Security Review"],
+      description: t(
+        "pricingSection.calculator.services.itConsulting.description"
+      ),
+      included: t(
+        "pricingSection.calculator.services.itConsulting.included",
+        []
+      ) as string[],
     },
   ];
 
@@ -325,12 +351,11 @@ export default function PricingSection() {
               <div className="flex items-center justify-center space-x-3 mb-4">
                 <Calculator className="w-8 h-8 text-blue-600" />
                 <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
-                  Custom Quote Calculator
+                  {t("pricingSection.calculator.title")}
                 </h3>
               </div>
               <p className="text-slate-600 dark:text-slate-300">
-                Mix and match services to get a personalized quote for your
-                project.
+                {t("pricingSection.calculator.description")}
               </p>
             </div>
 
@@ -361,7 +386,7 @@ export default function PricingSection() {
                   onClick={() => setCalculatorOpen(true)}
                   rightIcon={<Calculator className="w-5 h-5" />}
                 >
-                  Open Price Calculator
+                  {t("pricingSection.calculator.toggleButton")}
                 </Button>
               </div>
             ) : (
