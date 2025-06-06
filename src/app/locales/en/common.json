@@ -113,7 +113,7 @@
   },
   "about": {
     "title": "About {company}",
-    "subtitle": "Founded in {year}, we eliminate the need for multiple vendors by becoming your {highlight} one-stop digital army{/highlight}, ensuring seamless, high-impact results under one roof.",
+    "subtitle": "Founded in {year}, we eliminate the need for multiple vendors by becoming your one-stop digital army, ensuring seamless, high-impact results under one roof.",
     "highlight": " one-stop digital army",
     "mission": {
       "title": "Our Mission",
@@ -182,7 +182,7 @@
     "mantra": "One Team. Zero Limits."
   },
   "services": {
-    "title": "Our {highlight}Services{/highlight}",
+    "title": "Our Services",
     "subtitle": "We offer a comprehensive suite of IT solutions designed to eliminate the need for multiple vendors. From development to marketing, we've got you covered.",
     "items": {
       "development": {
@@ -257,7 +257,7 @@
     "cta": "Discover How We Can Help You"
   },
   "contact": {
-    "title": "Let's Work {highlight}Together{/highlight}",
+    "title": "Let's Work Together",
     "subtitle": "Ready to transform your digital presence? Let's discuss your project and create something amazing together.",
     "sectionTitle": "Let's Work Together",
     "sectionDescription": "Ready to transform your digital presence? Let's discuss your project and create something amazing together.",
@@ -452,7 +452,7 @@
     }
   },
   "pricing": {
-    "title": "Choose Your {highlight}Plan{/highlight}",
+    "title": "Choose Your Plan",
     "subtitle": "Transparent pricing with no hidden fees. Scale your business with our flexible solutions.",
     "toggle": {
       "monthly": "Monthly",
@@ -546,7 +546,7 @@
     }
   },
   "projects": {
-    "title": "Our {highlight}Portfolio{/highlight}",
+    "title": "Our Portfolio",
     "subtitle": "Explore our latest work and see how we've helped businesses transform their digital presence.",
     "showcase": {
       "title": "Project Showcase",
@@ -1170,11 +1170,7 @@
           "webDevelopment": {
             "name": "Web Development",
             "description": "Custom website or web application",
-            "included": [
-              "Responsive Design",
-              "SEO Basic",
-              "Contact Forms"
-            ]
+            "included": ["Responsive Design", "SEO Basic", "Contact Forms"]
           },
           "mobileApp": {
             "name": "Mobile App",
@@ -1197,11 +1193,7 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monthly SEO and digital marketing services",
-            "included": [
-              "Keyword Research",
-              "Content Strategy",
-              "Analytics"
-            ]
+            "included": ["Keyword Research", "Content Strategy", "Analytics"]
           },
           "socialMedia": {
             "name": "Social Media",
