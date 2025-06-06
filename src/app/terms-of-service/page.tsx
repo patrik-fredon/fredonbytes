@@ -97,10 +97,13 @@ export default function TermsOfServicePage() {
                 )}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {t(
-                  "termsOfService.sections.userResponsibilities.prohibitedUses.prohibitions",
-                  []
-                ).map((prohibition: string, index: number) => (
+                {[
+                  "Violate any applicable laws or regulations",
+                  "Infringe upon the rights of others",
+                  "Distribute malware or harmful code",
+                  "Engage in unauthorized data collection",
+                  "Attempt to gain unauthorized access to our systems",
+                ].map((prohibition: string, index: number) => (
                   <li key={index}>{prohibition}</li>
                 ))}
               </ul>
@@ -114,11 +117,15 @@ export default function TermsOfServicePage() {
                 {t("termsOfService.sections.serviceAgreements.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-4 space-y-1">
-                {t("termsOfService.sections.serviceAgreements.details", []).map(
-                  (detail: string, index: number) => (
-                    <li key={index}>{detail}</li>
-                  )
-                )}
+                {[
+                  "Project scope and deliverables",
+                  "Timeline and milestones",
+                  "Payment terms and conditions",
+                  "Intellectual property ownership",
+                  "Confidentiality provisions",
+                ].map((detail: string, index: number) => (
+                  <li key={index}>{detail}</li>
+                ))}
               </ul>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
                 {t(
@@ -137,10 +144,12 @@ export default function TermsOfServicePage() {
                 )}
               </h3>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-4 space-y-1">
-                {t(
-                  "termsOfService.sections.paymentTerms.pricingAndInvoicing.terms",
-                  []
-                ).map((term: string, index: number) => (
+                {[
+                  "All prices are quoted in USD or EUR as specified",
+                  "Invoices are payable within 30 days of issue date",
+                  "Late payments may incur additional charges",
+                  "We reserve the right to suspend services for overdue accounts",
+                ].map((term: string, index: number) => (
                   <li key={index}>{term}</li>
                 ))}
               </ul>
@@ -151,10 +160,12 @@ export default function TermsOfServicePage() {
                 )}
               </h3>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {t(
-                  "termsOfService.sections.paymentTerms.refundsAndCancellations.terms",
-                  []
-                ).map((term: string, index: number) => (
+                {[
+                  "Refund policies are specified in individual service agreements",
+                  "Work completed prior to cancellation is non-refundable",
+                  "Cancellation requests must be submitted in writing",
+                  "Custom development work may have different cancellation terms",
+                ].map((term: string, index: number) => (
                   <li key={index}>{term}</li>
                 ))}
               </ul>
@@ -195,10 +206,13 @@ export default function TermsOfServicePage() {
                 {t("termsOfService.sections.confidentiality.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {t(
-                  "termsOfService.sections.confidentiality.commitments",
-                  []
-                ).map((commitment: string, index: number) => (
+                {[
+                  "Maintaining strict confidentiality of client information",
+                  "Using client information only for authorized purposes",
+                  "Implementing appropriate security measures",
+                  "Not disclosing confidential information to third parties",
+                  "Returning or destroying confidential information upon request",
+                ].map((commitment: string, index: number) => (
                   <li key={index}>{commitment}</li>
                 ))}
               </ul>
@@ -279,11 +293,14 @@ export default function TermsOfServicePage() {
                 {t("termsOfService.sections.termination.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {t("termsOfService.sections.termination.consequences", []).map(
-                  (consequence: string, index: number) => (
-                    <li key={index}>{consequence}</li>
-                  )
-                )}
+                {[
+                  "All outstanding invoices become immediately due",
+                  "Access to our services and systems will be revoked",
+                  "Confidentiality obligations remain in effect",
+                  "Data return or destruction will be handled as agreed",
+                ].map((consequence: string, index: number) => (
+                  <li key={index}>{consequence}</li>
+                ))}
               </ul>
             </section>
 

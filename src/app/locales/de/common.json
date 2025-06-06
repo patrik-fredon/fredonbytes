@@ -567,8 +567,8 @@
     },
     "loadMore": "Weitere Projekte laden",
     "showcase": {
-      "title": "TODO: Translate \"Project {highlight}Showcase{/highlight}\"",
-      "subtitle": "TODO: Translate \"Explore our portfolio of successful projects across web development, mobile applications, design, and digital marketing campaigns.\""
+      "title": "Projekt -Showcase",
+      "subtitle": "Erkunden Sie unser Portfolio erfolgreicher Projekte in Webentwicklung, mobilen Anwendungen, Design- und digitalen Marketingkampagnen."
     },
     "items": {
       "ecommerce": {
@@ -597,7 +597,7 @@
       }
     },
     "labels": {
-      "featured": "TODO: Translate \"Featured\""
+      "featured": "Vorgestellt"
     }
   },
   "common": {

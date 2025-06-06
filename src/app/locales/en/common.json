@@ -549,7 +549,7 @@
     "title": "Our {highlight}Portfolio{/highlight}",
     "subtitle": "Explore our latest work and see how we've helped businesses transform their digital presence.",
     "showcase": {
-      "title": "Project {highlight}Showcase{/highlight}",
+      "title": "Project Showcase",
       "subtitle": "Explore our portfolio of successful projects across web development, mobile applications, design, and digital marketing campaigns."
     },
     "categories": {

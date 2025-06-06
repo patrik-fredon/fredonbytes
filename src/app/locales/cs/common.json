@@ -567,8 +567,8 @@
     },
     "loadMore": "Načíst další projekty",
     "showcase": {
-      "title": "TODO: Translate \"Project {highlight}Showcase{/highlight}\"",
-      "subtitle": "TODO: Translate \"Explore our portfolio of successful projects across web development, mobile applications, design, and digital marketing campaigns.\""
+      "title": "Přehlídka projektu",
+      "subtitle": "Prozkoumejte naše portfolio úspěšných projektů napříč vývojem webových stránek, mobilních aplikací, designu a kampaní digitálního marketingu."
     },
     "items": {
       "ecommerce": {
@@ -597,7 +597,7 @@
       }
     },
     "labels": {
-      "featured": "TODO: Translate \"Featured\""
+      "featured": "Představoval"
     }
   },
   "common": {

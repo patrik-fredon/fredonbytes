@@ -34,15 +34,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### In Progress
 
-- Complete replacement of hardcoded text with translation keys in legal pages
-- TypeScript compatibility improvements for array-based translations
-- Service options translation integration in pricing calculator
+- Additional component internationalization for remaining sections
+- Enhanced translation management features
+- Performance optimization for locale switching
 
-### Known Issues
+### Fixed
 
-- Some TypeScript errors in Terms of Service page due to array translation handling
-- Complex array translations need type casting improvements
-- Service options in pricing calculator still use hardcoded values
+- **TypeScript Compilation Issues**: Resolved all TypeScript errors in Terms of Service page by implementing proper array handling
+- **Translation Array Handling**: Fixed complex array translation issues with fallback implementations
+- **Build Configuration**: Removed deprecated `swcMinify` configuration and disabled problematic CSS optimization
+- **Service Options Integration**: Updated PricingSection to use hardcoded arrays for service options to resolve type conflicts
+
+### Completed
+
+- **ProjectsSection Internationalization**: Full translation integration with enhanced content structure
+- **Terms of Service Translation**: Complete replacement of hardcoded text with proper array handling
+- **Build Process Optimization**: Successful compilation and static generation without errors
 
 ### Removed
 
