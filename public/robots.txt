@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Block access to API routes
+Disallow: /api/
+
+# Block access to private pages
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow access to important pages
+Allow: /
+Allow: /links
+Allow: /privacy-policy
+Allow: /terms-of-service
+Allow: /cookie-policy
+
+# Sitemap location
+Sitemap: https://fredonbytes.cloud/sitemap.xml
+
+# Crawl delay (optional - be respectful to search engines)
+Crawl-delay: 1

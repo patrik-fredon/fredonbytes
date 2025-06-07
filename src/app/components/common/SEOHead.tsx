@@ -69,9 +69,11 @@ export default function SEOHead({
     ? seoTitle
     : `${seoTitle} | ${siteName}`;
 
-  // Get current URL
+  // Get current URL with fallback to environment variable
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cloud";
   const currentUrl =
-    ogUrl || (typeof window !== "undefined" ? window.location.href : "");
+    ogUrl || (typeof window !== "undefined" ? window.location.href : baseUrl);
 
   // Convert locale to Open Graph format
   const getOgLocale = (locale: Locale) => {
