@@ -26,6 +26,7 @@ export default function HeroSection() {
       'function createDigitalDominance() { return "Fredonbytes"; }',
       "const innovation = () => code + creativity + strategy;",
       "export default class Fredonbytes extends Excellence {}",
+      "Where code meets innovation.",
     ];
   };
 

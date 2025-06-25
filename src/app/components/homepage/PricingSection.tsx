@@ -120,6 +120,7 @@ export default function PricingSection() {
 
   const serviceOptions: ServiceOption[] = [
     {
+      # TODO - translation for service names and descriptions
       id: "web-dev",
       name: t("pricingSection.calculator.services.webDevelopment.name"),
       icon: Code,
@@ -372,6 +373,7 @@ export default function PricingSection() {
                   onClick={() => setCalculatorOpen(true)}
                   rightIcon={<Calculator className="w-5 h-5" />}
                 >
+                # TODO - translation for toggle button text
                   {t("pricingSection.calculator.toggleButton")}
                 </Button>
               </div>
@@ -462,7 +464,7 @@ export default function PricingSection() {
                     );
                   })}
                 </div>
-
+                # TODO - create data json transation per text below
                 {/* Total Cost Display */}
                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 text-white">
                   <div className="flex items-center justify-between">

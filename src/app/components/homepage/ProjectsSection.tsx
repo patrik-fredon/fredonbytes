@@ -276,7 +276,7 @@ export default function ProjectsSection() {
                       )}
                     </div>
                   </div>
-
+                  # TODO - project translations missing
                   {/* Project Info */}
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
