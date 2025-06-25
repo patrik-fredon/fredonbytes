@@ -1,88 +1,91 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import LinkCard from '../common/LinkCard'
+import React from "react";
+import { motion, type Variants } from "framer-motion";
+import LinkCard from "../common/LinkCard";
 
 export default function LinkList() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  }
+        delayChildren: 0.2,
+      },
+    },
+  };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  }
+        ease: "easeOut",
+      },
+    },
+  };
 
   const mainLinks = [
     {
-      title: 'Personal Portfolio',
-      description: 'Explore my personal projects, skills, and professional journey',
-      url: 'https://me.fredonbytes.cloud',
-      icon: 'portfolio'
+      title: "Personal Portfolio",
+      description:
+        "Explore my personal projects, skills, and professional journey",
+      url: "https://me.fredonbytes.cloud",
+      icon: "portfolio",
     },
     {
-      title: 'Project Gallery',
-      description: 'Browse through our comprehensive collection of completed projects',
-      url: 'https://lib.fredonbytes.cloud',
-      icon: 'gallery'
+      title: "Project Gallery",
+      description:
+        "Browse through our comprehensive collection of completed projects",
+      url: "https://lib.fredonbytes.cloud",
+      icon: "gallery",
     },
     {
-      title: 'Technical Support Portal',
-      description: 'Get help, documentation, and technical support for our services',
-      url: 'https://tech.fredonbytes.cloud',
-      icon: 'support'
-    }
-  ]
+      title: "Technical Support Portal",
+      description:
+        "Get help, documentation, and technical support for our services",
+      url: "https://tech.fredonbytes.cloud",
+      icon: "support",
+    },
+  ];
 
   const githubLinks = [
     {
-      title: 'FredonBytes Organization',
-      description: 'Official company repositories and open-source projects',
-      url: 'https://github.com/FredonBytes',
-      icon: 'github',
+      title: "FredonBytes Organization",
+      description: "Official company repositories and open-source projects",
+      url: "https://github.com/FredonBytes",
+      icon: "github",
       stats: {
         repos: 12,
         commits: 847,
-        stars: 156
-      }
+        stars: 156,
+      },
     },
     {
-      title: 'Patrik Fredon Personal',
-      description: 'Personal coding projects and experimental repositories',
-      url: 'https://github.com/patrik-fredon',
-      icon: 'github',
+      title: "Patrik Fredon Personal",
+      description: "Personal coding projects and experimental repositories",
+      url: "https://github.com/patrik-fredon",
+      icon: "github",
       stats: {
         repos: 28,
         commits: 1243,
-        stars: 89
-      }
-    }
-  ]
+        stars: 89,
+      },
+    },
+  ];
 
   const companyLinks = [
     {
-      title: 'Main Website',
-      description: 'Return to our main company website',
-      url: '/',
-      icon: 'website',
-      external: false
-    }
-  ]
+      title: "Main Website",
+      description: "Return to our main company website",
+      url: "/",
+      icon: "website",
+      external: false,
+    },
+  ];
 
   return (
     <motion.div
@@ -159,5 +162,5 @@ export default function LinkList() {
         </p>
       </motion.div>
     </motion.div>
-  )
+  );
 }
