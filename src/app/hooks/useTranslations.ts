@@ -3,6 +3,7 @@
 import { useLocale } from "../contexts/LocaleContext";
 import {
   t,
+  tArray,
   formatMessage,
   getTranslations,
   hasTranslation,
@@ -92,9 +93,20 @@ export function useTranslations() {
     return formatMessage(template, { count, ...values });
   };
 
+  /**
+   * Translation function for arrays
+   * @param key - Translation key (dot notation supported)
+   * @param fallback - Optional fallback array if translation is missing
+   */
+  const translateArray = (key: string, fallback: string[] = []): string[] => {
+    const result = tArray(key, locale);
+    return result.length > 0 ? result : fallback;
+  };
+
   return {
     // Core translation functions
     t: translate,
+    tArray: translateArray,
     format: translateWithFormat,
 
     // Utility functions

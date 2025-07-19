@@ -34,7 +34,7 @@ interface CalculatorState {
 }
 
 export default function PricingSection() {
-  const { t } = useTranslations();
+  const { t, tArray } = useTranslations();
   const [isAnnual, setIsAnnual] = useState(false);
   const [calculatorOpen, setCalculatorOpen] = useState(false);
   const [calculatorState, setCalculatorState] = useState<CalculatorState>({});
@@ -127,10 +127,9 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.webDevelopment.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.webDevelopment.included",
-        []
-      ) as string[],
+      included: tArray(
+        "pricingSection.calculator.services.webDevelopment.included"
+      ),
     },
     {
       id: "mobile-app",
@@ -140,10 +139,7 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.mobileApp.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.mobileApp.included",
-        []
-      ) as string[],
+      included: tArray("pricingSection.calculator.services.mobileApp.included"),
     },
     {
       id: "design",
@@ -153,10 +149,9 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.brandDesign.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.brandDesign.included",
-        []
-      ) as string[],
+      included: tArray(
+        "pricingSection.calculator.services.brandDesign.included"
+      ),
     },
     {
       id: "seo",
@@ -166,10 +161,9 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.seoMarketing.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.seoMarketing.included",
-        []
-      ) as string[],
+      included: tArray(
+        "pricingSection.calculator.services.seoMarketing.included"
+      ),
     },
     {
       id: "social",
@@ -179,10 +173,9 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.socialMedia.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.socialMedia.included",
-        []
-      ) as string[],
+      included: tArray(
+        "pricingSection.calculator.services.socialMedia.included"
+      ),
     },
     {
       id: "consulting",
@@ -192,10 +185,9 @@ export default function PricingSection() {
       description: t(
         "pricingSection.calculator.services.itConsulting.description"
       ),
-      included: t(
-        "pricingSection.calculator.services.itConsulting.included",
-        []
-      ) as string[],
+      included: tArray(
+        "pricingSection.calculator.services.itConsulting.included"
+      ),
     },
   ];
 
@@ -362,13 +354,21 @@ export default function PricingSection() {
             {/* Pricing Plan Toggle */}
             <div className="flex justify-center items-center gap-4 mb-8">
               <button
-                className={`px-4 py-2 rounded-lg font-semibold ${!isAnnual ? "bg-blue-600 text-white" : "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"}`}
+                className={`px-4 py-2 rounded-lg font-semibold ${
+                  !isAnnual
+                    ? "bg-blue-600 text-white"
+                    : "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"
+                }`}
                 onClick={() => setIsAnnual(false)}
               >
                 {t("pricing.toggle.monthly")}
               </button>
               <button
-                className={`px-4 py-2 rounded-lg font-semibold ${isAnnual ? "bg-blue-600 text-white" : "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"}`}
+                className={`px-4 py-2 rounded-lg font-semibold ${
+                  isAnnual
+                    ? "bg-blue-600 text-white"
+                    : "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"
+                }`}
                 onClick={() => setIsAnnual(true)}
               >
                 {t("pricing.toggle.annual")}

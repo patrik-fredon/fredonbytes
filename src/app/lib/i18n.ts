@@ -60,6 +60,33 @@ export function t(key: string, locale: Locale = defaultLocale): string {
 }
 
 /**
+ * Translation function for array values
+ * @param key - Translation key (dot notation supported)
+ * @param locale - Target locale
+ * @returns Array of strings or empty array if not found
+ */
+export function tArray(key: string, locale: Locale = defaultLocale): string[] {
+  try {
+    const translation = getTranslations(locale);
+    const keys = key.split(".");
+
+    let result: unknown = translation;
+    for (const k of keys) {
+      if (result && typeof result === "object") {
+        result = (result as Record<string, unknown>)[k];
+      } else {
+        return []; // Early return if path is invalid
+      }
+    }
+
+    return Array.isArray(result) ? result.map(String) : [];
+  } catch (error) {
+    console.debug(`Array translation error for key "${key}":`, error);
+    return [];
+  }
+}
+
+/**
  * Enhanced message formatting with better performance
  */
 export function formatMessage(
