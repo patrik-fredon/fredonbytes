@@ -1344,298 +1344,298 @@
           ]
         },
         "governingLawAndDisputes": {
-          "title": "TODO: Translate \"10. Governing Law and Disputes\"",
+          "title": "10. Anwendbares Recht und Streitigkeiten",
           "content": [
-            "TODO: Translate \"These terms are governed by the laws of the Czech Republic. Any disputes arising from these terms or our services will be subject to the exclusive jurisdiction of the courts in Brno, Czech Republic.\"",
-            "TODO: Translate \"We encourage resolving disputes through direct communication before pursuing legal action.\""
+            "Diese Bedingungen unterliegen den Gesetzen der Tschechischen Republik. Alle Streitigkeiten, die aus diesen Bedingungen oder unseren Diensten entstehen, unterliegen der ausschließlichen Zuständigkeit der Gerichte in Brünn, Tschechische Republik.",
+            "Wir ermutigen zur Beilegung von Streitigkeiten durch direkte Kommunikation, bevor rechtliche Schritte eingeleitet werden."
           ]
         },
         "changesToTerms": {
-          "title": "TODO: Translate \"11. Changes to Terms\"",
+          "title": "11. Änderungen der Bedingungen",
           "content": [
-            "TODO: Translate \"We reserve the right to modify these terms at any time. Changes will be effective upon posting on our website. We will notify users of material changes via email or website notice.\"",
-            "TODO: Translate \"Your continued use of our services after changes constitutes acceptance of the modified terms.\""
+            "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen werden mit der Veröffentlichung auf unserer Website wirksam. Wir werden Nutzer über wesentliche Änderungen per E-Mail oder Website-Hinweis benachrichtigen.",
+            "Ihre fortgesetzte Nutzung unserer Dienste nach Änderungen stellt die Annahme der geänderten Bedingungen dar."
           ]
         },
         "termination": {
-          "title": "TODO: Translate \"12. Termination\"",
-          "intro": "TODO: Translate \"Either party may terminate the service relationship with appropriate notice as specified in the relevant service agreement. Upon termination:\"",
+          "title": "12. Beendigung",
+          "intro": "Jede Partei kann die Dienstleistungsbeziehung mit angemessener Kündigungsfrist beenden, wie in der entsprechenden Servicevereinbarung festgelegt. Bei Beendigung:",
           "consequences": [
-            "TODO: Translate \"All outstanding invoices become immediately due\"",
-            "TODO: Translate \"Access to our services and systems will be revoked\"",
-            "TODO: Translate \"Confidentiality obligations remain in effect\"",
-            "TODO: Translate \"Data return or destruction will be handled as agreed\""
+            "Werden alle ausstehenden Rechnungen sofort fällig",
+            "Wird der Zugang zu unseren Diensten und Systemen widerrufen",
+            "Bleiben Vertraulichkeitsverpflichtungen in Kraft",
+            "Wird die Rückgabe oder Vernichtung von Daten wie vereinbart gehandhabt"
           ]
         },
         "contactInformation": {
-          "title": "TODO: Translate \"13. Contact Information\"",
-          "intro": "TODO: Translate \"For questions about these Terms of Service, please contact us:\"",
-          "company": "TODO: Translate \"Fredonbytes\"",
-          "email": "TODO: Translate \"legal@fredonbytes.cloud\"",
-          "phone": "TODO: Translate \"+420 799 027 984\"",
-          "address": "TODO: Translate \"Brno, Czech Republic\""
+          "title": "13. Kontaktinformationen",
+          "intro": "Bei Fragen zu diesen Nutzungsbedingungen kontaktieren Sie uns bitte:",
+          "company": "Fredonbytes",
+          "email": "legal@fredonbytes.cloud",
+          "phone": "+420 799 027 984",
+          "address": "Brünn, Tschechische Republik"
         }
       },
       "legalNotice": {
-        "title": "TODO: Translate \"Legal Notice\"",
-        "description": "TODO: Translate \"These terms constitute a legally binding agreement. If you do not agree to these terms, please discontinue use of our website and services immediately.\""
+        "title": "Rechtlicher Hinweis",
+        "description": "Diese Bedingungen stellen eine rechtlich bindende Vereinbarung dar. Wenn Sie diesen Bedingungen nicht zustimmen, stellen Sie bitte die Nutzung unserer Website und Dienste sofort ein."
       }
     },
     "privacyPolicy": {
-      "title": "TODO: Translate \"Privacy Policy\"",
-      "subtitle": "TODO: Translate \"How we collect, use, and protect your information\"",
-      "lastUpdated": "TODO: Translate \"Last updated: January 6, 2025\"",
+      "title": "Datenschutzrichtlinie",
+      "subtitle": "Wie wir Ihre Informationen sammeln, verwenden und schützen",
+      "lastUpdated": "Zuletzt aktualisiert: 6. Januar 2025",
       "summary": {
-        "title": "TODO: Translate \"Summary\"",
-        "description": "TODO: Translate \"We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you visit our website or use our services.\""
+        "title": "Zusammenfassung",
+        "description": "Wir respektieren Ihre Privatsphäre und verpflichten uns zum Schutz Ihrer persönlichen Daten. Diese Datenschutzrichtlinie erklärt, wie wir Ihre Informationen sammeln, verwenden und schützen, wenn Sie unsere Website besuchen oder unsere Dienste nutzen."
       },
       "sections": {
         "informationWeCollect": {
-          "title": "TODO: Translate \"1. Information We Collect\"",
+          "title": "1. Informationen, die wir sammeln",
           "personalInformation": {
-            "title": "TODO: Translate \"Personal Information\"",
-            "intro": "TODO: Translate \"We may collect the following personal information when you contact us or use our services:\"",
+            "title": "Persönliche Informationen",
+            "intro": "Wir können die folgenden persönlichen Informationen sammeln, wenn Sie uns kontaktieren oder unsere Dienste nutzen:",
             "types": [
-              "TODO: Translate \"Name and contact information (email address, phone number)\"",
-              "TODO: Translate \"Company information and job title\"",
-              "TODO: Translate \"Project requirements and preferences\"",
-              "TODO: Translate \"Communication history and correspondence\""
+              "Name und Kontaktinformationen (E-Mail-Adresse, Telefonnummer)",
+              "Unternehmensinformationen und Stellenbezeichnung",
+              "Projektanforderungen und Präferenzen",
+              "Kommunikationsverlauf und Korrespondenz"
             ]
           },
           "technicalInformation": {
-            "title": "TODO: Translate \"Technical Information\"",
-            "intro": "TODO: Translate \"We automatically collect certain technical information when you visit our website:\"",
+            "title": "Technische Informationen",
+            "intro": "Wir sammeln automatisch bestimmte technische Informationen, wenn Sie unsere Website besuchen:",
             "types": [
-              "TODO: Translate \"IP address and browser type\"",
-              "TODO: Translate \"Device information and operating system\"",
-              "TODO: Translate \"Pages visited and time spent on our site\"",
-              "TODO: Translate \"Referral source and exit pages\""
+              "IP-Adresse und Browser-Typ",
+              "Geräteinformationen und Betriebssystem",
+              "Besuchte Seiten und Verweildauer auf unserer Website",
+              "Verweis-Quelle und Ausstiegsseiten"
             ]
           }
         },
         "howWeUseInformation": {
-          "title": "TODO: Translate \"2. How We Use Your Information\"",
-          "intro": "TODO: Translate \"We use your personal information for the following purposes:\"",
+          "title": "2. Wie wir Ihre Informationen verwenden",
+          "intro": "Wir verwenden Ihre persönlichen Informationen für die folgenden Zwecke:",
           "purposes": [
-            "TODO: Translate \"To respond to your inquiries and provide our services\"",
-            "TODO: Translate \"To communicate with you about your projects\"",
-            "TODO: Translate \"To improve our website and services\"",
-            "TODO: Translate \"To send you newsletters and updates (with your consent)\"",
-            "TODO: Translate \"To comply with legal obligations\""
+            "Um auf Ihre Anfragen zu antworten und unsere Dienste bereitzustellen",
+            "Um mit Ihnen über Ihre Projekte zu kommunizieren",
+            "Um unsere Website und Dienste zu verbessern",
+            "Um Ihnen Newsletter und Updates zu senden (mit Ihrer Zustimmung)",
+            "Um rechtlichen Verpflichtungen nachzukommen"
           ]
         },
         "cookiesAndTracking": {
-          "title": "TODO: Translate \"3. Cookies and Tracking Technologies\"",
-          "intro": "TODO: Translate \"We use cookies and similar technologies to enhance your browsing experience:\"",
+          "title": "3. Cookies und Tracking-Technologien",
+          "intro": "Wir verwenden Cookies und ähnliche Technologien, um Ihr Browser-Erlebnis zu verbessern:",
           "essentialCookies": {
-            "title": "TODO: Translate \"Essential Cookies\"",
-            "description": "TODO: Translate \"Required for basic website functionality and cannot be disabled.\""
+            "title": "Notwendige Cookies",
+            "description": "Erforderlich für grundlegende Website-Funktionalität und können nicht deaktiviert werden."
           },
           "analyticsCookies": {
-            "title": "TODO: Translate \"Analytics Cookies\"",
-            "description": "TODO: Translate \"Help us understand how visitors interact with our website to improve user experience.\""
+            "title": "Analyse-Cookies",
+            "description": "Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, um die Benutzererfahrung zu verbessern."
           },
           "marketingCookies": {
-            "title": "TODO: Translate \"Marketing Cookies\"",
-            "description": "TODO: Translate \"Used to deliver relevant advertisements and measure campaign effectiveness.\""
+            "title": "Marketing-Cookies",
+            "description": "Werden verwendet, um relevante Werbung zu liefern und die Kampagneneffektivität zu messen."
           }
         },
         "dataSharingAndDisclosure": {
-          "title": "TODO: Translate \"4. Data Sharing and Disclosure\"",
-          "intro": "TODO: Translate \"We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:\"",
+          "title": "4. Datenweitergabe und -offenlegung",
+          "intro": "Wir verkaufen, tauschen oder vermieten Ihre persönlichen Informationen nicht an Dritte. Wir können Ihre Informationen unter folgenden Umständen weitergeben:",
           "circumstances": [
-            "TODO: Translate \"With trusted service providers who assist in delivering our services\"",
-            "TODO: Translate \"When required by law or to protect our legal rights\"",
-            "TODO: Translate \"In connection with a business transfer or acquisition\"",
-            "TODO: Translate \"With your explicit consent\""
+            "An vertrauenswürdige Dienstleister, die uns bei der Bereitstellung unserer Services unterstützen",
+            "Wenn gesetzlich vorgeschrieben oder zum Schutz unserer Rechte erforderlich",
+            "Im Zusammenhang mit einer Geschäftsübertragung oder -übernahme",
+            "Mit Ihrer ausdrücklichen Zustimmung"
           ]
         },
         "dataSecurity": {
-          "title": "TODO: Translate \"5. Data Security\"",
-          "intro": "TODO: Translate \"We implement appropriate technical and organizational measures to protect your personal data:\"",
+          "title": "5. Datensicherheit",
+          "intro": "Wir implementieren angemessene technische und organisatorische Maßnahmen zum Schutz Ihrer personenbezogenen Daten:",
           "measures": [
-            "TODO: Translate \"Encryption of data in transit and at rest\"",
-            "TODO: Translate \"Regular security assessments and updates\"",
-            "TODO: Translate \"Access controls and authentication measures\"",
-            "TODO: Translate \"Staff training on data protection practices\""
+            "Verschlüsselung von Daten bei der Übertragung und im Ruhezustand",
+            "Regelmäßige Sicherheitsbewertungen und Updates",
+            "Zugangskontrollen und Authentifizierungsmaßnahmen",
+            "Schulungen der Mitarbeiter zu Datenschutzpraktiken"
           ]
         },
         "yourRights": {
-          "title": "TODO: Translate \"6. Your Rights\"",
-          "intro": "TODO: Translate \"Under applicable data protection laws, you have the following rights:\"",
+          "title": "6. Ihre Rechte",
+          "intro": "Nach geltendem Datenschutzrecht haben Sie folgende Rechte:",
           "rights": [
-            "TODO: Translate \"Access: Request copies of your personal data\"",
-            "TODO: Translate \"Rectification: Request correction of inaccurate data\"",
-            "TODO: Translate \"Erasure: Request deletion of your personal data\"",
-            "TODO: Translate \"Portability: Request transfer of your data\"",
-            "TODO: Translate \"Objection: Object to processing of your data\"",
-            "TODO: Translate \"Restriction: Request restriction of processing\""
+            "Zugang: Kopien Ihrer personenbezogenen Daten anfordern",
+            "Berichtigung: Korrektur ungenauer Daten anfordern",
+            "Löschung: Löschung Ihrer personenbezogenen Daten anfordern",
+            "Übertragbarkeit: Übertragung Ihrer Daten anfordern",
+            "Widerspruch: Widerspruch gegen die Verarbeitung Ihrer Daten",
+            "Einschränkung: Einschränkung der Verarbeitung anfordern"
           ]
         },
         "dataRetention": {
-          "title": "TODO: Translate \"7. Data Retention\"",
-          "description": "TODO: Translate \"We retain your personal data only as long as necessary for the purposes outlined in this policy or as required by law. Generally, we retain client information for 7 years after the completion of services for business and legal purposes.\""
+          "title": "7. Datenspeicherung",
+          "description": "Wir bewahren Ihre personenbezogenen Daten nur so lange auf, wie es für die in dieser Richtlinie beschriebenen Zwecke erforderlich ist oder wie gesetzlich vorgeschrieben. Im Allgemeinen bewahren wir Kundeninformationen 7 Jahre nach Abschluss der Services zu geschäftlichen und rechtlichen Zwecken auf."
         },
         "internationalTransfers": {
-          "title": "TODO: Translate \"8. International Transfers\"",
-          "description": "TODO: Translate \"As we are based in the Czech Republic (EU), your data is processed within the European Economic Area. Any transfers outside the EEA will be subject to appropriate safeguards and legal protections.\""
+          "title": "8. Internationale Übertragungen",
+          "description": "Da wir in der Tschechischen Republik (EU) ansässig sind, werden Ihre Daten innerhalb des Europäischen Wirtschaftsraums verarbeitet. Übertragungen außerhalb des EWR unterliegen angemessenen Schutzmaßnahmen und rechtlichem Schutz."
         },
         "updatesToPolicy": {
-          "title": "TODO: Translate \"9. Updates to This Policy\"",
-          "description": "TODO: Translate \"We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on our website and updating the \"Last updated\" date. Your continued use of our services after such changes constitutes acceptance of the updated policy.\""
+          "title": "9. Aktualisierungen dieser Richtlinie",
+          "description": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über wesentliche Änderungen informieren, indem wir die neue Richtlinie auf unserer Website veröffentlichen und das Datum \"Zuletzt aktualisiert\" aktualisieren. Ihre fortgesetzte Nutzung unserer Services nach solchen Änderungen stellt eine Akzeptanz der aktualisierten Richtlinie dar."
         },
         "contactUs": {
-          "title": "TODO: Translate \"10. Contact Us\"",
-          "intro": "TODO: Translate \"If you have any questions about this privacy policy or wish to exercise your rights, please contact us:\"",
-          "company": "TODO: Translate \"Fredonbytes\"",
-          "email": "TODO: Translate \"privacy@fredonbytes.cloud\"",
-          "phone": "TODO: Translate \"+420 799 027 984\"",
-          "address": "TODO: Translate \"Brno, Czech Republic\""
+          "title": "10. Kontaktieren Sie uns",
+          "intro": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben oder Ihre Rechte ausüben möchten, kontaktieren Sie uns bitte:",
+          "company": "Fredonbytes",
+          "email": "privacy@fredonbytes.cloud",
+          "phone": "+420 799 027 984",
+          "address": "Brünn, Tschechische Republik"
         }
       },
       "questions": {
-        "title": "TODO: Translate \"Questions?\"",
-        "description": "TODO: Translate \"We're committed to transparency and protecting your privacy. If you have any questions or concerns about how we handle your data, don't hesitate to reach out to us.\""
+        "title": "Fragen?",
+        "description": "Wir sind der Transparenz und dem Schutz Ihrer Privatsphäre verpflichtet. Wenn Sie Fragen oder Bedenken darüber haben, wie wir mit Ihren Daten umgehen, zögern Sie nicht, uns zu kontaktieren."
       }
     },
     "cookiePolicy": {
-      "title": "TODO: Translate \"Cookie Policy\"",
-      "subtitle": "TODO: Translate \"How we use cookies and similar technologies\"",
-      "lastUpdated": "TODO: Translate \"Last updated: January 6, 2025\"",
+      "title": "Cookie-Richtlinie",
+      "subtitle": "Wie wir Cookies und ähnliche Technologien verwenden",
+      "lastUpdated": "Zuletzt aktualisiert: 6. Januar 2025",
       "overview": {
-        "title": "TODO: Translate \"Cookie Overview\"",
-        "description": "TODO: Translate \"This policy explains how Fredonbytes uses cookies and similar technologies when you visit our website, and your choices regarding these technologies.\""
+        "title": "Cookie-Übersicht",
+        "description": "Diese Richtlinie erklärt, wie Fredonbytes Cookies und ähnliche Technologien verwendet, wenn Sie unsere Website besuchen, und Ihre Wahlmöglichkeiten bezüglich dieser Technologien."
       },
       "sections": {
         "whatAreCookies": {
-          "title": "TODO: Translate \"1. What Are Cookies?\"",
+          "title": "1. Was sind Cookies?",
           "content": [
-            "TODO: Translate \"Cookies are small text files that are stored on your device when you visit a website. They help websites remember information about your visit, which can make it easier to visit the site again and make the site more useful to you.\"",
-            "TODO: Translate \"We also use similar technologies such as web beacons, pixels, and local storage, which we collectively refer to as \"cookies\" in this policy.\""
+            "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden, wenn Sie eine Website besuchen. Sie helfen Websites dabei, sich an Informationen über Ihren Besuch zu erinnern, was es einfacher machen kann, die Website erneut zu besuchen und sie für Sie nützlicher zu machen.",
+            "Wir verwenden auch ähnliche Technologien wie Web-Beacons, Pixel und lokale Speicherung, die wir in dieser Richtlinie kollektiv als \"Cookies\" bezeichnen."
           ]
         },
         "typesOfCookies": {
-          "title": "TODO: Translate \"2. Types of Cookies We Use\"",
+          "title": "2. Arten von Cookies, die wir verwenden",
           "essential": {
-            "title": "TODO: Translate \"🔧 Essential Cookies\"",
-            "purpose": "TODO: Translate \"Required for basic website functionality\"",
-            "canBeDisabled": "TODO: Translate \"No - these are necessary for the site to work\"",
-            "description": "TODO: Translate \"These cookies enable core functionality such as page navigation, access to secure areas, and remembering your cookie preferences.\""
+            "title": "🔧 Wesentliche Cookies",
+            "purpose": "Erforderlich für grundlegende Website-Funktionalität",
+            "canBeDisabled": "Nein - diese sind notwendig für das Funktionieren der Website",
+            "description": "Diese Cookies ermöglichen Kernfunktionen wie Seitennavigation, Zugang zu sicheren Bereichen und das Merken Ihrer Cookie-Einstellungen."
           },
           "analytics": {
-            "title": "TODO: Translate \"📊 Analytics Cookies\"",
-            "purpose": "TODO: Translate \"Help us understand website usage\"",
-            "canBeDisabled": "TODO: Translate \"Yes - through our cookie banner\"",
-            "description": "TODO: Translate \"These cookies collect information about how visitors use our website, such as which pages are visited most often.\""
+            "title": "📊 Analyse-Cookies",
+            "purpose": "Helfen uns, die Website-Nutzung zu verstehen",
+            "canBeDisabled": "Ja - über unser Cookie-Banner",
+            "description": "Diese Cookies sammeln Informationen darüber, wie Besucher unsere Website nutzen, z.B. welche Seiten am häufigsten besucht werden."
           },
           "marketing": {
-            "title": "TODO: Translate \"🎯 Marketing Cookies\"",
-            "purpose": "TODO: Translate \"Deliver relevant advertisements\"",
-            "canBeDisabled": "TODO: Translate \"Yes - through our cookie banner\"",
-            "description": "TODO: Translate \"These cookies track your browsing habits to show you relevant ads and measure advertising effectiveness.\""
+            "title": "🎯 Marketing-Cookies",
+            "purpose": "Relevante Werbung bereitstellen",
+            "canBeDisabled": "Ja - über unser Cookie-Banner",
+            "description": "Diese Cookies verfolgen Ihre Surfgewohnheiten, um Ihnen relevante Anzeigen zu zeigen und die Werbeeffektivität zu messen."
           },
           "preference": {
-            "title": "TODO: Translate \"⚙️ Preference Cookies\"",
-            "purpose": "TODO: Translate \"Remember your settings and preferences\"",
-            "canBeDisabled": "TODO: Translate \"Yes - through our cookie banner\"",
-            "description": "TODO: Translate \"These cookies remember your preferences such as language, region, or theme settings for a personalized experience.\""
+            "title": "⚙️ Präferenz-Cookies",
+            "purpose": "Ihre Einstellungen und Präferenzen speichern",
+            "canBeDisabled": "Ja - über unser Cookie-Banner",
+            "description": "Diese Cookies merken sich Ihre Präferenzen wie Sprache, Region oder Theme-Einstellungen für eine personalisierte Erfahrung."
           }
         },
         "specificCookies": {
-          "title": "TODO: Translate \"3. Specific Cookies We Use\"",
+          "title": "3. Spezifische Cookies, die wir verwenden",
           "table": {
             "headers": {
-              "cookieName": "TODO: Translate \"Cookie Name\"",
-              "purpose": "TODO: Translate \"Purpose\"",
-              "type": "TODO: Translate \"Type\"",
-              "duration": "TODO: Translate \"Duration\""
+              "cookieName": "Cookie-Name",
+              "purpose": "Zweck",
+              "type": "Typ",
+              "duration": "Dauer"
             },
             "rows": [
-              "TODO: Translate \"[object Object]\"",
-              "TODO: Translate \"[object Object]\"",
-              "TODO: Translate \"[object Object]\"",
-              "TODO: Translate \"[object Object]\"",
-              "TODO: Translate \"[object Object]\""
+              "cookie_consent - Speichert Ihre Cookie-Einstellungen - Wesentlich - 1 Jahr",
+              "_ga - Google Analytics Tracking - Analyse - 2 Jahre",
+              "_gid - Google Analytics Session-ID - Analyse - 24 Stunden",
+              "language_preference - Ihre Spracheinstellung - Präferenz - 1 Jahr",
+              "theme_preference - Ihre Theme-Einstellung - Präferenz - 1 Jahr"
             ]
           }
         },
         "thirdPartyCookies": {
-          "title": "TODO: Translate \"4. Third-Party Cookies\"",
-          "intro": "TODO: Translate \"Some cookies are placed by third-party services that appear on our pages. We use the following third-party services:\"",
+          "title": "4. Drittanbieter-Cookies",
+          "intro": "Einige Cookies werden von Drittanbieterdiensten platziert, die auf unseren Seiten erscheinen. Wir verwenden folgende Drittanbieterdienste:",
           "services": {
             "googleAnalytics": {
-              "name": "TODO: Translate \"Google Analytics\"",
-              "description": "TODO: Translate \"Helps us understand how visitors interact with our website by collecting and reporting information anonymously.\"",
-              "privacyPolicy": "TODO: Translate \"Google Privacy Policy\""
+              "name": "Google Analytics",
+              "description": "Hilft uns zu verstehen, wie Besucher mit unserer Website interagieren, indem Informationen anonym gesammelt und berichtet werden.",
+              "privacyPolicy": "Google-Datenschutzrichtlinie"
             },
             "googleFonts": {
-              "name": "TODO: Translate \"Google Fonts\"",
-              "description": "TODO: Translate \"Provides web fonts to enhance the visual design of our website.\"",
-              "privacyPolicy": "TODO: Translate \"Google Privacy Policy\""
+              "name": "Google Fonts",
+              "description": "Stellt Webschriften zur Verfügung, um das visuelle Design unserer Website zu verbessern.",
+              "privacyPolicy": "Google-Datenschutzrichtlinie"
             },
             "socialMedia": {
-              "name": "TODO: Translate \"Social Media Platforms\"",
-              "description": "TODO: Translate \"When you interact with social media buttons or embedded content, those platforms may set their own cookies.\"",
-              "note": "TODO: Translate \"Please refer to the respective privacy policies of each platform.\""
+              "name": "Social Media Plattformen",
+              "description": "Wenn Sie mit Social Media Buttons oder eingebetteten Inhalten interagieren, können diese Plattformen ihre eigenen Cookies setzen.",
+              "note": "Bitte beachten Sie die jeweiligen Datenschutzrichtlinien der einzelnen Plattformen."
             }
           }
         },
         "howToControlCookies": {
-          "title": "TODO: Translate \"5. How to Control Cookies\"",
+          "title": "5. Cookie-Kontrolle",
           "cookieBanner": {
-            "title": "TODO: Translate \"Our Cookie Banner\"",
-            "intro": "TODO: Translate \"When you first visit our website, you'll see a cookie banner that allows you to:\"",
+            "title": "Unser Cookie-Banner",
+            "intro": "Beim ersten Besuch unserer Website sehen Sie ein Cookie-Banner, das Ihnen folgende Optionen bietet:",
             "options": [
-              "TODO: Translate \"Accept all cookies\"",
-              "TODO: Translate \"Accept only necessary cookies\"",
-              "TODO: Translate \"Customize your cookie preferences\"",
-              "TODO: Translate \"Learn more about each type of cookie\""
+              "Alle Cookies akzeptieren",
+              "Nur notwendige Cookies akzeptieren",
+              "Ihre Cookie-Einstellungen anpassen",
+              "Mehr über jeden Cookie-Typ erfahren"
             ]
           },
           "browserSettings": {
-            "title": "TODO: Translate \"Browser Settings\"",
-            "intro": "TODO: Translate \"You can also control cookies through your browser settings:\"",
+            "title": "Browser-Einstellungen",
+            "intro": "Sie können Cookies auch über Ihre Browser-Einstellungen kontrollieren:",
             "browsers": [
-              "TODO: Translate \"Chrome: Settings → Privacy and security → Cookies and other site data\"",
-              "TODO: Translate \"Firefox: Settings → Privacy & Security → Cookies and Site Data\"",
-              "TODO: Translate \"Safari: Preferences → Privacy → Manage Website Data\"",
-              "TODO: Translate \"Edge: Settings → Cookies and site permissions → Cookies and site data\""
+              "Chrome: Einstellungen → Datenschutz und Sicherheit → Cookies und andere Website-Daten",
+              "Firefox: Einstellungen → Datenschutz & Sicherheit → Cookies und Website-Daten",
+              "Safari: Einstellungen → Datenschutz → Website-Daten verwalten",
+              "Edge: Einstellungen → Cookies und Website-Berechtigungen → Cookies und Website-Daten"
             ]
           },
           "optOutLinks": {
-            "title": "TODO: Translate \"Opt-Out Links\"",
-            "googleAnalytics": "TODO: Translate \"Google Analytics Opt-out Browser Add-on\"",
-            "facebook": "TODO: Translate \"Facebook Ad Preferences\"",
-            "generalAdvertising": "TODO: Translate \"Your Online Choices\""
+            "title": "Opt-Out Links",
+            "googleAnalytics": "Google Analytics Opt-out Browser Add-on",
+            "facebook": "Facebook-Anzeigeneinstellungen",
+            "generalAdvertising": "Ihre Online-Wahlmöglichkeiten"
           }
         },
         "impactOfDisabling": {
-          "title": "TODO: Translate \"6. Impact of Disabling Cookies\"",
-          "intro": "TODO: Translate \"If you choose to disable certain cookies, some features of our website may not function properly:\"",
+          "title": "6. Auswirkungen der Cookie-Deaktivierung",
+          "intro": "Wenn Sie bestimmte Cookies deaktivieren, funktionieren einige Features unserer Website möglicherweise nicht ordnungsgemäß:",
           "impacts": [
-            "TODO: Translate \"You may need to re-enter information on each visit\"",
-            "TODO: Translate \"Some personalized features may not be available\"",
-            "TODO: Translate \"You may see less relevant advertisements\"",
-            "TODO: Translate \"Website analytics may be incomplete\""
+            "Sie müssen möglicherweise Informationen bei jedem Besuch erneut eingeben",
+            "Einige personalisierte Features sind möglicherweise nicht verfügbar",
+            "Sie sehen möglicherweise weniger relevante Werbung",
+            "Website-Analysen können unvollständig sein"
           ]
         },
         "updatesToPolicy": {
-          "title": "TODO: Translate \"7. Updates to This Policy\"",
-          "description": "TODO: Translate \"We may update this Cookie Policy from time to time to reflect changes in our practices or for legal, regulatory, or operational reasons. We will notify you of any material changes by posting the updated policy on our website and updating the \"Last updated\" date.\""
+          "title": "7. Aktualisierungen dieser Richtlinie",
+          "description": "Wir können diese Cookie-Richtlinie von Zeit zu Zeit aktualisieren, um Änderungen in unseren Praktiken oder aus rechtlichen, regulatorischen oder betrieblichen Gründen zu reflektieren. Wir werden Sie über wesentliche Änderungen informieren, indem wir die aktualisierte Richtlinie auf unserer Website veröffentlichen und das Datum \"Zuletzt aktualisiert\" aktualisieren."
         },
         "contactUs": {
-          "title": "TODO: Translate \"8. Contact Us\"",
-          "intro": "TODO: Translate \"If you have any questions about our use of cookies, please contact us:\"",
-          "company": "TODO: Translate \"Fredonbytes\"",
-          "email": "TODO: Translate \"privacy@fredonbytes.cloud\"",
-          "phone": "TODO: Translate \"+420 799 027 984\"",
-          "address": "TODO: Translate \"Brno, Czech Republic\""
+          "title": "8. Kontaktieren Sie uns",
+          "intro": "Wenn Sie Fragen zur Verwendung von Cookies haben, kontaktieren Sie uns bitte:",
+          "company": "Fredonbytes",
+          "email": "privacy@fredonbytes.cloud",
+          "phone": "+420 799 027 984",
+          "address": "Brünn, Tschechische Republik"
         }
       },
       "changePreferences": {
-        "title": "TODO: Translate \"🍪 Need to Change Your Cookie Preferences?\"",
-        "description": "TODO: Translate \"You can update your cookie preferences at any time by clicking the cookie settings button in the bottom corner of any page on our website.\"",
-        "button": "TODO: Translate \"Manage Cookie Preferences\""
+        "title": "🍪 Möchten Sie Ihre Cookie-Einstellungen ändern?",
+        "description": "Sie können Ihre Cookie-Einstellungen jederzeit aktualisieren, indem Sie auf die Schaltfläche für Cookie-Einstellungen in der unteren Ecke jeder Seite unserer Website klicken.",
+        "button": "Cookie-Einstellungen verwalten"
       }
     },
     "pricingSection": {
