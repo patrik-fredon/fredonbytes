@@ -113,7 +113,7 @@
   },
   "about": {
     "title": "Über {company}",
-    "subtitle": "Gegründet im Jahr {year}, eliminieren wir die Notwendigkeit mehrerer Anbieter, indem wir Ihre  digitale All-in-One-Armee werden und nahtlose, wirkungsvolle Ergebnisse unter einem Dach gewährleisten.",
+    "subtitle": "Gegründet im Jahr {year}, eliminieren wir die Notwendigkeit mehrerer Anbieter, indem wir Ihre {highlight}digitale All-in-One-Armee{/highlight} werden und nahtlose, wirkungsvolle Ergebnisse unter einem Dach gewährleisten.",
     "highlight": " digitale All-in-One-Armee",
     "mission": {
       "title": "Unsere Mission",
@@ -1159,11 +1159,7 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monatliche SEO und digitale Marketing-Dienste",
-            "included": [
-              "Keyword-Recherche",
-              "Content-Strategie",
-              "Analytik"
-            ]
+            "included": ["Keyword-Recherche", "Content-Strategie", "Analytik"]
           },
           "socialMedia": {
             "name": "Social Media",
@@ -1197,154 +1193,154 @@
   },
   "cookies": {
     "banner": {
-      "title": "TODO: Translate \"We use cookies\"",
-      "description": "TODO: Translate \"We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies.\"",
-      "learnMore": "TODO: Translate \"Learn more\"",
-      "acceptAll": "TODO: Translate \"Accept All\"",
-      "necessaryOnly": "TODO: Translate \"Necessary Only\"",
-      "customize": "TODO: Translate \"Customize\"",
-      "savePreferences": "TODO: Translate \"Save Preferences\""
+      "title": "Wir verwenden Cookies",
+      "description": "Wir verwenden Cookies, um Ihr Browser-Erlebnis zu verbessern, personalisierte Inhalte bereitzustellen und unseren Traffic zu analysieren. Durch Klicken auf \"Alle akzeptieren\" stimmen Sie der Verwendung von Cookies zu.",
+      "learnMore": "Mehr erfahren",
+      "acceptAll": "Alle akzeptieren",
+      "necessaryOnly": "Nur notwendige",
+      "customize": "Anpassen",
+      "savePreferences": "Einstellungen speichern"
     },
     "preferences": {
-      "title": "TODO: Translate \"Cookie Preferences\"",
+      "title": "Cookie-Einstellungen",
       "necessary": {
-        "title": "TODO: Translate \"Necessary Cookies\"",
-        "description": "TODO: Translate \"Required for the website to function properly. Cannot be disabled.\""
+        "title": "Notwendige Cookies",
+        "description": "Erforderlich für das ordnungsgemäße Funktionieren der Website. Können nicht deaktiviert werden."
       },
       "analytics": {
-        "title": "TODO: Translate \"Analytics Cookies\"",
-        "description": "TODO: Translate \"Help us understand how visitors interact with our website.\""
+        "title": "Analyse-Cookies",
+        "description": "Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren."
       },
       "marketing": {
-        "title": "TODO: Translate \"Marketing Cookies\"",
-        "description": "TODO: Translate \"Used to deliver relevant advertisements and measure their effectiveness.\""
+        "title": "Marketing-Cookies",
+        "description": "Werden verwendet, um relevante Werbung zu liefern und deren Effektivität zu messen."
       },
       "preferences": {
-        "title": "TODO: Translate \"Preference Cookies\"",
-        "description": "TODO: Translate \"Remember your preferences and settings for a better experience.\""
+        "title": "Präferenz-Cookies",
+        "description": "Merken sich Ihre Einstellungen für ein besseres Erlebnis."
       }
     },
     "termsOfService": {
-      "title": "TODO: Translate \"Terms of Service\"",
-      "subtitle": "TODO: Translate \"Legal terms governing the use of our services\"",
-      "lastUpdated": "TODO: Translate \"Last updated: January 6, 2025\"",
+      "title": "Nutzungsbedingungen",
+      "subtitle": "Rechtliche Bedingungen für die Nutzung unserer Dienste",
+      "lastUpdated": "Zuletzt aktualisiert: 6. Januar 2025",
       "agreementOverview": {
-        "title": "TODO: Translate \"Agreement Overview\"",
-        "description": "TODO: Translate \"By accessing our website or using our services, you agree to be bound by these terms. Please read them carefully before proceeding.\""
+        "title": "Vereinbarungsübersicht",
+        "description": "Durch den Zugriff auf unsere Website oder die Nutzung unserer Dienste erklären Sie sich mit diesen Bedingungen einverstanden. Bitte lesen Sie sie sorgfältig durch, bevor Sie fortfahren."
       },
       "sections": {
         "acceptanceOfTerms": {
-          "title": "TODO: Translate \"1. Acceptance of Terms\"",
+          "title": "1. Annahme der Bedingungen",
           "content": [
-            "TODO: Translate \"By accessing or using the Fredonbytes website and services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, please do not use our services.\"",
-            "TODO: Translate \"These terms apply to all visitors, users, and others who access or use our services.\""
+            "Durch den Zugriff auf oder die Nutzung der Fredonbytes-Website und -Dienste bestätigen Sie, dass Sie diese Nutzungsbedingungen und unsere Datenschutzrichtlinie gelesen, verstanden haben und sich damit einverstanden erklären. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie bitte unsere Dienste nicht.",
+            "Diese Bedingungen gelten für alle Besucher, Nutzer und andere, die auf unsere Dienste zugreifen oder sie nutzen."
           ]
         },
         "servicesDescription": {
-          "title": "TODO: Translate \"2. Services Description\"",
-          "intro": "TODO: Translate \"Fredonbytes provides comprehensive IT solutions including:\"",
+          "title": "2. Dienstleistungsbeschreibung",
+          "intro": "Fredonbytes bietet umfassende IT-Lösungen einschließlich:",
           "services": [
-            "TODO: Translate \"Software development and web applications\"",
-            "TODO: Translate \"Graphic design and brand identity services\"",
-            "TODO: Translate \"SEO and digital marketing solutions\"",
-            "TODO: Translate \"Social media management\"",
-            "TODO: Translate \"IT consulting and cybersecurity services\"",
-            "TODO: Translate \"Related technical support and maintenance\""
+            "Software-Entwicklung und Webanwendungen",
+            "Grafikdesign und Corporate Identity Services",
+            "SEO und digitale Marketing-Lösungen",
+            "Social Media Management",
+            "IT-Beratung und Cybersecurity-Dienste",
+            "Verwandte technische Unterstützung und Wartung"
           ]
         },
         "userResponsibilities": {
-          "title": "TODO: Translate \"3. User Responsibilities\"",
-          "intro": "TODO: Translate \"When using our services, you agree to:\"",
+          "title": "3. Nutzerverantwortung",
+          "intro": "Bei der Nutzung unserer Dienste verpflichten Sie sich zu:",
           "responsibilities": [
-            "TODO: Translate \"Provide accurate and truthful information\"",
-            "TODO: Translate \"Use our services for lawful purposes only\"",
-            "TODO: Translate \"Respect intellectual property rights\"",
-            "TODO: Translate \"Not engage in harmful or disruptive activities\"",
-            "TODO: Translate \"Maintain the confidentiality of any login credentials\""
+            "Genaue und wahrheitsgemäße Informationen bereitzustellen",
+            "Unsere Dienste nur für rechtmäßige Zwecke zu nutzen",
+            "Geistige Eigentumsrechte zu respektieren",
+            "Sich nicht an schädlichen oder störenden Aktivitäten zu beteiligen",
+            "Die Vertraulichkeit von Anmeldedaten zu wahren"
           ],
           "prohibitedUses": {
-            "title": "TODO: Translate \"Prohibited Uses\"",
-            "intro": "TODO: Translate \"You may not use our services to:\"",
+            "title": "Verbotene Nutzung",
+            "intro": "Sie dürfen unsere Dienste nicht verwenden, um:",
             "prohibitions": [
-              "TODO: Translate \"Violate any applicable laws or regulations\"",
-              "TODO: Translate \"Infringe upon the rights of others\"",
-              "TODO: Translate \"Distribute malware or harmful code\"",
-              "TODO: Translate \"Engage in unauthorized data collection\"",
-              "TODO: Translate \"Attempt to gain unauthorized access to our systems\""
+              "Geltende Gesetze oder Vorschriften zu verletzen",
+              "Die Rechte anderer zu verletzen",
+              "Malware oder schädlichen Code zu verbreiten",
+              "Unbefugte Datensammlung zu betreiben",
+              "Versuche unbefugten Zugriffs auf unsere Systeme"
             ]
           }
         },
         "serviceAgreements": {
-          "title": "TODO: Translate \"4. Service Agreements and Contracts\"",
-          "intro": "TODO: Translate \"Specific projects and services will be governed by separate written agreements that detail:\"",
+          "title": "4. Serviceverträge und Verträge",
+          "intro": "Spezifische Projekte und Dienste werden durch separate schriftliche Vereinbarungen geregelt, die folgende Details enthalten:",
           "details": [
-            "TODO: Translate \"Project scope and deliverables\"",
-            "TODO: Translate \"Timeline and milestones\"",
-            "TODO: Translate \"Payment terms and conditions\"",
-            "TODO: Translate \"Intellectual property ownership\"",
-            "TODO: Translate \"Confidentiality provisions\""
+            "Projektumfang und Liefergegenstand",
+            "Zeitplan und Meilensteine",
+            "Zahlungsbedingungen",
+            "Eigentumsrechte an geistigem Eigentum",
+            "Vertraulichkeitsbestimmungen"
           ],
-          "conflictResolution": "TODO: Translate \"In case of conflict between these Terms of Service and a specific service agreement, the service agreement shall prevail.\""
+          "conflictResolution": "Bei Konflikten zwischen diesen Nutzungsbedingungen und einer spezifischen Servicevereinbarung hat die Servicevereinbarung Vorrang."
         },
         "paymentTerms": {
-          "title": "TODO: Translate \"5. Payment Terms\"",
+          "title": "5. Zahlungsbedingungen",
           "pricingAndInvoicing": {
-            "title": "TODO: Translate \"Pricing and Invoicing\"",
+            "title": "Preise und Rechnungsstellung",
             "terms": [
-              "TODO: Translate \"All prices are quoted in USD or EUR as specified\"",
-              "TODO: Translate \"Invoices are payable within 30 days of issue date\"",
-              "TODO: Translate \"Late payments may incur additional charges\"",
-              "TODO: Translate \"We reserve the right to suspend services for overdue accounts\""
+              "Alle Preise werden in USD oder EUR wie angegeben angegeben",
+              "Rechnungen sind innerhalb von 30 Tagen nach Rechnungsdatum zu zahlen",
+              "Verspätete Zahlungen können zusätzliche Gebühren nach sich ziehen",
+              "Wir behalten uns das Recht vor, Dienste bei überfälligen Konten auszusetzen"
             ]
           },
           "refundsAndCancellations": {
-            "title": "TODO: Translate \"Refunds and Cancellations\"",
+            "title": "Rückerstattungen und Stornierungen",
             "terms": [
-              "TODO: Translate \"Refund policies are specified in individual service agreements\"",
-              "TODO: Translate \"Work completed prior to cancellation is non-refundable\"",
-              "TODO: Translate \"Cancellation requests must be submitted in writing\"",
-              "TODO: Translate \"Custom development work may have different cancellation terms\""
+              "Rückerstattungsrichtlinien werden in individuellen Servicevereinbarungen festgelegt",
+              "Vor Stornierung abgeschlossene Arbeiten sind nicht erstattungsfähig",
+              "Stornierungsanträge müssen schriftlich eingereicht werden",
+              "Kundenspezifische Entwicklungsarbeiten können andere Stornierungsbedingungen haben"
             ]
           }
         },
         "intellectualProperty": {
-          "title": "TODO: Translate \"6. Intellectual Property\"",
+          "title": "6. Geistiges Eigentum",
           "ourProperty": {
-            "title": "TODO: Translate \"Our Intellectual Property\"",
-            "description": "TODO: Translate \"The Fredonbytes website, logo, content, and methodologies are protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our written permission.\""
+            "title": "Unser geistiges Eigentum",
+            "description": "Die Fredonbytes-Website, das Logo, die Inhalte und Methoden sind durch Urheberrecht und andere Gesetze zum Schutz geistigen Eigentums geschützt. Sie dürfen ohne unsere schriftliche Genehmigung nicht reproduzieren, verteilen oder abgeleitete Werke erstellen."
           },
           "clientProperty": {
-            "title": "TODO: Translate \"Client Intellectual Property\"",
-            "description": "TODO: Translate \"Ownership of deliverables and intellectual property created for clients will be specified in the relevant service agreement. Generally, clients retain ownership of their content and branding materials, while custom development may involve shared or transferred ownership rights.\""
+            "title": "Geistiges Eigentum des Kunden",
+            "description": "Das Eigentum an Liefergegenständen und geistigem Eigentum, das für Kunden erstellt wird, wird in der entsprechenden Servicevereinbarung spezifiziert. Im Allgemeinen behalten Kunden das Eigentum an ihren Inhalten und Branding-Materialien, während bei kundenspezifischer Entwicklung gemeinsame oder übertragene Eigentumsrechte bestehen können."
           }
         },
         "confidentiality": {
-          "title": "TODO: Translate \"7. Confidentiality\"",
-          "intro": "TODO: Translate \"We understand the importance of protecting confidential information. We commit to:\"",
+          "title": "7. Vertraulichkeit",
+          "intro": "Wir verstehen die Wichtigkeit des Schutzes vertraulicher Informationen. Wir verpflichten uns zu:",
           "commitments": [
-            "TODO: Translate \"Maintaining strict confidentiality of client information\"",
-            "TODO: Translate \"Using client information only for authorized purposes\"",
-            "TODO: Translate \"Implementing appropriate security measures\"",
-            "TODO: Translate \"Not disclosing confidential information to third parties\"",
-            "TODO: Translate \"Returning or destroying confidential information upon request\""
+            "Strenge Vertraulichkeit von Kundeninformationen zu wahren",
+            "Kundeninformationen nur für autorisierte Zwecke zu verwenden",
+            "Angemessene Sicherheitsmaßnahmen zu implementieren",
+            "Vertrauliche Informationen nicht an Dritte weiterzugeben",
+            "Vertrauliche Informationen auf Anfrage zurückzugeben oder zu vernichten"
           ]
         },
         "disclaimersAndLimitations": {
-          "title": "TODO: Translate \"8. Disclaimers and Limitations\"",
+          "title": "8. Haftungsausschluss und Beschränkungen",
           "serviceAvailability": {
-            "title": "TODO: Translate \"Service Availability\"",
-            "description": "TODO: Translate \"While we strive for high availability, we cannot guarantee uninterrupted access to our website or services. We reserve the right to modify, suspend, or discontinue services with reasonable notice.\""
+            "title": "Dienstverfügbarkeit",
+            "description": "Obwohl wir uns um hohe Verfügbarkeit bemühen, können wir keinen ununterbrochenen Zugang zu unserer Website oder unseren Diensten garantieren. Wir behalten uns das Recht vor, Dienste mit angemessener Vorankündigung zu ändern, auszusetzen oder einzustellen."
           },
           "limitationOfLiability": {
-            "title": "TODO: Translate \"Limitation of Liability\"",
-            "description": "TODO: Translate \"Our liability is limited to the amount paid for the specific service giving rise to the claim. We are not liable for indirect, incidental, or consequential damages, including but not limited to loss of profits, data, or business opportunities.\""
+            "title": "Haftungsbeschränkung",
+            "description": "Unsere Haftung ist auf den für den spezifischen Dienst bezahlten Betrag beschränkt, der Anlass zur Klage gibt. Wir haften nicht für indirekte, zufällige oder Folgeschäden, einschließlich, aber nicht beschränkt auf Verlust von Gewinnen, Daten oder Geschäftsmöglichkeiten."
           }
         },
         "dataProtectionAndPrivacy": {
-          "title": "TODO: Translate \"9. Data Protection and Privacy\"",
+          "title": "9. Datenschutz und Privatsphäre",
           "content": [
-            "TODO: Translate \"We are committed to protecting your privacy and complying with applicable data protection laws, including GDPR. Our data practices are detailed in our Privacy Policy, which forms an integral part of these terms.\"",
-            "TODO: Translate \"By using our services, you consent to the collection, use, and processing of your data as described in our Privacy Policy.\""
+            "Wir verpflichten uns zum Schutz Ihrer Privatsphäre und zur Einhaltung geltender Datenschutzgesetze, einschließlich der DSGVO. Unsere Datenpraktiken sind in unserer Datenschutzrichtlinie detailliert beschrieben, die einen integralen Bestandteil dieser Bedingungen bildet.",
+            "Durch die Nutzung unserer Dienste stimmen Sie der Sammlung, Nutzung und Verarbeitung Ihrer Daten zu, wie in unserer Datenschutzrichtlinie beschrieben."
           ]
         },
         "governingLawAndDisputes": {
@@ -1644,74 +1640,70 @@
     },
     "pricingSection": {
       "calculator": {
-        "title": "TODO: Translate \"Custom Quote Calculator\"",
-        "description": "TODO: Translate \"Mix and match services to get a personalized quote for your project.\"",
-        "toggleButton": "TODO: Translate \"Open Price Calculator\"",
+        "title": "Individueller Kostenvoranschlag-Rechner",
+        "description": "Kombinieren Sie Dienstleistungen, um ein personalisiertes Angebot für Ihr Projekt zu erhalten.",
+        "toggleButton": "Preisrechner öffnen",
         "services": {
           "webDevelopment": {
-            "name": "TODO: Translate \"Web Development\"",
-            "description": "TODO: Translate \"Custom website or web application\"",
+            "name": "Webentwicklung",
+            "description": "Individuelle Website oder Webanwendung",
             "included": [
-              "TODO: Translate \"Responsive Design\"",
-              "TODO: Translate \"SEO Basic\"",
-              "TODO: Translate \"Contact Forms\""
+              "Responsive Design",
+              "SEO Grundlagen",
+              "Kontaktformulare"
             ]
           },
           "mobileApp": {
-            "name": "TODO: Translate \"Mobile App\"",
-            "description": "TODO: Translate \"iOS/Android mobile application\"",
+            "name": "Mobile App",
+            "description": "iOS/Android mobile Anwendung",
             "included": [
-              "TODO: Translate \"Cross-platform\"",
-              "TODO: Translate \"App Store Submission\"",
-              "TODO: Translate \"Basic Analytics\""
+              "Cross-Platform",
+              "App Store Einreichung",
+              "Grundlegende Analytik"
             ]
           },
           "brandDesign": {
-            "name": "TODO: Translate \"Brand & Design\"",
-            "description": "TODO: Translate \"Complete brand identity and design system\"",
+            "name": "Marke & Design",
+            "description": "Komplette Markenidentität und Design-System",
             "included": [
-              "TODO: Translate \"Logo Design\"",
-              "TODO: Translate \"Brand Guidelines\"",
-              "TODO: Translate \"Marketing Materials\""
+              "Logo Design",
+              "Marken-Richtlinien",
+              "Marketing-Materialien"
             ]
           },
           "seoMarketing": {
-            "name": "TODO: Translate \"SEO & Marketing\"",
-            "description": "TODO: Translate \"Monthly SEO and digital marketing services\"",
-            "included": [
-              "TODO: Translate \"Keyword Research\"",
-              "TODO: Translate \"Content Strategy\"",
-              "TODO: Translate \"Analytics\""
-            ]
+            "name": "SEO & Marketing",
+            "description": "Monatliche SEO und digitale Marketing-Dienste",
+            "included": ["Keyword-Recherche", "Content-Strategie", "Analytik"]
           },
           "socialMedia": {
-            "name": "TODO: Translate \"Social Media\"",
-            "description": "TODO: Translate \"Monthly social media management\"",
+            "name": "Social Media",
+            "description": "Monatliches Social Media Management",
             "included": [
-              "TODO: Translate \"Content Creation\"",
-              "TODO: Translate \"Posting Schedule\"",
-              "TODO: Translate \"Community Management\""
+              "Content-Erstellung",
+              "Posting-Zeitplan",
+              "Community Management"
             ]
           },
           "itConsulting": {
-            "name": "TODO: Translate \"IT Consulting\"",
-            "description": "TODO: Translate \"Hourly consulting and strategy sessions\"",
+            "name": "IT-Beratung",
+            "description": "Stündliche Beratung und Strategiesitzungen",
             "included": [
-              "TODO: Translate \"Strategic Planning\"",
-              "TODO: Translate \"Technical Guidance\"",
-              "TODO: Translate \"Security Review\""
+              "Strategische Planung",
+              "Technische Anleitung",
+              "Sicherheitsüberprüfung"
             ]
           }
         },
-        "estimatedTotal": "TODO: Translate \"Estimated Total\"",
-        "basedOnServices": "TODO: Translate \"Based on your selected services\"",
-        "getQuote": "TODO: Translate \"Get Quote\""
+        "estimatedTotal": "Geschätzte Gesamtsumme",
+        "basedOnServices": "Basierend auf Ihren ausgewählten Diensten",
+        "getQuote": "Angebot anfordern"
       },
-      "mostPopular": "TODO: Translate \"Most Popular\""
+      "mostPopular": "Am beliebtesten"
     },
     "aboutSection": {
-      "aboutFredonbytes": "TODO: Translate \"About Fredonbytes\"",
-      "foundedDescription": "TODO: Translate \"Founded in 2023, we eliminate the need for multiple vendors by becoming your one-stop digital army, ensuring seamless, high-impact results under one roof.\""
+      "aboutFredonbytes": "Über Fredonbytes",
+      "foundedDescription": "Gegründet 2023, eliminieren wir die Notwendigkeit mehrerer Anbieter, indem wir Ihre digitale All-in-One-Armee werden und nahtlose, wirkungsvolle Ergebnisse unter einem Dach gewährleisten."
     }
   }
 }

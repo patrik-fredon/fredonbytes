@@ -113,7 +113,7 @@
   },
   "about": {
     "title": "O {company}",
-    "subtitle": "Založeno v roce {year}, eliminujeme potřebu více dodavatelů tím, že se staneme vaší   digitální armádou, zajišťující bezproblémové a efektivní výsledky pod jednou střechou.",
+    "subtitle": "Založeno v roce {year}, eliminujeme potřebu více dodavatelů tím, že se staneme vaší {highlight}digitální armádou{/highlight}, zajišťující bezproblémové a efektivní výsledky pod jednou střechou.",
     "highlight": " digitální armádou",
     "mission": {
       "title": "Naše mise",
@@ -1168,11 +1168,7 @@
           "socialMedia": {
             "name": "Sociální média",
             "description": "Měsíční správa sociálních médií",
-            "included": [
-              "Tvorba obsahu",
-              "Plán publikování",
-              "Správa komunity"
-            ]
+            "included": ["Tvorba obsahu", "Plán publikování", "Správa komunity"]
           },
           "itConsulting": {
             "name": "IT poradenství",
@@ -1197,40 +1193,40 @@
   },
   "cookies": {
     "banner": {
-      "title": "TODO: Translate \"We use cookies\"",
-      "description": "TODO: Translate \"We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies.\"",
-      "learnMore": "TODO: Translate \"Learn more\"",
-      "acceptAll": "TODO: Translate \"Accept All\"",
-      "necessaryOnly": "TODO: Translate \"Necessary Only\"",
-      "customize": "TODO: Translate \"Customize\"",
-      "savePreferences": "TODO: Translate \"Save Preferences\""
+      "title": "Používáme cookies",
+      "description": "Používáme cookies k vylepšení vašeho prohlížení, poskytování personalizovaného obsahu a analýze návštěvnosti. Kliknutím na \"Přijmout vše\" souhlasíte s používáním cookies.",
+      "learnMore": "Zjistit více",
+      "acceptAll": "Přijmout vše",
+      "necessaryOnly": "Pouze nutné",
+      "customize": "Přizpůsobit",
+      "savePreferences": "Uložit předvolby"
     },
     "preferences": {
-      "title": "TODO: Translate \"Cookie Preferences\"",
+      "title": "Nastavení cookies",
       "necessary": {
-        "title": "TODO: Translate \"Necessary Cookies\"",
-        "description": "TODO: Translate \"Required for the website to function properly. Cannot be disabled.\""
+        "title": "Nutné cookies",
+        "description": "Vyžadované pro správné fungování webu. Nelze vypnout."
       },
       "analytics": {
-        "title": "TODO: Translate \"Analytics Cookies\"",
-        "description": "TODO: Translate \"Help us understand how visitors interact with our website.\""
+        "title": "Analytické cookies",
+        "description": "Pomáhají nám pochopit, jak návštěvníci interagují s našimi stránkami."
       },
       "marketing": {
-        "title": "TODO: Translate \"Marketing Cookies\"",
-        "description": "TODO: Translate \"Used to deliver relevant advertisements and measure their effectiveness.\""
+        "title": "Marketingové cookies",
+        "description": "Používané k poskytování relevantní reklamy a měření její účinnosti."
       },
       "preferences": {
-        "title": "TODO: Translate \"Preference Cookies\"",
-        "description": "TODO: Translate \"Remember your preferences and settings for a better experience.\""
+        "title": "Preferenční cookies",
+        "description": "Zapamatují si vaše nastavení pro lepší zážitek."
       }
     },
     "termsOfService": {
-      "title": "TODO: Translate \"Terms of Service\"",
-      "subtitle": "TODO: Translate \"Legal terms governing the use of our services\"",
-      "lastUpdated": "TODO: Translate \"Last updated: January 6, 2025\"",
+      "title": "Podmínky služby",
+      "subtitle": "Právní podmínky upravující používání našich služeb",
+      "lastUpdated": "Poslední aktualizace: 6. ledna 2025",
       "agreementOverview": {
-        "title": "TODO: Translate \"Agreement Overview\"",
-        "description": "TODO: Translate \"By accessing our website or using our services, you agree to be bound by these terms. Please read them carefully before proceeding.\""
+        "title": "Přehled smlouvy",
+        "description": "Přístupem na naše webové stránky nebo používáním našich služeb souhlasíte s těmito podmínkami. Před pokračováním si je prosím pečlivě přečtěte."
       },
       "sections": {
         "acceptanceOfTerms": {
@@ -1644,74 +1640,70 @@
     },
     "pricingSection": {
       "calculator": {
-        "title": "TODO: Translate \"Custom Quote Calculator\"",
-        "description": "TODO: Translate \"Mix and match services to get a personalized quote for your project.\"",
-        "toggleButton": "TODO: Translate \"Open Price Calculator\"",
+        "title": "Kalkulačka na míru",
+        "description": "Kombinujte služby pro získání personalizované nabídky pro váš projekt.",
+        "toggleButton": "Otevřít cenovou kalkulačku",
         "services": {
           "webDevelopment": {
-            "name": "TODO: Translate \"Web Development\"",
-            "description": "TODO: Translate \"Custom website or web application\"",
+            "name": "Vývoj webů",
+            "description": "Vlastní webová stránka nebo aplikace",
             "included": [
-              "TODO: Translate \"Responsive Design\"",
-              "TODO: Translate \"SEO Basic\"",
-              "TODO: Translate \"Contact Forms\""
+              "Responzivní design",
+              "SEO základy",
+              "Kontaktní formuláře"
             ]
           },
           "mobileApp": {
-            "name": "TODO: Translate \"Mobile App\"",
-            "description": "TODO: Translate \"iOS/Android mobile application\"",
+            "name": "Mobilní aplikace",
+            "description": "iOS/Android mobilní aplikace",
             "included": [
-              "TODO: Translate \"Cross-platform\"",
-              "TODO: Translate \"App Store Submission\"",
-              "TODO: Translate \"Basic Analytics\""
+              "Cross-platform",
+              "Odeslání do obchodu",
+              "Základní analytika"
             ]
           },
           "brandDesign": {
-            "name": "TODO: Translate \"Brand & Design\"",
-            "description": "TODO: Translate \"Complete brand identity and design system\"",
+            "name": "Značka & Design",
+            "description": "Kompletní identita značky a designový systém",
             "included": [
-              "TODO: Translate \"Logo Design\"",
-              "TODO: Translate \"Brand Guidelines\"",
-              "TODO: Translate \"Marketing Materials\""
+              "Design loga",
+              "Brandové směrnice",
+              "Marketingové materiály"
             ]
           },
           "seoMarketing": {
-            "name": "TODO: Translate \"SEO & Marketing\"",
-            "description": "TODO: Translate \"Monthly SEO and digital marketing services\"",
+            "name": "SEO & Marketing",
+            "description": "Měsíční SEO a digitální marketingové služby",
             "included": [
-              "TODO: Translate \"Keyword Research\"",
-              "TODO: Translate \"Content Strategy\"",
-              "TODO: Translate \"Analytics\""
+              "Výzkum klíčových slov",
+              "Obsahová strategie",
+              "Analytika"
             ]
           },
           "socialMedia": {
-            "name": "TODO: Translate \"Social Media\"",
-            "description": "TODO: Translate \"Monthly social media management\"",
-            "included": [
-              "TODO: Translate \"Content Creation\"",
-              "TODO: Translate \"Posting Schedule\"",
-              "TODO: Translate \"Community Management\""
-            ]
+            "name": "Sociální média",
+            "description": "Měsíční správa sociálních médií",
+            "included": ["Tvorba obsahu", "Plán publikování", "Správa komunity"]
           },
           "itConsulting": {
-            "name": "TODO: Translate \"IT Consulting\"",
-            "description": "TODO: Translate \"Hourly consulting and strategy sessions\"",
+            "name": "IT poradenství",
+            "description": "Hodinové poradenství a strategické schůzky",
             "included": [
-              "TODO: Translate \"Strategic Planning\"",
-              "TODO: Translate \"Technical Guidance\"",
-              "TODO: Translate \"Security Review\""
+              "Strategické plánování",
+              "Technické vedení",
+              "Bezpečnostní kontrola"
             ]
           }
         },
-        "estimatedTotal": "TODO: Translate \"Estimated Total\"",
-        "basedOnServices": "TODO: Translate \"Based on your selected services\"",
-        "getQuote": "TODO: Translate \"Get Quote\""
+        "estimatedTotal": "Odhadovaná celková cena",
+        "basedOnServices": "Na základě vybraných služeb",
+        "getQuote": "Získat nabídku"
       },
-      "mostPopular": "TODO: Translate \"Most Popular\""
+      "mostPopular": "Nejpopulárnější"
     },
     "aboutSection": {
-      "aboutFredonbytes": "TODO: Translate \"About Fredonbytes\"",
-      "foundedDescription": "TODO: Translate \"Founded in 2023, we eliminate the need for multiple vendors by becoming your one-stop digital army, ensuring seamless, high-impact results under one roof.\""
+      "aboutFredonbytes": "O Fredonbytes",
+      "foundedDescription": "Založeni v roce 2023, eliminujeme potřebu více dodavatelů tím, že se staneme vaší digitální armádou na jednom místě, zajišťující bezproblémové výsledky s vysokým dopadem pod jednou střechou."
     }
   }
 }

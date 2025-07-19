@@ -17,7 +17,11 @@
     "test:translations": "npm run translations:validate",
     "validate:locales": "node scripts/validate-json.js",
     "pre-commit": "npm run lint && npm run type-check && npm run translations:validate",
-    "pre-deploy": "npm run pre-commit && npm run build"
+    "pre-deploy": "npm run pre-commit && npm run build",
+    "build:analyze": "ANALYZE=true npm run build",
+    "clean": "rm -rf .next out",
+    "postbuild": "echo \"Build completed successfully\"",
+    "vercel-build": "npm run pre-deploy"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
