@@ -1,7 +1,8 @@
 'use client'
 
-import React from 'react'
 import { motion } from 'framer-motion'
+import React from 'react'
+
 import LinkCard from '../common/LinkCard'
 
 export default function LinkList() {

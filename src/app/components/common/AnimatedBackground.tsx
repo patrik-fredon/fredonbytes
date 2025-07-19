@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react'
 import { motion } from 'framer-motion'
 import { Code, Zap, Globe, Database, Server, Cpu, Terminal, Cloud, Smartphone, Monitor } from 'lucide-react'
+import React from 'react'
 
 export default function AnimatedBackground() {
   // Development-themed floating icons

@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ChevronDown, Globe } from "lucide-react";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+
+import { useTranslations } from "@/app/hooks/useTranslations";
+import { cn } from "@/app/lib/utils";
 
 import { Button } from "./Button";
-import { cn } from "@/app/lib/utils";
-import { useTranslations } from "@/app/hooks/useTranslations";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 interface HeaderProps {

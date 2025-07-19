@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { Button } from "../common/Button";
 import {
   Mail,
   Phone,
@@ -16,10 +15,13 @@ import {
   MessageSquare,
   Shield,
 } from "lucide-react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+
 import { useTranslations } from "@/app/hooks/useTranslations";
+
+import { Button } from "../common/Button";
 
 const contactSchema = z.object({
   // Step 1: Basic Info

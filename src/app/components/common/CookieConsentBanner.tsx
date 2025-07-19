@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Button } from "./Button";
 import { X, Cookie, Settings } from "lucide-react";
 import Link from "next/link";
+import React, { useState, useEffect } from "react";
+
 import { useTranslations } from "@/app/hooks/useTranslations";
+
+import { Button } from "./Button";
 
 interface CookieConsentBannerProps {
   className?: string;

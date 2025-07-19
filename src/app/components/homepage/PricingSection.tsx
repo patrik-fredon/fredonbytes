@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Button } from "../common/Button";
 import {
   Check,
   ArrowRight,
@@ -15,7 +13,11 @@ import {
   Plus,
   Minus,
 } from "lucide-react";
+import React, { useState, useEffect, useMemo } from "react";
+
 import { useTranslations } from "@/app/hooks/useTranslations";
+
+import { Button } from "../common/Button";
 
 interface ServiceOption {
   id: string;

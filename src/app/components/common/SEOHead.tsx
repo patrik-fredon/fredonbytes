@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useCallback } from "react";
+
 import { useTranslations } from "../../hooks/useTranslations";
 import { locales, type Locale } from "../../lib/i18n";
-import { useEffect } from "react";
 
 interface SEOHeadProps {
   title?: string;
@@ -86,7 +87,7 @@ export default function SEOHead({
   const ogLocale = getOgLocale(locale);
 
   // Generate organization structured data from translations
-  const generateOrganizationStructuredData = () => {
+  const generateOrganizationStructuredData = useCallback(() => {
     if (useCustomStructuredData && customStructuredData) {
       return customStructuredData;
     }
@@ -132,38 +133,54 @@ export default function SEOHead({
       },
     };
 
-    // Add article-specific data if provided
-    if (publishedTime || modifiedTime || articleSection || author) {
-      return {
-        ...baseStructuredData,
-        "@type": "Article",
-        headline: seoTitle,
-        description: seoDescription,
-        author: author
-          ? {
+    // Fix object shorthand issue
+    const articleStructuredData =
+      page === "article"
+        ? {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: title,
+            description,
+            author: {
               "@type": "Person",
-              name: author,
-            }
-          : undefined,
-        publisher: {
-          "@type": "Organization",
-          name: t("jsonLd.organizationName"),
-          logo: {
-            "@type": "ImageObject",
-            url: `${
-              typeof window !== "undefined" ? window.location.origin : ""
-            }${ogImage}`,
-          },
-        },
-        datePublished: publishedTime,
-        dateModified: modifiedTime || publishedTime,
-        articleSection: articleSection,
-        keywords: tags?.join(", ") || seoKeywords,
-      };
-    }
+              name: author || t("jsonLd.founder"),
+            },
+            publisher: {
+              "@type": "Organization",
+              name: t("jsonLd.organizationName"),
+              logo: {
+                "@type": "ImageObject",
+                url: `${
+                  typeof window !== "undefined" ? window.location.origin : ""
+                }${ogImage}`,
+              },
+            },
+            datePublished: publishedTime,
+            dateModified: modifiedTime,
+            articleSection,
+            keywords: tags?.join(", ") || keywords,
+          }
+        : null;
 
-    return baseStructuredData;
-  };
+    return [
+      baseStructuredData,
+      ...(articleStructuredData ? [articleStructuredData] : []),
+    ];
+  }, [
+    useCustomStructuredData,
+    customStructuredData,
+    t,
+    ogImage,
+    title,
+    description,
+    author,
+    publishedTime,
+    modifiedTime,
+    articleSection,
+    tags,
+    keywords,
+    page,
+  ]);
 
   // Update document metadata
   useEffect(() => {
@@ -251,17 +268,23 @@ export default function SEOHead({
     });
 
     // Set structured data
-    const structuredDataId = "structured-data-script";
-    let script = document.getElementById(structuredDataId) as HTMLScriptElement;
+    const structuredData = generateOrganizationStructuredData();
 
-    if (!script) {
-      script = document.createElement("script");
-      script.id = structuredDataId;
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
+    // Update structured data script
+    let structuredDataScript = document.getElementById(
+      "structured-data"
+    ) as HTMLScriptElement;
+    if (structuredDataScript) {
+      structuredDataScript.remove();
     }
 
-    script.textContent = JSON.stringify(generateOrganizationStructuredData());
+    structuredDataScript = document.createElement(
+      "script"
+    ) as HTMLScriptElement;
+    structuredDataScript.id = "structured-data";
+    structuredDataScript.type = "application/ld+json";
+    structuredDataScript.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(structuredDataScript);
   }, [
     fullTitle,
     seoDescription,
@@ -279,6 +302,14 @@ export default function SEOHead({
     locale,
     useCustomStructuredData,
     customStructuredData,
+    generateOrganizationStructuredData,
+    title,
+    description,
+    keywords,
+    publishedTime,
+    modifiedTime,
+    articleSection,
+    tags,
   ]);
 
   // This component doesn't render anything visible

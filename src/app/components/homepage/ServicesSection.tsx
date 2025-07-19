@@ -1,8 +1,6 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "../common/Button";
 import {
   Code,
   Palette,
@@ -15,7 +13,11 @@ import {
   Globe,
   Smartphone,
 } from "lucide-react";
+import React from "react";
+
 import { useTranslations } from "@/app/hooks/useTranslations";
+
+import { Button } from "../common/Button";
 
 export default function ServicesSection() {
   const { t } = useTranslations();

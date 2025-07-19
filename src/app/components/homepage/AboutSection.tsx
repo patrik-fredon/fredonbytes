@@ -1,16 +1,9 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  Code,
-  Users,
-  Award,
-  TrendingUp,
-  CheckCircle,
-  ArrowRight,
-} from "lucide-react";
+import { Users, Award, TrendingUp, CheckCircle } from "lucide-react";
+import Image from "next/image";
+import React from "react";
 
 import { useTranslations } from "@/app/hooks/useTranslations";
 

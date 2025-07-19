@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, ReactNode } from 'react';
+
 import { useLocale } from '../contexts/LocaleContext';
 
 interface ClientLayoutWrapperProps {

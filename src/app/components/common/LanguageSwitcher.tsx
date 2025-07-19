@@ -1,9 +1,10 @@
 "use client";
 
+import { Globe, Check, Loader2 } from "lucide-react";
 import React, { useState, useEffect } from "react";
+
 import { useLocale } from "../../contexts/LocaleContext";
 import { Locale } from "../../lib/i18n";
-import { Globe, Check, Loader2 } from "lucide-react";
 
 export default function LanguageSwitcher() {
   const {

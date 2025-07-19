@@ -1,11 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import { Button } from "../common/Button";
-import { ArrowRight, Code, Zap, Globe } from "lucide-react";
 import { motion } from "framer-motion";
+import { ArrowRight, Code, Zap, Globe } from "lucide-react";
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
+
 import { useTranslations } from "@/app/hooks/useTranslations";
+
+import { Button } from "../common/Button";
+
+
 
 export default function HeroSection() {
   const { t } = useTranslations();

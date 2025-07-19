@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Globe, Headphones, User, Library } from 'lucide-react'
+import React from 'react'
 
 interface LinkCardProps {
   title: string

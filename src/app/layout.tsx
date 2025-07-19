@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
-import Header from "./components/common/Header";
-import Footer from "./components/common/Footer";
-import CookieConsentBanner from "./components/common/CookieConsentBanner";
-import AnimatedBackground from "./components/common/AnimatedBackground";
-import { LocaleProvider } from "./contexts/LocaleContext";
 import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
+import AnimatedBackground from "./components/common/AnimatedBackground";
+import CookieConsentBanner from "./components/common/CookieConsentBanner";
+import Footer from "./components/common/Footer";
+import Header from "./components/common/Header";
+import { LocaleProvider } from "./contexts/LocaleContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

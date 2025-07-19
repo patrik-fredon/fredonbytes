@@ -37,8 +37,25 @@ const eslintConfig = [
       "object-shorthand": "error",
       "prefer-arrow-callback": "error",
 
-      // Import organization - temporarily disabled during migration
-      "import/order": "off", // TODO: Re-enable after fixing import order
+      // Import organization
+      "import/order": [
+        "error",
+        {
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+          ],
+          "newlines-between": "always",
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
+        },
+      ],
 
       // Accessibility (jsx-a11y)
       "jsx-a11y/anchor-is-valid": "error",

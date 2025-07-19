@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import ProfileHeader from '../components/linktree/ProfileHeader'
+
 import LinkList from '../components/linktree/LinkList'
+import ProfileHeader from '../components/linktree/ProfileHeader'
 
 export const metadata: Metadata = {
   title: 'Links - Fredonbytes',

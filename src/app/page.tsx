@@ -1,9 +1,9 @@
-import HeroSection from './components/homepage/HeroSection'
 import AboutSection from './components/homepage/AboutSection'
-import ServicesSection from './components/homepage/ServicesSection'
-import ProjectsSection from './components/homepage/ProjectsSection'
-import PricingSection from './components/homepage/PricingSection'
 import ContactSection from './components/homepage/ContactSection'
+import HeroSection from './components/homepage/HeroSection'
+import PricingSection from './components/homepage/PricingSection'
+import ProjectsSection from './components/homepage/ProjectsSection'
+import ServicesSection from './components/homepage/ServicesSection'
 
 export default function Home() {
   return (

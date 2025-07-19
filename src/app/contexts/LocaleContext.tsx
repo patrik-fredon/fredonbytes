@@ -1,23 +1,25 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
 import React, {
   createContext,
   useContext,
   useState,
   useEffect,
   ReactNode,
+  useMemo,
+  Suspense,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 
 import {
   type Locale,
   defaultLocale,
   locales,
   getTranslations,
-  isValidLocale,
-  getLocaleDisplayName,
-  type TranslationData,
 } from "../lib/i18n";
+
+// Define proper type for translations - using unknown for flexible JSON structure
+type TranslationData = Record<string, unknown>;
 
 interface LocaleContextType {
   locale: Locale;
@@ -31,74 +33,67 @@ interface LocaleContextType {
 
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 
-interface LocaleProviderProps {
-  children: ReactNode;
-}
-
 /**
  * Enhanced LocaleProvider with additional translation management features
  * Provides centralized locale state and utility functions
  */
-export function LocaleProvider({ children }: LocaleProviderProps) {
+function LocaleProviderInner({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(defaultLocale);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [currentTranslations, setCurrentTranslations] =
     useState<TranslationData>(() => getTranslations(defaultLocale));
 
   const router = useRouter();
-  const pathname =
-    useSearchParams().get("lang") || localStorage.getItem("preferred-locale");
+  const searchParams = useSearchParams();
+  const LOCALE_STORAGE_KEY = "preferred-locale";
+
+  // Detect initial locale safely
+  const detectInitialLocale = (): Locale => {
+    try {
+      // Check URL parameters first (from searchParams)
+      const urlLocale = searchParams?.get("lang") as Locale;
+      if (urlLocale && locales.includes(urlLocale)) {
+        return urlLocale;
+      }
+
+      // Check localStorage
+      if (typeof window !== "undefined") {
+        const storedLocale = localStorage.getItem(LOCALE_STORAGE_KEY) as Locale;
+        if (storedLocale && locales.includes(storedLocale)) {
+          return storedLocale;
+        }
+
+        // Try to detect from browser language
+        const browserLocale = navigator.language.split("-")[0] as Locale;
+        if (locales.includes(browserLocale)) {
+          return browserLocale;
+        }
+      }
+    } catch (error) {
+      console.warn("Error in locale detection:", error);
+      return defaultLocale;
+    }
+
+    return defaultLocale;
+  };
 
   // Initialize locale from URL or localStorage on mount
   useEffect(() => {
-    const initializeLocale = () => {
-      if (typeof window === "undefined") return;
+    const initialLocale = detectInitialLocale();
+    if (initialLocale !== locale) {
+      setLocaleState(initialLocale);
+      setCurrentTranslations(getTranslations(initialLocale));
 
-      // Check URL parameters first
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlLocale = urlParams.get("lang") as Locale;
-
-      // Check localStorage
-      let storedLocale: Locale | null = null;
-      try {
-        storedLocale = localStorage.getItem("preferred-locale") as Locale;
-      } catch {
-        // localStorage not available
-      }
-
-      // Determine the locale to use
-      let initialLocale = defaultLocale;
-
-      if (urlLocale && locales.includes(urlLocale)) {
-        initialLocale = urlLocale;
-      } else if (storedLocale && locales.includes(storedLocale)) {
-        initialLocale = storedLocale;
-      } else {
-        // Try to detect from browser language
+      // Save to localStorage
+      if (typeof window !== "undefined") {
         try {
-          const browserLocale = navigator.language.split("-")[0] as Locale;
-          if (locales.includes(browserLocale)) {
-            initialLocale = browserLocale;
-          }
-        } catch {
-          // navigator not available
+          localStorage.setItem(LOCALE_STORAGE_KEY, initialLocale);
+        } catch (error) {
+          console.warn("Failed to save locale to localStorage:", error);
         }
       }
-
-      if (initialLocale !== locale) {
-        setLocaleState(initialLocale);
-        setCurrentTranslations(getTranslations(initialLocale));
-        try {
-          localStorage.setItem("preferred-locale", initialLocale);
-        } catch {
-          // localStorage not available
-        }
-      }
-    };
-
-    initializeLocale();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    }
+  }, [searchParams]); // Depend on searchParams instead of locale to avoid loops
 
   // Update translations when locale changes
   useEffect(() => {
@@ -108,77 +103,103 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
   /**
    * Enhanced locale setter with improved transition handling and SSR safety
    */
-  const setLocale = useCallback(
-    (newLocale: Locale) => {
+  const setLocale = useMemo(() => {
+    return (newLocale: Locale) => {
       if (newLocale === locale || !locales.includes(newLocale)) return;
       if (typeof window === "undefined") return; // SSR safety
 
       setIsTransitioning(true);
 
-      // Store the preference in localStorage (with error handling)
+      // Update state immediately
+      setLocaleState(newLocale);
+      setCurrentTranslations(getTranslations(newLocale));
+
       try {
-        localStorage.setItem("preferred-locale", newLocale);
+        localStorage.setItem(LOCALE_STORAGE_KEY, newLocale);
       } catch (error) {
         console.warn("Failed to save locale to localStorage:", error);
       }
 
-      // Update the state
-      setLocaleState(newLocale);
-
-      // Update URL params to reflect locale change (for analytics/tracking)
+      // Update URL if needed
       try {
-        const url = new URL(window.location.href);
-        url.searchParams.set("lang", newLocale);
-
-        // Use router.replace to update URL without page reload
-        router.replace(`${pathname}?${url.searchParams.toString()}`, {
-          scroll: false,
-        });
+        router.push(`/?lang=${newLocale}`, { scroll: false });
       } catch (error) {
         console.warn("Could not update URL:", error);
       }
 
-      // Reset transition state after a brief delay
+      // Reset transition state
       setTimeout(() => {
         setIsTransitioning(false);
       }, 300);
-    },
-    [locale, router, pathname]
-  );
-
-  /**
-   * Check if a locale is supported
-   */
-  const isLocaleSupported = useCallback((localeToCheck: string): boolean => {
-    return locales.includes(localeToCheck as Locale);
-  }, []);
-
-  /**
-   * Get display name for a locale
-   */
-  const getLocaleDisplayName = useCallback((localeCode: Locale): string => {
-    const displayNames: Record<Locale, string> = {
-      en: "English",
-      de: "Deutsch",
-      cs: "Čeština",
     };
-    return displayNames[localeCode] || localeCode;
-  }, []);
+  }, [locale, router]);
 
-  const contextValue: LocaleContextType = {
-    locale,
-    setLocale,
-    isTransitioning,
-    availableLocales: locales,
-    currentTranslations,
-    isLocaleSupported,
-    getLocaleDisplayName,
-  };
+  const contextValue = useMemo(
+    () => ({
+      locale,
+      setLocale,
+      isTransitioning,
+      availableLocales: locales,
+      currentTranslations,
+      isLocaleSupported: (locale: string): locale is Locale =>
+        locales.includes(locale as Locale),
+      getLocaleDisplayName: (locale: Locale): string => {
+        const displayNames: Record<Locale, string> = {
+          en: "English",
+          de: "Deutsch",
+          cs: "Čeština",
+        };
+        return displayNames[locale] || locale;
+      },
+    }),
+    [locale, setLocale, isTransitioning, currentTranslations]
+  );
 
   return (
     <LocaleContext.Provider value={contextValue}>
       {children}
     </LocaleContext.Provider>
+  );
+}
+
+// Fallback component for Suspense
+function LocaleProviderFallback({ children }: { children: ReactNode }) {
+  const contextValue = useMemo(
+    () => ({
+      locale: defaultLocale,
+      setLocale: () => {}, // No-op during loading
+      isTransitioning: false,
+      availableLocales: locales,
+      currentTranslations: getTranslations(defaultLocale),
+      isLocaleSupported: (locale: string): locale is Locale =>
+        locales.includes(locale as Locale),
+      getLocaleDisplayName: (locale: Locale): string => {
+        const displayNames: Record<Locale, string> = {
+          en: "English",
+          de: "Deutsch",
+          cs: "Čeština",
+        };
+        return displayNames[locale] || locale;
+      },
+    }),
+    []
+  );
+
+  return (
+    <LocaleContext.Provider value={contextValue}>
+      {children}
+    </LocaleContext.Provider>
+  );
+}
+
+// Main LocaleProvider with Suspense wrapper
+export function LocaleProvider({ children }: { children: ReactNode }) {
+  return (
+    <Suspense
+      fallback={<LocaleProviderFallback>{children}</LocaleProviderFallback>}
+    >
+      <LocaleProviderInner>{children}</LocaleProviderInner>
+    </Suspense>
   );
 }
 
