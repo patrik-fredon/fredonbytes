@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
-import * as z from 'zod'
+import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
+import * as z from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY || 'your-resend-api-key')
+const resend = new Resend(process.env.RESEND_API_KEY || "your-resend-api-key");
 
 const contactSchema = z.object({
   firstName: z.string().min(2),
@@ -16,16 +16,16 @@ const contactSchema = z.object({
   message: z.string().min(10),
   requirements: z.array(z.string()).optional(),
   newsletter: z.boolean().optional(),
-  privacy: z.boolean()
-})
+  privacy: z.boolean(),
+});
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
-    
+    const body = await request.json();
+
     // Validate the request body
-    const validatedData = contactSchema.parse(body)
-    
+    const validatedData = contactSchema.parse(body);
+
     // Prepare email content
     const emailHtml = `
       <!DOCTYPE html>
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
               <h1 style="margin: 0; font-size: 24px;">New Contact Form Submission</h1>
               <p style="margin: 10px 0 0 0; opacity: 0.9;">fredonbytes.cloud</p>
             </div>
-            
+
             <div class="content">
               <div class="section">
                 <div class="label">Contact Information</div>
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
                   <strong>Name:</strong> ${validatedData.firstName} ${validatedData.lastName}<br>
                   <strong>Email:</strong> <a href="mailto:${validatedData.email}">${validatedData.email}</a><br>
                   <strong>Phone:</strong> <a href="tel:${validatedData.phone}">${validatedData.phone}</a>
-                  ${validatedData.company ? `<br><strong>Company:</strong> ${validatedData.company}` : ''}
+                  ${validatedData.company ? `<br><strong>Company:</strong> ${validatedData.company}` : ""}
                 </div>
               </div>
 
@@ -76,25 +76,30 @@ export async function POST(request: NextRequest) {
 
               <div class="section">
                 <div class="label">Project Description</div>
-                <div class="value">${validatedData.message.replace(/\n/g, '<br>')}</div>
+                <div class="value">${validatedData.message.replace(/\n/g, "<br>")}</div>
               </div>
 
-              ${validatedData.requirements && validatedData.requirements.length > 0 ? `
+              ${
+                validatedData.requirements &&
+                validatedData.requirements.length > 0
+                  ? `
                 <div class="section">
                   <div class="label">Additional Requirements</div>
                   <div class="value">
                     <div class="requirements">
-                      ${validatedData.requirements.map(req => `<span class="tag">${req}</span>`).join('')}
+                      ${validatedData.requirements.map((req) => `<span class="tag">${req}</span>`).join("")}
                     </div>
                   </div>
                 </div>
-              ` : ''}
+              `
+                  : ""
+              }
 
               <div class="section">
                 <div class="label">Preferences</div>
                 <div class="value">
-                  Newsletter subscription: ${validatedData.newsletter ? 'Yes' : 'No'}<br>
-                  Privacy policy accepted: ${validatedData.privacy ? 'Yes' : 'No'}
+                  Newsletter subscription: ${validatedData.newsletter ? "Yes" : "No"}<br>
+                  Privacy policy accepted: ${validatedData.privacy ? "Yes" : "No"}
                 </div>
               </div>
             </div>
@@ -106,16 +111,16 @@ export async function POST(request: NextRequest) {
           </div>
         </body>
       </html>
-    `
+    `;
 
     // Send email to company
     const companyEmail = await resend.emails.send({
-      from: 'Contact Form <noreply@fredonbytes.cloud>',
-      to: ['info@fredonbytes.cloud'],
+      from: "Contact Form <noreply@fredonbytes.cloud>",
+      to: ["info@fredonbytes.cloud"],
       subject: `New Contact Form Submission from ${validatedData.firstName} ${validatedData.lastName}`,
       html: emailHtml,
-      replyTo: validatedData.email
-    })
+      replyTo: validatedData.email,
+    });
 
     // Send confirmation email to customer
     const customerEmailHtml = `
@@ -141,7 +146,7 @@ export async function POST(request: NextRequest) {
               <h1 style="margin: 0; font-size: 24px;">Thank You, ${validatedData.firstName}!</h1>
               <p style="margin: 10px 0 0 0; opacity: 0.9;">Your message has been received</p>
             </div>
-            
+
             <div class="content">
               <div class="highlight">
                 <h3 style="margin: 0 0 15px 0; color: #059669;">✓ Message Delivered Successfully</h3>
@@ -185,43 +190,42 @@ export async function POST(request: NextRequest) {
           </div>
         </body>
       </html>
-    `
+    `;
 
     const customerEmail = await resend.emails.send({
-      from: 'Fredonbytes <noreply@fredonbytes.cloud>',
+      from: "Fredonbytes <noreply@fredonbytes.cloud>",
       to: [validatedData.email],
-      subject: 'Thank you for contacting Fredonbytes - We\'ll be in touch soon!',
-      html: customerEmailHtml
-    })
+      subject: "Thank you for contacting Fredonbytes - We'll be in touch soon!",
+      html: customerEmailHtml,
+    });
 
     // If newsletter subscription is requested, add to list (you would implement this with your newsletter service)
     if (validatedData.newsletter) {
       // Add to newsletter list
-      console.log(`Adding ${validatedData.email} to newsletter list`)
+      console.warn(`Adding ${validatedData.email} to newsletter list`);
     }
 
     return NextResponse.json(
-      { 
-        message: 'Contact form submitted successfully',
+      {
+        message: "Contact form submitted successfully",
         companyEmailId: companyEmail.data?.id,
-        customerEmailId: customerEmail.data?.id
+        customerEmailId: customerEmail.data?.id,
       },
       { status: 200 }
-    )
-
+    );
   } catch (error) {
-    console.error('Contact form submission error:', error)
-    
+    console.error("Contact form submission error:", error);
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Invalid form data', details: error.errors },
+        { error: "Invalid form data", details: error.errors },
         { status: 400 }
-      )
+      );
     }
 
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: "Internal server error" },
       { status: 500 }
-    )
+    );
   }
 }

@@ -6,13 +6,18 @@ import React, {
   useState,
   useEffect,
   ReactNode,
-  useCallback,
 } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { Locale, defaultLocale, locales, getTranslations } from "../lib/i18n";
+import { useRouter, useSearchParams } from "next/navigation";
 
-// Define proper type for translations - using unknown for flexible JSON structure
-type TranslationData = Record<string, unknown>;
+import {
+  type Locale,
+  defaultLocale,
+  locales,
+  getTranslations,
+  isValidLocale,
+  getLocaleDisplayName,
+  type TranslationData,
+} from "../lib/i18n";
 
 interface LocaleContextType {
   locale: Locale;
@@ -41,7 +46,8 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
     useState<TranslationData>(() => getTranslations(defaultLocale));
 
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname =
+    useSearchParams().get("lang") || localStorage.getItem("preferred-locale");
 
   // Initialize locale from URL or localStorage on mount
   useEffect(() => {
@@ -113,7 +119,7 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
       try {
         localStorage.setItem("preferred-locale", newLocale);
       } catch (error) {
-        console.debug("Could not save locale preference:", error);
+        console.warn("Failed to save locale to localStorage:", error);
       }
 
       // Update the state
@@ -129,7 +135,7 @@ export function LocaleProvider({ children }: LocaleProviderProps) {
           scroll: false,
         });
       } catch (error) {
-        console.debug("Could not update URL:", error);
+        console.warn("Could not update URL:", error);
       }
 
       // Reset transition state after a brief delay

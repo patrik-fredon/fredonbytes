@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { ChevronDown, Globe } from "lucide-react";
+
 import { Button } from "./Button";
 import { cn } from "@/app/lib/utils";
-import { Menu, X, ExternalLink } from "lucide-react";
-import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslations } from "@/app/hooks/useTranslations";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 interface HeaderProps {
   className?: string;
@@ -109,7 +111,7 @@ export default function Header({ className }: HeaderProps) {
             <div className="relative group">
               <button className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium flex items-center space-x-1">
                 <span>{t("navigation.links")}</span>
-                <ExternalLink className="w-4 h-4" />
+                <ChevronDown className="w-4 h-4" />
               </button>
               <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 {externalLinks.map((link) => (

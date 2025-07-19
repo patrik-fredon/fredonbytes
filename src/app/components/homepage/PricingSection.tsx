@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "../common/Button";
 import {
@@ -118,78 +118,83 @@ export default function PricingSection() {
     },
   ];
 
-  const serviceOptions: ServiceOption[] = [
-    {
-      id: "web-dev",
-      name: t("pricingSection.calculator.services.webDevelopment.name"),
-      icon: Code,
-      basePrice: 2500,
-      description: t(
-        "pricingSection.calculator.services.webDevelopment.description"
-      ),
-      included: tArray(
-        "pricingSection.calculator.services.webDevelopment.included"
-      ),
-    },
-    {
-      id: "mobile-app",
-      name: t("pricingSection.calculator.services.mobileApp.name"),
-      icon: Code,
-      basePrice: 5000,
-      description: t(
-        "pricingSection.calculator.services.mobileApp.description"
-      ),
-      included: tArray("pricingSection.calculator.services.mobileApp.included"),
-    },
-    {
-      id: "design",
-      name: t("pricingSection.calculator.services.brandDesign.name"),
-      icon: Palette,
-      basePrice: 1500,
-      description: t(
-        "pricingSection.calculator.services.brandDesign.description"
-      ),
-      included: tArray(
-        "pricingSection.calculator.services.brandDesign.included"
-      ),
-    },
-    {
-      id: "seo",
-      name: t("pricingSection.calculator.services.seoMarketing.name"),
-      icon: Search,
-      basePrice: 800,
-      description: t(
-        "pricingSection.calculator.services.seoMarketing.description"
-      ),
-      included: tArray(
-        "pricingSection.calculator.services.seoMarketing.included"
-      ),
-    },
-    {
-      id: "social",
-      name: t("pricingSection.calculator.services.socialMedia.name"),
-      icon: Share2,
-      basePrice: 600,
-      description: t(
-        "pricingSection.calculator.services.socialMedia.description"
-      ),
-      included: tArray(
-        "pricingSection.calculator.services.socialMedia.included"
-      ),
-    },
-    {
-      id: "consulting",
-      name: t("pricingSection.calculator.services.itConsulting.name"),
-      icon: Shield,
-      basePrice: 150,
-      description: t(
-        "pricingSection.calculator.services.itConsulting.description"
-      ),
-      included: tArray(
-        "pricingSection.calculator.services.itConsulting.included"
-      ),
-    },
-  ];
+  const serviceOptions: ServiceOption[] = useMemo(
+    () => [
+      {
+        id: "web-dev",
+        name: t("pricingSection.calculator.services.webDevelopment.name"),
+        icon: Code,
+        basePrice: 2500,
+        description: t(
+          "pricingSection.calculator.services.webDevelopment.description"
+        ),
+        included: tArray(
+          "pricingSection.calculator.services.webDevelopment.included"
+        ),
+      },
+      {
+        id: "mobile-app",
+        name: t("pricingSection.calculator.services.mobileApp.name"),
+        icon: Code,
+        basePrice: 5000,
+        description: t(
+          "pricingSection.calculator.services.mobileApp.description"
+        ),
+        included: tArray(
+          "pricingSection.calculator.services.mobileApp.included"
+        ),
+      },
+      {
+        id: "design",
+        name: t("pricingSection.calculator.services.brandDesign.name"),
+        icon: Palette,
+        basePrice: 1500,
+        description: t(
+          "pricingSection.calculator.services.brandDesign.description"
+        ),
+        included: tArray(
+          "pricingSection.calculator.services.brandDesign.included"
+        ),
+      },
+      {
+        id: "seo",
+        name: t("pricingSection.calculator.services.seoMarketing.name"),
+        icon: Search,
+        basePrice: 800,
+        description: t(
+          "pricingSection.calculator.services.seoMarketing.description"
+        ),
+        included: tArray(
+          "pricingSection.calculator.services.seoMarketing.included"
+        ),
+      },
+      {
+        id: "social",
+        name: t("pricingSection.calculator.services.socialMedia.name"),
+        icon: Share2,
+        basePrice: 600,
+        description: t(
+          "pricingSection.calculator.services.socialMedia.description"
+        ),
+        included: tArray(
+          "pricingSection.calculator.services.socialMedia.included"
+        ),
+      },
+      {
+        id: "consulting",
+        name: t("pricingSection.calculator.services.itConsulting.name"),
+        icon: Shield,
+        basePrice: 150,
+        description: t(
+          "pricingSection.calculator.services.itConsulting.description"
+        ),
+        included: tArray(
+          "pricingSection.calculator.services.itConsulting.included"
+        ),
+      },
+    ],
+    [t, tArray]
+  );
 
   useEffect(() => {
     const initialState: CalculatorState = {};
@@ -197,7 +202,7 @@ export default function PricingSection() {
       initialState[service.id] = { selected: false, quantity: 1 };
     });
     setCalculatorState(initialState);
-  }, []);
+  }, [serviceOptions]);
 
   useEffect(() => {
     let total = 0;
@@ -211,7 +216,7 @@ export default function PricingSection() {
       }
     });
     setTotalCost(total);
-  }, [calculatorState]);
+  }, [calculatorState, serviceOptions]);
 
   const toggleService = (serviceId: string) => {
     setCalculatorState((prev) => ({

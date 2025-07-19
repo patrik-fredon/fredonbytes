@@ -3,11 +3,19 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Users, Award, Target, Heart, User } from "lucide-react";
+import {
+  Code,
+  Users,
+  Award,
+  TrendingUp,
+  CheckCircle,
+  ArrowRight,
+} from "lucide-react";
+
 import { useTranslations } from "@/app/hooks/useTranslations";
 
 export default function AboutSection() {
-  const { t, format } = useTranslations();
+  const { t } = useTranslations();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -45,13 +53,13 @@ export default function AboutSection() {
       color: "text-purple-500",
     },
     {
-      icon: Target,
+      icon: TrendingUp,
       title: t("about.values.innovation.title"),
       description: t("about.values.innovation.description"),
       color: "text-cyan-500",
     },
     {
-      icon: Heart,
+      icon: CheckCircle,
       title: t("about.values.transparency.title"),
       description: t("about.values.transparency.description"),
       color: "text-pink-500",
@@ -198,7 +206,7 @@ export default function AboutSection() {
                   <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
                     {member.image === "user-placeholder" ? (
                       <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center">
-                        <User className="w-12 h-12 text-slate-500 dark:text-slate-400" />
+                        <Users className="w-12 h-12 text-slate-500 dark:text-slate-400" />
                       </div>
                     ) : (
                       <Image

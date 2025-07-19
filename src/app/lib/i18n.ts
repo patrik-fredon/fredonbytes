@@ -1,6 +1,6 @@
-import enRaw from "../locales/en/common.json";
-import deRaw from "../locales/de/common.json";
 import csRaw from "../locales/cs/common.json";
+import deRaw from "../locales/de/common.json";
+import enRaw from "../locales/en/common.json";
 
 const en = enRaw as unknown as Record<string, unknown>;
 const de = deRaw as unknown as Record<string, unknown>;
@@ -54,7 +54,7 @@ export function t(key: string, locale: Locale = defaultLocale): string {
 
     return typeof result === "string" ? result : key;
   } catch (error) {
-    console.debug(`Translation error for key "${key}":`, error);
+    console.warn(`Translation error for key "${key}":`, error);
     return key;
   }
 }
@@ -81,7 +81,7 @@ export function tArray(key: string, locale: Locale = defaultLocale): string[] {
 
     return Array.isArray(result) ? result.map(String) : [];
   } catch (error) {
-    console.debug(`Array translation error for key "${key}":`, error);
+    console.warn(`Array translation error for key "${key}":`, error);
     return [];
   }
 }
@@ -103,7 +103,7 @@ export function formatMessage(
       return value !== undefined && value !== null ? value.toString() : match;
     });
   } catch (error) {
-    console.debug("Message formatting error:", error);
+    console.warn("Message formatting error:", error);
     return template;
   }
 }
