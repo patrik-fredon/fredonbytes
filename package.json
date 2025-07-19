@@ -21,7 +21,8 @@
     "build:analyze": "ANALYZE=true npm run build",
     "clean": "rm -rf .next out",
     "postbuild": "echo \"Build completed successfully\"",
-    "vercel-build": "npm run pre-deploy"
+    "vercel-build": "npm run pre-deploy",
+    "optimize": "node scripts/vercel-optimize.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

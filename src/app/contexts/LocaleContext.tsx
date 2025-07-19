@@ -93,7 +93,8 @@ function LocaleProviderInner({ children }: { children: ReactNode }) {
         }
       }
     }
-  }, [searchParams]); // Depend on searchParams instead of locale to avoid loops
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]); // Only depend on searchParams to avoid infinite loops
 
   // Update translations when locale changes
   useEffect(() => {
