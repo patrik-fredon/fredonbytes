@@ -36,7 +36,7 @@
     - Remove unused interfaces and types
     - _Requirements: 1.7_
 
-- [-] 3. Modernize Code Syntax
+- [x] 3. Modernize Code Syntax
   - [x] 3.1 Convert to modern async/await patterns
     - Replace Promise chains with async/await
     - Ensure consistent error handling with try/catch
@@ -49,20 +49,20 @@
     - Convert appropriate functions to arrow functions
     - _Requirements: 2.3, 2.4, 2.5, 2.6_
 
-  - [-] 3.3 Ensure React 19 best practices
+  - [x] 3.3 Ensure React 19 best practices
     - Verify all hooks follow React 19 patterns
     - Ensure Server Components are used by default
     - Use 'use client' directive only when necessary
     - _Requirements: 2.7_
 
-- [ ] 4. CSS Cross-Browser Compatibility
-  - [ ] 4.1 Configure autoprefixer in PostCSS
+- [x] 4. CSS Cross-Browser Compatibility
+  - [x] 4.1 Configure autoprefixer in PostCSS
     - Update postcss.config.mjs with autoprefixer
     - Configure browserslist for target browsers
     - Add cssnano for CSS minification
     - _Requirements: 3.1-3.9, 7.3_
 
-  - [ ] 4.2 Add vendor prefixes to globals.css
+  - [x] 4.2 Add vendor prefixes to globals.css
     - Add -webkit- prefixes for flexbox properties
     - Add -webkit- prefixes for transform properties
     - Add -webkit-keyframes for animations
@@ -72,59 +72,59 @@
     - Add -webkit-overflow-scrolling for smooth scrolling
     - _Requirements: 3.1-3.9_
 
-  - [ ] 4.3 Optimize animation performance with GPU acceleration
+  - [x] 4.3 Optimize animation performance with GPU acceleration
     - Add transform: translateZ(0) to animation classes
     - Add backface-visibility: hidden to prevent flickering
     - Add will-change hints for transform and opacity
     - _Requirements: 3.4, 7.1_
 
-  - [ ] 4.4 Add CSS feature detection fallbacks
+  - [x] 4.4 Add CSS feature detection fallbacks
     - Add @supports rules for backdrop-filter
     - Add fallback styles for unsupported features
     - _Requirements: 3.9, 9.8_
 
-- [ ] 5. Enhanced JavaScript Bundle Optimization
-  - [ ] 5.1 Enhance webpack code splitting configuration
+- [x] 5. Enhanced JavaScript Bundle Optimization
+  - [x] 5.1 Enhance webpack code splitting configuration
     - Add framework chunk for React/Next.js
     - Add radix-ui chunk for UI components
     - Optimize chunk priorities and sizes
     - Update next.config.ts with enhanced splitChunks
     - _Requirements: 6.1, 6.3_
 
-  - [ ] 5.2 Expand optimizePackageImports list
+  - [x] 5.2 Expand optimizePackageImports list
     - Add all @radix-ui packages to optimization list
     - Add date-fns to optimization list
     - Ensure lucide-react and framer-motion are optimized
     - _Requirements: 6.5, 6.8_
 
-  - [ ] 5.3 Implement dynamic imports for heavy components
+  - [x] 5.3 Implement dynamic imports for heavy components
     - Convert AnimatedBackground to dynamic import
     - Convert CookieConsentBanner to dynamic import
     - Convert below-the-fold sections to dynamic imports (ContactSection, ProjectsSection, PricingSection)
     - Add loading fallbacks for each dynamic component
     - _Requirements: 6.2, 6.4, 6.7_
 
-- [ ] 6. Image Optimization Audit
-  - [ ] 6.1 Audit all image usage in components
+- [x] 6. Image Optimization Audit
+  - [x] 6.1 Audit all image usage in components
     - Verify all images use Next.js Image component
     - Replace any <img> tags with <Image> component
     - _Requirements: 5.1_
 
-  - [ ] 6.2 Optimize image loading strategies
+  - [x] 6.2 Optimize image loading strategies
     - Add priority prop to above-the-fold images
     - Ensure lazy loading for below-the-fold images
     - Configure appropriate quality settings (75-85)
     - Add responsive sizes prop for each image
     - _Requirements: 5.2-5.6_
 
-  - [ ] 6.3 Verify image format configuration
+  - [x] 6.3 Verify image format configuration
     - Confirm WebP and AVIF formats are enabled
     - Verify deviceSizes and imageSizes configuration
     - Ensure minimumCacheTTL is set appropriately
     - _Requirements: 5.2, 5.3, 5.8_
 
-- [ ] 7. Font Loading Optimization
-  - [ ] 7.1 Implement Next.js font optimization
+- [-] 7. Font Loading Optimization
+  - [-] 7.1 Implement Next.js font optimization
     - Import and configure Inter font from next/font/google
     - Add font-display: swap to prevent FOIT
     - Configure font subsets (latin, latin-ext for Czech)

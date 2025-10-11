@@ -110,6 +110,8 @@ export default function HeroSection() {
                 fill
                 className="object-contain"
                 priority
+                quality={85}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 448px, 672px"
               />
             </div>
           </motion.div>

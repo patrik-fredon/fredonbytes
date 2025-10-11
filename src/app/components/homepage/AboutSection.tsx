@@ -207,6 +207,9 @@ export default function AboutSection() {
                         alt={member.name}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                        quality={80}
+                        sizes="(max-width: 768px) 96px, (max-width: 1024px) 96px, 96px"
                       />
                     )}
                   </div>

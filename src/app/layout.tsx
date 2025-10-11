@@ -1,22 +1,34 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import dynamic from "next/dynamic";
+import { Inter } from "next/font/google";
 
 import "./globals.css";
 import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
-import AnimatedBackground from "./components/common/AnimatedBackground";
-import CookieConsentBanner from "./components/common/CookieConsentBanner";
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
 import { LocaleProvider } from "./contexts/LocaleContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// Dynamic imports for heavy components
+const AnimatedBackground = dynamic(
+  () => import("./components/common/AnimatedBackground"),
+  { 
+    loading: () => <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+  }
+);
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const CookieConsentBanner = dynamic(
+  () => import("./components/common/CookieConsentBanner"),
+  { 
+    loading: () => null
+  }
+);
+
+const inter = Inter({
+  subsets: ["latin", "latin-ext"], // latin-ext for Czech characters
+  display: "swap", // Prevent FOIT (Flash of Invisible Text)
+  preload: true,
+  variable: "--font-inter",
+  fallback: ["system-ui", "arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {

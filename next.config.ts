@@ -16,7 +16,15 @@ const nextConfig: NextConfig = {
 
   // Experimental features for performance
   experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion"],
+    optimizePackageImports: [
+      "lucide-react",
+      "framer-motion",
+      "react-hook-form",
+      "@hookform/resolvers",
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge",
+    ],
     optimizeCss: true,
   },
 
@@ -41,11 +49,31 @@ const nextConfig: NextConfig = {
           cacheGroups: {
             default: false,
             vendors: false,
-            // Vendor chunk for node_modules
+            // Framework chunk for React/Next.js core
+            framework: {
+              name: 'framework',
+              test: /[\/]node_modules[\/](react|react-dom|next|scheduler)[\/]/,
+              priority: 40,
+              enforce: true,
+            },
+            // Radix UI components chunk
+            radixUI: {
+              name: 'radix-ui',
+              test: /[\/]node_modules[\/]@radix-ui[\/]/,
+              priority: 35,
+              enforce: true,
+            },
+            // Framer Motion chunk (large animation library)
+            framerMotion: {
+              name: 'framer-motion',
+              test: /[\/]node_modules[\/]framer-motion[\/]/,
+              priority: 30,
+              enforce: true,
+            },
+            // Vendor chunk for other node_modules
             vendor: {
               name: 'vendor',
-              chunks: 'all',
-              test: /node_modules/,
+              test: /[\/]node_modules[\/]/,
               priority: 20,
             },
             // Common chunk for shared code
@@ -56,12 +84,6 @@ const nextConfig: NextConfig = {
               priority: 10,
               reuseExistingChunk: true,
               enforce: true,
-            },
-            // Separate chunk for Framer Motion (large library)
-            framerMotion: {
-              name: 'framer-motion',
-              test: /[\/]node_modules[\/]framer-motion[\/]/,
-              priority: 30,
             },
           },
         },

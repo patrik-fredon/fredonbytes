@@ -48,6 +48,8 @@ export default function ProfileHeader() {
             fill
             className="object-contain rounded-full p-4"
             priority
+            quality={85}
+            sizes="128px"
           />
         </div>
       </motion.div>
