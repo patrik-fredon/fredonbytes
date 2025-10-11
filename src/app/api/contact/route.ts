@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import * as z from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY || "your-resend-api-key");
+import { sendEmail } from "@/app/lib/email";
 
 const contactSchema = z.object({
   firstName: z.string().min(2),
@@ -114,9 +113,9 @@ export async function POST(request: NextRequest) {
     `;
 
     // Send email to company
-    const companyEmail = await resend.emails.send({
+    const companyEmail = await sendEmail({
       from: "Contact Form <noreply@fredonbytes.cloud>",
-      to: ["info@fredonbytes.cloud"],
+      to: "info@fredonbytes.cloud",
       subject: `New Contact Form Submission from ${validatedData.firstName} ${validatedData.lastName}`,
       html: emailHtml,
       replyTo: validatedData.email,
@@ -192,9 +191,9 @@ export async function POST(request: NextRequest) {
       </html>
     `;
 
-    const customerEmail = await resend.emails.send({
+    const customerEmail = await sendEmail({
       from: "Fredonbytes <noreply@fredonbytes.cloud>",
-      to: [validatedData.email],
+      to: validatedData.email,
       subject: "Thank you for contacting Fredonbytes - We'll be in touch soon!",
       html: customerEmailHtml,
     });
@@ -208,8 +207,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         message: "Contact form submitted successfully",
-        companyEmailId: companyEmail.data?.id,
-        customerEmailId: customerEmail.data?.id,
+        companyEmailId: companyEmail.messageId,
+        customerEmailId: customerEmail.messageId,
       },
       { status: 200 }
     );

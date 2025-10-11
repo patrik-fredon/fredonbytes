@@ -976,3 +976,62 @@ input:valid {
   background: var(--primary);
   color: var(--primary-foreground);
 }
+
+/* Performance Optimizations for Animations */
+/* will-change property for elements that will be animated */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.will-change-transform-opacity {
+  will-change: transform, opacity;
+}
+
+/* Apply to animated elements for 60fps performance */
+.animate-bounce-in,
+.animate-fade-in,
+.animate-slide-up,
+.animate-scale-in {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* Force GPU acceleration */
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Remove will-change after animation completes to free resources */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-bounce-in,
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-scale-in {
+    animation-fill-mode: forwards;
+  }
+}
+
+/* Optimize for smooth scrolling */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* GPU acceleration for transforms */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize images for performance */
+img {
+  content-visibility: auto;
+}
+
+/* Optimize off-screen content */
+.offscreen-content {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
