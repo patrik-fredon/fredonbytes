@@ -36,6 +36,8 @@ export default function WelcomeScreen({ onNext }: WelcomeScreenProps) {
           fill
           className="object-contain"
           priority
+          quality={85}
+          sizes="128px"
         />
       </div>
 

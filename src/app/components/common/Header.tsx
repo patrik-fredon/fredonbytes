@@ -88,6 +88,8 @@ export default function Header({ className }: HeaderProps) {
                 fill
                 className="object-contain transition-transform duration-200 group-hover:scale-110"
                 priority
+                quality={85}
+                sizes="(max-width: 1024px) 32px, 40px"
               />
             </div>
             <span className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-white">

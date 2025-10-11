@@ -12,6 +12,7 @@ export interface EmailOptions {
   to: string | string[];
   subject: string;
   html: string;
+  text?: string;
   replyTo?: string;
 }
 
@@ -58,6 +59,7 @@ export async function sendEmail(options: EmailOptions): Promise<EmailResult> {
       to: Array.isArray(options.to) ? options.to.join(', ') : options.to,
       subject: options.subject,
       html: options.html,
+      text: options.text,
       replyTo: options.replyTo,
     };
 

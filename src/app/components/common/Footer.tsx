@@ -82,6 +82,9 @@ export default function Footer() {
                   alt="Fredonbytes Logo"
                   fill
                   className="object-contain transition-transform duration-200 group-hover:scale-110"
+                  loading="lazy"
+                  quality={80}
+                  sizes="32px"
                 />
               </div>
               <span className="text-xl font-bold">Fredonbytes</span>

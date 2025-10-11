@@ -9,7 +9,6 @@ import "./globals.css";
 import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
-import { WebVitals } from "./components/WebVitals";
 
 // Dynamic imports for heavy components
 const AnimatedBackground = dynamic(
@@ -28,6 +27,13 @@ const CookieConsentBanner = dynamic(
 
 const ConditionalAnalytics = dynamic(
   () => import("./components/common/ConditionalAnalytics"),
+  {
+    loading: () => null
+  }
+);
+
+const WebVitals = dynamic(
+  () => import("./components/WebVitals").then(mod => ({ default: mod.WebVitals })),
   {
     loading: () => null
   }
@@ -88,8 +94,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
-  const messages = await getMessages();
+  // Parallel data fetching for locale and messages
+  const [locale, messages] = await Promise.all([
+    getLocale(),
+    getMessages(),
+  ]);
 
   return (
     <html lang={locale} className="scroll-smooth">

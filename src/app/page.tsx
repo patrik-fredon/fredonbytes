@@ -1,63 +1,53 @@
 import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 
-import AboutSection from './components/homepage/AboutSection'
 import HeroSection from './components/homepage/HeroSection'
-import ServicesSection from './components/homepage/ServicesSection'
+import { 
+  AboutSectionSkeleton,
+  ServicesSectionSkeleton,
+  ProjectsSectionSkeleton, 
+  PricingSectionSkeleton, 
+  ContactSectionSkeleton 
+} from './components/homepage/HomepageSkeletons'
 
-// Dynamic imports for below-the-fold sections
+// Dynamic imports for below-the-fold sections with Suspense
+const AboutSection = dynamic(
+  () => import('./components/homepage/AboutSection'),
+  {
+    ssr: true,
+    loading: () => <AboutSectionSkeleton />
+  }
+);
+
+const ServicesSection = dynamic(
+  () => import('./components/homepage/ServicesSection'),
+  {
+    ssr: true,
+    loading: () => <ServicesSectionSkeleton />
+  }
+);
+
 const ProjectsSection = dynamic(
   () => import('./components/homepage/ProjectsSection'),
-  { 
-    loading: () => (
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="animate-pulse space-y-8">
-            <div className="h-12 bg-slate-700/50 rounded w-1/3 mx-auto"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-64 bg-slate-700/50 rounded-lg"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    )
+  {
+    ssr: true,
+    loading: () => <ProjectsSectionSkeleton />
   }
 );
 
 const PricingSection = dynamic(
   () => import('./components/homepage/PricingSection'),
-  { 
-    loading: () => (
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="animate-pulse space-y-8">
-            <div className="h-12 bg-slate-700/50 rounded w-1/3 mx-auto"></div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-96 bg-slate-700/50 rounded-lg"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    )
+  {
+    ssr: true,
+    loading: () => <PricingSectionSkeleton />
   }
 );
 
 const ContactSection = dynamic(
   () => import('./components/homepage/ContactSection'),
-  { 
-    loading: () => (
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="animate-pulse space-y-8">
-            <div className="h-12 bg-slate-700/50 rounded w-1/3 mx-auto"></div>
-            <div className="h-96 bg-slate-700/50 rounded-lg"></div>
-          </div>
-        </div>
-      </section>
-    )
+  {
+    ssr: true,
+    loading: () => <ContactSectionSkeleton />
   }
 );
 
@@ -67,9 +57,19 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <ProjectsSection />
-      <PricingSection />
-      <ContactSection />
+      
+      {/* Suspense boundaries for below-the-fold sections */}
+      <Suspense fallback={<ProjectsSectionSkeleton />}>
+        <ProjectsSection />
+      </Suspense>
+      
+      <Suspense fallback={<PricingSectionSkeleton />}>
+        <PricingSection />
+      </Suspense>
+      
+      <Suspense fallback={<ContactSectionSkeleton />}>
+        <ContactSection />
+      </Suspense>
     </div>
   )
 }

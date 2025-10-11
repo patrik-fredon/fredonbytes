@@ -7,6 +7,19 @@
  * This component respects GDPR/CCPA requirements by only loading scripts when
  * the user has explicitly consented to the respective cookie categories.
  * 
+ * Script Loading Strategy:
+ * - All scripts use Next.js Script component with strategy="afterInteractive"
+ * - Scripts load after the page becomes interactive (after hydration)
+ * - Async attribute ensures non-blocking parallel downloads
+ * - Error handlers provide graceful degradation if scripts fail to load
+ * - Conditional rendering based on cookie consent prevents unauthorized tracking
+ * 
+ * Performance Optimizations:
+ * - Scripts don't block initial page load or First Contentful Paint (FCP)
+ * - Async loading allows parallel script downloads
+ * - Deferred execution until after page interactivity
+ * - No impact on Largest Contentful Paint (LCP) or Time to Interactive (TTI)
+ * 
  * Supported Scripts:
  * - Analytics: Google Analytics (requires NEXT_PUBLIC_GA_ID)
  * - Marketing: Facebook Pixel (requires NEXT_PUBLIC_FB_PIXEL_ID)
@@ -20,8 +33,8 @@
  * - NEXT_PUBLIC_GOOGLE_ADS_ID: Google Ads Conversion ID (optional)
  */
 
-import { useEffect, useState } from 'react';
 import Script from 'next/script';
+import { useEffect, useState } from 'react';
 
 const COOKIE_CONSENT_NAME = 'cookie-consent';
 
@@ -82,27 +95,36 @@ export default function ConditionalAnalytics() {
     return null;
   }
 
-  // Get Google Analytics ID from environment variable
+  // Get environment variables for third-party scripts
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
+  const linkedInPartnerId = process.env.NEXT_PUBLIC_LINKEDIN_PARTNER_ID;
+  const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
 
   return (
     <>
       {/* Google Analytics - Only load if analytics consent is given */}
+      {/* Strategy: afterInteractive - loads after page becomes interactive */}
+      {/* This ensures analytics doesn't block initial page load */}
       {consent?.analytics && gaId && (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
             strategy="afterInteractive"
+            async
             onLoad={() => {
               // Initialize Google Analytics
-              window.gtag = window.gtag || function() {
-                (window.dataLayer = window.dataLayer || []).push(arguments);
+              window.gtag = window.gtag || function(...args: unknown[]) {
+                (window.dataLayer = window.dataLayer || []).push(...args);
               };
               window.gtag('js', new Date());
               window.gtag('config', gaId, {
                 anonymize_ip: true, // Anonymize IP for GDPR compliance
                 cookie_flags: 'SameSite=Lax;Secure',
               });
+            }}
+            onError={(e) => {
+              console.error('Failed to load Google Analytics:', e);
             }}
           />
         </>
@@ -111,8 +133,10 @@ export default function ConditionalAnalytics() {
       {/* Marketing Scripts - Only load if marketing consent is given */}
       {consent?.marketing && (
         <>
-          {/* Example: Facebook Pixel */}
-          {process.env.NEXT_PUBLIC_FB_PIXEL_ID && (
+          {/* Facebook Pixel */}
+          {/* Strategy: afterInteractive - loads after page becomes interactive */}
+          {/* Async loading prevents blocking of other resources */}
+          {fbPixelId && (
             <Script
               id="facebook-pixel"
               strategy="afterInteractive"
@@ -126,21 +150,26 @@ export default function ConditionalAnalytics() {
                   t.src=v;s=b.getElementsByTagName(e)[0];
                   s.parentNode.insertBefore(t,s)}(window, document,'script',
                   'https://connect.facebook.net/en_US/fbevents.js');
-                  fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID}');
+                  fbq('init', '${fbPixelId}');
                   fbq('track', 'PageView');
                 `,
+              }}
+              onError={(e) => {
+                console.error('Failed to load Facebook Pixel:', e);
               }}
             />
           )}
 
-          {/* Example: LinkedIn Insight Tag */}
-          {process.env.NEXT_PUBLIC_LINKEDIN_PARTNER_ID && (
+          {/* LinkedIn Insight Tag */}
+          {/* Strategy: afterInteractive - loads after page becomes interactive */}
+          {/* The script itself sets async=true for the dynamically created script tag */}
+          {linkedInPartnerId && (
             <Script
               id="linkedin-insight"
               strategy="afterInteractive"
               dangerouslySetInnerHTML={{
                 __html: `
-                  _linkedin_partner_id = "${process.env.NEXT_PUBLIC_LINKEDIN_PARTNER_ID}";
+                  _linkedin_partner_id = "${linkedInPartnerId}";
                   window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
                   window._linkedin_data_partner_ids.push(_linkedin_partner_id);
                   (function(l) {
@@ -153,20 +182,29 @@ export default function ConditionalAnalytics() {
                     s.parentNode.insertBefore(b, s);})(window.lintrk);
                 `,
               }}
+              onError={(e) => {
+                console.error('Failed to load LinkedIn Insight Tag:', e);
+              }}
             />
           )}
 
-          {/* Example: Google Ads Conversion Tracking */}
-          {process.env.NEXT_PUBLIC_GOOGLE_ADS_ID && (
+          {/* Google Ads Conversion Tracking */}
+          {/* Strategy: afterInteractive - loads after page becomes interactive */}
+          {/* Async attribute ensures non-blocking load */}
+          {googleAdsId && (
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`}
               strategy="afterInteractive"
+              async
               onLoad={() => {
-                window.gtag = window.gtag || function() {
-                  (window.dataLayer = window.dataLayer || []).push(arguments);
-                };
+                window.gtag = window.gtag || function(...args: unknown[]) {
+                (window.dataLayer = window.dataLayer || []).push(...args);
+              };
                 window.gtag('js', new Date());
-                window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ADS_ID!);
+                window.gtag('config', googleAdsId);
+              }}
+              onError={(e) => {
+                console.error('Failed to load Google Ads:', e);
               }}
             />
           )}
@@ -193,11 +231,11 @@ function getCookie(name: string): string | null {
 // Extend Window interface for gtag and marketing scripts
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
-    fbq: (...args: any[]) => void;
-    _fbq: any;
-    lintrk: any;
+    gtag: (...args: unknown[]) => void;
+    dataLayer: unknown[];
+    fbq: (...args: unknown[]) => void;
+    _fbq: unknown;
+    lintrk: unknown;
     _linkedin_data_partner_ids: string[];
     _linkedin_partner_id: string;
   }

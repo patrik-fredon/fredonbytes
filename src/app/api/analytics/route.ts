@@ -1,36 +1,52 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 
-interface WebVitalsMetric {
-  name: string;
-  value: number;
-  rating: 'good' | 'needs-improvement' | 'poor';
-  delta: number;
-  id: string;
-  navigationType?: string;
-}
+import { sanitizeString } from '@/app/lib/input-sanitization';
 
 export async function POST(request: NextRequest) {
   try {
-    const metric: WebVitalsMetric = await request.json();
+    const body = await request.json();
 
-    // Validate that we have the required fields
-    if (!metric.name || typeof metric.value !== 'number') {
+    // Zod schema for Web Vitals metric validation
+    const webVitalsSchema = z.object({
+      name: z.string().min(1).max(50),
+      value: z.number().min(0),
+      rating: z.enum(['good', 'needs-improvement', 'poor']),
+      delta: z.number(),
+      id: z.string().max(100),
+      navigationType: z.string().max(50).optional(),
+    });
+
+    // Validate the metric data
+    const validationResult = webVitalsSchema.safeParse(body);
+
+    if (!validationResult.success) {
       return NextResponse.json(
-        { error: 'Invalid metric data' },
+        { error: 'Invalid metric data', details: validationResult.error.errors },
         { status: 400 }
       );
     }
+
+    const metric = validationResult.data;
+
+    // Sanitize string fields to prevent XSS
+    const sanitizedMetric = {
+      ...metric,
+      name: sanitizeString(metric.name),
+      id: sanitizeString(metric.id),
+      navigationType: metric.navigationType ? sanitizeString(metric.navigationType) : undefined,
+    };
 
     // Log the metric (in production, you would send this to your analytics service)
     // Using console.warn for visibility (ESLint allows warn/error)
     console.warn('[Web Vitals Analytics]', {
       timestamp: new Date().toISOString(),
-      metric: metric.name,
-      value: metric.value,
-      rating: metric.rating,
-      delta: metric.delta,
-      id: metric.id,
-      navigationType: metric.navigationType,
+      metric: sanitizedMetric.name,
+      value: sanitizedMetric.value,
+      rating: sanitizedMetric.rating,
+      delta: sanitizedMetric.delta,
+      id: sanitizedMetric.id,
+      navigationType: sanitizedMetric.navigationType,
     });
 
     // Here you could integrate with analytics services like:
@@ -40,10 +56,10 @@ export async function POST(request: NextRequest) {
     // - Third-party monitoring services (DataDog, New Relic, etc.)
     
     // Example: Store in database (commented out - implement as needed)
-    // await storeMetricInDatabase(metric);
+    // await storeMetricInDatabase(sanitizedMetric);
 
     // Example: Send to external analytics service (commented out - implement as needed)
-    // await sendToAnalyticsService(metric);
+    // await sendToAnalyticsService(sanitizedMetric);
 
     return NextResponse.json(
       { success: true, message: 'Metric received' },

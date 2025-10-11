@@ -1195,5 +1195,51 @@
       "aboutFredonbytes": "About Fredonbytes",
       "foundedDescription": "Founded in 2023, we eliminate the need for multiple vendors by becoming your one-stop digital army, ensuring seamless, high-impact results under one roof."
     }
+  },
+  "emails": {
+    "customer": {
+      "subject": "Thank you for contacting Fredonbytes - We'll be in touch soon!",
+      "greeting": "Thank You",
+      "thankYou": "Your message has been received",
+      "confirmationMessage": "We've received your inquiry and will respond within 24 hours.",
+      "responseTime": "We commit to responding within 24 hours",
+      "surveyInvitation": "Help us improve! Please take a moment to complete our quick satisfaction survey.",
+      "surveyButton": "Complete Survey",
+      "whatHappensNext": "What happens next?",
+      "steps": {
+        "review": "<strong>Review (within 2 hours):</strong> Our team will review your requirements",
+        "response": "<strong>Response (within 24 hours):</strong> We'll reach out to discuss your project",
+        "consultation": "<strong>Consultation:</strong> Free strategy session to understand your needs",
+        "proposal": "<strong>Proposal:</strong> Detailed project proposal and timeline"
+      },
+      "projectSummary": "Your Project Summary:",
+      "inTheMeantime": "In the meantime, feel free to:",
+      "suggestions": [
+        "Check out our <a href=\"https://fredonbytes.cloud\">project portfolio</a>",
+        "Follow us on social media for updates",
+        "Call us directly at <a href=\"tel:+420799027984\">+420 799 027 984</a>"
+      ],
+      "visitWebsite": "Visit Our Website"
+    },
+    "admin": {
+      "subject": "New Contact Form Submission",
+      "newSubmission": "New Contact Form Submission",
+      "contactInfo": "Contact Information",
+      "projectDetails": "Project Details",
+      "projectDescription": "Project Description",
+      "additionalRequirements": "Additional Requirements",
+      "preferences": "Preferences",
+      "newsletterSubscription": "Newsletter subscription",
+      "privacyAccepted": "Privacy policy accepted",
+      "yes": "Yes",
+      "no": "No",
+      "footerNote": "This message was sent from the contact form on fredonbytes.cloud",
+      "respondWithin": "Please respond within 24 hours as promised on the website."
+    },
+    "common": {
+      "companyName": "Fredonbytes",
+      "tagline": "Your All-in-One IT Powerhouse",
+      "location": "Brno, Czech Republic"
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+import { generateCsrfToken, validateCsrfToken, CSRF_TOKEN_COOKIE_NAME, CSRF_TOKEN_HEADER_NAME } from './app/lib/csrf';
 import { routing } from './i18n/routing';
 
 // Simple in-memory rate limiter
@@ -85,9 +86,43 @@ export function middleware(request: NextRequest) {
   
   // Set locale header for next-intl
   response.headers.set('x-next-intl-locale', locale);
+
+  // CSRF Protection for state-changing API requests
+  if (request.nextUrl.pathname.startsWith('/api/')) {
+    const method = request.method;
+    
+    // Only check CSRF for state-changing methods (POST, PUT, DELETE, PATCH)
+    if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
+      const csrfTokenFromCookie = request.cookies.get(CSRF_TOKEN_COOKIE_NAME)?.value;
+      const csrfTokenFromHeader = request.headers.get(CSRF_TOKEN_HEADER_NAME);
+      
+      // Validate CSRF token
+      if (!validateCsrfToken(csrfTokenFromHeader || null, csrfTokenFromCookie || null)) {
+        return NextResponse.json(
+          {
+            error: 'CSRF validation failed',
+            message: 'Invalid or missing CSRF token',
+          },
+          { status: 403 }
+        );
+      }
+    }
+    
+    // Set CSRF token cookie if not present (for GET requests)
+    if (method === 'GET' && !request.cookies.get(CSRF_TOKEN_COOKIE_NAME)) {
+      const newCsrfToken = generateCsrfToken();
+      response.cookies.set(CSRF_TOKEN_COOKIE_NAME, newCsrfToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        path: '/',
+        maxAge: 60 * 60 * 24, // 24 hours
+      });
+    }
+  }
   
-  // Only apply rate limiting to API routes
-  if (request.nextUrl.pathname.startsWith('/api/form')) {
+  // Apply rate limiting to all API routes (except health checks)
+  if (request.nextUrl.pathname.startsWith('/api/') && !request.nextUrl.pathname.startsWith('/api/health')) {
     const key = getRateLimitKey(request);
     const { allowed, remaining, resetTime } = checkRateLimit(key);
 
@@ -125,10 +160,10 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // Match all pathnames except for
-    // - … if they start with `/api`, `/_next` or `/_vercel`
+    // - … if they start with `/_next` or `/_vercel`
     // - … the ones containing a dot (e.g. `favicon.ico`)
-    '/((?!api|_next|_vercel|.*\..*).*)',
-    // However, match all pathnames within `/api/form`
-    '/api/form/:path*'
+    '/((?!_next|_vercel|.*\..*).*)',
+    // Match all API routes for rate limiting
+    '/api/:path*'
   ],
 };

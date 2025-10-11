@@ -1,7 +1,9 @@
+import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+
+import { sanitizeString } from '@/app/lib/input-sanitization';
 import { supabase } from '@/app/lib/supabase';
-import crypto from 'crypto';
 
 // Zod validation schema for cookie preferences
 const cookiePreferencesSchema = z.object({
@@ -56,7 +58,9 @@ export async function POST(request: NextRequest) {
     // Get client information
     const clientIp = getClientIp(request);
     const ipAddressHash = anonymizeIpAddress(clientIp);
-    const userAgent = request.headers.get('user-agent') || null;
+    const rawUserAgent = request.headers.get('user-agent') || '';
+    // Sanitize user agent to prevent XSS attacks
+    const userAgent = rawUserAgent ? sanitizeString(rawUserAgent) : null;
     
     // Check if consent already exists for this session
     const { data: existingConsent } = await supabase

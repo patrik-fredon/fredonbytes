@@ -15,7 +15,7 @@ import {
   MessageSquare,
   Shield,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -49,6 +49,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactSection() {
   const t = useTranslations();
+  const locale = useLocale();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -152,23 +153,29 @@ export default function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      // Here you would integrate with Resend API
+      // Include locale in the submission
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          locale,
+        }),
       });
 
       if (response.ok) {
         setIsSubmitted(true);
       } else {
-        throw new Error("Failed to submit form");
+        const errorData = await response.json();
+        console.error("Form submission error:", errorData);
+        throw new Error(errorData.error || "Failed to submit form");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Handle error (show notification, etc.)
+      // TODO: Show error notification to user
+      alert(t("contact.error.message") || "Failed to submit form. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
