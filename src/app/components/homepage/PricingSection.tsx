@@ -124,74 +124,74 @@ export default function PricingSection() {
     () => [
       {
         id: "web-dev",
-        name: t("pricingSection.calculator.services.webDevelopment.name"),
+        name: t("cookies.pricingSection.calculator.services.webDevelopment.name"),
         icon: Code,
         basePrice: 2500,
         description: t(
-          "pricingSection.calculator.services.webDevelopment.description"
+          "cookies.pricingSection.calculator.services.webDevelopment.description"
         ),
         included: t.raw(
-          "pricingSection.calculator.services.webDevelopment.included"
+          "cookies.pricingSection.calculator.services.webDevelopment.included"
         ),
       },
       {
         id: "mobile-app",
-        name: t("pricingSection.calculator.services.mobileApp.name"),
+        name: t("cookies.pricingSection.calculator.services.mobileApp.name"),
         icon: Code,
         basePrice: 5000,
         description: t(
-          "pricingSection.calculator.services.mobileApp.description"
+          "cookies.pricingSection.calculator.services.mobileApp.description"
         ),
         included: t.raw(
-          "pricingSection.calculator.services.mobileApp.included"
+          "cookies.pricingSection.calculator.services.mobileApp.included"
         ),
       },
       {
         id: "design",
-        name: t("pricingSection.calculator.services.brandDesign.name"),
+        name: t("cookies.pricingSection.calculator.services.brandDesign.name"),
         icon: Palette,
         basePrice: 1500,
         description: t(
-          "pricingSection.calculator.services.brandDesign.description"
+          "cookies.pricingSection.calculator.services.brandDesign.description"
         ),
         included: t.raw(
-          "pricingSection.calculator.services.brandDesign.included"
+          "cookies.pricingSection.calculator.services.brandDesign.included"
         ),
       },
       {
         id: "seo",
-        name: t("pricingSection.calculator.services.seoMarketing.name"),
+        name: t("cookies.pricingSection.calculator.services.seoMarketing.name"),
         icon: Search,
         basePrice: 800,
         description: t(
-          "pricingSection.calculator.services.seoMarketing.description"
+          "cookies.pricingSection.calculator.services.seoMarketing.description"
         ),
         included: t.raw(
-          "pricingSection.calculator.services.seoMarketing.included"
+          "cookies.pricingSection.calculator.services.seoMarketing.included"
         ),
       },
       {
         id: "social",
-        name: t("pricingSection.calculator.services.socialMedia.name"),
+        name: t("cookies.pricingSection.calculator.services.socialMedia.name"),
         icon: Share2,
         basePrice: 600,
         description: t(
-          "pricingSection.calculator.services.socialMedia.description"
+          "cookies.pricingSection.calculator.services.socialMedia.description"
         ),
         included: t.raw(
-          "pricingSection.calculator.services.socialMedia.included"
+          "cookies.pricingSection.calculator.services.socialMedia.included"
         ),
       },
       {
         id: "consulting",
-        name: t("pricingSection.calculator.services.itConsulting.name"),
+        name: t("cookies.pricingSection.calculator.services.itConsulting.name"),
         icon: Shield,
         basePrice: 150,
         description: t(
-          "pricingSection.calculator.services.itConsulting.description"
+          "cookies.pricingSection.calculator.services.itConsulting.description"
         ),
         included: t.raw(
-          "pricingSection.calculator.services.itConsulting.included"
+          "cookies.pricingSection.calculator.services.itConsulting.included"
         ),
       },
     ],
@@ -274,9 +274,8 @@ export default function PricingSection() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`relative bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${
-                  plan.popular ? "ring-2 ring-blue-600 scale-105" : ""
-                }`}
+                className={`relative bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${plan.popular ? "ring-2 ring-blue-600 scale-105" : ""
+                  }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -350,32 +349,30 @@ export default function PricingSection() {
               <div className="flex items-center justify-center space-x-3 mb-4">
                 <Calculator className="w-8 h-8 text-blue-600" />
                 <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
-                  {t("pricingSection.calculator.title")}
+                  {t("cookies.pricingSection.calculator.title")}
                 </h3>
               </div>
               <p className="text-slate-600 dark:text-slate-300">
-                {t("pricingSection.calculator.description")}
+                {t("cookies.pricingSection.calculator.description")}
               </p>
             </div>
 
             {/* Pricing Plan Toggle */}
             <div className="flex justify-center items-center gap-4 mb-8">
               <button
-                className={`px-4 py-2 rounded-lg font-semibold ${
-                  !isAnnual
-                    ? "bg-blue-600 text-white"
-                    : "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"
-                }`}
+                className={`px-4 py-2 rounded-lg font-semibold ${!isAnnual
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"
+                  }`}
                 onClick={() => setIsAnnual(false)}
               >
                 {t("pricing.toggle.monthly")}
               </button>
               <button
-                className={`px-4 py-2 rounded-lg font-semibold ${
-                  isAnnual
-                    ? "bg-blue-600 text-white"
-                    : "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"
-                }`}
+                className={`px-4 py-2 rounded-lg font-semibold ${isAnnual
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"
+                  }`}
                 onClick={() => setIsAnnual(true)}
               >
                 {t("pricing.toggle.annual")}
@@ -393,7 +390,7 @@ export default function PricingSection() {
                   onClick={() => setCalculatorOpen(true)}
                   rightIcon={<Calculator className="w-5 h-5" />}
                 >
-                  {t("pricingSection.calculator.toggleButton")}
+                  {t("cookies.pricingSection.calculator.toggleButton")}
                 </Button>
               </div>
             ) : (
@@ -409,21 +406,19 @@ export default function PricingSection() {
                     return (
                       <div
                         key={service.id}
-                        className={`border-2 rounded-xl p-6 transition-all duration-300 cursor-pointer ${
-                          state.selected
-                            ? "border-blue-600 bg-blue-50 dark:bg-blue-900/20"
-                            : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
-                        }`}
+                        className={`border-2 rounded-xl p-6 transition-all duration-300 cursor-pointer ${state.selected
+                          ? "border-blue-600 bg-blue-50 dark:bg-blue-900/20"
+                          : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
+                          }`}
                         onClick={() => toggleService(service.id)}
                       >
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex items-center space-x-3">
                             <div
-                              className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                                state.selected
-                                  ? "bg-blue-600 text-white"
-                                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
-                              }`}
+                              className={`w-10 h-10 rounded-lg flex items-center justify-center ${state.selected
+                                ? "bg-blue-600 text-white"
+                                : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
+                                }`}
                             >
                               <Icon className="w-5 h-5" />
                             </div>

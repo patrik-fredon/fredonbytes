@@ -14,13 +14,13 @@ export default function TermsOfServicePage() {
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-              {t("termsOfService.title")}
+              {t("cookies.termsOfService.title")}
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-300">
-              {t("termsOfService.subtitle")}
+              {t("cookies.termsOfService.subtitle")}
             </p>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-4">
-              {t("termsOfService.lastUpdated")}
+              {t("cookies.termsOfService.lastUpdated")}
             </p>
           </div>
 
@@ -28,35 +28,35 @@ export default function TermsOfServicePage() {
           <div className="prose prose-slate dark:prose-invert max-w-none">
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 mb-8">
               <h2 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-2">
-                {t("termsOfService.agreementOverview.title")}
+                {t("cookies.termsOfService.agreementOverview.title")}
               </h2>
               <p className="text-blue-800 dark:text-blue-200 text-sm">
-                {t("termsOfService.agreementOverview.description")}
+                {t("cookies.termsOfService.agreementOverview.description")}
               </p>
             </div>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.acceptanceOfTerms.title")}
+                {t("cookies.termsOfService.sections.acceptanceOfTerms.title")}
               </h2>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
-                {t("termsOfService.sections.acceptanceOfTerms.content.0")}
+                {t("cookies.termsOfService.sections.acceptanceOfTerms.content.0")}
               </p>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
-                {t("termsOfService.sections.acceptanceOfTerms.content.1")}
+                {t("cookies.termsOfService.sections.acceptanceOfTerms.content.1")}
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.servicesDescription.title")}
+                {t("cookies.termsOfService.sections.servicesDescription.title")}
               </h2>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
-                {t("termsOfService.sections.servicesDescription.intro")}
+                {t("cookies.termsOfService.sections.servicesDescription.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
                 {t.raw(
-                  "termsOfService.sections.servicesDescription.services"
+                  "cookies.termsOfService.sections.servicesDescription.services"
                 ).map((service: string, index: number) => (
                   <li key={index}>{service}</li>
                 ))}
@@ -65,14 +65,14 @@ export default function TermsOfServicePage() {
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.userResponsibilities.title")}
+                {t("cookies.termsOfService.sections.userResponsibilities.title")}
               </h2>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
-                {t("termsOfService.sections.userResponsibilities.intro")}
+                {t("cookies.termsOfService.sections.userResponsibilities.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-4 space-y-1">
                 {t.raw(
-                  "termsOfService.sections.userResponsibilities.responsibilities"
+                  "cookies.termsOfService.sections.userResponsibilities.responsibilities"
                 ).map((responsibility: string, index: number) => (
                   <li key={index}>{responsibility}</li>
                 ))}
@@ -80,17 +80,17 @@ export default function TermsOfServicePage() {
 
               <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
                 {t(
-                  "termsOfService.sections.userResponsibilities.prohibitedUses.title"
+                  "cookies.termsOfService.sections.userResponsibilities.prohibitedUses.title"
                 )}
               </h3>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
                 {t(
-                  "termsOfService.sections.userResponsibilities.prohibitedUses.intro"
+                  "cookies.termsOfService.sections.userResponsibilities.prohibitedUses.intro"
                 )}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
                 {t.raw(
-                  "termsOfService.sections.userResponsibilities.prohibitedUses.prohibitions"
+                  "cookies.termsOfService.sections.userResponsibilities.prohibitedUses.prohibitions"
                 ).map((prohibition: string, index: number) => (
                   <li key={index}>{prohibition}</li>
                 ))}
@@ -99,37 +99,37 @@ export default function TermsOfServicePage() {
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.serviceAgreements.title")}
+                {t("cookies.termsOfService.sections.serviceAgreements.title")}
               </h2>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
-                {t("termsOfService.sections.serviceAgreements.intro")}
+                {t("cookies.termsOfService.sections.serviceAgreements.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-4 space-y-1">
                 {t.raw(
-                  "termsOfService.sections.serviceAgreements.details"
+                  "cookies.termsOfService.sections.serviceAgreements.details"
                 ).map((detail: string, index: number) => (
                   <li key={index}>{detail}</li>
                 ))}
               </ul>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
                 {t(
-                  "termsOfService.sections.serviceAgreements.conflictResolution"
+                  "cookies.termsOfService.sections.serviceAgreements.conflictResolution"
                 )}
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.paymentTerms.title")}
+                {t("cookies.termsOfService.sections.paymentTerms.title")}
               </h2>
               <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
                 {t(
-                  "termsOfService.sections.paymentTerms.pricingAndInvoicing.title"
+                  "cookies.termsOfService.sections.paymentTerms.pricingAndInvoicing.title"
                 )}
               </h3>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-4 space-y-1">
                 {t.raw(
-                  "termsOfService.sections.paymentTerms.pricingAndInvoicing.terms"
+                  "cookies.termsOfService.sections.paymentTerms.pricingAndInvoicing.terms"
                 ).map((term: string, index: number) => (
                   <li key={index}>{term}</li>
                 ))}
@@ -137,12 +137,12 @@ export default function TermsOfServicePage() {
 
               <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
                 {t(
-                  "termsOfService.sections.paymentTerms.refundsAndCancellations.title"
+                  "cookies.termsOfService.sections.paymentTerms.refundsAndCancellations.title"
                 )}
               </h3>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
                 {t.raw(
-                  "termsOfService.sections.paymentTerms.refundsAndCancellations.terms"
+                  "cookies.termsOfService.sections.paymentTerms.refundsAndCancellations.terms"
                 ).map((term: string, index: number) => (
                   <li key={index}>{term}</li>
                 ))}
@@ -151,41 +151,41 @@ export default function TermsOfServicePage() {
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.intellectualProperty.title")}
+                {t("cookies.termsOfService.sections.intellectualProperty.title")}
               </h2>
               <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
                 {t(
-                  "termsOfService.sections.intellectualProperty.ourProperty.title"
+                  "cookies.termsOfService.sections.intellectualProperty.ourProperty.title"
                 )}
               </h3>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
                 {t(
-                  "termsOfService.sections.intellectualProperty.ourProperty.description"
+                  "cookies.termsOfService.sections.intellectualProperty.ourProperty.description"
                 )}
               </p>
 
               <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
                 {t(
-                  "termsOfService.sections.intellectualProperty.clientProperty.title"
+                  "cookies.termsOfService.sections.intellectualProperty.clientProperty.title"
                 )}
               </h3>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
                 {t(
-                  "termsOfService.sections.intellectualProperty.clientProperty.description"
+                  "cookies.termsOfService.sections.intellectualProperty.clientProperty.description"
                 )}
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.confidentiality.title")}
+                {t("cookies.termsOfService.sections.confidentiality.title")}
               </h2>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
-                {t("termsOfService.sections.confidentiality.intro")}
+                {t("cookies.termsOfService.sections.confidentiality.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
                 {t.raw(
-                  "termsOfService.sections.confidentiality.commitments"
+                  "cookies.termsOfService.sections.confidentiality.commitments"
                 ).map((commitment: string, index: number) => (
                   <li key={index}>{commitment}</li>
                 ))}
@@ -194,80 +194,80 @@ export default function TermsOfServicePage() {
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.disclaimersAndLimitations.title")}
+                {t("cookies.termsOfService.sections.disclaimersAndLimitations.title")}
               </h2>
               <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
                 {t(
-                  "termsOfService.sections.disclaimersAndLimitations.serviceAvailability.title"
+                  "cookies.termsOfService.sections.disclaimersAndLimitations.serviceAvailability.title"
                 )}
               </h3>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
                 {t(
-                  "termsOfService.sections.disclaimersAndLimitations.serviceAvailability.description"
+                  "cookies.termsOfService.sections.disclaimersAndLimitations.serviceAvailability.description"
                 )}
               </p>
 
               <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">
                 {t(
-                  "termsOfService.sections.disclaimersAndLimitations.limitationOfLiability.title"
+                  "cookies.termsOfService.sections.disclaimersAndLimitations.limitationOfLiability.title"
                 )}
               </h3>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
                 {t(
-                  "termsOfService.sections.disclaimersAndLimitations.limitationOfLiability.description"
+                  "cookies.termsOfService.sections.disclaimersAndLimitations.limitationOfLiability.description"
                 )}
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.dataProtectionAndPrivacy.title")}
+                {t("cookies.termsOfService.sections.dataProtectionAndPrivacy.title")}
               </h2>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
                 {t(
-                  "termsOfService.sections.dataProtectionAndPrivacy.content.0"
+                  "cookies.termsOfService.sections.dataProtectionAndPrivacy.content.0"
                 )}
               </p>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
                 {t(
-                  "termsOfService.sections.dataProtectionAndPrivacy.content.1"
+                  "cookies.termsOfService.sections.dataProtectionAndPrivacy.content.1"
                 )}
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.governingLawAndDisputes.title")}
+                {t("cookies.termsOfService.sections.governingLawAndDisputes.title")}
               </h2>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
-                {t("termsOfService.sections.governingLawAndDisputes.content.0")}
+                {t("cookies.termsOfService.sections.governingLawAndDisputes.content.0")}
               </p>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
-                {t("termsOfService.sections.governingLawAndDisputes.content.1")}
+                {t("cookies.termsOfService.sections.governingLawAndDisputes.content.1")}
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.changesToTerms.title")}
+                {t("cookies.termsOfService.sections.changesToTerms.title")}
               </h2>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
-                {t("termsOfService.sections.changesToTerms.content.0")}
+                {t("cookies.termsOfService.sections.changesToTerms.content.0")}
               </p>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
-                {t("termsOfService.sections.changesToTerms.content.1")}
+                {t("cookies.termsOfService.sections.changesToTerms.content.1")}
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.termination.title")}
+                {t("cookies.termsOfService.sections.termination.title")}
               </h2>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
-                {t("termsOfService.sections.termination.intro")}
+                {t("cookies.termsOfService.sections.termination.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {t.raw("termsOfService.sections.termination.conditions").map(
+                {t.raw("cookies.termsOfService.sections.termination.conditions").map(
                   (condition: string, index: number) => (
                     <li key={index}>{condition}</li>
                   )
@@ -277,45 +277,45 @@ export default function TermsOfServicePage() {
 
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("termsOfService.sections.contactInformation.title")}
+                {t("cookies.termsOfService.sections.contactInformation.title")}
               </h2>
               <p className="text-slate-700 dark:text-slate-300 mb-4">
-                {t("termsOfService.sections.contactInformation.intro")}
+                {t("cookies.termsOfService.sections.contactInformation.intro")}
               </p>
               <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-6">
                 <p className="text-slate-700 dark:text-slate-300 mb-2">
                   <strong>
-                    {t("termsOfService.sections.contactInformation.company")}
+                    {t("cookies.termsOfService.sections.contactInformation.company")}
                   </strong>
                   <br />
                   Email:{" "}
                   <a
-                    href={`mailto:${t("termsOfService.sections.contactInformation.email")}`}
+                    href={`mailto:${t("cookies.termsOfService.sections.contactInformation.email")}`}
                     className="text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    {t("termsOfService.sections.contactInformation.email")}
+                    {t("cookies.termsOfService.sections.contactInformation.email")}
                   </a>
                   <br />
                   Phone:{" "}
                   <a
-                    href={`tel:${t("termsOfService.sections.contactInformation.phone")}`}
+                    href={`tel:${t("cookies.termsOfService.sections.contactInformation.phone")}`}
                     className="text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    {t("termsOfService.sections.contactInformation.phone")}
+                    {t("cookies.termsOfService.sections.contactInformation.phone")}
                   </a>
                   <br />
                   Address:{" "}
-                  {t("termsOfService.sections.contactInformation.address")}
+                  {t("cookies.termsOfService.sections.contactInformation.address")}
                 </p>
               </div>
             </section>
 
             <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6 mt-8">
               <h3 className="text-lg font-semibold text-yellow-900 dark:text-yellow-100 mb-2">
-                {t("termsOfService.legalNotice.title")}
+                {t("cookies.termsOfService.legalNotice.title")}
               </h3>
               <p className="text-yellow-800 dark:text-yellow-200 text-sm">
-                {t("termsOfService.legalNotice.description")}
+                {t("cookies.termsOfService.legalNotice.description")}
               </p>
             </div>
           </div>
