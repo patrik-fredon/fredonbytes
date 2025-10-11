@@ -28,6 +28,8 @@ export interface FormSession {
   completed_at?: string | null;
   ip_address?: string | null;
   user_agent?: string | null;
+  newsletter_optin?: boolean;
+  email?: string | null;
 }
 
 export interface FormResponse {

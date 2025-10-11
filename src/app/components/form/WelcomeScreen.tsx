@@ -59,7 +59,8 @@ export default function WelcomeScreen({ onNext }: WelcomeScreenProps) {
           onClick={onNext}
           variant="gradient"
           size="lg"
-          className="min-w-[200px]"
+          className="min-w-[200px] min-h-[44px]"
+          aria-label="Start the customer satisfaction survey"
         >
           Start Survey
         </Button>

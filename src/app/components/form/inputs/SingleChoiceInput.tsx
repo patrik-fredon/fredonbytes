@@ -95,7 +95,7 @@ export default function SingleChoiceInput({
       aria-invalid={!!error}
       aria-describedby={error ? `error-${questionId}` : undefined}
     >
-      {sortedOptions.map((option, index) => {
+      {sortedOptions.map((option) => {
         const isSelected = value === option.option_text
         const inputId = `${questionId}-option-${option.id}`
 
@@ -103,7 +103,7 @@ export default function SingleChoiceInput({
           <label
             key={option.id}
             htmlFor={inputId}
-            className={`flex items-center gap-3 p-4 rounded-md border transition-all duration-200 cursor-pointer
+            className={`flex items-center gap-3 p-4 min-h-[44px] rounded-md border transition-all duration-200 cursor-pointer
                        ${
                          isSelected
                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-400'

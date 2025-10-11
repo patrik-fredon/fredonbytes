@@ -66,7 +66,8 @@ export default function FormNavigation({
             onClick={onPrevious}
             disabled={!canGoPrevious || isSubmitting}
             leftIcon={<ChevronLeft size={20} />}
-            className="w-full sm:w-auto sm:min-w-[140px]"
+            className="w-full sm:w-auto sm:min-w-[140px] min-h-[44px]"
+            aria-label="Go to previous question"
           >
             Previous
           </Button>
@@ -74,14 +75,15 @@ export default function FormNavigation({
 
         {/* Next/Submit button */}
         <Button
-          type="button"
+          type="submit"
           variant={isOnLastQuestion ? 'gradient' : 'default'}
           size="lg"
           onClick={onNext}
           disabled={!canGoNext || isSubmitting}
           loading={isSubmitting}
           rightIcon={!isSubmitting && !isOnLastQuestion ? <ChevronRight size={20} /> : undefined}
-          className="w-full sm:flex-1 sm:min-w-[140px]"
+          className="w-full sm:flex-1 sm:min-w-[140px] min-h-[44px]"
+          aria-label={isOnLastQuestion ? 'Submit survey' : 'Go to next question'}
         >
           {nextButtonText}
         </Button>

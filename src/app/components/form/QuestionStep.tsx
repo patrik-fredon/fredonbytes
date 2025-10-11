@@ -174,13 +174,7 @@ export default function QuestionStep({
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 100 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -100 }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="space-y-6"
-    >
+    <div className="space-y-6">
       {/* Question Text with Required Indicator */}
       <div className="space-y-2">
         <h2 className="text-2xl lg:text-3xl font-semibold text-slate-900 dark:text-white">
@@ -232,6 +226,6 @@ export default function QuestionStep({
           <span>{error}</span>
         </motion.div>
       )}
-    </motion.div>
+    </div>
   )
 }

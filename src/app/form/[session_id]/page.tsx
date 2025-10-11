@@ -1,9 +1,15 @@
 import { randomUUID } from 'crypto'
 
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+import dynamic from 'next/dynamic'
 import { redirect } from 'next/navigation'
 
-import FormClient from './FormClient'
+import FormLoadingSkeleton from '@/app/components/form/FormLoadingSkeleton'
+
+// Dynamic import for FormClient with loading skeleton
+const FormClient = dynamic(() => import('./FormClient'), {
+  loading: () => <FormLoadingSkeleton />,
+})
 
 interface FormPageProps {
   params: Promise<{
@@ -30,6 +36,12 @@ export const metadata: Metadata = {
     index: false, // Don't index individual form sessions
     follow: false,
   },
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0f172a",
 }
 
 /**

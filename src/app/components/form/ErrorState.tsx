@@ -1,6 +1,7 @@
 'use client'
 
 import { AlertCircle, RefreshCw, Mail } from 'lucide-react';
+
 import { Button } from '@/app/components/common/Button';
 
 export interface ErrorAction {
@@ -85,6 +86,8 @@ export default function ErrorState({
               size="lg"
               loading={action.loading}
               leftIcon={action.label.toLowerCase().includes('retry') ? <RefreshCw size={18} /> : undefined}
+              className="min-h-[44px]"
+              aria-label={action.label}
             >
               {action.label}
             </Button>

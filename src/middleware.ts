@@ -1,0 +1,99 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+// Simple in-memory rate limiter
+// In production, consider using Redis or a dedicated rate limiting service
+interface RateLimitEntry {
+  count: number;
+  resetTime: number;
+}
+
+const rateLimitMap = new Map<string, RateLimitEntry>();
+
+// Rate limit configuration
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 10; // 10 requests per minute per IP
+
+// Cleanup old entries every 5 minutes
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, entry] of rateLimitMap.entries()) {
+    if (now > entry.resetTime) {
+      rateLimitMap.delete(key);
+    }
+  }
+}, 5 * 60 * 1000);
+
+function getRateLimitKey(request: NextRequest): string {
+  // Use IP address as the rate limit key
+  // Try multiple headers for IP detection (Vercel, Cloudflare, etc.)
+  const ip = 
+    request.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
+    request.headers.get('x-real-ip') ||
+    'unknown';
+  const pathname = request.nextUrl.pathname;
+  return `${ip}:${pathname}`;
+}
+
+function checkRateLimit(key: string): { allowed: boolean; remaining: number; resetTime: number } {
+  const now = Date.now();
+  const entry = rateLimitMap.get(key);
+
+  if (!entry || now > entry.resetTime) {
+    // Create new entry or reset expired entry
+    const resetTime = now + RATE_LIMIT_WINDOW_MS;
+    rateLimitMap.set(key, { count: 1, resetTime });
+    return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - 1, resetTime };
+  }
+
+  if (entry.count >= MAX_REQUESTS_PER_WINDOW) {
+    // Rate limit exceeded
+    return { allowed: false, remaining: 0, resetTime: entry.resetTime };
+  }
+
+  // Increment count
+  entry.count++;
+  return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - entry.count, resetTime: entry.resetTime };
+}
+
+export function middleware(request: NextRequest) {
+  // Only apply rate limiting to API routes
+  if (request.nextUrl.pathname.startsWith('/api/form')) {
+    const key = getRateLimitKey(request);
+    const { allowed, remaining, resetTime } = checkRateLimit(key);
+
+    if (!allowed) {
+      // Rate limit exceeded
+      const retryAfter = Math.ceil((resetTime - Date.now()) / 1000);
+      return NextResponse.json(
+        {
+          error: 'Too many requests',
+          message: 'Rate limit exceeded. Please try again later.',
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': retryAfter.toString(),
+            'X-RateLimit-Limit': MAX_REQUESTS_PER_WINDOW.toString(),
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': new Date(resetTime).toISOString(),
+          },
+        }
+      );
+    }
+
+    // Add rate limit headers to successful responses
+    const response = NextResponse.next();
+    response.headers.set('X-RateLimit-Limit', MAX_REQUESTS_PER_WINDOW.toString());
+    response.headers.set('X-RateLimit-Remaining', remaining.toString());
+    response.headers.set('X-RateLimit-Reset', new Date(resetTime).toISOString());
+    return response;
+  }
+
+  return NextResponse.next();
+}
+
+// Configure which routes the middleware runs on
+export const config = {
+  matcher: '/api/form/:path*',
+};

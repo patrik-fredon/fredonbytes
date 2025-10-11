@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
@@ -51,9 +51,14 @@ export const metadata: Metadata = {
     description: "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
     images: ["/FredonBytes_GraphicLogo.png"],
   },
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#0f172a",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://fredonbytes.cloud'),
   manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0f172a",
 };
 
 export default function RootLayout({

@@ -30,7 +30,7 @@ interface ChecklistInputProps {
 export default function ChecklistInput({
   value = [],
   onChange,
-  required,
+  required: _required,
   error,
   questionId,
   questionText,
@@ -107,14 +107,12 @@ export default function ChecklistInput({
       className="space-y-3"
       role="group"
       aria-label={questionText}
-      aria-required={required}
-      aria-invalid={!!error}
       aria-describedby={error ? `error-${questionId}` : undefined}
     >
       {/* Select All Option */}
       <label
         htmlFor={`${questionId}-select-all`}
-        className={`flex items-center gap-3 p-4 rounded-md border-2 transition-all duration-200 cursor-pointer
+        className={`flex items-center gap-3 p-4 min-h-[44px] rounded-md border-2 transition-all duration-200 cursor-pointer
                    ${
                      allSelected
                        ? 'border-blue-600 bg-blue-100 dark:bg-blue-900/30 dark:border-blue-500'
@@ -199,7 +197,7 @@ export default function ChecklistInput({
           <label
             key={option.id}
             htmlFor={inputId}
-            className={`flex items-center gap-3 p-4 rounded-md border transition-all duration-200 cursor-pointer
+            className={`flex items-center gap-3 p-4 min-h-[44px] rounded-md border transition-all duration-200 cursor-pointer
                        ${
                          isChecked
                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-400'

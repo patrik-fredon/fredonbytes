@@ -30,7 +30,7 @@
 
 ## Email & API
 
-- **Resend API** for email handling
+- **Nodemailer with SMTP** for email handling
 - API routes in `src/app/api/` directory
 
 ## Development Tools
@@ -82,7 +82,15 @@ npm run optimize              # Run optimization scripts
 Required environment variables:
 
 ```env
-RESEND_API_KEY=your_resend_api_key_here
+# SMTP Configuration
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password_here
+SMTP_REJECT_UNAUTHORIZED=true
+
+# Site Configuration
 NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
 ```
 

@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
 import { z } from 'zod';
 
+import { sendEmail } from '@/app/lib/email';
 import { generateAdminNotificationHTML, type FormResponseData } from '@/app/lib/email-templates';
+import { sanitizeAnswerValue } from '@/app/lib/input-sanitization';
 import { supabase, type AnswerValue, type FormSession, type Question } from '@/app/lib/supabase';
-
-// Initialize Resend client
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Zod schema for request validation
 const submitRequestSchema = z.object({
@@ -21,6 +19,8 @@ const submitRequestSchema = z.object({
     user_agent: z.string().optional(),
     ip_address: z.string().optional(),
   }).optional(),
+  newsletter_optin: z.boolean().optional(),
+  email: z.string().email().optional(),
 });
 
 // Response interface for submit endpoint
@@ -47,7 +47,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { session_id, responses, metadata } = validationResult.data;
+    const { session_id, responses, metadata, newsletter_optin, email } = validationResult.data;
+
+    // Sanitize all answer values to prevent XSS attacks
+    const sanitizedResponses = responses.map(response => ({
+      ...response,
+      answer_value: sanitizeAnswerValue(response.answer_value),
+    }));
 
     // Check if session already completed (duplicate submission)
     const { data: existingSession, error: sessionCheckError } = await supabase
@@ -88,6 +94,8 @@ export async function POST(request: NextRequest) {
         completed_at: new Date().toISOString(),
         ip_address: metadata?.ip_address ?? null,
         user_agent: metadata?.user_agent ?? null,
+        newsletter_optin: newsletter_optin ?? false,
+        email: email ?? null,
       } as any, {
         onConflict: 'session_id',
       });
@@ -104,8 +112,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Batch insert form_responses
-    const formResponses = responses.map(response => ({
+    // Batch insert form_responses (using sanitized responses)
+    const formResponses = sanitizedResponses.map(response => ({
       session_id,
       question_id: response.question_id,
       answer_value: response.answer_value as AnswerValue,
@@ -130,15 +138,15 @@ export async function POST(request: NextRequest) {
     // Send admin notification email (non-blocking)
     try {
       // Fetch question details to include in email
-      const questionIds = responses.map(r => r.question_id);
+      const questionIds = sanitizedResponses.map(r => r.question_id);
       const { data: questions, error: questionsError } = await supabase
         .from('questions')
         .select('id, question_text, answer_type')
         .in('id', questionIds);
 
       if (!questionsError && questions) {
-        // Map responses to include question text
-        const formattedResponses: FormResponseData[] = responses.map(response => {
+        // Map responses to include question text (using sanitized responses)
+        const formattedResponses: FormResponseData[] = sanitizedResponses.map(response => {
           const question = (questions as Question[]).find((q: Question) => q.id === response.question_id);
           return {
             question_id: response.question_id,
@@ -155,10 +163,10 @@ export async function POST(request: NextRequest) {
           responses: formattedResponses,
         });
 
-        // Send email via Resend
-        await resend.emails.send({
+        // Send email via SMTP
+        await sendEmail({
           from: 'Customer Feedback <noreply@fredonbytes.cloud>',
-          to: ['info@fredonbytes.cloud'],
+          to: process.env.ADMIN_EMAIL || 'info@fredonbytes.cloud',
           subject: `New Customer Satisfaction Survey - ${session_id.substring(0, 8)}`,
           html: emailHtml,
         });

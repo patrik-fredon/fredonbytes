@@ -30,7 +30,7 @@ interface MultipleChoiceInputProps {
 export default function MultipleChoiceInput({
   value = [],
   onChange,
-  required,
+  required: _required,
   error,
   questionId,
   questionText,
@@ -93,8 +93,6 @@ export default function MultipleChoiceInput({
       className="space-y-3"
       role="group"
       aria-label={questionText}
-      aria-required={required}
-      aria-invalid={!!error}
       aria-describedby={error ? `error-${questionId}` : undefined}
     >
       {sortedOptions.map((option) => {
@@ -105,7 +103,7 @@ export default function MultipleChoiceInput({
           <label
             key={option.id}
             htmlFor={inputId}
-            className={`flex items-center gap-3 p-4 rounded-md border transition-all duration-200 cursor-pointer
+            className={`flex items-center gap-3 p-4 min-h-[44px] rounded-md border transition-all duration-200 cursor-pointer
                        ${
                          isChecked
                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-400'

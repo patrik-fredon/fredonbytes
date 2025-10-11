@@ -12,6 +12,15 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 - **Pricing Section** - Interactive pricing calculator with multiple tiers
 - **Contact Section** - Multi-step form with real-time validation
 
+### Customer Satisfaction Form
+- **Dynamic Survey System** - Session-based forms with unique URLs for each customer
+- **Multiple Question Types** - Support for text, single choice, multiple choice, and checklist questions
+- **Progress Persistence** - Automatic saving to localStorage with 24-hour expiration
+- **Email Notifications** - Automated admin notifications via Resend API
+- **Responsive Design** - Mobile-first design with smooth Framer Motion animations
+- **Accessibility** - Full WCAG 2.1 Level AA compliance with keyboard navigation
+- **Database Integration** - Supabase PostgreSQL for secure data storage
+
 ### Link Tree System
 - Professional link organization with categories
 - GitHub repository statistics integration
@@ -21,11 +30,13 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 ### Technical Features
 - **Email Integration** - Resend API for professional email handling
 - **Form Validation** - React Hook Form with Zod schema validation
+- **Database Integration** - Supabase PostgreSQL with Row Level Security
 - **Animations** - Framer Motion for smooth transitions
 - **SEO Optimization** - Complete meta tag management and Open Graph support
 - **Accessibility** - AAA-level accessibility features
 - **Dark Mode** - Complete dark theme support
 - **GDPR Compliance** - Cookie consent management with granular controls
+- **Session Management** - UUID-based session tracking with localStorage persistence
 
 ### Legal Framework
 - Privacy Policy with comprehensive GDPR compliance
@@ -39,6 +50,7 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 - **Styling:** Tailwind CSS
 - **Animations:** Framer Motion
 - **Forms:** React Hook Form + Zod
+- **Database:** Supabase (PostgreSQL)
 - **Email:** Resend API
 - **Icons:** Lucide React
 - **Deployment:** Vercel (recommended)
@@ -63,7 +75,14 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
    
    Add your environment variables:
    ```env
+   # Supabase Configuration
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+   
+   # Resend Email Configuration
    RESEND_API_KEY=your_resend_api_key_here
+   
+   # Site Configuration
    NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
    ```
 
@@ -112,7 +131,29 @@ The project can be deployed to any platform that supports Next.js:
 
 3. **Update email addresses**
    - Update sender addresses in `/src/app/api/contact/route.ts`
+   - Update form notification recipient in `/src/app/api/form/submit/route.ts`
    - Ensure they match your verified domain
+
+## 💾 Database Setup (Customer Satisfaction Form)
+
+1. **Create Supabase Account**
+   - Go to [supabase.com](https://supabase.com)
+   - Create a new project
+
+2. **Run Database Migrations**
+   - Open Supabase SQL Editor
+   - Execute the schema from `docs/database-schema.sql`
+   - This creates tables for questions, options, sessions, and responses
+
+3. **Seed Sample Questions**
+   - Run the seed script from `scripts/seed-form-questions.sql`
+   - This adds 7 sample questions covering all question types
+
+4. **Configure Environment Variables**
+   - Add Supabase URL and anon key to `.env.local`
+   - See detailed setup guide in `docs/FORM_SETUP.md`
+
+For complete database setup instructions, see [Form Setup Guide](docs/FORM_SETUP.md)
 
 ## 🎨 Customization
 
@@ -140,11 +181,28 @@ src/
 │   ├── components/
 │   │   ├── common/           # Reusable components
 │   │   ├── homepage/         # Homepage sections
-│   │   └── linktree/         # Link tree components
+│   │   ├── linktree/         # Link tree components
+│   │   └── form/             # Form components
+│   │       ├── inputs/       # Input components for different question types
+│   │       ├── FormClient.tsx
+│   │       ├── QuestionStep.tsx
+│   │       ├── WelcomeScreen.tsx
+│   │       ├── ThankYouScreen.tsx
+│   │       └── FormNavigation.tsx
 │   ├── api/
-│   │   └── contact/          # Contact form API
+│   │   ├── contact/          # Contact form API
+│   │   └── form/             # Customer satisfaction form API
+│   │       ├── questions/    # Fetch questions endpoint
+│   │       └── submit/       # Submit responses endpoint
 │   ├── lib/
-│   │   └── utils.ts          # Utility functions
+│   │   ├── utils.ts          # Utility functions
+│   │   ├── supabase.ts       # Supabase client configuration
+│   │   ├── form-storage.ts   # localStorage utilities
+│   │   ├── form-validation.ts # Form validation logic
+│   │   └── email-templates.ts # Email template generation
+│   ├── form/                 # Customer satisfaction form pages
+│   │   ├── [session_id]/     # Dynamic session-based form
+│   │   └── page.tsx          # Form entry point
 │   ├── links/                # Link tree page
 │   ├── privacy-policy/       # Privacy policy page
 │   ├── terms-of-service/     # Terms of service page
@@ -153,7 +211,13 @@ src/
 │   ├── layout.tsx            # Root layout
 │   └── page.tsx              # Homepage
 ├── public/                   # Static assets
-└── docs/                     # Documentation
+├── docs/                     # Documentation
+│   ├── FORM_SETUP.md         # Form setup guide
+│   ├── API.md                # API documentation
+│   ├── DEPLOYMENT.md         # Deployment checklist
+│   └── database-schema.sql   # Database schema
+└── scripts/                  # Utility scripts
+    └── seed-form-questions.sql # Sample questions
 ```
 
 ## 🔧 Available Scripts
@@ -162,7 +226,12 @@ src/
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+- `npm run lint:fix` - Auto-fix ESLint issues
 - `npm run type-check` - Run TypeScript compiler
+- `npm run pre-deploy` - Full validation + build
+- `npm run translations:validate` - Validate translation files
+
+For a complete list of available scripts, see `package.json`
 
 ## 📊 Performance
 

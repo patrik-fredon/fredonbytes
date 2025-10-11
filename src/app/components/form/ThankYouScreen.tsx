@@ -113,7 +113,8 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
           onClick={handleManualRedirect}
           variant="gradient"
           size="lg"
-          className="min-w-[200px]"
+          className="min-w-[200px] min-h-[44px]"
+          aria-label="Return to homepage now"
         >
           Return to Homepage
         </Button>
