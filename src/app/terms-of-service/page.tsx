@@ -1,11 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import React from "react";
 
-import { useTranslations } from "@/app/hooks/useTranslations";
 
 export default function TermsOfServicePage() {
-  const { t, tArray } = useTranslations();
+  const t = useTranslations();
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 py-12">
@@ -55,7 +55,7 @@ export default function TermsOfServicePage() {
                 {t("termsOfService.sections.servicesDescription.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {tArray(
+                {t.raw(
                   "termsOfService.sections.servicesDescription.services"
                 ).map((service: string, index: number) => (
                   <li key={index}>{service}</li>
@@ -71,7 +71,7 @@ export default function TermsOfServicePage() {
                 {t("termsOfService.sections.userResponsibilities.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-4 space-y-1">
-                {tArray(
+                {t.raw(
                   "termsOfService.sections.userResponsibilities.responsibilities"
                 ).map((responsibility: string, index: number) => (
                   <li key={index}>{responsibility}</li>
@@ -89,7 +89,7 @@ export default function TermsOfServicePage() {
                 )}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {tArray(
+                {t.raw(
                   "termsOfService.sections.userResponsibilities.prohibitedUses.prohibitions"
                 ).map((prohibition: string, index: number) => (
                   <li key={index}>{prohibition}</li>
@@ -105,7 +105,7 @@ export default function TermsOfServicePage() {
                 {t("termsOfService.sections.serviceAgreements.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-4 space-y-1">
-                {tArray(
+                {t.raw(
                   "termsOfService.sections.serviceAgreements.details"
                 ).map((detail: string, index: number) => (
                   <li key={index}>{detail}</li>
@@ -128,7 +128,7 @@ export default function TermsOfServicePage() {
                 )}
               </h3>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-4 space-y-1">
-                {tArray(
+                {t.raw(
                   "termsOfService.sections.paymentTerms.pricingAndInvoicing.terms"
                 ).map((term: string, index: number) => (
                   <li key={index}>{term}</li>
@@ -141,7 +141,7 @@ export default function TermsOfServicePage() {
                 )}
               </h3>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {tArray(
+                {t.raw(
                   "termsOfService.sections.paymentTerms.refundsAndCancellations.terms"
                 ).map((term: string, index: number) => (
                   <li key={index}>{term}</li>
@@ -184,7 +184,7 @@ export default function TermsOfServicePage() {
                 {t("termsOfService.sections.confidentiality.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {tArray(
+                {t.raw(
                   "termsOfService.sections.confidentiality.commitments"
                 ).map((commitment: string, index: number) => (
                   <li key={index}>{commitment}</li>
@@ -267,7 +267,7 @@ export default function TermsOfServicePage() {
                 {t("termsOfService.sections.termination.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {tArray("termsOfService.sections.termination.conditions").map(
+                {t.raw("termsOfService.sections.termination.conditions").map(
                   (condition: string, index: number) => (
                     <li key={index}>{condition}</li>
                   )

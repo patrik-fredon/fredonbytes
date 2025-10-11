@@ -3,16 +3,16 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Code, Zap, Globe } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
-import { useTranslations } from "@/app/hooks/useTranslations";
 
 import { Button } from "../common/Button";
 
 
 
 export default function HeroSection() {
-  const { t } = useTranslations();
+  const t = useTranslations();
   const [typedText, setTypedText] = useState("");
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);

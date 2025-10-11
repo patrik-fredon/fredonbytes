@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+import { routing } from './i18n/routing';
+
 // Simple in-memory rate limiter
 // In production, consider using Redis or a dedicated rate limiting service
 interface RateLimitEntry {
@@ -57,6 +59,33 @@ function checkRateLimit(key: string): { allowed: boolean; remaining: number; res
 }
 
 export function middleware(request: NextRequest) {
+  // Handle locale detection from query parameter
+  const langParam = request.nextUrl.searchParams.get('lang');
+  const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value;
+  
+  // Determine the locale to use
+  let locale: string = routing.defaultLocale;
+  if (langParam && routing.locales.includes(langParam as any)) {
+    locale = langParam as string;
+  } else if (cookieLocale && routing.locales.includes(cookieLocale as any)) {
+    locale = cookieLocale as string;
+  }
+  
+  // Create response
+  const response = NextResponse.next();
+  
+  // Set locale cookie if it changed
+  if (locale !== cookieLocale) {
+    response.cookies.set('NEXT_LOCALE', locale, {
+      maxAge: 365 * 24 * 60 * 60, // 1 year
+      path: '/',
+      sameSite: 'lax',
+    });
+  }
+  
+  // Set locale header for next-intl
+  response.headers.set('x-next-intl-locale', locale);
+  
   // Only apply rate limiting to API routes
   if (request.nextUrl.pathname.startsWith('/api/form')) {
     const key = getRateLimitKey(request);
@@ -83,17 +112,23 @@ export function middleware(request: NextRequest) {
     }
 
     // Add rate limit headers to successful responses
-    const response = NextResponse.next();
     response.headers.set('X-RateLimit-Limit', MAX_REQUESTS_PER_WINDOW.toString());
     response.headers.set('X-RateLimit-Remaining', remaining.toString());
     response.headers.set('X-RateLimit-Reset', new Date(resetTime).toISOString());
     return response;
   }
 
-  return NextResponse.next();
+  return response;
 }
 
 // Configure which routes the middleware runs on
 export const config = {
-  matcher: '/api/form/:path*',
+  matcher: [
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/_next` or `/_vercel`
+    // - … the ones containing a dot (e.g. `favicon.ico`)
+    '/((?!api|_next|_vercel|.*\..*).*)',
+    // However, match all pathnames within `/api/form`
+    '/api/form/:path*'
+  ],
 };

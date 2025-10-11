@@ -652,40 +652,6 @@
     }
   },
   "cookies": {
-    "consent": {
-      "banner": {
-        "title": "We Value Your Privacy",
-        "description": "We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. Choose your preferences below.",
-        "acceptAll": "Accept All",
-        "rejectAll": "Reject All",
-        "customize": "Customize"
-      },
-      "modal": {
-        "title": "Cookie Preferences",
-        "description": "Manage your cookie preferences. You can enable or disable different types of cookies below.",
-        "essential": {
-          "title": "Essential Cookies",
-          "description": "Required for the website to function properly. These cannot be disabled.",
-          "alwaysActive": "Always Active"
-        },
-        "analytics": {
-          "title": "Analytics Cookies",
-          "description": "Help us understand how visitors interact with our website by collecting and reporting information anonymously."
-        },
-        "marketing": {
-          "title": "Marketing Cookies",
-          "description": "Used to track visitors across websites to display relevant advertisements and measure campaign effectiveness."
-        },
-        "preferences": {
-          "title": "Preference Cookies",
-          "description": "Enable the website to remember your choices (such as language or region) for a more personalized experience."
-        },
-        "savePreferences": "Save Preferences",
-        "acceptAll": "Accept All",
-        "rejectAll": "Reject All"
-      },
-      "settingsLink": "Cookie Settings"
-    },
     "banner": {
       "title": "We use cookies",
       "description": "We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies.",
@@ -697,6 +663,7 @@
     },
     "preferences": {
       "title": "Cookie Preferences",
+      "description": "Customize your cookie preferences below. You can enable or disable different types of cookies according to your preferences.",
       "necessary": {
         "title": "Necessary Cookies",
         "description": "Required for the website to function properly. Cannot be disabled."
@@ -715,6 +682,284 @@
       }
     },
     "termsOfService": {
+      "title": "Terms of Service",
+      "subtitle": "Legal terms governing the use of our services",
+      "lastUpdated": "Last updated: January 6, 2025",
+      "agreementOverview": {
+        "title": "Agreement Overview",
+        "description": "By accessing our website or using our services, you agree to be bound by these terms. Please read them carefully before proceeding."
+      },
+      "sections": {
+        "acceptanceOfTerms": {
+          "title": "1. Acceptance of Terms",
+          "content": [
+            "By accessing or using the Fredonbytes website and services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, please do not use our services.",
+            "These terms apply to all visitors, users, and others who access or use our services."
+          ]
+        },
+        "servicesDescription": {
+          "title": "2. Services Description",
+          "intro": "Fredonbytes provides comprehensive IT solutions including:",
+          "services": [
+            "Software development and web applications",
+            "Graphic design and brand identity services",
+            "SEO and digital marketing solutions",
+            "Social media management",
+            "IT consulting and cybersecurity services",
+            "Related technical support and maintenance"
+          ]
+        },
+        "userResponsibilities": {
+          "title": "3. User Responsibilities",
+          "intro": "When using our services, you agree to:",
+          "responsibilities": [
+            "Provide accurate and truthful information",
+            "Use our services for lawful purposes only",
+            "Respect intellectual property rights",
+            "Not engage in harmful or disruptive activities",
+            "Maintain the confidentiality of any login credentials"
+          ],
+          "prohibitedUses": {
+            "title": "Prohibited Uses",
+            "intro": "You may not use our services to:",
+            "prohibitions": [
+              "Violate any applicable laws or regulations",
+              "Infringe upon the rights of others",
+              "Distribute malware or harmful code",
+              "Engage in unauthorized data collection",
+              "Attempt to gain unauthorized access to our systems"
+            ]
+          }
+        },
+        "serviceAgreements": {
+          "title": "4. Service Agreements and Contracts",
+          "intro": "Specific projects and services will be governed by separate written agreements that detail:",
+          "details": [
+            "Project scope and deliverables",
+            "Timeline and milestones",
+            "Payment terms and conditions",
+            "Intellectual property ownership",
+            "Confidentiality provisions"
+          ],
+          "conflictResolution": "In case of conflict between these Terms of Service and a specific service agreement, the service agreement shall prevail."
+        },
+        "paymentTerms": {
+          "title": "5. Payment Terms",
+          "pricingAndInvoicing": {
+            "title": "Pricing and Invoicing",
+            "terms": [
+              "All prices are quoted in USD or EUR as specified",
+              "Invoices are payable within 30 days of issue date",
+              "Late payments may incur additional charges",
+              "We reserve the right to suspend services for overdue accounts"
+            ]
+          },
+          "refundsAndCancellations": {
+            "title": "Refunds and Cancellations",
+            "terms": [
+              "Refund policies are specified in individual service agreements",
+              "Work completed prior to cancellation is non-refundable",
+              "Cancellation requests must be submitted in writing",
+              "Custom development work may have different cancellation terms"
+            ]
+          }
+        },
+        "intellectualProperty": {
+          "title": "6. Intellectual Property",
+          "ourProperty": {
+            "title": "Our Intellectual Property",
+            "description": "The Fredonbytes website, logo, content, and methodologies are protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our written permission."
+          },
+          "clientProperty": {
+            "title": "Client Intellectual Property",
+            "description": "Ownership of deliverables and intellectual property created for clients will be specified in the relevant service agreement. Generally, clients retain ownership of their content and branding materials, while custom development may involve shared or transferred ownership rights."
+          }
+        },
+        "confidentiality": {
+          "title": "7. Confidentiality",
+          "intro": "We understand the importance of protecting confidential information. We commit to:",
+          "commitments": [
+            "Maintaining strict confidentiality of client information",
+            "Using client information only for authorized purposes",
+            "Implementing appropriate security measures",
+            "Not disclosing confidential information to third parties",
+            "Returning or destroying confidential information upon request"
+          ]
+        },
+        "disclaimersAndLimitations": {
+          "title": "8. Disclaimers and Limitations",
+          "serviceAvailability": {
+            "title": "Service Availability",
+            "description": "While we strive for high availability, we cannot guarantee uninterrupted access to our website or services. We reserve the right to modify, suspend, or discontinue services with reasonable notice."
+          },
+          "limitationOfLiability": {
+            "title": "Limitation of Liability",
+            "description": "Our liability is limited to the amount paid for the specific service giving rise to the claim. We are not liable for indirect, incidental, or consequential damages, including but not limited to loss of profits, data, or business opportunities."
+          }
+        },
+        "dataProtectionAndPrivacy": {
+          "title": "9. Data Protection and Privacy",
+          "content": [
+            "We are committed to protecting your privacy and complying with applicable data protection laws, including GDPR. Our data practices are detailed in our Privacy Policy, which forms an integral part of these terms.",
+            "By using our services, you consent to the collection, use, and processing of your data as described in our Privacy Policy."
+          ]
+        },
+        "governingLawAndDisputes": {
+          "title": "10. Governing Law and Disputes",
+          "content": [
+            "These terms are governed by the laws of the Czech Republic. Any disputes arising from these terms or our services will be subject to the exclusive jurisdiction of the courts in Brno, Czech Republic.",
+            "We encourage resolving disputes through direct communication before pursuing legal action."
+          ]
+        },
+        "changesToTerms": {
+          "title": "11. Changes to Terms",
+          "content": [
+            "We reserve the right to modify these terms at any time. Changes will be effective upon posting on our website. We will notify users of material changes via email or website notice.",
+            "Your continued use of our services after changes constitutes acceptance of the modified terms."
+          ]
+        },
+        "termination": {
+          "title": "12. Termination",
+          "intro": "Either party may terminate the service relationship with appropriate notice as specified in the relevant service agreement. Upon termination:",
+          "consequences": [
+            "All outstanding invoices become immediately due",
+            "Access to our services and systems will be revoked",
+            "Confidentiality obligations remain in effect",
+            "Data return or destruction will be handled as agreed"
+          ]
+        },
+        "contactInformation": {
+          "title": "13. Contact Information",
+          "intro": "For questions about these Terms of Service, please contact us:",
+          "company": "Fredonbytes",
+          "email": "legal@fredonbytes.cloud",
+          "phone": "+420 799 027 984",
+          "address": "Brno, Czech Republic"
+        }
+      },
+      "legalNotice": {
+        "title": "Legal Notice",
+        "description": "These terms constitute a legally binding agreement. If you do not agree to these terms, please discontinue use of our website and services immediately."
+      }
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "subtitle": "How we collect, use, and protect your information",
+      "lastUpdated": "Last updated: January 6, 2025",
+      "summary": {
+        "title": "Summary",
+        "description": "We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you visit our website or use our services."
+      },
+      "sections": {
+        "informationWeCollect": {
+          "title": "1. Information We Collect",
+          "personalInformation": {
+            "title": "Personal Information",
+            "intro": "We may collect the following personal information when you contact us or use our services:",
+            "types": [
+              "Name and contact information (email address, phone number)",
+              "Company information and job title",
+              "Project requirements and preferences",
+              "Communication history and correspondence"
+            ]
+          },
+          "technicalInformation": {
+            "title": "Technical Information",
+            "intro": "We automatically collect certain technical information when you visit our website:",
+            "types": [
+              "IP address and browser type",
+              "Device information and operating system",
+              "Pages visited and time spent on our site",
+              "Referral source and exit pages"
+            ]
+          }
+        },
+        "howWeUseInformation": {
+          "title": "2. How We Use Your Information",
+          "intro": "We use your personal information for the following purposes:",
+          "purposes": [
+            "To respond to your inquiries and provide our services",
+            "To communicate with you about your projects",
+            "To improve our website and services",
+            "To send you newsletters and updates (with your consent)",
+            "To comply with legal obligations"
+          ]
+        },
+        "cookiesAndTracking": {
+          "title": "3. Cookies and Tracking Technologies",
+          "intro": "We use cookies and similar technologies to enhance your browsing experience:",
+          "essentialCookies": {
+            "title": "Essential Cookies",
+            "description": "Required for basic website functionality and cannot be disabled."
+          },
+          "analyticsCookies": {
+            "title": "Analytics Cookies",
+            "description": "Help us understand how visitors interact with our website to improve user experience."
+          },
+          "marketingCookies": {
+            "title": "Marketing Cookies",
+            "description": "Used to deliver relevant advertisements and measure campaign effectiveness."
+          }
+        },
+        "dataSharingAndDisclosure": {
+          "title": "4. Data Sharing and Disclosure",
+          "intro": "We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:",
+          "circumstances": [
+            "With trusted service providers who assist in delivering our services",
+            "When required by law or to protect our legal rights",
+            "In connection with a business transfer or acquisition",
+            "With your explicit consent"
+          ]
+        },
+        "dataSecurity": {
+          "title": "5. Data Security",
+          "intro": "We implement appropriate technical and organizational measures to protect your personal data:",
+          "measures": [
+            "Encryption of data in transit and at rest",
+            "Regular security assessments and updates",
+            "Access controls and authentication measures",
+            "Staff training on data protection practices"
+          ]
+        },
+        "yourRights": {
+          "title": "6. Your Rights",
+          "intro": "Under applicable data protection laws, you have the following rights:",
+          "rights": [
+            "Access: Request copies of your personal data",
+            "Rectification: Request correction of inaccurate data",
+            "Erasure: Request deletion of your personal data",
+            "Portability: Request transfer of your data",
+            "Objection: Object to processing of your data",
+            "Restriction: Request restriction of processing"
+          ]
+        },
+        "dataRetention": {
+          "title": "7. Data Retention",
+          "description": "We retain your personal data only as long as necessary for the purposes outlined in this policy or as required by law. Generally, we retain client information for 7 years after the completion of services for business and legal purposes."
+        },
+        "internationalTransfers": {
+          "title": "8. International Transfers",
+          "description": "As we are based in the Czech Republic (EU), your data is processed within the European Economic Area. Any transfers outside the EEA will be subject to appropriate safeguards and legal protections."
+        },
+        "updatesToPolicy": {
+          "title": "9. Updates to This Policy",
+          "description": "We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on our website and updating the \"Last updated\" date. Your continued use of our services after such changes constitutes acceptance of the updated policy."
+        },
+        "contactUs": {
+          "title": "10. Contact Us",
+          "intro": "If you have any questions about this privacy policy or wish to exercise your rights, please contact us:",
+          "company": "Fredonbytes",
+          "email": "privacy@fredonbytes.cloud",
+          "phone": "+420 799 027 984",
+          "address": "Brno, Czech Republic"
+        }
+      },
+      "questions": {
+        "title": "Questions?",
+        "description": "We're committed to transparency and protecting your privacy. If you have any questions or concerns about how we handle your data, don't hesitate to reach out to us."
+      }
+    },
+    "cookiePolicy": {
       "title": "Cookie Policy",
       "subtitle": "How we use cookies and similar technologies",
       "lastUpdated": "Last updated: January 6, 2025",

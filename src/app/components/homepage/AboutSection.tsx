@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import { Users, Award, TrendingUp, CheckCircle } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import React from "react";
 
-import { useTranslations } from "@/app/hooks/useTranslations";
 
 export default function AboutSection() {
-  const { t } = useTranslations();
+  const t = useTranslations();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

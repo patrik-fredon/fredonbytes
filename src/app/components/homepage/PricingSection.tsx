@@ -13,9 +13,9 @@ import {
   Plus,
   Minus,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import React, { useState, useEffect, useMemo } from "react";
 
-import { useTranslations } from "@/app/hooks/useTranslations";
 
 import { Button } from "../common/Button";
 
@@ -36,7 +36,7 @@ interface CalculatorState {
 }
 
 export default function PricingSection() {
-  const { t, tArray } = useTranslations();
+  const t = useTranslations();
   const [isAnnual, setIsAnnual] = useState(false);
   const [calculatorOpen, setCalculatorOpen] = useState(false);
   const [calculatorState, setCalculatorState] = useState<CalculatorState>({});
@@ -130,7 +130,7 @@ export default function PricingSection() {
         description: t(
           "pricingSection.calculator.services.webDevelopment.description"
         ),
-        included: tArray(
+        included: t.raw(
           "pricingSection.calculator.services.webDevelopment.included"
         ),
       },
@@ -142,7 +142,7 @@ export default function PricingSection() {
         description: t(
           "pricingSection.calculator.services.mobileApp.description"
         ),
-        included: tArray(
+        included: t.raw(
           "pricingSection.calculator.services.mobileApp.included"
         ),
       },
@@ -154,7 +154,7 @@ export default function PricingSection() {
         description: t(
           "pricingSection.calculator.services.brandDesign.description"
         ),
-        included: tArray(
+        included: t.raw(
           "pricingSection.calculator.services.brandDesign.included"
         ),
       },
@@ -166,7 +166,7 @@ export default function PricingSection() {
         description: t(
           "pricingSection.calculator.services.seoMarketing.description"
         ),
-        included: tArray(
+        included: t.raw(
           "pricingSection.calculator.services.seoMarketing.included"
         ),
       },
@@ -178,7 +178,7 @@ export default function PricingSection() {
         description: t(
           "pricingSection.calculator.services.socialMedia.description"
         ),
-        included: tArray(
+        included: t.raw(
           "pricingSection.calculator.services.socialMedia.included"
         ),
       },
@@ -190,12 +190,12 @@ export default function PricingSection() {
         description: t(
           "pricingSection.calculator.services.itConsulting.description"
         ),
-        included: tArray(
+        included: t.raw(
           "pricingSection.calculator.services.itConsulting.included"
         ),
       },
     ],
-    [t, tArray]
+    [t]
   );
 
   useEffect(() => {
@@ -381,7 +381,7 @@ export default function PricingSection() {
                 {t("pricing.toggle.annual")}
               </button>
               <span className="ml-2 text-green-600 font-semibold">
-                {t("pricing.toggle.savings", "20%")}
+                {t("pricing.toggle.savings", { savings: "20%" })}
               </span>
             </div>
 

@@ -1,0 +1,1710 @@
+{
+  "navigation": {
+    "about": "O nás",
+    "services": "Služby",
+    "projects": "Projekty",
+    "pricing": "Ceny",
+    "contact": "Kontakt",
+    "links": "Odkazy",
+    "portfolio": "Portfolio",
+    "gallery": "Galerie",
+    "support": "Podpora",
+    "allLinks": "Všechny odkazy",
+    "getStarted": "Začít"
+  },
+  "hero": {
+    "title": "Vaše All-in-One",
+    "titleHighlight": "IT centrum",
+    "subtitle": "Od kódu po kliknutí, dodáváme kompletní digitální dominanci. Odstraňte složitost a posilte potenciál své značky s našimi sjednocenými IT řešeními.",
+    "codeComments": {
+      "creating": "Vytváření digitální dokonalosti...",
+      "snippets": [
+        "const uspech = await vytvorUzasnyWeb();",
+        "function vytvorDigitálníDominanci() { return \"Fredonbytes\"; }",
+        "const inovace = () => kod + kreativita + strategie;",
+        "export default class Fredonbytes extends Dokonalost {}"
+      ]
+    },
+    "valueProps": {
+      "development": "Vývoj",
+      "design": "Design",
+      "marketing": "Marketing"
+    },
+    "cta": {
+      "startProject": "Začít projekt",
+      "viewWork": "Zobrazit naši práci"
+    },
+    "stats": {
+      "founded": "Založeno",
+      "coreServices": "Hlavní služby",
+      "clientFocus": "Zaměření na klienta"
+    }
+  },
+  "footer": {
+    "description": "Vaše All-in-One IT centrum. Od kódu po kliknutí, dodáváme kompletní digitální dominanci.",
+    "contact": {
+      "location": "Brno, Česká republika",
+      "phone": "+420 799 027 984",
+      "email": "info@fredonbytes.cloud"
+    },
+    "sections": {
+      "quickLinks": "Rychlé odkazy",
+      "ourPlatforms": "Naše platformy",
+      "legalSocial": "Právní & Sociální"
+    },
+    "links": {
+      "aboutUs": "O nás",
+      "personalPortfolio": "Osobní portfolio",
+      "projectGallery": "Galerie projektů",
+      "technicalSupport": "Technická podpora",
+      "privacyPolicy": "Zásady ochrany osobních údajů",
+      "termsOfService": "Podmínky služby",
+      "cookiePolicy": "Zásady cookies"
+    },
+    "social": {
+      "githubFredon": "GitHub - FredonBytes",
+      "githubPatrik": "GitHub - Patrik Fredon",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "copyright": "© {year} Fredonbytes. Všechna práva vyhrazena.",
+    "taglines": {
+      "madeWith": "Vyrobeno s ❤️ v České republice",
+      "motto": "Kód. Tvoř. Dobývej."
+    }
+  },
+  "external": {
+    "externalLinks": "Externí odkazy"
+  },
+  "seo": {
+    "defaultTitle": "Fredonbytes - Vaše All-in-One IT centrum",
+    "defaultDescription": "Od kódu po kliknutí, dodáváme kompletní digitální dominanci. Komplexní IT řešení včetně vývoje softwaru, grafického designu, SEO a marketingu na sociálních sítích.",
+    "keywords": "webový vývoj, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika",
+    "siteName": "Fredonbytes",
+    "twitterHandle": "@Fredonbytes",
+    "twitterCreator": "@FredonBytes"
+  },
+  "jsonLd": {
+    "organizationName": "Fredonbytes",
+    "organizationDescription": "Poskytovatel komplexních IT řešení se specializací na vývoj softwaru, grafický design, SEO a marketing na sociálních sítích",
+    "organizationType": "TechnologyCompany",
+    "address": {
+      "streetAddress": "",
+      "addressLocality": "Brno",
+      "addressRegion": "Jihomoravský kraj",
+      "postalCode": "",
+      "addressCountry": "CZ"
+    },
+    "contactPoint": {
+      "telephone": "+420799027984",
+      "contactType": "zákaznický servis",
+      "email": "info@fredonbytes.cloud"
+    },
+    "services": [
+      "Vývoj softwaru",
+      "Webový vývoj",
+      "Grafický design",
+      "SEO služby",
+      "Marketing na sociálních sítích",
+      "IT poradenství"
+    ],
+    "founder": "Patrik Fredon",
+    "foundingDate": "2023"
+  },
+  "about": {
+    "title": "O {company}",
+    "subtitle": "Založeno v roce {year}, eliminujeme potřebu více dodavatelů tím, že se staneme vaší {highlight}digitální armádou{/highlight}, zajišťující bezproblémové a efektivní výsledky pod jednou střechou.",
+    "highlight": " digitální armádou",
+    "mission": {
+      "title": "Naše mise",
+      "description": "Posilovat firmy sjednocenými, špičkovými IT řešeními—dodávat rychlost, kreativitu a neúnavnou efektivitu."
+    },
+    "vision": {
+      "title": "Naše vize",
+      "description": "Svět, kde značky prosperují digitálně bez fragmentace—Fredonbytes jako globální standard pro integrovanou technologickou excelenci."
+    },
+    "values": {
+      "title": "Naše hodnoty",
+      "unifiedExcellence": {
+        "title": "Sjednocená excelence",
+        "description": "Jeden tým, nekonečná řešení."
+      },
+      "clientCentric": {
+        "title": "Agilita zaměřená na klienta",
+        "description": "Vaše cíle řídí naši technologii."
+      },
+      "innovation": {
+        "title": "Inovace bez kompromisů",
+        "description": "Odvážné nápady, dokonalá realizace."
+      },
+      "transparency": {
+        "title": "Transparentnost & Důvěra",
+        "description": "Žádné černé skříňky, jen výsledky."
+      }
+    },
+    "motto": {
+      "title": "Kód. Tvoř. Dobývej.",
+      "subtitle": "Naše motto"
+    },
+    "team": {
+      "title": "Seznamte se s naším týmem",
+      "members": {
+        "patrik": {
+          "name": "Bc. Patrik \"Fredon\" Svoboda BSc.",
+          "role": "CEO & Zakladatel",
+          "expertise": "Full-Stack vývoj, Digitální strategie",
+          "quote": "Efektivita je nová inovace."
+        },
+        "jana": {
+          "name": "Ing. Jana Nováková",
+          "role": "CTO",
+          "expertise": "AI, Cloudová architektura",
+          "quote": "Pokud to není škálovatelné, není to udržitelné."
+        },
+        "lucie": {
+          "name": "Lucie Dvořáková",
+          "role": "Creative Director",
+          "expertise": "Branding, UX/UI Design",
+          "quote": "Pixel-perfect není cíl—je to základ."
+        },
+        "tomas": {
+          "name": "Tomáš Horák",
+          "role": "SEO & Metadata specialista",
+          "expertise": "Datová analytika, SEM",
+          "quote": "Viditelnost bez strategie je jen hluk."
+        }
+      }
+    },
+    "founderQuote": {
+      "quote": "V roztříštěném digitálním světě jsme lepidlem—spojujeme kreativitu, technologie a strategii v jednu nezastavitelnou sílu.",
+      "author": "Bc. Patrik \"Fredon\" Svoboda BSc., CEO & Zakladatel"
+    },
+    "mantra": "Jeden tým. Žádné limity."
+  },
+  "services": {
+    "title": "Naše  Služby",
+    "subtitle": "Nabízíme komplexní sadu IT řešení navržených tak, aby eliminovala potřebu více dodavatelů. Od vývoje po marketing, máme vás pokryté.",
+    "items": {
+      "development": {
+        "title": "Vývoj softwaru",
+        "description": "Vlastní webové aplikace, mobilní aplikace a podniková řešení postavená na špičkových technologiích.",
+        "features": [
+          "Full-Stack vývoj",
+          "Mobilní aplikace",
+          "API integrace",
+          "Cloudová řešení"
+        ]
+      },
+      "design": {
+        "title": "Grafický & UX/UI design",
+        "description": "Ohromující vizuální identity, uživatelská rozhraní a značkové zážitky, které zaujmou a konvertují.",
+        "features": [
+          "Branding",
+          "UX/UI design",
+          "Prototypování",
+          "Design systémy"
+        ]
+      },
+      "seo": {
+        "title": "SEO & Digitální marketing",
+        "description": "Datově řízené strategie pro zvýšení vaší online viditelnosti a přivedení cílené návštěvnosti.",
+        "features": [
+          "Optimalizace pro vyhledávače",
+          "Content strategie",
+          "Analytika & Reporting",
+          "PPC kampaně"
+        ]
+      },
+      "social": {
+        "title": "Správa sociálních sítí",
+        "description": "Tvorba obsahu a strategické kampaně na sociálních sítích, které budují komunitu a podporují růst.",
+        "features": [
+          "Tvorba obsahu",
+          "Správa komunity",
+          "Reklamy na sociálních sítích",
+          "Růstové strategie"
+        ]
+      },
+      "consulting": {
+        "title": "IT poradenství & Kybernetická bezpečnost",
+        "description": "Strategické technologické poradenství a robustní bezpečnostní řešení pro ochranu a optimalizaci vaší digitální infrastruktury.",
+        "features": [
+          "Bezpečnostní audity",
+          "Plánování infrastruktury",
+          "Technologické poradenství",
+          "Hodnocení rizik"
+        ]
+      }
+    },
+    "stats": {
+      "satisfaction": {
+        "number": "100%",
+        "label": "Spokojenost klientů"
+      },
+      "coreServices": {
+        "number": "5+",
+        "label": "Hlavní služby"
+      },
+      "support": {
+        "number": "24/7",
+        "label": "Podpora k dispozici"
+      },
+      "team": {
+        "number": "1",
+        "label": "Sjednocený tým"
+      }
+    },
+    "cta": "Zjistěte, jak vám můžeme pomoci"
+  },
+  "contact": {
+    "title": "Pojďme pracovat  společně",
+    "subtitle": "Připraveni transformovat vaši digitální přítomnost? Pojďme probrat váš projekt a společně vytvořit něco úžasného.",
+    "sectionTitle": "Pojďme pracovat společně",
+    "sectionDescription": "Připraveni transformovat vaši digitální přítomnost? Pojďme probrat váš projekt a společně vytvořit něco úžasného.",
+    "getInTouch": "Kontaktujte nás",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "location": "Lokalita",
+    "responseTime": "Doba odezvy",
+    "responseTimeValue": "Do 24 hodin",
+    "secureConfidential": {
+      "title": "Bezpečné & Důvěrné",
+      "message": "Vaše informace jsou šifrovány a chráněny. Respektujeme vaše soukromí a nikdy vaše údaje neposkytneme třetím stranám."
+    },
+    "step": "Krok",
+    "of": "z",
+    "complete": "Hotovo",
+    "basicInfo": "Základní informace",
+    "firstName": "Jméno",
+    "lastName": "Příjmení",
+    "firstNamePlaceholder": "Jan",
+    "lastNamePlaceholder": "Novák",
+    "emailPlaceholder": "jan@priklad.cz",
+    "phonePlaceholder": "+420 123 456 789",
+    "continue": "Pokračovat",
+    "projectDetails": "Detaily projektu",
+    "company": "Název společnosti",
+    "companyPlaceholder": "Vaše společnost (volitelné)",
+    "projectType": "Typ projektu",
+    "selectProjectType": "Jaký typ projektu potřebujete?",
+    "budget": "Rozpočet",
+    "selectBudget": "Jaký je váš rozpočet na tento projekt?",
+    "timeline": "Časový rámec",
+    "selectTimeline": "Kdy potřebujete dokončit?",
+    "back": "Zpět",
+    "projectRequirements": "Požadavky projektu",
+    "projectDescription": "Detaily projektu",
+    "projectDescriptionPlaceholder": "Řekněte nám více o vašich požadavcích, cílech a specifických funkcích...",
+    "additionalRequirements": "Požadované funkce (volitelné)",
+    "subscribeNewsletter": "Přihlaste se k odběru novinek a tipů",
+    "agreePolicies": "Souhlasím se zásadami ochrany osobních údajů",
+    "sendMessage": "Odeslat zprávu",
+    "success": {
+      "title": "Děkujeme!",
+      "message": "Vaše zpráva byla úspěšně odeslána. Ozveme se vám do 24 hodin.",
+      "cta": "Odeslat další zprávu"
+    },
+    "form": {
+      "steps": {
+        "step": "Krok {current} z {total}",
+        "progress": "{percent}% Hotovo"
+      },
+      "basicInfo": {
+        "title": "Základní informace",
+        "firstName": {
+          "label": "Jméno",
+          "placeholder": "Jan",
+          "required": true
+        },
+        "lastName": {
+          "label": "Příjmení",
+          "placeholder": "Novák",
+          "required": true
+        },
+        "email": {
+          "label": "E-mailová adresa",
+          "placeholder": "jan@priklad.cz",
+          "required": true
+        },
+        "phone": {
+          "label": "Telefonní číslo",
+          "placeholder": "+420 123 456 789",
+          "required": true
+        }
+      },
+      "projectDetails": {
+        "title": "Detaily projektu",
+        "company": {
+          "label": "Název společnosti",
+          "placeholder": "Vaše společnost (volitelné)"
+        },
+        "projectType": {
+          "label": "Typ projektu",
+          "placeholder": "Jaký typ projektu potřebujete?",
+          "required": true,
+          "options": [
+            "Vývoj webu",
+            "Vývoj mobilní aplikace",
+            "E-commerce platforma",
+            "Brand design & identita",
+            "SEO & digitální marketing",
+            "Správa sociálních sítí",
+            "IT poradenství",
+            "Vlastní software",
+            "Jiné"
+          ]
+        },
+        "budget": {
+          "label": "Rozpočet",
+          "placeholder": "Jaký je váš rozpočet na tento projekt?",
+          "required": true,
+          "options": [
+            "Pod 5 000 Kč",
+            "5 000 - 15 000 Kč",
+            "15 000 - 50 000 Kč",
+            "50 000 - 100 000 Kč",
+            "Nad 100 000 Kč",
+            "Zatím nevím"
+          ]
+        },
+        "timeline": {
+          "label": "Časový rámec",
+          "placeholder": "Kdy potřebujete dokončit?",
+          "required": true,
+          "options": [
+            "Co nejdříve (expresní projekt)",
+            "1-2 měsíce",
+            "3-6 měsíců",
+            "6-12 měsíců",
+            "Více než 12 měsíců",
+            "Flexibilní časový rámec"
+          ]
+        }
+      },
+      "requirements": {
+        "title": "Požadavky projektu",
+        "message": {
+          "label": "Detaily projektu",
+          "placeholder": "Řekněte nám více o vašich požadavcích, cílech a specifických funkcích...",
+          "required": true
+        },
+        "features": {
+          "label": "Požadované funkce (volitelné)",
+          "options": [
+            "Responzivní design",
+            "E-commerce funkce",
+            "Správa obsahu",
+            "Uživatelská autentizace",
+            "Platební integrace",
+            "Analytika & Reporting",
+            "Integrace třetích stran",
+            "Podpora více jazyků"
+          ]
+        },
+        "newsletter": {
+          "label": "Přihlaste se k odběru novinek a tipů"
+        },
+        "privacy": {
+          "label": "Souhlasím s {link}zásadami ochrany osobních údajů{/link}",
+          "required": true
+        }
+      },
+      "actions": {
+        "next": "Další krok",
+        "previous": "Zpět",
+        "submit": "Odeslat zprávu",
+        "submitting": "Odesílání..."
+      }
+    },
+    "info": {
+      "title": "Kontaktujte nás",
+      "email": {
+        "title": "E-mail",
+        "value": "info@fredonbytes.cloud"
+      },
+      "phone": {
+        "title": "Telefon",
+        "value": "+420 799 027 984"
+      },
+      "location": {
+        "title": "Lokalita",
+        "value": "Brno, Česká republika"
+      },
+      "responseTime": {
+        "title": "Doba odezvy",
+        "value": "Do 24 hodin"
+      }
+    },
+    "security": {
+      "title": "Bezpečné & Důvěrné",
+      "description": "Vaše informace jsou šifrovány a chráněny. Respektujeme vaše soukromí a nikdy vaše údaje neposkytneme třetím stranám."
+    },
+    "errors": {
+      "firstName": "Jméno musí mít alespoň 2 znaky",
+      "lastName": "Příjmení musí mít alespoň 2 znaky",
+      "email": "Zadejte platnou e-mailovou adresu",
+      "phone": "Zadejte platné telefonní číslo",
+      "projectType": "Vyberte typ projektu",
+      "budget": "Vyberte rozpočet",
+      "timeline": "Vyberte časový rámec",
+      "message": "Uveďte více detailů o projektu",
+      "privacy": "Musíte přijmout zásady ochrany osobních údajů"
+    }
+  },
+  "pricing": {
+    "title": "Vyberte si svůj  plán",
+    "subtitle": "Transparentní ceny bez skrytých poplatků. Rozšiřte své podnikání s našimi flexibilními řešeními.",
+    "toggle": {
+      "monthly": "Měsíčně",
+      "annual": "Ročně",
+      "savings": "Ušetříte {percent}%"
+    },
+    "plans": {
+      "starter": {
+        "name": "Start",
+        "description": "Ideální pro malé firmy a startupy, které chtějí založit svou digitální přítomnost.",
+        "cta": "Začít",
+        "features": [
+          "Responzivní webdesign",
+          "Základní SEO optimalizace",
+          "Integrace kontaktního formuláře",
+          "3 měsíce podpory",
+          "Optimalizace pro mobily",
+          "Nastavení analytiky"
+        ]
+      },
+      "professional": {
+        "name": "Professional",
+        "description": "Komplexní řešení pro rostoucí firmy, které potřebují pokročilé funkce a marketingovou podporu.",
+        "cta": "Nejoblíbenější",
+        "popular": true,
+        "features": [
+          "Vlastní webová aplikace",
+          "Pokročilé SEO & marketing",
+          "Správa sociálních sítí",
+          "E-commerce integrace",
+          "6 měsíců prioritní podpory",
+          "Optimalizace výkonu",
+          "Systém pro správu obsahu",
+          "Nastavení e-mailového marketingu"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "Kompletní digitální transformace s dedikovanou podporou a řešeními na míru.",
+        "cta": "Kontaktujte obchod",
+        "price": "Na míru",
+        "features": [
+          "Vývoj softwaru na míru",
+          "Dedikovaný projektový manažer",
+          "24/7 prioritní podpora",
+          "Pokročilé bezpečnostní funkce",
+          "Škálovatelná architektura",
+          "Podpora integrace",
+          "Školení & dokumentace",
+          "SLA záruky"
+        ]
+      }
+    },
+    "calculator": {
+      "title": "Kalkulačka projektu",
+      "description": "Získejte okamžitý odhad pro váš projekt výběrem potřebných služeb.",
+      "toggle": "Vypočítat individuální nabídku",
+      "services": {
+        "webDevelopment": {
+          "name": "Webový vývoj",
+          "description": "Vlastní weby a webové aplikace"
+        },
+        "mobileApp": {
+          "name": "Mobilní aplikace",
+          "description": "Aplikace pro iOS a Android"
+        },
+        "design": {
+          "name": "Designové služby",
+          "description": "UI/UX a grafický design"
+        },
+        "seo": {
+          "name": "SEO & Marketing",
+          "description": "Optimalizace pro vyhledávače a digitální marketing"
+        },
+        "ecommerce": {
+          "name": "E-commerce",
+          "description": "Vývoj online obchodu"
+        },
+        "consulting": {
+          "name": "IT poradenství",
+          "description": "Strategické technologické poradenství"
+        }
+      },
+      "total": "Odhadovaná celková cena",
+      "note": "Konečná cena se může lišit podle konkrétních požadavků a složitosti.",
+      "cta": "Získat detailní nabídku"
+    },
+    "guarantee": {
+      "title": "30denní záruka vrácení peněz",
+      "description": "Nejste spokojeni? Získejte plnou refundaci do 30 dnů, bez otázek."
+    }
+  },
+  "projects": {
+    "title": "Naše  portfolio",
+    "subtitle": "Prozkoumejte naši nejnovější práci a zjistěte, jak jsme pomohli firmám transformovat jejich digitální přítomnost.",
+    "categories": {
+      "all": "Všechny projekty",
+      "web": "Webový vývoj",
+      "mobile": "Mobilní aplikace",
+      "design": "Design",
+      "ecommerce": "E-commerce"
+    },
+    "cta": {
+      "viewProject": "Zobrazit projekt",
+      "liveDemo": "Živá ukázka",
+      "caseStudy": "Případová studie"
+    },
+    "loadMore": "Načíst další projekty"
+  },
+  "common": {
+    "buttons": {
+      "getStarted": "Začít",
+      "learnMore": "Zjistit více",
+      "viewMore": "Zobrazit více",
+      "contactUs": "Kontaktujte nás",
+      "tryFree": "Vyzkoušet zdarma",
+      "readMore": "Číst více",
+      "close": "Zavřít",
+      "next": "Další",
+      "previous": "Předchozí",
+      "submit": "Odeslat",
+      "cancel": "Zrušit",
+      "save": "Uložit",
+      "edit": "Upravit",
+      "delete": "Smazat",
+      "loading": "Načítání...",
+      "viewAll": "Zobrazit vše"
+    },
+    "status": {
+      "success": "Úspěch",
+      "error": "Chyba",
+      "warning": "Varování",
+      "info": "Info",
+      "loading": "Načítání"
+    },
+    "labels": {
+      "required": "Povinné",
+      "optional": "Volitelné",
+      "name": "Jméno",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "message": "Zpráva",
+      "company": "Společnost",
+      "website": "Web"
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Fredonbytes - Vaše All-in-One IT centrum",
+      "description": "Od kódu po kliknutí, dodáváme kompletní digitální dominanci. Komplexní IT řešení včetně vývoje softwaru, grafického designu, SEO a marketingu na sociálních sítích.",
+      "keywords": "webový vývoj, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika"
+    },
+    "about": {
+      "title": "O Fredonbytes - Váš partner pro digitální transformaci",
+      "description": "Založeno v roce 2023, Fredonbytes eliminuje potřebu více dodavatelů tím, že se stane vaší digitální armádou na jednom místě, zajišťující bezproblémové a vysoce účinné výsledky pod jednou střechou.",
+      "keywords": "o fredonbytes, digitální transformace, IT společnost, tým pro vývoj softwaru, brno technologie"
+    },
+    "services": {
+      "title": "IT služby - Vývoj softwaru, Design a Marketing",
+      "description": "Komplexní IT řešení od vývoje po marketing. Eliminujte složitost našim sjednoceným přístupem k vývoji softwaru, designu, SEO a správě sociálních sítí.",
+      "keywords": "IT služby, vývoj softwaru, webový vývoj, grafický design, SEO služby, marketing na sociálních sítích"
+    },
+    "projects": {
+      "title": "Naše portfolio - Galerie projektů Fredonbytes",
+      "description": "Prozkoumejte naši nejnovější práci a zjistěte, jak jsme pomohli firmám transformovat jejich digitální přítomnost s nejmodernějšími řešeními.",
+      "keywords": "portfolio, projekty webového vývoje, softwarové projekty, designová ukázka, případové studie"
+    },
+    "pricing": {
+      "title": "Transparentní cenové plány - Vyberte si své IT řešení",
+      "description": "Transparentní ceny bez skrytých poplatků. Rozšiřte své podnikání s našimi flexibilními IT řešeními od startovacích po podnikové plány.",
+      "keywords": "ceny, náklady na IT služby, ceny webového vývoje, transparentní ceny, obchodní plány"
+    },
+    "contact": {
+      "title": "Kontaktujte Fredonbytes - Pojďme pracovat společně",
+      "description": "Připraveni transformovat vaši digitální přítomnost? Kontaktujte náš tým v Brně, Česká republika pro bezplatnou konzultaci vašeho dalšího IT projektu.",
+      "keywords": "kontakt, brno IT společnost, bezplatná konzultace, poptávka projektu, česká republika technologie"
+    },
+    "links": {
+      "title": "Fredonbytes odkazy - Spojte se s námi všude",
+      "description": "Všechny naše důležité odkazy na jednom místě. Spojte se s Fredonbytes na sociálních sítích, GitHubu a našich různých platformách.",
+      "keywords": "sociální odkazy, GitHub, LinkedIn, kontaktní odkazy, Fredonbytes platformy"
+    },
+    "privacy-policy": {
+      "title": "Zásady ochrany osobních údajů - Jak chráníme vaše data",
+      "description": "Zjistěte, jak Fredonbytes shromažďuje, používá a chrání vaše osobní údaje. Jsme odhodláni udržovat vaše soukromí a bezpečnost údajů.",
+      "keywords": "zásady ochrany osobních údajů, ochrana dat, GDPR soulad, osobní údaje, bezpečnost dat"
+    },
+    "terms-of-service": {
+      "title": "Podmínky služby - Smlouva o používání Fredonbytes",
+      "description": "Podmínky pro používání služeb Fredonbytes. Porozumějte svým právům a povinnostem při práci s našimi IT řešeními.",
+      "keywords": "podmínky služby, smlouva o použití, podmínky služby, právní podmínky, podmínky"
+    },
+    "cookie-policy": {
+      "title": "Zásady cookies - Jak používáme cookies",
+      "description": "Informace o tom, jak Fredonbytes používá cookies ke zlepšení vašeho procházení a analýze používání webu.",
+      "keywords": "zásady cookies, cookies webu, sledování, analytika, uživatelská zkušenost"
+    },
+    "cookies": {
+      "banner": {
+        "title": "Používáme cookies",
+        "description": "Používáme cookies ke zlepšení vašeho procházení, poskytování personalizovaného obsahu a analýze návštěvnosti. Kliknutím na \"Přijmout vše\" souhlasíte s našim používáním cookies.",
+        "learnMore": "Zjistit více",
+        "acceptAll": "Přijmout vše",
+        "necessaryOnly": "Pouze nezbytné",
+        "customize": "Přizpůsobit",
+        "savePreferences": "Uložit předvolby"
+      },
+      "preferences": {
+        "title": "Předvolby cookies",
+        "necessary": {
+          "title": "Nezbytné cookies",
+          "description": "Potřebné pro správné fungování webu. Nelze zakázat."
+        },
+        "analytics": {
+          "title": "Analytické cookies",
+          "description": "Pomáhají nám pochopit, jak návštěvníci interagují s naším webem."
+        },
+        "marketing": {
+          "title": "Marketingové cookies",
+          "description": "Používány k doručování relevantních reklam a měření jejich účinnosti."
+        },
+        "preferences": {
+          "title": "Preferenční cookies",
+          "description": "Zapamatují si vaše předvolby a nastavení pro lepší zážitek."
+        }
+      }
+    },
+    "termsOfService": {
+      "title": "Podmínky služby",
+      "subtitle": "Právní podmínky upravující používání našich služeb",
+      "lastUpdated": "Naposledy aktualizováno: 6. ledna 2025",
+      "agreementOverview": {
+        "title": "Přehled smlouvy",
+        "description": "Přístupem na naše webové stránky nebo používáním našich služeb souhlasíte s těmito podmínkami. Před pokračováním si je prosím pozorně přečtěte."
+      },
+      "sections": {
+        "acceptanceOfTerms": {
+          "title": "1. Přijetí podmínek",
+          "content": [
+            "Přístupem na webové stránky Fredonbytes nebo používáním našich služeb potvrzujete, že jste si přečetli, porozuměli a souhlasíte s těmito podmínkami služby a našimi zásadami ochrany osobních údajů. Pokud s těmito podmínkami nesouhlasíte, nepoužívejte naše služby.",
+            "Tyto podmínky se vztahují na všechny návštěvníky, uživatele a ostatní, kteří přistupují k našim službám nebo je používají."
+          ]
+        },
+        "servicesDescription": {
+          "title": "2. Popis služeb",
+          "intro": "Fredonbytes poskytuje komplexní IT řešení včetně:",
+          "services": [
+            "Vývoj softwaru a webových aplikací",
+            "Grafický design a služby brandové identity",
+            "SEO a řešení digitálního marketingu",
+            "Správa sociálních sítí",
+            "IT poradenství a služby kybernetické bezpečnosti",
+            "Související technická podpora a údržba"
+          ]
+        },
+        "userResponsibilities": {
+          "title": "3. Odpovědnosti uživatele",
+          "intro": "Při používání našich služeb souhlasíte s tím, že budete:",
+          "responsibilities": [
+            "Poskytovat přesné a pravdivé informace",
+            "Používat naše služby pouze pro zákonné účely",
+            "Respektovat práva duševního vlastnictví",
+            "Nevěnovat se škodlivým nebo rušivým aktivitám",
+            "Udržovat důvěrnost všech přihlašovacích údajů"
+          ],
+          "prohibitedUses": {
+            "title": "Zakázané použití",
+            "intro": "Naše služby nesmíte používat k:",
+            "prohibitions": [
+              "Porušování platných zákonů nebo předpisů",
+              "Narušování práv ostatních",
+              "Šíření malwaru nebo škodlivého kódu",
+              "Neoprávněnému shromažďování dat",
+              "Pokusům o neoprávněný přístup k našim systémům"
+            ]
+          }
+        },
+        "serviceAgreements": {
+          "title": "4. Servisní smlouvy a kontrakty",
+          "intro": "Konkrétní projekty a služby budou upraveny samostatnými písemnými smlouvami, které specifikují:",
+          "details": [
+            "Rozsah projektu a výstupy",
+            "Časový rámec a milníky",
+            "Platební podmínky",
+            "Vlastnictví duševního vlastnictví",
+            "Ustanovení o důvěrnosti"
+          ],
+          "conflictResolution": "V případě konfliktu mezi těmito podmínkami služby a konkrétní servisní smlouvou má přednost servisní smlouva."
+        },
+        "paymentTerms": {
+          "title": "5. Platební podmínky",
+          "pricingAndInvoicing": {
+            "title": "Ceny a fakturace",
+            "terms": [
+              "Všechny ceny jsou uvedeny v USD nebo EUR podle specifikace",
+              "Faktury jsou splatné do 30 dnů od data vystavení",
+              "Pozdní platby mohou být zatíženy dodatečnými poplatky",
+              "Vyhrazujeme si právo pozastavit služby za neuhrazené účty"
+            ]
+          },
+          "refundsAndCancellations": {
+            "title": "Refundace a zrušení",
+            "terms": [
+              "Zásady refundace jsou specifikovány v jednotlivých servisních smlouvách",
+              "Práce dokončená před zrušením není refundovatelná",
+              "Žádosti o zrušení musí být podány písemně",
+              "Vlastní vývojová práce může mít odlišné podmínky zrušení"
+            ]
+          }
+        },
+        "intellectualProperty": {
+          "title": "6. Duševní vlastnictví",
+          "ourProperty": {
+            "title": "Naše duševní vlastnictví",
+            "description": "Webové stránky Fredonbytes, logo, obsah a metodologie jsou chráněny autorským právem a dalšími zákony o duševním vlastnictví. Bez našeho písemného povolení nesmíte reprodukovat, distribuovat nebo vytvářet odvozená díla."
+          },
+          "clientProperty": {
+            "title": "Duševní vlastnictví klienta",
+            "description": "Vlastnictví výstupů a duševního vlastnictví vytvořeného pro klienty bude specifikováno v příslušné servisní smlouvě. Obecně si klienti ponechávají vlastnictví svého obsahu a brandových materiálů, zatímco vlastní vývoj může zahrnovat sdílená nebo převedená vlastnická práva."
+          }
+        },
+        "confidentiality": {
+          "title": "7. Důvěrnost",
+          "intro": "Chápeme důležitost ochrany důvěrných informací. Zavazujeme se k:",
+          "commitments": [
+            "Udržování přísné důvěrnosti klientských informací",
+            "Používání klientských informací pouze pro autorizované účely",
+            "Implementaci odpovídajících bezpečnostních opatření",
+            "Nezveřejňování důvěrných informací třetím stranám",
+            "Vrácení nebo zničení důvěrných informací na požádání"
+          ]
+        },
+        "disclaimersAndLimitations": {
+          "title": "8. Vyloučení odpovědnosti a omezení",
+          "serviceAvailability": {
+            "title": "Dostupnost služeb",
+            "description": "Ačkoli se snažíme o vysokou dostupnost, nemůžeme zaručit nepřerušený přístup k našim webovým stránkám nebo službám. Vyhrazujeme si právo upravit, pozastavit nebo ukončit služby s přiměřeným předchozím oznámením."
+          },
+          "limitationOfLiability": {
+            "title": "Omezení odpovědnosti",
+            "description": "Naše odpovědnost je omezena na částku zaplacenou za konkrétní službu, která je předmětem nároku. Neneseme odpovědnost za nepřímé, náhodné nebo následné škody, včetně ztráty zisku, dat nebo obchodních příležitostí."
+          }
+        },
+        "dataProtectionAndPrivacy": {
+          "title": "9. Ochrana dat a soukromí",
+          "content": [
+            "Jsme odhodláni chránit vaše soukromí a dodržovat platné zákony o ochraně dat, včetně GDPR. Naše postupy nakládání s daty jsou podrobně popsány v našich zásadách ochrany osobních údajů, které tvoří nedílnou součást těchto podmínek.",
+            "Používáním našich služeb souhlasíte se shromažďováním, používáním a zpracováním vašich dat podle popisu v našich zásadách ochrany osobních údajů."
+          ]
+        },
+        "governingLawAndDisputes": {
+          "title": "10. Rozhodné právo a spory",
+          "content": [
+            "Tyto podmínky se řídí zákony České republiky. Všechny spory vyplývající z těchto podmínek nebo našich služeb budou předmětem výlučné jurisdikce soudů v Brně, Česká republika.",
+            "Doporučujeme řešit spory přímou komunikací před podáním právních kroků."
+          ]
+        },
+        "changesToTerms": {
+          "title": "11. Změny podmínek",
+          "content": [
+            "Vyhrazujeme si právo kdykoli upravit tyto podmínky. Změny nabydou účinnosti zveřejněním na našich webových stránkách. O podstatných změnách budeme uživatele informovat e-mailem nebo oznámením na webu.",
+            "Vaše pokračující používání našich služeb po změnách znamená přijetí upravených podmínek."
+          ]
+        },
+        "termination": {
+          "title": "12. Ukončení",
+          "intro": "Kterákoli strana může ukončit servisní vztah s odpovídajícím oznámením podle specifikace v příslušné servisní smlouvě. Po ukončení:",
+          "consequences": [
+            "Všechny neuhrazené faktury se stávají okamžitě splatnými",
+            "Přístup k našim službám a systémům bude zrušen",
+            "Závazky důvěrnosti zůstávají v platnosti",
+            "Vrácení nebo zničení dat bude zpracováno podle dohody"
+          ]
+        },
+        "contactInformation": {
+          "title": "13. Kontaktní informace",
+          "intro": "Pro otázky týkající se těchto podmínek služby nás kontaktujte:",
+          "company": "Fredonbytes",
+          "email": "legal@fredonbytes.cloud",
+          "phone": "+420 799 027 984",
+          "address": "Brno, Česká republika"
+        }
+      },
+      "legalNotice": {
+        "title": "Právní oznámení",
+        "description": "Tyto podmínky představují právně závaznou smlouvu. Pokud s těmito podmínkami nesouhlasíte, prosím okamžitě přestaňte používat naše webové stránky a služby."
+      }
+    },
+    "privacyPolicy": {
+      "title": "Zásady ochrany osobních údajů",
+      "subtitle": "Jak shromažďujeme, používáme a chráníme vaše informace",
+      "lastUpdated": "Naposledy aktualizováno: 6. ledna 2025",
+      "summary": {
+        "title": "Shrnutí",
+        "description": "Respektujeme vaše soukromí a jsme odhodláni chránit vaše osobní údaje. Tyto zásady ochrany osobních údajů vysvětlují, jak shromažďujeme, používáme a chráníme vaše informace při návštěvě našich webových stránek nebo používání našich služeb."
+      },
+      "sections": {
+        "informationWeCollect": {
+          "title": "1. Informace, které shromažďujeme",
+          "personalInformation": {
+            "title": "Osobní informace",
+            "intro": "Můžeme shromažďovat následující osobní informace, když nás kontaktujete nebo používáte naše služby:",
+            "types": [
+              "Jméno a kontaktní informace (e-mailová adresa, telefonní číslo)",
+              "Informace o společnosti a pracovní pozici",
+              "Požadavky na projekt a preference",
+              "Historie komunikace a korespondence"
+            ]
+          },
+          "technicalInformation": {
+            "title": "Technické informace",
+            "intro": "Automaticky shromažďujeme určité technické informace při návštěvě našich webových stránek:",
+            "types": [
+              "IP adresa a typ prohlížeče",
+              "Informace o zařízení a operačním systému",
+              "Navštívené stránky a čas strávený na našem webu",
+              "Zdroj odkazu a výstupní stránky"
+            ]
+          }
+        },
+        "howWeUseInformation": {
+          "title": "2. Jak používáme vaše informace",
+          "intro": "Vaše osobní informace používáme pro následující účely:",
+          "purposes": [
+            "Odpovídat na vaše dotazy a poskytovat naše služby",
+            "Komunikovat s vámi o vašich projektech",
+            "Zlepšovat naše webové stránky a služby",
+            "Zasílat vám newslettery a aktualizace (s vaším souhlasem)",
+            "Plnit právní povinnosti"
+          ]
+        },
+        "cookiesAndTracking": {
+          "title": "3. Cookies a sledovací technologie",
+          "intro": "Používáme cookies a podobné technologie k vylepšení vašeho procházení:",
+          "essentialCookies": {
+            "title": "Nezbytné cookies",
+            "description": "Potřebné pro základní funkcionalitu webu a nelze je zakázat."
+          },
+          "analyticsCookies": {
+            "title": "Analytické cookies",
+            "description": "Pomáhají nám pochopit, jak návštěvníci interagují s naším webem za účelem zlepšení uživatelské zkušenosti."
+          },
+          "marketingCookies": {
+            "title": "Marketingové cookies",
+            "description": "Používané k doručování relevantních reklam a měření účinnosti kampaní."
+          }
+        },
+        "dataSharingAndDisclosure": {
+          "title": "4. Sdílení a zveřejňování dat",
+          "intro": "Neprodáváme, nevyměňujeme ani nepronajímáme vaše osobní informace třetím stranám. Vaše informace můžeme sdílet v následujících případech:",
+          "circumstances": [
+            "S důvěryhodnými poskytovateli služeb, kteří pomáhají při poskytování našich služeb",
+            "Když to vyžaduje zákon nebo k ochraně našich právních práv",
+            "V souvislosti s převodem nebo akvizicí podniku",
+            "S vaším výslovným souhlasem"
+          ]
+        },
+        "dataSecurity": {
+          "title": "5. Bezpečnost dat",
+          "intro": "Implementujeme odpovídající technická a organizační opatření k ochraně vašich osobních údajů:",
+          "measures": [
+            "Šifrování dat při přenosu a uložení",
+            "Pravidelná bezpečnostní hodnocení a aktualizace",
+            "Kontroly přístupu a autentizační opatření",
+            "Školení zaměstnanců o postupech ochrany dat"
+          ]
+        },
+        "yourRights": {
+          "title": "6. Vaše práva",
+          "intro": "Podle platných zákonů o ochraně dat máte následující práva:",
+          "rights": [
+            "Přístup: Požádat o kopie vašich osobních údajů",
+            "Oprava: Požádat o opravu nepřesných údajů",
+            "Výmaz: Požádat o smazání vašich osobních údajů",
+            "Přenositelnost: Požádat o přenos vašich údajů",
+            "Námitka: Vznést námitku proti zpracování vašich údajů",
+            "Omezení: Požádat o omezení zpracování"
+          ]
+        },
+        "dataRetention": {
+          "title": "7. Uchovávání dat",
+          "description": "Vaše osobní údaje uchováváme pouze tak dlouho, jak je nezbytné pro účely uvedené v těchto zásadách nebo jak vyžaduje zákon. Obecně uchováváme klientské informace po dobu 7 let po dokončení služeb pro obchodní a právní účely."
+        },
+        "internationalTransfers": {
+          "title": "8. Mezinárodní převody",
+          "description": "Jelikož sídlíme v České republice (EU), vaše data jsou zpracovávána v rámci Evropského hospodářského prostoru. Případné převody mimo EHP budou předmětem odpovídajících záruk a právní ochrany."
+        },
+        "updatesToPolicy": {
+          "title": "9. Aktualizace těchto zásad",
+          "description": "Tyto zásady ochrany osobních údajů můžeme čas od času aktualizovat. O všech podstatných změnách vás budeme informovat zveřejněním nových zásad na našich webových stránkách a aktualizací data \"Naposledy aktualizováno\". Vaše pokračující používání našich služeb po takových změnách znamená přijetí aktualizovaných zásad."
+        },
+        "contactUs": {
+          "title": "10. Kontaktujte nás",
+          "intro": "Pokud máte otázky týkající se těchto zásad ochrany osobních údajů nebo si chcete uplatnit svá práva, kontaktujte nás:",
+          "company": "Fredonbytes",
+          "email": "privacy@fredonbytes.cloud",
+          "phone": "+420 799 027 984",
+          "address": "Brno, Česká republika"
+        }
+      },
+      "questions": {
+        "title": "Otázky?",
+        "description": "Jsme odhodláni k transparentnosti a ochraně vašeho soukromí. Pokud máte jakékoli otázky nebo obavy ohledně toho, jak nakládáme s vašimi daty, neváhejte se na nás obrátit."
+      }
+    },
+    "cookiePolicy": {
+      "title": "Zásady cookies",
+      "subtitle": "Jak používáme cookies a podobné technologie",
+      "lastUpdated": "Naposledy aktualizováno: 6. ledna 2025",
+      "overview": {
+        "title": "Přehled cookies",
+        "description": "Tyto zásady vysvětlují, jak Fredonbytes používá cookies a podobné technologie při návštěvě našich webových stránek a vaše možnosti týkající se těchto technologií."
+      },
+      "sections": {
+        "whatAreCookies": {
+          "title": "1. Co jsou cookies?",
+          "content": [
+            "Cookies jsou malé textové soubory, které se ukládají do vašeho zařízení při návštěvě webových stránek. Pomáhají webovým stránkám zapamatovat si informace o vaší návštěvě, což může usnadnit opětovnou návštěvu webu a učinit web užitečnějším.",
+            "Používáme také podobné technologie jako webové majáky, pixely a lokální úložiště, které v těchto zásadách souhrnně označujeme jako \"cookies\"."
+          ]
+        },
+        "typesOfCookies": {
+          "title": "2. Typy cookies, které používáme",
+          "essential": {
+            "title": "🔧 Nezbytné cookies",
+            "purpose": "Potřebné pro základní funkcionalitu webu",
+            "canBeDisabled": "Ne - tyto jsou nezbytné pro fungování webu",
+            "description": "Tyto cookies umožňují základní funkcionalitu jako navigaci stránkami, přístup k zabezpečeným oblastem a zapamatování vašich preferencí cookies."
+          },
+          "analytics": {
+            "title": "📊 Analytické cookies",
+            "purpose": "Pomáhají nám porozumět používání webu",
+            "canBeDisabled": "Ano - prostřednictvím našeho cookie banneru",
+            "description": "Tyto cookies shromažďují informace o tom, jak návštěvníci používají naše webové stránky, například které stránky jsou nejčastěji navštěvované."
+          },
+          "marketing": {
+            "title": "🎯 Marketingové cookies",
+            "purpose": "Doručování relevantních reklam",
+            "canBeDisabled": "Ano - prostřednictvím našeho cookie banneru",
+            "description": "Tyto cookies sledují vaše návyky procházení, aby vám zobrazovaly relevantní reklamy a měřily účinnost reklam."
+          },
+          "preference": {
+            "title": "⚙️ Preferenční cookies",
+            "purpose": "Zapamatování vašich nastavení a preferencí",
+            "canBeDisabled": "Ano - prostřednictvím našeho cookie banneru",
+            "description": "Tyto cookies si pamatují vaše preference jako jazyk, region nebo nastavení motivu pro personalizovaný zážitek."
+          }
+        },
+        "specificCookies": {
+          "title": "3. Konkrétní cookies, které používáme",
+          "table": {
+            "headers": {
+              "cookieName": "Název cookie",
+              "purpose": "Účel",
+              "type": "Typ",
+              "duration": "Doba trvání"
+            },
+            "rows": [
+              {
+                "name": "cookie-consent",
+                "purpose": "Ukládá vaše preference cookies",
+                "type": "Nezbytné",
+                "duration": "1 rok"
+              },
+              {
+                "name": "_ga",
+                "purpose": "Google Analytics - rozlišuje uživatele",
+                "type": "Analytické",
+                "duration": "2 roky"
+              },
+              {
+                "name": "_gid",
+                "purpose": "Google Analytics - rozlišuje uživatele",
+                "type": "Analytické",
+                "duration": "24 hodin"
+              },
+              {
+                "name": "theme-preference",
+                "purpose": "Pamatuje si preference tmavého/světlého režimu",
+                "type": "Preferenční",
+                "duration": "1 rok"
+              },
+              {
+                "name": "_fbp",
+                "purpose": "Facebook Pixel - sleduje konverze",
+                "type": "Marketingové",
+                "duration": "3 měsíce"
+              }
+            ]
+          }
+        },
+        "thirdPartyCookies": {
+          "title": "4. Cookies třetích stran",
+          "intro": "Některé cookies jsou umisťovány službami třetích stran, které se objevují na našich stránkách. Používáme následující služby třetích stran:",
+          "services": {
+            "googleAnalytics": {
+              "name": "Google Analytics",
+              "description": "Pomáhá nám pochopit, jak návštěvníci interagují s naším webem shromažďováním a hlášením informací anonymně.",
+              "privacyPolicy": "Zásady ochrany soukromí Google"
+            },
+            "googleFonts": {
+              "name": "Google Fonts",
+              "description": "Poskytuje webové písma pro vylepšení vizuálního designu našich webových stránek.",
+              "privacyPolicy": "Zásady ochrany soukromí Google"
+            },
+            "socialMedia": {
+              "name": "Platformy sociálních médií",
+              "description": "Když interagujete s tlačítky sociálních médií nebo vloženým obsahem, tyto platformy mohou nastavit své vlastní cookies.",
+              "note": "Prosím, podívejte se na příslušné zásady ochrany soukromí každé platformy."
+            }
+          }
+        },
+        "howToControlCookies": {
+          "title": "5. Jak ovládat cookies",
+          "cookieBanner": {
+            "title": "Náš cookie banner",
+            "intro": "Při první návštěvě našich webových stránek uvidíte cookie banner, který vám umožní:",
+            "options": [
+              "Přijmout všechny cookies",
+              "Přijmout pouze nezbytné cookies",
+              "Přizpůsobit vaše preference cookies",
+              "Dozvědět se více o každém typu cookie"
+            ]
+          },
+          "browserSettings": {
+            "title": "Nastavení prohlížeče",
+            "intro": "Cookies můžete také ovládat prostřednictvím nastavení vašeho prohlížeče:",
+            "browsers": [
+              "Chrome: Nastavení → Ochrana soukromí a zabezpečení → Cookies a další data stránek",
+              "Firefox: Nastavení → Ochrana soukromí a zabezpečení → Cookies a data stránek",
+              "Safari: Předvolby → Ochrana soukromí → Spravovat data webových stránek",
+              "Edge: Nastavení → Cookies a oprávnění stránek → Cookies a data stránek"
+            ]
+          },
+          "optOutLinks": {
+            "title": "Odkazy pro odhlášení",
+            "googleAnalytics": "Doplněk prohlížeče pro odhlášení z Google Analytics",
+            "facebook": "Předvolby reklam Facebook",
+            "generalAdvertising": "Vaše online volby"
+          }
+        },
+        "impactOfDisabling": {
+          "title": "6. Dopad zakázání cookies",
+          "intro": "Pokud se rozhodnete zakázat určité cookies, některé funkce našich webových stránek nemusí fungovat správně:",
+          "impacts": [
+            "Možná budete muset znovu zadávat informace při každé návštěvě",
+            "Některé personalizované funkce nemusí být dostupné",
+            "Můžete vidět méně relevantní reklamy",
+            "Analytika webu může být neúplná"
+          ]
+        },
+        "updatesToPolicy": {
+          "title": "7. Aktualizace těchto zásad",
+          "description": "Tyto zásady cookies můžeme čas od času aktualizovat, aby odrážely změny v našich postupech nebo z právních, regulačních nebo provozních důvodů. O všech podstatných změnách vás budeme informovat zveřejněním aktualizovaných zásad na našich webových stránkách a aktualizací data \"Naposledy aktualizováno\"."
+        },
+        "contactUs": {
+          "title": "8. Kontaktujte nás",
+          "intro": "Pokud máte otázky o našem používání cookies, kontaktujte nás:",
+          "company": "Fredonbytes",
+          "email": "privacy@fredonbytes.cloud",
+          "phone": "+420 799 027 984",
+          "address": "Brno, Česká republika"
+        }
+      },
+      "changePreferences": {
+        "title": "🍪 Potřebujete změnit své preference cookies?",
+        "description": "Své preference cookies můžete kdykoli aktualizovat kliknutím na tlačítko nastavení cookies v dolním rohu libovolné stránky na našem webu.",
+        "button": "Spravovat preference cookies"
+      }
+    },
+    "pricingSection": {
+      "calculator": {
+        "title": "Kalkulačka individuální nabídky",
+        "description": "Kombinujte služby a získejte personalizovanou nabídku pro váš projekt.",
+        "toggleButton": "Otevřít cenovou kalkulačku",
+        "services": {
+          "webDevelopment": {
+            "name": "Webový vývoj",
+            "description": "Vlastní web nebo webová aplikace",
+            "included": [
+              "Responzivní design",
+              "Základní SEO",
+              "Kontaktní formuláře"
+            ]
+          },
+          "mobileApp": {
+            "name": "Mobilní aplikace",
+            "description": "iOS/Android mobilní aplikace",
+            "included": [
+              "Multiplatformní",
+              "Odeslání do App Store",
+              "Základní analytika"
+            ]
+          },
+          "brandDesign": {
+            "name": "Brand & Design",
+            "description": "Kompletní brandová identita a designový systém",
+            "included": [
+              "Design loga",
+              "Brandové směrnice",
+              "Marketingové materiály"
+            ]
+          },
+          "seoMarketing": {
+            "name": "SEO & Marketing",
+            "description": "Měsíční SEO a služby digitálního marketingu",
+            "included": [
+              "Výzkum klíčových slov",
+              "Content strategie",
+              "Analytika"
+            ]
+          },
+          "socialMedia": {
+            "name": "Sociální média",
+            "description": "Měsíční správa sociálních médií",
+            "included": ["Tvorba obsahu", "Plán publikování", "Správa komunity"]
+          },
+          "itConsulting": {
+            "name": "IT poradenství",
+            "description": "Hodinové poradenství a strategické konzultace",
+            "included": [
+              "Strategické plánování",
+              "Technické vedení",
+              "Bezpečnostní kontrola"
+            ]
+          }
+        },
+        "estimatedTotal": "Odhadovaná celková cena",
+        "basedOnServices": "Na základě vašich vybraných služeb",
+        "getQuote": "Získat nabídku"
+      },
+      "mostPopular": "Nejoblíbenější"
+    },
+    "aboutSection": {
+      "aboutFredonbytes": "O Fredonbytes",
+      "foundedDescription": "Založeno v roce 2023, eliminujeme potřebu více dodavatelů tím, že se staneme vaší digitální armádou na jednom místě, zajišťující bezproblémové a vysoce účinné výsledky pod jednou střechou."
+    }
+  },
+  "cookies": {
+    "banner": {
+      "title": "Používáme cookies",
+      "description": "Používáme cookies k vylepšení vašeho prohlížení, poskytování personalizovaného obsahu a analýze návštěvnosti. Kliknutím na \"Přijmout vše\" souhlasíte s používáním cookies.",
+      "learnMore": "Zjistit více",
+      "acceptAll": "Přijmout vše",
+      "necessaryOnly": "Pouze nutné",
+      "customize": "Přizpůsobit",
+      "savePreferences": "Uložit předvolby"
+    },
+    "preferences": {
+      "title": "Nastavení cookies",
+      "description": "Přizpůsobte si níže své preference cookies. Můžete povolit nebo zakázat různé typy cookies podle svých preferencí.",
+      "necessary": {
+        "title": "Nutné cookies",
+        "description": "Vyžadované pro správné fungování webu. Nelze vypnout."
+      },
+      "analytics": {
+        "title": "Analytické cookies",
+        "description": "Pomáhají nám pochopit, jak návštěvníci interagují s našimi stránkami."
+      },
+      "marketing": {
+        "title": "Marketingové cookies",
+        "description": "Používané k poskytování relevantní reklamy a měření její účinnosti."
+      },
+      "preferences": {
+        "title": "Preferenční cookies",
+        "description": "Zapamatují si vaše nastavení pro lepší zážitek."
+      }
+    },
+    "termsOfService": {
+      "title": "Podmínky služby",
+      "subtitle": "Právní podmínky upravující používání našich služeb",
+      "lastUpdated": "Poslední aktualizace: 6. ledna 2025",
+      "agreementOverview": {
+        "title": "Přehled smlouvy",
+        "description": "Přístupem na naše webové stránky nebo používáním našich služeb souhlasíte s těmito podmínkami. Před pokračováním si je prosím pečlivě přečtěte."
+      },
+      "sections": {
+        "acceptanceOfTerms": {
+          "title": "1. Přijetí podmínek",
+          "content": [
+            "Přístupem nebo používáním webových stránek a služeb Fredonbytes potvrzujete, že jste si přečetli, porozuměli a souhlasíte s tím, že budete vázáni těmito podmínkami služby a naší zásadou ochrany osobních údajů. Pokud s těmito podmínkami nesouhlasíte, nepoužívejte prosím naše služby.",
+            "Tyto podmínky se vztahují na všechny návštěvníky, uživatele a další osoby, které přistupují k našim službám nebo je používají."
+          ]
+        },
+        "servicesDescription": {
+          "title": "2. Popis služeb",
+          "intro": "Fredonbytes poskytuje komplexní IT řešení včetně:",
+          "services": [
+            "Vývoj softwaru a webových aplikací",
+            "Služby grafického designu a firemní identity",
+            "Řešení SEO a digitálního marketingu",
+            "Správa sociálních sítí",
+            "IT poradenství a služby kybernetické bezpečnosti",
+            "Související technická podpora a údržba"
+          ]
+        },
+        "userResponsibilities": {
+          "title": "3. Odpovědnosti uživatele",
+          "intro": "Při používání našich služeb souhlasíte s tím, že budete:",
+          "responsibilities": [
+            "Poskytovat přesné a pravdivé informace",
+            "Používat naše služby pouze k zákonným účelům",
+            "Respektovat práva duševního vlastnictví",
+            "Nezapojovat se do škodlivých nebo rušivých aktivit",
+            "Zachovávat důvěrnost přihlašovacích údajů"
+          ],
+          "prohibitedUses": {
+            "title": "Zakázaná použití",
+            "intro": "Naše služby nesmíte používat k:",
+            "prohibitions": [
+              "Porušování platných zákonů nebo předpisů",
+              "Porušování práv ostatních",
+              "Distribuci malwaru nebo škodlivého kódu",
+              "Neoprávněnému sběru dat",
+              "Pokusům o neoprávněný přístup k našim systémům"
+            ]
+          }
+        },
+        "serviceAgreements": {
+          "title": "4. Servisní smlouvy a kontrakty",
+          "intro": "Konkrétní projekty a služby budou řízeny samostatnými písemnými smlouvami, které specifikují:",
+          "details": [
+            "Rozsah projektu a dodávky",
+            "Časový harmonogram a milníky",
+            "Platební podmínky",
+            "Vlastnictví duševního vlastnictví",
+            "Ustanovení o důvěrnosti"
+          ],
+          "conflictResolution": "V případě konfliktu mezi těmito podmínkami služby a konkrétní servisní smlouvou má přednost servisní smlouva."
+        },
+        "paymentTerms": {
+          "title": "5. Platební podmínky",
+          "pricingAndInvoicing": {
+            "title": "Ceníky a fakturace",
+            "terms": [
+              "Všechny ceny jsou uváděny v USD nebo EUR podle specifikace",
+              "Faktury jsou splatné do 30 dnů od data vystavení",
+              "Pozdní platby mohou vyvolat dodatečné poplatky",
+              "Vyhrazujeme si právo pozastavit služby pro účty s nesplatenými závazky"
+            ]
+          },
+          "refundsAndCancellations": {
+            "title": "Refundace a zrušení",
+            "terms": [
+              "Zásady refundace jsou specifikovány v jednotlivých servisních smlouvách",
+              "Práce dokončená před zrušením není vratná",
+              "Žádosti o zrušení musí být podány písemně",
+              "Zakázkový vývoj může mít odlišné podmínky zrušení"
+            ]
+          }
+        },
+        "intellectualProperty": {
+          "title": "6. Duševní vlastnictví",
+          "ourProperty": {
+            "title": "Naše duševní vlastnictví",
+            "description": "Webové stránky Fredonbytes, logo, obsah a metodologie jsou chráněny autorským právem a dalšími zákony o duševním vlastnictví. Bez našeho písemného povolení nesmíte reprodukovat, distribuovat nebo vytvářet odvozená díla."
+          },
+          "clientProperty": {
+            "title": "Duševní vlastnictví klienta",
+            "description": "Vlastnictví dodávek a duševního vlastnictví vytvořeného pro klienty bude specifikováno v příslušné servisní smlouvě. Obecně si klienti zachovávají vlastnictví svého obsahu a značkových materiálů, zatímco zakázkový vývoj může zahrnovat sdílená nebo převedená vlastnická práva."
+          }
+        },
+        "confidentiality": {
+          "title": "7. Důvěrnost",
+          "intro": "Chápeme důležitost ochrany důvěrných informací. Zavazujeme se:",
+          "commitments": [
+            "Udržovat přísnou důvěrnost klientských informací",
+            "Používat klientské informace pouze k oprávněným účelům",
+            "Implementovat vhodná bezpečnostní opatření",
+            "Nezveřejňovat důvěrné informace třetím stranám",
+            "Vrátit nebo zničit důvěrné informace na požádání"
+          ]
+        },
+        "disclaimersAndLimitations": {
+          "title": "8. Omezení odpovědnosti a vyloučení",
+          "serviceAvailability": {
+            "title": "Dostupnost služeb",
+            "description": "Ačkoli usilujeme o vysokou dostupnost, nemůžeme zaručit nepřetržitý přístup k našim webovým stránkám nebo službám. Vyhrazujeme si právo upravovat, pozastavovat nebo ukončovat služby s přiměřeným předchozím oznámením."
+          },
+          "limitationOfLiability": {
+            "title": "Omezení odpovědnosti",
+            "description": "Naše odpovědnost je omezena na částku zaplacenou za konkrétní službu, která dala vzniknout nároku. Neneseme odpovědnost za nepřímé, náhodné nebo následné škody, včetně ztráty zisku, dat nebo obchodních příležitostí."
+          }
+        },
+        "dataProtectionAndPrivacy": {
+          "title": "9. Ochrana dat a soukromí",
+          "content": [
+            "Jsme oddáni ochraně vašeho soukromí a dodržování platných zákonů o ochraně údajů, včetně GDPR. Naše praktiky nakládání s údaji jsou podrobně popsány v naší zásadě ochrany osobních údajů, která tvoří nedílnou součást těchto podmínek.",
+            "Používáním našich služeb souhlasíte se shromažďováním, používáním a zpracováním vašich dat, jak je popsáno v naší zásadě ochrany osobních údajů."
+          ]
+        },
+        "governingLawAndDisputes": {
+          "title": "10. Rozhodné právo a spory",
+          "content": [
+            "Tyto podmínky se řídí zákony České republiky. Jakékoli spory vyplývající z těchto podmínek nebo našich služeb budou podléhat výlučné jurisdikci soudů v Brně, Česká republika.",
+            "Doporučujeme řešit spory prostřednictvím přímé komunikace před zahájením právních kroků."
+          ]
+        },
+        "changesToTerms": {
+          "title": "11. Změny podmínek",
+          "content": [
+            "Vyhrazujeme si právo kdykoli upravovat tyto podmínky. Změny budou účinné po zveřejnění na našich webových stránkách. O podstatných změnách budeme uživatele informovat e-mailem nebo oznámením na webu.",
+            "Vaše pokračující používání našich služeb po změnách znamená přijetí upravených podmínek."
+          ]
+        },
+        "termination": {
+          "title": "12. Ukončení",
+          "intro": "Každá strana může ukončit servisní vztah s vhodným předchozím oznámením, jak je specifikováno v příslušné servisní smlouvě. Po ukončení:",
+          "consequences": [
+            "Všechny nevyřízené faktury se stanou okamžitě splatnými",
+            "Přístup k našim službám a systémům bude odvolán",
+            "Závazky týkající se důvěrnosti zůstávají v platnosti",
+            "Vrácení nebo zničení dat bude řešeno podle dohody"
+          ]
+        },
+        "contactInformation": {
+          "title": "13. Kontaktní informace",
+          "intro": "Pokud máte dotazy k těmto podmínkám služby, kontaktujte nás:",
+          "company": "Fredonbytes",
+          "email": "legal@fredonbytes.cloud",
+          "phone": "+420 799 027 984",
+          "address": "Brno, Česká republika"
+        }
+      },
+      "legalNotice": {
+        "title": "Právní oznámení",
+        "description": "Tyto podmínky představují právně závaznou smlouvu. Pokud s těmito podmínkami nesouhlasíte, okamžitě přestaňte používat naše webové stránky a služby."
+      }
+    },
+    "privacyPolicy": {
+      "title": "Zásady ochrany osobních údajů",
+      "subtitle": "Jak shromažďujeme, používáme a chráníme vaše informace",
+      "lastUpdated": "Naposledy aktualizováno: 6. ledna 2025",
+      "summary": {
+        "title": "Shrnutí",
+        "description": "Respektujeme vaše soukromí a jsme odhodláni chránit vaše osobní údaje. Tyto zásady ochrany osobních údajů vysvětlují, jak shromažďujeme, používáme a chráníme vaše informace při návštěvě našich webových stránek nebo používání našich služeb."
+      },
+      "sections": {
+        "informationWeCollect": {
+          "title": "1. Informace, které shromažďujeme",
+          "personalInformation": {
+            "title": "Osobní informace",
+            "intro": "Můžeme shromažďovat následující osobní informace, když nás kontaktujete nebo používáte naše služby:",
+            "types": [
+              "Jméno a kontaktní informace (e-mailová adresa, telefonní číslo)",
+              "Informace o společnosti a pracovní pozici",
+              "Požadavky a preference projektů",
+              "Historie komunikace a korespondence"
+            ]
+          },
+          "technicalInformation": {
+            "title": "Technické informace",
+            "intro": "Automaticky shromažďujeme určité technické informace při návštěvě našich webových stránek:",
+            "types": [
+              "IP adresu a typ prohlížeče",
+              "Informace o zařízení a operačním systému",
+              "Navštívené stránky a čas strávený na našem webu",
+              "Odkázající zdroj a výstupní stránky"
+            ]
+          }
+        },
+        "howWeUseInformation": {
+          "title": "TODO: Translate \"2. How We Use Your Information\"",
+          "intro": "TODO: Translate \"We use your personal information for the following purposes:\"",
+          "purposes": [
+            "TODO: Translate \"To respond to your inquiries and provide our services\"",
+            "TODO: Translate \"To communicate with you about your projects\"",
+            "TODO: Translate \"To improve our website and services\"",
+            "TODO: Translate \"To send you newsletters and updates (with your consent)\"",
+            "TODO: Translate \"To comply with legal obligations\""
+          ]
+        },
+        "cookiesAndTracking": {
+          "title": "TODO: Translate \"3. Cookies and Tracking Technologies\"",
+          "intro": "TODO: Translate \"We use cookies and similar technologies to enhance your browsing experience:\"",
+          "essentialCookies": {
+            "title": "TODO: Translate \"Essential Cookies\"",
+            "description": "TODO: Translate \"Required for basic website functionality and cannot be disabled.\""
+          },
+          "analyticsCookies": {
+            "title": "TODO: Translate \"Analytics Cookies\"",
+            "description": "TODO: Translate \"Help us understand how visitors interact with our website to improve user experience.\""
+          },
+          "marketingCookies": {
+            "title": "TODO: Translate \"Marketing Cookies\"",
+            "description": "TODO: Translate \"Used to deliver relevant advertisements and measure campaign effectiveness.\""
+          }
+        },
+        "dataSharingAndDisclosure": {
+          "title": "TODO: Translate \"4. Data Sharing and Disclosure\"",
+          "intro": "TODO: Translate \"We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:\"",
+          "circumstances": [
+            "TODO: Translate \"With trusted service providers who assist in delivering our services\"",
+            "TODO: Translate \"When required by law or to protect our legal rights\"",
+            "TODO: Translate \"In connection with a business transfer or acquisition\"",
+            "TODO: Translate \"With your explicit consent\""
+          ]
+        },
+        "dataSecurity": {
+          "title": "TODO: Translate \"5. Data Security\"",
+          "intro": "TODO: Translate \"We implement appropriate technical and organizational measures to protect your personal data:\"",
+          "measures": [
+            "TODO: Translate \"Encryption of data in transit and at rest\"",
+            "TODO: Translate \"Regular security assessments and updates\"",
+            "TODO: Translate \"Access controls and authentication measures\"",
+            "TODO: Translate \"Staff training on data protection practices\""
+          ]
+        },
+        "yourRights": {
+          "title": "TODO: Translate \"6. Your Rights\"",
+          "intro": "TODO: Translate \"Under applicable data protection laws, you have the following rights:\"",
+          "rights": [
+            "TODO: Translate \"Access: Request copies of your personal data\"",
+            "TODO: Translate \"Rectification: Request correction of inaccurate data\"",
+            "TODO: Translate \"Erasure: Request deletion of your personal data\"",
+            "TODO: Translate \"Portability: Request transfer of your data\"",
+            "TODO: Translate \"Objection: Object to processing of your data\"",
+            "TODO: Translate \"Restriction: Request restriction of processing\""
+          ]
+        },
+        "dataRetention": {
+          "title": "TODO: Translate \"7. Data Retention\"",
+          "description": "TODO: Translate \"We retain your personal data only as long as necessary for the purposes outlined in this policy or as required by law. Generally, we retain client information for 7 years after the completion of services for business and legal purposes.\""
+        },
+        "internationalTransfers": {
+          "title": "TODO: Translate \"8. International Transfers\"",
+          "description": "TODO: Translate \"As we are based in the Czech Republic (EU), your data is processed within the European Economic Area. Any transfers outside the EEA will be subject to appropriate safeguards and legal protections.\""
+        },
+        "updatesToPolicy": {
+          "title": "TODO: Translate \"9. Updates to This Policy\"",
+          "description": "TODO: Translate \"We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on our website and updating the \"Last updated\" date. Your continued use of our services after such changes constitutes acceptance of the updated policy.\""
+        },
+        "contactUs": {
+          "title": "TODO: Translate \"10. Contact Us\"",
+          "intro": "TODO: Translate \"If you have any questions about this privacy policy or wish to exercise your rights, please contact us:\"",
+          "company": "TODO: Translate \"Fredonbytes\"",
+          "email": "TODO: Translate \"privacy@fredonbytes.cloud\"",
+          "phone": "TODO: Translate \"+420 799 027 984\"",
+          "address": "TODO: Translate \"Brno, Czech Republic\""
+        }
+      },
+      "questions": {
+        "title": "TODO: Translate \"Questions?\"",
+        "description": "TODO: Translate \"We're committed to transparency and protecting your privacy. If you have any questions or concerns about how we handle your data, don't hesitate to reach out to us.\""
+      }
+    },
+    "cookiePolicy": {
+      "title": "TODO: Translate \"Cookie Policy\"",
+      "subtitle": "TODO: Translate \"How we use cookies and similar technologies\"",
+      "lastUpdated": "TODO: Translate \"Last updated: January 6, 2025\"",
+      "overview": {
+        "title": "TODO: Translate \"Cookie Overview\"",
+        "description": "TODO: Translate \"This policy explains how Fredonbytes uses cookies and similar technologies when you visit our website, and your choices regarding these technologies.\""
+      },
+      "sections": {
+        "whatAreCookies": {
+          "title": "TODO: Translate \"1. What Are Cookies?\"",
+          "content": [
+            "TODO: Translate \"Cookies are small text files that are stored on your device when you visit a website. They help websites remember information about your visit, which can make it easier to visit the site again and make the site more useful to you.\"",
+            "TODO: Translate \"We also use similar technologies such as web beacons, pixels, and local storage, which we collectively refer to as \"cookies\" in this policy.\""
+          ]
+        },
+        "typesOfCookies": {
+          "title": "TODO: Translate \"2. Types of Cookies We Use\"",
+          "essential": {
+            "title": "TODO: Translate \"🔧 Essential Cookies\"",
+            "purpose": "TODO: Translate \"Required for basic website functionality\"",
+            "canBeDisabled": "TODO: Translate \"No - these are necessary for the site to work\"",
+            "description": "TODO: Translate \"These cookies enable core functionality such as page navigation, access to secure areas, and remembering your cookie preferences.\""
+          },
+          "analytics": {
+            "title": "TODO: Translate \"📊 Analytics Cookies\"",
+            "purpose": "TODO: Translate \"Help us understand website usage\"",
+            "canBeDisabled": "TODO: Translate \"Yes - through our cookie banner\"",
+            "description": "TODO: Translate \"These cookies collect information about how visitors use our website, such as which pages are visited most often.\""
+          },
+          "marketing": {
+            "title": "TODO: Translate \"🎯 Marketing Cookies\"",
+            "purpose": "TODO: Translate \"Deliver relevant advertisements\"",
+            "canBeDisabled": "TODO: Translate \"Yes - through our cookie banner\"",
+            "description": "TODO: Translate \"These cookies track your browsing habits to show you relevant ads and measure advertising effectiveness.\""
+          },
+          "preference": {
+            "title": "TODO: Translate \"⚙️ Preference Cookies\"",
+            "purpose": "TODO: Translate \"Remember your settings and preferences\"",
+            "canBeDisabled": "TODO: Translate \"Yes - through our cookie banner\"",
+            "description": "TODO: Translate \"These cookies remember your preferences such as language, region, or theme settings for a personalized experience.\""
+          }
+        },
+        "specificCookies": {
+          "title": "TODO: Translate \"3. Specific Cookies We Use\"",
+          "table": {
+            "headers": {
+              "cookieName": "TODO: Translate \"Cookie Name\"",
+              "purpose": "TODO: Translate \"Purpose\"",
+              "type": "TODO: Translate \"Type\"",
+              "duration": "TODO: Translate \"Duration\""
+            },
+            "rows": [
+              "TODO: Translate \"[object Object]\"",
+              "TODO: Translate \"[object Object]\"",
+              "TODO: Translate \"[object Object]\"",
+              "TODO: Translate \"[object Object]\"",
+              "TODO: Translate \"[object Object]\""
+            ]
+          }
+        },
+        "thirdPartyCookies": {
+          "title": "TODO: Translate \"4. Third-Party Cookies\"",
+          "intro": "TODO: Translate \"Some cookies are placed by third-party services that appear on our pages. We use the following third-party services:\"",
+          "services": {
+            "googleAnalytics": {
+              "name": "TODO: Translate \"Google Analytics\"",
+              "description": "TODO: Translate \"Helps us understand how visitors interact with our website by collecting and reporting information anonymously.\"",
+              "privacyPolicy": "TODO: Translate \"Google Privacy Policy\""
+            },
+            "googleFonts": {
+              "name": "TODO: Translate \"Google Fonts\"",
+              "description": "TODO: Translate \"Provides web fonts to enhance the visual design of our website.\"",
+              "privacyPolicy": "TODO: Translate \"Google Privacy Policy\""
+            },
+            "socialMedia": {
+              "name": "TODO: Translate \"Social Media Platforms\"",
+              "description": "TODO: Translate \"When you interact with social media buttons or embedded content, those platforms may set their own cookies.\"",
+              "note": "TODO: Translate \"Please refer to the respective privacy policies of each platform.\""
+            }
+          }
+        },
+        "howToControlCookies": {
+          "title": "TODO: Translate \"5. How to Control Cookies\"",
+          "cookieBanner": {
+            "title": "TODO: Translate \"Our Cookie Banner\"",
+            "intro": "TODO: Translate \"When you first visit our website, you'll see a cookie banner that allows you to:\"",
+            "options": [
+              "TODO: Translate \"Accept all cookies\"",
+              "TODO: Translate \"Accept only necessary cookies\"",
+              "TODO: Translate \"Customize your cookie preferences\"",
+              "TODO: Translate \"Learn more about each type of cookie\""
+            ]
+          },
+          "browserSettings": {
+            "title": "TODO: Translate \"Browser Settings\"",
+            "intro": "TODO: Translate \"You can also control cookies through your browser settings:\"",
+            "browsers": [
+              "TODO: Translate \"Chrome: Settings → Privacy and security → Cookies and other site data\"",
+              "TODO: Translate \"Firefox: Settings → Privacy & Security → Cookies and Site Data\"",
+              "TODO: Translate \"Safari: Preferences → Privacy → Manage Website Data\"",
+              "TODO: Translate \"Edge: Settings → Cookies and site permissions → Cookies and site data\""
+            ]
+          },
+          "optOutLinks": {
+            "title": "TODO: Translate \"Opt-Out Links\"",
+            "googleAnalytics": "TODO: Translate \"Google Analytics Opt-out Browser Add-on\"",
+            "facebook": "TODO: Translate \"Facebook Ad Preferences\"",
+            "generalAdvertising": "TODO: Translate \"Your Online Choices\""
+          }
+        },
+        "impactOfDisabling": {
+          "title": "TODO: Translate \"6. Impact of Disabling Cookies\"",
+          "intro": "TODO: Translate \"If you choose to disable certain cookies, some features of our website may not function properly:\"",
+          "impacts": [
+            "TODO: Translate \"You may need to re-enter information on each visit\"",
+            "TODO: Translate \"Some personalized features may not be available\"",
+            "TODO: Translate \"You may see less relevant advertisements\"",
+            "TODO: Translate \"Website analytics may be incomplete\""
+          ]
+        },
+        "updatesToPolicy": {
+          "title": "TODO: Translate \"7. Updates to This Policy\"",
+          "description": "TODO: Translate \"We may update this Cookie Policy from time to time to reflect changes in our practices or for legal, regulatory, or operational reasons. We will notify you of any material changes by posting the updated policy on our website and updating the \"Last updated\" date.\""
+        },
+        "contactUs": {
+          "title": "TODO: Translate \"8. Contact Us\"",
+          "intro": "TODO: Translate \"If you have any questions about our use of cookies, please contact us:\"",
+          "company": "TODO: Translate \"Fredonbytes\"",
+          "email": "TODO: Translate \"privacy@fredonbytes.cloud\"",
+          "phone": "TODO: Translate \"+420 799 027 984\"",
+          "address": "TODO: Translate \"Brno, Czech Republic\""
+        }
+      },
+      "changePreferences": {
+        "title": "TODO: Translate \"🍪 Need to Change Your Cookie Preferences?\"",
+        "description": "TODO: Translate \"You can update your cookie preferences at any time by clicking the cookie settings button in the bottom corner of any page on our website.\"",
+        "button": "TODO: Translate \"Manage Cookie Preferences\""
+      }
+    },
+    "pricingSection": {
+      "calculator": {
+        "title": "Kalkulačka na míru",
+        "description": "Kombinujte služby pro získání personalizované nabídky pro váš projekt.",
+        "toggleButton": "Otevřít cenovou kalkulačku",
+        "services": {
+          "webDevelopment": {
+            "name": "Vývoj webů",
+            "description": "Vlastní webová stránka nebo aplikace",
+            "included": [
+              "Responzivní design",
+              "SEO základy",
+              "Kontaktní formuláře"
+            ]
+          },
+          "mobileApp": {
+            "name": "Mobilní aplikace",
+            "description": "iOS/Android mobilní aplikace",
+            "included": [
+              "Cross-platform",
+              "Odeslání do obchodu",
+              "Základní analytika"
+            ]
+          },
+          "brandDesign": {
+            "name": "Značka & Design",
+            "description": "Kompletní identita značky a designový systém",
+            "included": [
+              "Design loga",
+              "Brandové směrnice",
+              "Marketingové materiály"
+            ]
+          },
+          "seoMarketing": {
+            "name": "SEO & Marketing",
+            "description": "Měsíční SEO a digitální marketingové služby",
+            "included": [
+              "Výzkum klíčových slov",
+              "Obsahová strategie",
+              "Analytika"
+            ]
+          },
+          "socialMedia": {
+            "name": "Sociální média",
+            "description": "Měsíční správa sociálních médií",
+            "included": ["Tvorba obsahu", "Plán publikování", "Správa komunity"]
+          },
+          "itConsulting": {
+            "name": "IT poradenství",
+            "description": "Hodinové poradenství a strategické schůzky",
+            "included": [
+              "Strategické plánování",
+              "Technické vedení",
+              "Bezpečnostní kontrola"
+            ]
+          }
+        },
+        "estimatedTotal": "Odhadovaná celková cena",
+        "basedOnServices": "Na základě vybraných služeb",
+        "getQuote": "Získat nabídku"
+      },
+      "mostPopular": "Nejpopulárnější"
+    },
+    "aboutSection": {
+      "aboutFredonbytes": "O Fredonbytes",
+      "foundedDescription": "Založeni v roce 2023, eliminujeme potřebu více dodavatelů tím, že se staneme vaší digitální armádou na jednom místě, zajišťující bezproblémové výsledky s vysokým dopadem pod jednou střechou."
+    }
+  }
+}

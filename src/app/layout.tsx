@@ -1,13 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 
 import "./globals.css";
+
 import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
 import { WebVitals } from "./components/WebVitals";
-import { LocaleProvider } from "./contexts/LocaleContext";
 
 // Dynamic imports for heavy components
 const AnimatedBackground = dynamic(
@@ -19,6 +21,13 @@ const AnimatedBackground = dynamic(
 
 const CookieConsentBanner = dynamic(
   () => import("./components/common/CookieConsentBanner"),
+  {
+    loading: () => null
+  }
+);
+
+const ConditionalAnalytics = dynamic(
+  () => import("./components/common/ConditionalAnalytics"),
   {
     loading: () => null
   }
@@ -74,17 +83,20 @@ export const viewport: Viewport = {
   themeColor: "#0f172a",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth">
       <body
         className={`${inter.variable} antialiased min-h-screen flex flex-col relative`}
       >
-        <LocaleProvider>
+        <NextIntlClientProvider messages={messages} locale={locale}>
           <ClientLayoutWrapper>
             <AnimatedBackground />
             <Header />
@@ -93,9 +105,10 @@ export default function RootLayout({
             </main>
             <Footer />
             <CookieConsentBanner />
+            <ConditionalAnalytics />
             <WebVitals />
           </ClientLayoutWrapper>
-        </LocaleProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

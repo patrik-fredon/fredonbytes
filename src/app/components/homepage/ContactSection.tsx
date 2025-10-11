@@ -15,11 +15,11 @@ import {
   MessageSquare,
   Shield,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-import { useTranslations } from "@/app/hooks/useTranslations";
 
 import { Button } from "../common/Button";
 
@@ -48,7 +48,7 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactSection() {
-  const { t } = useTranslations();
+  const t = useTranslations();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);

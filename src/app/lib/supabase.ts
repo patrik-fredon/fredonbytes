@@ -44,6 +44,28 @@ export interface FormResponse {
 export type AnswerValue = string | string[];
 
 // Database type definition for Supabase
+export interface CookieConsent {
+  id?: string;
+  session_id: string;
+  ip_address_hash: string;
+  user_agent?: string | null;
+  consent_timestamp?: string;
+  consent_version: number;
+  essential_cookies: boolean;
+  analytics_cookies: boolean;
+  marketing_cookies: boolean;
+  preferences_cookies: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface CookiePreferences {
+  essential: boolean;
+  analytics: boolean;
+  marketing: boolean;
+  preferences: boolean;
+}
+
 export type Database = {
   public: {
     Tables: {
@@ -66,6 +88,11 @@ export type Database = {
         Row: FormResponse;
         Insert: Omit<FormResponse, 'id' | 'submitted_at'>;
         Update: Partial<Omit<FormResponse, 'id' | 'submitted_at'>>;
+      };
+      cookie_consents: {
+        Row: CookieConsent;
+        Insert: Omit<CookieConsent, 'id' | 'created_at' | 'updated_at' | 'consent_timestamp'>;
+        Update: Partial<Omit<CookieConsent, 'id' | 'created_at' | 'updated_at' | 'consent_timestamp'>>;
       };
     };
   };
