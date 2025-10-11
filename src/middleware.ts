@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import createIntlMiddleware from 'next-intl/middleware';
 
 import { generateCsrfToken, validateCsrfToken, CSRF_TOKEN_COOKIE_NAME, CSRF_TOKEN_HEADER_NAME } from './app/lib/csrf';
 import { routing } from './i18n/routing';
@@ -59,35 +60,11 @@ function checkRateLimit(key: string): { allowed: boolean; remaining: number; res
   return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - entry.count, resetTime: entry.resetTime };
 }
 
-export function middleware(request: NextRequest) {
-  // Handle locale detection from query parameter
-  const langParam = request.nextUrl.searchParams.get('lang');
-  const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value;
-  
-  // Determine the locale to use
-  let locale: string = routing.defaultLocale;
-  if (langParam && routing.locales.includes(langParam as any)) {
-    locale = langParam as string;
-  } else if (cookieLocale && routing.locales.includes(cookieLocale as any)) {
-    locale = cookieLocale as string;
-  }
-  
-  // Create response
-  const response = NextResponse.next();
-  
-  // Set locale cookie if it changed
-  if (locale !== cookieLocale) {
-    response.cookies.set('NEXT_LOCALE', locale, {
-      maxAge: 365 * 24 * 60 * 60, // 1 year
-      path: '/',
-      sameSite: 'lax',
-    });
-  }
-  
-  // Set locale header for next-intl
-  response.headers.set('x-next-intl-locale', locale);
+// Create the next-intl middleware
+const handleI18nRouting = createIntlMiddleware(routing);
 
-  // CSRF Protection for state-changing API requests
+export function middleware(request: NextRequest) {
+  // Handle API routes separately (CSRF + rate limiting)
   if (request.nextUrl.pathname.startsWith('/api/')) {
     const method = request.method;
     
@@ -108,62 +85,63 @@ export function middleware(request: NextRequest) {
       }
     }
     
-    // Set CSRF token cookie if not present (for GET requests)
-    if (method === 'GET' && !request.cookies.get(CSRF_TOKEN_COOKIE_NAME)) {
-      const newCsrfToken = generateCsrfToken();
-      response.cookies.set(CSRF_TOKEN_COOKIE_NAME, newCsrfToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        path: '/',
-        maxAge: 60 * 60 * 24, // 24 hours
-      });
-    }
-  }
-  
-  // Apply rate limiting to all API routes (except health checks)
-  if (request.nextUrl.pathname.startsWith('/api/') && !request.nextUrl.pathname.startsWith('/api/health')) {
-    const key = getRateLimitKey(request);
-    const { allowed, remaining, resetTime } = checkRateLimit(key);
+    // Apply rate limiting to all API routes (except health checks)
+    if (!request.nextUrl.pathname.startsWith('/api/health')) {
+      const key = getRateLimitKey(request);
+      const { allowed, remaining, resetTime } = checkRateLimit(key);
 
-    if (!allowed) {
-      // Rate limit exceeded
-      const retryAfter = Math.ceil((resetTime - Date.now()) / 1000);
-      return NextResponse.json(
-        {
-          error: 'Too many requests',
-          message: 'Rate limit exceeded. Please try again later.',
-        },
-        {
-          status: 429,
-          headers: {
-            'Retry-After': retryAfter.toString(),
-            'X-RateLimit-Limit': MAX_REQUESTS_PER_WINDOW.toString(),
-            'X-RateLimit-Remaining': '0',
-            'X-RateLimit-Reset': new Date(resetTime).toISOString(),
+      if (!allowed) {
+        // Rate limit exceeded
+        const retryAfter = Math.ceil((resetTime - Date.now()) / 1000);
+        return NextResponse.json(
+          {
+            error: 'Too many requests',
+            message: 'Rate limit exceeded. Please try again later.',
           },
-        }
-      );
-    }
+          {
+            status: 429,
+            headers: {
+              'Retry-After': retryAfter.toString(),
+              'X-RateLimit-Limit': MAX_REQUESTS_PER_WINDOW.toString(),
+              'X-RateLimit-Remaining': '0',
+              'X-RateLimit-Reset': new Date(resetTime).toISOString(),
+            },
+          }
+        );
+      }
 
-    // Add rate limit headers to successful responses
-    response.headers.set('X-RateLimit-Limit', MAX_REQUESTS_PER_WINDOW.toString());
-    response.headers.set('X-RateLimit-Remaining', remaining.toString());
-    response.headers.set('X-RateLimit-Reset', new Date(resetTime).toISOString());
-    return response;
+      // Add rate limit headers to successful responses
+      const response = NextResponse.next();
+      response.headers.set('X-RateLimit-Limit', MAX_REQUESTS_PER_WINDOW.toString());
+      response.headers.set('X-RateLimit-Remaining', remaining.toString());
+      response.headers.set('X-RateLimit-Reset', new Date(resetTime).toISOString());
+      
+      // Set CSRF token cookie if not present (for GET requests)
+      if (method === 'GET' && !request.cookies.get(CSRF_TOKEN_COOKIE_NAME)) {
+        const newCsrfToken = generateCsrfToken();
+        response.cookies.set(CSRF_TOKEN_COOKIE_NAME, newCsrfToken, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'strict',
+          path: '/',
+          maxAge: 60 * 60 * 24, // 24 hours
+        });
+      }
+      
+      return response;
+    }
+    
+    return NextResponse.next();
   }
 
-  return response;
+  // For all other routes, use next-intl middleware
+  return handleI18nRouting(request);
 }
 
 // Configure which routes the middleware runs on
 export const config = {
   matcher: [
-    // Match all pathnames except for
-    // - … if they start with `/_next` or `/_vercel`
-    // - … the ones containing a dot (e.g. `favicon.ico`)
     '/((?!_next|_vercel|.*\..*).*)',
-    // Match all API routes for rate limiting
     '/api/:path*'
-  ],
+  ]
 };
