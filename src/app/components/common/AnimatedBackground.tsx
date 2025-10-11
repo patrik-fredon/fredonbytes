@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Code, Zap, Globe, Database, Server, Cpu, Terminal, Cloud, Smartphone, Monitor } from 'lucide-react'
 import React from 'react'
+
 import { useReducedMotion } from '@/app/hooks/useReducedMotion'
 
 export default function AnimatedBackground() {
@@ -23,7 +24,7 @@ export default function AnimatedBackground() {
   ]
 
   const floatingVariants = {
-    animate: {
+    animate: prefersReducedMotion ? {} : {
       y: [-10, 10, -10],
       rotate: [0, 5, 0, -5, 0],
       scale: [1, 1.05, 1],
@@ -36,7 +37,7 @@ export default function AnimatedBackground() {
   }
 
   const orbitVariants = {
-    animate: {
+    animate: prefersReducedMotion ? {} : {
       rotate: 360,
       transition: {
         duration: 60,
@@ -47,7 +48,7 @@ export default function AnimatedBackground() {
   }
 
   const pulseVariants = {
-    animate: {
+    animate: prefersReducedMotion ? {} : {
       scale: [1, 1.2, 1],
       opacity: [0.3, 0.6, 0.3],
       transition: {
@@ -138,12 +139,12 @@ export default function AnimatedBackground() {
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
-            animate={{
+            animate={prefersReducedMotion ? {} : {
               y: [0, -20, 0],
               opacity: [0.2, 0.8, 0.2],
               scale: [1, 1.5, 1],
             }}
-            transition={{
+            transition={prefersReducedMotion ? {} : {
               duration: 3 + Math.random() * 4,
               repeat: Infinity,
               delay: Math.random() * 2,
@@ -156,11 +157,11 @@ export default function AnimatedBackground() {
       {/* Subtle geometric shapes */}
       <motion.div
         className="absolute top-1/3 left-1/6 w-16 h-16 border border-blue-200 dark:border-blue-800 opacity-20"
-        animate={{
+        animate={prefersReducedMotion ? {} : {
           rotate: [0, 180, 360],
           scale: [1, 1.1, 1],
         }}
-        transition={{
+        transition={prefersReducedMotion ? {} : {
           duration: 20,
           repeat: Infinity,
           ease: "linear" as const
@@ -168,11 +169,11 @@ export default function AnimatedBackground() {
       />
       <motion.div
         className="absolute bottom-1/3 right-1/6 w-12 h-12 border border-purple-200 dark:border-purple-800 opacity-20 rounded-full"
-        animate={{
+        animate={prefersReducedMotion ? {} : {
           rotate: [360, 180, 0],
           scale: [1, 0.9, 1],
         }}
-        transition={{
+        transition={prefersReducedMotion ? {} : {
           duration: 25,
           repeat: Infinity,
           ease: "linear" as const

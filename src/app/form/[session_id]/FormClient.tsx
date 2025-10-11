@@ -18,6 +18,7 @@ const ThankYouScreen = dynamic(() => import('@/app/components/form/ThankYouScree
     </div>
   ),
 });
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { logError, getUserFriendlyErrorMessage } from '@/app/lib/error-logger';
 import { loadAnswers, saveAnswer, clearStorageData } from '@/app/lib/form-storage';
 import { validateAnswer, validateAllAnswers, findFirstUnansweredRequired } from '@/app/lib/form-validation';
@@ -62,6 +63,9 @@ interface FormClientProps {
 export default function FormClient({ sessionId }: FormClientProps) {
   // Ref for focus management
   const questionContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Detect reduced motion preference
+  const prefersReducedMotion = useReducedMotion();
 
   // State management
   const [formState, setFormState] = useState<FormState>({
@@ -339,24 +343,25 @@ export default function FormClient({ sessionId }: FormClientProps) {
   // Animation variants for slide transitions with prefers-reduced-motion support
   const slideVariants = {
     enter: (direction: 'forward' | 'backward') => ({
-      x: direction === 'forward' ? 100 : -100,
-      opacity: 0,
+      x: prefersReducedMotion ? 0 : (direction === 'forward' ? 100 : -100),
+      opacity: prefersReducedMotion ? 1 : 0,
     }),
     center: {
       x: 0,
       opacity: 1,
     },
     exit: (direction: 'forward' | 'backward') => ({
-      x: direction === 'forward' ? -100 : 100,
-      opacity: 0,
+      x: prefersReducedMotion ? 0 : (direction === 'forward' ? -100 : 100),
+      opacity: prefersReducedMotion ? 1 : 0,
     }),
   };
 
   // Transition configuration optimized for 60fps performance
+  // Respects prefers-reduced-motion by using instant transitions
   const slideTransition = {
     type: 'tween' as const,
     ease: 'easeInOut' as const,
-    duration: 0.3,
+    duration: prefersReducedMotion ? 0.01 : 0.3,
   };
 
   // Style for optimized animations (will-change for 60fps)
