@@ -123,58 +123,58 @@
     - Ensure minimumCacheTTL is set appropriately
     - _Requirements: 5.2, 5.3, 5.8_
 
-- [-] 7. Font Loading Optimization
-  - [-] 7.1 Implement Next.js font optimization
+- [x] 7. Font Loading Optimization
+  - [x] 7.1 Implement Next.js font optimization
     - Import and configure Inter font from next/font/google
     - Add font-display: swap to prevent FOIT
     - Configure font subsets (latin, latin-ext for Czech)
     - Add font preloading
     - _Requirements: 5.7_
 
-  - [ ] 7.2 Update layout.tsx with optimized font
+  - [x] 7.2 Update layout.tsx with optimized font
     - Apply font variable to html element
     - Configure font fallbacks (system-ui, arial)
     - Update globals.css with font-family configuration
     - _Requirements: 5.7_
 
-- [ ] 8. CSS Optimization and Purging
-  - [ ] 8.1 Create Tailwind configuration file
+- [x] 8. CSS Optimization and Purging
+  - [x] 8.1 Create Tailwind configuration file
     - Create tailwind.config.ts with content paths
     - Configure safelist for dynamic classes
     - Ensure Tailwind 4 purging is active
     - _Requirements: 7.2, 7.5_
 
-  - [ ] 8.2 Audit and remove unused CSS classes
+  - [x] 8.2 Audit and remove unused CSS classes
     - Scan globals.css for unused custom classes
     - Remove duplicate style definitions
     - Consolidate similar CSS rules
     - _Requirements: 1.6, 7.2_
 
-  - [ ] 8.3 Optimize CSS delivery
+  - [x] 8.3 Optimize CSS delivery
     - Verify Critters is working for critical CSS
     - Ensure optimizeCss is enabled in next.config.ts
     - Configure cssnano for production minification
     - _Requirements: 7.1, 7.3, 7.4, 7.6, 7.7_
 
-- [ ] 9. Performance Monitoring Implementation
-  - [ ] 9.1 Create Web Vitals tracking component
+- [x] 9. Performance Monitoring Implementation
+  - [x] 9.1 Create Web Vitals tracking component
     - Create WebVitals.tsx component with useReportWebVitals
     - Add console logging for development
     - Implement analytics endpoint for production
     - _Requirements: 8.1-8.8_
 
-  - [ ] 9.2 Add WebVitals component to root layout
+  - [x] 9.2 Add WebVitals component to root layout
     - Import and render WebVitals in layout.tsx
     - Ensure it only runs on client side
     - _Requirements: 8.1-8.8_
 
-  - [ ] 9.3 Create analytics API endpoint
+  - [x] 9.3 Create analytics API endpoint
     - Create /api/analytics/route.ts
     - Implement endpoint to receive Web Vitals data
     - Add logging or storage for metrics
     - _Requirements: 8.1-8.8_
 
-  - [ ] 9.4 Setup Lighthouse CI configuration
+  - [x] 9.4 Setup Lighthouse CI configuration
     - Create .lighthouserc.json configuration file
     - Configure performance thresholds (95+ score)
     - Set up assertions for Core Web Vitals

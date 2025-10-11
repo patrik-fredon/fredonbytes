@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
+import { WebVitals } from "./components/WebVitals";
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
 import { LocaleProvider } from "./contexts/LocaleContext";
@@ -81,7 +82,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col relative`}
+        className={`${inter.variable} antialiased min-h-screen flex flex-col relative`}
       >
         <LocaleProvider>
           <ClientLayoutWrapper>
@@ -92,6 +93,7 @@ export default function RootLayout({
             </main>
             <Footer />
             <CookieConsentBanner />
+            <WebVitals />
           </ClientLayoutWrapper>
         </LocaleProvider>
       </body>
