@@ -22,7 +22,8 @@
     "clean": "rm -rf .next out",
     "postbuild": "echo \"Build completed successfully\"",
     "vercel-build": "npm run pre-deploy",
-    "optimize": "node scripts/vercel-optimize.js"
+    "optimize": "node scripts/vercel-optimize.js",
+    "lighthouse": "lhci autorun"
   },
   "dependencies": {
     "@appwrite.io/pink-icons": "^1.0.0",
@@ -57,14 +58,29 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@lhci/cli": "^0.15.1",
+    "@next/bundle-analyzer": "^15.5.4",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20.17.57",
     "@types/nodemailer": "^6.4.20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+    "lighthouse": "^13.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions",
+    "iOS >= 14",
+    "Android >= 10",
+    "not dead",
+    "not op_mini all"
+  ]
 }
