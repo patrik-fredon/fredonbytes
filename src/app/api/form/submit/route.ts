@@ -200,3 +200,6 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+// Disable caching for POST endpoint
+export const dynamic = 'force-dynamic';

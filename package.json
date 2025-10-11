@@ -23,7 +23,8 @@
     "postbuild": "echo \"Build completed successfully\"",
     "vercel-build": "npm run pre-deploy",
     "optimize": "node scripts/vercel-optimize.js",
-    "lighthouse": "lhci autorun"
+    "lighthouse": "lhci autorun",
+    "test:compression": "node scripts/test-compression.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

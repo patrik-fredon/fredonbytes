@@ -158,12 +158,33 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Static assets - long-term caching with immutable flag
       {
-        source: "/:path*.{ico,png,jpg,jpeg,gif,webp,svg,woff,woff2}",
+        source: "/:path*.{ico,png,jpg,jpeg,gif,webp,svg,avif}",
         headers: [
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // Font files - long-term caching
+      {
+        source: "/:path*.{woff,woff2,ttf,otf,eot}",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // Manifest and other static files
+      {
+        source: "/:path*.{json,xml,txt}",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, must-revalidate",
           },
         ],
       },

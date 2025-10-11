@@ -355,7 +355,7 @@ export default function FormClient({ sessionId }: FormClientProps) {
   // Transition configuration optimized for 60fps performance
   const slideTransition = {
     type: 'tween' as const,
-    ease: 'easeInOut',
+    ease: 'easeInOut' as const,
     duration: 0.3,
   };
 

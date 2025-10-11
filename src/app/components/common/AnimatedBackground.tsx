@@ -3,8 +3,11 @@
 import { motion } from 'framer-motion'
 import { Code, Zap, Globe, Database, Server, Cpu, Terminal, Cloud, Smartphone, Monitor } from 'lucide-react'
 import React from 'react'
+import { useReducedMotion } from '@/app/hooks/useReducedMotion'
 
 export default function AnimatedBackground() {
+  const prefersReducedMotion = useReducedMotion()
+
   // Development-themed floating icons
   const floatingIcons = [
     { Icon: Code, position: { top: '10%', left: '5%' }, color: 'text-blue-500', delay: 0 },
@@ -27,7 +30,7 @@ export default function AnimatedBackground() {
       transition: {
         duration: 6,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   }
@@ -38,7 +41,7 @@ export default function AnimatedBackground() {
       transition: {
         duration: 60,
         repeat: Infinity,
-        ease: "linear"
+        ease: "linear" as const
       }
     }
   }
@@ -50,7 +53,7 @@ export default function AnimatedBackground() {
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   }
@@ -144,7 +147,7 @@ export default function AnimatedBackground() {
               duration: 3 + Math.random() * 4,
               repeat: Infinity,
               delay: Math.random() * 2,
-              ease: "easeInOut"
+              ease: "easeInOut" as const
             }}
           />
         ))}
@@ -160,7 +163,7 @@ export default function AnimatedBackground() {
         transition={{
           duration: 20,
           repeat: Infinity,
-          ease: "linear"
+          ease: "linear" as const
         }}
       />
       <motion.div
@@ -172,7 +175,7 @@ export default function AnimatedBackground() {
         transition={{
           duration: 25,
           repeat: Infinity,
-          ease: "linear"
+          ease: "linear" as const
         }}
       />
     </div>

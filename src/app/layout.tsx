@@ -4,22 +4,22 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import ClientLayoutWrapper from "./components/ClientLayoutWrapper";
-import { WebVitals } from "./components/WebVitals";
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
+import { WebVitals } from "./components/WebVitals";
 import { LocaleProvider } from "./contexts/LocaleContext";
 
 // Dynamic imports for heavy components
 const AnimatedBackground = dynamic(
   () => import("./components/common/AnimatedBackground"),
-  { 
+  {
     loading: () => <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
   }
 );
 
 const CookieConsentBanner = dynamic(
   () => import("./components/common/CookieConsentBanner"),
-  { 
+  {
     loading: () => null
   }
 );

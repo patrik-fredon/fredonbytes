@@ -5,29 +5,6 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  safelist: [
-    // Animation classes that are dynamically applied
-    "animate-bounce-in",
-    "animate-fade-in",
-    "animate-slide-up",
-    "animate-scale-in",
-    "animate-fadeIn",
-    "animate-slideUp",
-    "animate-slideDown",
-    // Mobile navigation classes
-    "mobile-nav-enter",
-    "mobile-nav-enter-active",
-    "mobile-nav-exit",
-    "mobile-nav-exit-active",
-    // Hamburger menu classes
-    "hamburger-open",
-    // Loading states
-    "loading",
-    // Hover effects
-    "hover-lift",
-    "hover-scale",
-    "hover-glow",
-  ],
   theme: {
     extend: {
       colors: {

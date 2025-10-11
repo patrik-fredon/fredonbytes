@@ -50,7 +50,7 @@ export default function LinkCard({
       y: -5,
       transition: {
         duration: 0.2,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     },
     tap: {
