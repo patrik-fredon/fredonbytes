@@ -267,7 +267,7 @@ export default function TermsOfServicePage() {
                 {t("cookies.termsOfService.sections.termination.intro")}
               </p>
               <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 mb-6 space-y-1">
-                {t.raw("cookies.termsOfService.sections.termination.conditions").map(
+                {t.raw("cookies.termsOfService.sections.termination.consequences").map(
                   (condition: string, index: number) => (
                     <li key={index}>{condition}</li>
                   )
