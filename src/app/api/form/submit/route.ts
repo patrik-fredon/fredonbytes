@@ -150,9 +150,9 @@ export async function POST(request: NextRequest) {
           const question = (questions as Question[]).find((q: Question) => q.id === response.question_id);
           return {
             question_id: response.question_id,
-            question_text: question?.question_text || 'Unknown Question',
+            question_text: question?.question_text ?? 'Unknown Question',
             answer_value: response.answer_value,
-            answer_type: question?.answer_type || 'unknown',
+            answer_type: question?.answer_type ?? 'unknown',
           };
         });
 
@@ -166,7 +166,7 @@ export async function POST(request: NextRequest) {
         // Send email via SMTP
         await sendEmail({
           from: 'Customer Feedback <noreply@fredonbytes.cloud>',
-          to: process.env.ADMIN_EMAIL || 'info@fredonbytes.cloud',
+          to: process.env.ADMIN_EMAIL ?? 'info@fredonbytes.cloud',
           subject: `New Customer Satisfaction Survey - ${session_id.substring(0, 8)}`,
           html: emailHtml,
         });

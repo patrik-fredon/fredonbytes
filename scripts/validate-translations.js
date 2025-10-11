@@ -421,16 +421,16 @@ class TranslationValidator {
 
 // Run validation if called directly
 if (require.main === module) {
-  const validator = new TranslationValidator();
-  validator
-    .validate()
-    .then((success) => {
+  (async () => {
+    try {
+      const validator = new TranslationValidator();
+      const success = await validator.validate();
       process.exit(success ? 0 : 1);
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error("Validation failed:", error);
       process.exit(1);
-    });
+    }
+  })();
 }
 
 module.exports = TranslationValidator;

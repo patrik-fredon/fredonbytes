@@ -82,7 +82,7 @@ export default function ErrorState({
             <Button
               key={index}
               onClick={action.onClick}
-              variant={action.variant || 'default'}
+              variant={action.variant ?? 'default'}
               size="lg"
               loading={action.loading}
               leftIcon={action.label.toLowerCase().includes('retry') ? <RefreshCw size={18} /> : undefined}

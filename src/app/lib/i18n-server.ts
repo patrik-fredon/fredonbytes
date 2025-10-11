@@ -15,7 +15,7 @@ interface LanguageQuality {
 export async function getServerLocale(): Promise<Locale> {
   try {
     const headersList = await headers();
-    const acceptLanguage = headersList.get("accept-language") || "";
+    const acceptLanguage = headersList.get("accept-language") ?? "";
 
     // Parse accept-language header
     const languages: LanguageQuality[] = acceptLanguage

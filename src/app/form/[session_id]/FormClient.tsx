@@ -89,7 +89,7 @@ export default function FormClient({ sessionId }: FormClientProps) {
       const data: QuestionsResponse = await response.json();
 
       if (!response.ok || data.error) {
-        throw new Error(data.error || 'Failed to fetch questions');
+        throw new Error(data.error ?? 'Failed to fetch questions');
       }
 
       setFormState(prev => ({
@@ -303,7 +303,7 @@ export default function FormClient({ sessionId }: FormClientProps) {
       const data: SubmitResponse = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Failed to submit form');
+        throw new Error(data.error ?? 'Failed to submit form');
       }
 
       // Submission successful - clear localStorage

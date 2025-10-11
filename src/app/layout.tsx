@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     description: "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
     images: ["/FredonBytes_GraphicLogo.png"],
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://fredonbytes.cloud'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fredonbytes.cloud'),
   manifest: "/site.webmanifest",
 };
 

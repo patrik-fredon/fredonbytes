@@ -401,7 +401,7 @@ export default function PricingSection() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {serviceOptions.map((service) => {
                     const Icon = service.icon;
-                    const state = calculatorState[service.id] || {
+                    const state = calculatorState[service.id] ?? {
                       selected: false,
                       quantity: 1,
                     };
