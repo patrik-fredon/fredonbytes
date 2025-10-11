@@ -1,8 +1,7 @@
-import { randomUUID } from 'crypto'
-
-import type { Metadata, Viewport } from 'next'
-import dynamic from 'next/dynamic'
-import { redirect } from 'next/navigation'
+import type { Metadata, Viewport } from 'next';
+import dynamic from 'next/dynamic';
+import { setRequestLocale } from 'next-intl/server';
+import { redirect } from '@/i18n/navigation';
 
 import FormLoadingSkeleton from '@/app/components/form/FormLoadingSkeleton'
 
@@ -13,8 +12,9 @@ const FormClient = dynamic(() => import('./FormClient'), {
 
 interface FormPageProps {
   params: Promise<{
-    session_id: string
-  }>
+    locale: string;
+    session_id: string;
+  }>;
 }
 
 /**
@@ -57,16 +57,17 @@ function isValidUUID(uuid: string): boolean {
  * Validates the session_id and passes it to the client component.
  */
 export default async function FormPage({ params }: FormPageProps) {
-  // Await params to get the session_id
-  const { session_id } = await params
+  // Await params to get the locale and session_id
+  const { locale, session_id } = await params;
+  setRequestLocale(locale);
 
   // Validate session_id format
   if (!isValidUUID(session_id)) {
     // If invalid, generate a new valid session_id and redirect
-    const newSessionId = randomUUID()
-    redirect(`/form/${newSessionId}`)
+    const newSessionId = crypto.randomUUID();
+    redirect({ href: `/form/${newSessionId}`, locale });
   }
 
-  // Pass the validated session_id to the client component
-  return <FormClient sessionId={session_id} />
+  // Pass the validated session_id and locale to the client component
+  return <FormClient sessionId={session_id} locale={locale} />
 }

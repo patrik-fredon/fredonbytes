@@ -27,15 +27,16 @@ import type { SurveyQuestion, AnswerValue, LocalizedString } from '@/app/lib/sup
 // Adapter to convert SurveyQuestion to Question format for reusing form components
 interface AdaptedQuestion {
   id: string;
-  question_text: string;
-  description: string | null;
+  question_text: LocalizedString;
+  description: LocalizedString | null;
   answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating';
   required: boolean;
   display_order: number;
+  active: boolean;
   options?: Array<{
     id: string;
     question_id: string;
-    option_text: string;
+    option_text: LocalizedString;
     display_order: number;
   }>;
 }
@@ -81,14 +82,14 @@ interface SurveyClientProps {
 /**
  * Client component for the customer satisfaction survey.
  * Reuses form components from the existing /form implementation.
- * 
+ *
  * @param sessionId - The unique session identifier for this survey submission
  * @param invalidSession - Whether the session ID format is invalid
  */
 export default function SurveyClient({ sessionId, invalidSession = false }: SurveyClientProps) {
   // Ref for focus management
   const questionContainerRef = useRef<HTMLDivElement>(null);
-  
+
   // Detect reduced motion preference
   const prefersReducedMotion = useReducedMotion();
 
@@ -111,6 +112,15 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
   const getLocalizedText = (text: LocalizedString | string, locale: string): string => {
     if (typeof text === 'string') return text;
     return text[locale as keyof LocalizedString] || text.en || '';
+  };
+
+  // Helper function to create LocalizedString object from string
+  const createLocalizedString = (text: string, locale: string): LocalizedString => {
+    return {
+      en: locale === 'en' ? text : '',
+      cs: locale === 'cs' ? text : '',
+      de: locale === 'de' ? text : '',
+    };
   };
 
   // Fetch survey questions from API on mount
@@ -146,6 +156,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
         answer_type: q.answer_type,
         required: q.required,
         display_order: q.display_order,
+        active: true,
         options: q.options?.map(opt => ({
           id: opt.id,
           question_id: opt.question_id,
@@ -163,7 +174,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
     } catch (err) {
       const error = err instanceof Error ? err : new Error('Failed to load survey questions');
       logError('SurveyQuestionLoading', error, { sessionId });
-      
+
       setSurveyState(prev => ({
         ...prev,
         isLoading: false,
@@ -189,7 +200,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
         const firstInput = questionContainerRef.current?.querySelector<HTMLElement>(
           'input:not([type="hidden"]), textarea, select, button'
         );
-        
+
         if (firstInput) {
           firstInput.focus();
         }
@@ -202,7 +213,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
   // Load saved answers from localStorage on mount
   useEffect(() => {
     const savedAnswers = loadAnswers(`survey_${sessionId}`);
-    
+
     if (savedAnswers) {
       const answersMap = new Map<string, AnswerValue | number>();
       Object.entries(savedAnswers).forEach(([questionId, value]) => {
@@ -232,13 +243,13 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
 
     if (currentQuestion) {
       const answer = surveyState.answers.get(currentQuestion.id);
-      
+
       const validationError = validateAnswer(currentQuestion, answer);
-      
+
       if (validationError) {
-        setSurveyState(prev => ({ 
-          ...prev, 
-          validationError: validationError.message 
+        setSurveyState(prev => ({
+          ...prev,
+          validationError: validationError.message
         }));
         return;
       }
@@ -275,7 +286,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
       setSurveyState(prev => {
         const newAnswers = new Map(prev.answers);
         newAnswers.set(questionId, value);
-        
+
         return {
           ...prev,
           answers: newAnswers,
@@ -285,11 +296,11 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
     } catch (err) {
       const error = err instanceof Error ? err : new Error('Failed to save answer to localStorage');
       logError('LocalStorageSave', error, { sessionId, questionId });
-      
+
       setSurveyState(prev => {
         const newAnswers = new Map(prev.answers);
         newAnswers.set(questionId, value);
-        
+
         return {
           ...prev,
           answers: newAnswers,
@@ -308,17 +319,17 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
 
     if (validationErrors.length > 0) {
       const firstUnansweredIndex = findFirstUnansweredRequired(questions, answers);
-      
+
       if (firstUnansweredIndex !== -1) {
         const targetStep = firstUnansweredIndex + 1;
-        
+
         setSurveyState(prev => ({
           ...prev,
           currentStep: targetStep,
           validationError: validationErrors[0].message,
         }));
       }
-      
+
       return;
     }
 
@@ -361,7 +372,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
     } catch (err) {
       const error = err instanceof Error ? err : new Error('Failed to submit survey');
       logError('SurveySubmission', error, { sessionId, responseCount: responses.length });
-      
+
       setSurveyState(prev => ({
         ...prev,
         isSubmitting: false,
@@ -410,7 +421,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
     return (
       <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
         <FormBackground />
-        
+
         <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
@@ -426,7 +437,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
     return (
       <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
         <FormBackground />
-        
+
         <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
           <ErrorState
             message={surveyState.error}
@@ -445,7 +456,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
       <FormBackground />
-      
+
       {/* Form container */}
       <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
         {/* Progress indicator */}

@@ -17,6 +17,7 @@ export async function GET() {
         *,
         options:question_options(*)
       `)
+      .eq('active', true)
       .order('display_order', { ascending: true });
 
     // Handle database errors

@@ -1,5 +1,10 @@
 import type { Metadata } from 'next'
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
+import { setRequestLocale } from 'next-intl/server';
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
 // Dynamic imports for Framer Motion components
 const ProfileHeader = dynamic(
@@ -45,7 +50,9 @@ export const metadata: Metadata = {
   },
 }
 
-export default function LinksPage() {
+export default async function LinksPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       <div className="container mx-auto px-4 py-8">

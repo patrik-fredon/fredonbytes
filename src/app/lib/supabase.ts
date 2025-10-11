@@ -2,13 +2,21 @@ import { createClient } from '@supabase/supabase-js';
 
 // TypeScript interfaces for database tables
 
+// Localized string interface for multilingual content
+export interface LocalizedString {
+  en: string;
+  cs: string;
+  de: string;
+}
+
 export interface Question {
   id: string;
-  question_text: string;
-  description: string | null;
+  question_text: LocalizedString;
+  description?: LocalizedString | null;
   answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating';
   required: boolean;
   display_order: number;
+  active: boolean;
   created_at?: string;
   updated_at?: string;
   options?: QuestionOption[];
@@ -17,7 +25,7 @@ export interface Question {
 export interface QuestionOption {
   id: string;
   question_id: string;
-  option_text: string;
+  option_text: LocalizedString;
   display_order: number;
   created_at?: string;
 }
@@ -104,12 +112,6 @@ export interface NewsletterSubscriber {
 }
 
 // Survey system interfaces
-export interface LocalizedString {
-  en: string;
-  cs: string;
-  de: string;
-}
-
 export interface SurveyQuestion {
   id: string;
   question_text: LocalizedString;

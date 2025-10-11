@@ -22,7 +22,18 @@ import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { logError, getUserFriendlyErrorMessage } from '@/app/lib/error-logger';
 import { loadAnswers, saveAnswer, clearStorageData } from '@/app/lib/form-storage';
 import { validateAnswer, validateAllAnswers, findFirstUnansweredRequired } from '@/app/lib/form-validation';
-import type { Question, AnswerValue } from '@/app/lib/supabase';
+import type { Question, AnswerValue, LocalizedString } from '@/app/lib/supabase';
+
+// Helper function to extract localized string based on locale
+function getLocalizedString(localizedStr: LocalizedString | string, locale: string): string {
+  // If it's already a string, return it
+  if (typeof localizedStr === 'string') {
+    return localizedStr;
+  }
+  
+  // Try to get the requested locale, fallback to English
+  return localizedStr[locale as keyof LocalizedString] || localizedStr.en || '';
+}
 
 // FormState interface for managing component state
 interface FormState {
@@ -51,7 +62,8 @@ interface SubmitResponse {
 }
 
 interface FormClientProps {
-  sessionId: string
+  sessionId: string;
+  locale: string;
 }
 
 /**
@@ -60,7 +72,7 @@ interface FormClientProps {
  * 
  * @param sessionId - The unique session identifier for this form submission
  */
-export default function FormClient({ sessionId }: FormClientProps) {
+export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Ref for focus management
   const questionContainerRef = useRef<HTMLDivElement>(null);
   
@@ -96,9 +108,20 @@ export default function FormClient({ sessionId }: FormClientProps) {
         throw new Error(data.error ?? 'Failed to fetch questions');
       }
 
+      // Transform questions to use localized strings
+      const localizedQuestions = data.questions.map(question => ({
+        ...question,
+        question_text: getLocalizedString(question.question_text, locale) as any,
+        description: question.description ? getLocalizedString(question.description, locale) as any : null,
+        options: question.options?.map(option => ({
+          ...option,
+          option_text: getLocalizedString(option.option_text, locale) as any,
+        })),
+      }));
+
       setFormState(prev => ({
         ...prev,
-        questions: data.questions,
+        questions: localizedQuestions,
         isLoading: false,
       }));
     } catch (err) {
@@ -111,7 +134,7 @@ export default function FormClient({ sessionId }: FormClientProps) {
         error: getUserFriendlyErrorMessage(error),
       }));
     }
-  }, [sessionId]);
+  }, [sessionId, locale]);
 
   // Retry function for question loading
   const retryLoadQuestions = () => {
@@ -301,6 +324,7 @@ export default function FormClient({ sessionId }: FormClientProps) {
           responses,
           newsletter_optin: newsletterOptin,
           email: newsletterOptin && email ? email : undefined,
+          locale: locale,
         }),
       });
 

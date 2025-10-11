@@ -3,13 +3,16 @@
  * Implements double-submit cookie pattern for CSRF protection
  */
 
-import { randomBytes } from 'crypto';
+// Using Web Crypto API for edge runtime compatibility
 
 /**
  * Generate a random CSRF token
  */
 export function generateCsrfToken(): string {
-  return randomBytes(32).toString('hex');
+  // Use Web Crypto API for edge runtime compatibility
+  const array = new Uint8Array(32);
+  crypto.getRandomValues(array);
+  return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
 }
 
 /**
@@ -31,19 +34,13 @@ export function validateCsrfToken(
     return false;
   }
 
-  // Convert to buffers for constant-time comparison
-  const bufferRequest = Buffer.from(tokenFromRequest, 'utf-8');
-  const bufferCookie = Buffer.from(tokenFromCookie, 'utf-8');
-
-  // Use crypto.timingSafeEqual for constant-time comparison
-  try {
-    // Dynamic import for Node.js crypto module
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const crypto = require('crypto');
-    return crypto.timingSafeEqual(bufferRequest, bufferCookie);
-  } catch {
-    return false;
+  // Constant-time string comparison
+  let result = 0;
+  for (let i = 0; i < tokenFromRequest.length; i++) {
+    result |= tokenFromRequest.charCodeAt(i) ^ tokenFromCookie.charCodeAt(i);
   }
+
+  return result === 0;
 }
 
 /**

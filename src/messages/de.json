@@ -662,7 +662,7 @@
       },
       "preferences": {
         "title": "Cookie-Einstellungen",
-      "description": "Passen Sie unten Ihre Cookie-Einstellungen an. Sie können verschiedene Arten von Cookies nach Ihren Präferenzen aktivieren oder deaktivieren.",
+        "description": "Passen Sie unten Ihre Cookie-Einstellungen an. Sie können verschiedene Arten von Cookies nach Ihren Präferenzen aktivieren oder deaktivieren.",
         "necessary": {
           "title": "Notwendige Cookies",
           "description": "Erforderlich für das ordnungsgemäße Funktionieren der Website. Kann nicht deaktiviert werden."

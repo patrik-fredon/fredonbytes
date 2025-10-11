@@ -21,6 +21,7 @@ const submitRequestSchema = z.object({
   }).optional(),
   newsletter_optin: z.boolean().optional(),
   email: z.string().email().optional(),
+  locale: z.string().optional(),
 });
 
 // Response interface for submit endpoint
@@ -47,7 +48,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { session_id, responses, metadata, newsletter_optin, email } = validationResult.data;
+    const { session_id, responses, metadata, newsletter_optin, email, locale } = validationResult.data;
 
     // Sanitize all answer values to prevent XSS attacks
     const sanitizedResponses = responses.map(response => ({
@@ -92,10 +93,11 @@ export async function POST(request: NextRequest) {
       .upsert({
         session_id,
         completed_at: new Date().toISOString(),
-        ip_address: metadata?.ip_address ?? null,
+        ip_address_hash: metadata?.ip_address ?? null,
         user_agent: metadata?.user_agent ?? null,
         newsletter_optin: newsletter_optin ?? false,
         email: email ?? null,
+        locale: locale ?? 'en',
       } as any, {
         onConflict: 'session_id',
       });

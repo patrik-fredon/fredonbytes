@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
+import { setRequestLocale } from 'next-intl/server';
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
 import ProjectsGrid from './ProjectsGrid';
 import ProjectsLoadingSkeleton from './ProjectsLoadingSkeleton';
@@ -9,7 +14,9 @@ export const metadata: Metadata = {
   description: 'Explore our portfolio of successful projects across web development, mobile applications, and cloud infrastructure.',
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return (
     <main className="min-h-screen bg-white dark:bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">

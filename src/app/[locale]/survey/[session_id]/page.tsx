@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import dynamic from 'next/dynamic';
+import { setRequestLocale } from 'next-intl/server';
 
 import FormLoadingSkeleton from '@/app/components/form/FormLoadingSkeleton';
 
@@ -10,6 +11,7 @@ const SurveyClient = dynamic(() => import('./SurveyClient'), {
 
 interface SurveyPageProps {
   params: Promise<{
+    locale: string;
     session_id: string;
   }>;
 }
@@ -54,8 +56,9 @@ function isValidUUID(uuid: string): boolean {
  * Validates the session_id and passes it to the client component.
  */
 export default async function SurveyPage({ params }: SurveyPageProps) {
-  // Await params to get the session_id
-  const { session_id } = await params;
+  // Await params to get the locale and session_id
+  const { locale, session_id } = await params;
+  setRequestLocale(locale);
 
   // Validate session_id format
   if (!isValidUUID(session_id)) {

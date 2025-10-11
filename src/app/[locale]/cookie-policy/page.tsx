@@ -1,4 +1,9 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
 export const metadata: Metadata = {
   title: 'Cookie Policy - Fredonbytes',
@@ -6,7 +11,9 @@ export const metadata: Metadata = {
   robots: 'index, follow',
 }
 
-export default function CookiePolicyPage() {
+export default async function CookiePolicyPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,19 +1,10 @@
 "use client";
+"use client";
 
-import { setRequestLocale } from 'next-intl/server';
 import { useTranslations } from "next-intl";
 import React from "react";
 
-
-
-
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
-export default async function TermsOfServicePage({ params }: Props) {
-  const { locale } = await params;
-  setRequestLocale(locale);
+export default function TermsOfServicePage() {
   const t = useTranslations();
 
   return (
