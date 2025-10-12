@@ -98,7 +98,7 @@ export async function POST(request: NextRequest) {
         newsletter_optin: newsletter_optin ?? false,
         email: email ?? null,
         locale: locale ?? 'en',
-      } as any, {
+      }, {
         onConflict: 'session_id',
       });
 
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
 
     const { error: responsesError } = await supabase
       .from('form_responses')
-      .insert(formResponses as any);
+      .insert(formResponses);
 
     if (responsesError) {
       console.error('Error inserting form responses:', responsesError);

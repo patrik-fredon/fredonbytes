@@ -18,7 +18,7 @@ async function getProjects(): Promise<Project[]> {
       return [];
     }
 
-    return (data as unknown as Project[]) || [];
+    return (data || []) as Project[];
   } catch (error) {
     console.error('Unexpected error fetching projects:', error);
     return [];

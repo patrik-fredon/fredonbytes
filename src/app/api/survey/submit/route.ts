@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
 
     const { error: responsesError } = await supabase
       .from('survey_responses')
-      .insert(surveyResponses as any);
+      .insert(surveyResponses);
 
     if (responsesError) {
       console.error('Error inserting survey responses:', responsesError);
@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
         completed_at: new Date().toISOString(),
         ip_address_hash: metadata?.ip_address ?? null,
         user_agent: metadata?.user_agent ?? null,
-      } as any)
+      })
       .eq('session_id', session_id);
 
     if (sessionUpdateError) {
@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
     if ((existingSession as SurveySession).contact_submission_id) {
       const { error: contactUpdateError } = await supabase
         .from('contact_submissions')
-        .update({ survey_completed: true } as any)
+        .update({ survey_completed: true })
         .eq('session_id', (existingSession as SurveySession).contact_submission_id);
 
       if (contactUpdateError) {

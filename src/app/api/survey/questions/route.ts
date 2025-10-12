@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Type assertion for Supabase query result with join
-    const questionsData = data as unknown as SurveyQuestion[];
+    const questionsData = data as SurveyQuestion[];
 
     // Sort options by display_order for each question
     const questionsWithSortedOptions = questionsData.map((question) => ({

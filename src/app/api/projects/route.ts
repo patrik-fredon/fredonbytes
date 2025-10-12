@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Type assertion for Supabase query result
-    const projectsData = data as unknown as Project[];
+    const projectsData = data as Project[];
 
     // Return with cache headers (cache for 1 hour as projects don't change frequently)
     // Note: Multilingual content is stored in JSONB and returned as-is.

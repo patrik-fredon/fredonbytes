@@ -111,11 +111,11 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       // Transform questions to use localized strings
       const localizedQuestions = data.questions.map(question => ({
         ...question,
-        question_text: getLocalizedString(question.question_text, locale) as any,
-        description: question.description ? getLocalizedString(question.description, locale) as any : null,
+        question_text: getLocalizedString(question.question_text, locale),
+        description: question.description ? getLocalizedString(question.description, locale) : null,
         options: question.options?.map(option => ({
           ...option,
-          option_text: getLocalizedString(option.option_text, locale) as any,
+          option_text: getLocalizedString(option.option_text, locale),
         })),
       }));
 
