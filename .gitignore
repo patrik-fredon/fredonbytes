@@ -47,9 +47,7 @@ handoff-manager-installer.js
 .roomodes
 handoffs/
 single-script/handoff-installer-readme.md
-package-lock.json
-package-lock.json
-package-lock.json
+
 
 .roomodes
 .roo/generate_mcp_yaml.py
@@ -72,9 +70,3 @@ handoff-manager-installer.js
 .roomodes
 handoffs/
 single-script/handoff-installer-readme.md
-package-lock.json
-
-package-lock.json
-
-package-lock.json
-
