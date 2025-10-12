@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from 'react'
 
-import type { QuestionOption } from '@/app/lib/supabase'
+import type { ValidatableQuestionOption } from '@/app/lib/form-validation'
 
 interface SingleChoiceInputProps {
   value: string
@@ -11,14 +11,14 @@ interface SingleChoiceInputProps {
   error?: string
   questionId: string
   questionText: string
-  options?: QuestionOption[]
+  options?: ValidatableQuestionOption[]
 }
 
 /**
  * SingleChoiceInput component for radio button group selection.
  * Displays options ordered by display_order with custom styling.
  * Supports keyboard navigation with arrow keys.
- * 
+ *
  * @param value - Currently selected option value
  * @param onChange - Callback function when selection changes
  * @param required - Whether the field is required
@@ -104,11 +104,10 @@ export default function SingleChoiceInput({
             key={option.id}
             htmlFor={inputId}
             className={`flex items-center gap-3 p-4 min-h-[44px] rounded-md border transition-all duration-200 cursor-pointer
-                       ${
-                         isSelected
-                           ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-400'
-                           : 'border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
-                       }
+                       ${isSelected
+                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-400'
+                : 'border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
+              }
                        ${error ? 'border-red-300 dark:border-red-700' : ''}
                        focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2`}
           >
@@ -126,11 +125,10 @@ export default function SingleChoiceInput({
               />
               <div
                 className={`w-5 h-5 rounded-full border-2 transition-all duration-200 flex items-center justify-center
-                           ${
-                             isSelected
-                               ? 'border-blue-600 dark:border-blue-400 bg-blue-600 dark:bg-blue-400'
-                               : 'border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-700'
-                           }
+                           ${isSelected
+                    ? 'border-blue-600 dark:border-blue-400 bg-blue-600 dark:bg-blue-400'
+                    : 'border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-700'
+                  }
                            peer-focus:ring-2 peer-focus:ring-blue-500 peer-focus:ring-offset-2`}
               >
                 {isSelected && (
@@ -142,11 +140,10 @@ export default function SingleChoiceInput({
             {/* Option Text */}
             <span
               className={`flex-1 text-base transition-colors duration-200
-                         ${
-                           isSelected
-                             ? 'text-slate-900 dark:text-white font-medium'
-                             : 'text-slate-700 dark:text-slate-300'
-                         }`}
+                         ${isSelected
+                  ? 'text-slate-900 dark:text-white font-medium'
+                  : 'text-slate-700 dark:text-slate-300'
+                }`}
             >
               {option.option_text}
             </span>

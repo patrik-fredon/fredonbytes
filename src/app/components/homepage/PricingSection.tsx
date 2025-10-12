@@ -378,7 +378,7 @@ export default function PricingSection() {
                 {t("pricing.toggle.annual")}
               </button>
               <span className="ml-2 text-green-600 font-semibold">
-                {t("pricing.toggle.savings", { savings: "20%" })}
+                {t("pricing.toggle.savings", { percent: "20" })}
               </span>
             </div>
 

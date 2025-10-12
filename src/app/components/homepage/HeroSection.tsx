@@ -20,11 +20,7 @@ export default function HeroSection() {
 
   // Get code snippets from translations with proper type handling
   const getCodeSnippets = (): string[] => {
-    const snippets = t("hero.codeComments.snippets");
-    if (Array.isArray(snippets)) {
-      return snippets as string[];
-    }
-    // Fallback snippets
+
     return [
       "const success = await buildAmazingWebsite();",
       'function createDigitalDominance() { return "Fredonbytes"; }',

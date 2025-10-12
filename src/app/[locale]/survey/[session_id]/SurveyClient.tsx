@@ -21,22 +21,15 @@ const ThankYouScreen = dynamic(() => import('@/app/components/form/ThankYouScree
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { logError, getUserFriendlyErrorMessage } from '@/app/lib/error-logger';
 import { loadAnswers, saveAnswer, clearStorageData } from '@/app/lib/form-storage';
-import { validateAnswer, validateAllAnswers, findFirstUnansweredRequired } from '@/app/lib/form-validation';
+import { validateAnswer, validateAllAnswers, findFirstUnansweredRequired, type ValidatableQuestion } from '@/app/lib/form-validation';
 import type { SurveyQuestion, AnswerValue, LocalizedString } from '@/app/lib/supabase';
 
 // Adapter to convert SurveyQuestion to Question format for reusing form components
-interface AdaptedQuestion {
-  id: string;
-  question_text: LocalizedString;
-  description: LocalizedString | null;
-  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating';
-  required: boolean;
-  display_order: number;
-  active: boolean;
+interface AdaptedQuestion extends ValidatableQuestion {
   options?: Array<{
     id: string;
     question_id: string;
-    option_text: LocalizedString;
+    option_text: string;
     display_order: number;
   }>;
 }

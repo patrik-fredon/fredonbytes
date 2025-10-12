@@ -7,10 +7,11 @@ import ChecklistInput from '@/app/components/form/inputs/ChecklistInput'
 import MultipleChoiceInput from '@/app/components/form/inputs/MultipleChoiceInput'
 import SingleChoiceInput from '@/app/components/form/inputs/SingleChoiceInput'
 import { useReducedMotion } from '@/app/hooks/useReducedMotion'
-import type { Question, AnswerValue } from '@/app/lib/supabase'
+import type { AnswerValue } from '@/app/lib/supabase'
+import type { ValidatableQuestion } from '@/app/lib/form-validation'
 
 interface QuestionStepProps {
-  question: Question
+  question: ValidatableQuestion
   answer: AnswerValue | undefined
   onAnswerChange: (value: AnswerValue) => void
   error: string | null
@@ -19,7 +20,7 @@ interface QuestionStepProps {
 /**
  * QuestionStep component for displaying individual survey questions.
  * Renders the appropriate input component based on the question's answer_type.
- * 
+ *
  * @param question - The question object containing text, description, type, and options
  * @param answer - The current answer value for this question
  * @param onAnswerChange - Callback function to update the answer
@@ -32,7 +33,7 @@ export default function QuestionStep({
   error,
 }: QuestionStepProps) {
   const prefersReducedMotion = useReducedMotion()
-  
+
   // Render the appropriate input component based on answer_type
   const renderInput = () => {
     switch (question.answer_type) {
@@ -44,7 +45,7 @@ export default function QuestionStep({
             value={(answer as string) || ''}
             onChange={(e) => onAnswerChange(e.target.value)}
             placeholder="Enter your answer..."
-            className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 
+            className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700
                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                      transition-all duration-200
                      text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500"
@@ -64,7 +65,7 @@ export default function QuestionStep({
             onChange={(e) => onAnswerChange(e.target.value)}
             placeholder="Enter your detailed answer..."
             rows={5}
-            className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 
+            className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700
                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                      transition-all duration-200 resize-y
                      text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500"
@@ -154,7 +155,7 @@ export default function QuestionStep({
           initial={{ opacity: 0, x: 0 }}
           animate={{ opacity: 1, x: prefersReducedMotion ? 0 : [0, -10, 10, -10, 10, 0] }}
           transition={{ duration: prefersReducedMotion ? 0.01 : 0.4 }}
-          className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 
+          className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20
                    px-4 py-3 rounded-md border border-red-200 dark:border-red-800"
           id={`error-${question.id}`}
           role="alert"
