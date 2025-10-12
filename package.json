@@ -27,22 +27,21 @@
     "zod": "^3.25.51"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@lhci/cli": "0.1.0",
+    "@eslint/eslintrc": "^3.3.1",
     "@next/bundle-analyzer": "^15.5.4",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20.17.57",
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/node": "^20.19.21",
     "@types/nodemailer": "^6.4.20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
     "autoprefixer": "^10.4.21",
     "critters": "^0.0.23",
     "cssnano": "^7.1.1",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.3",
-    "lighthouse": "^13.0.0",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "eslint": "^9.37.0",
+    "eslint-config-next": "^15.3.3",
+    "lighthouse": "github:GoogleChrome/lighthouse#main",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
   },
   "browserslist": [
     "last 2 Chrome versions",
