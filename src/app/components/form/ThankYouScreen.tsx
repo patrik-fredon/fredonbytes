@@ -5,6 +5,8 @@ import { CheckCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
+import { useReducedMotion } from '@/app/hooks/useReducedMotion'
+
 import { Button } from '../common/Button'
 
 interface ThankYouScreenProps {
@@ -19,6 +21,7 @@ interface ThankYouScreenProps {
  */
 export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
   const router = useRouter()
+  const prefersReducedMotion = useReducedMotion()
   const [countdown, setCountdown] = useState(10)
 
   // Countdown timer and auto-redirect
@@ -55,16 +58,16 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
+      initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      transition={{ duration: prefersReducedMotion ? 0.01 : 0.5, ease: 'easeOut' }}
       className="text-center space-y-8"
     >
       {/* Success Checkmark with Spring Animation */}
       <motion.div
-        initial={{ scale: 0, rotate: -180 }}
+        initial={{ scale: prefersReducedMotion ? 1 : 0, rotate: prefersReducedMotion ? 0 : -180 }}
         animate={{ scale: 1, rotate: 0 }}
-        transition={{
+        transition={prefersReducedMotion ? { duration: 0.01 } : {
           type: 'spring',
           stiffness: 200,
           damping: 15,

@@ -4,7 +4,15 @@ import { motion } from 'framer-motion'
 import { Code, Zap, Globe, Database, Server, Cpu, Terminal, Cloud, Smartphone, Monitor } from 'lucide-react'
 import React from 'react'
 
+import { useReducedMotion } from '@/app/hooks/useReducedMotion'
+import { generateParticlePositions } from '@/app/lib/seeded-random'
+
 export default function AnimatedBackground() {
+  const prefersReducedMotion = useReducedMotion()
+
+  // Generate deterministic particle positions to prevent hydration mismatches
+  const particlePositions = generateParticlePositions(12)
+
   // Development-themed floating icons
   const floatingIcons = [
     { Icon: Code, position: { top: '10%', left: '5%' }, color: 'text-blue-500', delay: 0 },
@@ -20,37 +28,37 @@ export default function AnimatedBackground() {
   ]
 
   const floatingVariants = {
-    animate: {
+    animate: prefersReducedMotion ? {} : {
       y: [-10, 10, -10],
       rotate: [0, 5, 0, -5, 0],
       scale: [1, 1.05, 1],
       transition: {
         duration: 6,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   }
 
   const orbitVariants = {
-    animate: {
+    animate: prefersReducedMotion ? {} : {
       rotate: 360,
       transition: {
         duration: 60,
         repeat: Infinity,
-        ease: "linear"
+        ease: "linear" as const
       }
     }
   }
 
   const pulseVariants = {
-    animate: {
+    animate: prefersReducedMotion ? {} : {
       scale: [1, 1.2, 1],
       opacity: [0.3, 0.6, 0.3],
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   }
@@ -59,7 +67,7 @@ export default function AnimatedBackground() {
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Base gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
-      
+
       {/* Large animated gradient blobs */}
       <motion.div
         className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20"
@@ -113,7 +121,7 @@ export default function AnimatedBackground() {
 
       {/* Subtle grid pattern overlay */}
       <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
-        <div 
+        <div
           className="w-full h-full"
           style={{
             backgroundImage: `
@@ -127,24 +135,24 @@ export default function AnimatedBackground() {
 
       {/* Animated code-like particles */}
       <div className="absolute inset-0">
-        {Array.from({ length: 12 }, (_, i) => (
+        {particlePositions.map((position, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-blue-400 dark:bg-blue-300 rounded-full opacity-20"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${position.left}%`,
+              top: `${position.top}%`,
             }}
-            animate={{
+            animate={prefersReducedMotion ? {} : {
               y: [0, -20, 0],
               opacity: [0.2, 0.8, 0.2],
               scale: [1, 1.5, 1],
             }}
-            transition={{
-              duration: 3 + Math.random() * 4,
+            transition={prefersReducedMotion ? {} : {
+              duration: 3 + (i % 4), // Use index instead of random for variation
               repeat: Infinity,
-              delay: Math.random() * 2,
-              ease: "easeInOut"
+              delay: (i % 3) * 0.5, // Use index instead of random for variation
+              ease: "easeInOut" as const
             }}
           />
         ))}
@@ -153,26 +161,26 @@ export default function AnimatedBackground() {
       {/* Subtle geometric shapes */}
       <motion.div
         className="absolute top-1/3 left-1/6 w-16 h-16 border border-blue-200 dark:border-blue-800 opacity-20"
-        animate={{
+        animate={prefersReducedMotion ? {} : {
           rotate: [0, 180, 360],
           scale: [1, 1.1, 1],
         }}
-        transition={{
+        transition={prefersReducedMotion ? {} : {
           duration: 20,
           repeat: Infinity,
-          ease: "linear"
+          ease: "linear" as const
         }}
       />
       <motion.div
         className="absolute bottom-1/3 right-1/6 w-12 h-12 border border-purple-200 dark:border-purple-800 opacity-20 rounded-full"
-        animate={{
+        animate={prefersReducedMotion ? {} : {
           rotate: [360, 180, 0],
           scale: [1, 0.9, 1],
         }}
-        transition={{
+        transition={prefersReducedMotion ? {} : {
           duration: 25,
           repeat: Infinity,
-          ease: "linear"
+          ease: "linear" as const
         }}
       />
     </div>

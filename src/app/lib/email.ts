@@ -12,6 +12,7 @@ export interface EmailOptions {
   to: string | string[];
   subject: string;
   html: string;
+  text?: string;
   replyTo?: string;
 }
 
@@ -28,8 +29,8 @@ export interface EmailResult {
  */
 function createTransport(): Transporter {
   const config = {
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.SMTP_PORT || '587', 10),
+    host: process.env.SMTP_HOST ?? 'smtp.gmail.com',
+    port: parseInt(process.env.SMTP_PORT ?? '587', 10),
     secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
     auth: {
       user: process.env.SMTP_USER,
@@ -58,6 +59,7 @@ export async function sendEmail(options: EmailOptions): Promise<EmailResult> {
       to: Array.isArray(options.to) ? options.to.join(', ') : options.to,
       subject: options.subject,
       html: options.html,
+      text: options.text,
       replyTo: options.replyTo,
     };
 

@@ -13,14 +13,14 @@ import {
   Globe,
   Smartphone,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import React from "react";
 
-import { useTranslations } from "@/app/hooks/useTranslations";
 
 import { Button } from "../common/Button";
 
 export default function ServicesSection() {
-  const { t } = useTranslations();
+  const t = useTranslations();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -39,7 +39,7 @@ export default function ServicesSection() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };

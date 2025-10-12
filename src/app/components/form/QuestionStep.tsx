@@ -3,10 +3,15 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-import type { Question, AnswerValue } from '@/app/lib/supabase'
+import ChecklistInput from '@/app/components/form/inputs/ChecklistInput'
+import MultipleChoiceInput from '@/app/components/form/inputs/MultipleChoiceInput'
+import SingleChoiceInput from '@/app/components/form/inputs/SingleChoiceInput'
+import { useReducedMotion } from '@/app/hooks/useReducedMotion'
+import type { AnswerValue } from '@/app/lib/supabase'
+import type { ValidatableQuestion } from '@/app/lib/form-validation'
 
 interface QuestionStepProps {
-  question: Question
+  question: ValidatableQuestion
   answer: AnswerValue | undefined
   onAnswerChange: (value: AnswerValue) => void
   error: string | null
@@ -15,7 +20,7 @@ interface QuestionStepProps {
 /**
  * QuestionStep component for displaying individual survey questions.
  * Renders the appropriate input component based on the question's answer_type.
- * 
+ *
  * @param question - The question object containing text, description, type, and options
  * @param answer - The current answer value for this question
  * @param onAnswerChange - Callback function to update the answer
@@ -27,6 +32,8 @@ export default function QuestionStep({
   onAnswerChange,
   error,
 }: QuestionStepProps) {
+  const prefersReducedMotion = useReducedMotion()
+
   // Render the appropriate input component based on answer_type
   const renderInput = () => {
     switch (question.answer_type) {
@@ -38,7 +45,7 @@ export default function QuestionStep({
             value={(answer as string) || ''}
             onChange={(e) => onAnswerChange(e.target.value)}
             placeholder="Enter your answer..."
-            className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 
+            className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700
                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                      transition-all duration-200
                      text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500"
@@ -58,7 +65,7 @@ export default function QuestionStep({
             onChange={(e) => onAnswerChange(e.target.value)}
             placeholder="Enter your detailed answer..."
             rows={5}
-            className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 
+            className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700
                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                      transition-all duration-200 resize-y
                      text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500"
@@ -71,97 +78,42 @@ export default function QuestionStep({
         )
 
       case 'single_choice':
-        // TODO: Replace with SingleChoiceInput component (Task 11.3)
         return (
-          <div className="space-y-3" role="radiogroup" aria-label={question.question_text}>
-            {question.options?.map((option) => (
-              <label
-                key={option.id}
-                className="flex items-center gap-3 p-4 rounded-md border border-slate-300 dark:border-slate-600 
-                         hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer transition-colors"
-              >
-                <input
-                  type="radio"
-                  name={question.id}
-                  value={option.option_text}
-                  checked={answer === option.option_text}
-                  onChange={(e) => onAnswerChange(e.target.value)}
-                  className="w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500"
-                />
-                <span className="text-slate-900 dark:text-white">{option.option_text}</span>
-              </label>
-            ))}
-          </div>
+          <SingleChoiceInput
+            value={(answer as string) || ''}
+            onChange={(value) => onAnswerChange(value)}
+            required={question.required}
+            error={error || undefined}
+            questionId={question.id}
+            questionText={question.question_text}
+            options={question.options}
+          />
         )
 
       case 'multiple_choice':
-        // TODO: Replace with MultipleChoiceInput component (Task 11.4)
         return (
-          <div className="space-y-3" role="group" aria-label={question.question_text}>
-            {question.options?.map((option) => {
-              const selectedValues = (answer as string[]) || []
-              const isChecked = selectedValues.includes(option.option_text)
-
-              return (
-                <label
-                  key={option.id}
-                  className="flex items-center gap-3 p-4 rounded-md border border-slate-300 dark:border-slate-600 
-                           hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer transition-colors"
-                >
-                  <input
-                    type="checkbox"
-                    value={option.option_text}
-                    checked={isChecked}
-                    onChange={(e) => {
-                      const currentValues = (answer as string[]) || []
-                      if (e.target.checked) {
-                        onAnswerChange([...currentValues, option.option_text])
-                      } else {
-                        onAnswerChange(currentValues.filter((v) => v !== option.option_text))
-                      }
-                    }}
-                    className="w-4 h-4 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
-                  />
-                  <span className="text-slate-900 dark:text-white">{option.option_text}</span>
-                </label>
-              )
-            })}
-          </div>
+          <MultipleChoiceInput
+            value={(answer as string[]) || []}
+            onChange={(value) => onAnswerChange(value)}
+            required={question.required}
+            error={error || undefined}
+            questionId={question.id}
+            questionText={question.question_text}
+            options={question.options}
+          />
         )
 
       case 'checklist':
-        // TODO: Replace with ChecklistInput component (Task 11.5)
         return (
-          <div className="space-y-3" role="group" aria-label={question.question_text}>
-            {question.options?.map((option) => {
-              const selectedValues = (answer as string[]) || []
-              const isChecked = selectedValues.includes(option.option_text)
-
-              return (
-                <label
-                  key={option.id}
-                  className="flex items-center gap-3 p-4 rounded-md border border-slate-300 dark:border-slate-600 
-                           hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer transition-colors"
-                >
-                  <input
-                    type="checkbox"
-                    value={option.option_text}
-                    checked={isChecked}
-                    onChange={(e) => {
-                      const currentValues = (answer as string[]) || []
-                      if (e.target.checked) {
-                        onAnswerChange([...currentValues, option.option_text])
-                      } else {
-                        onAnswerChange(currentValues.filter((v) => v !== option.option_text))
-                      }
-                    }}
-                    className="w-4 h-4 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
-                  />
-                  <span className="text-slate-900 dark:text-white">{option.option_text}</span>
-                </label>
-              )
-            })}
-          </div>
+          <ChecklistInput
+            value={(answer as string[]) || []}
+            onChange={(value) => onAnswerChange(value)}
+            required={question.required}
+            error={error || undefined}
+            questionId={question.id}
+            questionText={question.question_text}
+            options={question.options}
+          />
         )
 
       default:
@@ -201,9 +153,9 @@ export default function QuestionStep({
       {error && (
         <motion.div
           initial={{ opacity: 0, x: 0 }}
-          animate={{ opacity: 1, x: [0, -10, 10, -10, 10, 0] }}
-          transition={{ duration: 0.4 }}
-          className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 
+          animate={{ opacity: 1, x: prefersReducedMotion ? 0 : [0, -10, 10, -10, 10, 0] }}
+          transition={{ duration: prefersReducedMotion ? 0.01 : 0.4 }}
+          className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20
                    px-4 py-3 rounded-md border border-red-200 dark:border-red-800"
           id={`error-${question.id}`}
           role="alert"

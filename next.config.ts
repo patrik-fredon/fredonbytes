@@ -1,4 +1,12 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
+// Bundle analyzer setup
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig: NextConfig = {
   // Image optimization
@@ -11,7 +19,15 @@ const nextConfig: NextConfig = {
 
   // Experimental features for performance
   experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion"],
+    optimizePackageImports: [
+      "lucide-react",
+      "framer-motion",
+      "react-hook-form",
+      "@hookform/resolvers",
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge",
+    ],
     optimizeCss: true,
   },
 
@@ -36,11 +52,31 @@ const nextConfig: NextConfig = {
           cacheGroups: {
             default: false,
             vendors: false,
-            // Vendor chunk for node_modules
+            // Framework chunk for React/Next.js core
+            framework: {
+              name: 'framework',
+              test: /[\/]node_modules[\/](react|react-dom|next|scheduler)[\/]/,
+              priority: 40,
+              enforce: true,
+            },
+            // Radix UI components chunk
+            radixUI: {
+              name: 'radix-ui',
+              test: /[\/]node_modules[\/]@radix-ui[\/]/,
+              priority: 35,
+              enforce: true,
+            },
+            // Framer Motion chunk (large animation library)
+            framerMotion: {
+              name: 'framer-motion',
+              test: /[\/]node_modules[\/]framer-motion[\/]/,
+              priority: 30,
+              enforce: true,
+            },
+            // Vendor chunk for other node_modules
             vendor: {
               name: 'vendor',
-              chunks: 'all',
-              test: /node_modules/,
+              test: /[\/]node_modules[\/]/,
               priority: 20,
             },
             // Common chunk for shared code
@@ -51,12 +87,6 @@ const nextConfig: NextConfig = {
               priority: 10,
               reuseExistingChunk: true,
               enforce: true,
-            },
-            // Separate chunk for Framer Motion (large library)
-            framerMotion: {
-              name: 'framer-motion',
-              test: /[\/]node_modules[\/]framer-motion[\/]/,
-              priority: 30,
             },
           },
         },
@@ -131,12 +161,33 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Static assets - long-term caching with immutable flag
       {
-        source: "/:path*.{ico,png,jpg,jpeg,gif,webp,svg,woff,woff2}",
+        source: "/:path*.{ico,png,jpg,jpeg,gif,webp,svg,avif}",
         headers: [
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // Font files - long-term caching
+      {
+        source: "/:path*.{woff,woff2,ttf,otf,eot}",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // Manifest and other static files
+      {
+        source: "/:path*.{json,xml,txt}",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, must-revalidate",
           },
         ],
       },
@@ -170,4 +221,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(withBundleAnalyzer(nextConfig));

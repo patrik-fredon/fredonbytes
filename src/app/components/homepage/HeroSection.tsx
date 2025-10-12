@@ -3,16 +3,16 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Code, Zap, Globe } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
-import { useTranslations } from "@/app/hooks/useTranslations";
 
 import { Button } from "../common/Button";
 
 
 
 export default function HeroSection() {
-  const { t } = useTranslations();
+  const t = useTranslations();
   const [typedText, setTypedText] = useState("");
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -20,11 +20,7 @@ export default function HeroSection() {
 
   // Get code snippets from translations with proper type handling
   const getCodeSnippets = (): string[] => {
-    const snippets = t("hero.codeComments.snippets");
-    if (Array.isArray(snippets)) {
-      return snippets as string[];
-    }
-    // Fallback snippets
+
     return [
       "const success = await buildAmazingWebsite();",
       'function createDigitalDominance() { return "Fredonbytes"; }',
@@ -83,7 +79,7 @@ export default function HeroSection() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };
@@ -110,6 +106,8 @@ export default function HeroSection() {
                 fill
                 className="object-contain"
                 priority
+                quality={85}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 448px, 672px"
               />
             </div>
           </motion.div>

@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import { Users, Award, TrendingUp, CheckCircle } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import React from "react";
 
-import { useTranslations } from "@/app/hooks/useTranslations";
 
 export default function AboutSection() {
-  const { t } = useTranslations();
+  const t = useTranslations();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,7 +27,7 @@ export default function AboutSection() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };
@@ -207,6 +207,9 @@ export default function AboutSection() {
                         alt={member.name}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                        quality={80}
+                        sizes="(max-width: 768px) 96px, (max-width: 1024px) 96px, 96px"
                       />
                     )}
                   </div>

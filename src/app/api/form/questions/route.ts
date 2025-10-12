@@ -17,6 +17,7 @@ export async function GET() {
         *,
         options:question_options(*)
       `)
+      .eq('active', true)
       .order('display_order', { ascending: true });
 
     // Handle database errors
@@ -42,7 +43,7 @@ export async function GET() {
     }
 
     // Type assertion for Supabase query result with join
-    const questionsData = data as unknown as Question[];
+    const questionsData = data as Question[];
 
     // Sort options by display_order for each question
     const questionsWithSortedOptions = questionsData.map((question) => ({
@@ -52,11 +53,17 @@ export async function GET() {
       ),
     }));
 
+    // Return with cache headers for optimal performance
     return NextResponse.json(
       {
         questions: questionsWithSortedOptions,
       } as QuestionsResponse,
-      { status: 200 }
+      { 
+        status: 200,
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        },
+      }
     );
   } catch (error) {
     console.error('Unexpected error in questions endpoint:', error);
@@ -69,3 +76,8 @@ export async function GET() {
     );
   }
 }
+
+// Enable caching with stale-while-revalidate strategy
+// Questions are relatively static, so we can cache them for 1 hour
+// and revalidate in the background for 24 hours
+export const revalidate = 3600; // 1 hour in seconds

@@ -1,19 +1,7 @@
-import AboutSection from './components/homepage/AboutSection'
-import ContactSection from './components/homepage/ContactSection'
-import HeroSection from './components/homepage/HeroSection'
-import PricingSection from './components/homepage/PricingSection'
-import ProjectsSection from './components/homepage/ProjectsSection'
-import ServicesSection from './components/homepage/ServicesSection'
+import { redirect } from 'next/navigation';
 
-export default function Home() {
-  return (
-    <div className="min-h-screen relative z-10">
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <ProjectsSection />
-      <PricingSection />
-      <ContactSection />
-    </div>
-  )
+import { routing } from '@/i18n/routing';
+
+export default function RootPage() {
+  redirect(`/${routing.defaultLocale}`);
 }

@@ -21,6 +21,7 @@ const submitRequestSchema = z.object({
   }).optional(),
   newsletter_optin: z.boolean().optional(),
   email: z.string().email().optional(),
+  locale: z.string().optional(),
 });
 
 // Response interface for submit endpoint
@@ -47,7 +48,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { session_id, responses, metadata, newsletter_optin, email } = validationResult.data;
+    const { session_id, responses, metadata, newsletter_optin, email, locale } = validationResult.data;
 
     // Sanitize all answer values to prevent XSS attacks
     const sanitizedResponses = responses.map(response => ({
@@ -92,11 +93,12 @@ export async function POST(request: NextRequest) {
       .upsert({
         session_id,
         completed_at: new Date().toISOString(),
-        ip_address: metadata?.ip_address ?? null,
+        ip_address_hash: metadata?.ip_address ?? null,
         user_agent: metadata?.user_agent ?? null,
         newsletter_optin: newsletter_optin ?? false,
         email: email ?? null,
-      } as any, {
+        locale: locale ?? 'en',
+      }, {
         onConflict: 'session_id',
       });
 
@@ -121,7 +123,7 @@ export async function POST(request: NextRequest) {
 
     const { error: responsesError } = await supabase
       .from('form_responses')
-      .insert(formResponses as any);
+      .insert(formResponses);
 
     if (responsesError) {
       console.error('Error inserting form responses:', responsesError);
@@ -150,9 +152,9 @@ export async function POST(request: NextRequest) {
           const question = (questions as Question[]).find((q: Question) => q.id === response.question_id);
           return {
             question_id: response.question_id,
-            question_text: question?.question_text || 'Unknown Question',
+            question_text: question?.question_text ?? 'Unknown Question',
             answer_value: response.answer_value,
-            answer_type: question?.answer_type || 'unknown',
+            answer_type: question?.answer_type ?? 'unknown',
           };
         });
 
@@ -166,7 +168,7 @@ export async function POST(request: NextRequest) {
         // Send email via SMTP
         await sendEmail({
           from: 'Customer Feedback <noreply@fredonbytes.cloud>',
-          to: process.env.ADMIN_EMAIL || 'info@fredonbytes.cloud',
+          to: process.env.ADMIN_EMAIL ?? 'info@fredonbytes.cloud',
           subject: `New Customer Satisfaction Survey - ${session_id.substring(0, 8)}`,
           html: emailHtml,
         });
@@ -200,3 +202,6 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+// Disable caching for POST endpoint
+export const dynamic = 'force-dynamic';

@@ -3,13 +3,14 @@
 import { Github, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import React from "react";
+import CookieSettingsLink from "./CookieSettingsLink";
 
-import { useTranslations } from "@/app/hooks/useTranslations";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const { t, format } = useTranslations();
+  const t = useTranslations();
 
   const socialLinks = [
     {
@@ -81,6 +82,9 @@ export default function Footer() {
                   alt="Fredonbytes Logo"
                   fill
                   className="object-contain transition-transform duration-200 group-hover:scale-110"
+                  loading="lazy"
+                  quality={80}
+                  sizes="32px"
                 />
               </div>
               <span className="text-xl font-bold">Fredonbytes</span>
@@ -179,6 +183,9 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <CookieSettingsLink />
+              </li>
             </ul>
 
             {/* Social Media */}
@@ -206,7 +213,7 @@ export default function Footer() {
         <div className="border-t border-slate-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-slate-400 text-sm">
-              {format("footer.copyright", { year: currentYear })}
+              {t("footer.copyright", { year: currentYear })}
             </div>
             <div className="flex items-center space-x-6 text-slate-400 text-sm">
               <span>{t("footer.taglines.madeWith")}</span>

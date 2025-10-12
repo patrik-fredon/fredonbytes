@@ -13,7 +13,7 @@ export default function ProfileHeader() {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: "easeOut" as const,
         staggerChildren: 0.1
       }
     }
@@ -26,7 +26,7 @@ export default function ProfileHeader() {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   }
@@ -48,6 +48,8 @@ export default function ProfileHeader() {
             fill
             className="object-contain rounded-full p-4"
             priority
+            quality={85}
+            sizes="128px"
           />
         </div>
       </motion.div>

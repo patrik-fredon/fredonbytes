@@ -1,5 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import createIntlMiddleware from 'next-intl/middleware';
+
+import { generateCsrfToken, validateCsrfToken, CSRF_TOKEN_COOKIE_NAME, CSRF_TOKEN_HEADER_NAME } from './app/lib/csrf';
+import { routing } from './i18n/routing';
 
 // Simple in-memory rate limiter
 // In production, consider using Redis or a dedicated rate limiting service
@@ -56,44 +60,88 @@ function checkRateLimit(key: string): { allowed: boolean; remaining: number; res
   return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - entry.count, resetTime: entry.resetTime };
 }
 
+// Create the next-intl middleware
+const handleI18nRouting = createIntlMiddleware(routing);
+
 export function middleware(request: NextRequest) {
-  // Only apply rate limiting to API routes
-  if (request.nextUrl.pathname.startsWith('/api/form')) {
-    const key = getRateLimitKey(request);
-    const { allowed, remaining, resetTime } = checkRateLimit(key);
-
-    if (!allowed) {
-      // Rate limit exceeded
-      const retryAfter = Math.ceil((resetTime - Date.now()) / 1000);
-      return NextResponse.json(
-        {
-          error: 'Too many requests',
-          message: 'Rate limit exceeded. Please try again later.',
-        },
-        {
-          status: 429,
-          headers: {
-            'Retry-After': retryAfter.toString(),
-            'X-RateLimit-Limit': MAX_REQUESTS_PER_WINDOW.toString(),
-            'X-RateLimit-Remaining': '0',
-            'X-RateLimit-Reset': new Date(resetTime).toISOString(),
+  // Handle API routes separately (CSRF + rate limiting)
+  if (request.nextUrl.pathname.startsWith('/api/')) {
+    const method = request.method;
+    
+    // Only check CSRF for state-changing methods (POST, PUT, DELETE, PATCH)
+    if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
+      const csrfTokenFromCookie = request.cookies.get(CSRF_TOKEN_COOKIE_NAME)?.value;
+      const csrfTokenFromHeader = request.headers.get(CSRF_TOKEN_HEADER_NAME);
+      
+      // Validate CSRF token
+      if (!validateCsrfToken(csrfTokenFromHeader || null, csrfTokenFromCookie || null)) {
+        return NextResponse.json(
+          {
+            error: 'CSRF validation failed',
+            message: 'Invalid or missing CSRF token',
           },
-        }
-      );
+          { status: 403 }
+        );
+      }
     }
+    
+    // Apply rate limiting to all API routes (except health checks)
+    if (!request.nextUrl.pathname.startsWith('/api/health')) {
+      const key = getRateLimitKey(request);
+      const { allowed, remaining, resetTime } = checkRateLimit(key);
 
-    // Add rate limit headers to successful responses
-    const response = NextResponse.next();
-    response.headers.set('X-RateLimit-Limit', MAX_REQUESTS_PER_WINDOW.toString());
-    response.headers.set('X-RateLimit-Remaining', remaining.toString());
-    response.headers.set('X-RateLimit-Reset', new Date(resetTime).toISOString());
-    return response;
+      if (!allowed) {
+        // Rate limit exceeded
+        const retryAfter = Math.ceil((resetTime - Date.now()) / 1000);
+        return NextResponse.json(
+          {
+            error: 'Too many requests',
+            message: 'Rate limit exceeded. Please try again later.',
+          },
+          {
+            status: 429,
+            headers: {
+              'Retry-After': retryAfter.toString(),
+              'X-RateLimit-Limit': MAX_REQUESTS_PER_WINDOW.toString(),
+              'X-RateLimit-Remaining': '0',
+              'X-RateLimit-Reset': new Date(resetTime).toISOString(),
+            },
+          }
+        );
+      }
+
+      // Add rate limit headers to successful responses
+      const response = NextResponse.next();
+      response.headers.set('X-RateLimit-Limit', MAX_REQUESTS_PER_WINDOW.toString());
+      response.headers.set('X-RateLimit-Remaining', remaining.toString());
+      response.headers.set('X-RateLimit-Reset', new Date(resetTime).toISOString());
+      
+      // Set CSRF token cookie if not present (for GET requests)
+      if (method === 'GET' && !request.cookies.get(CSRF_TOKEN_COOKIE_NAME)) {
+        const newCsrfToken = generateCsrfToken();
+        response.cookies.set(CSRF_TOKEN_COOKIE_NAME, newCsrfToken, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'strict',
+          path: '/',
+          maxAge: 60 * 60 * 24, // 24 hours
+        });
+      }
+      
+      return response;
+    }
+    
+    return NextResponse.next();
   }
 
-  return NextResponse.next();
+  // For all other routes, use next-intl middleware
+  return handleI18nRouting(request);
 }
 
 // Configure which routes the middleware runs on
 export const config = {
-  matcher: '/api/form/:path*',
+  matcher: [
+    '/((?!_next|_vercel|.*\..*).*)',
+    '/api/:path*'
+  ]
 };

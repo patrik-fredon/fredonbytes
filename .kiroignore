@@ -1,0 +1,10 @@
+.serena/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg
+*.egg-info
+docs/
+.vscode/
+public/

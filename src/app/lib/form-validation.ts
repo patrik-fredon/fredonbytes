@@ -1,5 +1,25 @@
 import type { Question, AnswerValue } from './supabase';
 
+// Generic question interface for validation that works with both Question and AdaptedQuestion
+export interface ValidatableQuestion {
+  id: string;
+  question_text: string; // Can be LocalizedString or string - we only use the ID for validation
+  description?: string | null;
+  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating';
+  required: boolean;
+  display_order: number;
+  active: boolean;
+  options?: ValidatableQuestionOption[];
+}
+
+// Generic option interface that works with both QuestionOption and adapted options
+export interface ValidatableQuestionOption {
+  id: string;
+  question_id: string;
+  option_text: string; // Can be LocalizedString or string
+  display_order: number;
+}
+
 /**
  * Validation error interface
  */
@@ -10,13 +30,13 @@ export interface ValidationError {
 
 /**
  * Validates a single answer based on question requirements
- * 
+ *
  * @param question - The question to validate against
  * @param answer - The answer value to validate (can be undefined)
  * @returns ValidationError if validation fails, null if valid
  */
 export function validateAnswer(
-  question: Question,
+  question: Question | ValidatableQuestion,
   answer: AnswerValue | undefined
 ): ValidationError | null {
   // If question is not required and answer is empty, it's valid
@@ -70,13 +90,13 @@ export function validateAnswer(
 
 /**
  * Validates all required questions have been answered
- * 
+ *
  * @param questions - Array of all questions
  * @param answers - Map of question IDs to answer values
  * @returns Array of ValidationErrors (empty if all valid)
  */
 export function validateAllAnswers(
-  questions: Question[],
+  questions: (Question | ValidatableQuestion)[],
   answers: Map<string, AnswerValue>
 ): ValidationError[] {
   const errors: ValidationError[] = [];
@@ -95,13 +115,13 @@ export function validateAllAnswers(
 
 /**
  * Finds the first unanswered required question
- * 
+ *
  * @param questions - Array of all questions
  * @param answers - Map of question IDs to answer values
  * @returns Index of first unanswered required question, or -1 if all answered
  */
 export function findFirstUnansweredRequired(
-  questions: Question[],
+  questions: (Question | ValidatableQuestion)[],
   answers: Map<string, AnswerValue>
 ): number {
   for (let i = 0; i < questions.length; i++) {
