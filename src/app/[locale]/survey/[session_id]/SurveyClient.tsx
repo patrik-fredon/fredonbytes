@@ -59,11 +59,7 @@ interface SurveyState {
 // SurveyQuestionsResponse interface matching API response
 interface SurveyQuestionsResponse {
   questions: SurveyQuestion[];
-  session: {
-    session_id: string;
-    locale: string;
-    completed: boolean;
-  } | null;
+  locale: string;
   error?: string;
 }
 
@@ -114,14 +110,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
     return text[locale as keyof LocalizedString] || text.en || '';
   };
 
-  // Helper function to create LocalizedString object from string
-  const createLocalizedString = (text: string, locale: string): LocalizedString => {
-    return {
-      en: locale === 'en' ? text : '',
-      cs: locale === 'cs' ? text : '',
-      de: locale === 'de' ? text : '',
-    };
-  };
+
 
   // Fetch survey questions from API on mount
   const fetchQuestions = useCallback(async () => {
@@ -137,22 +126,11 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
         throw new Error(data.error ?? 'Failed to fetch survey questions');
       }
 
-      // Check if survey is already completed
-      if (data.session?.completed) {
-        setSurveyState(prev => ({
-          ...prev,
-          isLoading: false,
-          completed: true,
-          error: 'This survey has already been completed. Thank you for your feedback!',
-        }));
-        return;
-      }
-
       // Adapt SurveyQuestion to Question format for reusing form components
       const adaptedQuestions: AdaptedQuestion[] = data.questions.map(q => ({
         id: q.id,
-        question_text: getLocalizedText(q.question_text, data.session?.locale || 'en'),
-        description: q.description ? getLocalizedText(q.description, data.session?.locale || 'en') : null,
+        question_text: getLocalizedText(q.question_text, data.locale || 'en'),
+        description: q.description ? getLocalizedText(q.description, data.locale || 'en') : null,
         answer_type: q.answer_type,
         required: q.required,
         display_order: q.display_order,
@@ -160,7 +138,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
         options: q.options?.map(opt => ({
           id: opt.id,
           question_id: opt.question_id,
-          option_text: getLocalizedText(opt.option_text, data.session?.locale || 'en'),
+          option_text: getLocalizedText(opt.option_text, data.locale || 'en'),
           display_order: opt.display_order,
         })),
       }));
@@ -169,7 +147,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
         ...prev,
         questions: adaptedQuestions,
         isLoading: false,
-        locale: data.session?.locale || 'en',
+        locale: data.locale || 'en',
       }));
     } catch (err) {
       const error = err instanceof Error ? err : new Error('Failed to load survey questions');

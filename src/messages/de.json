@@ -599,6 +599,37 @@
       "website": "Website"
     }
   },
+  "cookies": {
+    "banner": {
+      "title": "Wir verwenden Cookies",
+      "description": "Wir verwenden Cookies, um Ihr Browsing-Erlebnis zu verbessern, personalisierte Inhalte bereitzustellen und unseren Traffic zu analysieren. Durch Klicken auf \"Alle akzeptieren\" stimmen Sie der Verwendung von Cookies zu.",
+      "learnMore": "Mehr erfahren",
+      "acceptAll": "Alle akzeptieren",
+      "necessaryOnly": "Nur notwendige",
+      "customize": "Anpassen",
+      "savePreferences": "Einstellungen speichern",
+      "preferences": {
+        "title": "Cookie-Einstellungen",
+        "description": "Passen Sie unten Ihre Cookie-Einstellungen an. Sie können verschiedene Arten von Cookies nach Ihren Präferenzen aktivieren oder deaktivieren.",
+        "necessary": {
+          "title": "Notwendige Cookies",
+          "description": "Erforderlich für das ordnungsgemäße Funktionieren der Website. Kann nicht deaktiviert werden."
+        },
+        "analytics": {
+          "title": "Analyse-Cookies",
+          "description": "Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren."
+        },
+        "marketing": {
+          "title": "Marketing-Cookies",
+          "description": "Werden verwendet, um relevante Werbung zu liefern und deren Wirksamkeit zu messen."
+        },
+        "preferences": {
+          "title": "Präferenz-Cookies",
+          "description": "Merken sich Ihre Präferenzen und Einstellungen für ein besseres Erlebnis."
+        }
+      }
+    }
+  },
   "pages": {
     "home": {
       "title": "Fredonbytes - Ihr All-in-One IT-Kraftzentrum",
