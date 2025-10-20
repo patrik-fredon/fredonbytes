@@ -8,6 +8,12 @@ import AnimatedBackground from '@/app/components/common/AnimatedBackground';
 import ErrorState from '@/app/components/form/ErrorState';
 import FormNavigation from '@/app/components/form/FormNavigation';
 import QuestionStep from '@/app/components/form/QuestionStep';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { logError, getUserFriendlyErrorMessage } from '@/app/lib/error-logger';
+import { loadAnswers, saveAnswer, clearStorageData } from '@/app/lib/form-storage';
+import { validateAnswer, validateAllAnswers, findFirstUnansweredRequired, type ValidatableQuestion } from '@/app/lib/form-validation';
+import type { SurveyQuestion, AnswerValue, LocalizedString } from '@/app/lib/supabase';
+
 // Lazy load ThankYouScreen since it's only needed at the end
 const ThankYouScreen = dynamic(() => import('@/app/components/form/ThankYouScreen'), {
   loading: () => (
@@ -17,12 +23,6 @@ const ThankYouScreen = dynamic(() => import('@/app/components/form/ThankYouScree
     </div>
   ),
 });
-import { useReducedMotion } from '@/app/hooks/useReducedMotion';
-import { getCsrfToken } from '@/app/hooks/useCsrfToken';
-import { logError, getUserFriendlyErrorMessage } from '@/app/lib/error-logger';
-import { loadAnswers, saveAnswer, clearStorageData } from '@/app/lib/form-storage';
-import { validateAnswer, validateAllAnswers, findFirstUnansweredRequired, type ValidatableQuestion } from '@/app/lib/form-validation';
-import type { SurveyQuestion, AnswerValue, LocalizedString } from '@/app/lib/supabase';
 
 // Adapter to convert SurveyQuestion to Question format for reusing form components
 interface AdaptedQuestion extends ValidatableQuestion {
@@ -308,7 +308,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
 
     try {
       // Get CSRF token from cookie
-      const getCsrfToken = () => {
+      const csrfToken = (() => {
         const cookies = document.cookie.split(';');
         for (const cookie of cookies) {
           const [name, value] = cookie.trim().split('=');
@@ -317,13 +317,13 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
           }
         }
         return null;
-      };
+      })();
       
       const response = await fetch('/api/survey/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-csrf-token': getCsrfToken() || '',
+          'x-csrf-token': csrfToken || '',
         },
         body: JSON.stringify({
           session_id: sessionId,

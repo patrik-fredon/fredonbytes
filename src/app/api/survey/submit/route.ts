@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from '@/app/lib/csrf';
 import { sanitizeAnswerValue } from '@/app/lib/input-sanitization';
-import { supabase, type Session, type Questionnaire, type ContactSubmission } from '@/app/lib/supabase';
+import { supabase, type Session, type Questionnaire } from '@/app/lib/supabase';
 
 // Zod schema for request validation
 const submitSurveyRequestSchema = z.object({
@@ -194,7 +194,6 @@ export async function POST(request: NextRequest) {
       .maybeSingle();
 
     if (contactData) {
-      const contactSubmission = contactData as ContactSubmission;
       const { error: contactUpdateError } = await supabase
         .from('contact_submissions')
         .update({ survey_completed: true } as never)
