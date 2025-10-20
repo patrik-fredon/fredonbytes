@@ -1,52 +1,48 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: Dedicated About Page
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Branch**: `001-dedicated-about-page` | **Date**: 2025-10-20 | **Spec**: /mnt/git/fredonbytes/specs/001-dedicated-about-page/spec.md
+**Input**: Feature specification from `/mnt/git/fredonbytes/specs/001-dedicated-about-page/spec.md`
 
 **Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-[Extract from feature spec: primary requirement + technical approach from research]
+Refactor the About section into a dedicated page with navigation integration, featuring an emotional company story about Fredon's developer journey and the "All-in-One digital army" concept, plus complete team member profiles with photos and details. Implementation uses Next.js 15+ with App Router, TypeScript 5.9+, Tailwind CSS 4+, and Framer Motion for a light, optimized approach with next-intl for Czech/English/German translations.
 
 ## Technical Context
 
-<!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
--->
-
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: TypeScript 5.9+ with strict mode  
+**Primary Dependencies**: Next.js 15+ with App Router, Tailwind CSS 4+, Framer Motion, next-intl  
+**Storage**: Static JSON files for team member data and translations  
+**Testing**: Jest/React Testing Library for component testing  
+**Target Platform**: Web browsers (responsive design)  
+**Project Type**: Web application (Next.js)  
+**Performance Goals**: Lighthouse 95+ scores, Core Web Vitals (FCP <1.5s, LCP <2.5s, CLS <0.1), page load <3s  
+**Constraints**: Light implementation without robust error handling, graceful degradation only, 6-10 team members expected  
+**Scale/Scope**: Single page with company story and team profiles, static content with internationalization
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-**I. Accessibility-First**: Does this feature maintain AAA WCAG compliance? Are all new UI components keyboard accessible and screen reader compatible?
+**I. Accessibility-First**: ✅ PASS - New page will implement AAA WCAG 2.1 compliance with keyboard navigation, screen reader support, and semantic HTML. Team member cards and company story content will be fully accessible.
 
-**II. Performance-Optimized**: Will this feature impact Core Web Vitals? Does it require performance impact analysis for Lighthouse scores?
+**II. Performance-Optimized**: ✅ PASS - Implementation will maintain Lighthouse scores above 95 with Core Web Vitals targets (FCP <1.5s, LCP <2.5s, CLS <0.1). Light implementation approach ensures optimal performance.
 
-**III. Security & Privacy**: Does this feature handle user data? Does it require GDPR compliance checks or cookie consent integration?
+**III. Security & Privacy**: ✅ PASS - Static content only, no user data handling. Follows existing GDPR compliance patterns with cookie consent integration where applicable.
 
-**IV. Type-Safe Development**: Will TypeScript types be properly defined? Are there any areas where type safety might be compromised?
+**IV. Type-Safe Development**: ✅ PASS - All new TypeScript code will use strict mode with comprehensive type definitions for team member data and translation keys.
 
-**V. Internationalization**: Does this feature add user-facing text? Are translation keys properly structured and complete?
+**V. Internationalization**: ✅ PASS - Full next-intl implementation for Czech, English, and German translations with complete translation files and proper locale routing.
+
+*POST-DESIGN RE-EVALUATION: All constitution principles remain satisfied. Implementation approach confirmed to be compliant with light architecture requirements.*
 
 ## Project Structure
 
 ### Documentation (this feature)
 
 ```
-specs/[###-feature]/
+specs/001-dedicated-about-page/
 ├── plan.md              # This file (/speckit.plan command output)
 ├── research.md          # Phase 0 output (/speckit.plan command)
 ├── data-model.md        # Phase 1 output (/speckit.plan command)
@@ -56,58 +52,34 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
 
 ```
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
-
-tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+├── app/
+│   ├── [locale]/
+│   │   └── about/
+│   │       ├── page.tsx          # Main About page component
+│   │       └── layout.tsx        # Optional layout for About section
+│   └── globals.css
+├── components/
+│   ├── about/
+│   │   ├── CompanyStory.tsx      # Emotional company story component
+│   │   ├── TeamSection.tsx       # Team member profiles grid
+│   │   └── TeamMemberCard.tsx    # Individual team member card
+│   └── common/                   # Shared components
+├── lib/
+│   ├── team-data.ts              # Static team member data
+│   └── types/
+│       └── about.ts              # TypeScript definitions
+└── messages/
+    ├── cs.json                   # Czech translations
+    ├── en.json                   # English translations
+    └── de.json                   # German translations
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: Web application structure following Next.js App Router conventions. New About page at `/[locale]/about/page.tsx` with dedicated components in `components/about/`. Static team data in `lib/team-data.ts` and types in `lib/types/about.ts`. Translation files updated in existing `messages/` directory.
 
 ## Complexity Tracking
 
-*Fill ONLY if Constitution Check has violations that must be justified*
-
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+*No constitution violations identified - all requirements can be met with standard Next.js implementation patterns.*
 

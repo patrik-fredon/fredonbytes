@@ -57,7 +57,7 @@ Visitors can view detailed profiles of all team members including photos, positi
 
 ### Edge Cases
 
-- What happens when team member photos fail to load?
+- When team member photos fail to load, display a placeholder avatar showing the team member's initials (e.g., "JD" for John Doe)
 - How does the page handle very long team member descriptions?
 - What occurs when a user switches languages while viewing the About page?
 - How does the page perform on mobile devices with multiple team member cards?
@@ -73,10 +73,17 @@ Visitors can view detailed profiles of all team members including photos, positi
 - **FR-005**: System MUST support content in Czech, English, and German languages using next-intl
 - **FR-006**: System MUST maintain consistent branding and visual design with the rest of the website
 - **FR-007**: System MUST be optimized for performance with light implementation approach
+- **FR-008**: System MUST implement graceful degradation without complex fallback mechanisms or error boundaries
 
 ### Key Entities *(include if feature involves data)*
 
-- **Team Member**: Represents an employee with attributes for photo, name, position, motto, and summary
+- **Team Member**: Represents an employee with the following attributes:
+  - `name`: Required string field for the employee's full name
+  - `position`: Required string field for the employee's job title/role
+  - `photo`: Required image URL/path for the employee's professional photo
+  - `motto`: Optional short string field for the employee's personal motto
+  - `summary`: Required text field containing a professional summary of the employee
+  - Expected count: 6-10 team members for a small development company
 - **Company Story**: Contains the inspirational narrative about the company's founding and mission
 
 ## Success Criteria *(mandatory)*
@@ -88,3 +95,13 @@ Visitors can view detailed profiles of all team members including photos, positi
 - **SC-003**: Users can view all team member profiles without performance degradation on mobile devices
 - **SC-004**: Content displays correctly in all three supported languages (Czech, English, German)
 - **SC-005**: Page maintains Lighthouse accessibility score above 95
+- **SC-006**: Page achieves Core Web Vitals scores: First Contentful Paint <1.5s, Largest Contentful Paint <2.5s, Cumulative Layout Shift <0.1
+
+## Clarifications
+
+### Session 2025-10-20
+- Q: What are the exact attributes and validation rules for the Team Member entity? → A: Basic required attributes: name (required, string), position (required, string), photo (required, image URL/path), motto (optional, short string), summary (required, text)
+- Q: What specific performance optimization targets should be met beyond the 3-second load time? → A: Core Web Vitals: First Contentful Paint <1.5s, Largest Contentful Paint <2.5s, Cumulative Layout Shift <0.1
+- Q: How should the system handle missing or failed-to-load team member photos? → A: Display a placeholder avatar showing the team member's initials (e.g., "JD" for John Doe)
+- Q: What specific constraints does "light implementation, NOT ROBUST coding" impose on error handling and edge cases? → A: Graceful degradation without complex fallback mechanisms or error boundaries
+- Q: How many team members are expected to be displayed? → A: 6-10 team members (small development company)
