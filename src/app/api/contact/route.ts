@@ -11,7 +11,10 @@ import {
   generateCustomerConfirmationText,
   type ContactEmailData,
 } from "@/app/lib/email-templates";
-import { sanitizeString, sanitizeStringArray } from "@/app/lib/input-sanitization";
+import {
+  sanitizeString,
+  sanitizeStringArray,
+} from "@/app/lib/input-sanitization";
 import { supabase } from "@/app/lib/supabase";
 
 const contactSchema = z.object({
@@ -27,7 +30,7 @@ const contactSchema = z.object({
   requirements: z.array(z.string()).optional(),
   newsletter: z.boolean().optional(),
   privacy: z.boolean(),
-  locale: z.string().default('en'),
+  locale: z.string().default("en"),
 });
 
 export async function POST(request: NextRequest) {
@@ -43,33 +46,41 @@ export async function POST(request: NextRequest) {
       firstName: sanitizeString(validatedData.firstName),
       lastName: sanitizeString(validatedData.lastName),
       phone: sanitizeString(validatedData.phone),
-      company: validatedData.company ? sanitizeString(validatedData.company) : undefined,
+      company: validatedData.company
+        ? sanitizeString(validatedData.company)
+        : undefined,
       projectType: sanitizeString(validatedData.projectType),
       budget: sanitizeString(validatedData.budget),
       timeline: sanitizeString(validatedData.timeline),
       message: sanitizeString(validatedData.message),
-      requirements: validatedData.requirements ? sanitizeStringArray(validatedData.requirements) : undefined,
+      requirements: validatedData.requirements
+        ? sanitizeStringArray(validatedData.requirements)
+        : undefined,
     };
 
     // Generate unique session ID for survey linking
     const sessionId = randomUUID();
 
     // Get client IP address and user agent for tracking
-    const ipAddress = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
-    const rawUserAgent = request.headers.get('user-agent') || 'unknown';
+    const ipAddress =
+      request.headers.get("x-forwarded-for") ||
+      request.headers.get("x-real-ip") ||
+      "unknown";
+    const rawUserAgent = request.headers.get("user-agent") || "unknown";
     // Sanitize user agent to prevent XSS attacks
     const userAgent = sanitizeString(rawUserAgent);
 
     // Hash IP address for privacy (SHA-256)
-    const ipAddressHash = createHash('sha256').update(ipAddress).digest('hex');
+    const ipAddressHash = createHash("sha256").update(ipAddress).digest("hex");
 
     // Generate survey link
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fredonbytes.cloud';
+    const siteUrl =
+      process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cloud";
     const surveyLink = `${siteUrl}/survey/${sessionId}`;
 
     // Store contact submission in database
     const { data: contactSubmission, error: dbError } = await supabase
-      .from('contact_submissions')
+      .from("contact_submissions")
       .insert({
         session_id: sessionId,
         first_name: sanitizedData.firstName,
@@ -94,28 +105,28 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (dbError || !contactSubmission) {
-      console.error('Database error:', dbError);
-      throw new Error('Failed to store contact submission');
+      console.error("Database error:", dbError);
+      throw new Error("Failed to store contact submission");
     }
 
     // Handle newsletter subscription
     if (validatedData.newsletter) {
       const { error: newsletterError } = await supabase
-        .from('newsletter_subscribers')
+        .from("newsletter_subscribers")
         .insert({
           email: validatedData.email, // Email not sanitized - already validated by Zod
           first_name: sanitizedData.firstName,
           last_name: sanitizedData.lastName,
           locale: validatedData.locale,
           active: true,
-          source: 'contact_form',
-        })
+          source: "contact_form",
+        } as any)
         .select()
         .single();
 
       // Ignore duplicate email errors (constraint violation)
-      if (newsletterError && !newsletterError.message.includes('duplicate')) {
-        console.error('Newsletter subscription error:', newsletterError);
+      if (newsletterError && !newsletterError.message.includes("duplicate")) {
+        console.error("Newsletter subscription error:", newsletterError);
       }
     }
 
@@ -136,28 +147,35 @@ export async function POST(request: NextRequest) {
     };
 
     // Get translations for email subjects
-    const { getTranslations } = await import('next-intl/server');
-    const t = await getTranslations({ locale: validatedData.locale, namespace: 'emails' });
+    const { getTranslations } = await import("next-intl/server");
+    const t = await getTranslations({
+      locale: validatedData.locale,
+      namespace: "emails",
+    });
 
     // Send customer confirmation email with survey link
     const customerEmailHtml = await generateCustomerConfirmationHTML(emailData);
     const customerEmailText = await generateCustomerConfirmationText(emailData);
 
     const customerEmail = await sendEmail({
-      from: 'Fredonbytes <noreply@fredonbytes.cloud>',
+      from: "Fredonbytes <noreply@fredonbytes.cloud>",
       to: validatedData.email,
-      subject: t('customer.subject'),
+      subject: t("customer.subject"),
       html: customerEmailHtml,
       text: customerEmailText,
     });
 
     // Send admin notification email
-    const adminEmailHtml = await generateAdminContactNotificationHTML(emailData);
-    const adminEmailText = await generateAdminContactNotificationText(emailData);
+    const adminEmailHtml = await generateAdminContactNotificationHTML(
+      emailData
+    );
+    const adminEmailText = await generateAdminContactNotificationText(
+      emailData
+    );
 
     const adminEmail = await sendEmail({
-      from: 'Contact Form <noreply@fredonbytes.cloud>',
-      to: 'info@fredonbytes.cloud',
+      from: "Contact Form <noreply@fredonbytes.cloud>",
+      to: "info@fredonbytes.cloud",
       subject: `New Contact Form Submission from ${sanitizedData.firstName} ${sanitizedData.lastName}`,
       html: adminEmailHtml,
       text: adminEmailText,
@@ -166,32 +184,30 @@ export async function POST(request: NextRequest) {
 
     // Create survey session for linking
     const { error: surveySessionError } = await supabase
-      .from('survey_sessions')
+      .from("survey_sessions")
       .insert({
         session_id: sessionId,
         contact_submission_id: contactSubmission.id,
         locale: validatedData.locale,
         ip_address_hash: ipAddressHash,
         user_agent: userAgent,
-      })
-      .select()
-      .single();
+      });
 
     if (surveySessionError) {
-      console.error('Survey session creation error:', surveySessionError);
+      console.error("Survey session creation error:", surveySessionError);
       // Don't fail the request if survey session creation fails
     }
 
     // Update survey_sent flag
     await supabase
-      .from('contact_submissions')
+      .from("contact_submissions")
       .update({ survey_sent: true })
-      .eq('session_id', sessionId);
+      .eq("session_id", sessionId);
 
     return NextResponse.json(
       {
         success: true,
-        message: 'Contact form submitted successfully',
+        message: "Contact form submitted successfully",
         session_id: sessionId,
         customerEmailId: customerEmail.messageId,
         adminEmailId: adminEmail.messageId,
@@ -199,21 +215,24 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error('Contact form submission error:', error);
+    console.error("Contact form submission error:", error);
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Invalid form data', details: error.errors },
+        { error: "Invalid form data", details: error.errors },
         { status: 400 }
       );
     }
 
     return NextResponse.json(
-      { error: 'Internal server error', message: error instanceof Error ? error.message : 'Unknown error' },
+      {
+        error: "Internal server error",
+        message: error instanceof Error ? error.message : "Unknown error",
+      },
       { status: 500 }
     );
   }
 }
 
 // Disable caching for POST endpoint
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";

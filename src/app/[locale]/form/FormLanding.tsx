@@ -12,8 +12,8 @@ import {
   Zap,
 } from "lucide-react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import type { CreateFormSessionResponse } from "@/app/api/form/route";
@@ -28,8 +28,8 @@ import { useRouter } from "@/i18n/navigation";
 export default function FormLanding() {
   const router = useRouter();
   const params = useParams();
-  const locale = (params.locale as string) || 'cs';
-  const t = useTranslations('form');
+  const locale = (params.locale as string) || "cs";
+  const t = useTranslations("form");
   const prefersReducedMotion = useReducedMotion();
   const [isStarting, setIsStarting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -121,10 +121,10 @@ export default function FormLanding() {
 
     try {
       // Create session via API
-      const response = await fetch('/api/form', {
-        method: 'POST',
+      const response = await fetch("/api/form", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ locale }),
       });
@@ -132,7 +132,7 @@ export default function FormLanding() {
       const data: CreateFormSessionResponse = await response.json();
 
       if (!response.ok || !data.success || !data.session_id) {
-        throw new Error(data.error || 'Failed to create session');
+        throw new Error(data.error || "Failed to create session");
       }
 
       // Store CSRF token in localStorage for later use
@@ -143,8 +143,8 @@ export default function FormLanding() {
       // Navigate to form with session_id using locale-aware router
       router.push(`/form/${data.session_id}`);
     } catch (err) {
-      console.error('Error starting form:', err);
-      setError(err instanceof Error ? err.message : 'Failed to start form');
+      console.error("Error starting form:", err);
+      setError(err instanceof Error ? err.message : "Failed to start form");
       setIsStarting(false);
     }
   };
@@ -215,10 +215,10 @@ export default function FormLanding() {
             {/* Welcome Message */}
             <div className="space-y-4">
               <h1 className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white">
-                {t('title')}
+                {t("title")}
               </h1>
               <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                {t('subtitle')}
+                {t("subtitle")}
               </p>
               <p className="text-sm text-slate-500 dark:text-slate-400">
                 <span className="inline-flex items-center gap-2">
@@ -235,7 +235,7 @@ export default function FormLanding() {
                       d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  {t('estimatedTime')}
+                  {t("estimatedTime")}
                 </span>
               </p>
             </div>
@@ -243,7 +243,9 @@ export default function FormLanding() {
             {/* Error Message */}
             {error && (
               <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-                <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+                <p className="text-sm text-red-600 dark:text-red-400">
+                  {error}
+                </p>
               </div>
             )}
 
@@ -258,13 +260,13 @@ export default function FormLanding() {
                 className="min-w-[200px] min-h-[44px]"
                 aria-label="Start the customer satisfaction form"
               >
-                {isStarting ? t('starting') : t('startButton')}
+                {isStarting ? t("starting") : t("startButton")}
               </Button>
             </div>
 
             {/* Privacy Note */}
             <p className="text-xs text-slate-400 dark:text-slate-500 max-w-md mx-auto">
-              {t('privacyNote')}
+              {t("privacyNote")}
             </p>
           </motion.div>
         </div>

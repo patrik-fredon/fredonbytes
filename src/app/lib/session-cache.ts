@@ -142,7 +142,7 @@ export function clearExpiredCaches(): void {
             localStorage.removeItem(key);
           }
         }
-      } catch (error) {
+      } catch {
         // Invalid JSON, remove it
         localStorage.removeItem(key);
       }

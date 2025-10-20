@@ -55,15 +55,20 @@ export function sanitizeStringArray(input: string[]): string[] {
 }
 
 /**
- * Sanitize answer value (can be string or string array)
+ * Sanitize answer value (can be string, string array, or number)
  */
-export function sanitizeAnswerValue(value: string | string[]): string | string[] {
+export function sanitizeAnswerValue(value: string | string[] | number): string | string[] | number {
   if (typeof value === 'string') {
     return sanitizeString(value);
   }
 
   if (Array.isArray(value)) {
     return sanitizeStringArray(value);
+  }
+
+  // For numbers (like ratings), return as-is since they're already validated
+  if (typeof value === 'number') {
+    return value;
   }
 
   return '';

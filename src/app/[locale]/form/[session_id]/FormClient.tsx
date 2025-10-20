@@ -32,32 +32,13 @@ import {
   validateAnswer,
   validateAllAnswers,
   findFirstUnansweredRequired,
+  type ValidatableQuestion,
 } from "@/app/lib/form-validation";
 import type {
   Question,
   AnswerValue,
   LocalizedString,
 } from "@/app/lib/supabase";
-
-// Add ValidatableQuestion type that matches what QuestionStep expects
-interface ValidatableQuestion {
-  id: string;
-  question_text: string;
-  question_type: string;
-  is_required: boolean;
-  description?: string | null;
-  options?: Array<{
-    id: string;
-    option_text: string;
-    value: string;
-  }>;
-  order_number: number;
-  // Add missing properties to match Question type
-  answer_type: string;
-  required: boolean;
-  display_order: number;
-  active: boolean;
-}
 
 // Helper function to extract localized string based on locale
 function getLocalizedString(
@@ -146,14 +127,20 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       // Transform questions to use localized strings
       const localizedQuestions: ValidatableQuestion[] = data.questions.map(
         (question) => ({
-          ...question, // Preserve all original properties including question_type, is_required, order_number
+          id: question.id,
           question_text: getLocalizedString(question.question_text, locale),
           description: question.description
             ? getLocalizedString(question.description, locale)
             : null,
+          answer_type: question.answer_type,
+          required: question.required,
+          display_order: question.display_order,
+          active: question.active,
           options: question.options?.map((option) => ({
-            ...option,
+            id: option.id,
+            question_id: option.question_id,
             option_text: getLocalizedString(option.option_text, locale),
+            display_order: option.display_order,
           })),
         })
       );
@@ -378,7 +365,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
         body: JSON.stringify({
           session_id: sessionId,
           responses,
-          locale: locale,
+          locale,
         }),
       });
 

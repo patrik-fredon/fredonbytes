@@ -5,7 +5,7 @@
 export interface FormResponseData {
   question_id: string;
   question_text: string;
-  answer_value: string | string[];
+  answer_value: string | string[] | number;
   answer_type: string;
 }
 
@@ -33,7 +33,7 @@ export function generateAdminNotificationHTML(data: AdminNotificationData): stri
   const responsesHtml = responses
     .map((response, index) => {
       const answerDisplay = Array.isArray(response.answer_value)
-        ? `<ul style="margin: 8px 0; padding-left: 20px;">${response.answer_value.map(val => `<li>${escapeHtml(val)}</li>`).join('')}</ul>`
+        ? `<ul style="margin: 8px 0; padding-left: 20px;">${response.answer_value.map(val => `<li>${escapeHtml(String(val))}</li>`).join('')}</ul>`
         : `<p style="margin: 8px 0;">${escapeHtml(String(response.answer_value))}</p>`;
 
       return `

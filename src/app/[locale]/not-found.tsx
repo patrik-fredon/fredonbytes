@@ -1,9 +1,6 @@
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 
 export default function NotFound() {
-  const t = useTranslations();
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-900">
       <div className="text-center px-4">

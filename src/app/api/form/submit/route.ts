@@ -15,6 +15,9 @@ import {
   type AnswerValue,
   type Question,
   type LocalizedString,
+  type Session,
+  type FormResponse,
+  type SessionCache,
 } from "@/app/lib/supabase";
 
 // Hash IP address for privacy
@@ -153,7 +156,8 @@ export async function POST(request: NextRequest) {
       }
 
       // If session exists and is already completed, reject duplicate submission
-      if (existingSession?.completed_at) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if (existingSession && (existingSession as any).completed_at) {
         return NextResponse.json(
           {
             success: false,
@@ -169,8 +173,10 @@ export async function POST(request: NextRequest) {
         const { error: createSessionError } = await supabase
           .from("sessions")
           .insert({
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             session_id: sessionId,
-            questionnaire_id: questionnaire.id,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            questionnaire_id: (questionnaire as any).id,
             original_session_id: original_session_id || null,
             locale: sessionLocale,
             ip_address_hash: metadata?.ip_address
@@ -179,7 +185,7 @@ export async function POST(request: NextRequest) {
             user_agent: metadata?.user_agent || null,
             email: email || null,
             newsletter_optin: newsletter_optin || false,
-          });
+          } as Omit<Session, 'created_at' | 'expires_at'>);
 
         if (createSessionError) {
           console.error("Error creating session:", createSessionError);
@@ -198,7 +204,8 @@ export async function POST(request: NextRequest) {
       const { data: newSession, error: createSessionError } = await supabase
         .from("sessions")
         .insert({
-          questionnaire_id: questionnaire.id,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          questionnaire_id: (questionnaire as any).id,
           original_session_id: original_session_id || null,
           locale: sessionLocale,
           ip_address_hash: metadata?.ip_address
@@ -207,7 +214,7 @@ export async function POST(request: NextRequest) {
           user_agent: metadata?.user_agent || null,
           email: email || null,
           newsletter_optin: newsletter_optin || false,
-        })
+        } as Omit<Session, 'session_id' | 'created_at' | 'expires_at'>)
         .select("session_id")
         .single();
 
@@ -223,7 +230,8 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      sessionId = newSession.session_id;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      sessionId = (newSession as any).session_id;
     }
 
     // Update session to mark as completed
@@ -233,8 +241,8 @@ export async function POST(request: NextRequest) {
         completed_at: new Date().toISOString(),
         email: email || null,
         newsletter_optin: newsletter_optin || false,
-      })
-      .eq("session_id", sessionId);
+      } as Partial<Pick<Session, 'completed_at' | 'email' | 'newsletter_optin'>>)
+      .eq("session_id", sessionId!);
 
     if (updateSessionError) {
       console.error("Error updating session:", updateSessionError);
@@ -257,7 +265,7 @@ export async function POST(request: NextRequest) {
 
     const { error: answersError } = await supabase
       .from("form_answers")
-      .insert(formAnswers);
+      .insert(formAnswers as Omit<FormResponse, 'id' | 'submitted_at'>[]);
 
     if (answersError) {
       console.error("Error inserting form answers:", answersError);
@@ -280,7 +288,7 @@ export async function POST(request: NextRequest) {
           responses: sanitizedResponses,
           completed_at: new Date().toISOString(),
         },
-      });
+      } as Omit<SessionCache, 'id' | 'created_at' | 'expires_at'>);
     } catch (cacheError) {
       console.error("Failed to cache session data:", cacheError);
       // Non-blocking, continue
@@ -332,7 +340,7 @@ export async function POST(request: NextRequest) {
           html: emailHtml,
         });
 
-        console.log(`Admin notification email sent for session: ${sessionId}`);
+        console.warn(`Admin notification email sent for session: ${sessionId}`);
       }
     } catch (emailError) {
       // Log email error but don't block form submission
