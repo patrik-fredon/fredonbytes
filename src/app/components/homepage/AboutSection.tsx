@@ -65,29 +65,35 @@ export default function AboutSection() {
       role: t("about.team.members.patrik.role"),
       expertise: t("about.team.members.patrik.expertise"),
       quote: t("about.team.members.patrik.quote"),
-      image: "/profile-picture-fredon-ceo-co-founder.jpg",
+      image:
+        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/fullstack-developer-fredon-ceo-co-founder-fredonbytes.avif",
     },
     {
       name: t("about.team.members.jana.name"),
       role: t("about.team.members.jana.role"),
       expertise: t("about.team.members.jana.expertise"),
       quote: t("about.team.members.jana.quote"),
-      image: "user-placeholder",
+      image:
+        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/site-reliability-engineer-fredonbytes-hazel.avif",
     },
     {
       name: t("about.team.members.lucie.name"),
       role: t("about.team.members.lucie.role"),
       expertise: t("about.team.members.lucie.expertise"),
       quote: t("about.team.members.lucie.quote"),
-      image: "user-placeholder",
+      image:
+        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/agile-coach-fredonbytes-violet.avif",
     },
     {
       name: t("about.team.members.tomas.name"),
       role: t("about.team.members.tomas.role"),
       expertise: t("about.team.members.tomas.expertise"),
       quote: t("about.team.members.tomas.quote"),
-      image: "user-placeholder",
+      image:
+        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/blockchain-developer-fredonbytes-mason.avif",
     },
+
+    
   ];
 
   return (

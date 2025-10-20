@@ -4,9 +4,29 @@ import { supabase, type Question, type LocalizedString } from '@/app/lib/supabas
 
 // Response interface for questions endpoint
 export interface QuestionsResponse {
-  questions: Question[];
+  questions: LocalizedQuestion[];
   locale?: string;
   error?: string;
+}
+
+// Localized question interface (questions with localized strings)
+export interface LocalizedQuestion {
+  id: string;
+  question_text: string;
+  description?: string | null;
+  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating';
+  required: boolean;
+  display_order: number;
+  active: boolean;
+  options?: LocalizedQuestionOption[];
+}
+
+// Localized option interface
+export interface LocalizedQuestionOption {
+  id: string;
+  question_id: string;
+  option_text: string;
+  display_order: number;
 }
 
 export async function GET(request: NextRequest) {
@@ -27,7 +47,8 @@ export async function GET(request: NextRequest) {
     }
 
     // Get the form questionnaire ID
-    const { data: questionnaire, error: questionnaireError } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data: questionnaire, error: questionnaireError } = await (supabase as any)
       .from('questionnaires')
       .select('id')
       .eq('type', 'form')
@@ -46,13 +67,15 @@ export async function GET(request: NextRequest) {
     }
 
     // Fetch questions with their options for the form questionnaire
-    const { data, error } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data, error } = await (supabase as any)
       .from('questions')
       .select(`
         *,
         options:question_options(*)
       `)
-      .eq('questionnaire_id', questionnaire.id)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .eq('questionnaire_id', (questionnaire as any).id)
       .eq('active', true)
       .order('display_order', { ascending: true });
 

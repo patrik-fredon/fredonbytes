@@ -15,9 +15,6 @@ import {
   type AnswerValue,
   type Question,
   type LocalizedString,
-  type Session,
-  type FormResponse,
-  type SessionCache,
 } from "@/app/lib/supabase";
 
 // Hash IP address for privacy
@@ -170,22 +167,23 @@ export async function POST(request: NextRequest) {
 
       // If session doesn't exist, create it
       if (!existingSession) {
-        const { error: createSessionError } = await supabase
-          .from("sessions")
-          .insert({
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            session_id: sessionId,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            questionnaire_id: (questionnaire as any).id,
-            original_session_id: original_session_id || null,
-            locale: sessionLocale,
-            ip_address_hash: metadata?.ip_address
-              ? hashIpAddress(metadata.ip_address)
-              : null,
-            user_agent: metadata?.user_agent || null,
-            email: email || null,
-            newsletter_optin: newsletter_optin || false,
-          } as Omit<Session, 'created_at' | 'expires_at'>);
+      // If session doesn't exist, create it
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { error: createSessionError } = await (supabase as any)
+        .from("sessions")
+        .insert({
+          session_id: sessionId,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          questionnaire_id: (questionnaire as any).id,
+          original_session_id: original_session_id || null,
+          locale: sessionLocale,
+          ip_address_hash: metadata?.ip_address
+            ? hashIpAddress(metadata.ip_address)
+            : null,
+          user_agent: metadata?.user_agent || null,
+          email: email || null,
+          newsletter_optin: newsletter_optin || false,
+        });
 
         if (createSessionError) {
           console.error("Error creating session:", createSessionError);
@@ -201,7 +199,8 @@ export async function POST(request: NextRequest) {
       }
     } else {
       // Create new session
-      const { data: newSession, error: createSessionError } = await supabase
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { data: newSession, error: createSessionError } = await (supabase as any)
         .from("sessions")
         .insert({
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -214,7 +213,7 @@ export async function POST(request: NextRequest) {
           user_agent: metadata?.user_agent || null,
           email: email || null,
           newsletter_optin: newsletter_optin || false,
-        } as Omit<Session, 'session_id' | 'created_at' | 'expires_at'>)
+        })
         .select("session_id")
         .single();
 
@@ -235,13 +234,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Update session to mark as completed
-    const { error: updateSessionError } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error: updateSessionError } = await (supabase as any)
       .from("sessions")
       .update({
         completed_at: new Date().toISOString(),
         email: email || null,
         newsletter_optin: newsletter_optin || false,
-      } as Partial<Pick<Session, 'completed_at' | 'email' | 'newsletter_optin'>>)
+      })
       .eq("session_id", sessionId!);
 
     if (updateSessionError) {
@@ -263,9 +263,11 @@ export async function POST(request: NextRequest) {
       answer_value: response.answer_value as AnswerValue,
     }));
 
-    const { error: answersError } = await supabase
+    // Batch insert form_answers (using sanitized responses)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error: answersError } = await (supabase as any)
       .from("form_answers")
-      .insert(formAnswers as Omit<FormResponse, 'id' | 'submitted_at'>[]);
+      .insert(formAnswers);
 
     if (answersError) {
       console.error("Error inserting form answers:", answersError);
@@ -281,14 +283,15 @@ export async function POST(request: NextRequest) {
 
     // Cache session data for offline continuity
     try {
-      await supabase.from("session_cache").upsert({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await (supabase as any).from("session_cache").upsert({
         session_id: sessionId!,
         cache_key: "form_submission",
         cache_data: {
           responses: sanitizedResponses,
           completed_at: new Date().toISOString(),
         },
-      } as Omit<SessionCache, 'id' | 'created_at' | 'expires_at'>);
+      });
     } catch (cacheError) {
       console.error("Failed to cache session data:", cacheError);
       // Non-blocking, continue

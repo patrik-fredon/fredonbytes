@@ -64,7 +64,8 @@ export async function POST(request: NextRequest) {
     const userAgent = rawUserAgent ? sanitizeString(rawUserAgent) : null;
 
     // Check if consent already exists for this session
-    const { data: existingConsent } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data: existingConsent } = await (supabase as any)
       .from("cookie_consents")
       .select("id")
       .eq("session_id", validated.session_id)
@@ -72,7 +73,8 @@ export async function POST(request: NextRequest) {
 
     if (existingConsent) {
       // Update existing consent
-      const { error: updateError } = await supabase
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { error: updateError } = await (supabase as any)
         .from("cookie_consents")
         .update({
           ip_address_hash: ipAddressHash,
@@ -104,7 +106,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Insert new consent
-    const { error: insertError } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error: insertError } = await (supabase as any)
       .from("cookie_consents")
       .insert({
         session_id: validated.session_id,
@@ -177,7 +180,8 @@ export async function GET(request: NextRequest) {
     }
 
     // Fetch consent from database
-    const { data, error } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data, error } = await (supabase as any)
       .from("cookie_consents")
       .select("*")
       .eq("session_id", sessionId)

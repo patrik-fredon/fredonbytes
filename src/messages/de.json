@@ -628,89 +628,6 @@
           "description": "Merken sich Ihre Präferenzen und Einstellungen für ein besseres Erlebnis."
         }
       }
-    }
-  },
-  "pages": {
-    "home": {
-      "title": "Fredonbytes - Ihr All-in-One IT-Kraftzentrum",
-      "description": "Von Code bis Klicks liefern wir komplette digitale Dominanz. Vollspektrum-IT-Lösungen einschließlich Softwareentwicklung, Grafikdesign, SEO und Social Media Marketing.",
-      "keywords": "Webentwicklung, Softwareentwicklung, IT-Lösungen, Grafikdesign, SEO, Social Media Marketing, Brünn, Tschechische Republik"
-    },
-    "about": {
-      "title": "Über Fredonbytes - Ihr Partner für digitale Transformation",
-      "description": "Gegründet 2023, eliminiert Fredonbytes die Notwendigkeit mehrerer Anbieter, indem wir Ihre digitale All-in-One-Armee werden und nahtlose, wirkungsvolle Ergebnisse unter einem Dach gewährleisten.",
-      "keywords": "über fredonbytes, digitale Transformation, IT-Unternehmen, Softwareentwicklungsteam, Brünn Tech"
-    },
-    "services": {
-      "title": "IT-Dienstleistungen - Softwareentwicklung, Design & Marketing",
-      "description": "Umfassende IT-Lösungen von der Entwicklung bis zum Marketing. Beseitigen Sie Komplexität mit unserem vereinheitlichten Ansatz für Softwareentwicklung, Design, SEO und Social Media Management.",
-      "keywords": "IT-Dienstleistungen, Softwareentwicklung, Webentwicklung, Grafikdesign, SEO-Services, Social Media Marketing"
-    },
-    "projects": {
-      "title": "Unser Portfolio - Fredonbytes Projektgalerie",
-      "description": "Entdecken Sie unsere neuesten Arbeiten und sehen Sie, wie wir Unternehmen dabei geholfen haben, ihre digitale Präsenz mit modernsten Lösungen zu transformieren.",
-      "keywords": "Portfolio, Webentwicklungsprojekte, Softwareprojekte, Design-Showcase, Fallstudien"
-    },
-    "pricing": {
-      "title": "Transparente Preispläne - Wählen Sie Ihre IT-Lösung",
-      "description": "Transparente Preise ohne versteckte Gebühren. Skalieren Sie Ihr Unternehmen mit unseren flexiblen IT-Lösungen vom Starter- bis zum Enterprise-Plan.",
-      "keywords": "Preise, IT-Services Kosten, Webentwicklung Preise, transparente Preise, Geschäftspläne"
-    },
-    "contact": {
-      "title": "Kontakt Fredonbytes - Lassen Sie uns zusammenarbeiten",
-      "description": "Bereit, Ihre digitale Präsenz zu transformieren? Kontaktieren Sie unser Team in Brünn, Tschechische Republik für eine kostenlose Beratung zu Ihrem nächsten IT-Projekt.",
-      "keywords": "Kontakt, Brünn IT-Unternehmen, kostenlose Beratung, Projektanfrage, Tschechische Republik Tech"
-    },
-    "links": {
-      "title": "Fredonbytes Links - Verbinden Sie sich überall mit uns",
-      "description": "All unsere wichtigen Links an einem Ort. Verbinden Sie sich mit Fredonbytes auf Social Media, GitHub und unseren verschiedenen Plattformen.",
-      "keywords": "Social Links, GitHub, LinkedIn, Kontakt-Links, Fredonbytes Plattformen"
-    },
-    "privacy-policy": {
-      "title": "Datenschutzrichtlinie - Wie wir Ihre Daten schützen",
-      "description": "Erfahren Sie, wie Fredonbytes Ihre persönlichen Informationen sammelt, verwendet und schützt. Wir sind verpflichtet, Ihre Privatsphäre und Datensicherheit zu wahren.",
-      "keywords": "Datenschutzrichtlinie, Datenschutz, DSGVO-Konformität, persönliche Informationen, Datensicherheit"
-    },
-    "terms-of-service": {
-      "title": "Nutzungsbedingungen - Fredonbytes Nutzungsvereinbarung",
-      "description": "Geschäftsbedingungen für die Nutzung der Fredonbytes-Services. Verstehen Sie Ihre Rechte und Pflichten bei der Zusammenarbeit mit unseren IT-Lösungen.",
-      "keywords": "Nutzungsbedingungen, Nutzungsvereinbarung, Service-Bedingungen, rechtliche Bedingungen, Konditionen"
-    },
-    "cookie-policy": {
-      "title": "Cookie-Richtlinie - Wie wir Cookies verwenden",
-      "description": "Informationen darüber, wie Fredonbytes Cookies verwendet, um Ihr Browsing-Erlebnis zu verbessern und die Website-Nutzung zu analysieren.",
-      "keywords": "Cookie-Richtlinie, Website-Cookies, Tracking, Analytics, Benutzererfahrung"
-    },
-    "cookies": {
-      "banner": {
-        "title": "Wir verwenden Cookies",
-        "description": "Wir verwenden Cookies, um Ihr Browsing-Erlebnis zu verbessern, personalisierte Inhalte bereitzustellen und unseren Traffic zu analysieren. Durch Klicken auf \"Alle akzeptieren\" stimmen Sie der Verwendung von Cookies zu.",
-        "learnMore": "Mehr erfahren",
-        "acceptAll": "Alle akzeptieren",
-        "necessaryOnly": "Nur notwendige",
-        "customize": "Anpassen",
-        "savePreferences": "Einstellungen speichern"
-      },
-      "preferences": {
-        "title": "Cookie-Einstellungen",
-        "description": "Passen Sie unten Ihre Cookie-Einstellungen an. Sie können verschiedene Arten von Cookies nach Ihren Präferenzen aktivieren oder deaktivieren.",
-        "necessary": {
-          "title": "Notwendige Cookies",
-          "description": "Erforderlich für das ordnungsgemäße Funktionieren der Website. Kann nicht deaktiviert werden."
-        },
-        "analytics": {
-          "title": "Analyse-Cookies",
-          "description": "Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren."
-        },
-        "marketing": {
-          "title": "Marketing-Cookies",
-          "description": "Werden verwendet, um relevante Werbung zu liefern und deren Wirksamkeit zu messen."
-        },
-        "preferences": {
-          "title": "Präferenz-Cookies",
-          "description": "Merken sich Ihre Präferenzen und Einstellungen für ein besseres Erlebnis."
-        }
-      }
     },
     "termsOfService": {
       "title": "Nutzungsbedingungen",
@@ -873,6 +790,129 @@
         "description": "Diese Bedingungen stellen eine rechtlich bindende Vereinbarung dar. Wenn Sie diesen Bedingungen nicht zustimmen, stellen Sie bitte die Nutzung unserer Website und Dienste sofort ein."
       }
     },
+    "pricingSection": {
+      "calculator": {
+        "title": "Individueller Angebots-Rechner",
+        "description": "Erhalten Sie sofort eine Schätzung für Ihr individuelles Projekt, indem Sie die benötigten Services auswählen.",
+        "toggleButton": "Individuelles Angebot berechnen",
+        "services": {
+          "webDevelopment": {
+            "name": "Webentwicklung",
+            "description": "Individuelle Websites und Webanwendungen",
+            "included": "Im Preis inbegriffen"
+          },
+          "mobileApp": {
+            "name": "Mobile App",
+            "description": "iOS- und Android-Anwendungen",
+            "included": "Im Preis inbegriffen"
+          },
+          "brandDesign": {
+            "name": "Design-Services",
+            "description": "UI/UX- und Grafikdesign",
+            "included": "Im Preis inbegriffen"
+          },
+          "seoMarketing": {
+            "name": "SEO & Marketing",
+            "description": "Suchoptimierung und digitales Marketing",
+            "included": "Im Preis inbegriffen"
+          },
+          "socialMedia": {
+            "name": "Social Media",
+            "description": "Social Media Management und Content-Erstellung",
+            "included": "Im Preis inbegriffen"
+          },
+          "itConsulting": {
+            "name": "IT-Beratung",
+            "description": "Strategische Technologieberatung",
+            "included": "Im Preis inbegriffen"
+          }
+        }
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Fredonbytes - Ihr All-in-One IT-Kraftzentrum",
+      "description": "Von Code bis Klicks liefern wir komplette digitale Dominanz. Vollspektrum-IT-Lösungen einschließlich Softwareentwicklung, Grafikdesign, SEO und Social Media Marketing.",
+      "keywords": "Webentwicklung, Softwareentwicklung, IT-Lösungen, Grafikdesign, SEO, Social Media Marketing, Brünn, Tschechische Republik"
+    },
+    "about": {
+      "title": "Über Fredonbytes - Ihr Partner für digitale Transformation",
+      "description": "Gegründet 2023, eliminiert Fredonbytes die Notwendigkeit mehrerer Anbieter, indem wir Ihre digitale All-in-One-Armee werden und nahtlose, wirkungsvolle Ergebnisse unter einem Dach gewährleisten.",
+      "keywords": "über fredonbytes, digitale Transformation, IT-Unternehmen, Softwareentwicklungsteam, Brünn Tech"
+    },
+    "services": {
+      "title": "IT-Dienstleistungen - Softwareentwicklung, Design & Marketing",
+      "description": "Umfassende IT-Lösungen von der Entwicklung bis zum Marketing. Beseitigen Sie Komplexität mit unserem vereinheitlichten Ansatz für Softwareentwicklung, Design, SEO und Social Media Management.",
+      "keywords": "IT-Dienstleistungen, Softwareentwicklung, Webentwicklung, Grafikdesign, SEO-Services, Social Media Marketing"
+    },
+    "projects": {
+      "title": "Unser Portfolio - Fredonbytes Projektgalerie",
+      "description": "Entdecken Sie unsere neuesten Arbeiten und sehen Sie, wie wir Unternehmen dabei geholfen haben, ihre digitale Präsenz mit modernsten Lösungen zu transformieren.",
+      "keywords": "Portfolio, Webentwicklungsprojekte, Softwareprojekte, Design-Showcase, Fallstudien"
+    },
+    "pricing": {
+      "title": "Transparente Preispläne - Wählen Sie Ihre IT-Lösung",
+      "description": "Transparente Preise ohne versteckte Gebühren. Skalieren Sie Ihr Unternehmen mit unseren flexiblen IT-Lösungen vom Starter- bis zum Enterprise-Plan.",
+      "keywords": "Preise, IT-Services Kosten, Webentwicklung Preise, transparente Preise, Geschäftspläne"
+    },
+    "contact": {
+      "title": "Kontakt Fredonbytes - Lassen Sie uns zusammenarbeiten",
+      "description": "Bereit, Ihre digitale Präsenz zu transformieren? Kontaktieren Sie unser Team in Brünn, Tschechische Republik für eine kostenlose Beratung zu Ihrem nächsten IT-Projekt.",
+      "keywords": "Kontakt, Brünn IT-Unternehmen, kostenlose Beratung, Projektanfrage, Tschechische Republik Tech"
+    },
+    "links": {
+      "title": "Fredonbytes Links - Verbinden Sie sich überall mit uns",
+      "description": "All unsere wichtigen Links an einem Ort. Verbinden Sie sich mit Fredonbytes auf Social Media, GitHub und unseren verschiedenen Plattformen.",
+      "keywords": "Social Links, GitHub, LinkedIn, Kontakt-Links, Fredonbytes Plattformen"
+    },
+    "privacy-policy": {
+      "title": "Datenschutzrichtlinie - Wie wir Ihre Daten schützen",
+      "description": "Erfahren Sie, wie Fredonbytes Ihre persönlichen Informationen sammelt, verwendet und schützt. Wir sind verpflichtet, Ihre Privatsphäre und Datensicherheit zu wahren.",
+      "keywords": "Datenschutzrichtlinie, Datenschutz, DSGVO-Konformität, persönliche Informationen, Datensicherheit"
+    },
+    "terms-of-service": {
+      "title": "Nutzungsbedingungen - Fredonbytes Nutzungsvereinbarung",
+      "description": "Geschäftsbedingungen für die Nutzung der Fredonbytes-Services. Verstehen Sie Ihre Rechte und Pflichten bei der Zusammenarbeit mit unseren IT-Lösungen.",
+      "keywords": "Nutzungsbedingungen, Nutzungsvereinbarung, Service-Bedingungen, rechtliche Bedingungen, Konditionen"
+    },
+    "cookie-policy": {
+      "title": "Cookie-Richtlinie - Wie wir Cookies verwenden",
+      "description": "Informationen darüber, wie Fredonbytes Cookies verwendet, um Ihr Browsing-Erlebnis zu verbessern und die Website-Nutzung zu analysieren.",
+      "keywords": "Cookie-Richtlinie, Website-Cookies, Tracking, Analytics, Benutzererfahrung"
+    },
+    "cookies": {
+      "banner": {
+        "title": "Wir verwenden Cookies",
+        "description": "Wir verwenden Cookies, um Ihr Browsing-Erlebnis zu verbessern, personalisierte Inhalte bereitzustellen und unseren Traffic zu analysieren. Durch Klicken auf \"Alle akzeptieren\" stimmen Sie der Verwendung von Cookies zu.",
+        "learnMore": "Mehr erfahren",
+        "acceptAll": "Alle akzeptieren",
+        "necessaryOnly": "Nur notwendige",
+        "customize": "Anpassen",
+        "savePreferences": "Einstellungen speichern"
+      },
+      "preferences": {
+        "title": "Cookie-Einstellungen",
+        "description": "Passen Sie unten Ihre Cookie-Einstellungen an. Sie können verschiedene Arten von Cookies nach Ihren Präferenzen aktivieren oder deaktivieren.",
+        "necessary": {
+          "title": "Notwendige Cookies",
+          "description": "Erforderlich für das ordnungsgemäße Funktionieren der Website. Kann nicht deaktiviert werden."
+        },
+        "analytics": {
+          "title": "Analyse-Cookies",
+          "description": "Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren."
+        },
+        "marketing": {
+          "title": "Marketing-Cookies",
+          "description": "Werden verwendet, um relevante Werbung zu liefern und deren Wirksamkeit zu messen."
+        },
+        "preferences": {
+          "title": "Präferenz-Cookies",
+          "description": "Merken sich Ihre Präferenzen und Einstellungen für ein besseres Erlebnis."
+        }
+      }
+    },
+
     "privacyPolicy": {
       "title": "Datenschutzrichtlinie",
       "subtitle": "Wie wir Ihre Informationen sammeln, verwenden und schützen",

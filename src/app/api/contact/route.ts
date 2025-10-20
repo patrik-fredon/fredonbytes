@@ -79,7 +79,8 @@ export async function POST(request: NextRequest) {
     const surveyLink = `${siteUrl}/survey/${sessionId}`;
 
     // Store contact submission in database
-    const { data: contactSubmission, error: dbError } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data: contactSubmission, error: dbError } = await (supabase as any)
       .from("contact_submissions")
       .insert({
         session_id: sessionId,
@@ -111,7 +112,8 @@ export async function POST(request: NextRequest) {
 
     // Handle newsletter subscription
     if (validatedData.newsletter) {
-      const { error: newsletterError } = await supabase
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { error: newsletterError } = await (supabase as any)
         .from("newsletter_subscribers")
         .insert({
           email: validatedData.email, // Email not sanitized - already validated by Zod
@@ -120,7 +122,7 @@ export async function POST(request: NextRequest) {
           locale: validatedData.locale,
           active: true,
           source: "contact_form",
-        } as any)
+        })
         .select()
         .single();
 
@@ -183,11 +185,13 @@ export async function POST(request: NextRequest) {
     });
 
     // Create survey session for linking
-    const { error: surveySessionError } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error: surveySessionError } = await (supabase as any)
       .from("survey_sessions")
       .insert({
         session_id: sessionId,
-        contact_submission_id: contactSubmission.id,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        contact_submission_id: (contactSubmission as any).id,
         locale: validatedData.locale,
         ip_address_hash: ipAddressHash,
         user_agent: userAgent,
@@ -199,7 +203,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Update survey_sent flag
-    await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await (supabase as any)
       .from("contact_submissions")
       .update({ survey_sent: true })
       .eq("session_id", sessionId);

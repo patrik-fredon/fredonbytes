@@ -40,7 +40,8 @@ export async function POST(request: NextRequest) {
     const { locale } = validationResult.data;
 
     // Find active survey questionnaire
-    const { data: questionnaireData, error: questionnaireError } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data: questionnaireData, error: questionnaireError } = await (supabase as any)
       .from('questionnaires')
       .select('id')
       .eq('type', 'survey')
@@ -63,11 +64,13 @@ export async function POST(request: NextRequest) {
 
     // Create session
     const sessionId = crypto.randomUUID();
-    const { error: sessionError } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error: sessionError } = await (supabase as any)
       .from('sessions')
       .insert({
         session_id: sessionId,
-        questionnaire_id: questionnaireData.id,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        questionnaire_id: (questionnaireData as any).id,
         locale,
         csrf_token: csrfToken,
         started_at: new Date().toISOString(),
