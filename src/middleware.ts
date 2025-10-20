@@ -157,10 +157,11 @@ export function middleware(request: NextRequest) {
       );
 
       // Set CSRF token cookie if not present (for GET requests and API routes that need it)
+      // NOT httpOnly so JavaScript can read it for x-csrf-token header (double-submit pattern)
       if (!request.cookies.get(CSRF_TOKEN_COOKIE_NAME)) {
         const newCsrfToken = generateCsrfToken();
         response.cookies.set(CSRF_TOKEN_COOKIE_NAME, newCsrfToken, {
-          httpOnly: true,
+          httpOnly: false, // Client needs to read this for x-csrf-token header
           secure: process.env.NODE_ENV === "production",
           sameSite: "strict",
           path: "/",

@@ -96,9 +96,10 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
 
-    // Set CSRF token cookie
+    // Set CSRF token cookie (NOT httpOnly so client can read it for header)
+    // This is safe because we validate both cookie AND header match (double-submit pattern)
     response.cookies.set(CSRF_TOKEN_COOKIE_NAME, csrfToken, {
-      httpOnly: true,
+      httpOnly: false, // Client needs to read this for x-csrf-token header
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
       maxAge: 48 * 60 * 60, // 48 hours
