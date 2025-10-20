@@ -1,0 +1,17 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "clean",
+      "type": "shell",
+      "command": "rm -rf .next node_modules .turbo package-lock.json && npm cache clean --force && npm i"
+    },
+    {
+      "label": "git",
+      "type": "shell",
+      "command": "git add $(pwd)/. && git commit -m \"Commit - $(date +'%Y-%m-%d %H:%M:%S')\" && git push"
+    }
+  ]
+}
