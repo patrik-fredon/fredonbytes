@@ -12,6 +12,13 @@
       "label": "git",
       "type": "shell",
       "command": "git add $(pwd)/. && git commit -m \"Commit - $(date +'%Y-%m-%d %H:%M:%S')\" && git push"
+    },
+    {
+      "type": "npm",
+      "script": "dev",
+      "problemMatcher": [],
+      "label": "npm: dev",
+      "detail": "next dev"
     }
   ]
 }

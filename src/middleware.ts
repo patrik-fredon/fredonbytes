@@ -81,9 +81,22 @@ export function middleware(request: NextRequest) {
   // Handle API routes separately (CSRF + rate limiting)
   if (request.nextUrl.pathname.startsWith("/api/")) {
     const method = request.method;
+    const pathname = request.nextUrl.pathname;
+
+    // Paths that don't require CSRF validation (session creation endpoints)
+    const csrfExemptPaths = [
+      "/api/form", // Form session creation
+      "/api/survey", // Survey session creation
+      "/api/cookies/consent", // Cookie consent
+      "/api/analytics", // Analytics tracking
+    ];
 
     // Only check CSRF for state-changing methods (POST, PUT, DELETE, PATCH)
-    if (["POST", "PUT", "DELETE", "PATCH"].includes(method)) {
+    // EXCEPT for session creation endpoints which generate CSRF tokens
+    const requiresCsrf = ["POST", "PUT", "DELETE", "PATCH"].includes(method);
+    const isExempt = csrfExemptPaths.some(exemptPath => pathname === exemptPath);
+
+    if (requiresCsrf && !isExempt) {
       const csrfTokenFromCookie = request.cookies.get(
         CSRF_TOKEN_COOKIE_NAME
       )?.value;

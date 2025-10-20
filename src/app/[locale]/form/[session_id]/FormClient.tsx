@@ -136,7 +136,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     try {
       setFormState((prev) => ({ ...prev, isLoading: true, error: null }));
 
-      const response = await fetch("/api/form/questions");
+      const response = await fetch(`/api/form/questions?locale=${locale}`);
       const data: QuestionsResponse = await response.json();
 
       if (!response.ok || data.error) {

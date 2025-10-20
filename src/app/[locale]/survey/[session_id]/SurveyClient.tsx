@@ -65,6 +65,7 @@ interface SubmitSurveyResponse {
 
 interface SurveyClientProps {
   sessionId: string;
+  locale: string;
   invalidSession?: boolean;
 }
 
@@ -73,9 +74,10 @@ interface SurveyClientProps {
  * Reuses form components from the existing /form implementation.
  *
  * @param sessionId - The unique session identifier for this survey submission
+ * @param locale - The current locale for localized content
  * @param invalidSession - Whether the session ID format is invalid
  */
-export default function SurveyClient({ sessionId, invalidSession = false }: SurveyClientProps) {
+export default function SurveyClient({ sessionId, locale, invalidSession = false }: SurveyClientProps) {
   // Ref for focus management
   const questionContainerRef = useRef<HTMLDivElement>(null);
 
@@ -93,7 +95,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
     validationError: null,
     submissionError: null,
     direction: 'forward',
-    locale: 'en',
+    locale: locale, // Use the passed locale prop
     completed: false,
   });
 
@@ -112,7 +114,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
     try {
       setSurveyState(prev => ({ ...prev, isLoading: true, error: null }));
 
-      const response = await fetch(`/api/survey/questions?session_id=${sessionId}&locale=${surveyState.locale}`);
+      const response = await fetch(`/api/survey/questions?session_id=${sessionId}&locale=${locale}`);
       const data: SurveyQuestionsResponse = await response.json();
 
       if (!response.ok || data.error) {
@@ -140,7 +142,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
         ...prev,
         questions: adaptedQuestions,
         isLoading: false,
-        locale: data.locale || 'en',
+        locale: data.locale || locale,
       }));
     } catch (err) {
       const error = err instanceof Error ? err : new Error('Failed to load survey questions');
@@ -152,7 +154,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
         error: getUserFriendlyErrorMessage(error),
       }));
     }
-  }, [sessionId, invalidSession, surveyState.locale]);
+  }, [sessionId, locale, invalidSession]);
 
   // Retry function for question loading
   const retryLoadQuestions = () => {

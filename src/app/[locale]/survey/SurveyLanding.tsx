@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Code, Cpu, Database, Globe, Rocket, Server, Terminal, Zap } from 'lucide-react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
@@ -19,6 +20,7 @@ export default function SurveyLanding() {
   const router = useRouter()
   const params = useParams()
   const locale = (params.locale as string) || 'cs'
+  const t = useTranslations('survey')
   const prefersReducedMotion = useReducedMotion()
   const [isStarting, setIsStarting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -157,17 +159,17 @@ export default function SurveyLanding() {
           {/* Welcome Message */}
           <div className="space-y-4">
             <h1 className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white">
-              Welcome to Our Customer Satisfaction Survey
+              {t('title')}
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              Thank you for taking the time to share your feedback with us. Your insights help us improve our services and better serve you.
+              {t('subtitle')}
             </p>
             <p className="text-sm text-slate-500 dark:text-slate-400">
               <span className="inline-flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Estimated time: 3-5 minutes
+                {t('estimatedTime')}
               </span>
             </p>
           </div>
@@ -190,13 +192,13 @@ export default function SurveyLanding() {
               className="min-w-[200px] min-h-[44px]"
               aria-label="Start the customer satisfaction survey"
             >
-              {isStarting ? 'Starting...' : 'Start Survey'}
+              {isStarting ? t('starting') : t('startButton')}
             </Button>
           </div>
 
           {/* Privacy Note */}
           <p className="text-xs text-slate-400 dark:text-slate-500 max-w-md mx-auto">
-            Your responses are confidential and will be used solely to improve our services.
+            {t('privacyNote')}
           </p>
         </motion.div>
         </div>

@@ -63,9 +63,9 @@ export default async function SurveyPage({ params }: SurveyPageProps) {
   // Validate session_id format
   if (!isValidUUID(session_id)) {
     // If invalid, show error in client component
-    return <SurveyClient sessionId={session_id} invalidSession={true} />;
+    return <SurveyClient sessionId={session_id} locale={locale} invalidSession={true} />;
   }
 
-  // Pass the validated session_id to the client component
-  return <SurveyClient sessionId={session_id} invalidSession={false} />;
+  // Pass the validated session_id and locale to the client component
+  return <SurveyClient sessionId={session_id} locale={locale} invalidSession={false} />;
 }

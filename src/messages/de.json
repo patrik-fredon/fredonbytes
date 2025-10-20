@@ -1191,7 +1191,11 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monatliche SEO und digitale Marketing-Dienste",
-            "included": ["Keyword-Recherche", "Content-Strategie", "Analytik"]
+            "included": [
+              "Keyword-Recherche",
+              "Content-Strategie",
+              "Analytik"
+            ]
           },
           "socialMedia": {
             "name": "Social Media",
@@ -1267,6 +1271,76 @@
       "companyName": "Fredonbytes",
       "tagline": "Ihr All-in-One IT-Kraftpaket",
       "location": "Brünn, Tschechische Republik"
+    }
+  },
+  "form": {
+    "title": "Kundenzufriedenheitsformular",
+    "subtitle": "Vielen Dank, dass Sie sich die Zeit nehmen, Ihr Feedback mit uns zu teilen. Ihre Erkenntnisse helfen uns, unsere Dienstleistungen zu verbessern.",
+    "estimatedTime": "Geschätzte Zeit: 3-5 Minuten",
+    "startButton": "Starten",
+    "starting": "Wird gestartet...",
+    "privacyNote": "Ihre Antworten sind vertraulich und werden ausschließlich zur Verbesserung unserer Dienstleistungen verwendet.",
+    "errorStarting": "Fehler beim Starten des Formulars",
+    "loadingQuestions": "Fragen werden geladen...",
+    "submitButton": "Absenden",
+    "submitting": "Wird gesendet...",
+    "nextButton": "Weiter",
+    "previousButton": "Zurück",
+    "step": "Schritt",
+    "of": "von",
+    "required": "Erforderlich",
+    "optional": "Optional",
+    "thankYou": {
+      "title": "Vielen Dank!",
+      "message": "Ihr Feedback wurde erfolgreich übermittelt.",
+      "redirect": "Weiterleitung zur Startseite in",
+      "seconds": "Sekunden"
+    },
+    "newsletter": {
+      "title": "Bleiben Sie informiert",
+      "subscribe": "Abonnieren Sie unseren Newsletter",
+      "email": "Ihre E-Mail-Adresse"
+    },
+    "errors": {
+      "required": "Dieses Feld ist erforderlich",
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "submissionFailed": "Das Absenden des Formulars ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "loadFailed": "Das Laden der Fragen ist fehlgeschlagen. Bitte aktualisieren Sie die Seite."
+    }
+  },
+  "survey": {
+    "title": "Kundenzufriedenheitsumfrage",
+    "subtitle": "Vielen Dank, dass Sie sich die Zeit nehmen, Ihr Feedback mit uns zu teilen. Ihre Erkenntnisse helfen uns, unsere Dienstleistungen zu verbessern.",
+    "estimatedTime": "Geschätzte Zeit: 3-5 Minuten",
+    "startButton": "Umfrage starten",
+    "starting": "Wird gestartet...",
+    "privacyNote": "Ihre Antworten sind vertraulich und werden ausschließlich zur Verbesserung unserer Dienstleistungen verwendet.",
+    "errorStarting": "Fehler beim Starten der Umfrage",
+    "loadingQuestions": "Fragen werden geladen...",
+    "submitButton": "Umfrage absenden",
+    "submitting": "Wird gesendet...",
+    "nextButton": "Weiter",
+    "previousButton": "Zurück",
+    "step": "Schritt",
+    "of": "von",
+    "required": "Erforderlich",
+    "optional": "Optional",
+    "thankYou": {
+      "title": "Vielen Dank!",
+      "message": "Ihr Feedback wurde erfolgreich übermittelt.",
+      "redirect": "Weiterleitung zur Startseite in",
+      "seconds": "Sekunden"
+    },
+    "newsletter": {
+      "title": "Bleiben Sie informiert",
+      "subscribe": "Abonnieren Sie unseren Newsletter",
+      "email": "Ihre E-Mail-Adresse"
+    },
+    "errors": {
+      "required": "Dieses Feld ist erforderlich",
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "submissionFailed": "Das Absenden der Umfrage ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "loadFailed": "Das Laden der Fragen ist fehlgeschlagen. Bitte aktualisieren Sie die Seite."
     }
   }
 }

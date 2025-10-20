@@ -1241,5 +1241,75 @@
       "tagline": "Your All-in-One IT Powerhouse",
       "location": "Brno, Czech Republic"
     }
+  },
+  "form": {
+    "title": "Customer Satisfaction Form",
+    "subtitle": "Thank you for taking the time to share your feedback with us. Your insights help us improve our services and better serve you.",
+    "estimatedTime": "Estimated time: 3-5 minutes",
+    "startButton": "Start",
+    "starting": "Starting...",
+    "privacyNote": "Your responses are confidential and will be used solely to improve our services.",
+    "errorStarting": "Error starting form",
+    "loadingQuestions": "Loading questions...",
+    "submitButton": "Submit",
+    "submitting": "Submitting...",
+    "nextButton": "Next",
+    "previousButton": "Previous",
+    "step": "Step",
+    "of": "of",
+    "required": "Required",
+    "optional": "Optional",
+    "thankYou": {
+      "title": "Thank You!",
+      "message": "Your feedback has been submitted successfully.",
+      "redirect": "Redirecting to homepage in",
+      "seconds": "seconds"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "subscribe": "Subscribe to our newsletter",
+      "email": "Your email address"
+    },
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "submissionFailed": "Failed to submit form. Please try again.",
+      "loadFailed": "Failed to load questions. Please refresh the page."
+    }
+  },
+  "survey": {
+    "title": "Customer Satisfaction Survey",
+    "subtitle": "Thank you for taking the time to share your feedback with us. Your insights help us improve our services and better serve you.",
+    "estimatedTime": "Estimated time: 3-5 minutes",
+    "startButton": "Start Survey",
+    "starting": "Starting...",
+    "privacyNote": "Your responses are confidential and will be used solely to improve our services.",
+    "errorStarting": "Error starting survey",
+    "loadingQuestions": "Loading questions...",
+    "submitButton": "Submit Survey",
+    "submitting": "Submitting...",
+    "nextButton": "Next",
+    "previousButton": "Previous",
+    "step": "Step",
+    "of": "of",
+    "required": "Required",
+    "optional": "Optional",
+    "thankYou": {
+      "title": "Thank You!",
+      "message": "Your feedback has been submitted successfully.",
+      "redirect": "Redirecting to homepage in",
+      "seconds": "seconds"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "subscribe": "Subscribe to our newsletter",
+      "email": "Your email address"
+    },
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "submissionFailed": "Failed to submit survey. Please try again.",
+      "loadFailed": "Failed to load questions. Please refresh the page."
+    }
   }
 }

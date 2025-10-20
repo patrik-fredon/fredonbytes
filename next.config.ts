@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 7, // 7 days
     unoptimized: false,
+    // Add quality configuration to fix Next.js 16 warning
+    qualities: [75, 80, 85, 90, 95, 100],
   },
 
   // Experimental features for performance
