@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import { useReducedMotion } from '@/app/hooks/useReducedMotion'
 
@@ -14,41 +14,18 @@ interface ThankYouScreenProps {
 }
 
 /**
- * ThankYouScreen component for the customer satisfaction form.
- * Displays success message with countdown timer and auto-redirect to homepage.
- * 
+ * ThankYouScreen component for the customer satisfaction survey.
+ * Displays success message with newsletter subscription option and Finish button.
+ *
  * @param onRedirect - Optional callback function for manual redirect (defaults to router.push('/'))
  */
 export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
   const router = useRouter()
   const prefersReducedMotion = useReducedMotion()
-  const [countdown, setCountdown] = useState(10)
+  const [newsletterSubscribed, setNewsletterSubscribed] = useState(false)
 
-  // Countdown timer and auto-redirect
-  useEffect(() => {
-    // Decrement countdown every second
-    const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          // Countdown complete - trigger redirect
-          clearInterval(timer)
-          if (onRedirect) {
-            onRedirect()
-          } else {
-            router.push('/')
-          }
-          return 0
-        }
-        return prev - 1
-      })
-    }, 1000)
-
-    // Cleanup interval on unmount
-    return () => clearInterval(timer)
-  }, [router, onRedirect])
-
-  // Handle manual redirect
-  const handleManualRedirect = () => {
+  // Handle finish button click
+  const handleFinish = () => {
     if (onRedirect) {
       onRedirect()
     } else {
@@ -101,25 +78,31 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
         </p>
       </div>
 
-      {/* Countdown Timer */}
+      {/* Newsletter Subscription */}
       <div className="pt-6">
-        <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
-          Redirecting to homepage in{' '}
-          <span className="font-semibold text-blue-600 dark:text-blue-400">
-            {countdown}
-          </span>{' '}
-          {countdown === 1 ? 'second' : 'seconds'}...
-        </p>
+        <label className="flex items-start gap-3 cursor-pointer group max-w-md mx-auto">
+          <input
+            type="checkbox"
+            checked={newsletterSubscribed}
+            onChange={(e) => setNewsletterSubscribed(e.target.checked)}
+            className="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+          />
+          <span className="text-sm text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+            Subscribe to our newsletter for updates, tips, and exclusive content
+          </span>
+        </label>
+      </div>
 
-        {/* Manual Redirect Button */}
+      {/* Finish Button */}
+      <div className="pt-6">
         <Button
-          onClick={handleManualRedirect}
+          onClick={handleFinish}
           variant="gradient"
           size="lg"
           className="min-w-[200px] min-h-[44px]"
-          aria-label="Return to homepage now"
+          aria-label="Return to homepage"
         >
-          Return to Homepage
+          Finish
         </Button>
       </div>
 

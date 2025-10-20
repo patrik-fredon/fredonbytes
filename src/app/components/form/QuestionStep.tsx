@@ -127,16 +127,22 @@ export default function QuestionStep({
 
   return (
     <div className="space-y-6">
-      {/* Question Text with Required Indicator */}
+      {/* Question Text with Required/Optional Indicator */}
       <div className="space-y-2">
-        <h2 className="text-2xl lg:text-3xl font-semibold text-slate-900 dark:text-white">
-          {question.question_text}
-          {question.required && (
-            <span className="text-red-600 dark:text-red-400 ml-2" aria-label="required">
-              *
+        <div className="flex items-start gap-3">
+          <h2 className="text-2xl lg:text-3xl font-semibold text-slate-900 dark:text-white flex-1">
+            {question.question_text}
+          </h2>
+          {question.required ? (
+            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 whitespace-nowrap">
+              Required
+            </span>
+          ) : (
+            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 whitespace-nowrap">
+              Optional
             </span>
           )}
-        </h2>
+        </div>
 
         {/* Description (if provided) */}
         {question.description && (

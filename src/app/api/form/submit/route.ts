@@ -1,19 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import crypto from 'crypto';
 
 import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from '@/app/lib/csrf';
 import { sendEmail } from '@/app/lib/email';
 import { generateAdminNotificationHTML, type FormResponseData } from '@/app/lib/email-templates';
 import { sanitizeAnswerValue } from '@/app/lib/input-sanitization';
-import { supabase, type AnswerValue, type FormSession, type Question } from '@/app/lib/supabase';
+import { supabase, type AnswerValue, type Question, type LocalizedString } from '@/app/lib/supabase';
+
+// Hash IP address for privacy
+function hashIpAddress(ip: string): string {
+  return crypto.createHash('sha256').update(ip).digest('hex');
+}
 
 // Zod schema for request validation
 const submitRequestSchema = z.object({
-  session_id: z.string().uuid('Invalid session ID format'),
+  session_id: z.string().uuid('Invalid session ID format').optional(),
   responses: z.array(
     z.object({
       question_id: z.string().uuid('Invalid question ID format'),
-      answer_value: z.union([z.string(), z.array(z.string())]),
+      answer_value: z.union([z.string(), z.array(z.string()), z.number()]),
     })
   ).min(1, 'At least one response is required'),
   metadata: z.object({
@@ -23,12 +29,14 @@ const submitRequestSchema = z.object({
   newsletter_optin: z.boolean().optional(),
   email: z.string().email().optional(),
   locale: z.string().optional(),
+  original_session_id: z.string().uuid().optional(),
 });
 
 // Response interface for submit endpoint
 export interface SubmitResponse {
   success: boolean;
   message: string;
+  session_id?: string;
   error?: string;
 }
 
@@ -64,7 +72,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { session_id, responses, metadata, newsletter_optin, email, locale } = validationResult.data;
+    const { session_id: providedSessionId, responses, metadata, newsletter_optin, email, locale, original_session_id } = validationResult.data;
 
     // Sanitize all answer values to prevent XSS attacks
     const sanitizedResponses = responses.map(response => ({
@@ -72,85 +80,181 @@ export async function POST(request: NextRequest) {
       answer_value: sanitizeAnswerValue(response.answer_value),
     }));
 
-    // Check if session already completed (duplicate submission)
-    const { data: existingSession, error: sessionCheckError } = await supabase
-      .from('form_sessions')
-      .select('completed_at')
-      .eq('session_id', session_id)
+    // Validate locale
+    const sessionLocale = locale && ['en', 'cs', 'de'].includes(locale) ? locale : 'en';
+
+    // Get the form questionnaire ID
+    const { data: questionnaire, error: questionnaireError } = await supabase
+      .from('questionnaires')
+      .select('id')
+      .eq('type', 'form')
+      .eq('active', true)
       .maybeSingle();
 
-    if (sessionCheckError) {
-      console.error('Error checking session:', sessionCheckError);
+    if (questionnaireError || !questionnaire) {
+      console.error('Error fetching form questionnaire:', questionnaireError);
       return NextResponse.json(
         {
           success: false,
-          message: 'Failed to verify session',
+          message: 'Form questionnaire not found',
           error: 'Database error',
         } as SubmitResponse,
         { status: 500 }
       );
     }
 
-    // If session exists and is already completed, reject duplicate submission
-    if (existingSession && (existingSession as FormSession).completed_at) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'Form already submitted',
-          error: 'This session has already been completed',
-        } as SubmitResponse,
-        { status: 409 }
-      );
+    let sessionId = providedSessionId;
+
+    // If session_id is provided, verify it exists and isn't completed
+    if (sessionId) {
+      const { data: existingSession, error: sessionCheckError } = await supabase
+        .from('sessions')
+        .select('session_id, completed_at, questionnaire_id')
+        .eq('session_id', sessionId)
+        .maybeSingle();
+
+      if (sessionCheckError) {
+        console.error('Error checking session:', sessionCheckError);
+        return NextResponse.json(
+          {
+            success: false,
+            message: 'Failed to verify session',
+            error: 'Database error',
+          } as SubmitResponse,
+          { status: 500 }
+        );
+      }
+
+      // If session exists and is already completed, reject duplicate submission
+      if (existingSession?.completed_at) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: 'Form already submitted',
+            error: 'This session has already been completed',
+          } as SubmitResponse,
+          { status: 409 }
+        );
+      }
+
+      // If session doesn't exist, create it
+      if (!existingSession) {
+        const { error: createSessionError } = await supabase
+          .from('sessions')
+          .insert({
+            session_id: sessionId,
+            questionnaire_id: questionnaire.id,
+            original_session_id: original_session_id || null,
+            locale: sessionLocale,
+            ip_address_hash: metadata?.ip_address ? hashIpAddress(metadata.ip_address) : null,
+            user_agent: metadata?.user_agent || null,
+            email: email || null,
+            newsletter_optin: newsletter_optin || false,
+          });
+
+        if (createSessionError) {
+          console.error('Error creating session:', createSessionError);
+          return NextResponse.json(
+            {
+              success: false,
+              message: 'Failed to create session',
+              error: 'Database error',
+            } as SubmitResponse,
+            { status: 500 }
+          );
+        }
+      }
+    } else {
+      // Create new session
+      const { data: newSession, error: createSessionError } = await supabase
+        .from('sessions')
+        .insert({
+          questionnaire_id: questionnaire.id,
+          original_session_id: original_session_id || null,
+          locale: sessionLocale,
+          ip_address_hash: metadata?.ip_address ? hashIpAddress(metadata.ip_address) : null,
+          user_agent: metadata?.user_agent || null,
+          email: email || null,
+          newsletter_optin: newsletter_optin || false,
+        })
+        .select('session_id')
+        .single();
+
+      if (createSessionError || !newSession) {
+        console.error('Error creating session:', createSessionError);
+        return NextResponse.json(
+          {
+            success: false,
+            message: 'Failed to create session',
+            error: 'Database error',
+          } as SubmitResponse,
+          { status: 500 }
+        );
+      }
+
+      sessionId = newSession.session_id;
     }
 
-    // Insert or update form_sessions record
-    const { error: sessionError } = await supabase
-      .from('form_sessions')
-      .upsert({
-        session_id,
+    // Update session to mark as completed
+    const { error: updateSessionError } = await supabase
+      .from('sessions')
+      .update({
         completed_at: new Date().toISOString(),
-        ip_address_hash: metadata?.ip_address ?? null,
-        user_agent: metadata?.user_agent ?? null,
-        newsletter_optin: newsletter_optin ?? false,
-        email: email ?? null,
-        locale: locale ?? 'en',
-      }, {
-        onConflict: 'session_id',
-      });
+        email: email || null,
+        newsletter_optin: newsletter_optin || false,
+      })
+      .eq('session_id', sessionId);
 
-    if (sessionError) {
-      console.error('Error upserting form session:', sessionError);
+    if (updateSessionError) {
+      console.error('Error updating session:', updateSessionError);
       return NextResponse.json(
         {
           success: false,
-          message: 'Failed to save session',
+          message: 'Failed to update session',
           error: 'Database error',
         } as SubmitResponse,
         { status: 500 }
       );
     }
 
-    // Batch insert form_responses (using sanitized responses)
-    const formResponses = sanitizedResponses.map(response => ({
-      session_id,
+    // Batch insert form_answers (using sanitized responses)
+    const formAnswers = sanitizedResponses.map(response => ({
+      session_id: sessionId!,
       question_id: response.question_id,
       answer_value: response.answer_value as AnswerValue,
     }));
 
-    const { error: responsesError } = await supabase
-      .from('form_responses')
-      .insert(formResponses);
+    const { error: answersError } = await supabase
+      .from('form_answers')
+      .insert(formAnswers);
 
-    if (responsesError) {
-      console.error('Error inserting form responses:', responsesError);
+    if (answersError) {
+      console.error('Error inserting form answers:', answersError);
       return NextResponse.json(
         {
           success: false,
-          message: 'Failed to save responses',
+          message: 'Failed to save answers',
           error: 'Database error',
         } as SubmitResponse,
         { status: 500 }
       );
+    }
+
+    // Cache session data for offline continuity
+    try {
+      await supabase
+        .from('session_cache')
+        .upsert({
+          session_id: sessionId!,
+          cache_key: 'form_submission',
+          cache_data: {
+            responses: sanitizedResponses,
+            completed_at: new Date().toISOString(),
+          },
+        });
+    } catch (cacheError) {
+      console.error('Failed to cache session data:', cacheError);
+      // Non-blocking, continue
     }
 
     // Send admin notification email (non-blocking)
@@ -163,20 +267,21 @@ export async function POST(request: NextRequest) {
         .in('id', questionIds);
 
       if (!questionsError && questions) {
-        // Map responses to include question text (using sanitized responses)
+        // Map responses to include question text in English (using sanitized responses)
         const formattedResponses: FormResponseData[] = sanitizedResponses.map(response => {
           const question = (questions as Question[]).find((q: Question) => q.id === response.question_id);
+          const questionText = question?.question_text as LocalizedString | undefined;
           return {
             question_id: response.question_id,
-            question_text: question?.question_text ?? 'Unknown Question',
+            question_text: questionText?.en || 'Unknown Question',
             answer_value: response.answer_value,
-            answer_type: question?.answer_type ?? 'unknown',
+            answer_type: question?.answer_type || 'unknown',
           };
         });
 
         // Generate email HTML
         const emailHtml = generateAdminNotificationHTML({
-          session_id,
+          session_id: sessionId!,
           timestamp: new Date().toISOString(),
           responses: formattedResponses,
         });
@@ -184,17 +289,17 @@ export async function POST(request: NextRequest) {
         // Send email via SMTP
         await sendEmail({
           from: 'Customer Feedback <noreply@fredonbytes.cloud>',
-          to: process.env.ADMIN_EMAIL ?? 'info@fredonbytes.cloud',
-          subject: `New Customer Satisfaction Survey - ${session_id.substring(0, 8)}`,
+          to: process.env.ADMIN_EMAIL || 'info@fredonbytes.cloud',
+          subject: `New Customer Satisfaction Form - ${sessionId!.substring(0, 8)}`,
           html: emailHtml,
         });
 
-        console.log(`Admin notification email sent for session: ${session_id}`);
+        console.log(`Admin notification email sent for session: ${sessionId}`);
       }
     } catch (emailError) {
       // Log email error but don't block form submission
       console.error('Failed to send admin notification email:', emailError);
-      console.error('Session ID:', session_id);
+      console.error('Session ID:', sessionId);
       // Continue with success response despite email failure
     }
 
@@ -203,6 +308,7 @@ export async function POST(request: NextRequest) {
       {
         success: true,
         message: 'Form submitted successfully',
+        session_id: sessionId,
       } as SubmitResponse,
       { status: 200 }
     );

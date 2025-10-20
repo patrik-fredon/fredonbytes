@@ -4,11 +4,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { useState, useEffect, useCallback, useRef } from 'react';
 
+import AnimatedBackground from '@/app/components/common/AnimatedBackground';
 import ErrorState from '@/app/components/form/ErrorState';
-import FormBackground from '@/app/components/form/FormBackground';
 import FormNavigation from '@/app/components/form/FormNavigation';
 import QuestionStep from '@/app/components/form/QuestionStep';
-import WelcomeScreen from '@/app/components/form/WelcomeScreen';
 // Lazy load ThankYouScreen since it's only needed at the end
 const ThankYouScreen = dynamic(() => import('@/app/components/form/ThankYouScreen'), {
   loading: () => (
@@ -83,10 +82,10 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
   // Detect reduced motion preference
   const prefersReducedMotion = useReducedMotion();
 
-  // State management
+  // State management - Start at step 1 (first question) since welcome is on landing page
   const [surveyState, setSurveyState] = useState<SurveyState>({
     questions: [],
-    currentStep: 0,
+    currentStep: 1,
     answers: new Map<string, AnswerValue | number>(),
     isLoading: !invalidSession,
     isSubmitting: false,
@@ -203,13 +202,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
   const handleNext = () => {
     const { currentStep, questions } = surveyState;
 
-    // If on welcome screen (step 0), move to first question
-    if (currentStep === 0) {
-      setSurveyState(prev => ({ ...prev, currentStep: 1, validationError: null, direction: 'forward' }));
-      return;
-    }
-
-    // If on a question, validate if required
+    // Validate current question if required
     const currentQuestionIndex = currentStep - 1;
     const currentQuestion = questions[currentQuestionIndex];
 
@@ -243,7 +236,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
   const handlePrevious = () => {
     const { currentStep } = surveyState;
 
-    if (currentStep <= 0) {
+    if (currentStep <= 1) {
       return;
     }
 
@@ -398,14 +391,14 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
   };
 
   // Determine navigation button states
-  const canGoPrevious = surveyState.currentStep > 0;
+  const canGoPrevious = surveyState.currentStep > 1;
   const canGoNext = true;
 
   // Render loading state
   if (surveyState.isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-        <FormBackground />
+        <AnimatedBackground />
 
         <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
           <div className="text-center">
@@ -421,7 +414,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
   if (surveyState.error && !surveyState.isSubmitting) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-        <FormBackground />
+        <AnimatedBackground />
 
         <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
           <ErrorState
@@ -440,12 +433,12 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
   // Render main survey form
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-      <FormBackground />
+      <AnimatedBackground />
 
       {/* Form container */}
       <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
         {/* Progress indicator */}
-        {surveyState.currentStep > 0 && surveyState.currentStep <= surveyState.questions.length && (
+        {surveyState.currentStep >= 1 && surveyState.currentStep <= surveyState.questions.length && (
           <div className="mb-6">
             <div className="flex justify-between items-center mb-2">
               <span className="text-sm font-medium text-slate-600 dark:text-slate-300">
@@ -467,23 +460,7 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
         {/* Question container with AnimatePresence for smooth transitions */}
         <div ref={questionContainerRef} className="min-h-[400px] flex flex-col">
           <AnimatePresence mode="wait" custom={surveyState.direction}>
-            {surveyState.currentStep === 0 && (
-              <motion.div
-                key="welcome"
-                custom={surveyState.direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={slideTransition}
-                style={animatedStyle}
-                className="flex-1"
-              >
-                <WelcomeScreen onNext={handleNext} />
-              </motion.div>
-            )}
-
-            {surveyState.currentStep > 0 && surveyState.currentStep <= surveyState.questions.length && (
+            {surveyState.currentStep >= 1 && surveyState.currentStep <= surveyState.questions.length && (
               <motion.div
                 key={`question-${surveyState.currentStep}`}
                 custom={surveyState.direction}
