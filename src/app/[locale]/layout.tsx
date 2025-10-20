@@ -55,7 +55,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Fredonbytes - Your All-in-One IT Powerhouse",
+ title: "Fredonbytes - Your All-in-One IT Powerhouse",
   description:
     "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
   keywords:
@@ -64,6 +64,11 @@ export const metadata: Metadata = {
   creator: "Fredonbytes",
   publisher: "Fredonbytes",
   robots: "index, follow",
+  icons: {
+    icon: "/FredonBytes_GraphicLogo.png",
+    shortcut: "/FredonBytes_GraphicLogo.png",
+    apple: "/FredonBytes_GraphicLogo.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

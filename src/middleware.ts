@@ -36,8 +36,9 @@ setInterval(() => {
 function getRateLimitKey(request: NextRequest): string {
   // Use IP address as the rate limit key
   // Try multiple headers for IP detection (Vercel, Cloudflare, etc.)
+  const forwardedFor = request.headers.get("x-forwarded-for");
   const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[1].trim() ||
+    forwardedFor ? (forwardedFor.split(",")[0]?.trim() || "unknown") :
     request.headers.get("x-real-ip") ||
     "unknown";
   const pathname = request.nextUrl.pathname;

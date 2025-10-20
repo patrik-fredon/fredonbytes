@@ -3,11 +3,13 @@
 import { motion } from 'framer-motion'
 import { Code, Cpu, Database, Globe, Rocket, Server, Terminal, Zap } from 'lucide-react'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
+import type { CreateSurveySessionResponse } from '@/app/api/survey/route'
 import { Button } from '@/app/components/common/Button'
 import { useReducedMotion } from '@/app/hooks/useReducedMotion'
+import { useRouter } from '@/i18n/navigation'
 
 /**
  * SurveyLanding component - Welcome screen for customer satisfaction survey.
@@ -15,8 +17,11 @@ import { useReducedMotion } from '@/app/hooks/useReducedMotion'
  */
 export default function SurveyLanding() {
   const router = useRouter()
+  const params = useParams()
+  const locale = (params.locale as string) || 'cs'
   const prefersReducedMotion = useReducedMotion()
   const [isStarting, setIsStarting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   // IT-themed floating icons
   const floatingIcons = [
@@ -55,11 +60,38 @@ export default function SurveyLanding() {
     }
   }
 
-  const handleStart = () => {
+  const handleStart = async () => {
     setIsStarting(true)
-    // Generate session ID and navigate
-    const sessionId = crypto.randomUUID()
-    router.push(`/survey/${sessionId}`)
+    setError(null)
+
+    try {
+      // Create session via API
+      const response = await fetch('/api/survey', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ locale }),
+      })
+
+      const data: CreateSurveySessionResponse = await response.json()
+
+      if (!response.ok || !data.success || !data.session_id) {
+        throw new Error(data.error || 'Failed to create session')
+      }
+
+      // Store CSRF token in localStorage for later use
+      if (data.csrf_token) {
+        localStorage.setItem(`survey_csrf_${data.session_id}`, data.csrf_token)
+      }
+
+      // Navigate to survey with session_id using locale-aware router
+      router.push(`/survey/${data.session_id}`)
+    } catch (err) {
+      console.error('Error starting survey:', err)
+      setError(err instanceof Error ? err.message : 'Failed to start survey')
+      setIsStarting(false)
+    }
   }
 
   return (
@@ -139,6 +171,13 @@ export default function SurveyLanding() {
               </span>
             </p>
           </div>
+
+          {/* Error Message */}
+          {error && (
+            <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+              <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+            </div>
+          )}
 
           {/* Start Button */}
           <div className="pt-4">

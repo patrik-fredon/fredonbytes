@@ -1,17 +1,8 @@
-import type { Metadata, Viewport } from 'next';
-import dynamic from 'next/dynamic';
 import { setRequestLocale } from 'next-intl/server';
 
-import FormLoadingSkeleton from '@/app/components/form/FormLoadingSkeleton';
-import { supabase } from '@/app/lib/supabase';
 import { redirect } from '@/i18n/navigation';
 
-// Dynamic import for SurveyClient with loading skeleton
-const SurveyClient = dynamic(() => import('../../[session_id]/SurveyClient'), {
-  loading: () => <FormLoadingSkeleton />,
-});
-
-interface SurveyJoinPageProps {
+interface JoinSurveyPageProps {
   params: Promise<{
     locale: string;
     session_id: string;
@@ -19,95 +10,13 @@ interface SurveyJoinPageProps {
 }
 
 /**
- * Metadata for the shareable survey link page
+ * Join page for shareable survey links
+ * Redirects to the main survey page with the provided session_id
  */
-export const metadata: Metadata = {
-  title: 'Join Survey - FredonBytes',
-  description: 'Complete this shared customer satisfaction survey.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  themeColor: '#0f172a',
-};
-
-/**
- * Validates if a string is a valid UUID v4 format
- */
-function isValidUUID(uuid: string): boolean {
-  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-  return uuidRegex.test(uuid);
-}
-
-/**
- * Survey join page for shareable links.
- * Creates a new session linked to the original session_id for tracking.
- */
-export default async function SurveyJoinPage({ params }: SurveyJoinPageProps) {
-  const { locale, session_id: originalSessionId } = await params;
+export default async function JoinSurveyPage({ params }: JoinSurveyPageProps) {
+  const { locale, session_id } = await params;
   setRequestLocale(locale);
 
-  // Validate original session_id format
-  if (!isValidUUID(originalSessionId)) {
-    return <SurveyClient sessionId={originalSessionId} invalidSession={true} />;
-  }
-
-  try {
-    // Check if original session exists and is valid
-    const { data: originalSession, error: sessionError } = await supabase
-      .from('sessions')
-      .select('session_id, questionnaire_id, expires_at, completed_at')
-      .eq('session_id', originalSessionId)
-      .maybeSingle();
-
-    // If original session doesn't exist or there's an error
-    if (sessionError || !originalSession) {
-      return <SurveyClient sessionId={originalSessionId} invalidSession={true} />;
-    }
-
-    // Check if session is expired
-    if (originalSession.expires_at && new Date(originalSession.expires_at) < new Date()) {
-      return <SurveyClient sessionId={originalSessionId} invalidSession={true} />;
-    }
-
-    // Verify it's a survey questionnaire
-    const { data: questionnaire, error: questionnaireError } = await supabase
-      .from('questionnaires')
-      .select('id, type')
-      .eq('id', originalSession.questionnaire_id)
-      .eq('type', 'survey')
-      .eq('active', true)
-      .maybeSingle();
-
-    if (questionnaireError || !questionnaire) {
-      return <SurveyClient sessionId={originalSessionId} invalidSession={true} />;
-    }
-
-    // Create a new session linked to the original
-    const { data: newSession, error: createError } = await supabase
-      .from('sessions')
-      .insert({
-        questionnaire_id: questionnaire.id,
-        original_session_id: originalSessionId,
-        locale,
-      })
-      .select('session_id')
-      .single();
-
-    if (createError || !newSession) {
-      console.error('Error creating new session for join link:', createError);
-      return <SurveyClient sessionId={originalSessionId} invalidSession={true} />;
-    }
-
-    // Redirect to the new session
-    redirect({ href: `/survey/${newSession.session_id}`, locale });
-  } catch (error) {
-    console.error('Error processing survey join link:', error);
-    return <SurveyClient sessionId={originalSessionId} invalidSession={true} />;
-  }
+  // Redirect to the main survey page with the session_id
+  redirect({ href: `/survey/${session_id}`, locale });
 }

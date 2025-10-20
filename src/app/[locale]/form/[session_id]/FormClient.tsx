@@ -1,43 +1,81 @@
-'use client'
+"use client";
 
-import { AnimatePresence, motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { AnimatePresence, motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import { useState, useEffect, useCallback, useRef } from "react";
 
-import ErrorState from '@/app/components/form/ErrorState';
-import FormBackground from '@/app/components/form/FormBackground';
-import FormNavigation from '@/app/components/form/FormNavigation';
-import QuestionStep from '@/app/components/form/QuestionStep';
+import ErrorState from "@/app/components/form/ErrorState";
+import FormBackground from "@/app/components/form/FormBackground";
+import FormNavigation from "@/app/components/form/FormNavigation";
+import QuestionStep from "@/app/components/form/QuestionStep";
 // Lazy load ThankYouScreen since it's only needed at the end
-const ThankYouScreen = dynamic(() => import('@/app/components/form/ThankYouScreen'), {
-  loading: () => (
-    <div className="text-center py-12">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-      <p className="text-slate-600 dark:text-slate-300">Loading...</p>
-    </div>
-  ),
-});
-import { useReducedMotion } from '@/app/hooks/useReducedMotion';
-import { getCsrfToken } from '@/app/hooks/useCsrfToken';
-import { logError, getUserFriendlyErrorMessage } from '@/app/lib/error-logger';
-import { loadAnswers, saveAnswer, clearStorageData } from '@/app/lib/form-storage';
-import { validateAnswer, validateAllAnswers, findFirstUnansweredRequired } from '@/app/lib/form-validation';
-import type { Question, AnswerValue, LocalizedString } from '@/app/lib/supabase';
+const ThankYouScreen = dynamic(
+  () => import("@/app/components/form/ThankYouScreen"),
+  {
+    loading: () => (
+      <div className="text-center py-12">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+        <p className="text-slate-600 dark:text-slate-300">Loading...</p>
+      </div>
+    ),
+  }
+);
+import { getCsrfToken } from "@/app/hooks/useCsrfToken";
+import { useReducedMotion } from "@/app/hooks/useReducedMotion";
+import { logError, getUserFriendlyErrorMessage } from "@/app/lib/error-logger";
+import {
+  loadAnswers,
+  saveAnswer,
+  clearStorageData,
+} from "@/app/lib/form-storage";
+import {
+  validateAnswer,
+  validateAllAnswers,
+  findFirstUnansweredRequired,
+} from "@/app/lib/form-validation";
+import type {
+  Question,
+  AnswerValue,
+  LocalizedString,
+} from "@/app/lib/supabase";
+
+// Add ValidatableQuestion type that matches what QuestionStep expects
+interface ValidatableQuestion {
+  id: string;
+  question_text: string;
+  question_type: string;
+  is_required: boolean;
+  description?: string | null;
+  options?: Array<{
+    id: string;
+    option_text: string;
+    value: string;
+  }>;
+  order_number: number;
+  // Add missing properties to match Question type
+  answer_type: string;
+  required: boolean;
+  display_order: number;
+  active: boolean;
+}
 
 // Helper function to extract localized string based on locale
-function getLocalizedString(localizedStr: LocalizedString | string, locale: string): string {
+function getLocalizedString(
+  localizedStr: LocalizedString | string,
+  locale: string
+): string {
   // If it's already a string, return it
-  if (typeof localizedStr === 'string') {
+  if (typeof localizedStr === "string") {
     return localizedStr;
   }
-  
+
   // Try to get the requested locale, fallback to English
-  return localizedStr[locale as keyof LocalizedString] || localizedStr.en || '';
+  return localizedStr[locale as keyof LocalizedString] || localizedStr.en || "";
 }
 
 // FormState interface for managing component state
 interface FormState {
-  questions: Question[];
+  questions: ValidatableQuestion[]; // Changed from Question[] to ValidatableQuestion[]
   currentStep: number; // 1-n = questions, n+1 = thank you
   answers: Map<string, AnswerValue>;
   isLoading: boolean;
@@ -45,7 +83,7 @@ interface FormState {
   error: string | null;
   validationError: string | null; // Error message for current question validation
   submissionError: string | null; // Separate error for submission failures (shown in modal)
-  direction: 'forward' | 'backward'; // Navigation direction for animations
+  direction: "forward" | "backward"; // Navigation direction for animations
 }
 
 // QuestionsResponse interface matching API response
@@ -76,7 +114,7 @@ interface FormClientProps {
 export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Ref for focus management
   const questionContainerRef = useRef<HTMLDivElement>(null);
-  
+
   // Detect reduced motion preference
   const prefersReducedMotion = useReducedMotion();
 
@@ -90,42 +128,49 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     error: null,
     validationError: null,
     submissionError: null,
-    direction: 'forward',
+    direction: "forward",
   });
 
   // Fetch questions from API on mount
   const fetchQuestions = useCallback(async () => {
     try {
-      setFormState(prev => ({ ...prev, isLoading: true, error: null }));
+      setFormState((prev) => ({ ...prev, isLoading: true, error: null }));
 
-      const response = await fetch('/api/form/questions');
+      const response = await fetch("/api/form/questions");
       const data: QuestionsResponse = await response.json();
 
       if (!response.ok || data.error) {
-        throw new Error(data.error ?? 'Failed to fetch questions');
+        throw new Error(data.error ?? "Failed to fetch questions");
       }
 
       // Transform questions to use localized strings
-      const localizedQuestions = data.questions.map(question => ({
-        ...question,
-        question_text: getLocalizedString(question.question_text, locale),
-        description: question.description ? getLocalizedString(question.description, locale) : null,
-        options: question.options?.map(option => ({
-          ...option,
-          option_text: getLocalizedString(option.option_text, locale),
-        })),
-      }));
+      const localizedQuestions: ValidatableQuestion[] = data.questions.map(
+        (question) => ({
+          ...question, // Preserve all original properties including question_type, is_required, order_number
+          question_text: getLocalizedString(question.question_text, locale),
+          description: question.description
+            ? getLocalizedString(question.description, locale)
+            : null,
+          options: question.options?.map((option) => ({
+            ...option,
+            option_text: getLocalizedString(option.option_text, locale),
+          })),
+        })
+      );
 
-      setFormState(prev => ({
+      setFormState((prev) => ({
         ...prev,
         questions: localizedQuestions,
         isLoading: false,
       }));
     } catch (err) {
-      const error = err instanceof Error ? err : new Error('Failed to load survey questions');
-      logError('QuestionLoading', error, { sessionId });
-      
-      setFormState(prev => ({
+      const error =
+        err instanceof Error
+          ? err
+          : new Error("Failed to load survey questions");
+      logError("QuestionLoading", error, { sessionId });
+
+      setFormState((prev) => ({
         ...prev,
         isLoading: false,
         error: getUserFriendlyErrorMessage(error),
@@ -135,7 +180,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
 
   // Retry function for question loading
   const retryLoadQuestions = () => {
-    setFormState(prev => ({ ...prev, error: null, isLoading: true }));
+    setFormState((prev) => ({ ...prev, error: null, isLoading: true }));
     fetchQuestions();
   };
 
@@ -146,14 +191,18 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Focus management - move focus to first input when question changes
   useEffect(() => {
     // Only manage focus when on a question step (not thank you)
-    if (formState.currentStep >= 1 && formState.currentStep <= formState.questions.length) {
+    if (
+      formState.currentStep >= 1 &&
+      formState.currentStep <= formState.questions.length
+    ) {
       // Small delay to allow animation to start
       const timer = setTimeout(() => {
         // Find the first focusable input element
-        const firstInput = questionContainerRef.current?.querySelector<HTMLElement>(
-          'input:not([type="hidden"]), textarea, select, button'
-        );
-        
+        const firstInput =
+          questionContainerRef.current?.querySelector<HTMLElement>(
+            'input:not([type="hidden"]), textarea, select, button'
+          );
+
         if (firstInput) {
           firstInput.focus();
         }
@@ -166,14 +215,14 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Load saved answers from localStorage on mount
   useEffect(() => {
     const savedAnswers = loadAnswers(sessionId);
-    
+
     if (savedAnswers) {
       const answersMap = new Map<string, AnswerValue>();
       Object.entries(savedAnswers).forEach(([questionId, value]) => {
         answersMap.set(questionId, value);
       });
 
-      setFormState(prev => ({
+      setFormState((prev) => ({
         ...prev,
         answers: answersMap,
       }));
@@ -190,22 +239,22 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
 
     if (currentQuestion) {
       const answer = formState.answers.get(currentQuestion.id);
-      
+
       // Use validation function to check answer
       const validationError = validateAnswer(currentQuestion, answer);
-      
+
       if (validationError) {
         // Validation failed - prevent navigation and show error
-        setFormState(prev => ({ 
-          ...prev, 
-          validationError: validationError.message 
+        setFormState((prev) => ({
+          ...prev,
+          validationError: validationError.message,
         }));
         return;
       }
     }
 
     // Clear any previous validation errors
-    setFormState(prev => ({ ...prev, validationError: null }));
+    setFormState((prev) => ({ ...prev, validationError: null }));
 
     // If on last question, trigger form submission
     if (currentStep === questions.length) {
@@ -214,8 +263,12 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     }
 
     // Move to next question
-    setFormState(prev => ({ ...prev, currentStep: currentStep + 1, direction: 'forward' }));
-  };;
+    setFormState((prev) => ({
+      ...prev,
+      currentStep: currentStep + 1,
+      direction: "forward",
+    }));
+  };
 
   const handlePrevious = () => {
     const { currentStep } = formState;
@@ -226,7 +279,11 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     }
 
     // Move to previous step
-    setFormState(prev => ({ ...prev, currentStep: currentStep - 1, direction: 'backward' }));
+    setFormState((prev) => ({
+      ...prev,
+      currentStep: currentStep - 1,
+      direction: "backward",
+    }));
   };
 
   // Handle answer changes with localStorage persistence
@@ -236,10 +293,10 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       saveAnswer(sessionId, questionId, value);
 
       // Update component state and clear validation error
-      setFormState(prev => {
+      setFormState((prev) => {
         const newAnswers = new Map(prev.answers);
         newAnswers.set(questionId, value);
-        
+
         return {
           ...prev,
           answers: newAnswers,
@@ -248,14 +305,17 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       });
     } catch (err) {
       // Handle localStorage failures gracefully
-      const error = err instanceof Error ? err : new Error('Failed to save answer to localStorage');
-      logError('LocalStorageSave', error, { sessionId, questionId });
-      
+      const error =
+        err instanceof Error
+          ? err
+          : new Error("Failed to save answer to localStorage");
+      logError("LocalStorageSave", error, { sessionId, questionId });
+
       // Still update component state even if localStorage fails
-      setFormState(prev => {
+      setFormState((prev) => {
         const newAnswers = new Map(prev.answers);
         newAnswers.set(questionId, value);
-        
+
         return {
           ...prev,
           answers: newAnswers,
@@ -277,38 +337,43 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
 
     if (validationErrors.length > 0) {
       // Validation failed - navigate to first unanswered required question
-      const firstUnansweredIndex = findFirstUnansweredRequired(questions, answers);
-      
+      const firstUnansweredIndex = findFirstUnansweredRequired(
+        questions,
+        answers
+      );
+
       if (firstUnansweredIndex !== -1) {
         // Navigate to the first unanswered question (add 1 because step 0 is welcome screen)
         const targetStep = firstUnansweredIndex + 1;
-        
-        setFormState(prev => ({
+
+        setFormState((prev) => ({
           ...prev,
           currentStep: targetStep,
           validationError: validationErrors[0].message,
         }));
       }
-      
+
       return;
     }
 
     // All validations passed - proceed with submission
-    setFormState(prev => ({ ...prev, isSubmitting: true, error: null }));
+    setFormState((prev) => ({ ...prev, isSubmitting: true, error: null }));
 
     // Format responses for API submission
-    const responses = Array.from(answers.entries()).map(([question_id, answer_value]) => ({
-      question_id,
-      answer_value,
-    }));
+    const responses = Array.from(answers.entries()).map(
+      ([question_id, answer_value]) => ({
+        question_id,
+        answer_value,
+      })
+    );
 
     try {
       // Call POST /api/form/submit
-      const response = await fetch('/api/form/submit', {
-        method: 'POST',
+      const response = await fetch("/api/form/submit", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'x-csrf-token': getCsrfToken() || '',
+          "Content-Type": "application/json",
+          "x-csrf-token": getCsrfToken() || "",
         },
         body: JSON.stringify({
           session_id: sessionId,
@@ -320,25 +385,29 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       const data: SubmitResponse = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.error ?? 'Failed to submit form');
+        throw new Error(data.error ?? "Failed to submit form");
       }
 
       // Submission successful - clear localStorage
       clearStorageData(sessionId);
 
       // Update currentStep to show ThankYouScreen (questions.length + 1)
-      setFormState(prev => ({
+      setFormState((prev) => ({
         ...prev,
         isSubmitting: false,
         currentStep: questions.length + 1,
-        direction: 'forward',
+        direction: "forward",
       }));
     } catch (err) {
       // Handle submission errors - retain localStorage and show error
-      const error = err instanceof Error ? err : new Error('Failed to submit form');
-      logError('FormSubmission', error, { sessionId, responseCount: responses.length });
-      
-      setFormState(prev => ({
+      const error =
+        err instanceof Error ? err : new Error("Failed to submit form");
+      logError("FormSubmission", error, {
+        sessionId,
+        responseCount: responses.length,
+      });
+
+      setFormState((prev) => ({
         ...prev,
         isSubmitting: false,
         submissionError: getUserFriendlyErrorMessage(error),
@@ -350,21 +419,21 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
 
   // Close submission error modal
   const closeSubmissionError = () => {
-    setFormState(prev => ({ ...prev, submissionError: null }));
+    setFormState((prev) => ({ ...prev, submissionError: null }));
   };
 
   // Animation variants for slide transitions with prefers-reduced-motion support
   const slideVariants = {
-    enter: (direction: 'forward' | 'backward') => ({
-      x: prefersReducedMotion ? 0 : (direction === 'forward' ? 100 : -100),
+    enter: (direction: "forward" | "backward") => ({
+      x: prefersReducedMotion ? 0 : direction === "forward" ? 100 : -100,
       opacity: prefersReducedMotion ? 1 : 0,
     }),
     center: {
       x: 0,
       opacity: 1,
     },
-    exit: (direction: 'forward' | 'backward') => ({
-      x: prefersReducedMotion ? 0 : (direction === 'forward' ? -100 : 100),
+    exit: (direction: "forward" | "backward") => ({
+      x: prefersReducedMotion ? 0 : direction === "forward" ? -100 : 100,
       opacity: prefersReducedMotion ? 1 : 0,
     }),
   };
@@ -372,14 +441,14 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Transition configuration optimized for 60fps performance
   // Respects prefers-reduced-motion by using instant transitions
   const slideTransition = {
-    type: 'tween' as const,
-    ease: 'easeInOut' as const,
+    type: "tween" as const,
+    ease: "easeInOut" as const,
     duration: prefersReducedMotion ? 0.01 : 0.3,
   };
 
   // Style for optimized animations (will-change for 60fps)
   const animatedStyle = {
-    willChange: 'transform, opacity',
+    willChange: "transform, opacity",
   };
 
   // Determine navigation button states
@@ -391,12 +460,14 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
         <FormBackground />
-        
+
         {/* Form container */}
         <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-slate-600 dark:text-slate-300">Loading survey questions...</p>
+            <p className="text-slate-600 dark:text-slate-300">
+              Loading survey questions...
+            </p>
           </div>
         </div>
       </div>
@@ -408,17 +479,23 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
         <FormBackground />
-        
+
         {/* Form container */}
         <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
           <ErrorState
-            title={formState.isLoading ? 'Unable to Load Survey' : 'Submission Failed'}
+            title={
+              formState.isLoading
+                ? "Unable to Load Survey"
+                : "Submission Failed"
+            }
             message={formState.error}
             actions={[
               {
-                label: 'Retry',
-                onClick: formState.isLoading ? retryLoadQuestions : handleSubmit,
-                variant: 'default',
+                label: "Retry",
+                onClick: formState.isLoading
+                  ? retryLoadQuestions
+                  : handleSubmit,
+                variant: "default",
               },
             ]}
             showSupport={true}
@@ -431,9 +508,13 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
 
   // Render form
   return (
-    <main className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden" role="main" aria-label="Customer Satisfaction Survey">
+    <main
+      className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
+      role="main"
+      aria-label="Customer Satisfaction Survey"
+    >
       <FormBackground />
-      
+
       {/* Submission Error Modal */}
       {formState.submissionError && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
@@ -443,15 +524,15 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
               message={formState.submissionError}
               actions={[
                 {
-                  label: 'Retry Submission',
+                  label: "Retry Submission",
                   onClick: handleSubmit,
-                  variant: 'default',
+                  variant: "default",
                   loading: formState.isSubmitting,
                 },
                 {
-                  label: 'Close',
+                  label: "Close",
                   onClick: closeSubmissionError,
-                  variant: 'outline',
+                  variant: "outline",
                 },
               ]}
               showSupport={true}
@@ -460,17 +541,17 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
           </div>
         </div>
       )}
-      
+
       {/* Skip link for screen readers */}
-      <a 
-        href="#form-content" 
+      <a
+        href="#form-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-md focus:shadow-lg"
       >
         Skip to form content
       </a>
 
       {/* Form container */}
-      <div 
+      <div
         id="form-content"
         className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50"
       >
@@ -481,61 +562,70 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
           aria-atomic="true"
           className="sr-only"
         >
-          {formState.currentStep >= 1 && formState.currentStep <= formState.questions.length &&
+          {formState.currentStep >= 1 &&
+            formState.currentStep <= formState.questions.length &&
             `Question ${formState.currentStep} of ${formState.questions.length}`}
-          {formState.currentStep > formState.questions.length && "Thank you for completing the form"}
+          {formState.currentStep > formState.questions.length &&
+            "Thank you for completing the form"}
           {formState.validationError && `Error: ${formState.validationError}`}
         </div>
 
         {/* AnimatePresence wrapper for exit animations */}
         <AnimatePresence mode="wait" custom={formState.direction}>
           {/* Question Steps (Steps 1 to questions.length) */}
-          {formState.currentStep >= 1 && formState.currentStep <= formState.questions.length && (
-            <motion.div
-              key={`question-${formState.currentStep}`}
-              custom={formState.direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={slideTransition}
-              style={animatedStyle}
-              ref={questionContainerRef}
-            >
-              <form 
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleNext();
-                }}
-                className="space-y-8"
+          {formState.currentStep >= 1 &&
+            formState.currentStep <= formState.questions.length && (
+              <motion.div
+                key={`question-${formState.currentStep}`}
+                custom={formState.direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={slideTransition}
+                style={animatedStyle}
+                ref={questionContainerRef}
               >
-                <fieldset className="border-0 p-0 m-0">
-                  <legend className="sr-only">
-                    Question {formState.currentStep} of {formState.questions.length}
-                  </legend>
-                  <QuestionStep
-                question={formState.questions[formState.currentStep - 1]}
-                answer={formState.answers.get(formState.questions[formState.currentStep - 1]?.id)}
-                onAnswerChange={(value) =>
-                  handleAnswerChange(formState.questions[formState.currentStep - 1].id, value)
-                }
-                error={formState.validationError}
-              />
-               </fieldset>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleNext();
+                  }}
+                  className="space-y-8"
+                >
+                  <fieldset className="border-0 p-0 m-0">
+                    <legend className="sr-only">
+                      Question {formState.currentStep} of{" "}
+                      {formState.questions.length}
+                    </legend>
+                    <QuestionStep
+                      question={formState.questions[formState.currentStep - 1]}
+                      answer={formState.answers.get(
+                        formState.questions[formState.currentStep - 1]?.id
+                      )}
+                      onAnswerChange={(value) =>
+                        handleAnswerChange(
+                          formState.questions[formState.currentStep - 1].id,
+                          value
+                        )
+                      }
+                      error={formState.validationError}
+                    />
+                  </fieldset>
 
-                {/* Form Navigation */}
-                <FormNavigation
-                currentStep={formState.currentStep}
-                totalSteps={formState.questions.length}
-                canGoNext={canGoNext}
-                canGoPrevious={canGoPrevious}
-                isSubmitting={formState.isSubmitting}
-                onPrevious={handlePrevious}
-                onNext={handleNext}
-              />
-              </form>
-            </motion.div>
-          )}
+                  {/* Form Navigation */}
+                  <FormNavigation
+                    currentStep={formState.currentStep}
+                    totalSteps={formState.questions.length}
+                    canGoNext={canGoNext}
+                    canGoPrevious={canGoPrevious}
+                    isSubmitting={formState.isSubmitting}
+                    onPrevious={handlePrevious}
+                    onNext={handleNext}
+                  />
+                </form>
+              </motion.div>
+            )}
 
           {/* Thank You Screen (Step questions.length + 1) */}
           {formState.currentStep > formState.questions.length && (
