@@ -1,9 +1,14 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
-import createIntlMiddleware from 'next-intl/middleware';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import createIntlMiddleware from "next-intl/middleware";
 
-import { generateCsrfToken, validateCsrfToken, CSRF_TOKEN_COOKIE_NAME, CSRF_TOKEN_HEADER_NAME } from './app/lib/csrf';
-import { routing } from './i18n/routing';
+import {
+  generateCsrfToken,
+  validateCsrfToken,
+  CSRF_TOKEN_COOKIE_NAME,
+  CSRF_TOKEN_HEADER_NAME,
+} from "./app/lib/csrf";
+import { routing } from "./i18n/routing";
 
 // Simple in-memory rate limiter
 // In production, consider using Redis or a dedicated rate limiting service
@@ -31,15 +36,19 @@ setInterval(() => {
 function getRateLimitKey(request: NextRequest): string {
   // Use IP address as the rate limit key
   // Try multiple headers for IP detection (Vercel, Cloudflare, etc.)
-  const ip = 
-    request.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
-    request.headers.get('x-real-ip') ||
-    'unknown';
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[1].trim() ||
+    request.headers.get("x-real-ip") ||
+    "unknown";
   const pathname = request.nextUrl.pathname;
   return `${ip}:${pathname}`;
 }
 
-function checkRateLimit(key: string): { allowed: boolean; remaining: number; resetTime: number } {
+function checkRateLimit(key: string): {
+  allowed: boolean;
+  remaining: number;
+  resetTime: number;
+} {
   const now = Date.now();
   const entry = rateLimitMap.get(key);
 
@@ -57,7 +66,11 @@ function checkRateLimit(key: string): { allowed: boolean; remaining: number; res
 
   // Increment count
   entry.count++;
-  return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - entry.count, resetTime: entry.resetTime };
+  return {
+    allowed: true,
+    remaining: MAX_REQUESTS_PER_WINDOW - entry.count,
+    resetTime: entry.resetTime,
+  };
 }
 
 // Create the next-intl middleware
@@ -65,28 +78,35 @@ const handleI18nRouting = createIntlMiddleware(routing);
 
 export function middleware(request: NextRequest) {
   // Handle API routes separately (CSRF + rate limiting)
-  if (request.nextUrl.pathname.startsWith('/api/')) {
+  if (request.nextUrl.pathname.startsWith("/api/")) {
     const method = request.method;
-    
+
     // Only check CSRF for state-changing methods (POST, PUT, DELETE, PATCH)
-    if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
-      const csrfTokenFromCookie = request.cookies.get(CSRF_TOKEN_COOKIE_NAME)?.value;
+    if (["POST", "PUT", "DELETE", "PATCH"].includes(method)) {
+      const csrfTokenFromCookie = request.cookies.get(
+        CSRF_TOKEN_COOKIE_NAME
+      )?.value;
       const csrfTokenFromHeader = request.headers.get(CSRF_TOKEN_HEADER_NAME);
-      
+
       // Validate CSRF token
-      if (!validateCsrfToken(csrfTokenFromHeader || null, csrfTokenFromCookie || null)) {
+      if (
+        !validateCsrfToken(
+          csrfTokenFromHeader || null,
+          csrfTokenFromCookie || null
+        )
+      ) {
         return NextResponse.json(
           {
-            error: 'CSRF validation failed',
-            message: 'Invalid or missing CSRF token',
+            error: "CSRF validation failed",
+            message: "Invalid or missing CSRF token",
           },
           { status: 403 }
         );
       }
     }
-    
+
     // Apply rate limiting to all API routes (except health checks)
-    if (!request.nextUrl.pathname.startsWith('/api/health')) {
+    if (!request.nextUrl.pathname.startsWith("/api/health")) {
       const key = getRateLimitKey(request);
       const { allowed, remaining, resetTime } = checkRateLimit(key);
 
@@ -95,16 +115,16 @@ export function middleware(request: NextRequest) {
         const retryAfter = Math.ceil((resetTime - Date.now()) / 1000);
         return NextResponse.json(
           {
-            error: 'Too many requests',
-            message: 'Rate limit exceeded. Please try again later.',
+            error: "Too many requests",
+            message: "Rate limit exceeded. Please try again later.",
           },
           {
             status: 429,
             headers: {
-              'Retry-After': retryAfter.toString(),
-              'X-RateLimit-Limit': MAX_REQUESTS_PER_WINDOW.toString(),
-              'X-RateLimit-Remaining': '0',
-              'X-RateLimit-Reset': new Date(resetTime).toISOString(),
+              "Retry-After": retryAfter.toString(),
+              "X-RateLimit-Limit": MAX_REQUESTS_PER_WINDOW.toString(),
+              "X-RateLimit-Remaining": "0",
+              "X-RateLimit-Reset": new Date(resetTime).toISOString(),
             },
           }
         );
@@ -112,25 +132,31 @@ export function middleware(request: NextRequest) {
 
       // Add rate limit headers to successful responses
       const response = NextResponse.next();
-      response.headers.set('X-RateLimit-Limit', MAX_REQUESTS_PER_WINDOW.toString());
-      response.headers.set('X-RateLimit-Remaining', remaining.toString());
-      response.headers.set('X-RateLimit-Reset', new Date(resetTime).toISOString());
-      
+      response.headers.set(
+        "X-RateLimit-Limit",
+        MAX_REQUESTS_PER_WINDOW.toString()
+      );
+      response.headers.set("X-RateLimit-Remaining", remaining.toString());
+      response.headers.set(
+        "X-RateLimit-Reset",
+        new Date(resetTime).toISOString()
+      );
+
       // Set CSRF token cookie if not present (for GET requests and API routes that need it)
       if (!request.cookies.get(CSRF_TOKEN_COOKIE_NAME)) {
         const newCsrfToken = generateCsrfToken();
         response.cookies.set(CSRF_TOKEN_COOKIE_NAME, newCsrfToken, {
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
-          sameSite: 'strict',
-          path: '/',
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "strict",
+          path: "/",
           maxAge: 60 * 60 * 24, // 24 hours
         });
       }
-      
+
       return response;
     }
-    
+
     return NextResponse.next();
   }
 
@@ -140,8 +166,5 @@ export function middleware(request: NextRequest) {
 
 // Configure which routes the middleware runs on
 export const config = {
-  matcher: [
-    '/((?!_next|_vercel|.*\..*).*)',
-    '/api/:path*'
-  ]
+  matcher: ["/((?!_next|_vercel|.*..*).*)", "/api/:path*"],
 };

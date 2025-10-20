@@ -5,6 +5,7 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 ## 🚀 Features
 
 ### Homepage
+
 - **Hero Section** - Animated TypeScript code snippets with dynamic typing effect
 - **About Section** - Company story, team information, and core values
 - **Services Section** - Comprehensive IT solutions showcase with interactive elements
@@ -13,6 +14,7 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 - **Contact Section** - Multi-step form with real-time validation
 
 ### Customer Satisfaction Form
+
 - **Dynamic Survey System** - Session-based forms with unique URLs for each customer
 - **Multiple Question Types** - Support for text, single choice, multiple choice, and checklist questions
 - **Progress Persistence** - Automatic saving to localStorage with 24-hour expiration
@@ -22,12 +24,14 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 - **Database Integration** - Supabase PostgreSQL for secure data storage
 
 ### Link Tree System
+
 - Professional link organization with categories
 - GitHub repository statistics integration
 - Company branding and contact information
 - Responsive design with hover animations
 
 ### Technical Features
+
 - **Email Integration** - Resend API for professional email handling
 - **Form Validation** - React Hook Form with Zod schema validation
 - **Database Integration** - Supabase PostgreSQL with Row Level Security
@@ -39,6 +43,7 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 - **Session Management** - UUID-based session tracking with localStorage persistence
 
 ### Legal Framework
+
 - Privacy Policy with comprehensive GDPR compliance
 - Terms of Service covering all business aspects
 - Cookie Policy with detailed usage explanations
@@ -58,35 +63,40 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 ## 📦 Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-username/fredonbytes.git
    cd fredonbytes
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env.local
    ```
-   
+
    Add your environment variables:
+
    ```env
    # Supabase Configuration
    NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
-   
+
    # Resend Email Configuration
    RESEND_API_KEY=your_resend_api_key_here
-   
+
    # Site Configuration
    NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
    ```
 
 4. **Run the development server**
+
    ```bash
    npm run dev
    ```
@@ -98,11 +108,13 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 ### Vercel (Recommended)
 
 1. **Install Vercel CLI**
+
    ```bash
    npm i -g vercel
    ```
 
 2. **Deploy to Vercel**
+
    ```bash
    vercel
    ```
@@ -114,6 +126,7 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 ### Other Platforms
 
 The project can be deployed to any platform that supports Next.js:
+
 - Netlify
 - Railway
 - DigitalOcean App Platform
@@ -122,10 +135,12 @@ The project can be deployed to any platform that supports Next.js:
 ## 📧 Email Setup
 
 1. **Sign up for Resend**
+
    - Go to [resend.com](https://resend.com)
    - Create an account and get your API key
 
 2. **Configure your domain**
+
    - Add your domain in Resend dashboard
    - Set up DNS records for email authentication
 
@@ -137,15 +152,18 @@ The project can be deployed to any platform that supports Next.js:
 ## 💾 Database Setup (Customer Satisfaction Form)
 
 1. **Create Supabase Account**
+
    - Go to [supabase.com](https://supabase.com)
    - Create a new project
 
 2. **Run Database Migrations**
+
    - Open Supabase SQL Editor
    - Execute the schema from `docs/database-schema.sql`
    - This creates tables for questions, options, sessions, and responses
 
 3. **Seed Sample Questions**
+
    - Run the seed script from `scripts/seed-form-questions.sql`
    - This adds 7 sample questions covering all question types
 
@@ -158,17 +176,20 @@ For complete database setup instructions, see [Form Setup Guide](docs/FORM_SETUP
 ## 🎨 Customization
 
 ### Branding
+
 - Update logo files in `/public/`
 - Modify colors in `tailwind.config.js`
 - Update company information in components
 
 ### Content
+
 - Edit homepage sections in `/src/app/components/homepage/`
 - Update team information in `AboutSection.tsx`
 - Modify services in `ServicesSection.tsx`
 - Update project portfolio in `ProjectsSection.tsx`
 
 ### Legal Documents
+
 - Customize privacy policy in `/src/app/privacy-policy/page.tsx`
 - Update terms of service in `/src/app/terms-of-service/page.tsx`
 - Modify cookie policy in `/src/app/cookie-policy/page.tsx`
@@ -270,4 +291,4 @@ This project is proprietary and confidential. All rights reserved by Fredonbytes
 
 **Fredonbytes** - Code. Create. Conquer.
 
-*One Team. Zero Limits.*
+_One Team. Zero Limits._
