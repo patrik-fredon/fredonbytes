@@ -25,13 +25,13 @@ This task breakdown implements the Dedicated About Page feature with static cont
 
 ## Phase 1: Setup
 
-- [ ] T001 Create TypeScript type definitions in src/lib/types/about.ts
-- [ ] T002 Create static team member data structure in src/lib/team-data.ts
-- [ ] T003 Update translation files with About page keys in src/messages/en.json, src/messages/cs.json, src/messages/de.json
+- [X] T001 Create TypeScript type definitions in src/lib/types/about.ts
+- [X] T002 Create static team member data structure in src/lib/team-data.ts
+- [X] T003 Update translation files with About page keys in src/messages/en.json, src/messages/cs.json, src/messages/de.json
 
 ## Phase 2: Foundational
 
-- [ ] T004 Create About page route structure in src/app/[locale]/about/page.tsx
+- [X] T004 Create About page route structure in src/app/[locale]/about/page.tsx
 - [ ] T005 Create About components directory structure in src/components/about/
 - [ ] T006 Update navigation to include About link in existing navigation component
 

@@ -181,6 +181,32 @@
     },
     "mantra": "Jeden tým. Žádné limity."
   },
+  "aboutPage": {
+    "meta": {
+      "title": "O nás - FredonBytes | Vaše kompletní digitální armáda",
+      "description": "Objevte příběh za FredonBytes a poznejte tým, který buduje vaši digitální budoucnost. Od kódu po kliky poskytujeme kompletní digitální dominanci."
+    },
+    "navigation": {
+      "label": "O nás"
+    },
+    "companyStory": {
+      "title": "Náš příběh: Zrod digitální armády",
+      "content": [
+        "V neustále se vyvíjející technologické krajině jeden vývojář viděl vzorec: firmy se topily ve fragmentaci dodavatelů, skákaly mezi agenturami pro vývoj, design, marketing a podporu. Každý přechod znamenal ztrátu kontextu, zpoždění časových plánů a rozředění vize.",
+        "To, co začalo jako Fredonova osobní mise odstranit tento chaos, se stalo FredonBytes - jednotnou silou, kde se setkává kód, kreativita a strategie. Nejsme jen další agentura; jsme vaše kompletní digitální armáda, navržená tak, aby poskytovala bezproblémové výsledky s vysokým dopadem bez složitosti.",
+        "Od skromných začátků jako sólový vývojář až po komplexní IT sílu, naše cesta byla vedena jedním základním přesvědčením: dokonalost by neměla být fragmentována. Každý řádek kódu, každý pixel, každá kampaň - vytvořeno pod jednou střechou, vedeno jednou vizí, provedeno jedním nezastavitelným týmem.",
+        "Dnes FredonBytes stojí jako důkaz, že jednotná expertíza poskytuje lepší výsledky. Nejen že stavíme webové stránky nebo spouštíme reklamy - architektujeme kompletní digitální ekosystémy, kde každý prvek spolupracuje v dokonalé harmonii k zesílení potenciálu vaší značky."
+      ],
+      "founder": "Fredon",
+      "mission": "Být kompletní digitální armádou, kterou firmy potřebují - poskytovat jednotnou IT dokonalost bez fragmentace dodavatelů"
+    },
+    "team": {
+      "title": "Náš tým",
+      "subtitle": "Digitální armáda za vaším úspěchem",
+      "noPhoto": "Fotografie člena týmu",
+      "readMore": "Přečtěte si více o {name}"
+    }
+  },
   "services": {
     "title": "Naše služby",
     "subtitle": "Nabízíme komplexní sadu IT řešení navržených tak, aby odstranila potřebu více dodavatelů. Od vývoje po marketing, máme vše pokryto.",

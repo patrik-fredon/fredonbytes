@@ -181,6 +181,32 @@
     },
     "mantra": "Ein Team. Keine Grenzen."
   },
+  "aboutPage": {
+    "meta": {
+      "title": "Über uns - FredonBytes | Ihre All-in-One digitale Armee",
+      "description": "Entdecken Sie die Geschichte hinter FredonBytes und lernen Sie das Team kennen, das Ihre digitale Zukunft aufbaut. Von Code bis Klicks liefern wir vollständige digitale Dominanz."
+    },
+    "navigation": {
+      "label": "Über uns"
+    },
+    "companyStory": {
+      "title": "Unsere Geschichte: Die Geburt der digitalen Armee",
+      "content": [
+        "In der sich ständig weiterentwickelnden Technologielandschaft sah ein Entwickler ein Muster: Unternehmen ertranken in der Fragmentierung von Anbietern, sprangen zwischen Agenturen für Entwicklung, Design, Marketing und Support. Jede Übergabe bedeutete verlorenen Kontext, verzögerte Zeitpläne und verwässerte Vision.",
+        "Was als Fredons persönliche Mission begann, dieses Chaos zu beseitigen, wurde zu FredonBytes - eine vereinte Kraft, in der Code, Kreativität und Strategie zusammenkommen. Wir sind nicht nur eine weitere Agentur; wir sind Ihre All-in-One digitale Armee, entwickelt, um nahtlose, wirkungsvolle Ergebnisse ohne Komplexität zu liefern.",
+        "Von bescheidenen Anfängen als Solo-Entwickler zu einem umfassenden IT-Kraftwerk wurde unsere Reise von einer Kernüberzeugung angetrieben: Exzellenz sollte nicht fragmentiert sein. Jede Codezeile, jedes Pixel, jede Kampagne - unter einem Dach erstellt, von einer Vision geleitet, von einem unaufhaltsamen Team ausgeführt.",
+        "Heute steht FredonBytes als Beweis dafür, dass vereintes Fachwissen überlegene Ergebnisse liefert. Wir bauen nicht nur Websites oder schalten Anzeigen - wir architektieren vollständige digitale Ökosysteme, in denen jedes Element in perfekter Harmonie zusammenarbeitet, um das Potenzial Ihrer Marke zu verstärken."
+      ],
+      "founder": "Fredon",
+      "mission": "Die All-in-One digitale Armee zu sein, die Unternehmen brauchen - vereinte IT-Exzellenz ohne Anbieter-Fragmentierung liefern"
+    },
+    "team": {
+      "title": "Unser Team",
+      "subtitle": "Die digitale Armee hinter Ihrem Erfolg",
+      "noPhoto": "Teammitglied Foto",
+      "readMore": "Mehr über {name} erfahren"
+    }
+  },
   "services": {
     "title": "Unsere Dienstleistungen",
     "subtitle": "Wir bieten eine umfassende Suite von IT-Lösungen, die darauf ausgelegt sind, die Notwendigkeit mehrerer Anbieter zu eliminieren. Von der Entwicklung bis zum Marketing haben wir Sie abgedeckt.",

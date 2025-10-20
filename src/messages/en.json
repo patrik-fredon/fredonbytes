@@ -181,6 +181,32 @@
     },
     "mantra": "One Team. Zero Limits."
   },
+  "aboutPage": {
+    "meta": {
+      "title": "About Us - FredonBytes | Your All-in-One Digital Army",
+      "description": "Discover the story behind FredonBytes and meet the team building your digital future. From code to clicks, we deliver complete digital dominance."
+    },
+    "navigation": {
+      "label": "About"
+    },
+    "companyStory": {
+      "title": "Our Story: The Birth of the Digital Army",
+      "content": [
+        "In the ever-evolving landscape of technology, one developer saw a pattern: businesses were drowning in vendor fragmentation, jumping between agencies for development, design, marketing, and support. Each handoff meant lost context, delayed timelines, and diluted vision.",
+        "What started as Fredon's personal mission to eliminate this chaos became FredonBytes—a unified force where code, creativity, and strategy converge. We're not just another agency; we're your all-in-one digital army, engineered to deliver seamless, high-impact results without the complexity.",
+        "From humble beginnings as a solo developer to a comprehensive IT powerhouse, our journey has been driven by one core belief: excellence shouldn't be fragmented. Every line of code, every pixel, every campaign—crafted under one roof, guided by one vision, executed by one unstoppable team.",
+        "Today, FredonBytes stands as proof that unified expertise delivers superior results. We don't just build websites or run ads—we architect complete digital ecosystems where every element works in perfect harmony to amplify your brand's potential."
+      ],
+      "founder": "Fredon",
+      "mission": "To be the all-in-one digital army that businesses need—delivering unified IT excellence without vendor fragmentation"
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "The digital army behind your success",
+      "noPhoto": "Team member photo",
+      "readMore": "Read more about {name}"
+    }
+  },
   "services": {
     "title": "Our Services",
     "subtitle": "We offer a comprehensive suite of IT solutions designed to eliminate the need for multiple vendors. From development to marketing, we've got you covered.",
