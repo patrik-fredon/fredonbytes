@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { X, Check } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import type { CookiePreferences } from './CookieConsentBanner';
+import { X, Check } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+
+import type { CookiePreferences } from "./CookieConsentBanner";
 
 interface CookieCustomizeModalProps {
   onSave: (preferences: CookiePreferences) => void;
@@ -16,8 +17,8 @@ export default function CookieCustomizeModal({
   onClose,
   isLoading,
 }: CookieCustomizeModalProps) {
-  const t = useTranslations('cookies.preferences');
-  
+  const t = useTranslations("cookies.preferences");
+
   const [preferences, setPreferences] = useState<CookiePreferences>({
     essential: true, // Always true, cannot be disabled
     analytics: false,
@@ -26,8 +27,8 @@ export default function CookieCustomizeModal({
   });
 
   const handleToggle = (key: keyof CookiePreferences) => {
-    if (key === 'essential') return; // Cannot disable essential cookies
-    
+    if (key === "essential") return; // Cannot disable essential cookies
+
     setPreferences((prev) => ({
       ...prev,
       [key]: !prev[key],
@@ -62,7 +63,7 @@ export default function CookieCustomizeModal({
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            {t('title')}
+            {t("title")}
           </h2>
           <button
             onClick={onClose}
@@ -76,42 +77,42 @@ export default function CookieCustomizeModal({
         {/* Content */}
         <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            {t('description')}
+            {t("description")}
           </p>
 
           <div className="space-y-4">
             {/* Essential Cookies */}
             <CookieOption
-              title={t('necessary.title')}
-              description={t('necessary.description')}
+              title={t("necessary.title")}
+              description={t("necessary.description")}
               enabled={preferences.essential}
-              onToggle={() => handleToggle('essential')}
+              onToggle={() => handleToggle("essential")}
               disabled={true}
               alwaysActive="Always Active"
             />
 
             {/* Analytics Cookies */}
             <CookieOption
-              title={t('analytics.title')}
-              description={t('analytics.description')}
+              title={t("analytics.title")}
+              description={t("analytics.description")}
               enabled={preferences.analytics}
-              onToggle={() => handleToggle('analytics')}
+              onToggle={() => handleToggle("analytics")}
             />
 
             {/* Marketing Cookies */}
             <CookieOption
-              title={t('marketing.title')}
-              description={t('marketing.description')}
+              title={t("marketing.title")}
+              description={t("marketing.description")}
               enabled={preferences.marketing}
-              onToggle={() => handleToggle('marketing')}
+              onToggle={() => handleToggle("marketing")}
             />
 
             {/* Preference Cookies */}
             <CookieOption
-              title={t('preferences.title')}
-              description={t('preferences.description')}
+              title={t("preferences.title")}
+              description={t("preferences.description")}
               enabled={preferences.preferences}
-              onToggle={() => handleToggle('preferences')}
+              onToggle={() => handleToggle("preferences")}
             />
           </div>
         </div>
@@ -182,15 +183,13 @@ function CookieOption({
             <button
               onClick={onToggle}
               className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                enabled
-                  ? 'bg-blue-600'
-                  : 'bg-gray-300 dark:bg-gray-600'
+                enabled ? "bg-blue-600" : "bg-gray-300 dark:bg-gray-600"
               }`}
               aria-label={`Toggle ${title}`}
             >
               <span
                 className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  enabled ? 'translate-x-6' : 'translate-x-1'
+                  enabled ? "translate-x-6" : "translate-x-1"
                 }`}
               >
                 {enabled && (

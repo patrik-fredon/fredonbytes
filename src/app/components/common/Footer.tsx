@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import React from "react";
-import CookieSettingsLink from "./CookieSettingsLink";
 
+import CookieSettingsLink from "./CookieSettingsLink";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

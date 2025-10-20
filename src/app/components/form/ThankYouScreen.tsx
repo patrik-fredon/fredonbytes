@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useReducedMotion } from '@/app/hooks/useReducedMotion'
 
@@ -14,17 +14,39 @@ interface ThankYouScreenProps {
 }
 
 /**
- * ThankYouScreen component for the customer satisfaction survey.
- * Displays success message with newsletter subscription option and Finish button.
+ * ThankYouScreen component for the customer satisfaction form.
+ * Displays success message with newsletter subscription option and 5-second countdown redirect.
  *
  * @param onRedirect - Optional callback function for manual redirect (defaults to router.push('/'))
  */
 export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
   const router = useRouter()
   const prefersReducedMotion = useReducedMotion()
-  const [newsletterSubscribed, setNewsletterSubscribed] = useState(false)
+  const [newsletterOptin, setNewsletterOptin] = useState(false)
+  const [email, setEmail] = useState('')
+  const [countdown, setCountdown] = useState(5)
 
-  // Handle finish button click
+  // Countdown timer - redirect after 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          clearInterval(timer)
+          if (onRedirect) {
+            onRedirect()
+          } else {
+            router.push('/')
+          }
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [router, onRedirect])
+
+  // Handle manual finish button click
   const handleFinish = () => {
     if (onRedirect) {
       onRedirect()
@@ -78,23 +100,47 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
         </p>
       </div>
 
-      {/* Newsletter Subscription */}
-      <div className="pt-6">
+      {/* Newsletter Opt-in */}
+      <div className="pt-6 space-y-4">
         <label className="flex items-start gap-3 cursor-pointer group max-w-md mx-auto">
           <input
             type="checkbox"
-            checked={newsletterSubscribed}
-            onChange={(e) => setNewsletterSubscribed(e.target.checked)}
-            className="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+            checked={newsletterOptin}
+            onChange={(e) => setNewsletterOptin(e.target.checked)}
+            className="mt-1 w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-600 dark:bg-slate-700 dark:focus:ring-offset-slate-800"
           />
-          <span className="text-sm text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-            Subscribe to our newsletter for updates, tips, and exclusive content
+          <span className="flex-1 text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">
+            I'd like to receive updates and news from FredonBytes
           </span>
         </label>
+
+        {/* Email input (shown when newsletter is checked) */}
+        {newsletterOptin && (
+          <div className="max-w-md mx-auto animate-in slide-in-from-top-2 duration-200">
+            <label htmlFor="newsletter-email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+              Email Address <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="newsletter-email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your.email@example.com"
+              required={newsletterOptin}
+              className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-colors"
+            />
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+              We'll only use this to send you occasional updates. You can unsubscribe anytime.
+            </p>
+          </div>
+        )}
       </div>
 
-      {/* Finish Button */}
-      <div className="pt-6">
+      {/* Countdown and Finish Button */}
+      <div className="pt-6 space-y-3">
+        <p className="text-sm text-slate-500 dark:text-slate-400">
+          Redirecting to homepage in {countdown} second{countdown !== 1 ? 's' : ''}...
+        </p>
         <Button
           onClick={handleFinish}
           variant="gradient"
@@ -102,7 +148,7 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
           className="min-w-[200px] min-h-[44px]"
           aria-label="Return to homepage"
         >
-          Finish
+          Go to Homepage Now
         </Button>
       </div>
 

@@ -10,10 +10,10 @@ import { Button } from '@/app/components/common/Button'
 import { useReducedMotion } from '@/app/hooks/useReducedMotion'
 
 /**
- * SurveyLanding component - Welcome screen for customer satisfaction survey.
- * Features IT-themed animations and a Start button to begin the survey.
+ * FormLanding component - Welcome screen for customer satisfaction form.
+ * Features IT-themed animations and a Start button to begin the form.
  */
-export default function SurveyLanding() {
+export default function FormLanding() {
   const router = useRouter()
   const prefersReducedMotion = useReducedMotion()
   const [isStarting, setIsStarting] = useState(false)
@@ -59,7 +59,7 @@ export default function SurveyLanding() {
     setIsStarting(true)
     // Generate session ID and navigate
     const sessionId = crypto.randomUUID()
-    router.push(`/survey/${sessionId}`)
+    router.push(`/form/${sessionId}`)
   }
 
   return (
@@ -125,7 +125,7 @@ export default function SurveyLanding() {
           {/* Welcome Message */}
           <div className="space-y-4">
             <h1 className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white">
-              Welcome to Our Customer Satisfaction Survey
+              Welcome to Our Customer Satisfaction Form
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
               Thank you for taking the time to share your feedback with us. Your insights help us improve our services and better serve you.
@@ -149,9 +149,9 @@ export default function SurveyLanding() {
               loading={isStarting}
               disabled={isStarting}
               className="min-w-[200px] min-h-[44px]"
-              aria-label="Start the customer satisfaction survey"
+              aria-label="Start the customer satisfaction form"
             >
-              {isStarting ? 'Starting...' : 'Start Survey'}
+              {isStarting ? 'Starting...' : 'Start'}
             </Button>
           </div>
 

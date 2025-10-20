@@ -1,22 +1,18 @@
 import { setRequestLocale } from 'next-intl/server';
 
-import { redirect } from '@/i18n/navigation';
+import FormLanding from './FormLanding';
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
 
 /**
- * Redirect handler for the form route.
- * Generates a unique session ID and redirects to the dynamic form page.
+ * Form landing page with IT-themed animations and Start button.
+ * Displays animated welcome screen before user begins the form.
  */
-export default async function FormRedirectPage({ params }: Props) {
+export default async function FormPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  
-  // Generate a unique session ID using Web Crypto API
-  const sessionId = crypto.randomUUID();
-  
-  // Redirect to the dynamic form route with the generated session ID
-  redirect({ href: `/form/${sessionId}`, locale });
+
+  return <FormLanding />;
 }

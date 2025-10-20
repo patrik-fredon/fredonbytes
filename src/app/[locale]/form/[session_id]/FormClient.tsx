@@ -8,7 +8,6 @@ import ErrorState from '@/app/components/form/ErrorState';
 import FormBackground from '@/app/components/form/FormBackground';
 import FormNavigation from '@/app/components/form/FormNavigation';
 import QuestionStep from '@/app/components/form/QuestionStep';
-import WelcomeScreen from '@/app/components/form/WelcomeScreen';
 // Lazy load ThankYouScreen since it's only needed at the end
 const ThankYouScreen = dynamic(() => import('@/app/components/form/ThankYouScreen'), {
   loading: () => (
@@ -39,7 +38,7 @@ function getLocalizedString(localizedStr: LocalizedString | string, locale: stri
 // FormState interface for managing component state
 interface FormState {
   questions: Question[];
-  currentStep: number; // 0 = welcome, 1-n = questions, n+1 = thank you
+  currentStep: number; // 1-n = questions, n+1 = thank you
   answers: Map<string, AnswerValue>;
   isLoading: boolean;
   isSubmitting: boolean;
@@ -69,9 +68,10 @@ interface FormClientProps {
 
 /**
  * Client component for the customer satisfaction form.
- * This is a placeholder that will be fully implemented in task 7.
- * 
+ * Displays questions in sequence with animated transitions.
+ *
  * @param sessionId - The unique session identifier for this form submission
+ * @param locale - The current locale for localized content
  */
 export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Ref for focus management
@@ -80,10 +80,10 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Detect reduced motion preference
   const prefersReducedMotion = useReducedMotion();
 
-  // State management
+  // State management - Start at step 1 (first question) since welcome is on landing page
   const [formState, setFormState] = useState<FormState>({
     questions: [],
-    currentStep: 0,
+    currentStep: 1,
     answers: new Map<string, AnswerValue>(),
     isLoading: true,
     isSubmitting: false,
@@ -92,10 +92,6 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     submissionError: null,
     direction: 'forward',
   });
-
-  // Newsletter and email state
-  const [newsletterOptin, setNewsletterOptin] = useState(false);
-  const [email, setEmail] = useState('');
 
   // Fetch questions from API on mount
   const fetchQuestions = useCallback(async () => {
@@ -149,8 +145,8 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
 
   // Focus management - move focus to first input when question changes
   useEffect(() => {
-    // Only manage focus when on a question step (not welcome or thank you)
-    if (formState.currentStep > 0 && formState.currentStep <= formState.questions.length) {
+    // Only manage focus when on a question step (not thank you)
+    if (formState.currentStep >= 1 && formState.currentStep <= formState.questions.length) {
       // Small delay to allow animation to start
       const timer = setTimeout(() => {
         // Find the first focusable input element
@@ -188,13 +184,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   const handleNext = () => {
     const { currentStep, questions } = formState;
 
-    // If on welcome screen (step 0), move to first question
-    if (currentStep === 0) {
-      setFormState(prev => ({ ...prev, currentStep: 1, validationError: null, direction: 'forward' }));
-      return;
-    }
-
-    // If on a question, validate if required
+    // Validate current question if required
     const currentQuestionIndex = currentStep - 1;
     const currentQuestion = questions[currentQuestionIndex];
 
@@ -230,8 +220,8 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   const handlePrevious = () => {
     const { currentStep } = formState;
 
-    // Don't allow going back from welcome screen
-    if (currentStep <= 0) {
+    // Don't allow going back from first question
+    if (currentStep <= 1) {
       return;
     }
 
@@ -313,7 +303,6 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     }));
 
     try {
-      
       // Call POST /api/form/submit
       const response = await fetch('/api/form/submit', {
         method: 'POST',
@@ -324,8 +313,6 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
         body: JSON.stringify({
           session_id: sessionId,
           responses,
-          newsletter_optin: newsletterOptin,
-          email: newsletterOptin && email ? email : undefined,
           locale: locale,
         }),
       });
@@ -396,7 +383,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   };
 
   // Determine navigation button states
-  const canGoPrevious = formState.currentStep > 0;
+  const canGoPrevious = formState.currentStep > 1;
   const canGoNext = true; // Always allow next, validation happens in handleNext
 
   // Render loading state
@@ -488,39 +475,22 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
         className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50"
       >
         {/* ARIA live region for announcements */}
-        <div 
-          role="status" 
-          aria-live="polite" 
-          aria-atomic="true" 
+        <div
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
           className="sr-only"
         >
-          {formState.currentStep === 0 && "Welcome screen"}
-          {formState.currentStep > 0 && formState.currentStep <= formState.questions.length && 
+          {formState.currentStep >= 1 && formState.currentStep <= formState.questions.length &&
             `Question ${formState.currentStep} of ${formState.questions.length}`}
-          {formState.currentStep > formState.questions.length && "Thank you for completing the survey"}
+          {formState.currentStep > formState.questions.length && "Thank you for completing the form"}
           {formState.validationError && `Error: ${formState.validationError}`}
         </div>
 
         {/* AnimatePresence wrapper for exit animations */}
         <AnimatePresence mode="wait" custom={formState.direction}>
-          {/* Welcome Screen (Step 0) */}
-          {formState.currentStep === 0 && (
-            <motion.div
-              key="welcome"
-              custom={formState.direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={slideTransition}
-              style={animatedStyle}
-            >
-              <WelcomeScreen onNext={handleNext} />
-            </motion.div>
-          )}
-
           {/* Question Steps (Steps 1 to questions.length) */}
-          {formState.currentStep > 0 && formState.currentStep <= formState.questions.length && (
+          {formState.currentStep >= 1 && formState.currentStep <= formState.questions.length && (
             <motion.div
               key={`question-${formState.currentStep}`}
               custom={formState.direction}
@@ -551,65 +521,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
                 }
                 error={formState.validationError}
               />
-                </fieldset>
-
-                {/* Privacy Notice & Newsletter (shown on last question) */}
-                {formState.currentStep === formState.questions.length && (
-                  <div className="space-y-6 pt-6 border-t border-slate-200 dark:border-slate-700">
-                    {/* Privacy Notice */}
-                    <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-                      <div className="flex items-start gap-3">
-                        <svg className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                        <div className="flex-1">
-                          <h3 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-1">
-                            Your Privacy Matters
-                          </h3>
-                          <p className="text-sm text-blue-800 dark:text-blue-200">
-                            This survey is <strong>completely anonymous</strong>. We do not collect any personally identifiable information unless you choose to provide your email below. Your responses help us improve our services.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Newsletter Opt-in */}
-                    <div className="space-y-4">
-                      <label className="flex items-start gap-3 cursor-pointer group">
-                        <input
-                          type="checkbox"
-                          checked={newsletterOptin}
-                          onChange={(e) => setNewsletterOptin(e.target.checked)}
-                          className="mt-1 w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-600 dark:bg-slate-700 dark:focus:ring-offset-slate-800"
-                        />
-                        <span className="flex-1 text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">
-                          I'd like to receive updates and news from FredonBytes
-                        </span>
-                      </label>
-
-                      {/* Email input (shown when newsletter is checked) */}
-                      {newsletterOptin && (
-                        <div className="ml-7 animate-in slide-in-from-top-2 duration-200">
-                          <label htmlFor="newsletter-email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            Email Address <span className="text-red-500">*</span>
-                          </label>
-                          <input
-                            id="newsletter-email"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="your.email@example.com"
-                            required={newsletterOptin}
-                            className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-slate-700 dark:text-white transition-colors"
-                          />
-                          <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                            We'll only use this to send you occasional updates. You can unsubscribe anytime.
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
+               </fieldset>
 
                 {/* Form Navigation */}
                 <FormNavigation

@@ -3,13 +3,10 @@
 import { motion, type Variants } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
+import { useState, memo } from "react";
 
 import { useIntersectionObserver } from "@/app/hooks/useIntersectionObserver";
-
-
-import { useState, memo } from "react";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
-
 import type { Project } from "@/app/lib/supabase";
 
 interface ProjectCardProps {

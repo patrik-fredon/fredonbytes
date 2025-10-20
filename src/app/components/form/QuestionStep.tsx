@@ -7,8 +7,8 @@ import ChecklistInput from '@/app/components/form/inputs/ChecklistInput'
 import MultipleChoiceInput from '@/app/components/form/inputs/MultipleChoiceInput'
 import SingleChoiceInput from '@/app/components/form/inputs/SingleChoiceInput'
 import { useReducedMotion } from '@/app/hooks/useReducedMotion'
-import type { AnswerValue } from '@/app/lib/supabase'
 import type { ValidatableQuestion } from '@/app/lib/form-validation'
+import type { AnswerValue } from '@/app/lib/supabase'
 
 interface QuestionStepProps {
   question: ValidatableQuestion
