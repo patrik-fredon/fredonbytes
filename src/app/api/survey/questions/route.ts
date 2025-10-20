@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { supabase, type SurveyQuestion } from '@/app/lib/supabase';
+import { supabase, type Question, type Questionnaire } from '@/app/lib/supabase';
 
 // Response interface for survey questions endpoint
 export interface SurveyQuestionsResponse {
-  questions: SurveyQuestion[];
+  questions: Question[];
   locale: string;
   error?: string;
 }
@@ -14,17 +14,51 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const locale = searchParams.get('locale') || 'en';
 
+    // Validate locale
+    if (!['en', 'cs', 'de'].includes(locale)) {
+      return NextResponse.json(
+        {
+          questions: [],
+          locale: 'en',
+          error: 'Invalid locale',
+        } as SurveyQuestionsResponse,
+        { status: 400 }
+      );
+    }
+
+    // Fetch the survey questionnaire
+    const { data: questionnaireData, error: questionnaireError } = await supabase
+      .from('questionnaires')
+      .select('id')
+      .eq('type', 'survey')
+      .eq('active', true)
+      .maybeSingle();
+
+    if (questionnaireError || !questionnaireData) {
+      console.error('Error fetching survey questionnaire:', questionnaireError);
+      return NextResponse.json(
+        {
+          questions: [],
+          locale,
+          error: 'Survey questionnaire not found',
+        } as SurveyQuestionsResponse,
+        { status: 404 }
+      );
+    }
+
+    const questionnaire = questionnaireData as Questionnaire;
+
     // Fetch active survey questions with their options
     const { data, error } = await supabase
-      .from('survey_questions')
+      .from('questions')
       .select(`
         *,
-        options:survey_question_options(*)
+        options:question_options(*)
       `)
+      .eq('questionnaire_id', questionnaire.id)
       .eq('active', true)
       .order('display_order', { ascending: true });
 
-    // Handle database errors
     if (error) {
       console.error('Database error fetching survey questions:', error);
       return NextResponse.json(
@@ -37,7 +71,6 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Handle case where no questions exist
     if (!data || data.length === 0) {
       return NextResponse.json(
         {
@@ -48,8 +81,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Type assertion for Supabase query result with join
-    const questionsData = data as SurveyQuestion[];
+    const questionsData = data as Question[];
 
     // Sort options by display_order for each question
     const questionsWithSortedOptions = questionsData.map((question) => ({
@@ -59,7 +91,7 @@ export async function GET(request: NextRequest) {
       ),
     }));
 
-    // Return with cache headers (no cache for survey questions as they're session-specific)
+    // Return with no-cache headers (survey questions are session-specific)
     return NextResponse.json(
       {
         questions: questionsWithSortedOptions,

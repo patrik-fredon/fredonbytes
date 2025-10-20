@@ -1,43 +1,48 @@
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
+import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
 
+import { routing } from "@/i18n/routing";
 import "../globals.css";
 
 import ClientLayoutWrapper from "../components/ClientLayoutWrapper";
 import Footer from "../components/common/Footer";
 import Header from "../components/common/Header";
-import { routing } from "@/i18n/routing";
 
 // Dynamic imports for heavy components
 const AnimatedBackground = dynamic(
   () => import("../components/common/AnimatedBackground"),
   {
-    loading: () => <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+    loading: () => (
+      <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+    ),
   }
 );
 
 const CookieConsentBanner = dynamic(
   () => import("../components/common/CookieConsentBanner"),
   {
-    loading: () => null
+    loading: () => null,
   }
 );
 
 const ConditionalAnalytics = dynamic(
   () => import("../components/common/ConditionalAnalytics"),
   {
-    loading: () => null
+    loading: () => null,
   }
 );
 
 const WebVitals = dynamic(
-  () => import("../components/WebVitals").then(mod => ({ default: mod.WebVitals })),
+  () =>
+    import("../components/WebVitals").then((mod) => ({
+      default: mod.WebVitals,
+    })),
   {
-    loading: () => null
+    loading: () => null,
   }
 );
 
@@ -51,8 +56,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Fredonbytes - Your All-in-One IT Powerhouse",
-  description: "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
-  keywords: "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic",
+  description:
+    "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
+  keywords:
+    "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic",
   authors: [{ name: "Fredonbytes", url: "https://fredonbytes.cloud" }],
   creator: "Fredonbytes",
   publisher: "Fredonbytes",
@@ -63,7 +70,8 @@ export const metadata: Metadata = {
     url: "https://fredonbytes.cloud",
     siteName: "Fredonbytes",
     title: "Fredonbytes - Your All-in-One IT Powerhouse",
-    description: "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
+    description:
+      "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
     images: [
       {
         url: "/FredonBytes_GraphicLogo.png",
@@ -78,10 +86,13 @@ export const metadata: Metadata = {
     site: "@Fredonbytes",
     creator: "@FredonBytes",
     title: "Fredonbytes - Your All-in-One IT Powerhouse",
-    description: "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
+    description:
+      "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
     images: ["/FredonBytes_GraphicLogo.png"],
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fredonbytes.cloud'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cloud"
+  ),
   manifest: "/site.webmanifest",
 };
 

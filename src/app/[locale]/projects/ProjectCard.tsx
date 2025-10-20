@@ -1,13 +1,16 @@
-'use client';
+"use client";
 
-import { motion, type Variants } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
-import Image from 'next/image';
-import { useState, memo } from 'react';
+import { motion, type Variants } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
 
-import { useReducedMotion } from '@/app/hooks/useReducedMotion';
-import { useIntersectionObserver } from '@/app/hooks/useIntersectionObserver';
-import type { Project } from '@/app/lib/supabase';
+import { useIntersectionObserver } from "@/app/hooks/useIntersectionObserver";
+
+
+import { useState, memo } from "react";
+import { useReducedMotion } from "@/app/hooks/useReducedMotion";
+
+import type { Project } from "@/app/lib/supabase";
 
 interface ProjectCardProps {
   project: Project;
@@ -16,7 +19,10 @@ interface ProjectCardProps {
 }
 
 // Define animation variants outside component to prevent recreation
-const createCardVariants = (prefersReducedMotion: boolean, index: number): Variants => ({
+const createCardVariants = (
+  prefersReducedMotion: boolean,
+  index: number
+): Variants => ({
   hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
   visible: {
     opacity: 1,
@@ -41,23 +47,32 @@ const createHoverVariants = (prefersReducedMotion: boolean) =>
         },
       };
 
-const ProjectCard = memo(function ProjectCard({ project, index, onOpenModal }: ProjectCardProps) {
+const ProjectCard = memo(function ProjectCard({
+  project,
+  index,
+  onOpenModal,
+}: ProjectCardProps) {
   const prefersReducedMotion = useReducedMotion();
   const { ref, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
-    rootMargin: '50px',
+    rootMargin: "50px",
     triggerOnce: true,
   });
   const [imageError, setImageError] = useState(false);
 
   // Get current locale from URL or default to 'en'
-  const locale = (typeof window !== 'undefined' 
-    ? new URLSearchParams(window.location.search).get('lang') || 'en'
-    : 'en') as 'en' | 'cs' | 'de';
+  const locale = (
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("lang") || "en"
+      : "en"
+  ) as "en" | "cs" | "de";
 
   // Get localized content
   const title = project.title[locale] || project.title.en;
-  const description = project.short_description?.[locale] || project.description[locale] || project.description.en;
+  const description =
+    project.short_description?.[locale] ||
+    project.description[locale] ||
+    project.description.en;
 
   // Use memoized animation variants
   const cardVariants = createCardVariants(prefersReducedMotion, index);
@@ -66,7 +81,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenModal }: P
   const handleCardClick = (e: React.MouseEvent) => {
     // Don't open modal if clicking on links
     const target = e.target as HTMLElement;
-    if (target.tagName === 'A' || target.closest('a')) {
+    if (target.tagName === "A" || target.closest("a")) {
       return;
     }
     onOpenModal?.(project);
@@ -84,7 +99,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenModal }: P
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           onOpenModal?.(project);
         }
@@ -99,7 +114,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenModal }: P
             alt={title}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-500"
-            loading={index < 3 ? 'eager' : 'lazy'}
+            loading={index < 3 ? "eager" : "lazy"}
             priority={index < 3}
             quality={80}
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -122,11 +137,11 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenModal }: P
         <div className="absolute top-4 right-4">
           <span
             className={`px-3 py-1 rounded-full text-xs font-medium ${
-              project.status === 'active'
-                ? 'bg-green-500 text-white'
-                : project.status === 'completed'
-                ? 'bg-blue-500 text-white'
-                : 'bg-slate-500 text-white'
+              project.status === "active"
+                ? "bg-green-500 text-white"
+                : project.status === "completed"
+                ? "bg-blue-500 text-white"
+                : "bg-slate-500 text-white"
             }`}
           >
             {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
@@ -192,6 +207,6 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenModal }: P
   );
 });
 
-ProjectCard.displayName = 'ProjectCard';
+ProjectCard.displayName = "ProjectCard";
 
 export default ProjectCard;

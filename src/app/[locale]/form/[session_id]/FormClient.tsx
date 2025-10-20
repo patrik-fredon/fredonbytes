@@ -19,6 +19,7 @@ const ThankYouScreen = dynamic(() => import('@/app/components/form/ThankYouScree
   ),
 });
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { getCsrfToken } from '@/app/hooks/useCsrfToken';
 import { logError, getUserFriendlyErrorMessage } from '@/app/lib/error-logger';
 import { loadAnswers, saveAnswer, clearStorageData } from '@/app/lib/form-storage';
 import { validateAnswer, validateAllAnswers, findFirstUnansweredRequired } from '@/app/lib/form-validation';
@@ -312,12 +313,13 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     }));
 
     try {
-
+      
       // Call POST /api/form/submit
       const response = await fetch('/api/form/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'x-csrf-token': getCsrfToken() || '',
         },
         body: JSON.stringify({
           session_id: sessionId,

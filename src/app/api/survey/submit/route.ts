@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
+import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from '@/app/lib/csrf';
 import { sanitizeAnswerValue } from '@/app/lib/input-sanitization';
-import { supabase, type SurveySession } from '@/app/lib/supabase';
+import { supabase, type Session, type Questionnaire, type ContactSubmission } from '@/app/lib/supabase';
 
 // Zod schema for request validation
 const submitSurveyRequestSchema = z.object({
@@ -32,6 +33,21 @@ export interface SubmitSurveyResponse {
 
 export async function POST(request: NextRequest) {
   try {
+    // CSRF validation
+    const csrfTokenFromHeader = request.headers.get(CSRF_TOKEN_HEADER_NAME);
+    const csrfTokenFromCookie = request.cookies.get('csrf_token')?.value;
+    
+    if (!validateCsrfToken(csrfTokenFromHeader || null, csrfTokenFromCookie || null)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'CSRF validation failed',
+          error: 'Invalid or missing CSRF token',
+        } as SubmitSurveyResponse,
+        { status: 403 }
+      );
+    }
+
     // Parse and validate request body
     const body = await request.json();
     const validationResult = submitSurveyRequestSchema.safeParse(body);
@@ -49,14 +65,14 @@ export async function POST(request: NextRequest) {
 
     const { session_id, responses, metadata } = validationResult.data;
 
-    // Check if session exists and is not already completed
-    const { data: existingSession, error: sessionCheckError } = await supabase
-      .from('survey_sessions')
-      .select('session_id, completed_at, contact_submission_id')
+    // Check if session exists and is valid
+    const { data: sessionData, error: sessionCheckError } = await supabase
+      .from('sessions')
+      .select('session_id, questionnaire_id, completed_at, expires_at')
       .eq('session_id', session_id)
-      .single();
+      .maybeSingle();
 
-    if (sessionCheckError || !existingSession) {
+    if (sessionCheckError || !sessionData) {
       console.error('Session validation error:', sessionCheckError);
       return NextResponse.json(
         {
@@ -68,8 +84,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // If session is already completed, reject duplicate submission
-    if ((existingSession as SurveySession).completed_at) {
+    // Type assertion for session
+    const session = sessionData as Session;
+    if (session.expires_at && new Date(session.expires_at) < new Date()) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Session expired',
+          error: 'This session has expired',
+        } as SubmitSurveyResponse,
+        { status: 410 }
+      );
+    }
+
+    // Check if session is already completed
+    if (session.completed_at) {
       return NextResponse.json(
         {
           success: false,
@@ -77,6 +106,37 @@ export async function POST(request: NextRequest) {
           error: 'This survey has already been completed',
         } as SubmitSurveyResponse,
         { status: 409 }
+      );
+    }
+
+    // Verify session is for a survey questionnaire
+    const { data: questionnaireData, error: questionnaireError } = await supabase
+      .from('questionnaires')
+      .select('type')
+      .eq('id', session.questionnaire_id)
+      .maybeSingle();
+
+    if (questionnaireError || !questionnaireData) {
+      console.error('Questionnaire validation error:', questionnaireError);
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Invalid questionnaire',
+          error: 'Questionnaire not found',
+        } as SubmitSurveyResponse,
+        { status: 400 }
+      );
+    }
+
+    const questionnaire = questionnaireData as Questionnaire;
+    if (questionnaire.type !== 'survey') {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Invalid questionnaire',
+          error: 'Session is not associated with a survey',
+        } as SubmitSurveyResponse,
+        { status: 400 }
       );
     }
 
@@ -88,19 +148,19 @@ export async function POST(request: NextRequest) {
         : sanitizeAnswerValue(response.answer_value),
     }));
 
-    // Batch insert survey_responses
-    const surveyResponses = sanitizedResponses.map(response => ({
+    // Batch insert survey_answers
+    const surveyAnswers = sanitizedResponses.map(response => ({
       session_id,
       question_id: response.question_id,
-      answer_value: response.answer_value,
+      answer_value: response.answer_value as never, // Type workaround for JSONB
     }));
 
-    const { error: responsesError } = await supabase
-      .from('survey_responses')
-      .insert(surveyResponses);
+    const { error: answersError } = await supabase
+      .from('survey_answers')
+      .insert(surveyAnswers as never[]);
 
-    if (responsesError) {
-      console.error('Error inserting survey responses:', responsesError);
+    if (answersError) {
+      console.error('Error inserting survey answers:', answersError);
       return NextResponse.json(
         {
           success: false,
@@ -111,27 +171,34 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Update survey_sessions to mark as completed
+    // Update session to mark as completed
     const { error: sessionUpdateError } = await supabase
-      .from('survey_sessions')
+      .from('sessions')
       .update({
         completed_at: new Date().toISOString(),
         ip_address_hash: metadata?.ip_address ?? null,
         user_agent: metadata?.user_agent ?? null,
-      })
+      } as never)
       .eq('session_id', session_id);
 
     if (sessionUpdateError) {
-      console.error('Error updating survey session:', sessionUpdateError);
-      // Don't fail the request if session update fails, responses are already saved
+      console.error('Error updating session:', sessionUpdateError);
+      // Don't fail the request if session update fails, answers are already saved
     }
 
-    // Update contact_submissions to mark survey as completed
-    if ((existingSession as SurveySession).contact_submission_id) {
+    // Update contact_submissions to mark survey as completed if session is linked
+    const { data: contactData } = await supabase
+      .from('contact_submissions')
+      .select('id')
+      .eq('session_id', session_id)
+      .maybeSingle();
+
+    if (contactData) {
+      const contactSubmission = contactData as ContactSubmission;
       const { error: contactUpdateError } = await supabase
         .from('contact_submissions')
-        .update({ survey_completed: true })
-        .eq('session_id', (existingSession as SurveySession).contact_submission_id);
+        .update({ survey_completed: true } as never)
+        .eq('session_id', session_id);
 
       if (contactUpdateError) {
         console.error('Error updating contact submission:', contactUpdateError);

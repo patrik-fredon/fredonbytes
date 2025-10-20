@@ -116,8 +116,8 @@ export function middleware(request: NextRequest) {
       response.headers.set('X-RateLimit-Remaining', remaining.toString());
       response.headers.set('X-RateLimit-Reset', new Date(resetTime).toISOString());
       
-      // Set CSRF token cookie if not present (for GET requests)
-      if (method === 'GET' && !request.cookies.get(CSRF_TOKEN_COOKIE_NAME)) {
+      // Set CSRF token cookie if not present (for GET requests and API routes that need it)
+      if (!request.cookies.get(CSRF_TOKEN_COOKIE_NAME)) {
         const newCsrfToken = generateCsrfToken();
         response.cookies.set(CSRF_TOKEN_COOKIE_NAME, newCsrfToken, {
           httpOnly: true,

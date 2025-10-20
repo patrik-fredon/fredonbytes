@@ -111,7 +111,49 @@ export interface NewsletterSubscriber {
   created_at?: string;
 }
 
-// Survey system interfaces
+// Unified schema interfaces
+export interface Questionnaire {
+  id: string;
+  type: 'form' | 'survey';
+  title: LocalizedString;
+  description?: LocalizedString | null;
+  active: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface Session {
+  session_id: string;
+  questionnaire_id: string;
+  original_session_id?: string | null;
+  locale: string;
+  ip_address_hash?: string | null;
+  user_agent?: string | null;
+  email?: string | null;
+  newsletter_optin: boolean;
+  created_at?: string;
+  completed_at?: string | null;
+  expires_at?: string;
+}
+
+export interface SurveyAnswer {
+  id?: string;
+  session_id: string;
+  question_id: string;
+  answer_value: AnswerValue | number;
+  submitted_at?: string;
+}
+
+export interface SessionCache {
+  id?: string;
+  session_id: string;
+  cache_key: string;
+  cache_data: Record<string, unknown>;
+  created_at?: string;
+  expires_at?: string;
+}
+
+// Legacy survey interfaces (for backward compatibility)
 export interface SurveyQuestion {
   id: string;
   question_text: LocalizedString;
@@ -172,6 +214,11 @@ export interface Project {
 type Database = {
   public: {
     Tables: {
+      questionnaires: {
+        Row: Questionnaire;
+        Insert: Omit<Questionnaire, 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Omit<Questionnaire, 'id' | 'created_at' | 'updated_at'>>;
+      };
       questions: {
         Row: Question;
         Insert: Omit<Question, 'id' | 'created_at' | 'updated_at' | 'options'>;
@@ -181,6 +228,26 @@ type Database = {
         Row: QuestionOption;
         Insert: Omit<QuestionOption, 'id' | 'created_at'>;
         Update: Partial<Omit<QuestionOption, 'id' | 'created_at'>>;
+      };
+      sessions: {
+        Row: Session;
+        Insert: Omit<Session, 'created_at' | 'expires_at'>;
+        Update: Partial<Omit<Session, 'created_at' | 'expires_at'>>;
+      };
+      form_answers: {
+        Row: FormResponse;
+        Insert: Omit<FormResponse, 'id' | 'submitted_at'>;
+        Update: Partial<Omit<FormResponse, 'id' | 'submitted_at'>>;
+      };
+      survey_answers: {
+        Row: SurveyAnswer;
+        Insert: Omit<SurveyAnswer, 'id' | 'submitted_at'>;
+        Update: Partial<Omit<SurveyAnswer, 'id' | 'submitted_at'>>;
+      };
+      session_cache: {
+        Row: SessionCache;
+        Insert: Omit<SessionCache, 'id' | 'created_at' | 'expires_at'>;
+        Update: Partial<Omit<SessionCache, 'id' | 'created_at' | 'expires_at'>>;
       };
       form_sessions: {
         Row: FormSession;

@@ -13,11 +13,15 @@ export function useCsrfToken(): string | null {
   useEffect(() => {
     // Get CSRF token from cookie
     const getCsrfToken = () => {
+      if (typeof document === 'undefined') {
+        return null;
+      }
+      
       const cookies = document.cookie.split(';');
       for (const cookie of cookies) {
         const [name, value] = cookie.trim().split('=');
         if (name === 'csrf_token') {
-          return value;
+          return decodeURIComponent(value);
         }
       }
       return null;
@@ -42,7 +46,7 @@ export function getCsrfToken(): string | null {
   for (const cookie of cookies) {
     const [name, value] = cookie.trim().split('=');
     if (name === 'csrf_token') {
-      return value;
+      return decodeURIComponent(value);
     }
   }
   return null;

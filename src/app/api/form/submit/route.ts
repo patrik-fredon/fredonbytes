@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
+import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from '@/app/lib/csrf';
 import { sendEmail } from '@/app/lib/email';
 import { generateAdminNotificationHTML, type FormResponseData } from '@/app/lib/email-templates';
 import { sanitizeAnswerValue } from '@/app/lib/input-sanitization';
@@ -33,6 +34,21 @@ export interface SubmitResponse {
 
 export async function POST(request: NextRequest) {
   try {
+    // CSRF validation
+    const csrfTokenFromHeader = request.headers.get(CSRF_TOKEN_HEADER_NAME);
+    const csrfTokenFromCookie = request.cookies.get('csrf_token')?.value;
+    
+    if (!validateCsrfToken(csrfTokenFromHeader || null, csrfTokenFromCookie || null)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'CSRF validation failed',
+          error: 'Invalid or missing CSRF token',
+        } as SubmitResponse,
+        { status: 403 }
+      );
+    }
+
     // Parse and validate request body
     const body = await request.json();
     const validationResult = submitRequestSchema.safeParse(body);

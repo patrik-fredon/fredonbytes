@@ -19,6 +19,7 @@ const ThankYouScreen = dynamic(() => import('@/app/components/form/ThankYouScree
   ),
 });
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { getCsrfToken } from '@/app/hooks/useCsrfToken';
 import { logError, getUserFriendlyErrorMessage } from '@/app/lib/error-logger';
 import { loadAnswers, saveAnswer, clearStorageData } from '@/app/lib/form-storage';
 import { validateAnswer, validateAllAnswers, findFirstUnansweredRequired, type ValidatableQuestion } from '@/app/lib/form-validation';
@@ -313,10 +314,23 @@ export default function SurveyClient({ sessionId, invalidSession = false }: Surv
     }));
 
     try {
+      // Get CSRF token from cookie
+      const getCsrfToken = () => {
+        const cookies = document.cookie.split(';');
+        for (const cookie of cookies) {
+          const [name, value] = cookie.trim().split('=');
+          if (name === 'csrf_token') {
+            return value;
+          }
+        }
+        return null;
+      };
+      
       const response = await fetch('/api/survey/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'x-csrf-token': getCsrfToken() || '',
         },
         body: JSON.stringify({
           session_id: sessionId,
