@@ -150,28 +150,106 @@
       "title": "Meet Our Team",
       "members": {
         "patrik": {
-          "name": "Bc. Patrik \"Fredon\" Svoboda BSc.",
+          "name": "Bc. Patrik Fredon BSc.",
           "role": "CEO & Founder",
           "expertise": "Full-Stack Development, Digital Strategy",
           "quote": "Efficiency is the new innovation."
         },
         "jana": {
-          "name": "Ing. Jana Nováková",
+          "name": "Ing. Jana Dvořáková",
           "role": "CTO",
           "expertise": "AI, Cloud Architecture",
           "quote": "If it's not scalable, it's not sustainable."
         },
         "lucie": {
-          "name": "Lucie Dvořáková",
+          "name": "Ing. Lucie Dvořáková",
           "role": "Creative Director",
           "expertise": "Branding, UX/UI Design",
           "quote": "Pixel-perfect isn't a goal—it's the baseline."
         },
         "tomas": {
-          "name": "Tomáš Horák",
+          "name": "Mgr. Tomáš Horák",
           "role": "SEO & Metadata Specialist",
           "expertise": "Data Analytics, SEM",
           "quote": "Visibility without strategy is just noise."
+        },
+        "chloe": {
+          "name": "Chloe Zaaytko BSc.",
+          "role": "UI/UX Designer",
+          "expertise": "User Interface Design, User Experience",
+          "quote": "Design is not just what it looks like, design is how it works"
+        },
+        "petra": {
+          "name": "Petra Chromá",
+          "role": "Technical Support Specialist",
+          "expertise": "Customer Support, Technical Troubleshooting",
+          "quote": "Every problem has a solution, you just need to find it"
+        },
+        "levi": {
+          "name": "Levi",
+          "role": "Web Developer",
+          "expertise": "Web Development, Best Practices",
+          "quote": "Web development is the art of turning coffee into code"
+        },
+        "david": {
+          "name": "Bc. David Ondra",
+          "role": "Technical Director",
+          "expertise": "Strategic Technology, Innovation",
+          "quote": "Innovation distinguishes between a leader and a follower"
+        },
+        "petr": {
+          "name": "Mgr. Petr Kouba",
+          "role": "Systems Engineer",
+          "expertise": "Infrastructure, System Architecture",
+          "quote": "Building robust systems that stand the test of time"
+        },
+        "thomas": {
+          "name": "Thomas Goethe",
+          "role": "Systems Analyst",
+          "expertise": "System Optimization, Workflow Analysis",
+          "quote": "Understanding systems is the key to improving them"
+        },
+        "andrea": {
+          "name": "Andrea Svabová",
+          "role": "Site Reliability Engineer",
+          "expertise": "Uptime, Monitoring, Incident Response",
+          "quote": "Reliability is not just a feature, it's a promise"
+        },
+        "jess": {
+          "name": "Jess Letcher",
+          "role": "Scrum Master",
+          "expertise": "Agile Practices, Team Facilitation",
+          "quote": "Great teams are built on trust and collaboration"
+        },
+        "matthew": {
+          "name": "Matthew Brusnighan",
+          "role": "QA Tester",
+          "expertise": "Quality Assurance, Testing",
+          "quote": "Quality is never an accident; it is always the result of effort"
+        },
+        "michal": {
+          "name": "Michal Reiner",
+          "role": "IT Project Manager",
+          "expertise": "Project Management, Business Alignment",
+          "quote": "Success is the result of clear vision and precise execution"
+        },
+        "ella": {
+          "name": "Ella Dean",
+          "role": "Infrastructure Engineer",
+          "expertise": "Scalable Infrastructure, Security",
+          "quote": "Strong foundations build powerful solutions"
+        },
+        "olive": {
+          "name": "Olive Dsouza",
+          "role": "HR & Client Acquisition",
+          "expertise": "Human Resources, Client Relations",
+          "quote": "People are the heart of every great company"
+        },
+        "emily": {
+          "name": "Emily Dsouza",
+          "role": "Embedded Systems Engineer",
+          "expertise": "IoT, Hardware-Software Integration",
+          "quote": "Hardware and software unite to create magic"
         }
       }
     },
@@ -1161,11 +1239,7 @@
           "webDevelopment": {
             "name": "Web Development",
             "description": "Custom website or web application",
-            "included": [
-              "Responsive Design",
-              "SEO Basic",
-              "Contact Forms"
-            ]
+            "included": ["Responsive Design", "SEO Basic", "Contact Forms"]
           },
           "mobileApp": {
             "name": "Mobile App",
@@ -1188,11 +1262,7 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monthly SEO and digital marketing services",
-            "included": [
-              "Keyword Research",
-              "Content Strategy",
-              "Analytics"
-            ]
+            "included": ["Keyword Research", "Content Strategy", "Analytics"]
           },
           "socialMedia": {
             "name": "Social Media",
