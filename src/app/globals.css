@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 /* CSS Custom Properties for Design System */
 :root {
   /* Colors */
@@ -145,8 +144,6 @@ body {
   outline-offset: 2px;
 }
 
-
-
 /* Container Utilities */
 .container {
   width: 100%;
@@ -199,7 +196,7 @@ body {
   }
 
   /* Ensure proper spacing for mobile navigation */
-    .mobile-nav {
+  .mobile-nav {
     max-height: calc(100vh - 80px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -236,8 +233,6 @@ body {
     font-size: 1.5rem;
     line-height: 1.4;
   }
-
-
 }
 
 /* Hamburger Menu Animations */
@@ -475,10 +470,6 @@ input:valid {
 
 /* CSS Feature Detection Fallbacks */
 
-
-  
-
-
 /* Fallback for browsers without CSS custom properties */
 @supports not (--css: variables) {
   body {
@@ -486,7 +477,7 @@ input:valid {
     color: #171717;
     font-family: system-ui, -apple-system, sans-serif;
   }
-  
+
   button {
     background: #0f172a;
     color: #ffffff;

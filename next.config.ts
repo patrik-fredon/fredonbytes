@@ -18,6 +18,15 @@ const nextConfig: NextConfig = {
     unoptimized: false,
     // Add quality configuration to fix Next.js 16 warning
     qualities: [75, 80, 85, 90, 95, 100],
+    // Configure remote domains for external images
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ihvltxbaodpqgbnwfxdd.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/**",
+      },
+    ],
   },
 
   // Experimental features for performance

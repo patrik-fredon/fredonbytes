@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-
 export default function AboutSection() {
   const t = useTranslations();
   const containerVariants = {
@@ -74,8 +73,7 @@ export default function AboutSection() {
       expertise: t("about.team.members.jana.expertise"),
       quote: t("about.team.members.jana.quote"),
       image:
-        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/site-reliability-engineer-fredonbytes-hazel.avif",
-    },
+"https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/devsecops-engineer-fredonbytes-zoe.avif",    },
     {
       name: t("about.team.members.lucie.name"),
       role: t("about.team.members.lucie.role"),
@@ -90,10 +88,8 @@ export default function AboutSection() {
       expertise: t("about.team.members.tomas.expertise"),
       quote: t("about.team.members.tomas.quote"),
       image:
-        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/blockchain-developer-fredonbytes-mason.avif",
+        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/database-architect-fredonbytes-tony.avif",
     },
-
-    
   ];
 
   return (

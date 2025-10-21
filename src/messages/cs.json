@@ -150,28 +150,106 @@
       "title": "Náš tým",
       "members": {
         "patrik": {
-          "name": "Bc. Patrik \"Fredon\" Svoboda BSc.",
+          "name": "Bc. Patrik Fredon BSc.",
           "role": "CEO & Zakladatel",
           "expertise": "Full-Stack vývoj, Digitální strategie",
           "quote": "Efektivita je nová inovace."
         },
         "jana": {
-          "name": "Ing. Jana Nováková",
+          "name": "Ing. Jana Dvořáková",
           "role": "CTO",
           "expertise": "AI, Cloudová architektura",
           "quote": "Pokud to není škálovatelné, není to udržitelné."
         },
         "lucie": {
-          "name": "Lucie Dvořáková",
+          "name": "Ing. Lucie Dvořáková",
           "role": "Kreativní ředitelka",
           "expertise": "Branding, UX/UI design",
           "quote": "Pixel-perfektní není cíl - je to základ."
         },
         "tomas": {
-          "name": "Tomáš Horák",
+          "name": "Mgr. Tomáš Horák",
           "role": "Specialista SEO a metadat",
           "expertise": "Datová analytika, SEM",
           "quote": "Viditelnost bez strategie je jen hluk."
+        },
+        "chloe": {
+          "name": "Chloe Zaytko",
+          "role": "UI/UX Designer",
+          "expertise": "Design uživatelského rozhraní, Uživatelská zkušenost",
+          "quote": "Design není jen o tom, jak to vypadá, ale jak to funguje"
+        },
+        "petra": {
+          "name": "Petra Chromá",
+          "role": "UI/UX Designer",
+          "expertise": "Design uživatelského rozhraní, Uživatelská zkušenost",
+          "quote": "Design není jen o tom, jak to vypadá, ale jak to funguje"
+        },
+        "levi": {
+          "name": "Levi",
+          "role": "Technický vedoucí",
+          "expertise": "Vedení týmu, Osvědčené postupy",
+          "quote": "Vedení spočívá v posílení ostatních k dosažení velkých věcí"
+        },
+        "david": {
+          "name": "Bc. David Ondra",
+          "role": "UI/UX Designer",
+          "expertise": "Strategické myšlení, Inovace",
+          "quote": "Inovace odlišuje vůdce od následovníka"
+        },
+        "petr": {
+          "name": "Mgr. Petr Kouba",
+          "role": "Systémový inženýr",
+          "expertise": "Infrastruktura, Systémová architektura",
+          "quote": "Budování robustních systémů, které odolají zkoušce času"
+        },
+        "thomas": {
+          "name": "Thomas Goethe",
+          "role": "Systémový analytik",
+          "expertise": "Optimalizace systémů, Analýza pracovních toků",
+          "quote": "Porozumění systémům je klíčem k jejich zlepšení"
+        },
+        "andrea": {
+          "name": "Andrea ",
+          "role": "Inženýr spolehlivosti webu",
+          "expertise": "Dostupnost, Monitoring, Řešení incidentů",
+          "quote": "Spolehlivost není jen vlastnost, je to slib"
+        },
+        "jess": {
+          "name": "Jess Letcher",
+          "role": "Scrum Master",
+          "expertise": "Agilní praktiky, Facilitace týmu",
+          "quote": "Skvělé týmy jsou postaveny na důvěře a spolupráci"
+        },
+        "matthew": {
+          "name": "Matthew Brusnighan",
+          "role": "QA Tester",
+          "expertise": "Zajištění kvality, Testování",
+          "quote": "Kvalita nikdy není náhoda; je vždy výsledkem úsilí"
+        },
+        "michal": {
+          "name": "Michal Reiner",
+          "role": "IT Projektový manažer",
+          "expertise": "Řízení projektů, Soulad s obchodem",
+          "quote": "Úspěch je výsledkem jasné vize a přesného provedení"
+        },
+        "ella": {
+          "name": "Ella Dean",
+          "role": "QA Tester",
+          "expertise": "Testování, Kvalita softwaru",
+          "quote": "Silné základy budují mocná řešení"
+        },
+        "olive": {
+          "name": "Olive Dsouza",
+          "role": "HR a Získávání klientů",
+          "expertise": "Lidské zdroje, Vztahy s klienty",
+          "quote": "Lidé jsou srdcem každé skvělé společnosti"
+        },
+        "emily": {
+          "name": "Bc. Emily Dsouza",
+          "role": "Head HR a Konzultantka IT",
+          "expertise": "Lidské zdroje, Vztahy s klienty",
+          "quote": "Silní lidé budují silné firmy"
         }
       }
     },
@@ -180,6 +258,34 @@
       "author": "Bc. Patrik \"Fredon\" Svoboda BSc., CEO & Zakladatel"
     },
     "mantra": "Jeden tým. Žádné limity."
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "O nás - FredonBytes | Vaše kompletní digitální armáda",
+      "description": "Objevte příběh za FredonBytes a poznejte tým, který buduje vaši digitální budoucnost. Od kódu po kliky poskytujeme kompletní digitální dominanci."
+    },
+    "navigation": {
+      "label": "O nás"
+    },
+    "companyStory": {
+      "title": "Náš příběh: Zrod digitální armády",
+      "content": [
+        "V neustále se vyvíjející technologické krajině jeden vývojář viděl vzorec: firmy se topily ve fragmentaci dodavatelů, skákaly mezi agenturami pro vývoj, design, marketing a podporu. Každý přechod znamenal ztrátu kontextu, zpoždění časových plánů a rozředění vize.",
+        "To, co začalo jako Fredonova osobní mise odstranit tento chaos, se stalo FredonBytes - jednotnou silou, kde se setkává kód, kreativita a strategie. Nejsme jen další agentura; jsme vaše kompletní digitální armáda, navržená tak, aby poskytovala bezproblémové výsledky s vysokým dopadem bez složitosti.",
+        "Cesta nebyla bez výzev. Pozdní noci s laděním kódu, nespočet schůzek s klienty, pivoty a iterace - každá překážka se stala lekcí, která formovala náš přístup. Zjistili jsme, že skutečná dokonalost nepřichází z dokonalého dělání jedné věci, ale z orchestrování více disciplín v dokonalé harmonii. Toto odhalení se stalo základním kamenem naší filozofie.",
+        "S růstem našeho týmu rostly i naše schopnosti. Přitáhli jsme vášnivé profesionály, kteří sdíleli naši vizi - designéry, kteří myslí jako vývojáři, marketéry, kteří rozumí UX, inženýry, kteří oceňují branding. Každý nový člen nepřidal jen dovednosti; znásobil náš kolektivní potenciál prostřednictvím spolupráce a mezifunkční expertízy.",
+        "Od skromných začátků jako sólový vývojář až po komplexní IT sílu, naše cesta byla vedena jedním základním přesvědčením: dokonalost by neměla být fragmentována. Každý řádek kódu, každý pixel, každá kampaň - vytvořeno pod jednou střechou, vedeno jednou vizí, provedeno jedním nezastavitelným týmem.",
+        "Dnes FredonBytes stojí jako důkaz, že jednotná expertíza poskytuje lepší výsledky. Nejen že stavíme webové stránky nebo spouštíme reklamy - architektujeme kompletní digitální ekosystémy, kde každý prvek spolupracuje v dokonalé harmonii k zesílení potenciálu vaší značky. Naši klienti nemusí řídit více dodavatelů, honit různé týmy nebo se starat o integrační noční můry. Mají jednoho partnera, jeden kontaktní bod, jeden tým, kterému na jejich úspěchu opravdu záleží."
+      ],
+      "founder": "Fredon",
+      "mission": "Být kompletní digitální armádou, kterou firmy potřebují - poskytovat jednotnou IT dokonalost bez fragmentace dodavatelů"
+    },
+    "team": {
+      "title": "Náš tým",
+      "subtitle": "Digitální armáda za vaším úspěchem",
+      "noPhoto": "Fotografie člena týmu",
+      "readMore": "Přečtěte si více o {name}"
+    }
   },
   "services": {
     "title": "Naše služby",

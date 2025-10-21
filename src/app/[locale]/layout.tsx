@@ -17,7 +17,7 @@ const AnimatedBackground = dynamic(
   () => import("../components/common/AnimatedBackground"),
   {
     loading: () => (
-      <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+      <div className="fixed inset-0 bg-linear-to-br from-slate-900 via-slate-800 to-slate-900" />
     ),
   }
 );
@@ -55,7 +55,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
- title: "Fredonbytes - Your All-in-One IT Powerhouse",
+  title: "Fredonbytes - Your All-in-One IT Powerhouse",
   description:
     "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
   keywords:
