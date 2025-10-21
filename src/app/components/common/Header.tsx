@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
 import { cn } from "@/app/lib/utils";
+import { Link as IntlLink } from "@/i18n/navigation";
 
 import { Button } from "./Button";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -38,11 +39,11 @@ export default function Header({ className }: HeaderProps) {
   };
 
   const navItems = [
-    { href: "#about", key: "navigation.about" },
-    { href: "#services", key: "navigation.services" },
-    { href: "#projects", key: "navigation.projects" },
-    { href: "#pricing", key: "navigation.pricing" },
-    { href: "#contact", key: "navigation.contact" },
+    { href: "/about", key: "navigation.about", isRoute: true },
+    { href: "#services", key: "navigation.services", isRoute: false },
+    { href: "#projects", key: "navigation.projects", isRoute: false },
+    { href: "#pricing", key: "navigation.pricing", isRoute: false },
+    { href: "#contact", key: "navigation.contact", isRoute: false },
   ];
 
   const externalLinks = [
@@ -99,15 +100,25 @@ export default function Header({ className }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium"
-              >
-                {t(item.key)}
-              </a>
-            ))}
+            {navItems.map((item) => 
+              item.isRoute ? (
+                <IntlLink
+                  key={item.href}
+                  href={item.href}
+                  className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium"
+                >
+                  {t(item.key)}
+                </IntlLink>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium"
+                >
+                  {t(item.key)}
+                </a>
+              )
+            )}
 
             {/* External Links Dropdown */}
             <div className="relative group">
@@ -168,16 +179,27 @@ export default function Header({ className }: HeaderProps) {
         {isMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-lg mobile-nav">
             <div className="px-4 py-4 space-y-4 safe-area-bottom">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={closeMenu}
-                  className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium mobile-touch-target py-3"
-                >
-                  {t(item.key)}
-                </a>
-              ))}
+              {navItems.map((item) => 
+                item.isRoute ? (
+                  <IntlLink
+                    key={item.href}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium mobile-touch-target py-3"
+                  >
+                    {t(item.key)}
+                  </IntlLink>
+                ) : (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium mobile-touch-target py-3"
+                  >
+                    {t(item.key)}
+                  </a>
+                )
+              )}
 
               <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
                 <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-2">

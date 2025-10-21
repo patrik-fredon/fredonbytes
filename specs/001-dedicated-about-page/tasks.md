@@ -32,17 +32,17 @@ This task breakdown implements the Dedicated About Page feature with static cont
 ## Phase 2: Foundational
 
 - [X] T004 Create About page route structure in src/app/[locale]/about/page.tsx
-- [ ] T005 Create About components directory structure in src/components/about/
-- [ ] T006 Update navigation to include About link in existing navigation component
+- [X] T005 Create About components directory structure in src/components/about/
+- [X] T006 Update navigation to include About link in existing navigation component
 
 ## Phase 3: User Story 1 - Navigate to Dedicated About Page (P1)
 
 **Goal**: Visitors can access a dedicated About page through main navigation
 **Independent Test**: Click "About" link in navigation and verify page loads with placeholder content
 
-- [ ] T007 [US1] Implement basic About page layout with heading and sections in src/app/[locale]/about/page.tsx
-- [ ] T008 [US1] Add navigation link to About page in existing navigation component
-- [ ] T009 [US1] Test navigation routing to /en/about, /cs/about, /de/about routes
+- [X] T007 [US1] Implement basic About page layout with heading and sections in src/app/[locale]/about/page.tsx
+- [X] T008 [US1] Add navigation link to About page in existing navigation component
+- [X] T009 [US1] Test navigation routing to /en/about, /cs/about, /de/about routes
 
 ## Phase 4: User Story 2 - Read Company Origin Story (P1)
 
