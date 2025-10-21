@@ -28,6 +28,8 @@ export default function CompanyStory() {
     t('content.1'),
     t('content.2'),
     t('content.3'),
+    t('content.4'),
+    t('content.5'),
   ];
 
   // Animation variants

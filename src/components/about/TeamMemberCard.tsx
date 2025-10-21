@@ -57,7 +57,7 @@ export default function TeamMemberCard({ member, index = 0 }: TeamMemberCardProp
       tabIndex={0}
     >
       {/* Team Member Photo */}
-      <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-slate-200 dark:bg-slate-700">
+      <div className="relative w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden bg-slate-200 dark:bg-slate-700 ring-4 ring-slate-100 dark:ring-slate-700 group-hover:ring-blue-200 dark:group-hover:ring-blue-900 transition-all duration-300">
         {!imageError && member.photo ? (
           <Image
             src={member.photo}
@@ -65,8 +65,8 @@ export default function TeamMemberCard({ member, index = 0 }: TeamMemberCardProp
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-300"
             loading="lazy"
-            quality={85}
-            sizes="128px"
+            quality={90}
+            sizes="(max-width: 768px) 160px, (max-width: 1024px) 160px, 160px"
             onError={() => setImageError(true)}
           />
         ) : (
@@ -75,7 +75,7 @@ export default function TeamMemberCard({ member, index = 0 }: TeamMemberCardProp
             className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center"
             aria-label="Team member photo placeholder"
           >
-            <User className="w-16 h-16 text-slate-400 dark:text-slate-500" aria-hidden="true" />
+            <User className="w-20 h-20 text-slate-400 dark:text-slate-500" aria-hidden="true" />
           </div>
         )}
       </div>
