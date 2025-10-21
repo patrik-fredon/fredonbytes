@@ -1,48 +1,55 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { ExternalLink, Github, Globe, Headphones, User, Library } from 'lucide-react'
-import React from 'react'
+import { motion } from "framer-motion";
+import {
+  ExternalLink,
+  Github,
+  Globe,
+  Headphones,
+  User,
+  Library,
+} from "lucide-react";
+import React from "react";
 
 interface LinkCardProps {
-  title: string
-  description?: string
-  url: string
-  icon?: string
-  external?: boolean
-  className?: string
+  title: string;
+  description?: string;
+  url: string;
+  icon?: string;
+  external?: boolean;
+  className?: string;
   stats?: {
-    repos?: number
-    commits?: number
-    stars?: number
-  }
+    repos?: number;
+    commits?: number;
+    stars?: number;
+  };
 }
 
-export default function LinkCard({ 
-  title, 
-  description, 
-  url, 
-  icon, 
+export default function LinkCard({
+  title,
+  description,
+  url,
+  icon,
   external = true,
-  className = '',
-  stats
+  className = "",
+  stats,
 }: LinkCardProps) {
   const getIcon = (iconName?: string) => {
     switch (iconName) {
-      case 'github':
-        return <Github className="w-6 h-6" />
-      case 'portfolio':
-        return <User className="w-6 h-6" />
-      case 'gallery':
-        return <Library className="w-6 h-6" />
-      case 'support':
-        return <Headphones className="w-6 h-6" />
-      case 'website':
-        return <Globe className="w-6 h-6" />
+      case "github":
+        return <Github className="w-6 h-6" />;
+      case "portfolio":
+        return <User className="w-6 h-6" />;
+      case "gallery":
+        return <Library className="w-6 h-6" />;
+      case "support":
+        return <Headphones className="w-6 h-6" />;
+      case "website":
+        return <Globe className="w-6 h-6" />;
       default:
-        return <ExternalLink className="w-6 h-6" />
+        return <ExternalLink className="w-6 h-6" />;
     }
-  }
+  };
 
   const cardVariants = {
     hover: {
@@ -50,26 +57,26 @@ export default function LinkCard({
       y: -5,
       transition: {
         duration: 0.2,
-        ease: "easeOut" as const
-      }
+        ease: "easeOut" as const,
+      },
     },
     tap: {
       scale: 0.98,
       transition: {
-        duration: 0.1
-      }
-    }
-  }
+        duration: 0.1,
+      },
+    },
+  };
 
   const iconVariants = {
     hover: {
       rotate: 5,
       scale: 1.1,
       transition: {
-        duration: 0.2
-      }
-    }
-  }
+        duration: 0.2,
+      },
+    },
+  };
 
   return (
     <motion.a
@@ -89,7 +96,7 @@ export default function LinkCard({
           {/* Icon */}
           <motion.div
             variants={iconVariants}
-            className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white"
+            className="shrink-0 w-12 h-12 bg-linear-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white"
           >
             {getIcon(icon)}
           </motion.div>
@@ -104,7 +111,7 @@ export default function LinkCard({
                 {description}
               </p>
             )}
-            
+
             {/* Stats for GitHub repositories */}
             {stats && (
               <div className="flex items-center space-x-4 mt-2 text-xs text-slate-500 dark:text-slate-400">
@@ -133,7 +140,7 @@ export default function LinkCard({
           {/* External Link Indicator */}
           {external && (
             <motion.div
-              className="flex-shrink-0 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors duration-200"
+              className="shrink-0 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors duration-200"
               variants={iconVariants}
             >
               <ExternalLink className="w-5 h-5" />
@@ -142,5 +149,5 @@ export default function LinkCard({
         </div>
       </div>
     </motion.a>
-  )
+  );
 }

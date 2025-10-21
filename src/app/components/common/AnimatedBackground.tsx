@@ -66,22 +66,22 @@ export default function AnimatedBackground() {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Base gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
+      <div className="absolute inset-0 bg-linear-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
 
       {/* Large animated gradient blobs */}
       <motion.div
-        className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+        className="absolute -top-40 -right-40 w-96 h-96 bg-linear-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20"
         variants={pulseVariants}
         animate="animate"
       />
       <motion.div
-        className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+        className="absolute -bottom-40 -left-40 w-96 h-96 bg-linear-to-br from-purple-400 to-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20"
         variants={pulseVariants}
         animate="animate"
         transition={{ delay: 1 }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-10"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-lg h-[32h-128radient-to-br from-cyan-400 to-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-10"
         variants={pulseVariants}
         animate="animate"
         transition={{ delay: 0.5 }}
@@ -89,7 +89,7 @@ export default function AnimatedBackground() {
 
       {/* Additional moving gradient orbs */}
       <motion.div
-        className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-br from-green-400 to-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-15"
+        className="absolute top-1/4 right-1/4 w-64 h-64 bg-linear-to-br from-green-400 to-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-15"
         variants={orbitVariants}
         animate="animate"
         style={{ transformOrigin: '200px 200px' }}

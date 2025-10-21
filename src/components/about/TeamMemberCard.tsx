@@ -51,7 +51,7 @@ export default function TeamMemberCard({
 
   return (
     <motion.article
-      className="group bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+      className="group bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
@@ -75,7 +75,7 @@ export default function TeamMemberCard({
         ) : (
           // Placeholder fallback for missing/failed images
           <div
-            className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center"
+            className="w-full h-full bg-linear-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center"
             aria-label="Team member photo placeholder"
           >
             <User
