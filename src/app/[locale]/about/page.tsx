@@ -30,7 +30,7 @@ export default async function AboutPage({ params }: Props) {
         <header className="text-center mb-16" role="banner">
           <h1 className="text-4xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6">
             About{' '}
-            <span className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               FredonBytes
             </span>
           </h1>

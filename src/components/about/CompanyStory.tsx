@@ -77,7 +77,7 @@ export default function CompanyStory() {
     >
       <div className="max-w-4xl mx-auto">
         <motion.h2
-          id="company_story-title"
+          id="company-story-title"
           className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-8 text-center"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ export default function CompanyStory() {
 
         {/* Mission Statement with Special Emphasis */}
         <motion.div
-          className="mt-12 bg-linear-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8 border border-blue-100 dark:border-slate-600"
+          className="mt-12 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8 border border-blue-100 dark:border-slate-600"
           variants={missionVariants}
           initial="hidden"
           whileInView="visible"
