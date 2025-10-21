@@ -177,7 +177,7 @@
           "name": "Chloe Zaytko",
           "role": "UI/UX Designer",
           "expertise": "Design uživatelského rozhraní, Uživatelská zkušenost",
-          "quote": "Design není jen o tom, jak to vypadá, ale jak to funguje"
+          "quote": "Design není jen o tom, jak to vypadá, ale jak to funguje."
         },
         "petra": {
           "name": "Petra Chromá",
@@ -210,7 +210,7 @@
           "quote": "Porozumění systémům je klíčem k jejich zlepšení"
         },
         "andrea": {
-          "name": "Andrea ",
+          "name": "Andrea",
           "role": "Inženýr spolehlivosti webu",
           "expertise": "Dostupnost, Monitoring, Řešení incidentů",
           "quote": "Spolehlivost není jen vlastnost, je to slib"
