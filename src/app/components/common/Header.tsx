@@ -41,7 +41,7 @@ export default function Header({ className }: HeaderProps) {
   const navItems = [
     { href: "/about", key: "navigation.about", isRoute: true },
     { href: "#services", key: "navigation.services", isRoute: false },
-    { href: "#projects", key: "navigation.projects", isRoute: false },
+    { href: "/projects", key: "navigation.projects", isRoute: false },
     { href: "#pricing", key: "navigation.pricing", isRoute: false },
     { href: "#contact", key: "navigation.contact", isRoute: false },
   ];
@@ -100,7 +100,7 @@ export default function Header({ className }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => 
+            {navItems.map((item) =>
               item.isRoute ? (
                 <IntlLink
                   key={item.href}
@@ -163,7 +163,9 @@ export default function Header({ className }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className={`lg:hidden p-3 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 mobile-touch-target ${isMenuOpen ? "hamburger-open" : ""}`}
+            className={`lg:hidden p-3 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 mobile-touch-target ${
+              isMenuOpen ? "hamburger-open" : ""
+            }`}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
@@ -179,7 +181,7 @@ export default function Header({ className }: HeaderProps) {
         {isMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-lg mobile-nav">
             <div className="px-4 py-4 space-y-4 safe-area-bottom">
-              {navItems.map((item) => 
+              {navItems.map((item) =>
                 item.isRoute ? (
                   <IntlLink
                     key={item.href}

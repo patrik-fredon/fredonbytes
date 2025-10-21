@@ -1,9 +1,9 @@
 /**
  * TeamMemberCard Component
- * 
+ *
  * Displays an individual team member's profile card with photo, name,
  * position, motto, and professional summary.
- * 
+ *
  * Features:
  * - Photo display with fallback placeholder
  * - Hover effects with scale animation
@@ -11,29 +11,32 @@
  * - AAA WCAG accessibility compliance
  * - Responsive design
  * - Dark mode support
- * 
+ *
  * @module components/about/TeamMemberCard
  */
 
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { User } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
+import { motion, type Variants } from "framer-motion";
+import { User } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
-import type { TeamMember } from '@/lib/types/about';
+import type { TeamMember } from "@/lib/types/about";
 
 interface TeamMemberCardProps {
   member: TeamMember;
   index?: number;
 }
 
-export default function TeamMemberCard({ member, index = 0 }: TeamMemberCardProps) {
+export default function TeamMemberCard({
+  member,
+  index = 0,
+}: TeamMemberCardProps) {
   const [imageError, setImageError] = useState(false);
 
   // Animation variants
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -41,13 +44,13 @@ export default function TeamMemberCard({ member, index = 0 }: TeamMemberCardProp
       transition: {
         duration: 0.5,
         delay: index * 0.1,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
   };
 
   return (
-    <motion.article 
+    <motion.article
       className="group bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
       variants={cardVariants}
       initial="hidden"
@@ -71,11 +74,14 @@ export default function TeamMemberCard({ member, index = 0 }: TeamMemberCardProp
           />
         ) : (
           // Placeholder fallback for missing/failed images
-          <div 
-            className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center"
+          <div
+            className="w-full h-full bg-linear-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center"
             aria-label="Team member photo placeholder"
           >
-            <User className="w-20 h-20 text-slate-400 dark:text-slate-500" aria-hidden="true" />
+            <User
+              className="w-20 h-20 text-slate-400 dark:text-slate-500"
+              aria-hidden="true"
+            />
           </div>
         )}
       </div>
@@ -92,7 +98,7 @@ export default function TeamMemberCard({ member, index = 0 }: TeamMemberCardProp
 
       {/* Motto (if provided) */}
       {member.motto && (
-        <p className="text-slate-600 dark:text-slate-400 text-sm italic text-center mb-4 min-h-[2.5rem]">
+        <p className="text-slate-600 dark:text-slate-400 text-sm italic text-center mb-4 min-h-10">
           &ldquo;{member.motto}&rdquo;
         </p>
       )}

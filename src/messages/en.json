@@ -174,15 +174,15 @@
           "quote": "Visibility without strategy is just noise."
         },
         "chloe": {
-          "name": "Chloe Zaaytko BSc.",
+          "name": "Chloe Zaytko",
           "role": "UI/UX Designer",
           "expertise": "User Interface Design, User Experience",
           "quote": "Design is not just what it looks like, design is how it works"
         },
         "petra": {
           "name": "Petra Chromá",
-          "role": "Technical Support Specialist",
-          "expertise": "Customer Support, Technical Troubleshooting",
+          "role": "UI/UX Designer",
+          "expertise": "User Interface Design, User Experience",
           "quote": "Every problem has a solution, you just need to find it"
         },
         "levi": {
@@ -193,8 +193,8 @@
         },
         "david": {
           "name": "Bc. David Ondra",
-          "role": "Technical Director",
-          "expertise": "Strategic Technology, Innovation",
+          "role": "UI/UX Designer",
+          "expertise": "Strategic Thinking, Innovation",
           "quote": "Innovation distinguishes between a leader and a follower"
         },
         "petr": {
@@ -210,7 +210,7 @@
           "quote": "Understanding systems is the key to improving them"
         },
         "andrea": {
-          "name": "Andrea Svabová",
+          "name": "Andrea ",
           "role": "Site Reliability Engineer",
           "expertise": "Uptime, Monitoring, Incident Response",
           "quote": "Reliability is not just a feature, it's a promise"
@@ -235,8 +235,8 @@
         },
         "ella": {
           "name": "Ella Dean",
-          "role": "Infrastructure Engineer",
-          "expertise": "Scalable Infrastructure, Security",
+          "role": "QA Tester",
+          "expertise": "Testing, Software Quality",
           "quote": "Strong foundations build powerful solutions"
         },
         "olive": {
@@ -246,10 +246,10 @@
           "quote": "People are the heart of every great company"
         },
         "emily": {
-          "name": "Emily Dsouza",
-          "role": "Embedded Systems Engineer",
-          "expertise": "IoT, Hardware-Software Integration",
-          "quote": "Hardware and software unite to create magic"
+          "name": "Bc. Emily Dsouza",
+          "role": "Head HR & Client Acquisition",
+          "expertise": "Human Resources, Client Relationships",
+          "quote": "Strong people build strong companies"
         }
       }
     },

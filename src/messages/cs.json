@@ -156,34 +156,34 @@
           "quote": "Efektivita je nová inovace."
         },
         "jana": {
-          "name": "Ing. Jana Nováková",
+          "name": "Ing. Jana Dvořáková",
           "role": "CTO",
           "expertise": "AI, Cloudová architektura",
           "quote": "Pokud to není škálovatelné, není to udržitelné."
         },
         "lucie": {
-          "name": "Lucie Dvořáková",
+          "name": "Ing. Lucie Dvořáková",
           "role": "Kreativní ředitelka",
           "expertise": "Branding, UX/UI design",
           "quote": "Pixel-perfektní není cíl - je to základ."
         },
         "tomas": {
-          "name": "Tomáš Horák",
+          "name": "Mgr. Tomáš Horák",
           "role": "Specialista SEO a metadat",
           "expertise": "Datová analytika, SEM",
           "quote": "Viditelnost bez strategie je jen hluk."
         },
         "chloe": {
-          "name": "Chloe",
+          "name": "Chloe Zaytko",
           "role": "UI/UX Designer",
           "expertise": "Design uživatelského rozhraní, Uživatelská zkušenost",
           "quote": "Design není jen o tom, jak to vypadá, ale jak to funguje"
         },
         "petra": {
-          "name": "Petra",
-          "role": "Specialistka technické podpory",
-          "expertise": "Zákaznická podpora, Technické řešení problémů",
-          "quote": "Každý problém má řešení, stačí ho jen najít"
+          "name": "Petra Chromá",
+          "role": "UI/UX Designer",
+          "expertise": "Design uživatelského rozhraní, Uživatelská zkušenost",
+          "quote": "Design není jen o tom, jak to vypadá, ale jak to funguje"
         },
         "levi": {
           "name": "Levi",
@@ -192,64 +192,64 @@
           "quote": "Vedení spočívá v posílení ostatních k dosažení velkých věcí"
         },
         "david": {
-          "name": "David",
-          "role": "Technický ředitel",
-          "expertise": "Strategické technologie, Inovace",
+          "name": "Bc. David Ondra",
+          "role": "UI/UX Designer",
+          "expertise": "Strategické myšlení, Inovace",
           "quote": "Inovace odlišuje vůdce od následovníka"
         },
         "petr": {
-          "name": "Petr",
+          "name": "Mgr. Petr Kouba",
           "role": "Systémový inženýr",
           "expertise": "Infrastruktura, Systémová architektura",
           "quote": "Budování robustních systémů, které odolají zkoušce času"
         },
         "thomas": {
-          "name": "Thomas",
+          "name": "Thomas Goethe",
           "role": "Systémový analytik",
           "expertise": "Optimalizace systémů, Analýza pracovních toků",
           "quote": "Porozumění systémům je klíčem k jejich zlepšení"
         },
         "andrea": {
-          "name": "Andrea",
+          "name": "Andrea ",
           "role": "Inženýr spolehlivosti webu",
           "expertise": "Dostupnost, Monitoring, Řešení incidentů",
           "quote": "Spolehlivost není jen vlastnost, je to slib"
         },
         "jess": {
-          "name": "Jess",
+          "name": "Jess Letcher",
           "role": "Scrum Master",
           "expertise": "Agilní praktiky, Facilitace týmu",
           "quote": "Skvělé týmy jsou postaveny na důvěře a spolupráci"
         },
         "matthew": {
-          "name": "Matthew",
+          "name": "Matthew Brusnighan",
           "role": "QA Tester",
           "expertise": "Zajištění kvality, Testování",
           "quote": "Kvalita nikdy není náhoda; je vždy výsledkem úsilí"
         },
         "michal": {
-          "name": "Michal",
+          "name": "Michal Reiner",
           "role": "IT Projektový manažer",
           "expertise": "Řízení projektů, Soulad s obchodem",
           "quote": "Úspěch je výsledkem jasné vize a přesného provedení"
         },
         "ella": {
-          "name": "Ella",
-          "role": "Infrastrukturní inženýrka",
-          "expertise": "Škálovatelná infrastruktura, Zabezpečení",
+          "name": "Ella Dean",
+          "role": "QA Tester",
+          "expertise": "Testování, Kvalita softwaru",
           "quote": "Silné základy budují mocná řešení"
         },
         "olive": {
-          "name": "Olive",
+          "name": "Olive Dsouza",
           "role": "HR a Získávání klientů",
           "expertise": "Lidské zdroje, Vztahy s klienty",
           "quote": "Lidé jsou srdcem každé skvělé společnosti"
         },
         "emily": {
-          "name": "Emily",
-          "role": "Inženýrka vestavěných systémů",
-          "expertise": "IoT, Integrace hardware a software",
-          "quote": "Hardware a software se spojují a vytvářejí kouzlo"
+          "name": "Bc. Emily Dsouza",
+          "role": "Head HR a Konzultantka IT",
+          "expertise": "Lidské zdroje, Vztahy s klienty",
+          "quote": "Silní lidé budují silné firmy"
         }
       }
     },
