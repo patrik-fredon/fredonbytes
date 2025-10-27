@@ -45,7 +45,7 @@
   - Update navigation to link to the new contact page
   - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
 
-- [-] 7. Create enhanced projects page with gallery functionality
+- [x] 7. Create enhanced projects page with gallery functionality
   - Create new projects page at /[locale]/projects with enhanced gallery interface
   - Implement project filtering by technology and category
   - Add detailed project information display with images, GitHub links, and previews
@@ -53,33 +53,33 @@
   - Ensure all project content is properly internationalized
   - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
 
-- [ ] 7.1 Create database schema for projects system
+- [x] 7.1 Create database schema for projects system
   - Create Supabase tables for projects, project_technologies, and technologies
   - Add seed data for existing projects with multilingual content
   - Implement API endpoints for projects data retrieval
   - _Requirements: 4.1, 4.2, 4.3_
 
-- [ ] 8. Update header navigation for new page structure
+- [x] 8. Update header navigation for new page structure
   - Update Header component navigation links to point to dedicated pages
   - Ensure mobile hamburger menu includes all new page links
   - Fix any navigation issues on mobile devices
   - Test navigation functionality across all screen sizes
   - _Requirements: 1.1, 1.2, 7.1, 7.2_
 
-- [ ] 9. Optimize internationalization for all new features
+- [x] 9. Optimize internationalization for all new features
   - Add translation keys for all new UI elements and content
   - Ensure complete Czech, English, and German translations for all new pages
   - Test language switching functionality on all new pages
   - Verify currency localization works properly for pricing
   - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
 
-- [ ] 9.1 Create comprehensive translation files
+- [x] 9.1 Create comprehensive translation files
   - Add missing translation keys to cs.json, en.json, and de.json files
   - Ensure all new page content has proper translation keys
   - Add currency formatting and localization support
   - _Requirements: 6.1, 6.2, 6.4_
 
-- [ ] 10. Final testing and mobile optimization
+- [x] 10. Final testing and mobile optimization
   - Test all pages on various mobile devices and screen sizes
   - Verify all interactive elements work properly on touch devices
   - Ensure proper loading states and error handling on mobile

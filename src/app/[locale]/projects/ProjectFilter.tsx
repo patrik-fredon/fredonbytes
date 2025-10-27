@@ -119,7 +119,7 @@ export default function ProjectFilter({
                   }`}
                   aria-pressed={selectedCategory === category}
                 >
-                  {t(`categories.${category}` as any)}
+                  {t(`categories.${category}` as keyof typeof t)}
                 </button>
               ))}
             </div>
@@ -142,7 +142,7 @@ export default function ProjectFilter({
                   }`}
                   aria-pressed={selectedStatus === status}
                 >
-                  {t(`status.${status}` as any)}
+                  {t(`status.${status}` as keyof typeof t)}
                 </button>
               ))}
             </div>

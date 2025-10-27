@@ -138,7 +138,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                           : 'bg-slate-500 text-white'
                       }`}
                     >
-                      {t(`status.${project.status}` as any)}
+                      {t(`status.${project.status}` as keyof typeof t)}
                     </span>
                   </div>
                 </div>

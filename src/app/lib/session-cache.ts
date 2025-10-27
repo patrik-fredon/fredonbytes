@@ -3,13 +3,22 @@
  * Provides localStorage caching with 24h TTL
  */
 
+interface Question {
+  id: string;
+  type: string;
+  title: string;
+  description?: string;
+  required?: boolean;
+  options?: string[];
+}
+
 export interface CachedSessionData {
   timestamp: number;
   locale: string;
   sessionId: string;
   questionnaireId?: string;
-  questions?: any[];
-  answers: Record<string, any>;
+  questions?: Question[];
+  answers: Record<string, string | string[] | number | boolean>;
   csrfToken?: string;
   currentStep?: number;
 }
@@ -92,7 +101,7 @@ export function loadFromCache(
 export function updateAnswers(
   type: 'form' | 'survey',
   sessionId: string,
-  answers: Record<string, any>
+  answers: Record<string, string | string[] | number | boolean>
 ): void {
   saveToCache(type, sessionId, { answers });
 }

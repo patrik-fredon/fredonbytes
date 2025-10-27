@@ -29,6 +29,9 @@ export interface LocalizedQuestionOption {
   display_order: number;
 }
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     // Get locale from query params (default to 'en')
@@ -148,4 +151,4 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export const revalidate = 3600;
+

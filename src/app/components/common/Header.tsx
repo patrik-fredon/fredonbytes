@@ -30,18 +30,42 @@ export default function Header({ className }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Cleanup body class on unmount
+  useEffect(() => {
+    return () => {
+      if (typeof document !== 'undefined') {
+        document.body.classList.remove('menu-open');
+      }
+    };
+  }, []);
+
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    const newState = !isMenuOpen;
+    setIsMenuOpen(newState);
+    
+    // Prevent body scroll when menu is open on mobile
+    if (typeof document !== 'undefined') {
+      if (newState) {
+        document.body.classList.add('menu-open');
+      } else {
+        document.body.classList.remove('menu-open');
+      }
+    }
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    
+    // Re-enable body scroll
+    if (typeof document !== 'undefined') {
+      document.body.classList.remove('menu-open');
+    }
   };
 
   const navItems = [
     { href: "/about", key: "navigation.about", isRoute: true },
     { href: "#services", key: "navigation.services", isRoute: false },
-    { href: "/projects", key: "navigation.projects", isRoute: false },
+    { href: "/projects", key: "navigation.projects", isRoute: true },
     { href: "/pricing", key: "navigation.pricing", isRoute: true },
     { href: "/contact", key: "navigation.contact", isRoute: true },
   ];
