@@ -1,4 +1,5 @@
 
+import { getTranslations } from 'next-intl/server';
 
 import { supabase, type Project } from '@/app/lib/supabase';
 
@@ -30,13 +31,14 @@ export const revalidate = 3600;
 
 export default async function ProjectsGrid() {
   const projects = await getProjects();
+  const t = await getTranslations('projects');
 
   // Empty state
   if (projects.length === 0) {
     return (
       <div className="text-center py-16">
         <p className="text-xl text-slate-600 dark:text-slate-400">
-          No projects available at the moment. Check back soon!
+          {t('empty.noProjects')}
         </p>
       </div>
     );

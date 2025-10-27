@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Github, Calendar, Tag } from 'lucide-react';
 import Image from 'next/image';
+import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
@@ -17,11 +18,8 @@ interface ProjectModalProps {
 export default function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   const prefersReducedMotion = useReducedMotion();
   const [imageError, setImageError] = useState(false);
-
-  // Get current locale from URL or default to 'en'
-  const locale = (typeof window !== 'undefined' 
-    ? new URLSearchParams(window.location.search).get('lang') || 'en'
-    : 'en') as 'en' | 'cs' | 'de';
+  const locale = useLocale() as 'en' | 'cs' | 'de';
+  const t = useTranslations('projects');
 
   // Close modal on Escape key
   useEffect(() => {
@@ -128,7 +126,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                   <div className="absolute top-4 left-4 flex gap-2">
                     {project.featured && (
                       <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-                        Featured
+                        {t('badges.featured')}
                       </span>
                     )}
                     <span
@@ -140,7 +138,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                           : 'bg-slate-500 text-white'
                       }`}
                     >
-                      {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
+                      {t(`status.${project.status}` as any)}
                     </span>
                   </div>
                 </div>
@@ -173,7 +171,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     <div className="flex items-center gap-2 mb-3">
                       <Tag className="w-4 h-4 text-slate-600 dark:text-slate-400" />
                       <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
-                        Technologies
+                        {t('modal.technologies')}
                       </h3>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -198,7 +196,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                         className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg font-medium"
                       >
                         <ExternalLink className="w-5 h-5" />
-                        <span>View Live Demo</span>
+                        <span>{t('actions.viewLiveDemo')}</span>
                       </a>
                     )}
                     {project.github_link && (
@@ -209,7 +207,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                         className="flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-slate-700 text-white rounded-lg hover:bg-slate-800 dark:hover:bg-slate-600 transition-colors shadow-md hover:shadow-lg font-medium"
                       >
                         <Github className="w-5 h-5" />
-                        <span>View on GitHub</span>
+                        <span>{t('actions.viewOnGithub')}</span>
                       </a>
                     )}
                   </div>

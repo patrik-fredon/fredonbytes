@@ -3,6 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import { useState, memo } from "react";
 
 import { useIntersectionObserver } from "@/app/hooks/useIntersectionObserver";
@@ -53,13 +54,8 @@ const ProjectCard = memo(
       triggerOnce: true,
     });
     const [imageError, setImageError] = useState(false);
-
-    // Get current locale from URL or default to 'en'
-    const locale = (
-      typeof window !== "undefined"
-        ? new URLSearchParams(window.location.search).get("lang") || "en"
-        : "en"
-    ) as "en" | "cs" | "de";
+    const locale = useLocale() as "en" | "cs" | "de";
+    const t = useTranslations('projects');
 
     // Get localized content
     const title = project.title[locale] || project.title.en;
@@ -123,7 +119,7 @@ const ProjectCard = memo(
           {/* Featured Badge */}
           {project.featured && (
             <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-              Featured
+              {t('badges.featured')}
             </div>
           )}
 
@@ -138,7 +134,7 @@ const ProjectCard = memo(
                   : "bg-slate-500 text-white"
               }`}
             >
-              {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
+              {t(`status.${project.status}` as any)}
             </span>
           </div>
 
@@ -150,7 +146,7 @@ const ProjectCard = memo(
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 hover:scale-110 transition-transform"
-                aria-label="View live demo"
+                aria-label={t('actions.viewLiveDemo')}
                 onClick={(e) => e.stopPropagation()}
               >
                 <ExternalLink className="w-5 h-5" />
@@ -162,7 +158,7 @@ const ProjectCard = memo(
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 hover:scale-110 transition-transform"
-                aria-label="View on GitHub"
+                aria-label={t('actions.viewOnGithub')}
                 onClick={(e) => e.stopPropagation()}
               >
                 <Github className="w-5 h-5" />

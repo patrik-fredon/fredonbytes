@@ -2,33 +2,41 @@
 
 import { motion } from 'framer-motion';
 import { Filter, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 interface ProjectFilterProps {
   technologies: string[];
+  categories: string[];
   statuses: Array<'active' | 'completed' | 'archived'>;
   selectedTechnologies: string[];
+  selectedCategory: string | null;
   selectedStatus: string | null;
   onTechnologyChange: (technologies: string[]) => void;
+  onCategoryChange: (category: string | null) => void;
   onStatusChange: (status: string | null) => void;
   onClearFilters: () => void;
 }
 
 export default function ProjectFilter({
   technologies,
+  categories,
   statuses,
   selectedTechnologies,
+  selectedCategory,
   selectedStatus,
   onTechnologyChange,
+  onCategoryChange,
   onStatusChange,
   onClearFilters,
 }: ProjectFilterProps) {
   const prefersReducedMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations('projects');
 
-  const hasActiveFilters = selectedTechnologies.length > 0 || selectedStatus !== null;
+  const hasActiveFilters = selectedTechnologies.length > 0 || selectedStatus !== null || selectedCategory !== null;
 
   const toggleTechnology = (tech: string) => {
     if (selectedTechnologies.includes(tech)) {
@@ -40,6 +48,10 @@ export default function ProjectFilter({
 
   const handleStatusChange = (status: string) => {
     onStatusChange(selectedStatus === status ? null : status);
+  };
+
+  const handleCategoryChange = (category: string) => {
+    onCategoryChange(selectedCategory === category ? null : category);
   };
 
   return (
@@ -54,11 +66,11 @@ export default function ProjectFilter({
         >
           <Filter className="w-5 h-5 text-slate-600 dark:text-slate-400" />
           <span className="text-slate-900 dark:text-white font-medium">
-            Filters
+            {t('filters.title')}
           </span>
           {hasActiveFilters && (
             <span className="ml-2 px-2 py-0.5 bg-blue-600 text-white text-xs rounded-full">
-              {selectedTechnologies.length + (selectedStatus ? 1 : 0)}
+              {selectedTechnologies.length + (selectedStatus ? 1 : 0) + (selectedCategory ? 1 : 0)}
             </span>
           )}
         </button>
@@ -70,7 +82,7 @@ export default function ProjectFilter({
             aria-label="Clear all filters"
           >
             <X className="w-4 h-4" />
-            <span className="text-sm font-medium">Clear All</span>
+            <span className="text-sm font-medium">{t('filters.clearAll')}</span>
           </button>
         )}
       </div>
@@ -90,10 +102,33 @@ export default function ProjectFilter({
         className="overflow-hidden"
       >
         <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 space-y-6">
+          {/* Category Filter */}
+          <div>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">
+              {t('filters.category')}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => handleCategoryChange(category)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    selectedCategory === category
+                      ? 'bg-blue-600 text-white shadow-md'
+                      : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                  }`}
+                  aria-pressed={selectedCategory === category}
+                >
+                  {t(`categories.${category}` as any)}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Status Filter */}
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">
-              Status
+              {t('filters.status')}
             </h3>
             <div className="flex flex-wrap gap-2">
               {statuses.map((status) => (
@@ -107,7 +142,7 @@ export default function ProjectFilter({
                   }`}
                   aria-pressed={selectedStatus === status}
                 >
-                  {status.charAt(0).toUpperCase() + status.slice(1)}
+                  {t(`status.${status}` as any)}
                 </button>
               ))}
             </div>
@@ -116,7 +151,7 @@ export default function ProjectFilter({
           {/* Technology Filter */}
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">
-              Technologies
+              {t('filters.technologies')}
             </h3>
             <div className="flex flex-wrap gap-2">
               {technologies.map((tech) => (

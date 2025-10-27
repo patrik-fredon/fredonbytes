@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { useTranslations } from 'next-intl';
 import { useState, useMemo } from 'react';
 
 import type { Project } from '@/app/lib/supabase';
@@ -24,9 +25,11 @@ interface ProjectsClientProps {
 
 export default function ProjectsClient({ projects }: ProjectsClientProps) {
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const t = useTranslations('projects');
 
   // Extract unique technologies from all projects
   const allTechnologies = useMemo(() => {
@@ -37,12 +40,26 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
     return Array.from(techSet).sort();
   }, [projects]);
 
+  // Extract unique categories from all projects
+  const allCategories = useMemo(() => {
+    const categorySet = new Set<string>();
+    projects.forEach((project) => {
+      categorySet.add(project.category);
+    });
+    return Array.from(categorySet).sort();
+  }, [projects]);
+
   // Extract unique statuses
   const allStatuses: Array<'active' | 'completed' | 'archived'> = ['active', 'completed', 'archived'];
 
   // Filter projects based on selected filters
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
+      // Filter by category
+      if (selectedCategory && project.category !== selectedCategory) {
+        return false;
+      }
+
       // Filter by status
       if (selectedStatus && project.status !== selectedStatus) {
         return false;
@@ -60,7 +77,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
 
       return true;
     });
-  }, [projects, selectedStatus, selectedTechnologies]);
+  }, [projects, selectedCategory, selectedStatus, selectedTechnologies]);
 
   const handleOpenModal = (project: Project) => {
     setSelectedProject(project);
@@ -75,6 +92,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
 
   const handleClearFilters = () => {
     setSelectedTechnologies([]);
+    setSelectedCategory(null);
     setSelectedStatus(null);
   };
 
@@ -83,10 +101,13 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
       {/* Filter Component */}
       <ProjectFilter
         technologies={allTechnologies}
+        categories={allCategories}
         statuses={allStatuses}
         selectedTechnologies={selectedTechnologies}
+        selectedCategory={selectedCategory}
         selectedStatus={selectedStatus}
         onTechnologyChange={setSelectedTechnologies}
+        onCategoryChange={setSelectedCategory}
         onStatusChange={setSelectedStatus}
         onClearFilters={handleClearFilters}
       />
@@ -95,7 +116,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
       {filteredProjects.length === 0 ? (
         <div className="text-center py-16">
           <p className="text-xl text-slate-600 dark:text-slate-400">
-            No projects match your filters. Try adjusting your selection.
+            {t('empty.noResults')}
           </p>
         </div>
       ) : (

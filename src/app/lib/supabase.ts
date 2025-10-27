@@ -200,6 +200,7 @@ export interface Project {
   description: LocalizedString;
   short_description?: LocalizedString | null;
   image_url: string;
+  category: string;
   github_link?: string | null;
   live_demo_link?: string | null;
   technologies: string[];
@@ -209,6 +210,23 @@ export interface Project {
   visible: boolean;
   created_at?: string;
   updated_at?: string;
+}
+
+export interface ProjectTechnology {
+  id: string;
+  project_id: string;
+  technology_name: string;
+  technology_icon?: string | null;
+  created_at?: string;
+}
+
+export interface Technology {
+  id: string;
+  name: string;
+  icon: string;
+  category: string;
+  color?: string | null;
+  created_at?: string;
 }
 
 // Pricing system interfaces
@@ -328,6 +346,16 @@ type Database = {
         Row: Project;
         Insert: Omit<Project, 'id' | 'created_at' | 'updated_at'>;
         Update: Partial<Omit<Project, 'id' | 'created_at' | 'updated_at'>>;
+      };
+      project_technologies: {
+        Row: ProjectTechnology;
+        Insert: Omit<ProjectTechnology, 'id' | 'created_at'>;
+        Update: Partial<Omit<ProjectTechnology, 'id' | 'created_at'>>;
+      };
+      technologies: {
+        Row: Technology;
+        Insert: Omit<Technology, 'id' | 'created_at'>;
+        Update: Partial<Omit<Technology, 'id' | 'created_at'>>;
       };
       pricing_tiers: {
         Row: PricingTier;

@@ -363,6 +363,10 @@
     "cta": "Entdecken Sie, wie wir Ihnen helfen können"
   },
   "contact": {
+    "meta": {
+      "title": "Kontakt - FredonBytes | Nehmen Sie Kontakt auf",
+      "description": "Bereit, Ihre digitale Präsenz zu transformieren? Kontaktieren Sie FredonBytes für professionelle IT-Beratung, Softwareentwicklung und digitales Marketing. Holen Sie sich noch heute Ihre kostenlose Beratung."
+    },
     "title": "Lassen Sie uns zusammenarbeiten",
     "subtitle": "Bereit, Ihre digitale Präsenz zu transformieren? Lassen Sie uns über Ihr Projekt sprechen und gemeinsam etwas Erstaunliches schaffen.",
     "sectionTitle": "Lassen Sie uns zusammenarbeiten",
@@ -1552,6 +1556,45 @@
       "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
       "submissionFailed": "Das Absenden der Umfrage ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
       "loadFailed": "Das Laden der Fragen ist fehlgeschlagen. Bitte aktualisieren Sie die Seite."
+    }
+  },
+  "projects": {
+    "title": "Unsere Projekte",
+    "subtitle": "Entdecken Sie unser Portfolio erfolgreicher Projekte. Von Unternehmensanwendungen bis hin zu innovativen Startups liefern wir Lösungen, die Ergebnisse erzielen.",
+    "filters": {
+      "title": "Filter",
+      "clearAll": "Alle löschen",
+      "category": "Kategorie",
+      "status": "Status",
+      "technologies": "Technologien"
+    },
+    "categories": {
+      "web_development": "Webentwicklung",
+      "mobile_app": "Mobile App",
+      "cloud_solution": "Cloud-Lösung",
+      "database": "Datenbank",
+      "consulting": "Beratung"
+    },
+    "status": {
+      "active": "Aktiv",
+      "completed": "Abgeschlossen",
+      "archived": "Archiviert"
+    },
+    "badges": {
+      "featured": "Empfohlen"
+    },
+    "actions": {
+      "viewLiveDemo": "Live-Demo ansehen",
+      "viewOnGithub": "Auf GitHub ansehen",
+      "viewDetails": "Details ansehen"
+    },
+    "modal": {
+      "technologies": "Technologien",
+      "createdOn": "Erstellt am"
+    },
+    "empty": {
+      "noProjects": "Derzeit sind keine Projekte verfügbar. Schauen Sie später wieder vorbei!",
+      "noResults": "Keine Projekte entsprechen Ihren Filtern. Versuchen Sie, Ihre Auswahl anzupassen."
     }
   }
 }

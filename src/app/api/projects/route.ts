@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const status = searchParams.get('status');
+    const category = searchParams.get('category');
     const featured = searchParams.get('featured');
     const _locale = searchParams.get('locale') || 'en'; // Accept locale parameter for future use
 
@@ -25,6 +26,10 @@ export async function GET(request: NextRequest) {
     // Apply optional filters
     if (status && ['active', 'completed', 'archived'].includes(status)) {
       query = query.eq('status', status);
+    }
+
+    if (category) {
+      query = query.eq('category', category);
     }
 
     if (featured === 'true') {

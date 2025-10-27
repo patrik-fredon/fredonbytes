@@ -43,7 +43,7 @@ export default function Header({ className }: HeaderProps) {
     { href: "#services", key: "navigation.services", isRoute: false },
     { href: "/projects", key: "navigation.projects", isRoute: false },
     { href: "/pricing", key: "navigation.pricing", isRoute: true },
-    { href: "#contact", key: "navigation.contact", isRoute: false },
+    { href: "/contact", key: "navigation.contact", isRoute: true },
   ];
 
   const externalLinks = [
@@ -153,11 +153,11 @@ export default function Header({ className }: HeaderProps) {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <a href="#contact">
+            <IntlLink href="/contact">
               <Button variant="gradient" size="lg">
                 {t("navigation.getStarted")}
               </Button>
-            </a>
+            </IntlLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -235,11 +235,11 @@ export default function Header({ className }: HeaderProps) {
               </div>
 
               <div className="pt-2 px-2">
-                <a href="#contact" onClick={closeMenu} className="block">
+                <IntlLink href="/contact" onClick={closeMenu} className="block">
                   <Button variant="gradient" size="lg" className="w-full min-h-[44px]">
                     {t("navigation.getStarted")}
                   </Button>
-                </a>
+                </IntlLink>
               </div>
             </div>
           </div>

@@ -37,7 +37,7 @@
   - Verify all about page content is properly translated in all three languages
   - _Requirements: 2.1, 2.2, 2.3, 2.5_
 
-- [ ] 6. Create dedicated contact page
+- [x] 6. Create dedicated contact page
   - Create new contact page at /[locale]/contact with existing ContactSection content
   - Move the multi-step contact form to the dedicated contact page
   - Ensure contact page is fully responsive and mobile-optimized
@@ -45,7 +45,7 @@
   - Update navigation to link to the new contact page
   - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
 
-- [ ] 7. Create enhanced projects page with gallery functionality
+- [-] 7. Create enhanced projects page with gallery functionality
   - Create new projects page at /[locale]/projects with enhanced gallery interface
   - Implement project filtering by technology and category
   - Add detailed project information display with images, GitHub links, and previews

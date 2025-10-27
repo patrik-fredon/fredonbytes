@@ -363,6 +363,10 @@
     "cta": "Objevte, jak vám můžeme pomoci"
   },
   "contact": {
+    "meta": {
+      "title": "Kontakt - FredonBytes | Spojte se s námi",
+      "description": "Připraveni transformovat vaši digitální přítomnost? Kontaktujte FredonBytes pro odborné IT poradenství, vývoj softwaru a digitální marketing. Získejte bezplatnou konzultaci ještě dnes."
+    },
     "title": "Pojďme spolupracovat",
     "subtitle": "Připraveni transformovat vaši digitální přítomnost? Pojďme probrat váš projekt a vytvořit něco úžasného společně.",
     "sectionTitle": "Pojďme spolupracovat",
@@ -1485,6 +1489,45 @@
       "invalidEmail": "Zadejte prosím platnou emailovou adresu",
       "submissionFailed": "Odeslání průzkumu se nezdařilo. Zkuste to prosím znovu.",
       "loadFailed": "Načtení otázek se nezdařilo. Obnovte prosím stránku."
+    }
+  },
+  "projects": {
+    "title": "Naše projekty",
+    "subtitle": "Prozkoumejte naše portfolio úspěšných projektů. Od podnikových aplikací po inovativní startupy, dodáváme řešení, která přinášejí výsledky.",
+    "filters": {
+      "title": "Filtry",
+      "clearAll": "Vymazat vše",
+      "category": "Kategorie",
+      "status": "Stav",
+      "technologies": "Technologie"
+    },
+    "categories": {
+      "web_development": "Vývoj webů",
+      "mobile_app": "Mobilní aplikace",
+      "cloud_solution": "Cloudové řešení",
+      "database": "Databáze",
+      "consulting": "Konzultace"
+    },
+    "status": {
+      "active": "Aktivní",
+      "completed": "Dokončený",
+      "archived": "Archivovaný"
+    },
+    "badges": {
+      "featured": "Doporučený"
+    },
+    "actions": {
+      "viewLiveDemo": "Zobrazit demo",
+      "viewOnGithub": "Zobrazit na GitHubu",
+      "viewDetails": "Zobrazit detaily"
+    },
+    "modal": {
+      "technologies": "Technologie",
+      "createdOn": "Vytvořeno"
+    },
+    "empty": {
+      "noProjects": "Momentálně nejsou k dispozici žádné projekty. Zkuste to později!",
+      "noResults": "Žádné projekty neodpovídají vašim filtrům. Zkuste upravit výběr."
     }
   }
 }
