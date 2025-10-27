@@ -163,7 +163,7 @@ export default function Header({ className }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className={`lg:hidden p-3 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 mobile-touch-target ${
+            className={`lg:hidden p-3 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 mobile-touch-target min-h-[44px] min-w-[44px] flex items-center justify-center ${
               isMenuOpen ? "hamburger-open" : ""
             }`}
             aria-label="Toggle menu"
