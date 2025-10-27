@@ -10,7 +10,7 @@ import { Link } from "@/i18n/navigation";
 
 import { Button } from "../common/Button";
 
-export default function AboutSection() {
+export default function AboutSection({ showTeam = true }: { showTeam?: boolean }) {
   const t = useTranslations();
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -200,6 +200,7 @@ export default function AboutSection() {
           </motion.div>
 
           {/* Team Section */}
+          {showTeam && (
           <motion.div variants={itemVariants}>
             <h3 className="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">
               {t("about.team.title")}
@@ -244,6 +245,7 @@ export default function AboutSection() {
               ))}
             </div>
           </motion.div>
+          )}
 
           {/* Founder Quote */}
           <motion.div variants={itemVariants} className="mt-20">
