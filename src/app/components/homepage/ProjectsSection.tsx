@@ -15,6 +15,7 @@ import {
 import Image from 'next/image'
 import React, { useState } from 'react'
 
+import { Link } from '@/i18n/navigation'
 import { Button } from '../common/Button'
 
 
@@ -296,11 +297,11 @@ export default function ProjectsSection() {
                 >
                   Get Started
                 </Button>
-                <a href="https://lib.fredonbytes.cloud" target="_blank" rel="noopener noreferrer">
+                <Link href="/projects">
                   <Button variant="outline" size="xl">
-                    View Full Portfolio
+                    View All Projects
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>

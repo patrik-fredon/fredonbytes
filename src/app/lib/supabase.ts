@@ -211,6 +211,36 @@ export interface Project {
   updated_at?: string;
 }
 
+// Pricing system interfaces
+export interface PricingTier {
+  id: string;
+  name: LocalizedString;
+  description: LocalizedString;
+  type: 'starter' | 'professional' | 'enterprise';
+  price_czk: number | null;
+  price_eur: number | null;
+  features: string[];
+  popular: boolean;
+  cta_text: LocalizedString;
+  active: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface PricingItem {
+  id: string;
+  name: LocalizedString;
+  description: LocalizedString;
+  base_price_czk: number;
+  base_price_eur: number;
+  category: string;
+  features: string[];
+  icon: string;
+  active: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
 type Database = {
   public: {
     Tables: {
@@ -298,6 +328,16 @@ type Database = {
         Row: Project;
         Insert: Omit<Project, 'id' | 'created_at' | 'updated_at'>;
         Update: Partial<Omit<Project, 'id' | 'created_at' | 'updated_at'>>;
+      };
+      pricing_tiers: {
+        Row: PricingTier;
+        Insert: Omit<PricingTier, 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Omit<PricingTier, 'id' | 'created_at' | 'updated_at'>>;
+      };
+      pricing_items: {
+        Row: PricingItem;
+        Insert: Omit<PricingItem, 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Omit<PricingItem, 'id' | 'created_at' | 'updated_at'>>;
       };
     };
     Views: {

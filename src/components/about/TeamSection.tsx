@@ -98,12 +98,12 @@ export default function TeamSection() {
   };
 
   return (
-    <section className="mb-20" aria-labelledby="team-heading" id="team">
+    <section className="mb-16 sm:mb-20" aria-labelledby="team-heading" id="team">
       {/* Section Header */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-8 sm:mb-12 px-4 sm:px-0">
         <motion.h2
           id="team-heading"
-          className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4"
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-3 sm:mb-4 leading-tight"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
@@ -112,7 +112,7 @@ export default function TeamSection() {
           {t("aboutPage.team.title")}
         </motion.h2>
         <motion.p
-          className="text-xl text-slate-600 dark:text-slate-300"
+          className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.8 }}
@@ -124,7 +124,7 @@ export default function TeamSection() {
 
       {/* Team Grid */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto px-4 sm:px-0"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"

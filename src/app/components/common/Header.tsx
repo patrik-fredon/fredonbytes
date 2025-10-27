@@ -42,7 +42,7 @@ export default function Header({ className }: HeaderProps) {
     { href: "/about", key: "navigation.about", isRoute: true },
     { href: "#services", key: "navigation.services", isRoute: false },
     { href: "/projects", key: "navigation.projects", isRoute: false },
-    { href: "#pricing", key: "navigation.pricing", isRoute: false },
+    { href: "/pricing", key: "navigation.pricing", isRoute: true },
     { href: "#contact", key: "navigation.contact", isRoute: false },
   ];
 
@@ -179,15 +179,15 @@ export default function Header({ className }: HeaderProps) {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-lg mobile-nav">
-            <div className="px-4 py-4 space-y-4 safe-area-bottom">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-lg mobile-nav animate-slide-up">
+            <div className="px-4 py-4 space-y-2 safe-area-bottom">
               {navItems.map((item) =>
                 item.isRoute ? (
                   <IntlLink
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium mobile-touch-target py-3"
+                    className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium mobile-touch-target py-3 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px] flex items-center"
                   >
                     {t(item.key)}
                   </IntlLink>
@@ -196,15 +196,15 @@ export default function Header({ className }: HeaderProps) {
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium mobile-touch-target py-3"
+                    className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium mobile-touch-target py-3 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px] flex items-center"
                   >
                     {t(item.key)}
                   </a>
                 )
               )}
 
-              <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
-                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-2">
+              <div className="border-t border-slate-200 dark:border-slate-700 pt-4 mt-4">
+                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3 px-2">
                   {t("external.externalLinks")}
                 </p>
                 {externalLinks.map((link) => (
@@ -214,7 +214,7 @@ export default function Header({ className }: HeaderProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMenu}
-                    className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-1"
+                    className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-2 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px] flex items-center"
                   >
                     {t(link.key)}
                   </a>
@@ -222,19 +222,21 @@ export default function Header({ className }: HeaderProps) {
                 <Link
                   href="/links"
                   onClick={closeMenu}
-                  className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-1"
+                  className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-2 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px] flex items-center"
                 >
                   {t("navigation.allLinks")}
                 </Link>
               </div>
 
               <div className="border-t border-slate-200 dark:border-slate-700 pt-4 mb-4">
-                <LanguageSwitcher />
+                <div className="px-2">
+                  <LanguageSwitcher />
+                </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-2 px-2">
                 <a href="#contact" onClick={closeMenu} className="block">
-                  <Button variant="gradient" size="lg" className="w-full">
+                  <Button variant="gradient" size="lg" className="w-full min-h-[44px]">
                     {t("navigation.getStarted")}
                   </Button>
                 </a>

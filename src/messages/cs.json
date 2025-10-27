@@ -560,6 +560,7 @@
   "pricing": {
     "title": "Vyberte si svůj plán",
     "subtitle": "Transparentní ceny bez skrytých poplatků. Škálujte svůj business s našimi flexibilními řešeními.",
+    "viewFullPricing": "Zobrazit kompletní ceník",
     "toggle": {
       "monthly": "Měsíčně",
       "annual": "Ročně",
@@ -649,6 +650,74 @@
     "guarantee": {
       "title": "30denní záruka vrácení peněz",
       "description": "Nejste spokojeni? Získejte plnou refundaci do 30 dnů, bez otázek."
+    },
+    "meta": {
+      "title": "Transparentní cenové plány - Vyberte si své IT řešení",
+      "description": "Transparentní ceny bez skrytých poplatků. Škálujte svůj business s našimi flexibilními IT řešeními od startovacích po podnikové plány."
+    },
+    "loading": "Načítání cenových informací...",
+    "currency": {
+      "label": "Měna"
+    },
+    "mostPopular": "Nejoblíbenější",
+    "customPricing": "Na míru",
+    "noTiersAvailable": "Momentálně nejsou k dispozici žádné cenové plány.",
+    "features": {
+      "responsive_design": "Responzivní webdesign",
+      "seo_optimization": "SEO optimalizace",
+      "contact_forms": "Integrace kontaktního formuláře",
+      "support_3m": "3 měsíce podpory",
+      "mobile_optimization": "Mobilní optimalizace",
+      "analytics": "Nastavení analytiky",
+      "custom_webapp": "Vlastní webová aplikace",
+      "advanced_seo": "Pokročilé SEO a marketing",
+      "social_media": "Správa sociálních sítí",
+      "ecommerce": "E-commerce integrace",
+      "support_6m": "6 měsíců prioritní podpory",
+      "performance": "Optimalizace výkonu",
+      "cms": "Systém pro správu obsahu",
+      "email_marketing": "Nastavení email marketingu",
+      "custom_software": "Vývoj vlastního softwaru",
+      "project_manager": "Dedikovaný projektový manažer",
+      "support_24_7": "24/7 prioritní podpora",
+      "security": "Pokročilé bezpečnostní funkce",
+      "scalable": "Škálovatelná architektura",
+      "integrations": "Podpora integrací",
+      "training": "Školení a dokumentace",
+      "sla": "SLA záruky"
+    },
+    "calculator": {
+      "title": "Rozšířená kalkulačka projektů",
+      "description": "Získejte podrobný odhad pro váš vlastní projekt výběrem služeb a funkcí, které potřebujete.",
+      "openButton": "Otevřít kalkulačku",
+      "noItemsAvailable": "Momentálně nejsou k dispozici žádné položky kalkulačky.",
+      "estimatedTotal": "Odhadovaná celková cena",
+      "basedOnSelection": "Na základě vybraných služeb",
+      "getQuote": "Získat nabídku",
+      "categories": {
+        "development": "Vývojové služby",
+        "design": "Designové služby",
+        "marketing": "Marketingové služby",
+        "consulting": "Konzultační služby",
+        "maintenance": "Údržba a podpora"
+      },
+      "features": {
+        "responsive_design": "Responzivní design",
+        "mobile_app": "Mobilní aplikace",
+        "database": "Integrace databáze",
+        "api": "Vývoj API",
+        "cms": "Správa obsahu",
+        "ecommerce": "E-commerce funkce",
+        "seo": "SEO optimalizace",
+        "analytics": "Integrace analytiky",
+        "security": "Bezpečnostní funkce",
+        "performance": "Optimalizace výkonu",
+        "support": "Technická podpora",
+        "maintenance": "Pravidelná údržba",
+        "hosting": "Nastavení hostingu",
+        "ssl": "SSL certifikát",
+        "backup": "Záložní řešení"
+      }
     }
   },
   "projects": {

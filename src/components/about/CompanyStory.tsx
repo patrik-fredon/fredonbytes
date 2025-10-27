@@ -71,14 +71,14 @@ export default function CompanyStory() {
 
   return (
     <section
-      className="mb-20"
+      className="mb-16 sm:mb-20 lg:mb-24"
       aria-labelledby="company-story-title"
       id="company-story"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto px-4 sm:px-0">
         <motion.h2
           id="company-story-title"
-          className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-8 text-center"
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-6 sm:mb-8 text-center leading-tight"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
@@ -89,7 +89,7 @@ export default function CompanyStory() {
 
         {/* Story Content with Staggered Animation */}
         <motion.div
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -99,7 +99,7 @@ export default function CompanyStory() {
             <motion.p
               key={index}
               variants={itemVariants}
-              className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed"
+              className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed text-justify sm:text-left"
             >
               {paragraph}
             </motion.p>
@@ -108,19 +108,19 @@ export default function CompanyStory() {
 
         {/* Mission Statement with Special Emphasis */}
         <motion.div
-          className="mt-12 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8 border border-blue-100 dark:border-slate-600"
+          className="mt-8 sm:mt-12 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-6 sm:p-8 border border-blue-100 dark:border-slate-600"
           variants={missionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.8 }}
         >
-          <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4 text-center">
+          <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-3 sm:mb-4 text-center">
             Our Mission
           </h3>
-          <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed text-center italic">
+          <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed text-center italic px-2">
             &ldquo;{t("mission")}&rdquo;
           </p>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-4 text-center">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-3 sm:mt-4 text-center">
             — {t("founder")}, Founder
           </p>
         </motion.div>

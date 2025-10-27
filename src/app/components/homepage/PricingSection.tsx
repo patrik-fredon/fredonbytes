@@ -17,6 +17,8 @@ import { useTranslations } from "next-intl";
 import React, { useState, useEffect, useMemo } from "react";
 
 
+import { Link } from "@/i18n/navigation";
+
 import { Button } from "../common/Button";
 
 interface ServiceOption {
@@ -260,9 +262,14 @@ export default function PricingSection() {
                 {t("pricing.title")}
               </span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
               {t("pricing.subtitle")}
             </p>
+            <Link href="/pricing">
+              <Button variant="outline" size="lg">
+                {t("pricing.viewFullPricing")}
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Pricing Plans */}

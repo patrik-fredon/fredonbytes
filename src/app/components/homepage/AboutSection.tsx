@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, Award, TrendingUp, CheckCircle } from "lucide-react";
+import { Users, Award, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import React from "react";
+
+import { Link } from "@/i18n/navigation";
+import { Button } from "../common/Button";
 
 export default function AboutSection() {
   const t = useTranslations();
@@ -109,7 +112,7 @@ export default function AboutSection() {
                 Fredonbytes
               </span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
               Founded in <strong>2023</strong>, we eliminate the need for
               multiple vendors by becoming your
               <strong className="text-blue-600 dark:text-blue-400">
@@ -118,6 +121,15 @@ export default function AboutSection() {
               </strong>
               , ensuring seamless, high-impact results under one roof.
             </p>
+            <Link href="/about">
+              <Button 
+                variant="gradient" 
+                size="lg"
+                rightIcon={<ArrowRight className="w-5 h-5" />}
+              >
+                {t("common.buttons.learnMore")}
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Mission & Vision */}

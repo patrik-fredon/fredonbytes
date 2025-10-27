@@ -560,6 +560,7 @@
   "pricing": {
     "title": "Wählen Sie Ihren Plan",
     "subtitle": "Transparente Preise ohne versteckte Gebühren. Skalieren Sie Ihr Unternehmen mit unseren flexiblen Lösungen.",
+    "viewFullPricing": "Vollständige Preise anzeigen",
     "toggle": {
       "monthly": "Monatlich",
       "annual": "Jährlich",
@@ -649,6 +650,74 @@
     "guarantee": {
       "title": "30-Tage-Geld-zurück-Garantie",
       "description": "Nicht zufrieden? Erhalten Sie eine vollständige Rückerstattung innerhalb von 30 Tagen, ohne Fragen."
+    },
+    "meta": {
+      "title": "Transparente Preispläne - Wählen Sie Ihre IT-Lösung",
+      "description": "Transparente Preise ohne versteckte Gebühren. Skalieren Sie Ihr Unternehmen mit unseren flexiblen IT-Lösungen von Starter- bis Enterprise-Plänen."
+    },
+    "loading": "Preisinformationen werden geladen...",
+    "currency": {
+      "label": "Währung"
+    },
+    "mostPopular": "Beliebteste",
+    "customPricing": "Individuell",
+    "noTiersAvailable": "Derzeit sind keine Preispläne verfügbar.",
+    "features": {
+      "responsive_design": "Responsives Webdesign",
+      "seo_optimization": "SEO-Optimierung",
+      "contact_forms": "Kontaktformular-Integration",
+      "support_3m": "3 Monate Support",
+      "mobile_optimization": "Mobile Optimierung",
+      "analytics": "Analytics-Setup",
+      "custom_webapp": "Individuelle Webanwendung",
+      "advanced_seo": "Erweiterte SEO & Marketing",
+      "social_media": "Social Media Management",
+      "ecommerce": "E-Commerce-Integration",
+      "support_6m": "6 Monate Priority Support",
+      "performance": "Performance-Optimierung",
+      "cms": "Content Management System",
+      "email_marketing": "E-Mail-Marketing-Setup",
+      "custom_software": "Individuelle Softwareentwicklung",
+      "project_manager": "Dedizierter Projektmanager",
+      "support_24_7": "24/7 Priority Support",
+      "security": "Erweiterte Sicherheitsfeatures",
+      "scalable": "Skalierbare Architektur",
+      "integrations": "Integrations-Support",
+      "training": "Schulung & Dokumentation",
+      "sla": "SLA-Garantien"
+    },
+    "calculator": {
+      "title": "Erweiterte Projektkalkulator",
+      "description": "Erhalten Sie eine detaillierte Schätzung für Ihr individuelles Projekt durch Auswahl der benötigten Services und Features.",
+      "openButton": "Kalkulator öffnen",
+      "noItemsAvailable": "Derzeit sind keine Kalkulator-Elemente verfügbar.",
+      "estimatedTotal": "Geschätzte Gesamtkosten",
+      "basedOnSelection": "Basierend auf Ihren ausgewählten Services",
+      "getQuote": "Angebot erhalten",
+      "categories": {
+        "development": "Entwicklungsservices",
+        "design": "Design-Services",
+        "marketing": "Marketing-Services",
+        "consulting": "Beratungsservices",
+        "maintenance": "Wartung & Support"
+      },
+      "features": {
+        "responsive_design": "Responsives Design",
+        "mobile_app": "Mobile Anwendung",
+        "database": "Datenbank-Integration",
+        "api": "API-Entwicklung",
+        "cms": "Content Management",
+        "ecommerce": "E-Commerce-Features",
+        "seo": "SEO-Optimierung",
+        "analytics": "Analytics-Integration",
+        "security": "Sicherheitsfeatures",
+        "performance": "Performance-Optimierung",
+        "support": "Technischer Support",
+        "maintenance": "Regelmäßige Wartung",
+        "hosting": "Hosting-Setup",
+        "ssl": "SSL-Zertifikat",
+        "backup": "Backup-Lösungen"
+      }
     }
   },
   "projects": {

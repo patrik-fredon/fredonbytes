@@ -560,6 +560,7 @@
   "pricing": {
     "title": "Choose Your Plan",
     "subtitle": "Transparent pricing with no hidden fees. Scale your business with our flexible solutions.",
+    "viewFullPricing": "View Full Pricing",
     "toggle": {
       "monthly": "Monthly",
       "annual": "Annual",
@@ -649,6 +650,74 @@
     "guarantee": {
       "title": "30-Day Money-Back Guarantee",
       "description": "Not satisfied? Get a full refund within 30 days, no questions asked."
+    },
+    "meta": {
+      "title": "Transparent Pricing Plans - Choose Your IT Solution",
+      "description": "Transparent pricing with no hidden fees. Scale your business with our flexible IT solutions from starter to enterprise plans."
+    },
+    "loading": "Loading pricing information...",
+    "currency": {
+      "label": "Currency"
+    },
+    "mostPopular": "Most Popular",
+    "customPricing": "Custom",
+    "noTiersAvailable": "No pricing tiers available at the moment.",
+    "features": {
+      "responsive_design": "Responsive Website Design",
+      "seo_optimization": "SEO Optimization",
+      "contact_forms": "Contact Form Integration",
+      "support_3m": "3 Months Support",
+      "mobile_optimization": "Mobile Optimization",
+      "analytics": "Analytics Setup",
+      "custom_webapp": "Custom Web Application",
+      "advanced_seo": "Advanced SEO & Marketing",
+      "social_media": "Social Media Management",
+      "ecommerce": "E-commerce Integration",
+      "support_6m": "6 Months Priority Support",
+      "performance": "Performance Optimization",
+      "cms": "Content Management System",
+      "email_marketing": "Email Marketing Setup",
+      "custom_software": "Custom Software Development",
+      "project_manager": "Dedicated Project Manager",
+      "support_24_7": "24/7 Priority Support",
+      "security": "Advanced Security Features",
+      "scalable": "Scalable Architecture",
+      "integrations": "Integration Support",
+      "training": "Training & Documentation",
+      "sla": "SLA Guarantees"
+    },
+    "calculator": {
+      "title": "Enhanced Project Calculator",
+      "description": "Get a detailed estimate for your custom project by selecting the services and features you need.",
+      "openButton": "Open Calculator",
+      "noItemsAvailable": "No calculator items available at the moment.",
+      "estimatedTotal": "Estimated Total",
+      "basedOnSelection": "Based on your selected services",
+      "getQuote": "Get Quote",
+      "categories": {
+        "development": "Development Services",
+        "design": "Design Services",
+        "marketing": "Marketing Services",
+        "consulting": "Consulting Services",
+        "maintenance": "Maintenance & Support"
+      },
+      "features": {
+        "responsive_design": "Responsive Design",
+        "mobile_app": "Mobile Application",
+        "database": "Database Integration",
+        "api": "API Development",
+        "cms": "Content Management",
+        "ecommerce": "E-commerce Features",
+        "seo": "SEO Optimization",
+        "analytics": "Analytics Integration",
+        "security": "Security Features",
+        "performance": "Performance Optimization",
+        "support": "Technical Support",
+        "maintenance": "Regular Maintenance",
+        "hosting": "Hosting Setup",
+        "ssl": "SSL Certificate",
+        "backup": "Backup Solutions"
+      }
     }
   },
   "projects": {

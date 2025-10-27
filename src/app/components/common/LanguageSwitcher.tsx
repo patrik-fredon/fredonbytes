@@ -51,7 +51,7 @@ export default function LanguageSwitcher() {
   return (
     <div className="relative group">
       <button
-        className="flex items-center space-x-2 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium"
+        className="flex items-center space-x-2 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium min-h-[44px] min-w-[44px] px-2 py-2"
         aria-label="Language switcher"
         disabled={isPending}
       >
@@ -72,7 +72,7 @@ export default function LanguageSwitcher() {
             key={lang}
             onClick={() => handleLocaleChange(lang)}
             disabled={isPending}
-            className={`w-full text-left px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 first:rounded-t-lg last:rounded-b-lg transition-colors duration-200 flex items-center justify-between ${
+            className={`w-full text-left px-4 py-3 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 first:rounded-t-lg last:rounded-b-lg transition-colors duration-200 flex items-center justify-between min-h-[44px] ${
               locale === lang
                 ? "bg-slate-100 dark:bg-slate-700 font-medium"
                 : ""

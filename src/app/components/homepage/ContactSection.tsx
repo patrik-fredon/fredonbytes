@@ -228,9 +228,20 @@ export default function ContactSection() {
             <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               {t("contact.sectionTitle")}
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
               {t("contact.sectionDescription")}
             </p>
+            <Button 
+              variant="gradient" 
+              size="lg"
+              rightIcon={<ArrowRight className="w-5 h-5" />}
+              onClick={() => {
+                const formElement = document.querySelector('form');
+                if (formElement) formElement.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              {t("common.buttons.contactUs")}
+            </Button>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

@@ -1,20 +1,20 @@
 # Implementation Plan
 
-- [-] 1. Fix mobile navigation and responsive layout issues
+- [x] 1. Fix mobile navigation and responsive layout issues
   - Diagnose and fix mobile navigation hamburger menu functionality
   - Ensure all content is visible on mobile devices without horizontal scrolling
   - Implement proper touch targets (minimum 44px) for all interactive elements
   - Fix responsive breakpoints and ensure proper layout adaptation across all screen sizes
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5_
 
-- [ ] 2. Create database schema and API endpoints for pricing system
+- [x] 2. Create database schema and API endpoints for pricing system
   - Create Supabase database tables for pricing_tiers and pricing_items with JSONB multilingual support
   - Implement API endpoints at /api/pricing/tiers and /api/pricing/items
   - Add database seed data for three pricing tiers (starter, professional, enterprise) in all languages
   - Create pricing calculator items with CZK and EUR pricing
   - _Requirements: 3.2, 3.4, 3.5_
 
-- [ ] 3. Implement dedicated pricing page with database integration
+- [x] 3. Implement dedicated pricing page with database integration
   - Create new pricing page at /[locale]/pricing with full internationalization
   - Build dynamic pricing components that fetch data from Supabase
   - Implement three-tier pricing display with CZK/EUR currency switching
@@ -22,7 +22,7 @@
   - Ensure mobile responsiveness for all pricing page components
   - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5_
 
-- [ ] 4. Refactor homepage sections with CTA buttons
+- [x] 4. Refactor homepage sections with CTA buttons
   - Modify AboutSection component to include prominent CTA button routing to /about page
   - Update PricingSection to show condensed three-tier preview with CTA to /pricing page
   - Refactor ProjectsSection to display featured projects with CTA to /projects page
@@ -30,7 +30,7 @@
   - Ensure all CTA buttons work properly with next-intl routing
   - _Requirements: 2.1, 2.4, 7.1, 7.2, 7.3, 7.4_
 
-- [ ] 5. Enhance existing about page with comprehensive content
+- [x] 5. Enhance existing about page with comprehensive content
   - Expand the existing about page with more detailed company information
   - Ensure the about page content is fully responsive on mobile devices
   - Add proper meta tags and SEO optimization for the about page
