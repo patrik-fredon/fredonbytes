@@ -626,11 +626,14 @@
       "basedOnSelection": "Based on your selected services",
       "getQuote": "Get Quote",
       "categories": {
-        "development": "Development Services",
+        "web_development": "Development services",
+        "mobile_development": "Mobile applications",
+        "database":"Databases",
+        "cloud_services": "Cloud hosting",
         "design": "Design Services",
         "marketing": "Marketing Services",
         "consulting": "Consulting Services",
-        "maintenance": "Maintenance & Support"
+        "support": "Maintenance and Support"
       },
       "features": {
         "responsive_design": "Responsive Design",

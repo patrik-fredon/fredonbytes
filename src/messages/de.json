@@ -626,11 +626,14 @@
       "basedOnSelection": "Basierend auf Ihren ausgewählten Services",
       "getQuote": "Angebot erhalten",
       "categories": {
-        "development": "Entwicklungsservices",
-        "design": "Design-Services",
-        "marketing": "Marketing-Services",
-        "consulting": "Beratungsservices",
-        "maintenance": "Wartung & Support"
+        "web_development": "Entwicklungsdienstleistungen",
+        "mobile_development": "Mobile Anwendungen",
+        "database":"Datenbanken",
+        "cloud_services": "Cloud-Hosting",
+        "design": "Designdienstleistungen",
+        "marketing": "Marketingdienstleistungen",
+        "consulting": "Beratungsdienstleistungen",
+        "support": "Wartung und Support"
       },
       "features": {
         "responsive_design": "Responsives Design",

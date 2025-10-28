@@ -1,14 +1,38 @@
 import type { NextConfig } from "next";
-import createNextIntlPlugin from 'next-intl/plugin';
+import createNextIntlPlugin from "next-intl/plugin";
+import createMDX from "@next/mdx";
+import bundleAnalyzer from "@next/bundle-analyzer";
+import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
+import rehypeHighlight from "rehype-highlight";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 // Bundle analyzer setup
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
+const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
+
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [
+      remarkGfm, // GitHub Flavored Markdown support (tables, strikethrough, task lists)
+      remarkFrontmatter, // YAML frontmatter parsing
+    ],
+    rehypePlugins: [
+      rehypeHighlight, // Syntax highlighting for code blocks
+      rehypeSlug, // Add IDs to headings for linking
+      rehypeAutolinkHeadings, // Add anchor links to headings
+    ],
+  },
+});
+
 const nextConfig: NextConfig = {
+    reactStrictMode: true,
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   // Image optimization
  images: {
     formats: ["image/webp", "image/avif"],
@@ -232,5 +256,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: false,
   },
 };
+const configWithIntl = withNextIntl(nextConfig);
+const configWithMDX = withMDX(configWithIntl);
+export default withBundleAnalyzer(configWithMDX);
 
-export default withNextIntl(withBundleAnalyzer(nextConfig));

@@ -626,11 +626,14 @@
       "basedOnSelection": "Na základě vybraných služeb",
       "getQuote": "Získat nabídku",
       "categories": {
-        "development": "Vývojové služby",
+        "web_development": "Vývojové služby",
+        "mobile_development": "Mobilní aplikace",
+        "database":"Databáze",
+        "cloud_services": "Cloud hosting",
         "design": "Designové služby",
         "marketing": "Marketingové služby",
         "consulting": "Konzultační služby",
-        "maintenance": "Údržba a podpora"
+        "support": "Údržba a podpora"
       },
       "toggle": "Spočítat vlastní cenovou nabídku",
       "features": {
