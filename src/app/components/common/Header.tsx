@@ -2,7 +2,6 @@
 
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
@@ -42,7 +41,7 @@ export default function Header({ className }: HeaderProps) {
   const toggleMenu = () => {
     const newState = !isMenuOpen;
     setIsMenuOpen(newState);
-    
+
     // Prevent body scroll when menu is open on mobile
     if (typeof document !== 'undefined') {
       if (newState) {
@@ -55,7 +54,7 @@ export default function Header({ className }: HeaderProps) {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-    
+
     // Re-enable body scroll
     if (typeof document !== 'undefined') {
       document.body.classList.remove('menu-open');
@@ -64,7 +63,6 @@ export default function Header({ className }: HeaderProps) {
 
   const navItems = [
     { href: "/about", key: "navigation.about", isRoute: true },
-    { href: "#services", key: "navigation.services", isRoute: false },
     { href: "/projects", key: "navigation.projects", isRoute: true },
     { href: "/pricing", key: "navigation.pricing", isRoute: true },
     { href: "/contact", key: "navigation.contact", isRoute: true },
@@ -101,7 +99,7 @@ export default function Header({ className }: HeaderProps) {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link
+          <IntlLink
             href="/"
             className="flex items-center space-x-2 group"
             onClick={closeMenu}
@@ -120,7 +118,7 @@ export default function Header({ className }: HeaderProps) {
             <span className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-white">
               Fredonbytes
             </span>
-          </Link>
+          </IntlLink>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
@@ -134,13 +132,13 @@ export default function Header({ className }: HeaderProps) {
                   {t(item.key)}
                 </IntlLink>
               ) : (
-                <a
+                <IntlLink
                   key={item.href}
                   href={item.href}
                   className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium"
                 >
                   {t(item.key)}
-                </a>
+                </IntlLink>
               )
             )}
 
@@ -162,12 +160,12 @@ export default function Header({ className }: HeaderProps) {
                     {t(link.key)}
                   </a>
                 ))}
-                <Link
+                <IntlLink
                   href="/links"
                   className="block px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 last:rounded-b-lg transition-colors duration-200 border-t border-slate-200 dark:border-slate-600"
                 >
                   {t("navigation.allLinks")}
-                </Link>
+                </IntlLink>
               </div>
             </div>
 
@@ -187,9 +185,8 @@ export default function Header({ className }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className={`lg:hidden p-3 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 mobile-touch-target min-h-[44px] min-w-[44px] flex items-center justify-center ${
-              isMenuOpen ? "hamburger-open" : ""
-            }`}
+            className={`lg:hidden p-3 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 mobile-touch-target min-h-[44px] min-w-[44px] flex items-center justify-center ${isMenuOpen ? "hamburger-open" : ""
+              }`}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
@@ -216,14 +213,14 @@ export default function Header({ className }: HeaderProps) {
                     {t(item.key)}
                   </IntlLink>
                 ) : (
-                  <a
+                  <IntlLink
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
                     className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium mobile-touch-target py-3 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px] flex items-center"
                   >
                     {t(item.key)}
-                  </a>
+                  </IntlLink>
                 )
               )}
 
@@ -243,13 +240,13 @@ export default function Header({ className }: HeaderProps) {
                     {t(link.key)}
                   </a>
                 ))}
-                <Link
+                <IntlLink
                   href="/links"
                   onClick={closeMenu}
                   className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-2 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px] flex items-center"
                 >
                   {t("navigation.allLinks")}
-                </Link>
+                </IntlLink>
               </div>
 
               <div className="border-t border-slate-200 dark:border-slate-700 pt-4 mb-4">

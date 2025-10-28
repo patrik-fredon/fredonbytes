@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 
 import { Button } from "@/app/components/common/Button";
 import { PricingItem, LocalizedString } from "@/app/lib/supabase";
+import { getIconComponent } from '@/lib/icon-mapper';
 
 import { Currency } from "../PricingClient";
 
@@ -160,26 +161,27 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
                   };
                   const price = currency === 'CZK' ? item.base_price_czk : item.base_price_eur;
 
+                  // Get the icon component based on the string stored in database
+                  const IconComponent = getIconComponent(item.icon);
+
                   return (
                     <div
                       key={item.id}
-                      className={`border-2 rounded-xl p-6 transition-all duration-300 cursor-pointer ${
-                        state.selected
-                          ? "border-blue-600 bg-blue-50 dark:bg-blue-900/20"
-                          : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
-                      }`}
+                      className={`border-2 rounded-xl p-6 transition-all duration-300 cursor-pointer ${state.selected
+                        ? "border-blue-600 bg-blue-50 dark:bg-blue-900/20"
+                        : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
+                        }`}
                       onClick={() => toggleItem(item.id)}
                     >
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center space-x-3">
                           <div
-                            className={`w-10 h-10 rounded-lg flex items-center justify-center text-2xl ${
-                              state.selected
-                                ? "bg-blue-600 text-white"
-                                : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
-                            }`}
+                            className={`w-10 h-10 rounded-lg flex items-center justify-center ${state.selected
+                              ? "bg-blue-600 text-white"
+                              : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
+                              }`}
                           >
-                            {item.icon}
+                            <IconComponent className="w-5 h-5" />
                           </div>
                           <div>
                             <h5 className="text-lg font-semibold text-slate-900 dark:text-white">
@@ -241,7 +243,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
           ))}
 
           {/* Total Cost Display */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 text-white">
+          <div className="bg-linear-to-r from-blue-600 to-purple-600 rounded-xl p-6 text-white">
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="text-xl font-bold mb-2">
