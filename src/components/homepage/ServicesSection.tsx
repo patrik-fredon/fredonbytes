@@ -17,7 +17,7 @@ import { useTranslations } from "next-intl";
 import React from "react";
 import { Link } from "@/i18n/navigation";
 
-import { Button } from "../common/Button";
+
 
 export default function ServicesSection() {
   const t = useTranslations();
@@ -195,7 +195,7 @@ export default function ServicesSection() {
                             key={featureIndex}
                             className="flex items-center space-x-2 text-sm text-slate-700 dark:text-slate-300"
                           >
-                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                            <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
                             <span>{feature}</span>
                           </li>
                         ))}
