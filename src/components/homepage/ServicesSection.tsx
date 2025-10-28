@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React from "react";
-
+import { Link } from "@/i18n/navigation";
 
 import { Button } from "../common/Button";
 
@@ -209,15 +209,13 @@ export default function ServicesSection() {
 
           {/* Why Choose Us */}
           <motion.div variants={itemVariants} className="mb-16">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 lg:p-12 text-white">
+            <div className="bg-background/50 border-2 border-accent rounded-2xl p-8 lg:p-12 text-white">
               <div className="text-center mb-8">
                 <h3 className="text-3xl lg:text-4xl font-bold mb-4">
-                  Why Choose Fredonbytes?
+                  {t("services.whyChooseUs.title")}
                 </h3>
                 <p className="text-xl opacity-90 max-w-3xl mx-auto">
-                  We&apos;re not just another IT company. We&apos;re your
-                  unified digital army, delivering seamless solutions under one
-                  roof.
+                  {t("services.whyChooseUs.description")}
                 </p>
               </div>
 
@@ -243,34 +241,18 @@ export default function ServicesSection() {
           {/* CTA Section */}
           <motion.div variants={itemVariants} className="text-center">
             <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
-              Ready to Transform Your Digital Presence?
+              {t("homepage.servicesSection.title")}
             </h3>
             <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
-              Let&apos;s discuss how our unified approach can streamline your IT
-              needs and accelerate your business growth.
+              {t("homepage.servicesSection.description")}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                variant="gradient"
-                size="xl"
-                rightIcon={<ArrowRight className="w-5 h-5" />}
-                onClick={() => {
-                  const element = document.getElementById("contact");
-                  if (element) element.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Start Your Project
-              </Button>
-              <Button
-                variant="outline"
-                size="xl"
-                onClick={() => {
-                  const element = document.getElementById("pricing");
-                  if (element) element.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                View Pricing
-              </Button>
+              <Link href="/pricing" className="mt-12 bg-linear-to-r from-blue-600 to-purple-600  hover:bg-opacity-80 text-white py-3 px-6 rounded-full text-lg lg:text-xl font-medium transition transform hover:scale-105 hover:shadow-xl inline-block">
+
+
+                {t("homepage.pricingSection.start")}
+              </Link>
+
             </div>
           </motion.div>
         </motion.div>

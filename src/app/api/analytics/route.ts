@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
-import { sanitizeString } from '@/app/lib/input-sanitization';
+import { sanitizeString } from '@/lib/input-sanitization';
 
 export async function POST(request: NextRequest) {
   try {

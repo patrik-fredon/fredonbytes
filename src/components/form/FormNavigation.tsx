@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { Button } from '@/app/components/common/Button';
+import { Button } from '@/components/common/Button';
 
 interface FormNavigationProps {
   currentStep: number;
@@ -37,10 +37,10 @@ export default function FormNavigation({
 }: FormNavigationProps) {
   // Determine if we're on the last question
   const isOnLastQuestion = currentStep === totalSteps;
-  
+
   // Determine button text based on current step
   const nextButtonText = isOnLastQuestion ? 'Submit' : 'Next';
-  
+
   // Determine if we're on a question step (not welcome or thank you)
   const isOnQuestion = currentStep > 0 && currentStep <= totalSteps;
 

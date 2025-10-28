@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { Code, Zap, Globe, Database, Server, Cpu, Terminal, Cloud, Smartphone, Monitor } from 'lucide-react'
 import React from 'react'
 
-import { useReducedMotion } from '@/app/hooks/useReducedMotion'
-import { generateParticlePositions } from '@/app/lib/seeded-random'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { generateParticlePositions } from '@/lib/seeded-random'
 
 export default function AnimatedBackground() {
   const prefersReducedMotion = useReducedMotion()

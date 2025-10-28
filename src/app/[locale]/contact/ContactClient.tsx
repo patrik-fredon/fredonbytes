@@ -20,7 +20,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-import { Button } from "@/app/components/common/Button";
+import { Button } from "@/components/common/Button";
 
 const contactSchema = z.object({
   // Step 1: Basic Info
@@ -50,7 +50,8 @@ interface ContactClientProps {
   locale: string;
 }
 
-export default function ContactClient({ locale }: ContactClientProps) {  const t = useTranslations();
+export default function ContactClient({ locale }: ContactClientProps) {
+  const t = useTranslations();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -127,7 +128,7 @@ export default function ContactClient({ locale }: ContactClientProps) {  const t
     t("contact.form.requirements.features.options.5"),
     t("contact.form.requirements.features.options.6"),
     t("contact.form.requirements.features.options.7"),
-  ];  const nextStep = async () => {
+  ]; const nextStep = async () => {
     let fieldsToValidate: (keyof ContactFormData)[] = [];
 
     if (currentStep === 1) {
@@ -177,7 +178,7 @@ export default function ContactClient({ locale }: ContactClientProps) {  const t
     } finally {
       setIsSubmitting(false);
     }
-  };  if (isSubmitted) {
+  }; if (isSubmitted) {
     return (
       <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
@@ -227,8 +228,8 @@ export default function ContactClient({ locale }: ContactClientProps) {  const t
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
               {t("contact.sectionDescription")}
             </p>
-            <Button 
-              variant="gradient" 
+            <Button
+              variant="gradient"
               size="lg"
               rightIcon={<ArrowRight className="w-5 h-5" />}
               onClick={() => {

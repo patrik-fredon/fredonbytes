@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/lib/utils";
 import { Link as IntlLink } from "@/i18n/navigation";
 
 import { Button } from "./Button";

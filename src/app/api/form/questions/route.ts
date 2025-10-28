@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { supabase, type Question, type LocalizedString } from '@/app/lib/supabase';
+import { supabase, type Question, type LocalizedString } from '@/lib/supabase';
 
 // Response interface for questions endpoint
 export interface QuestionsResponse {

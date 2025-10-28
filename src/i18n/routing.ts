@@ -9,7 +9,7 @@ export const routing = defineRouting({
 
   // The locale prefix strategy
   // 'as-needed' means the default locale won't have a prefix
-  localePrefix: 'as-needed'
+  localePrefix: 'always'
 });
 
 export type Locale = 'en' | 'cs' | 'de';

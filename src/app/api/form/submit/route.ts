@@ -3,19 +3,19 @@ import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from "@/app/lib/csrf";
-import { sendEmail } from "@/app/lib/email";
+import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from "@/lib/csrf";
+import { sendEmail } from "@/lib/email";
 import {
   generateAdminNotificationHTML,
   type FormResponseData,
-} from "@/app/lib/email-templates";
-import { sanitizeAnswerValue } from "@/app/lib/input-sanitization";
+} from "@/lib/email-templates";
+import { sanitizeAnswerValue } from "@/lib/input-sanitization";
 import {
   supabase,
   type AnswerValue,
   type Question,
   type LocalizedString,
-} from "@/app/lib/supabase";
+} from "@/lib/supabase";
 
 // Hash IP address for privacy
 function hashIpAddress(ip: string): string {

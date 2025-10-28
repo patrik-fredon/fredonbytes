@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
-import { generateCsrfToken, CSRF_TOKEN_COOKIE_NAME } from '@/app/lib/csrf';
-import { supabase } from '@/app/lib/supabase';
+import { generateCsrfToken, CSRF_TOKEN_COOKIE_NAME } from '@/lib/csrf';
+import { supabase } from '@/lib/supabase';
 
 // Schema for session creation request
 const createSessionSchema = z.object({

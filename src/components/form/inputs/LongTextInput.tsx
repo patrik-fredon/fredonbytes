@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 
-import type { QuestionOption } from '@/app/lib/supabase'
+import type { QuestionOption } from '@/lib/supabase'
 
 interface LongTextInputProps {
   value: string
@@ -69,11 +69,10 @@ export default function LongTextInput({
                    text-slate-900 dark:text-white 
                    placeholder:text-slate-400 dark:placeholder:text-slate-500
                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                   ${
-                     error
-                       ? 'border-red-500 dark:border-red-500'
-                       : 'border-slate-300 dark:border-slate-600'
-                   }`}
+                   ${error
+            ? 'border-red-500 dark:border-red-500'
+            : 'border-slate-300 dark:border-slate-600'
+          }`}
         style={{ minHeight: `${MIN_ROWS * 1.5}rem` }}
         aria-label={questionText}
         aria-required={required}

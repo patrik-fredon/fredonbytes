@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import dynamic from 'next/dynamic';
 import { setRequestLocale } from 'next-intl/server';
 
-import FormLoadingSkeleton from '@/app/components/form/FormLoadingSkeleton';
+import FormLoadingSkeleton from '@/components/form/FormLoadingSkeleton';
 
 // Dynamic import for SurveyLanding with loading skeleton
 const SurveyLanding = dynamic(() => import('./SurveyLanding'), {

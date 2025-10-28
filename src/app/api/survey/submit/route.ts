@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
-import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from '@/app/lib/csrf';
-import { sanitizeAnswerValue } from '@/app/lib/input-sanitization';
-import { supabase, type Session, type Questionnaire } from '@/app/lib/supabase';
+import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from '@/lib/csrf';
+import { sanitizeAnswerValue } from '@/lib/input-sanitization';
+import { supabase, type Session, type Questionnaire } from '@/lib/supabase';
 
 // Zod schema for request validation
 const submitSurveyRequestSchema = z.object({

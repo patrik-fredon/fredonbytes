@@ -360,7 +360,11 @@
         "label": "Unified Team"
       }
     },
-    "cta": "Discover How We Can Help You"
+    "cta": "Discover How We Can Help You",
+    "whyChooseUs": {
+      "title": "Why Choose us?",
+      "description": "Because we stay where others leave!"
+    }
   },
   "contact": {
     "meta": {
@@ -628,7 +632,7 @@
       "categories": {
         "web_development": "Development services",
         "mobile_development": "Mobile applications",
-        "database":"Databases",
+        "database": "Databases",
         "cloud_services": "Cloud hosting",
         "design": "Design Services",
         "marketing": "Marketing Services",
@@ -640,7 +644,7 @@
         "mobile_app": "Mobile Application",
         "database": "Database Integration",
         "api": "API Development",
-        "cms": "Content Management",
+        "cms_integration": "Content Management",
         "ecommerce": "E-commerce Features",
         "seo": "SEO Optimization",
         "analytics": "Analytics Integration",
@@ -650,7 +654,7 @@
         "maintenance": "Regular Maintenance",
         "hosting": "Hosting Setup",
         "ssl": "SSL Certificate",
-        "backup": "Backup Solutions",
+        "backup_solution": "Backup Solutions",
         "scalable_infrastructure": "Scalable Infrastructure",
         "security_setup": "Security Setup",
         "monitoring": "24/7 Monitoring",
@@ -724,72 +728,86 @@
     "mostPopular": "Most Popular",
     "customPricing": "Custom",
     "noTiersAvailable": "No pricing tiers available at the moment.",
- "features": {
+    "features": {
       "responsive_design": "Responsive web design",
       "seo_optimization": "SEO optimization",
       "contact_forms": "Contact form integration",
       "support_3m": "3 months of support",
-      
-"mobile_optimization": "Mobile optimization",
+      "mobile_optimization": "Mobile optimization",
       "analytics": "Analytics setup",
       "custom_webapp": "Custom web application",
       "advanced_seo": "Advanced SEO and marketing",
       "social_media": "Social media management",
-      
-"ecommerce": "E-commerce integration",
+      "ecommerce": "E-commerce integration",
       "support_6m": "6 months of priority support",
       "performance": "Performance optimization",
       "cms": "Content management system",
       "email_marketing": "Email marketing setup",
-      
-"custom_software": "Custom software development",
+      "custom_software": "Custom software development",
       "project_manager": "Dedicated project manager",
-"support_24_7": "24/7 priority support",
-"security": "Advanced security features",
-      
-"scalable": "Scalable architecture",
-      "integrations": "Integration support",
-"training": "Training and documentation",
-"sla": "SLA guarantees",
-"advanced_web_development": "Advanced web development",
-      
-"custom_design": "Custom design",
+      "support_24_7": "24/7 priority support",
+      "security": "Advanced security features",
+      "scalable": "Scalable architecture",
+      "advanced_integrations": "Integration support",
+      "training": "Training and documentation",
+      "sla": "SLA guarantees",
+      "advanced_web_development": "Advanced web development",
+      "custom_design": "Custom design",
       "database_integration": "Database integration",
       "api_development": "API development",
       "priority_support": "Priority technical support",
       "3_months_support": "3 months of support",
-      
-"full_stack_development": "Full-stack development",
+      "full_stack_development": "Full-stack development",
       "custom_architecture": "Custom architecture",
-"cloud_deployment": "Cloud deployment",
-"security_audits": "Security audits",
-      
-"dedicated_resources": "Dedicated resources",
+      "cloud_deployment": "Cloud deployment",
+      "security_audit": "Security audits",
+      "dedicated_support": "Dedicated resources",
       "12_months_support": "12 months of support",
       "training_included": "Training included",
       "basic_web_development": "Basic web development",
-      
-"basic_seo": "Basic SEO",
+      "basic_seo": "Basic SEO",
       "email_support": "Email support",
       "1_month_support": "1 month of support"
     }
   },
   "projects": {
-    "title": "Our Portfolio",
-    "subtitle": "Explore our latest work and see how we've helped businesses transform their digital presence.",
+    "title": "Our Projects",
+    "subtitle": "Explore our portfolio of successful projects. From enterprise applications to innovative startups, we deliver solutions that drive results.",
+    "filters": {
+      "title": "Filters",
+      "clearAll": "Clear All",
+      "category": "Category",
+      "status": "Status",
+      "technologies": "Technologies"
+    },
     "categories": {
-      "all": "All Projects",
-      "web": "Web Development",
-      "mobile": "Mobile Apps",
-      "design": "Design",
-      "ecommerce": "E-commerce"
+      "web_development": "Web Development",
+      "mobile_app": "Mobile App",
+      "cloud_solution": "Cloud Solution",
+      "database": "Database",
+      "consulting": "Consulting"
     },
-    "cta": {
-      "viewProject": "View Project",
-      "liveDemo": "Live Demo",
-      "caseStudy": "Case Study"
+    "status": {
+      "active": "Active",
+      "completed": "Completed",
+      "archived": "Archived"
     },
-    "loadMore": "Load More Projects"
+    "badges": {
+      "featured": "Featured"
+    },
+    "actions": {
+      "viewLiveDemo": "View Live Demo",
+      "viewOnGithub": "View on GitHub",
+      "viewDetails": "View Details"
+    },
+    "modal": {
+      "technologies": "Technologies",
+      "createdOn": "Created on"
+    },
+    "empty": {
+      "noProjects": "No projects available at the moment. Check back soon!",
+      "noResults": "No projects match your filters. Try adjusting your selection."
+    }
   },
   "common": {
     "buttons": {
@@ -1362,7 +1380,11 @@
           "webDevelopment": {
             "name": "Web Development",
             "description": "Custom website or web application",
-            "included": ["Responsive Design", "SEO Basic", "Contact Forms"]
+            "included": [
+              "Responsive Design",
+              "SEO Basic",
+              "Contact Forms"
+            ]
           },
           "mobileApp": {
             "name": "Mobile App",
@@ -1385,7 +1407,11 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monthly SEO and digital marketing services",
-            "included": ["Keyword Research", "Content Strategy", "Analytics"]
+            "included": [
+              "Keyword Research",
+              "Content Strategy",
+              "Analytics"
+            ]
           },
           "socialMedia": {
             "name": "Social Media",
@@ -1533,43 +1559,16 @@
       "loadFailed": "Failed to load questions. Please refresh the page."
     }
   },
-  "projects": {
-    "title": "Our Projects",
-    "subtitle": "Explore our portfolio of successful projects. From enterprise applications to innovative startups, we deliver solutions that drive results.",
-    "filters": {
-      "title": "Filters",
-      "clearAll": "Clear All",
-      "category": "Category",
-      "status": "Status",
-      "technologies": "Technologies"
+  "homepage": {
+    "servicesSection": {
+      "title": "Ready to start you journey?",
+      "description": "You are just one click away from peace of mind in the digital world..."
     },
-    "categories": {
-      "web_development": "Web Development",
-      "mobile_app": "Mobile App",
-      "cloud_solution": "Cloud Solution",
-      "database": "Database",
-      "consulting": "Consulting"
-    },
-    "status": {
-      "active": "Active",
-      "completed": "Completed",
-      "archived": "Archived"
-    },
-    "badges": {
-      "featured": "Featured"
-    },
-    "actions": {
-      "viewLiveDemo": "View Live Demo",
-      "viewOnGithub": "View on GitHub",
-      "viewDetails": "View Details"
-    },
-    "modal": {
-      "technologies": "Technologies",
-      "createdOn": "Created on"
-    },
-    "empty": {
-      "noProjects": "No projects available at the moment. Check back soon!",
-      "noResults": "No projects match your filters. Try adjusting your selection."
+    "pricingSection": {
+      "cta": "START NOW",
+      "title": "Your digital freedom begins here!",
+      "description": "Join us now, and you won't regret it!",
+      "start": "START HERE"
     }
   }
 }

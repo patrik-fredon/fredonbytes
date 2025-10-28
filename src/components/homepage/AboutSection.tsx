@@ -77,7 +77,8 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
       expertise: t("about.team.members.jana.expertise"),
       quote: t("about.team.members.jana.quote"),
       image:
-"https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/devsecops-engineer-fredonbytes-zoe.avif",    },
+        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/devsecops-engineer-fredonbytes-zoe.avif",
+    },
     {
       name: t("about.team.members.lucie.name"),
       role: t("about.team.members.lucie.role"),
@@ -123,8 +124,8 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
               , ensuring seamless, high-impact results under one roof.
             </p>
             <Link href="/about">
-              <Button 
-                variant="gradient" 
+              <Button
+                variant="gradient"
                 size="lg"
                 rightIcon={<ArrowRight className="w-5 h-5" />}
               >
@@ -201,50 +202,50 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
 
           {/* Team Section */}
           {showTeam && (
-          <motion.div variants={itemVariants}>
-            <h3 className="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">
-              {t("about.team.title")}
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
-                >
-                  <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
-                    {member.image === "user-placeholder" ? (
-                      <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center">
-                        <Users className="w-12 h-12 text-slate-500 dark:text-slate-400" />
-                      </div>
-                    ) : (
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        loading="lazy"
-                        quality={80}
-                        sizes="(max-width: 768px) 96px, (max-width: 1024px) 96px, 96px"
-                      />
-                    )}
-                  </div>
-                  <h4 className="text-lg font-semibold text-slate-900 dark:text-white text-center mb-1">
-                    {member.name}
-                  </h4>
-                  <p className="text-blue-600 dark:text-blue-400 text-sm text-center mb-2 font-medium">
-                    {member.role}
-                  </p>
-                  <p className="text-slate-600 dark:text-slate-400 text-xs text-center mb-3">
-                    {member.expertise}
-                  </p>
-                  <p className="text-slate-700 dark:text-slate-300 text-xs text-center italic">
-                    &ldquo;{member.quote}&rdquo;
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+            <motion.div variants={itemVariants}>
+              <h3 className="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">
+                {t("about.team.title")}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {teamMembers.map((member, index) => (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
+                  >
+                    <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+                      {member.image === "user-placeholder" ? (
+                        <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center">
+                          <Users className="w-12 h-12 text-slate-500 dark:text-slate-400" />
+                        </div>
+                      ) : (
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          loading="lazy"
+                          quality={80}
+                          sizes="(max-width: 768px) 96px, (max-width: 1024px) 96px, 96px"
+                        />
+                      )}
+                    </div>
+                    <h4 className="text-lg font-semibold text-slate-900 dark:text-white text-center mb-1">
+                      {member.name}
+                    </h4>
+                    <p className="text-blue-600 dark:text-blue-400 text-sm text-center mb-2 font-medium">
+                      {member.role}
+                    </p>
+                    <p className="text-slate-600 dark:text-slate-400 text-xs text-center mb-3">
+                      {member.expertise}
+                    </p>
+                    <p className="text-slate-700 dark:text-slate-300 text-xs text-center italic">
+                      &ldquo;{member.quote}&rdquo;
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           )}
 
           {/* Founder Quote */}

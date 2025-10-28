@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 
-import type { QuestionOption } from '@/app/lib/supabase'
+import type { QuestionOption } from '@/lib/supabase'
 
 interface ShortTextInputProps {
   value: string
@@ -54,11 +54,10 @@ export default function ShortTextInput({
                    text-slate-900 dark:text-white 
                    placeholder:text-slate-400 dark:placeholder:text-slate-500
                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                   ${
-                     error
-                       ? 'border-red-500 dark:border-red-500'
-                       : 'border-slate-300 dark:border-slate-600'
-                   }`}
+                   ${error
+            ? 'border-red-500 dark:border-red-500'
+            : 'border-slate-300 dark:border-slate-600'
+          }`}
         aria-label={questionText}
         aria-required={required}
         aria-invalid={!!error}

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import { supabase, type Technology } from '@/app/lib/supabase';
+import { supabase, type Technology } from '@/lib/supabase';
 
 // Response interface for technologies endpoint
 export interface TechnologiesResponse {

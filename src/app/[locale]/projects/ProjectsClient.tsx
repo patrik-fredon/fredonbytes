@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { useState, useMemo } from 'react';
 
-import type { Project } from '@/app/lib/supabase';
+import type { Project } from '@/lib/supabase';
 
 import ProjectCard from './ProjectCard';
 

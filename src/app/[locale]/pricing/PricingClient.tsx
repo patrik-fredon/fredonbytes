@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
-import { PricingTier, PricingItem } from "@/app/lib/supabase";
+import { PricingTier, PricingItem } from "@/lib/supabase";
 
 import CurrencyToggle from "./components/CurrencyToggle";
 import PricingCalculator from "./components/PricingCalculator";
@@ -28,7 +28,7 @@ export default function PricingClient({ locale }: PricingClientProps) {
     const fetchPricingData = async () => {
       try {
         setLoading(true);
-        
+
         // Fetch pricing tiers and items in parallel
         const [tiersResponse, itemsResponse] = await Promise.all([
           fetch(`/api/pricing/tiers?locale=${locale}`),
@@ -121,28 +121,28 @@ export default function PricingClient({ locale }: PricingClientProps) {
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
               {t('subtitle')}
             </p>
-            
+
             {/* Currency Toggle */}
-            <CurrencyToggle 
-              currency={currency} 
+            <CurrencyToggle
+              currency={currency}
               onCurrencyChange={setCurrency}
             />
           </motion.div>
 
           {/* Pricing Tiers */}
           <motion.div variants={itemVariants} className="mb-20">
-            <PricingTiers 
-              tiers={tiers} 
-              currency={currency} 
+            <PricingTiers
+              tiers={tiers}
+              currency={currency}
               locale={locale}
             />
           </motion.div>
 
           {/* Enhanced Pricing Calculator */}
           <motion.div variants={itemVariants}>
-            <PricingCalculator 
-              items={items} 
-              currency={currency} 
+            <PricingCalculator
+              items={items}
+              currency={currency}
               locale={locale}
             />
           </motion.div>

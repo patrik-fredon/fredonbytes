@@ -2,7 +2,7 @@
 
 import { AlertCircle, RefreshCw, Mail } from 'lucide-react';
 
-import { Button } from '@/app/components/common/Button';
+import { Button } from '@/components/common/Button';
 
 export interface ErrorAction {
   label: string;

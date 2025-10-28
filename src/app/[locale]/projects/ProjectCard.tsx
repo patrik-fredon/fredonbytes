@@ -6,9 +6,9 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, memo } from "react";
 
-import { useIntersectionObserver } from "@/app/hooks/useIntersectionObserver";
-import { useReducedMotion } from "@/app/hooks/useReducedMotion";
-import type { Project } from "@/app/lib/supabase";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import type { Project } from "@/lib/supabase";
 
 interface ProjectCardProps {
   project: Project;
@@ -37,13 +37,13 @@ const createHoverVariants = (prefersReducedMotion: boolean) =>
   prefersReducedMotion
     ? {}
     : {
-        scale: 1.02,
-        y: -8,
-        transition: {
-          duration: 0.3,
-          ease: [0.4, 0, 0.2, 1] as const,
-        },
-      };
+      scale: 1.02,
+      y: -8,
+      transition: {
+        duration: 0.3,
+        ease: [0.4, 0, 0.2, 1] as const,
+      },
+    };
 
 const ProjectCard = memo(
   ({ project, index, onOpenModal }: ProjectCardProps) => {
@@ -126,13 +126,12 @@ const ProjectCard = memo(
           {/* Status Badge */}
           <div className="absolute top-4 right-4">
             <span
-              className={`px-3 py-1 rounded-full text-xs font-medium ${
-                project.status === "active"
-                  ? "bg-green-500 text-white"
-                  : project.status === "completed"
+              className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === "active"
+                ? "bg-green-500 text-white"
+                : project.status === "completed"
                   ? "bg-blue-500 text-white"
                   : "bg-slate-500 text-white"
-              }`}
+                }`}
             >
               {t(`status.${project.status}` as keyof typeof t)}
             </span>

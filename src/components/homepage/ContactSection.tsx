@@ -231,8 +231,8 @@ export default function ContactSection() {
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
               {t("contact.sectionDescription")}
             </p>
-            <Button 
-              variant="gradient" 
+            <Button
+              variant="gradient"
               size="lg"
               rightIcon={<ArrowRight className="w-5 h-5" />}
               onClick={() => {

@@ -3,7 +3,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import React from 'react'
 
-import { cn } from '@/app/lib/utils'
+import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none hover:scale-105 active:scale-95 min-h-[44px]',
@@ -35,7 +35,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   loading?: boolean
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode

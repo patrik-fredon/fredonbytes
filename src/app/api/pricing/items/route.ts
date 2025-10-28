@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { supabase, type PricingItem } from '@/app/lib/supabase';
+import { supabase, type PricingItem } from '@/lib/supabase';
 
 // Response interface for pricing items endpoint
 export interface PricingItemsResponse {

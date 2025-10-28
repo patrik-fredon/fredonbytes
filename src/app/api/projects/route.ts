@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { supabase, type Project } from '@/app/lib/supabase';
+import { supabase, type Project } from '@/lib/supabase';
 
 // Response interface for projects endpoint
 export interface ProjectsResponse {

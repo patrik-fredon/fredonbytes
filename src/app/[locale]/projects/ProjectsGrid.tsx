@@ -1,7 +1,7 @@
 
 import { getTranslations } from 'next-intl/server';
 
-import { supabase, type Project } from '@/app/lib/supabase';
+import { supabase, type Project } from '@/lib/supabase';
 
 import ProjectsClient from './ProjectsClient';
 

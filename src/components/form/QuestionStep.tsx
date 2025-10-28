@@ -3,12 +3,12 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-import ChecklistInput from '@/app/components/form/inputs/ChecklistInput'
-import MultipleChoiceInput from '@/app/components/form/inputs/MultipleChoiceInput'
-import SingleChoiceInput from '@/app/components/form/inputs/SingleChoiceInput'
-import { useReducedMotion } from '@/app/hooks/useReducedMotion'
-import type { ValidatableQuestion } from '@/app/lib/form-validation'
-import type { AnswerValue } from '@/app/lib/supabase'
+import ChecklistInput from '@/components/form/inputs/ChecklistInput'
+import MultipleChoiceInput from '@/components/form/inputs/MultipleChoiceInput'
+import SingleChoiceInput from '@/components/form/inputs/SingleChoiceInput'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
+import type { ValidatableQuestion } from '@/lib/form-validation'
+import type { AnswerValue } from '@/lib/supabase'
 
 interface QuestionStepProps {
   question: ValidatableQuestion

@@ -4,8 +4,8 @@ import { Calculator, Plus, Minus, Check, ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
-import { Button } from "@/app/components/common/Button";
-import { PricingItem, LocalizedString } from "@/app/lib/supabase";
+import { Button } from "@/components/common/Button";
+import { PricingItem, LocalizedString } from "@/lib/supabase";
 import { getIconComponent } from '@/lib/icon-mapper';
 
 import { Currency } from "../PricingClient";

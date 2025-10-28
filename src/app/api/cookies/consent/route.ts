@@ -3,8 +3,8 @@ import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { sanitizeString } from "@/app/lib/input-sanitization";
-import { supabase } from "@/app/lib/supabase";
+import { sanitizeString } from "@/lib/input-sanitization";
+import { supabase } from "@/lib/supabase";
 
 // Zod validation schema for cookie preferences
 const cookiePreferencesSchema = z.object({

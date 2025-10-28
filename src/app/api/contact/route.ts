@@ -3,19 +3,19 @@ import { createHash, randomUUID } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import * as z from "zod";
 
-import { sendEmail } from "@/app/lib/email";
+import { sendEmail } from "@/lib/email";
 import {
   generateAdminContactNotificationHTML,
   generateAdminContactNotificationText,
   generateCustomerConfirmationHTML,
   generateCustomerConfirmationText,
   type ContactEmailData,
-} from "@/app/lib/email-templates";
+} from "@/lib/email-templates";
 import {
   sanitizeString,
   sanitizeStringArray,
-} from "@/app/lib/input-sanitization";
-import { supabase } from "@/app/lib/supabase";
+} from "@/lib/input-sanitization";
+import { supabase } from "@/lib/supabase";
 
 const contactSchema = z.object({
   firstName: z.string().min(2),

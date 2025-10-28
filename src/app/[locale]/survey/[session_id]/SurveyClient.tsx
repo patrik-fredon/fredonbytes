@@ -4,32 +4,32 @@ import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { useState, useEffect, useCallback, useRef } from "react";
 
-import AnimatedBackground from "@/app/components/common/AnimatedBackground";
-import ErrorState from "@/app/components/form/ErrorState";
-import FormNavigation from "@/app/components/form/FormNavigation";
-import QuestionStep from "@/app/components/form/QuestionStep";
-import { useReducedMotion } from "@/app/hooks/useReducedMotion";
-import { logError, getUserFriendlyErrorMessage } from "@/app/lib/error-logger";
+import AnimatedBackground from "@/components/common/AnimatedBackground";
+import ErrorState from "@/components/form/ErrorState";
+import FormNavigation from "@/components/form/FormNavigation";
+import QuestionStep from "@/components/form/QuestionStep";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { logError, getUserFriendlyErrorMessage } from "@/lib/error-logger";
 import {
   loadAnswers,
   saveAnswer,
   clearStorageData,
-} from "@/app/lib/form-storage";
+} from "@/lib/form-storage";
 import {
   validateAnswer,
   validateAllAnswers,
   findFirstUnansweredRequired,
   type ValidatableQuestion,
-} from "@/app/lib/form-validation";
+} from "@/lib/form-validation";
 import type {
   SurveyQuestion,
   AnswerValue,
   LocalizedString,
-} from "@/app/lib/supabase";
+} from "@/lib/supabase";
 
 // Lazy load ThankYouScreen since it's only needed at the end
 const ThankYouScreen = dynamic(
-  () => import("@/app/components/form/ThankYouScreen"),
+  () => import("@/components/form/ThankYouScreen"),
   {
     loading: () => (
       <div className="text-center py-12">
@@ -484,12 +484,12 @@ export default function SurveyClient({
               surveyState.completed
                 ? []
                 : [
-                    {
-                      label: "Try Again",
-                      onClick: retryLoadQuestions,
-                      variant: "default" as const,
-                    },
-                  ]
+                  {
+                    label: "Try Again",
+                    onClick: retryLoadQuestions,
+                    variant: "default" as const,
+                  },
+                ]
             }
           />
         </div>
@@ -516,7 +516,7 @@ export default function SurveyClient({
                 <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
                   {Math.round(
                     (surveyState.currentStep / surveyState.questions.length) *
-                      100
+                    100
                   )}
                   %
                 </span>
@@ -525,10 +525,9 @@ export default function SurveyClient({
                 <div
                   className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full transition-all duration-300"
                   style={{
-                    width: `${
-                      (surveyState.currentStep / surveyState.questions.length) *
+                    width: `${(surveyState.currentStep / surveyState.questions.length) *
                       100
-                    }%`,
+                      }%`,
                   }}
                 />
               </div>

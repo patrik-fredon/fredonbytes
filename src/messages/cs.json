@@ -360,7 +360,11 @@
         "label": "Jednotný tým"
       }
     },
-    "cta": "Objevte, jak vám můžeme pomoci"
+    "cta": "Objevte, jak vám můžeme pomoci",
+    "whyChooseUs": {
+      "title": "Proč si vybrat nás?",
+      "description": "Protože zůstáváme tam, kde ostatní odcházejí!"
+    }
   },
   "contact": {
     "meta": {
@@ -628,7 +632,7 @@
       "categories": {
         "web_development": "Vývojové služby",
         "mobile_development": "Mobilní aplikace",
-        "database":"Databáze",
+        "database": "Databáze",
         "cloud_services": "Cloud hosting",
         "design": "Designové služby",
         "marketing": "Marketingové služby",
@@ -641,7 +645,7 @@
         "mobile_app": "Mobilní aplikace",
         "database": "Integrace databáze",
         "api": "Vývoj API",
-        "cms": "Správa obsahu",
+        "cms_integration": "Integrace CMS",
         "ecommerce": "Funkce elektronického obchodování",
         "seo": "Optimalizace SEO",
         "analytics": "Integrace analytiky",
@@ -651,7 +655,7 @@
         "maintenance": "Pravidelná údržba",
         "hosting": "Nastavení hostingu",
         "ssl": "SSL certifikát",
-        "backup": "Zálohovací řešení",
+        "backup_solution": "Zálohovací řešení",
         "scalable_infrastructure": "Škálovatelná infrastruktura",
         "security_setup": "Nastavení zabezpečení",
         "monitoring": "Monitorování 24/7",
@@ -744,7 +748,7 @@
       "support_24_7": "24/7 prioritní podpora",
       "security": "Pokročilé bezpečnostní funkce",
       "scalable": "Škálovatelná architektura",
-      "integrations": "Podpora integrací",
+      "advanced_integrations": "Podpora integrací",
       "training": "Školení a dokumentace",
       "sla": "SLA záruky",
       "advanced_web_development": "Pokročilý vývoj webu",
@@ -756,8 +760,8 @@
       "full_stack_development": "Full-stack vývoj",
       "custom_architecture": "Vlastní architektura",
       "cloud_deployment": "Nasazení v cloudu",
-      "security_audits": "Bezpečnostní audity",
-      "dedicated_resources": "Dedikované zdroje",
+      "security_audit": "Bezpečnostní audity",
+      "dedicated_support": "Dedikovaná podpora",
       "12_months_support": "12 měsíců podpory",
       "training_included": "Školení v ceně",
       "basic_web_development": "Základní vývoj webu",
@@ -767,21 +771,43 @@
     }
   },
   "projects": {
-    "title": "Naše portfolio",
-    "subtitle": "Prozkoumejte naši nejnovější práci a podívejte se, jak jsme pomohli firmám transformovat jejich digitální přítomnost.",
+    "title": "Naše projekty",
+    "subtitle": "Prozkoumejte naše portfolio úspěšných projektů. Od podnikových aplikací po inovativní startupy, dodáváme řešení, která přinášejí výsledky.",
+    "filters": {
+      "title": "Filtry",
+      "clearAll": "Vymazat vše",
+      "category": "Kategorie",
+      "status": "Stav",
+      "technologies": "Technologie"
+    },
     "categories": {
-      "all": "Všechny projekty",
-      "web": "Vývoj webu",
-      "mobile": "Mobilní aplikace",
-      "design": "Design",
-      "ecommerce": "E-commerce"
+      "web_development": "Vývoj webů",
+      "mobile_app": "Mobilní aplikace",
+      "cloud_solution": "Cloudové řešení",
+      "database": "Databáze",
+      "consulting": "Konzultace"
     },
-    "cta": {
-      "viewProject": "Zobrazit projekt",
-      "liveDemo": "Živé demo",
-      "caseStudy": "Případová studie"
+    "status": {
+      "active": "Aktivní",
+      "completed": "Dokončený",
+      "archived": "Archivovaný"
     },
-    "loadMore": "Načíst více projektů"
+    "badges": {
+      "featured": "Doporučený"
+    },
+    "actions": {
+      "viewLiveDemo": "Zobrazit demo",
+      "viewOnGithub": "Zobrazit na GitHubu",
+      "viewDetails": "Zobrazit detaily"
+    },
+    "modal": {
+      "technologies": "Technologie",
+      "createdOn": "Vytvořeno"
+    },
+    "empty": {
+      "noProjects": "Momentálně nejsou k dispozici žádné projekty. Zkuste to později!",
+      "noResults": "Žádné projekty neodpovídají vašim filtrům. Zkuste upravit výběr."
+    }
   },
   "common": {
     "buttons": {
@@ -1533,43 +1559,16 @@
       "loadFailed": "Načtení otázek se nezdařilo. Obnovte prosím stránku."
     }
   },
-  "projects": {
-    "title": "Naše projekty",
-    "subtitle": "Prozkoumejte naše portfolio úspěšných projektů. Od podnikových aplikací po inovativní startupy, dodáváme řešení, která přinášejí výsledky.",
-    "filters": {
-      "title": "Filtry",
-      "clearAll": "Vymazat vše",
-      "category": "Kategorie",
-      "status": "Stav",
-      "technologies": "Technologie"
+  "homepage": {
+    "pricingSection": {
+      "cta": "ZAČNĚTE HNED",
+      "title": "Vaše digitální svoboda začíná zde!",
+      "description": "Připojte se k nám nyní a nebudete litovat!",
+      "start": "ZAČNĚTE ZDE"
     },
-    "categories": {
-      "web_development": "Vývoj webů",
-      "mobile_app": "Mobilní aplikace",
-      "cloud_solution": "Cloudové řešení",
-      "database": "Databáze",
-      "consulting": "Konzultace"
-    },
-    "status": {
-      "active": "Aktivní",
-      "completed": "Dokončený",
-      "archived": "Archivovaný"
-    },
-    "badges": {
-      "featured": "Doporučený"
-    },
-    "actions": {
-      "viewLiveDemo": "Zobrazit demo",
-      "viewOnGithub": "Zobrazit na GitHubu",
-      "viewDetails": "Zobrazit detaily"
-    },
-    "modal": {
-      "technologies": "Technologie",
-      "createdOn": "Vytvořeno"
-    },
-    "empty": {
-      "noProjects": "Momentálně nejsou k dispozici žádné projekty. Zkuste to později!",
-      "noResults": "Žádné projekty neodpovídají vašim filtrům. Zkuste upravit výběr."
+    "servicesSection": {
+      "title": "Jste připraveni vyrazit na cestu?",
+      "description": "Od klidu v digitálním světě vás dělí jediné kliknutí..."
     }
   }
 }

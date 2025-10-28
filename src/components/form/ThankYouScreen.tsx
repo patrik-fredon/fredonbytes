@@ -5,7 +5,7 @@ import { CheckCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React, { useState, useEffect } from 'react'
 
-import { useReducedMotion } from '@/app/hooks/useReducedMotion'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 import { Button } from '../common/Button'
 

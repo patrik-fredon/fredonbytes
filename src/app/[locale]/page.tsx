@@ -1,17 +1,17 @@
 import dynamic from "next/dynamic";
 import { setRequestLocale } from "next-intl/server";
-import { Suspense } from "react";
 
-import HeroSection from "../components/homepage/HeroSection";
+
+import HeroSection from "../../components/homepage/HeroSection";
 import {
   AboutSectionSkeleton,
   ServicesSectionSkeleton,
   PricingSectionSkeleton,
-} from "../components/homepage/HomepageSkeletons";
+} from "../../components/homepage/HomepageSkeletons";
 
 // Dynamic imports for below-the-fold sections with Suspense
 const AboutSection = dynamic(
-  () => import("../components/homepage/AboutSection"),
+  () => import("../../components/homepage/AboutSection"),
   {
     ssr: true,
     loading: () => <AboutSectionSkeleton />,
@@ -19,7 +19,7 @@ const AboutSection = dynamic(
 );
 
 const ServicesSection = dynamic(
-  () => import("../components/homepage/ServicesSection"),
+  () => import("../../components/homepage/ServicesSection"),
   {
     ssr: true,
     loading: () => <ServicesSectionSkeleton />,
@@ -27,7 +27,7 @@ const ServicesSection = dynamic(
 );
 
 const PricingSection = dynamic(
-  () => import("../components/homepage/PricingSection"),
+  () => import("../../components/homepage/PricingSection"),
   {
     ssr: true,
     loading: () => <PricingSectionSkeleton />,
@@ -47,13 +47,11 @@ export default async function Home({ params }: Props) {
   return (
     <div className="min-h-screen relative z-10">
       <HeroSection />
-      <AboutSection showTeam={false} />
       <ServicesSection />
+      <AboutSection showTeam={false} />
 
-      {/* Suspense boundaries for below-the-fold sections */}
-      <Suspense fallback={<PricingSectionSkeleton />}>
-        <PricingSection />
-      </Suspense>
+      <PricingSection />
+
     </div>
   );
 }

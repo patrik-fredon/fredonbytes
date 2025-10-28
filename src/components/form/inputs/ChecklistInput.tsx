@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from 'react'
 
-import type { ValidatableQuestionOption } from '@/app/lib/form-validation'
+import type { ValidatableQuestionOption } from '@/lib/form-validation'
 
 interface ChecklistInputProps {
   value: string[]

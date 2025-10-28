@@ -8,13 +8,13 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
-import ClientLayoutWrapper from "../components/ClientLayoutWrapper";
-import Footer from "../components/common/Footer";
-import Header from "../components/common/Header";
+import ClientLayoutWrapper from "../../components/ClientLayoutWrapper";
+import Footer from "../../components/common/Footer";
+import Header from "../../components/common/Header";
 
 // Dynamic imports for heavy components
 const AnimatedBackground = dynamic(
-  () => import("../components/common/AnimatedBackground"),
+  () => import("../../components/common/AnimatedBackground"),
   {
     loading: () => (
       <div className="fixed inset-0 bg-linear-to-br from-slate-900 via-slate-800 to-slate-900" />
@@ -23,14 +23,14 @@ const AnimatedBackground = dynamic(
 );
 
 const CookieConsentBanner = dynamic(
-  () => import("../components/common/CookieConsentBanner"),
+  () => import("../../components/common/CookieConsentBanner"),
   {
     loading: () => null,
   }
 );
 
 const ConditionalAnalytics = dynamic(
-  () => import("../components/common/ConditionalAnalytics"),
+  () => import("../../components/common/ConditionalAnalytics"),
   {
     loading: () => null,
   }
@@ -38,7 +38,7 @@ const ConditionalAnalytics = dynamic(
 
 const WebVitals = dynamic(
   () =>
-    import("../components/WebVitals").then((mod) => ({
+    import("../../components/WebVitals").then((mod) => ({
       default: mod.WebVitals,
     })),
   {

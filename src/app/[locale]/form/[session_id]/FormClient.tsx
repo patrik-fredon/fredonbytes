@@ -4,13 +4,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { useState, useEffect, useCallback, useRef } from "react";
 
-import ErrorState from "@/app/components/form/ErrorState";
-import FormBackground from "@/app/components/form/FormBackground";
-import FormNavigation from "@/app/components/form/FormNavigation";
-import QuestionStep from "@/app/components/form/QuestionStep";
+import ErrorState from "@/components/form/ErrorState";
+import FormBackground from "@/components/form/FormBackground";
+import FormNavigation from "@/components/form/FormNavigation";
+import QuestionStep from "@/components/form/QuestionStep";
 // Lazy load ThankYouScreen since it's only needed at the end
 const ThankYouScreen = dynamic(
-  () => import("@/app/components/form/ThankYouScreen"),
+  () => import("@/components/form/ThankYouScreen"),
   {
     loading: () => (
       <div className="text-center py-12">
@@ -20,25 +20,25 @@ const ThankYouScreen = dynamic(
     ),
   }
 );
-import { getCsrfToken } from "@/app/hooks/useCsrfToken";
-import { useReducedMotion } from "@/app/hooks/useReducedMotion";
-import { logError, getUserFriendlyErrorMessage } from "@/app/lib/error-logger";
+import { getCsrfToken } from "@/hooks/useCsrfToken";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { logError, getUserFriendlyErrorMessage } from "@/lib/error-logger";
 import {
   loadAnswers,
   saveAnswer,
   clearStorageData,
-} from "@/app/lib/form-storage";
+} from "@/lib/form-storage";
 import {
   validateAnswer,
   validateAllAnswers,
   findFirstUnansweredRequired,
   type ValidatableQuestion,
-} from "@/app/lib/form-validation";
+} from "@/lib/form-validation";
 import type {
   Question,
   AnswerValue,
   LocalizedString,
-} from "@/app/lib/supabase";
+} from "@/lib/supabase";
 
 // Helper function to extract localized string based on locale
 function getLocalizedString(

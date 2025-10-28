@@ -6,8 +6,8 @@ import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
-import { useReducedMotion } from '@/app/hooks/useReducedMotion';
-import type { Project } from '@/app/lib/supabase';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import type { Project } from '@/lib/supabase';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -53,12 +53,12 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
   const description = project.description[locale] || project.description.en;
 
   // Format date
-  const formattedDate = project.created_at 
+  const formattedDate = project.created_at
     ? new Date(project.created_at).toLocaleDateString(locale, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
     : 'N/A';
 
   return (
@@ -130,13 +130,12 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                       </span>
                     )}
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        project.status === 'active'
-                          ? 'bg-green-500 text-white'
-                          : project.status === 'completed'
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === 'active'
+                        ? 'bg-green-500 text-white'
+                        : project.status === 'completed'
                           ? 'bg-blue-500 text-white'
                           : 'bg-slate-500 text-white'
-                      }`}
+                        }`}
                     >
                       {t(`status.${project.status}` as keyof typeof t)}
                     </span>

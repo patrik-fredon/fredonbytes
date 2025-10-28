@@ -7,7 +7,7 @@ import {
   validateCsrfToken,
   CSRF_TOKEN_COOKIE_NAME,
   CSRF_TOKEN_HEADER_NAME,
-} from "./app/lib/csrf";
+} from "./lib/csrf";
 import { routing } from "./i18n/routing";
 
 // Simple in-memory rate limiter

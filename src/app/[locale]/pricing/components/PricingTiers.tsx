@@ -5,8 +5,8 @@ import { Check, ArrowRight, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-import { Button } from "@/app/components/common/Button";
-import { PricingTier, LocalizedString } from "@/app/lib/supabase";
+import { Button } from "@/components/common/Button";
+import { PricingTier, LocalizedString } from "@/lib/supabase";
 
 import { Currency } from "../PricingClient";
 
@@ -22,7 +22,7 @@ const getLocalizedText = (text: LocalizedString, locale: string): string => {
 
 const formatPrice = (price: number | null, currency: Currency): string => {
   if (price === null) return '';
-  
+
   if (currency === 'CZK') {
     return `${price.toLocaleString()} Kč`;
   } else {
@@ -70,14 +70,13 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
       {tiers.map((tier) => {
         const price = currency === 'CZK' ? tier.price_czk : tier.price_eur;
-        
+
         return (
           <motion.div
             key={tier.id}
             variants={itemVariants}
-            className={`relative bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${
-              tier.popular ? "ring-2 ring-blue-600 scale-105" : ""
-            }`}
+            className={`relative bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${tier.popular ? "ring-2 ring-blue-600 scale-105" : ""
+              }`}
           >
             {tier.popular && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">

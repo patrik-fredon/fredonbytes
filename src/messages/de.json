@@ -360,7 +360,11 @@
         "label": "Vereintes Team"
       }
     },
-    "cta": "Entdecken Sie, wie wir Ihnen helfen können"
+    "cta": "Entdecken Sie, wie wir Ihnen helfen können",
+    "whyChooseUs": {
+      "title": "Warum uns wählen?",
+      "description": "Denn wir bleiben dort, wo andere gehen!"
+    }
   },
   "contact": {
     "meta": {
@@ -628,7 +632,7 @@
       "categories": {
         "web_development": "Entwicklungsdienstleistungen",
         "mobile_development": "Mobile Anwendungen",
-        "database":"Datenbanken",
+        "database": "Datenbanken",
         "cloud_services": "Cloud-Hosting",
         "design": "Designdienstleistungen",
         "marketing": "Marketingdienstleistungen",
@@ -640,46 +644,38 @@
         "mobile_app": "Mobile App",
         "database": "Datenbankintegration",
         "api": "API-Entwicklung",
-        
-        "cms": "Content Management",
+        "cms_integration": "Content Management",
         "ecommerce": "E-Commerce-Funktionen",
         "seo": "SEO-Optimierung",
         "analytics": "Analytik-Integration",
-        
         "security": "Sicherheitsfunktionen",
         "performance": "Leistungsoptimierung",
         "support": "Technischer Support",
         "maintenance": "Regelmäßige Wartung",
         "hosting": "Hosting-Einrichtung",
-        
         "ssl": "SSL-Zertifikat",
-        "backup": "Backup-Lösung",
+        "backup_solution": "Backup-Lösung",
         "scalable_infrastructure": "Skalierbare Infrastruktur",
         "security_setup": "Sicherheitseinstellungen",
         "monitoring": "24/7-Überwachung",
-        
         "backup_solutions": "Backup-Lösungen",
         "expert_advice": "Fachberatung",
         "project_planning": "Projektplanung",
         "technology_selection": "Technologiestrategie",
-        
         "custom_schema": "Benutzerdefiniertes Datenbankschema",
         "performance_optimization": "Leistungsoptimierung",
         "security_implementation": "Sicherheitsimplementierung",
         "cross_platform": "Plattformübergreifende Kompatibilität",
-        
         "native_performance": "Native Leistung",
         "app_store_deployment": "Bereitstellung im App Store",
         "bug_fixes": "Fehlerbehebung",
         "security_updates": "Sicherheitsupdates",
         "performance_monitoring": "Leistungsüberwachung",
-        
         "priority_support": "Prioritärer Support",
         "contact_form": "Integration eines Kontaktformulars",
         "basic_seo": "Grundlegende Suchmaschinenoptimierung",
         "payment_integration": "Zahlungsintegration",
         "product_catalog": "Produktkatalog",
-        
         "inventory_management": "Bestandsverwaltung",
         "order_processing": "Auftragsabwicklung",
         "multi_page": "Mehrseitige Anwendung",
@@ -752,7 +748,7 @@
       "support_24_7": "24/7-Prioritäts-Support",
       "security": "Erweiterte Sicherheitsfunktionen",
       "scalable": "Skalierbare Architektur",
-      "integrations": "Unterstützung von Integrationen",
+      "advanced_integrations": "Unterstützung von Integrationen",
       "training": "Schulungen und Dokumentation",
       "sla": "SLA-Garantien",
       "advanced_web_development": "Fortgeschrittene Webentwicklung",
@@ -764,8 +760,8 @@
       "full_stack_development": "Full-Stack-Entwicklung",
       "custom_architecture": "Individuelle Architektur",
       "cloud_deployment": "Cloud-Bereitstellung",
-      "security_audits": "Sicherheitsaudits",
-      "dedicated_resources": "Dedizierte Ressourcen",
+      "security_audit": "Sicherheitsaudit",
+      "dedicated_support": "Dedizierte Unterstützung",
       "12_months_support": "12 Monate Support",
       "training_included": "Schulung im Preis inbegriffen",
       "basic_web_development": "Grundlegende Webentwicklung",
@@ -775,21 +771,43 @@
     }
   },
   "projects": {
-    "title": "Unser Portfolio",
-    "subtitle": "Entdecken Sie unsere neuesten Arbeiten und sehen Sie, wie wir Unternehmen dabei geholfen haben, ihre digitale Präsenz zu transformieren.",
+    "title": "Unsere Projekte",
+    "subtitle": "Entdecken Sie unser Portfolio erfolgreicher Projekte. Von Unternehmensanwendungen bis hin zu innovativen Startups liefern wir Lösungen, die Ergebnisse erzielen.",
+    "filters": {
+      "title": "Filter",
+      "clearAll": "Alle löschen",
+      "category": "Kategorie",
+      "status": "Status",
+      "technologies": "Technologien"
+    },
     "categories": {
-      "all": "Alle Projekte",
-      "web": "Webentwicklung",
-      "mobile": "Mobile Apps",
-      "design": "Design",
-      "ecommerce": "E-Commerce"
+      "web_development": "Webentwicklung",
+      "mobile_app": "Mobile App",
+      "cloud_solution": "Cloud-Lösung",
+      "database": "Datenbank",
+      "consulting": "Beratung"
     },
-    "cta": {
-      "viewProject": "Projekt ansehen",
-      "liveDemo": "Live-Demo",
-      "caseStudy": "Fallstudie"
+    "status": {
+      "active": "Aktiv",
+      "completed": "Abgeschlossen",
+      "archived": "Archiviert"
     },
-    "loadMore": "Weitere Projekte laden"
+    "badges": {
+      "featured": "Empfohlen"
+    },
+    "actions": {
+      "viewLiveDemo": "Live-Demo ansehen",
+      "viewOnGithub": "Auf GitHub ansehen",
+      "viewDetails": "Details ansehen"
+    },
+    "modal": {
+      "technologies": "Technologien",
+      "createdOn": "Erstellt am"
+    },
+    "empty": {
+      "noProjects": "Derzeit sind keine Projekte verfügbar. Schauen Sie später wieder vorbei!",
+      "noResults": "Keine Projekte entsprechen Ihren Filtern. Versuchen Sie, Ihre Auswahl anzupassen."
+    }
   },
   "common": {
     "buttons": {
@@ -1141,7 +1159,6 @@
         }
       }
     },
-
     "privacyPolicy": {
       "title": "Datenschutzrichtlinie",
       "subtitle": "Wie wir Ihre Informationen sammeln, verwenden und schützen",
@@ -1460,7 +1477,11 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monatliche SEO und digitale Marketing-Dienste",
-            "included": ["Keyword-Recherche", "Content-Strategie", "Analytik"]
+            "included": [
+              "Keyword-Recherche",
+              "Content-Strategie",
+              "Analytik"
+            ]
           },
           "socialMedia": {
             "name": "Social Media",
@@ -1608,43 +1629,16 @@
       "loadFailed": "Das Laden der Fragen ist fehlgeschlagen. Bitte aktualisieren Sie die Seite."
     }
   },
-  "projects": {
-    "title": "Unsere Projekte",
-    "subtitle": "Entdecken Sie unser Portfolio erfolgreicher Projekte. Von Unternehmensanwendungen bis hin zu innovativen Startups liefern wir Lösungen, die Ergebnisse erzielen.",
-    "filters": {
-      "title": "Filter",
-      "clearAll": "Alle löschen",
-      "category": "Kategorie",
-      "status": "Status",
-      "technologies": "Technologien"
+  "homepage": {
+    "pricingSection": {
+      "cta": "JETZT STARTEN",
+      "title": "Ihre digitale Freiheit beginnt hier!",
+      "description": "Werden Sie jetzt Mitglied und Sie werden es nicht bereuen!",
+      "start": "STARTEN SIE HIER"
     },
-    "categories": {
-      "web_development": "Webentwicklung",
-      "mobile_app": "Mobile App",
-      "cloud_solution": "Cloud-Lösung",
-      "database": "Datenbank",
-      "consulting": "Beratung"
-    },
-    "status": {
-      "active": "Aktiv",
-      "completed": "Abgeschlossen",
-      "archived": "Archiviert"
-    },
-    "badges": {
-      "featured": "Empfohlen"
-    },
-    "actions": {
-      "viewLiveDemo": "Live-Demo ansehen",
-      "viewOnGithub": "Auf GitHub ansehen",
-      "viewDetails": "Details ansehen"
-    },
-    "modal": {
-      "technologies": "Technologien",
-      "createdOn": "Erstellt am"
-    },
-    "empty": {
-      "noProjects": "Derzeit sind keine Projekte verfügbar. Schauen Sie später wieder vorbei!",
-      "noResults": "Keine Projekte entsprechen Ihren Filtern. Versuchen Sie, Ihre Auswahl anzupassen."
+    "servicesSection": {
+      "title": "Sind Sie bereit, Ihre Reise zu beginnen?",
+      "description": "Sie sind nur einen Klick davon entfernt, in der digitalen Welt beruhigt zu sein ..."
     }
   }
 }

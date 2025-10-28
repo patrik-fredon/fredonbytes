@@ -8,7 +8,7 @@ type Props = {
 
 // Dynamic imports for Framer Motion components
 const ProfileHeader = dynamic(
-  () => import('@/app/components/linktree/ProfileHeader'),
+  () => import('@/components/linktree/ProfileHeader'),
   {
     loading: () => (
       <div className="text-center mb-12">
@@ -22,7 +22,7 @@ const ProfileHeader = dynamic(
 );
 
 const LinkList = dynamic(
-  () => import('@/app/components/linktree/LinkList'),
+  () => import('@/components/linktree/LinkList'),
   {
     loading: () => (
       <div className="max-w-2xl mx-auto space-y-8">

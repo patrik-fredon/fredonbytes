@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import React from 'react'
 
-import { useReducedMotion } from '@/app/hooks/useReducedMotion'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 import { Button } from '../common/Button'
 
@@ -20,7 +20,7 @@ interface WelcomeScreenProps {
  */
 export default function WelcomeScreen({ onNext }: WelcomeScreenProps) {
   const prefersReducedMotion = useReducedMotion()
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.95 }}

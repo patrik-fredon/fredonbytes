@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
 import { setRequestLocale } from "next-intl/server";
 
-import FormLoadingSkeleton from "@/app/components/form/FormLoadingSkeleton";
+import FormLoadingSkeleton from "@/components/form/FormLoadingSkeleton";
 import { redirect } from "@/i18n/navigation";
 
 // Dynamic import for FormClient with loading skeleton
