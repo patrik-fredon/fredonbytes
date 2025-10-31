@@ -192,7 +192,7 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
 
           {/* Company Motto */}
           <motion.div variants={itemVariants} className="text-center mb-20">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+            <div className="bg-gradient-to-r from-blue-900 to-purple-600 rounded-2xl p-8 text-white">
               <h3 className="text-3xl lg:text-4xl font-bold mb-4">
                 {t("about.motto.title")}
               </h3>
@@ -263,7 +263,7 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
           {/* Company Mantra */}
           <motion.div variants={itemVariants} className="mt-12 text-center">
             <p className="text-2xl font-bold text-slate-900 dark:text-white">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 {t("about.mantra")}
               </span>
             </p>
