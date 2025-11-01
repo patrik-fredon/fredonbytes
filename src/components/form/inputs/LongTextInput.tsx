@@ -61,17 +61,16 @@ export default function LongTextInput({
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        placeholder="Enter your detailed answer..."
+        placeholder="$ Enter your detailed answer..."
         rows={MIN_ROWS}
         maxLength={MAX_LENGTH}
-        className={`w-full px-4 py-3 rounded-md border transition-all duration-200 resize-none
-                   bg-white dark:bg-slate-700 
-                   text-slate-900 dark:text-white 
-                   placeholder:text-slate-400 dark:placeholder:text-slate-500
-                   focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+        className={`w-full px-4 py-3 rounded-md border transition-all duration-[180ms] resize-none
+                   bg-terminal-dark font-mono
+                   text-white placeholder:text-terminal-muted
+                   focus:outline-none focus:ring-2 focus:ring-neon-cyan focus:shadow-glow-cyan-subtle
                    ${error
-            ? 'border-red-500 dark:border-red-500'
-            : 'border-slate-300 dark:border-slate-600'
+            ? 'border-error-red focus:ring-error-red focus:shadow-glow-red-subtle'
+            : 'border-neon-cyan/30 focus:border-neon-cyan'
           }`}
         style={{ minHeight: `${MIN_ROWS * 1.5}rem` }}
         aria-label={questionText}
@@ -83,10 +82,10 @@ export default function LongTextInput({
       {/* Character Counter */}
       <div
         id={`char-count-${questionId}`}
-        className={`text-sm text-right transition-colors duration-200
-                   ${isFocused ? 'text-slate-700 dark:text-slate-300' : 'text-slate-500 dark:text-slate-400'}
-                   ${remainingChars < 50 ? 'text-amber-600 dark:text-amber-400 font-medium' : ''}
-                   ${remainingChars === 0 ? 'text-red-600 dark:text-red-400 font-semibold' : ''}`}
+        className={`text-sm text-right font-mono transition-colors duration-[180ms]
+                   ${isFocused ? 'text-neon-cyan' : 'text-terminal-muted'}
+                   ${remainingChars < 50 ? 'text-warning-amber font-medium' : ''}
+                   ${remainingChars === 0 ? 'text-error-red font-semibold' : ''}`}
         aria-live="polite"
         aria-atomic="true"
       >

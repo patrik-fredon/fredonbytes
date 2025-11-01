@@ -14,13 +14,15 @@ import {
   Smartphone,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "@/i18n/navigation";
+import { TerminalWindow } from "../dev-ui/TerminalWindow";
 
 
 
 export default function ServicesSection() {
   const t = useTranslations();
+  const [activeTab, setActiveTab] = useState<string>("all");
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -65,6 +67,13 @@ export default function ServicesSection() {
       icon: CheckCircle,
     },
   ];
+  const serviceCategories = [
+    { id: "all", label: t("services.categories.all") || "All Services" },
+    { id: "development", label: t("services.categories.development") || "Development" },
+    { id: "design", label: t("services.categories.design") || "Design" },
+    { id: "marketing", label: t("services.categories.marketing") || "Marketing" },
+  ];
+
   const services = [
     {
       icon: Code,
@@ -78,7 +87,8 @@ export default function ServicesSection() {
       ],
       color: "from-blue-500 to-cyan-500",
       iconBg: "bg-blue-900/20",
-      iconColor: "text-blue-400",
+      iconColor: "text-neon-cyan",
+      category: "development",
     },
     {
       icon: Palette,
@@ -92,7 +102,8 @@ export default function ServicesSection() {
       ],
       color: "from-purple-500 to-pink-500",
       iconBg: "bg-purple-900/20",
-      iconColor: "text-purple-400",
+      iconColor: "text-electric-purple",
+      category: "design",
     },
     {
       icon: Search,
@@ -106,7 +117,8 @@ export default function ServicesSection() {
       ],
       color: "from-green-500 to-emerald-500",
       iconBg: "bg-green-900/20",
-      iconColor: "text-green-400",
+      iconColor: "text-code-green",
+      category: "marketing",
     },
     {
       icon: Share2,
@@ -120,7 +132,8 @@ export default function ServicesSection() {
       ],
       color: "from-orange-500 to-red-500",
       iconBg: "bg-orange-900/20",
-      iconColor: "text-orange-400",
+      iconColor: "text-warning-amber",
+      category: "marketing",
     },
     {
       icon: Shield,
@@ -135,6 +148,7 @@ export default function ServicesSection() {
       color: "from-slate-500 to-slate-700",
       iconBg: "bg-slate-900/20",
       iconColor: "text-slate-400",
+      category: "development",
     },
     {
       icon: Globe,
@@ -148,9 +162,14 @@ export default function ServicesSection() {
       ],
       color: "from-slate-500 to-slate-700",
       iconBg: "bg-teal-900/20",
-      iconColor: "text-teal-400",
+      iconColor: "text-neon-cyan",
+      category: "development",
     },
   ];
+
+  const filteredServices = activeTab === "all" 
+    ? services 
+    : services.filter(service => service.category === activeTab);
 
 
   return (
@@ -164,80 +183,104 @@ export default function ServicesSection() {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-mono">
+              <span className="text-neon-cyan">//</span>{" "}
+              <span className="bg-gradient-to-r from-neon-cyan to-electric-purple bg-clip-text text-transparent">
                 {t("services.title")}
               </span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-mono">
               {t("services.subtitle")}
             </p>
           </motion.div>
 
-          {/* Why Choose Us */}
+          {/* IDE-Style Tab Navigation */}
+          <motion.div variants={itemVariants} className="mb-8">
+            <div className="flex flex-wrap justify-center gap-2 bg-terminal-dark border border-neon-cyan/20 rounded-lg p-2">
+              {serviceCategories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveTab(category.id)}
+                  className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-[180ms] ${
+                    activeTab === category.id
+                      ? "bg-neon-cyan/20 text-neon-cyan border border-neon-cyan shadow-glow-cyan-subtle"
+                      : "text-slate-400 hover:text-white hover:bg-slate-800/50"
+                  }`}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Stats - Terminal Styled */}
           <motion.div variants={itemVariants} className="m-16">
-            <div className="bg-slate-900 border border-purple-500/20 inset-shadow-sm inset-shadow-slate-950/50 rounded-xl p-8">
-
-
+            <div className="bg-terminal-dark border border-neon-cyan/20 rounded-xl p-8 shadow-glow-cyan-subtle">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {stats.map((stat, index) => {
                   const Icon = stat.icon;
                   return (
                     <div key={index} className="text-center">
-                      <div className="w-14 h-14 mx-auto mb-4 bg-slate-950/50  rounded-full flex items-center justify-center">
-                        <Icon className="w-8 h-8" />
+                      <div className="w-14 h-14 mx-auto mb-4 bg-slate-950/50 rounded-full flex items-center justify-center border border-neon-cyan/30">
+                        <Icon className="w-8 h-8 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
                       </div>
-                      <div className="text-2xl font-bold mb-2 ">
+                      <div className="text-2xl font-bold mb-2 text-white font-mono">
                         {stat.number}
                       </div>
-                      <div className="text-white/50">{stat.label}</div>
+                      <div className="text-slate-400 font-mono text-sm">{stat.label}</div>
                     </div>
                   );
                 })}
               </div>
             </div>
           </motion.div>
-          {/* Services Grid */}
+          {/* Services Grid - TerminalWindow Cards */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-10"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"
           >
-            {services.map((service, index) => {
+            {filteredServices.map((service, index) => {
               const Icon = service.icon;
               return (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="bg-slate-950/20 border-2 border-slate-950/40 rounded-xl p-6 inset-shadow-2xs inset-shadow-slate-950/50 hover:shadow-xl hover:shadow-purple-950/50 transition-all duration-300 group hover:-translate-y-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  className="group hover:-translate-y-2 transition-transform duration-[180ms]"
                 >
-                  <div className="flex items-start space-x-2">
-                    <div
-                      className={`flex-shrink-0 w-12 h-12 rounded-xl ${service.iconBg} flex items-center justify-center`}
-                    >
-                      <Icon className={`w-8 h-8 ${service.iconColor}`} />
-                    </div>
+                  <TerminalWindow title={service.title} className="h-full">
+                    <div className="p-4 space-y-4">
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-12 h-12 rounded-xl ${service.iconBg} flex items-center justify-center border border-neon-cyan/20`}>
+                          <Icon className={`w-8 h-8 ${service.iconColor} drop-shadow-[0_0_10px_currentColor]`} />
+                        </div>
+                        <h3 className="text-lg font-bold text-white font-mono">
+                          {service.title}
+                        </h3>
+                      </div>
 
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-white mb-3">
-                        {service.title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                      <p className="text-slate-400 text-sm leading-relaxed font-mono">
                         {service.description}
                       </p>
 
-                      <ul className="space-y-2">
-                        {service.features.map((feature, featureIndex) => (
-                          <li
-                            key={featureIndex}
-                            className="flex items-center space-x-2 text-sm text-slate-700 dark:text-slate-300"
-                          >
-                            <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="space-y-2">
+                        <p className="text-neon-cyan text-xs font-mono">// Features:</p>
+                        <ul className="space-y-1">
+                          {service.features.map((feature, featureIndex) => (
+                            <li
+                              key={featureIndex}
+                              className="flex items-start space-x-2 text-xs text-slate-300 font-mono"
+                            >
+                              <CheckCircle className="w-3 h-3 text-code-green shrink-0 mt-0.5" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
+                  </TerminalWindow>
                 </motion.div>
               );
             })}

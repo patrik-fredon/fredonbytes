@@ -79,7 +79,7 @@ export default function SingleChoiceInput({
 
   if (!options || options.length === 0) {
     return (
-      <div className="text-amber-600 dark:text-amber-400 text-sm">
+      <div className="text-warning-amber font-mono text-sm">
         No options available for this question.
       </div>
     )
@@ -103,13 +103,13 @@ export default function SingleChoiceInput({
           <label
             key={option.id}
             htmlFor={inputId}
-            className={`flex items-center gap-3 p-4 min-h-[44px] rounded-md border transition-all duration-200 cursor-pointer
+            className={`flex items-center gap-3 p-4 min-h-[44px] rounded-md border transition-all duration-[180ms] cursor-pointer
                        ${isSelected
-                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-400'
-                : 'border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700'
+                ? 'border-neon-cyan bg-terminal-dark shadow-glow-cyan-subtle'
+                : 'border-neon-cyan/20 bg-terminal-dark hover:border-neon-cyan/50 hover:shadow-glow-cyan-subtle'
               }
-                       ${error ? 'border-red-300 dark:border-red-700' : ''}
-                       focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2`}
+                       ${error ? 'border-error-red' : ''}
+                       focus-within:ring-2 focus-within:ring-neon-cyan`}
           >
             {/* Custom Radio Button */}
             <div className="relative flex items-center justify-center">
@@ -124,25 +124,25 @@ export default function SingleChoiceInput({
                 aria-label={option.option_text}
               />
               <div
-                className={`w-5 h-5 rounded-full border-2 transition-all duration-200 flex items-center justify-center
+                className={`w-5 h-5 rounded-full border-2 transition-all duration-[180ms] flex items-center justify-center
                            ${isSelected
-                    ? 'border-blue-600 dark:border-blue-400 bg-blue-600 dark:bg-blue-400'
-                    : 'border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-700'
+                    ? 'border-neon-cyan bg-neon-cyan'
+                    : 'border-terminal-muted bg-terminal-dark'
                   }
-                           peer-focus:ring-2 peer-focus:ring-blue-500 peer-focus:ring-offset-2`}
+                           peer-focus:ring-2 peer-focus:ring-neon-cyan`}
               >
                 {isSelected && (
-                  <div className="w-2 h-2 rounded-full bg-white dark:bg-slate-900" />
+                  <div className="w-2 h-2 rounded-full bg-terminal-dark" />
                 )}
               </div>
             </div>
 
             {/* Option Text */}
             <span
-              className={`flex-1 text-base transition-colors duration-200
+              className={`flex-1 text-base font-mono transition-colors duration-[180ms]
                          ${isSelected
-                  ? 'text-slate-900 dark:text-white font-medium'
-                  : 'text-slate-700 dark:text-slate-300'
+                  ? 'text-white font-medium'
+                  : 'text-terminal-muted'
                 }`}
             >
               {option.option_text}
@@ -151,7 +151,7 @@ export default function SingleChoiceInput({
             {/* Selected Indicator */}
             {isSelected && (
               <svg
-                className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0"
+                className="w-5 h-5 text-neon-cyan flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

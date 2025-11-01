@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { Button } from '@/components/common/Button';
+import CommandButton from '@/components/dev-ui/CommandButton';
 
 interface FormNavigationProps {
   currentStep: number;
@@ -46,47 +46,51 @@ export default function FormNavigation({
 
   return (
     <div className="w-full">
-      {/* Progress indicator - only show on question steps */}
+      {/* Terminal Progress Bar - only show on question steps */}
       {isOnQuestion && (
-        <div className="text-center mb-4">
-          <p className="text-sm text-slate-600 dark:text-slate-400">
-            Question {currentStep} of {totalSteps}
-          </p>
+        <div className="mb-6 space-y-2">
+          <div className="flex items-center justify-between">
+            <p className="text-sm font-mono text-neon-cyan">
+              $ Question {currentStep}/{totalSteps}
+            </p>
+            <p className="text-sm font-mono text-terminal-muted">
+              {Math.round((currentStep / totalSteps) * 100)}%
+            </p>
+          </div>
+          <div className="h-1.5 bg-terminal-dark rounded-full border border-neon-cyan/30 overflow-hidden">
+            <div 
+              className="h-full bg-neon-cyan shadow-glow-cyan-subtle transition-all duration-300"
+              style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+            />
+          </div>
         </div>
       )}
 
-      {/* Navigation buttons */}
+      {/* Terminal Navigation Buttons */}
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
         {/* Previous button - hidden on welcome screen */}
         {canGoPrevious && (
-          <Button
-            type="button"
-            variant="outline"
-            size="lg"
+          <CommandButton
+            variant="cyan"
+            prefix="$"
             onClick={onPrevious}
             disabled={!canGoPrevious || isSubmitting}
-            leftIcon={<ChevronLeft size={20} />}
-            className="w-full sm:w-auto sm:min-w-[140px] min-h-[44px]"
-            aria-label="Go to previous question"
+            className="w-full sm:w-auto sm:min-w-[140px]"
           >
-            Previous
-          </Button>
+            previous
+          </CommandButton>
         )}
 
         {/* Next/Submit button */}
-        <Button
-          type="submit"
-          variant={isOnLastQuestion ? 'gradient' : 'default'}
-          size="lg"
+        <CommandButton
+          variant={isOnLastQuestion ? 'purple' : 'cyan'}
+          prefix="$"
           onClick={onNext}
           disabled={!canGoNext || isSubmitting}
-          loading={isSubmitting}
-          rightIcon={!isSubmitting && !isOnLastQuestion ? <ChevronRight size={20} /> : undefined}
-          className="w-full sm:flex-1 sm:min-w-[140px] min-h-[44px]"
-          aria-label={isOnLastQuestion ? 'Submit survey' : 'Go to next question'}
+          className="w-full sm:flex-1 sm:min-w-[140px]"
         >
-          {nextButtonText}
-        </Button>
+          {isSubmitting ? 'processing...' : isOnLastQuestion ? 'submit' : 'next'}
+        </CommandButton>
       </div>
     </div>
   );

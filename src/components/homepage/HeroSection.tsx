@@ -20,6 +20,9 @@ import {
 } from "lucide-react";
 
 import { Button } from "../common/Button";
+import { TerminalWindow } from "../dev-ui/TerminalWindow";
+import { GridBackground } from "../dev-ui/GridBackground";
+import { CommandButton } from "../dev-ui/CommandButton";
 
 
 
@@ -99,6 +102,11 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Grid Background */}
+      <div className="absolute inset-0">
+        <GridBackground />
+      </div>
+      
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
@@ -125,42 +133,38 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Code Editor Mockup */}
+          {/* Terminal Code Editor */}
           <motion.div
             variants={itemVariants}
             className="mb-8 mx-auto max-w-2xl"
           >
-            <div className="bg-slate-900 rounded-lg shadow-2xl p-4 text-left">
-              <div className="flex items-center space-x-2 mb-3">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                <span className="text-slate-400 text-xs ml-4">
-                  fredonbytes.ts
-                </span>
+            <TerminalWindow title="fredonbytes.ts">
+              <div className="font-mono text-sm space-y-1">
+                <div className="flex">
+                  <span className="text-slate-500 select-none w-8 text-right mr-4">1</span>
+                  <span className="text-neon-cyan">{"//"} </span>
+                  <span className="text-slate-400">
+                    {t("hero.codeComments.creating")}
+                  </span>
+                </div>
+                <div className="flex">
+                  <span className="text-slate-500 select-none w-8 text-right mr-4">2</span>
+                  <span className="text-code-green">
+                    {typedText}
+                    <span className="animate-pulse text-neon-cyan">|</span>
+                  </span>
+                </div>
               </div>
-              <div className="text-green-400 font-mono text-sm">
-                <span className="text-gray-500">1</span>
-                <span className="ml-4 text-blue-400">{"//"} </span>
-                <span className="text-gray-400">
-                  {t("hero.codeComments.creating")}
-                </span>
-              </div>
-              <div className="text-green-400 font-mono text-sm mt-1">
-                <span className="text-gray-500">2</span>
-                <span className="ml-4">{typedText}</span>
-                <span className="animate-pulse">|</span>
-              </div>
-            </div>
+            </TerminalWindow>
           </motion.div>
 
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-7xl font-bold text-slate-900 dark:text-white mb-6 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           >
             {t("hero.title")}
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-neon-cyan via-electric-purple to-electric-purple bg-clip-text text-transparent">
               {t("hero.titleHighlight")}
             </span>
           </motion.h1>
@@ -168,7 +172,7 @@ export default function HeroSection() {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-xl sm:text-2xl text-slate-600 dark:text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl sm:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
             {t("hero.subtitle")}
           </motion.p>
@@ -178,19 +182,19 @@ export default function HeroSection() {
             variants={itemVariants}
             className="flex flex-wrap justify-center gap-6 mb-10"
           >
-            <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
-              <Code className="w-5 h-5 text-blue-500" />
-              <span className="font-medium">
+            <div className="flex items-center space-x-2 text-white">
+              <Code className="w-5 h-5 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
+              <span className="font-medium font-mono">
                 {t("hero.valueProps.development")}
               </span>
             </div>
-            <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
-              <Zap className="w-5 h-5 text-purple-500" />
-              <span className="font-medium">{t("hero.valueProps.design")}</span>
+            <div className="flex items-center space-x-2 text-white">
+              <Zap className="w-5 h-5 text-electric-purple drop-shadow-[0_0_8px_currentColor]" />
+              <span className="font-medium font-mono">{t("hero.valueProps.design")}</span>
             </div>
-            <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300">
-              <Globe className="w-5 h-5 text-cyan-500" />
-              <span className="font-medium">
+            <div className="flex items-center space-x-2 text-white">
+              <Globe className="w-5 h-5 text-code-green drop-shadow-[0_0_8px_currentColor]" />
+              <span className="font-medium font-mono">
                 {t("hero.valueProps.marketing")}
               </span>
             </div>
@@ -201,24 +205,16 @@ export default function HeroSection() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
-            <Button
-              variant="gradient"
-              size="xl"
-              rightIcon={<ArrowRight className="w-5 h-5" />}
-            >
-              <Link href="/contact" >
-                {t("hero.cta.startProject")}
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              size="xl"
-
-            >
-              <Link href="/projects" >
-                {t("hero.cta.viewWork")}
-              </Link>
-            </Button>
+            <Link href="/contact">
+              <CommandButton variant="primary" size="lg">
+                $ start_project
+              </CommandButton>
+            </Link>
+            <Link href="/projects">
+              <CommandButton variant="secondary" size="lg">
+                $ view_portfolio
+              </CommandButton>
+            </Link>
           </motion.div>
 
 

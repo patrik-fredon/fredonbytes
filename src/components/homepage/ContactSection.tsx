@@ -22,6 +22,7 @@ import * as z from "zod";
 
 
 import { Button } from "../common/Button";
+import { CommandButton } from "../dev-ui/CommandButton";
 
 const contactSchema = z.object({
   // Step 1: Basic Info
@@ -190,24 +191,24 @@ export default function ContactSection() {
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-2xl mx-auto text-center"
           >
-            <div className="w-20 h-20 mx-auto mb-6 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center">
-              <CheckCircle className="w-10 h-10 text-green-600" />
+            <div className="w-20 h-20 mx-auto mb-6 bg-code-green/20 rounded-full flex items-center justify-center border-2 border-code-green shadow-glow-green-subtle">
+              <CheckCircle className="w-10 h-10 text-code-green drop-shadow-[0_0_12px_currentColor]" />
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
-              {t("contact.success.title")}
+            <h2 className="text-3xl font-bold text-white mb-4 font-mono">
+              <span className="text-code-green">$</span> {t("contact.success.title")}
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 mb-8">
-              {t("contact.success.message")}
+            <p className="text-xl text-slate-300 mb-8 font-mono">
+              <span className="text-neon-cyan">//</span> {t("contact.success.message")}
             </p>
-            <Button
-              variant="gradient"
+            <CommandButton
+              variant="primary"
               onClick={() => {
                 setIsSubmitted(false);
                 setCurrentStep(1);
               }}
             >
-              {t("contact.success.cta")}
-            </Button>
+              $ {t("contact.success.cta")}
+            </CommandButton>
           </motion.div>
         </div>
       </section>
@@ -337,20 +338,20 @@ export default function ContactSection() {
             {/* Multi-step Form */}
             <motion.div variants={itemVariants}>
               <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8">
-                {/* Progress Bar */}
+                {/* Progress Bar - Terminal Style */}
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
-                      {t("contact.step")} {currentStep} {t("contact.of")} 3
+                    <span className="text-sm font-medium text-slate-400 font-mono">
+                      <span className="text-neon-cyan">//</span> {t("contact.step")} {currentStep} {t("contact.of")} 3
                     </span>
-                    <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <span className="text-sm font-medium text-neon-cyan font-mono">
                       {Math.round((currentStep / 3) * 100)}%{" "}
                       {t("contact.complete")}
                     </span>
                   </div>
-                  <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                  <div className="w-full bg-terminal-dark border border-neon-cyan/30 rounded-full h-2">
                     <div
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full transition-all duration-500"
+                      className="bg-neon-cyan h-2 rounded-full transition-all duration-500 shadow-glow-cyan-subtle"
                       style={{ width: `${(currentStep / 3) * 100}%` }}
                     />
                   </div>
@@ -366,90 +367,88 @@ export default function ContactSection() {
                       className="space-y-6"
                     >
                       <div className="flex items-center space-x-3 mb-6">
-                        <User className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                          {t("contact.basicInfo")}
+                        <User className="w-6 h-6 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
+                        <h3 className="text-xl font-bold text-white font-mono">
+                          <span className="text-neon-cyan">//</span> {t("contact.basicInfo")}
                         </h3>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          <label className="block text-sm font-medium text-slate-400 mb-2 font-mono">
                             {t("contact.firstName")} *
                           </label>
                           <input
                             {...register("firstName")}
-                            className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                            placeholder={t("contact.firstNamePlaceholder")}
+                            className="w-full px-4 py-3 border border-neon-cyan/30 rounded-lg focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan bg-terminal-dark text-white font-mono transition-all duration-[180ms]"
+                            placeholder="$ Enter first name..."
                           />
                           {errors.firstName && (
-                            <p className="mt-1 text-sm text-red-600">
-                              {errors.firstName.message}
+                            <p className="mt-1 text-sm text-error-red font-mono">
+                              $ ERROR: {errors.firstName.message}
                             </p>
                           )}
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          <label className="block text-sm font-medium text-slate-400 mb-2 font-mono">
                             {t("contact.lastName")} *
                           </label>
                           <input
                             {...register("lastName")}
-                            className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                            placeholder={t("contact.lastNamePlaceholder")}
+                            className="w-full px-4 py-3 border border-neon-cyan/30 rounded-lg focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan bg-terminal-dark text-white font-mono transition-all duration-[180ms]"
+                            placeholder="$ Enter last name..."
                           />
                           {errors.lastName && (
-                            <p className="mt-1 text-sm text-red-600">
-                              {errors.lastName.message}
+                            <p className="mt-1 text-sm text-error-red font-mono">
+                              $ ERROR: {errors.lastName.message}
                             </p>
                           )}
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-400 mb-2 font-mono">
                           {t("contact.email")} *
                         </label>
                         <input
                           {...register("email")}
                           type="email"
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder={t("contact.emailPlaceholder")}
+                          className="w-full px-4 py-3 border border-neon-cyan/30 rounded-lg focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan bg-terminal-dark text-white font-mono transition-all duration-[180ms]"
+                          placeholder="$ your.email@example.com"
                         />
                         {errors.email && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.email.message}
+                          <p className="mt-1 text-sm text-error-red font-mono">
+                            $ ERROR: {errors.email.message}
                           </p>
                         )}
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-400 mb-2 font-mono">
                           {t("contact.phone")} *
                         </label>
                         <input
                           {...register("phone")}
                           type="tel"
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder={t("contact.phonePlaceholder")}
+                          className="w-full px-4 py-3 border border-neon-cyan/30 rounded-lg focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan bg-terminal-dark text-white font-mono transition-all duration-[180ms]"
+                          placeholder="$ +420 123 456 789"
                         />
                         {errors.phone && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.phone.message}
+                          <p className="mt-1 text-sm text-error-red font-mono">
+                            $ ERROR: {errors.phone.message}
                           </p>
                         )}
                       </div>
 
-                      <Button
+                      <CommandButton
                         type="button"
-                        variant="gradient"
+                        variant="primary"
                         size="lg"
-                        className="w-full"
                         onClick={nextStep}
-                        rightIcon={<ArrowRight className="w-4 h-4" />}
                       >
-                        {t("contact.continue")}
-                      </Button>
+                        $ continue
+                      </CommandButton>
                     </motion.div>
                   )}
 
@@ -462,33 +461,33 @@ export default function ContactSection() {
                       className="space-y-6"
                     >
                       <div className="flex items-center space-x-3 mb-6">
-                        <Building className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                          {t("contact.projectDetails")}
+                        <Building className="w-6 h-6 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
+                        <h3 className="text-xl font-bold text-white font-mono">
+                          <span className="text-neon-cyan">//</span> {t("contact.projectDetails")}
                         </h3>
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-400 mb-2 font-mono">
                           {t("contact.company")}
                         </label>
                         <input
                           {...register("company")}
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder={t("contact.companyPlaceholder")}
+                          className="w-full px-4 py-3 border border-neon-cyan/30 rounded-lg focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan bg-terminal-dark text-white font-mono transition-all duration-[180ms]"
+                          placeholder="$ Company name (optional)"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-400 mb-2 font-mono">
                           {t("contact.projectType")} *
                         </label>
                         <select
                           {...register("projectType")}
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                          className="w-full px-4 py-3 border border-neon-cyan/30 rounded-lg focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan bg-terminal-dark text-white font-mono transition-all duration-[180ms]"
                         >
                           <option value="">
-                            {t("contact.selectProjectType")}
+                            $ {t("contact.selectProjectType")}
                           </option>
                           {projectTypes.map((type) => (
                             <option key={type} value={type}>
@@ -497,23 +496,23 @@ export default function ContactSection() {
                           ))}
                         </select>
                         {errors.projectType && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.projectType.message}
+                          <p className="mt-1 text-sm text-error-red font-mono">
+                            $ ERROR: {errors.projectType.message}
                           </p>
                         )}
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          <label className="block text-sm font-medium text-slate-400 mb-2 font-mono">
                             {t("contact.budget")} *
                           </label>
                           <select
                             {...register("budget")}
-                            className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                            className="w-full px-4 py-3 border border-neon-cyan/30 rounded-lg focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan bg-terminal-dark text-white font-mono transition-all duration-[180ms]"
                           >
                             <option value="">
-                              {t("contact.selectBudget")}
+                              $ {t("contact.selectBudget")}
                             </option>
                             {budgetRanges.map((range) => (
                               <option key={range} value={range}>
@@ -522,22 +521,22 @@ export default function ContactSection() {
                             ))}
                           </select>
                           {errors.budget && (
-                            <p className="mt-1 text-sm text-red-600">
-                              {errors.budget.message}
+                            <p className="mt-1 text-sm text-error-red font-mono">
+                              $ ERROR: {errors.budget.message}
                             </p>
                           )}
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          <label className="block text-sm font-medium text-slate-400 mb-2 font-mono">
                             {t("contact.timeline")} *
                           </label>
                           <select
                             {...register("timeline")}
-                            className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                            className="w-full px-4 py-3 border border-neon-cyan/30 rounded-lg focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan bg-terminal-dark text-white font-mono transition-all duration-[180ms]"
                           >
                             <option value="">
-                              {t("contact.selectTimeline")}
+                              $ {t("contact.selectTimeline")}
                             </option>
                             {timelines.map((timeline) => (
                               <option key={timeline} value={timeline}>
@@ -546,34 +545,30 @@ export default function ContactSection() {
                             ))}
                           </select>
                           {errors.timeline && (
-                            <p className="mt-1 text-sm text-red-600">
-                              {errors.timeline.message}
+                            <p className="mt-1 text-sm text-error-red font-mono">
+                              $ ERROR: {errors.timeline.message}
                             </p>
                           )}
                         </div>
                       </div>
 
                       <div className="flex space-x-4">
-                        <Button
+                        <CommandButton
                           type="button"
-                          variant="outline"
+                          variant="secondary"
                           size="lg"
-                          className="flex-1"
                           onClick={prevStep}
-                          leftIcon={<ArrowLeft className="w-4 h-4" />}
                         >
-                          {t("contact.back")}
-                        </Button>
-                        <Button
+                          $ back
+                        </CommandButton>
+                        <CommandButton
                           type="button"
-                          variant="gradient"
+                          variant="primary"
                           size="lg"
-                          className="flex-1"
                           onClick={nextStep}
-                          rightIcon={<ArrowRight className="w-4 h-4" />}
                         >
-                          {t("contact.continue")}
-                        </Button>
+                          $ continue
+                        </CommandButton>
                       </div>
                     </motion.div>
                   )}
@@ -587,48 +582,46 @@ export default function ContactSection() {
                       className="space-y-6"
                     >
                       <div className="flex items-center space-x-3 mb-6">
-                        <MessageSquare className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                          {t("contact.projectRequirements")}
+                        <MessageSquare className="w-6 h-6 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
+                        <h3 className="text-xl font-bold text-white font-mono">
+                          <span className="text-neon-cyan">//</span> {t("contact.projectRequirements")}
                         </h3>
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-400 mb-2 font-mono">
                           {t("contact.projectDescription")} *
                         </label>
                         <textarea
                           {...register("message")}
                           rows={4}
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                          placeholder={t(
-                            "contact.projectDescriptionPlaceholder"
-                          )}
+                          className="w-full px-4 py-3 border border-neon-cyan/30 rounded-lg focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan bg-terminal-dark text-white font-mono transition-all duration-[180ms] resize-none"
+                          placeholder="$ Describe your project requirements..."
                         />
                         {errors.message && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.message.message}
+                          <p className="mt-1 text-sm text-error-red font-mono">
+                            $ ERROR: {errors.message.message}
                           </p>
                         )}
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
-                          {t("contact.additionalRequirements")}
+                        <label className="block text-sm font-medium text-slate-400 mb-3 font-mono">
+                          <span className="text-neon-cyan">//</span> {t("contact.additionalRequirements")}
                         </label>
                         <div className="grid grid-cols-2 gap-3">
                           {requirements.map((req) => (
                             <label
                               key={req}
-                              className="flex items-center space-x-2 cursor-pointer"
+                              className="flex items-center space-x-2 cursor-pointer group"
                             >
                               <input
                                 type="checkbox"
                                 value={req}
                                 {...register("requirements")}
-                                className="w-4 h-4 text-blue-600 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 rounded focus:ring-blue-500"
+                                className="w-4 h-4 text-neon-cyan bg-terminal-dark border-neon-cyan/30 rounded focus:ring-neon-cyan"
                               />
-                              <span className="text-sm text-slate-700 dark:text-slate-300">
+                              <span className="text-sm text-slate-300 font-mono group-hover:text-white transition-colors duration-[180ms]">
                                 {req}
                               </span>
                             </label>
@@ -637,55 +630,51 @@ export default function ContactSection() {
                       </div>
 
                       <div className="space-y-4">
-                        <label className="flex items-center space-x-2 cursor-pointer">
+                        <label className="flex items-center space-x-2 cursor-pointer group">
                           <input
                             type="checkbox"
                             {...register("newsletter")}
-                            className="w-4 h-4 text-blue-600 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 rounded focus:ring-blue-500"
+                            className="w-4 h-4 text-neon-cyan bg-terminal-dark border-neon-cyan/30 rounded focus:ring-neon-cyan"
                           />
-                          <span className="text-sm text-slate-700 dark:text-slate-300">
+                          <span className="text-sm text-slate-300 font-mono group-hover:text-white transition-colors duration-[180ms]">
                             {t("contact.subscribeNewsletter")}
                           </span>
                         </label>
 
-                        <label className="flex items-start space-x-2 cursor-pointer">
+                        <label className="flex items-start space-x-2 cursor-pointer group">
                           <input
                             type="checkbox"
                             {...register("privacy")}
-                            className="w-4 h-4 mt-1 text-blue-600 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 rounded focus:ring-blue-500"
+                            className="w-4 h-4 mt-1 text-neon-cyan bg-terminal-dark border-neon-cyan/30 rounded focus:ring-neon-cyan"
                           />
-                          <span className="text-sm text-slate-700 dark:text-slate-300">
+                          <span className="text-sm text-slate-300 font-mono group-hover:text-white transition-colors duration-[180ms]">
                             {t("contact.agreePolicies")}
                           </span>
                         </label>
                         {errors.privacy && (
-                          <p className="text-sm text-red-600">
-                            {errors.privacy.message}
+                          <p className="text-sm text-error-red font-mono">
+                            $ ERROR: {errors.privacy.message}
                           </p>
                         )}
                       </div>
 
                       <div className="flex space-x-4">
-                        <Button
+                        <CommandButton
                           type="button"
-                          variant="outline"
+                          variant="secondary"
                           size="lg"
-                          className="flex-1"
                           onClick={prevStep}
-                          leftIcon={<ArrowLeft className="w-4 h-4" />}
                         >
-                          {t("contact.back")}
-                        </Button>
-                        <Button
+                          $ back
+                        </CommandButton>
+                        <CommandButton
                           type="submit"
-                          variant="gradient"
+                          variant="primary"
                           size="lg"
-                          className="flex-1"
-                          loading={isSubmitting}
                           disabled={!isValid}
                         >
-                          {t("contact.sendMessage")}
-                        </Button>
+                          {isSubmitting ? "$ processing..." : "$ send_message"}
+                        </CommandButton>
                       </div>
                     </motion.div>
                   )}
