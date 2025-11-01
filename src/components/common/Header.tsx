@@ -192,7 +192,7 @@ export default function Header({ className }: HeaderProps) {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-lg mobile-nav animate-slide-up">
+            <div className="lg:hidden relative top-full left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-lg mobile-nav animate-slide-up">
               <div className="px-4 py-4 space-y-2 safe-area-bottom">
                 {navItems.map((item) =>
                   item.isRoute ? (
