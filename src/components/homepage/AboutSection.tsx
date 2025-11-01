@@ -132,7 +132,7 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-terminal-light mb-6 font-mono">
               <span className="text-neon-cyan">//</span> {t("about.title")}{" "}
-              {t("about.company")}
+              <span className="text-neon-cyan">{t("about.company")}</span>
             </h2>
             <p className="text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed mb-8">
               {t("about.subtitle")}
@@ -208,7 +208,7 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
                     variants={itemVariants}
                     className="text-center"
                   >
-                    <GlassCard className="p-6 h-full" glowColor="cyan">
+                    <GlassCard className="p-6 h-full" glowColor="normal">
                       <div className="w-16 h-16 mx-auto mb-4 bg-neon-cyan/10 border border-neon-cyan/40 rounded-xl flex items-center justify-center">
                         <Icon className="w-8 h-8 text-neon-cyan" />
                       </div>
@@ -226,14 +226,14 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
           </motion.div>
           {/* Founder Quote - Terminal Styled */}
           <motion.div variants={itemVariants} className="m-20">
-            <GlassCard className="p-8 text-center" glowColor="purple" strongGlow>
-              <blockquote className="text-lg font-medium text-terminal-light mb-6 leading-relaxed font-mono">
-                <span className="text-neon-purple">//</span> &ldquo;{t("about.founderQuote.quote")}&rdquo;
-              </blockquote>
-              <cite className="text-terminal-light/70 text-sm font-mono">
-                — {t("about.founderQuote.author")}
-              </cite>
-            </GlassCard>
+
+            <blockquote className="text-lg font-medium text-terminal-light mb-6 leading-relaxed font-mono">
+              <span className="text-neon-purple">//</span> &ldquo;{t("about.founderQuote.quote")}&rdquo;
+            </blockquote>
+            <cite className="text-terminal-light/70 text-sm font-mono">
+              — {t("about.founderQuote.author")}
+            </cite>
+
           </motion.div>
 
           {/* Team Section - GlassCard */}

@@ -49,7 +49,7 @@ export default function PricingSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <GlassCard className="px-8 py-16" glowColor="purple" strongGlow>
+          <GlassCard className="px-8 py-16" glowColor="normal" strongGlow>
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 justify-center items-center gap-12">
               <div className="text-center md:text-left">
                 <h2 className="text-3xl lg:text-5xl font-extrabold mb-6 leading-tight font-mono text-terminal-light">

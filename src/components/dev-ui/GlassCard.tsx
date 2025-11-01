@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 interface GlassCardProps {
   children: ReactNode;
   variant?: "window" | "card";
-  glowColor?: "cyan" | "purple";
+  glowColor?: "cyan" | "purple" | "normal";
   strongGlow?: boolean;
   className?: string;
 }
@@ -16,13 +16,16 @@ export default function GlassCard({
   className = "",
 }: GlassCardProps) {
   const borderColor =
-    glowColor === "cyan" ? "border-neon-cyan/35" : "border-neon-purple/35";
-  const shadowClass = strongGlow
-    ? glowColor === "cyan" ? " inset-shadow-3xl inset-shadow-neon-cyan/80" : "inset-shadow-3xl inset-shadow-neon-purple/80"
-    : glowColor === "cyan" ? "inset-shadow-3xl inset-shadow-neon-cyan/80 " : "inset-shadow-3xl inset-shadow-neon-purple/80";
-  const hoverShadow = strongGlow
-    ? glowColor === "cyan" ? "hover:shadow-glow-cyan-strong hover:border-neon-cyan/50" : "hover:shadow-glow-purple-strong hover:border-neon-purple/50"
-    : glowColor === "cyan" ? "hover:shadow-glow-cyan-strong hover:border-neon-cyan/50" : "hover:shadow-glow-purple-strong hover:border-neon-purple/50";
+    glowColor === "cyan" ? "border-neon-cyan/35" :
+      glowColor === "normal" ? "border-slate-800/50" : "border-neon-purple/35";
+  const shadowClass =
+    glowColor === "cyan" ? " inset-shadow-3xl inset-shadow-neon-cyan/80"
+      : glowColor === "normal" ? "inset-shadow-sm inset-shadow-slate-950/80" : "inset-shadow-3xl inset-shadow-neon-purple/80"
+
+  const hoverShadow =
+    glowColor === "cyan" ? "hover:-translate-y-1 hover:shadow-glow-cyan-strong hover:border-neon-cyan/50"
+      : glowColor === "normal" ? "" : "hover:-translate-y-1 hover:shadow-glow-purple-strong hover:border-neon-purple/50"
+
 
   return (
     <div
@@ -30,10 +33,10 @@ export default function GlassCard({
         relative
         bg-glass-bg backdrop-blur-glass 
         border ${borderColor} 
-        shadow-lg
+        shadow-xl
         rounded-xl 
         ${shadowClass} ${hoverShadow}
-        hover:-translate-y-1
+        
         transition-normal
         ${variant === "window" ? "overflow-hidden" : ""}
         ${className}

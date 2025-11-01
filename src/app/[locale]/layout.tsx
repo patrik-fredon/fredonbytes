@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
-import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
@@ -11,6 +10,7 @@ import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/500.css";
 import "@fontsource/jetbrains-mono/600.css";
 import "@fontsource/jetbrains-mono/700.css";
+
 
 import ClientLayoutWrapper from "../../components/ClientLayoutWrapper";
 import Footer from "../../components/common/Footer";
@@ -51,15 +51,7 @@ const WebVitals = dynamic(
   }
 );
 
-const inter = Inter({
-  subsets: ["latin", "latin-ext"], // latin-ext for Czech characters
-  display: "swap", // Prevent FOIT (Flash of Invisible Text)
-  preload: true,
-  variable: "--font-inter",
-  fallback: ["system-ui", "arial", "sans-serif"],
-});
-
-// Note: JetBrains Mono loaded via @fontsource imports above
+// JetBrains Mono loaded via @fontsource imports above
 // Variable set via CSS: --font-jetbrains-mono
 // Font features: 'liga' 1, 'calt' 1 for ligatures
 
@@ -157,7 +149,8 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
       </head>
       <body
-        className={`${inter.variable} antialiased min-h-screen flex flex-col relative`}
+        className="antialiased min-h-screen flex flex-col relative"
+        style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace" }}
       >
         <NextIntlClientProvider messages={messages}>
           <ClientLayoutWrapper>

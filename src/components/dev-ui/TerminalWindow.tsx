@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 interface TerminalWindowProps {
-  title?: string;
+  title?: string | ReactNode;
   children: ReactNode;
   className?: string;
 }
@@ -13,10 +13,10 @@ export default function TerminalWindow({
 }: TerminalWindowProps) {
   return (
     <div
-      className={`bg-terminal-dark border border-slate-950/50 rounded-lg overflow-hidden inset-shadow-3xl inset-shadow-slate-950/80 ${className}`}
+      className={`bg-terminal-dark border border-slate-950/80 rounded-lg shadow-xl overflow-hidden inset-shadow-2xs inset-shadow-slate-950 ${className}`}
     >
       {/* Window Chrome */}
-      <div className="flex items-center justify-between px-4 py-3 bg-terminal-darker border-b border-neon-cyan/10">
+      <div className="flex items-center justify-between px-4 py-3 bg-code-bg border-b border-slate-950/40 inset-shadow-2xs inset-shadow-slate-950">
         {/* Chrome Controls */}
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500" />

@@ -138,8 +138,8 @@ export default function Header({ className }: HeaderProps) {
                 <span>{t("navigation.links")}</span>
                 <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full right-0 mt-3 w-56 bg-terminal-dark/95 backdrop-blur-md rounded-lg shadow-glow-cyan-strong border border-neon-cyan/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-dropdown">
-                <div className="py-2">
+              <div className="absolute top-full right-0 pt-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-dropdown">
+                <div className="bg-terminal-dark/95 backdrop-blur-md rounded-lg border border-neon-cyan/30 py-2">
                   {externalLinks.map((link) => (
                     <a
                       key={link.href}
@@ -249,7 +249,7 @@ export default function Header({ className }: HeaderProps) {
 
                 <div className="pt-2 px-2">
                   <IntlLink href="/contact" onClick={closeMenu} className="block">
-                    <Button variant="gradient" size="lg" className="w-full min-h-[44px]">
+                    <Button variant="gradient" size="lg" className="w-full min-h-11">
                       {t("navigation.getStarted")}
                     </Button>
                   </IntlLink>

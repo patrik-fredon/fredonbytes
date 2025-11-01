@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import React from "react";
 
 import CookieSettingsLink from "./CookieSettingsLink";
-import ThemeSwitcher from "./ThemeSwitcher";
+
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -108,7 +108,7 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-neon-cyan flex-shrink-0" />
                 <a
                   href="tel:+420799027984"
-                  className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast hover:shadow-glow-cyan-subtle"
+                  className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast -subtle"
                 >
                   {t("footer.contact.phone")}
                 </a>
@@ -117,7 +117,7 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-neon-cyan flex-shrink-0" />
                 <a
                   href="mailto:info@fredonbytes.cloud"
-                  className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast hover:shadow-glow-cyan-subtle"
+                  className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast -subtle"
                 >
                   {t("footer.contact.email")}
                 </a>
@@ -136,7 +136,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono hover:shadow-glow-cyan-subtle"
+                    className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono -subtle"
                   >
                     {link.label}
                   </a>
@@ -162,7 +162,7 @@ export default function Footer() {
                         rel: "noopener noreferrer",
                       }
                       : {})}
-                    className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono hover:shadow-glow-cyan-subtle"
+                    className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono -subtle"
                   >
                     {link.label}
                   </a>
@@ -182,7 +182,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono hover:shadow-glow-cyan-subtle"
+                    className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono -subtle"
                   >
                     {link.label}
                   </Link>
@@ -203,7 +203,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-neon-cyan/70 hover:text-neon-cyan transition-fast hover:shadow-glow-cyan"
+                    className="text-neon-cyan/70 hover:text-neon-cyan transition-fast "
                     aria-label={social.label}
                   >
                     <Icon className="w-5 h-5" />
@@ -228,7 +228,7 @@ export default function Footer() {
                 <span>{t("footer.taglines.motto")}</span>
               </div>
               <div className="h-6 w-px bg-neon-cyan/20" />
-              <ThemeSwitcher />
+
             </div>
           </div>
         </div>

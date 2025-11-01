@@ -10,10 +10,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        gradient: 'relative bg-neon-purple/50 border-2 border-slate-950/35 rounded-xl shadow-lg inset-shadow-sm inset-shadow-slate-950/80 hover:shadow-slate-950 text-white font-mono',
+        gradient: 'relative bg-terminal-dark border-2 border-neon-purple/35 rounded-xl shadow-lg inset-shadow-3xl inset-shadow-neon-purple/35 hover:shadow-neon-purple/35 text-white font-mono',
         'neon-cyan': 'bg-neon-cyan text-terminal-dark border border-neon-cyan/70 hover:shadow-glow-cyan-strong hover:brightness-110 active:brightness-90 font-semibold',
         'neon-purple': 'bg-neon-purple text-white border border-neon-purple/70 hover:shadow-glow-purple-strong hover:brightness-110 active:brightness-90 font-semibold',
-        secondary: 'bg-glass-bg backdrop-blur-glass border border-neon-cyan/20 text-terminal-light hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle hover:bg-glass-bg/90',
+        secondary: 'relative bg-terminal-dark border-2 border-neon-cyan/35 rounded-xl shadow-lg inset-shadow-3xl inset-shadow-neon-cyan/35 hover:shadow-neon-cyan/35 text-white font-mono',
         ghost: 'relative bg-neon-cyan/50 border-2 border-slate-950/35 rounded-xl shadow-lg inset-shadow-sm inset-shadow-slate-950/80 hover:shadow-slate-950 text-white font-mono',
         outline: 'border border-neon-cyan/30 bg-transparent text-terminal-light hover:bg-neon-cyan/10 hover:border-neon-cyan/50 hover:shadow-glow-cyan-subtle',
         terminal: 'bg-terminal-dark text-neon-cyan border border-neon-cyan/50 hover:bg-terminal-darker hover:shadow-glow-cyan font-mono',

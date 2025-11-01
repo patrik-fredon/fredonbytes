@@ -59,10 +59,10 @@ export default function TeamMemberCard({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      whileHover={{ 
-        y: -4, 
+      whileHover={{
+        y: -4,
         scale: 1.02,
-        transition: { duration: 0.2, ease: "easeOut" } 
+        transition: { duration: 0.2, ease: "easeOut" }
       }}
       aria-label={`${member.name} - ${member.position}`}
       tabIndex={0}

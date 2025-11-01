@@ -119,22 +119,19 @@ export default async function AboutPage({ params }: Props) {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <main className="min-h-screen bg-terminal-dark relative">
-        {/* Grid Background */}
-        <div className="absolute inset-0">
-          <GridBackground />
-        </div>
+      <section className="min-h-screen  relative">
+
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 relative z-10">
           {/* Page Header */}
-          <header className="text-center mb-12 sm:mb-16 lg:mb-20" role="banner">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20" role="banner">
             <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight font-mono text-terminal-light">
               // About FredonBytes
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed px-4 font-mono">
               {metaT('description')}
             </p>
-          </header>
+          </div>
 
           {/* Company Story Section */}
           <CompanyStory />
@@ -142,7 +139,7 @@ export default async function AboutPage({ params }: Props) {
           {/* Team Section */}
           <TeamSection />
         </div>
-      </main>
+      </section>
     </>
   );
 }

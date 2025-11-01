@@ -99,7 +99,7 @@ export default function CompanyStory() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <GlassCard variant="window" glowColor="cyan" className="h-full">
+            <GlassCard variant="window" glowColor="normal" className="h-full">
               <motion.div
                 className="space-y-4 sm:space-y-5"
                 variants={containerVariants}
@@ -128,7 +128,7 @@ export default function CompanyStory() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
           >
-            <GlassCard variant="window" glowColor="purple" className="h-full sticky top-24">
+            <GlassCard variant="card" glowColor="normal" className="h-full sticky top-24">
               <div className="space-y-6">
                 {/* Mission Header */}
                 <div className="border-b border-neon-purple/20 pb-4">
