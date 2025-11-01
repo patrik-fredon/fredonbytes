@@ -1,11 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle } from 'lucide-react'
+import { CheckCircle, Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { getCsrfToken } from '@/hooks/useCsrfToken'
 
 import CommandButton from '../dev-ui/CommandButton'
 
@@ -15,7 +16,7 @@ interface ThankYouScreenProps {
 
 /**
  * ThankYouScreen component for the customer satisfaction form.
- * Displays success message with newsletter subscription option and 5-second countdown redirect.
+ * Displays success message with newsletter subscription option.
  *
  * @param onRedirect - Optional callback function for manual redirect (defaults to router.push('/'))
  */
@@ -24,27 +25,51 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
   const prefersReducedMotion = useReducedMotion()
   const [newsletterOptin, setNewsletterOptin] = useState(false)
   const [email, setEmail] = useState('')
-  const [countdown, setCountdown] = useState(5)
+  const [isSubscribing, setIsSubscribing] = useState(false)
+  const [subscriptionSuccess, setSubscriptionSuccess] = useState(false)
+  const [subscriptionError, setSubscriptionError] = useState<string | null>(null)
 
-  // Countdown timer - redirect after 5 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 1) {
-          clearInterval(timer)
-          if (onRedirect) {
-            onRedirect()
-          } else {
-            router.push('/')
-          }
-          return 0
-        }
-        return prev - 1
+  // Handle newsletter subscription
+  const handleNewsletterSubscription = async () => {
+    if (!email || !email.includes('@')) {
+      setSubscriptionError('Please enter a valid email address')
+      return
+    }
+
+    setIsSubscribing(true)
+    setSubscriptionError(null)
+
+    try {
+      const csrfToken = getCsrfToken()
+      
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-csrf-token': csrfToken || '',
+        },
+        body: JSON.stringify({
+          email,
+          source: 'thank_you_screen',
+        }),
       })
-    }, 1000)
 
-    return () => clearInterval(timer)
-  }, [router, onRedirect])
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to subscribe to newsletter')
+      }
+
+      setSubscriptionSuccess(true)
+      setNewsletterOptin(false)
+    } catch (error) {
+      setSubscriptionError(
+        error instanceof Error ? error.message : 'Failed to subscribe. Please try again.'
+      )
+    } finally {
+      setIsSubscribing(false)
+    }
+  }
 
   // Handle manual finish button click
   const handleFinish = () => {
@@ -100,54 +125,111 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
         </p>
       </div>
 
-      {/* Terminal Newsletter Opt-in */}
-      <div className="pt-6 space-y-4">
-        <label className="flex items-start gap-3 cursor-pointer group max-w-md mx-auto">
-          <input
-            type="checkbox"
-            checked={newsletterOptin}
-            onChange={(e) => setNewsletterOptin(e.target.checked)}
-            className="mt-1 w-4 h-4 accent-neon-cyan border-neon-cyan/30 rounded focus:ring-2 focus:ring-neon-cyan bg-terminal-dark"
-          />
-          <span className="flex-1 text-sm font-mono text-terminal-muted group-hover:text-neon-cyan transition-colors duration-[180ms]">
-            // Subscribe to updates and news from FredonBytes
-          </span>
-        </label>
-
-        {/* Terminal Email Input */}
-        {newsletterOptin && (
-          <div className="max-w-md mx-auto animate-in slide-in-from-top-2 duration-200">
-            <label htmlFor="newsletter-email" className="block text-sm font-mono font-medium text-neon-cyan mb-2">
-              $ Email Address <span className="text-error-red">*</span>
-            </label>
+      {/* Newsletter Subscription Section */}
+      {!subscriptionSuccess ? (
+        <div className="pt-6 space-y-4 max-w-md mx-auto">
+          <label className="flex items-start gap-3 cursor-pointer group">
             <input
-              id="newsletter-email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="$ your.email@example.com"
-              required={newsletterOptin}
-              className="w-full px-4 py-2 border border-neon-cyan/30 rounded-md bg-terminal-dark font-mono text-white placeholder:text-terminal-muted focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-[180ms]"
+              type="checkbox"
+              checked={newsletterOptin}
+              onChange={(e) => setNewsletterOptin(e.target.checked)}
+              disabled={isSubscribing}
+              className="mt-1 w-5 h-5 rounded border-2 border-neon-cyan/50 bg-terminal-dark/80 text-neon-cyan focus:ring-2 focus:ring-neon-cyan/50 focus:ring-offset-0 cursor-pointer checked:bg-neon-cyan checked:border-neon-cyan hover:border-neon-cyan transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             />
-            <p className="mt-1 text-xs font-mono text-terminal-muted">
-              // We'll only send occasional updates. Unsubscribe anytime.
-            </p>
-          </div>
-        )}
-      </div>
+            <span className="flex-1 text-sm font-mono text-terminal-muted group-hover:text-neon-cyan transition-colors duration-[180ms]">
+              // Subscribe to updates and news from FredonBytes
+            </span>
+          </label>
 
-      {/* Terminal Countdown and Finish */}
-      <div className="pt-6 space-y-3">
-        <p className="text-sm font-mono text-terminal-muted">
-          // Redirecting in {countdown} second{countdown !== 1 ? 's' : ''}...
-        </p>
+          {/* Email Input & Subscribe Button */}
+          {newsletterOptin && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="space-y-3"
+            >
+              <div>
+                <label htmlFor="newsletter-email" className="block text-sm font-mono font-medium text-neon-cyan mb-2">
+                  $ Email Address <span className="text-error-red">*</span>
+                </label>
+                <input
+                  id="newsletter-email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value)
+                    setSubscriptionError(null)
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && email) {
+                      handleNewsletterSubscription()
+                    }
+                  }}
+                  placeholder="$ your.email@example.com"
+                  disabled={isSubscribing}
+                  className="w-full px-4 py-2 border border-neon-cyan/30 rounded-md bg-terminal-dark font-mono text-white placeholder:text-terminal-muted focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-[180ms] disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+                <p className="mt-1 text-xs font-mono text-terminal-muted">
+                  // We'll only send occasional updates. Unsubscribe anytime.
+                </p>
+              </div>
+
+              {subscriptionError && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-sm font-mono text-error-red"
+                >
+                  {subscriptionError}
+                </motion.p>
+              )}
+
+              <CommandButton
+                onClick={handleNewsletterSubscription}
+                variant="cyan"
+                prefix="$"
+                disabled={isSubscribing || !email}
+                className="w-full"
+              >
+                {isSubscribing ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin inline mr-2" />
+                    subscribing...
+                  </>
+                ) : (
+                  'subscribe_newsletter'
+                )}
+              </CommandButton>
+            </motion.div>
+          )}
+        </div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="pt-6 max-w-md mx-auto text-center space-y-2"
+        >
+          <CheckCircle className="w-8 h-8 text-code-green mx-auto" />
+          <p className="text-sm font-mono text-code-green">
+            ✓ Successfully subscribed to newsletter!
+          </p>
+          <p className="text-xs font-mono text-terminal-muted">
+            // Check your inbox for confirmation
+          </p>
+        </motion.div>
+      )}
+
+      {/* Return to Homepage Button */}
+      <div className="pt-8 space-y-3">
         <CommandButton
           onClick={handleFinish}
           variant="purple"
           prefix="$"
           className="min-w-[200px]"
         >
-          go_home
+          return_to_homepage
         </CommandButton>
       </div>
 

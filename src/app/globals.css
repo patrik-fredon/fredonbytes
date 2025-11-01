@@ -1013,3 +1013,40 @@ code {
     box-shadow: none !important;
   }
 }
+
+/* Custom Checkbox Styling - Terminal Theme */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--color-neon-cyan);
+  border-color: var(--color-neon-cyan);
+}
+
+input[type="checkbox"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 0.35em;
+  height: 0.65em;
+  border: solid var(--color-terminal-dark);
+  border-width: 0 2px 2px 0;
+}
+
+input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--color-neon-cyan);
+  outline-offset: 2px;
+}
+
+input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

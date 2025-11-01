@@ -669,39 +669,39 @@ export default function ContactClient({ locale }: ContactClientProps) {
                             {requirements.map((req) => (
                               <label
                                 key={req}
-                                className="flex items-center space-x-2 cursor-pointer"
+                                className="flex items-center space-x-2 cursor-pointer group"
                               >
                                 <input
                                   type="checkbox"
                                   value={req}
                                   {...register("requirements")}
-                                  className="w-4 h-4 accent-neon-cyan bg-terminal-dark/50 border-2 border-neon-cyan/30 rounded focus:ring-neon-cyan focus:ring-2"
+                                  className="w-5 h-5 rounded border-2 border-neon-cyan/50 bg-terminal-dark/80 text-neon-cyan focus:ring-2 focus:ring-neon-cyan/50 focus:ring-offset-0 cursor-pointer checked:bg-neon-cyan checked:border-neon-cyan hover:border-neon-cyan transition-colors"
                                 />
-                                <span className="text-sm text-terminal-light/80">
+                                <span className="text-sm text-terminal-light/80 group-hover:text-terminal-light transition-colors">
                                   {req}
                                 </span>
                               </label>
                             ))}
                           </div>
                         </div>                      <div className="space-y-4">
-                          <label className="flex items-center space-x-2 cursor-pointer">
+                          <label className="flex items-center space-x-2 cursor-pointer group">
                             <input
                               type="checkbox"
                               {...register("newsletter")}
-                              className="w-4 h-4 accent-neon-cyan bg-terminal-dark/50 border-2 border-neon-cyan/30 rounded focus:ring-neon-cyan focus:ring-2"
+                              className="w-5 h-5 rounded border-2 border-neon-cyan/50 bg-terminal-dark/80 text-neon-cyan focus:ring-2 focus:ring-neon-cyan/50 focus:ring-offset-0 cursor-pointer checked:bg-neon-cyan checked:border-neon-cyan hover:border-neon-cyan transition-colors"
                             />
-                            <span className="text-sm text-terminal-light/80">
+                            <span className="text-sm text-terminal-light/80 group-hover:text-terminal-light transition-colors">
                               {t("contact.subscribeNewsletter")}
                             </span>
                           </label>
 
-                          <label className="flex items-start space-x-2 cursor-pointer">
+                          <label className="flex items-start space-x-2 cursor-pointer group">
                             <input
                               type="checkbox"
                               {...register("privacy")}
-                              className="w-4 h-4 mt-1 accent-neon-cyan bg-terminal-dark/50 border-2 border-neon-cyan/30 rounded focus:ring-neon-cyan focus:ring-2"
+                              className="w-5 h-5 mt-1 rounded border-2 border-neon-cyan/50 bg-terminal-dark/80 text-neon-cyan focus:ring-2 focus:ring-neon-cyan/50 focus:ring-offset-0 cursor-pointer checked:bg-neon-cyan checked:border-neon-cyan hover:border-neon-cyan transition-colors"
                             />
-                            <span className="text-sm text-terminal-light/80">
+                            <span className="text-sm text-terminal-light/80 group-hover:text-terminal-light transition-colors">
                               {t("contact.agreePolicies")}
                             </span>
                           </label>

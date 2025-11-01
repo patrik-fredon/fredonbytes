@@ -93,12 +93,11 @@ export async function POST(request: NextRequest) {
       process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cloud";
     const surveyLink = `${siteUrl}/survey/${sessionId}`;
 
-    // Store contact submission in database
+    // Store contact submission in database (without session_id initially)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { data: contactSubmission, error: dbError } = await (supabase as any)
       .from("contact_submissions")
       .insert({
-        session_id: sessionId,
         first_name: sanitizedData.firstName,
         last_name: sanitizedData.lastName,
         email: validatedData.email, // Email not sanitized - already validated by Zod
@@ -199,30 +198,37 @@ export async function POST(request: NextRequest) {
       replyTo: validatedData.email,
     });
 
-    // Create survey session for linking
+    // Create survey session in unified sessions table
+    // Survey questionnaire ID (hardcoded UUID from migrations)
+    const surveyQuestionnaireId = '22222222-2222-2222-2222-222222222222';
+    
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { error: surveySessionError } = await (supabase as any)
-      .from("survey_sessions")
+    const { error: sessionError } = await (supabase as any)
+      .from("sessions")
       .insert({
         session_id: sessionId,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        contact_submission_id: (contactSubmission as any).id,
+        questionnaire_id: surveyQuestionnaireId,
         locale: validatedData.locale,
         ip_address_hash: ipAddressHash,
         user_agent: userAgent,
+        email: validatedData.email,
+        newsletter_optin: validatedData.newsletter || false,
       });
 
-    if (surveySessionError) {
-      console.error("Survey session creation error:", surveySessionError);
-      // Don't fail the request if survey session creation fails
+    if (sessionError) {
+      console.error("Session creation error:", sessionError);
+      // Don't fail the request if session creation fails
+    } else {
+      // Link session to contact submission
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await (supabase as any)
+        .from("contact_submissions")
+        .update({ 
+          session_id: sessionId,
+          survey_sent: true 
+        })
+        .eq("id", (contactSubmission as any).id);
     }
-
-    // Update survey_sent flag
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await (supabase as any)
-      .from("contact_submissions")
-      .update({ survey_sent: true })
-      .eq("session_id", sessionId);
 
     return NextResponse.json(
       {
