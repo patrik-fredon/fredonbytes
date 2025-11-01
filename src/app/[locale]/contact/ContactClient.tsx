@@ -180,7 +180,7 @@ export default function ContactClient({ locale }: ContactClientProps) {
     }
   }; if (isSubmitted) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+      <main className="min-h-screen ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -212,7 +212,7 @@ export default function ContactClient({ locale }: ContactClientProps) {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <main className="min-h-screen ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <motion.div
           variants={containerVariants}

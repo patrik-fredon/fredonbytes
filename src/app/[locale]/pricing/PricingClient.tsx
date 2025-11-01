@@ -81,7 +81,7 @@ export default function PricingClient({ locale }: PricingClientProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-terminal-dark relative py-20">
+      <div className="min-h-screen  relative py-20">
         <div className="absolute inset-0">
           <GridBackground />
         </div>
@@ -111,7 +111,7 @@ export default function PricingClient({ locale }: PricingClientProps) {
   }
 
   return (
-    <div className="min-h-screen bg-terminal-dark relative">
+    <div className="min-h-screen relative">
       <div className="absolute inset-0">
         <GridBackground />
       </div>

@@ -30,6 +30,7 @@
     "next": "15.5.4",
     "next-intl": "^4.3.12",
     "nodemailer": "7.0.9",
+    "postcss": "^8.5.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.57.0",
@@ -39,11 +40,13 @@
     "remark-breaks": "^4.0.0",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
-    "tailwind-merge": "^3.3.0",
+    "tailwind-animate": "^0.2.10",
+    "tailwind-merge": "^3.3.1",
     "zod": "^3.25.51"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
+    "@tailwindcss/postcss": "^4.1.16",
     "@types/mdx": "^2.0.13",
     "@types/node": "^20.19.21",
     "@types/nodemailer": "^6.4.20",
@@ -52,7 +55,7 @@
     "critters": "^0.0.23",
     "cssnano": "^7.1.1",
     "lighthouse": "github:GoogleChrome/lighthouse#main",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.1.16",
     "typescript": "^5.9.3"
   },
   "browserslist": [

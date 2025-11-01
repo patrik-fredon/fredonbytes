@@ -110,7 +110,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
 
   if (items.length === 0) {
     return (
-      <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg">
+      <div className="bg-terminal-dark rounded-2xl p-8 shadow-lg">
         <div className="text-center">
           <Calculator className="w-12 h-12 text-slate-400 mx-auto mb-4" />
           <p className="text-slate-600 dark:text-slate-300">
@@ -122,7 +122,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
   }
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg">
+    <div className="bg-terminal-dark rounded-2xl p-8 shadow-lg">
       <div className="text-center mb-8">
         <div className="flex items-center justify-center space-x-3 mb-4">
           <Calculator className="w-8 h-8 text-blue-600" />
@@ -243,7 +243,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
           ))}
 
           {/* Total Cost Display */}
-          <div className="bg-slate-950/50 border-2 border-purple-950/20 rounded-xl p-6 inset-shadow-2xs inset-shadow-slate-950/50  text-white">
+          <div className="bg-purple-950/50 border-2 border-purple-950/20 rounded-xl p-6 inset-shadow-2xs inset-shadow-slate-950/50  text-white">
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="text-xl font-bold mb-2">

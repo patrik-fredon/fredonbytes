@@ -70,7 +70,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-terminal-dark text-terminal-light border-t border-neon-cyan/20 z-90 grid-bg">
+    <footer className="bg-terminal-darker text-terminal-light border-t border-neon-cyan/20 z-90 ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
@@ -157,9 +157,9 @@ export default function Footer() {
                     href={link.href}
                     {...(link.href.startsWith("http")
                       ? {
-                          target: "_blank",
-                          rel: "noopener noreferrer",
-                        }
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                      }
                       : {})}
                     className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono hover:shadow-glow-cyan-subtle"
                   >

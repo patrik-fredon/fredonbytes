@@ -67,9 +67,9 @@ export default function AnimatedBackground() {
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Base gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-terminal-darker via-terminal-dark to-terminal-dark" />
-      
+
       {/* Grid pattern overlay */}
-      <div className="absolute inset-0 grid-bg opacity-30" />
+      <div className="absolute inset-0  opacity-30" />
 
       {/* Large animated gradient blobs - Dev themed */}
       <motion.div

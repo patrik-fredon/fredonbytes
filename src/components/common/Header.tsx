@@ -89,7 +89,7 @@ export default function Header({ className }: HeaderProps) {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-fixed transition-normal",
+        "fixed top-0 left-0 right-0 z-fixed transition-normal z-999 ",
         isScrolled
           ? "bg-glass-bg backdrop-blur-glass shadow-glow-cyan-subtle border-b border-neon-cyan/20"
           : "bg-transparent",
@@ -127,7 +127,7 @@ export default function Header({ className }: HeaderProps) {
                 <IntlLink
                   key={item.href}
                   href={item.href}
-                  className="text-terminal-light hover:text-neon-cyan transition-fast font-medium hover:shadow-glow-cyan-subtle"
+                  className="text-terminal-light hover:text-neon-purple transition-fast font-medium"
                 >
                   {t(item.key)}
                 </IntlLink>
@@ -135,7 +135,7 @@ export default function Header({ className }: HeaderProps) {
                 <IntlLink
                   key={item.href}
                   href={item.href}
-                  className="text-terminal-light hover:text-neon-cyan transition-fast font-medium hover:shadow-glow-cyan-subtle"
+                  className="text-terminal-light hover:text-neon-purple transition-fast font-medium"
                 >
                   {t(item.key)}
                 </IntlLink>
@@ -144,7 +144,7 @@ export default function Header({ className }: HeaderProps) {
 
             {/* External Links Dropdown */}
             <div className="relative group">
-              <button className="text-terminal-light hover:text-neon-cyan transition-fast font-medium flex items-center space-x-1">
+              <button className="text-terminal-light hover:text-neon-purple transition-normal font-medium flex items-center space-x-1 ">
                 <span>{t("navigation.links")}</span>
                 <ChevronDown className="w-4 h-4" />
               </button>
@@ -176,7 +176,7 @@ export default function Header({ className }: HeaderProps) {
           {/* CTA Button */}
           <div className="hidden lg:block">
             <IntlLink href="/contact">
-              <Button variant="neon-cyan" size="lg">
+              <Button variant="gradient" size="lg">
                 {t("navigation.getStarted")}
               </Button>
             </IntlLink>

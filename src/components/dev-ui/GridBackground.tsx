@@ -8,12 +8,12 @@ interface GridBackgroundProps {
 export default function GridBackground({
   density = 40,
   color = "rgba(0, 217, 255, 0.1)",
-  opacity = 1,
+  opacity = 0.3,
   className = "",
 }: GridBackgroundProps) {
   return (
     <div
-      className={`fixed inset-0 pointer-events-none ${className}`}
+      className={`fixed inset-0 pointer-events-none z-0 ${className}`}
       style={{
         backgroundImage: `
           linear-gradient(90deg, ${color} 1px, transparent 1px),

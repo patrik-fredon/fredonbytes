@@ -25,7 +25,7 @@ export default function TerminalWindow({
         </div>
 
         {/* Title */}
-        <div className="absolute left-1/2 -translate-x-1/2 font-mono text-sm text-terminal-muted">
+        <div className="relative left-1/2 -translate-x-1/2 font-mono text-sm text-terminal-muted">
           {title}
         </div>
 

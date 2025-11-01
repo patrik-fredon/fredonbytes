@@ -75,7 +75,7 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
           <motion.div
             key={tier.id}
             variants={itemVariants}
-            className={`relative bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${tier.popular ? "ring-2 ring-purple-900/50 scale-105" : ""
+            className={`relative  bg-terminal-dark rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${tier.popular ? "ring-2 ring-purple-900/50 scale-105" : ""
               }`}
           >
             {tier.popular && (
