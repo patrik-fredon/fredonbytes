@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Root cause: Tailwind v4 `@import "tailwindcss"` syntax and `@tailwindcss/postcss` plugin fail in Vercel production builds
     - Solution: Migrated to stable v3 with `@tailwind base/components/utilities` directives
     - Modified: `package.json`, `globals.css`, `postcss.config.mjs`
+  - **Tailwind Content Array Fix**: Fixed broken styling (missing backgrounds, transparent buttons, invisible header/footer) caused by incomplete content paths
+    - Issue: `tailwind.config.ts` content array missing catch-all `"./src/**/*.{js,ts,jsx,tsx,mdx}"` pattern
+    - Result: Tailwind v3 purged critical utility classes not found in scanned files
+    - Solution: Restored complete content array with catch-all pattern and CSS modules support
+    - Modified: `tailwind.config.ts`
   - **Manifest 401 Error**: Fixed `/manifest.webmanifest` returning 401 Unauthorized by adding explicit middleware exclusion for Next.js metadata routes
     - Modified: `middleware.ts` to skip rate limiting/CSRF for manifest, robots, and sitemap
   - **CSP Enhancements**: Updated Content Security Policy headers to properly support:
