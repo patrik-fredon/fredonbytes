@@ -20,7 +20,6 @@
     "@next/bundle-analyzer": "^15.5.6",
     "@next/mdx": "^15.5.5",
     "@supabase/supabase-js": "^2.75.0",
-    "@tailwindcss/postcss": "^4.1.14",
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -53,7 +52,7 @@
     "critters": "^0.0.23",
     "cssnano": "^7.1.1",
     "lighthouse": "github:GoogleChrome/lighthouse#main",
-    "tailwindcss": "^4.1.14",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.9.3"
   },
   "browserslist": [
