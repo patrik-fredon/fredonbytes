@@ -75,12 +75,12 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
           <motion.div
             key={tier.id}
             variants={itemVariants}
-            className={`relative bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${tier.popular ? "ring-2 ring-blue-600 scale-105" : ""
+            className={`relative bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${tier.popular ? "ring-2 ring-purple-900/50 scale-105" : ""
               }`}
           >
             {tier.popular && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-1">
+                <div className="bg-purple-950/80 border-2 border-purple-950/20 rounded-xl p-6 inset-shadow-sm inset-shadow-slate-950/50 hover:shadow-xl hover:shadow-purple-950/50 px-4 py-2  text-sm font-medium flex items-center gap-1">
                   <Star className="w-4 h-4" />
                   {t('mostPopular')}
                 </div>

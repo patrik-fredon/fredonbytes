@@ -65,6 +65,10 @@ const config: Config = {
         md: "var(--shadow-md)",
         lg: "var(--shadow-lg)",
         xl: "var(--shadow-xl)",
+
+      },
+      insetShadow: {
+        "inset-shadow-sm": "var(--inset-shadow-sm)",
       },
       transitionDuration: {
         fast: "150ms",

@@ -168,7 +168,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
                     <div
                       key={item.id}
                       className={`border-2 rounded-xl p-6 transition-all duration-300 cursor-pointer ${state.selected
-                        ? "border-blue-600 bg-blue-50 dark:bg-blue-900/20"
+                        ? "border-purple-600 bg-purple-950/50 "
                         : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
                         }`}
                       onClick={() => toggleItem(item.id)}
@@ -177,7 +177,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
                         <div className="flex items-center space-x-3">
                           <div
                             className={`w-10 h-10 rounded-lg flex items-center justify-center ${state.selected
-                              ? "bg-blue-600 text-white"
+                              ? "bg-purple-600 text-white"
                               : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
                               }`}
                           >
@@ -243,7 +243,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
           ))}
 
           {/* Total Cost Display */}
-          <div className="bg-linear-to-r from-blue-600 to-purple-600 rounded-xl p-6 text-white">
+          <div className="bg-slate-950/50 border-2 border-purple-950/20 rounded-xl p-6 inset-shadow-2xs inset-shadow-slate-950/50  text-white">
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="text-xl font-bold mb-2">
@@ -259,7 +259,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
                 </div>
                 <div className="flex items-center space-x-2 mt-2">
                   <Button
-                    variant="secondary"
+                    variant="gradient"
                     size="sm"
                     onClick={handleGetQuote}
                     rightIcon={<ArrowRight className="w-4 h-4" />}

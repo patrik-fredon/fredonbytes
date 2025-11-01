@@ -1,8 +1,9 @@
 @import "tailwindcss";
+
 /* CSS Custom Properties for Design System */
 :root {
   /* Colors */
-  --background: #ffffff;
+  --background: #161A1F;
   --foreground: #171717;
   --primary: #0f172a;
   --primary-foreground: #ffffff;
@@ -26,6 +27,11 @@
     0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --inset-shadow-sm: inset 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --inset-shadow-2xs: inset 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  --inset-shadow-2xl: inset 0 1px 4px 0 rgb(0 0 0 / 0.2);
+  --inset-shadow-3xl: inset 0 1px 5px 0 rgb(0 0 0 / 0.3);
+  --tw-inset-shadow-color: var(--color-purple-950);
 
   /* Typography */
   --font-sans: var(--font-inter), system-ui, -apple-system, arial, sans-serif;
@@ -57,7 +63,7 @@
   --transition-slow: 500ms ease;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -73,6 +79,11 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --inset-shadow-sm: inset 0 10px 10px 0 rgb(0 0 0 / 0.4);
+  --inset-shadow-2xs: inset 0 2px 24px rgb(0 0 0 / 0.05);
+  --inset-shadow-2xl: inset 10px 5px 10px rgb(0 0 0 / 0.2);
+  --inset-shadow-3xl: inset 0 1px 5px rgb(0 0 0 / 0.3);
+  --tw-inset-shadow-color: var(--color-slate-950);
 }
 
 /* Dark Mode */
@@ -191,6 +202,7 @@ body {
 
 /* Enhanced Mobile Optimizations */
 @media (max-width: 767px) {
+
   /* Improve text readability on mobile */
   body {
     -webkit-text-size-adjust: 100%;
@@ -224,7 +236,8 @@ body {
   input,
   textarea,
   select {
-    font-size: 16px; /* Prevent zoom on iOS */
+    font-size: 16px;
+    /* Prevent zoom on iOS */
     padding: 12px 16px;
     border-radius: 8px;
     width: 100%;
@@ -337,6 +350,7 @@ body {
 
 /* Touch-Friendly Interactive Elements */
 @media (hover: none) and (pointer: coarse) {
+
   button,
   [role="button"],
   input[type="submit"],
@@ -365,6 +379,7 @@ body {
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -390,6 +405,7 @@ body {
 
 /* Print Styles */
 @media print {
+
   *,
   *::before,
   *::after {
@@ -549,6 +565,7 @@ input:valid {
     transform: translateY(100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -559,6 +576,7 @@ input:valid {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -569,6 +587,7 @@ input:valid {
     transform: scale(0.95);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -589,8 +608,10 @@ input:valid {
 
 /* Additional Mobile Responsive Utilities */
 @media (max-width: 640px) {
+
   /* Extra small screens - ensure no horizontal scroll */
-  html, body {
+  html,
+  body {
     overflow-x: hidden;
     width: 100%;
     position: relative;
@@ -607,7 +628,9 @@ input:valid {
   }
 
   /* Ensure text doesn't overflow */
-  p, span, div {
+  p,
+  span,
+  div {
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
@@ -616,6 +639,7 @@ input:valid {
 
 /* Tablet optimizations */
 @media (min-width: 768px) and (max-width: 1023px) {
+
   /* Optimize touch targets for tablet */
   button,
   a,
@@ -632,6 +656,7 @@ input:valid {
 
 /* Large screen optimizations */
 @media (min-width: 1024px) {
+
   /* Ensure desktop navigation has proper hover states */
   button:hover,
   a:hover,
@@ -646,15 +671,15 @@ input:valid {
   .mobile-nav {
     /* Ensure proper z-index for mobile menu */
     z-index: 9999;
-    
+
     /* Improve scrolling on mobile */
     -webkit-overflow-scrolling: touch;
-    
+
     /* Better backdrop */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
-  
+
   /* Improve touch targets in mobile menu */
   .mobile-nav a,
   .mobile-nav button {
@@ -666,74 +691,82 @@ input:valid {
     margin: 4px 0;
     transition: all 0.2s ease;
   }
-  
+
   /* Add visual feedback for touch */
   .mobile-nav a:active,
   .mobile-nav button:active {
     background-color: rgba(59, 130, 246, 0.1);
     transform: scale(0.98);
   }
-  
+
   /* Improve focus indicators on mobile */
   *:focus-visible {
     outline: 3px solid #3b82f6;
     outline-offset: 2px;
     border-radius: 4px;
   }
-  
+
   /* Ensure proper contrast for touch states */
   button:active,
   [role="button"]:active {
     background-color: rgba(0, 0, 0, 0.1);
     transform: scale(0.98);
   }
-  
+
   /* Improve form accessibility on mobile */
-  input, textarea, select {
-    font-size: 16px; /* Prevent zoom on iOS */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+    /* Prevent zoom on iOS */
     padding: 16px;
     border-radius: 8px;
     border: 2px solid #e2e8f0;
     transition: border-color 0.2s;
     min-height: 48px;
   }
-  
-  input:focus, textarea:focus, select:focus {
+
+  input:focus,
+  textarea:focus,
+  select:focus {
     border-color: #3b82f6;
     outline: none;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
-  
+
   /* Improve error states on mobile */
-  input:invalid, textarea:invalid {
+  input:invalid,
+  textarea:invalid {
     border-color: #ef4444;
   }
-  
-  input:invalid:focus, textarea:invalid:focus {
+
+  input:invalid:focus,
+  textarea:invalid:focus {
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
   }
 }
 
 /* Mobile Performance Optimizations */
 @media (max-width: 767px) {
+
   /* Optimize animations for mobile */
   * {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
   }
-  
+
   /* Optimize image loading */
   img {
     content-visibility: auto;
     contain-intrinsic-size: 300px 200px;
   }
-  
+
   /* Optimize scrolling performance */
   .scroll-container {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
   }
-  
+
   /* Prevent body scroll when modal/menu is open */
   body.modal-open,
   body.menu-open {

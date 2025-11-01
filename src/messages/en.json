@@ -112,8 +112,9 @@
     "foundingDate": "2023"
   },
   "about": {
-    "title": "About {company}",
-    "subtitle": "Founded in {year}, we eliminate the need for multiple vendors by becoming your {highlight} one-stop digital army{/highlight}, ensuring seamless, high-impact results under one roof.",
+    "title": "Who are we?",
+    "company": "Fredonbytes!",
+    "subtitle": "Founded in 2023, we eliminate the need for multiple vendors by becoming your one-stop digital army, ensuring seamless, high-impact results under one roof.",
     "highlight": " one-stop digital army",
     "mission": {
       "title": "Our Mission",
@@ -299,6 +300,16 @@
           "Mobile Applications",
           "API Integration",
           "Cloud Solutions"
+        ]
+      },
+      "maintenance": {
+        "title": "Maintenance & Support Services",
+        "description": "Proactive monitoring, regular updates, and dedicated technical support to keep your digital solutions running smoothly and securely.",
+        "features": [
+          "24/7 Monitoring & Support",
+          "Regular Updates & Patches",
+          "Performance Optimization",
+          "Backup & Disaster Recovery"
         ]
       },
       "design": {
@@ -1570,5 +1581,8 @@
       "description": "Join us now, and you won't regret it!",
       "start": "START HERE"
     }
+  },
+  "company": {
+    "foundingDate": "2023"
   }
 }

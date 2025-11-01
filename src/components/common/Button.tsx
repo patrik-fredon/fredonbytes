@@ -6,7 +6,7 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none hover:scale-105 active:scale-95 min-h-[44px]',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none hover:scale-105 active:scale-95 min-h-[44px]',
   {
     variants: {
       variant: {
@@ -16,7 +16,7 @@ const buttonVariants = cva(
         secondary: 'bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700',
         ghost: 'hover:bg-slate-100 dark:hover:bg-slate-800',
         link: 'text-slate-900 underline-offset-4 hover:underline dark:text-white',
-        gradient: 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 shadow-lg'
+        gradient: 'bg-purple-500/30 text-white font-extrabold hover:from-blue-900 hover:to-purple-900 hover:shadow-lg hover:shadow-blue-900/30 inset-shadow-2xs inset-shadow-slate-950 border border-purple-500/20'
       },
       size: {
         default: 'h-11 px-4 py-2',

@@ -89,6 +89,8 @@ export function middleware(request: NextRequest) {
       "/api/survey", // Survey session creation
       "/api/cookies/consent", // Cookie consent
       "/api/analytics", // Analytics tracking
+      "/api/share", // PWA share target
+      "/api/open-file", // PWA file handler
     ];
 
     // Only check CSRF for state-changing methods (POST, PUT, DELETE, PATCH)
@@ -119,8 +121,11 @@ export function middleware(request: NextRequest) {
       }
     }
 
-    // Apply rate limiting to all API routes (except health checks)
-    if (!request.nextUrl.pathname.startsWith("/api/health")) {
+    // Apply rate limiting to all API routes (except health checks and PWA endpoints)
+    const pwaEndpoints = ["/api/share", "/api/open-file", "/api/handle-protocol"];
+    const isPwaEndpoint = pwaEndpoints.some(endpoint => pathname === endpoint);
+    
+    if (!request.nextUrl.pathname.startsWith("/api/health") && !isPwaEndpoint) {
       const key = getRateLimitKey(request);
       const { allowed, remaining, resetTime } = checkRateLimit(key);
 

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-
+import { Button } from "../common/Button";
 
 import { Link } from "@/i18n/navigation";
 
@@ -62,14 +62,22 @@ export default function PricingSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <div className="bg-background/50 border-2 border-accent rounded-2xl px-8 py-16">
+          <div className="bg-slate-900 border border-purple-950/20 inset-shadow-sm inset-shadow-slate-950/50 rounded-xl px-8 py-16">
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 justify-center items-center gap-12">
               <div className="text-center md:text-left">
-                <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 !leading-tight">{t("homepage.pricingSection.title")}</h2>
+                <h2 className="text-3xl lg:text-5xl font-extrabold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 leading-tight!">{t("homepage.pricingSection.title")}</h2>
                 <p className="text-lg lg:text-xl text-slate-300 leading-relaxed">{t("homepage.pricingSection.description")}</p>
 
-                <Link href="/pricing" className="mt-12 bg-linear-to-r from-blue-600 to-purple-600  hover:bg-opacity-80 text-white py-3 px-6 rounded-full text-lg lg:text-xl font-medium transition transform hover:scale-105 hover:shadow-xl inline-block">
-                  {t("homepage.pricingSection.cta")}
+                <Link href="/pricing" className="mt-12 inline-block">
+                  <Button
+                    variant="gradient"
+                    size="xl"
+
+                  >
+                    {t("homepage.pricingSection.cta")}
+                  </Button>
+
+
                 </Link>
               </div>
               <div className="text-center">
@@ -78,7 +86,7 @@ export default function PricingSection() {
             </div>
           </div>
         </motion.div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 }

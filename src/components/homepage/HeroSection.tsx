@@ -1,11 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Code, Zap, Globe } from "lucide-react";
+
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
-
+import { Link } from "@/i18n/navigation";
+import {
+  Code,
+  Palette,
+  Search,
+  Share2,
+  Shield,
+  ArrowRight,
+  CheckCircle,
+  Zap,
+  Globe,
+  Smartphone,
+} from "lucide-react";
 
 import { Button } from "../common/Button";
 
@@ -83,6 +95,7 @@ export default function HeroSection() {
       },
     },
   };
+
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -191,50 +204,25 @@ export default function HeroSection() {
             <Button
               variant="gradient"
               size="xl"
-              onClick={() => scrollToSection("contact")}
               rightIcon={<ArrowRight className="w-5 h-5" />}
             >
-              {t("hero.cta.startProject")}
+              <Link href="/contact" >
+                {t("hero.cta.startProject")}
+              </Link>
             </Button>
             <Button
               variant="outline"
               size="xl"
-              onClick={() => scrollToSection("projects")}
+
             >
-              {t("hero.cta.viewWork")}
+              <Link href="/projects" >
+                {t("hero.cta.viewWork")}
+              </Link>
             </Button>
           </motion.div>
 
-          {/* Company Stats */}
-          <motion.div
-            variants={itemVariants}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto"
-          >
-            <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-1">
-                2023
-              </div>
-              <div className="text-slate-600 dark:text-slate-400 text-sm">
-                {t("hero.stats.founded")}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-1">
-                5+
-              </div>
-              <div className="text-slate-600 dark:text-slate-400 text-sm">
-                {t("hero.stats.coreServices")}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-1">
-                100%
-              </div>
-              <div className="text-slate-600 dark:text-slate-400 text-sm">
-                {t("hero.stats.clientFocus")}
-              </div>
-            </div>
-          </motion.div>
+
+
         </motion.div>
       </div>
 

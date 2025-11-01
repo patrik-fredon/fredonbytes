@@ -43,7 +43,28 @@ export default function ServicesSection() {
       },
     },
   };
-
+  const stats = [
+    {
+      number: t("services.stats.support.number"),
+      label: t("services.stats.support.label"),
+      icon: Globe,
+    },
+    {
+      number: t("services.stats.team.number"),
+      label: t("services.stats.team.label"),
+      icon: Smartphone,
+    },
+    {
+      number: 2023,
+      label: t("hero.stats.founded"),
+      icon: Shield,
+    },
+    {
+      number: t("services.stats.satisfaction.number"),
+      label: t("services.stats.satisfaction.label"),
+      icon: CheckCircle,
+    },
+  ];
   const services = [
     {
       icon: Code,
@@ -56,8 +77,8 @@ export default function ServicesSection() {
         t("services.items.development.features.3"),
       ],
       color: "from-blue-500 to-cyan-500",
-      iconBg: "bg-blue-100 dark:bg-blue-900/20",
-      iconColor: "text-blue-600 dark:text-blue-400",
+      iconBg: "bg-blue-900/20",
+      iconColor: "text-blue-400",
     },
     {
       icon: Palette,
@@ -70,8 +91,8 @@ export default function ServicesSection() {
         t("services.items.design.features.3"),
       ],
       color: "from-purple-500 to-pink-500",
-      iconBg: "bg-purple-100 dark:bg-purple-900/20",
-      iconColor: "text-purple-600 dark:text-purple-400",
+      iconBg: "bg-purple-900/20",
+      iconColor: "text-purple-400",
     },
     {
       icon: Search,
@@ -84,8 +105,8 @@ export default function ServicesSection() {
         t("services.items.seo.features.3"),
       ],
       color: "from-green-500 to-emerald-500",
-      iconBg: "bg-green-100 dark:bg-green-900/20",
-      iconColor: "text-green-600 dark:text-green-400",
+      iconBg: "bg-green-900/20",
+      iconColor: "text-green-400",
     },
     {
       icon: Share2,
@@ -98,8 +119,8 @@ export default function ServicesSection() {
         t("services.items.social.features.3"),
       ],
       color: "from-orange-500 to-red-500",
-      iconBg: "bg-orange-100 dark:bg-orange-900/20",
-      iconColor: "text-orange-600 dark:text-orange-400",
+      iconBg: "bg-orange-900/20",
+      iconColor: "text-orange-400",
     },
     {
       icon: Shield,
@@ -112,33 +133,25 @@ export default function ServicesSection() {
         t("services.items.consulting.features.3"),
       ],
       color: "from-slate-500 to-slate-700",
-      iconBg: "bg-slate-100 dark:bg-slate-900/20",
-      iconColor: "text-slate-600 dark:text-slate-400",
+      iconBg: "bg-slate-900/20",
+      iconColor: "text-slate-400",
+    },
+    {
+      icon: Globe,
+      title: t("services.items.maintenance.title"),
+      description: t("services.items.maintenance.description"),
+      features: [
+        t("services.items.maintenance.features.0"),
+        t("services.items.maintenance.features.1"),
+        t("services.items.maintenance.features.2"),
+        t("services.items.consulting.features.3"),
+      ],
+      color: "from-slate-500 to-slate-700",
+      iconBg: "bg-teal-900/20",
+      iconColor: "text-teal-400",
     },
   ];
 
-  const stats = [
-    {
-      number: t("services.stats.satisfaction.number"),
-      label: t("services.stats.satisfaction.label"),
-      icon: CheckCircle,
-    },
-    {
-      number: t("services.stats.coreServices.number"),
-      label: t("services.stats.coreServices.label"),
-      icon: Zap,
-    },
-    {
-      number: t("services.stats.support.number"),
-      label: t("services.stats.support.label"),
-      icon: Globe,
-    },
-    {
-      number: t("services.stats.team.number"),
-      label: t("services.stats.team.label"),
-      icon: Smartphone,
-    },
-  ];
 
   return (
     <section id="services" className="py-20 lg:py-24">
@@ -161,10 +174,33 @@ export default function ServicesSection() {
             </p>
           </motion.div>
 
+          {/* Why Choose Us */}
+          <motion.div variants={itemVariants} className="m-16">
+            <div className="bg-slate-900 border border-purple-500/20 inset-shadow-sm inset-shadow-slate-950/50 rounded-xl p-8">
+
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {stats.map((stat, index) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div key={index} className="text-center">
+                      <div className="w-14 h-14 mx-auto mb-4 bg-slate-950/50  rounded-full flex items-center justify-center">
+                        <Icon className="w-8 h-8" />
+                      </div>
+                      <div className="text-2xl font-bold mb-2 ">
+                        {stat.number}
+                      </div>
+                      <div className="text-white/50">{stat.label}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
           {/* Services Grid */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20"
+            className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-10"
           >
             {services.map((service, index) => {
               const Icon = service.icon;
@@ -172,17 +208,17 @@ export default function ServicesSection() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
+                  className="bg-slate-950/20 border-2 border-slate-950/40 rounded-xl p-6 inset-shadow-2xs inset-shadow-slate-950/50 hover:shadow-xl hover:shadow-purple-950/50 transition-all duration-300 group hover:-translate-y-2"
                 >
-                  <div className="flex items-start space-x-4">
+                  <div className="flex items-start space-x-2">
                     <div
-                      className={`flex-shrink-0 w-16 h-16 rounded-xl ${service.iconBg} flex items-center justify-center`}
+                      className={`flex-shrink-0 w-12 h-12 rounded-xl ${service.iconBg} flex items-center justify-center`}
                     >
                       <Icon className={`w-8 h-8 ${service.iconColor}`} />
                     </div>
 
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      <h3 className="text-xl font-bold text-white mb-3">
                         {service.title}
                       </h3>
                       <p className="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
@@ -207,54 +243,6 @@ export default function ServicesSection() {
             })}
           </motion.div>
 
-          {/* Why Choose Us */}
-          <motion.div variants={itemVariants} className="mb-16">
-            <div className="bg-background/50 border-2 border-accent rounded-2xl p-8 lg:p-12 text-white">
-              <div className="text-center mb-8">
-                <h3 className="text-3xl lg:text-4xl font-bold mb-4">
-                  {t("services.whyChooseUs.title")}
-                </h3>
-                <p className="text-xl opacity-90 max-w-3xl mx-auto">
-                  {t("services.whyChooseUs.description")}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {stats.map((stat, index) => {
-                  const Icon = stat.icon;
-                  return (
-                    <div key={index} className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                        <Icon className="w-8 h-8" />
-                      </div>
-                      <div className="text-3xl lg:text-4xl font-bold mb-2">
-                        {stat.number}
-                      </div>
-                      <div className="text-white/80">{stat.label}</div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* CTA Section */}
-          <motion.div variants={itemVariants} className="text-center">
-            <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
-              {t("homepage.servicesSection.title")}
-            </h3>
-            <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
-              {t("homepage.servicesSection.description")}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/pricing" className="mt-12 bg-linear-to-r from-blue-600 to-purple-600  hover:bg-opacity-80 text-white py-3 px-6 rounded-full text-lg lg:text-xl font-medium transition transform hover:scale-105 hover:shadow-xl inline-block">
-
-
-                {t("homepage.pricingSection.start")}
-              </Link>
-
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

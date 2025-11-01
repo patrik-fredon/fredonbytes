@@ -98,13 +98,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cloud"
   ),
-  manifest: "/site.webmanifest",
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0f172a",
+  themeColor: "#161A1F",
 };
 
 export function generateStaticParams() {
@@ -131,6 +130,9 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} className="scroll-smooth">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="FredonBytes" />
+      </head>
       <body
         className={`${inter.variable} antialiased min-h-screen flex flex-col relative`}
       >
