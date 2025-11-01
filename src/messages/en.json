@@ -788,7 +788,13 @@
       "basic_web_development": "Basic web development",
       "basic_seo": "Basic SEO",
       "email_support": "Email support",
-      "1_month_support": "1 month of support"
+      "1_month_support": "1 month of support",
+      "custom_email_and_hosting": "Custom email and hosting",
+      "database_included": "Database included",
+      "google_business_setup": "Google My Business setup",
+      "one_page_portfolio": "One-page portfolio",
+      "google_start_campaign": "Basic Google Ads campaign",
+      "fast_delivery": "Fast delivery"
     }
   },
   "projects": {

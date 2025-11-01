@@ -788,7 +788,13 @@
       "basic_web_development": "Grundlegende Webentwicklung",
       "basic_seo": "Grundlegende Suchmaschinenoptimierung",
       "email_support": "E-Mail-Support",
-      "1_month_support": "1 Monat Support"
+      "1_month_support": "1 Monat Support",
+      "custom_email_and_hosting": "Benutzerdefinierte E-Mail & Hosting",
+      "database_included": "Datenbankintegration",
+      "google_business_setup": "Google Business-Einrichtung",
+      "one_page_portfolio": "Einseitiges Portfolio",
+      "google_start_campaign": "Basis Google Ads-Kampagne",
+      "fast_delivery": "Schnelle Lieferung"
     }
   },
   "projects": {
