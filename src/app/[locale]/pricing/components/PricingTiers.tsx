@@ -67,7 +67,7 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
       {tiers.map((tier) => {
         const price = currency === 'CZK' ? tier.price_czk : tier.price_eur;
 
@@ -75,16 +75,15 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
           <motion.div
             key={tier.id}
             variants={itemVariants}
-            whileHover={{ 
-              y: -4, 
+            whileHover={{
+              y: -4,
               scale: tier.popular ? 1.05 : 1.02,
-              transition: { duration: 0.2, ease: "easeOut" } 
+              transition: { duration: 0.2, ease: "easeOut" }
             }}
-            className={`relative bg-glass-bg backdrop-blur-glass rounded-2xl p-8 border-2 ${
-              tier.popular 
-                ? "border-neon-purple shadow-glow-purple-strong scale-105" 
-                : "border-neon-cyan/40 shadow-glow-cyan-subtle hover:border-neon-cyan/50 hover:shadow-glow-cyan"
-            }`}
+            className={`relative bg-glass-bg backdrop-blur-glass rounded-2xl p-8 border-2 ${tier.popular
+              ? "border-neon-purple shadow-glow-purple-strong scale-105"
+              : "border-neon-cyan/40 shadow-glow-cyan-subtle hover:border-neon-cyan/50 hover:shadow-glow-cyan"
+              }`}
           >
             {tier.popular && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
