@@ -584,6 +584,9 @@
       "timeline": "Bitte wählen Sie einen Zeitrahmen aus",
       "message": "Bitte geben Sie weitere Details zu Ihrem Projekt an",
       "privacy": "Sie müssen die Datenschutzrichtlinie akzeptieren"
+    },
+    "error": {
+      "message": "Das Formular konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
     }
   },
   "pricing": {

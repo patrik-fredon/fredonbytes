@@ -418,6 +418,27 @@ npm run build
 - [ ] SEO meta tags verified
 - [ ] Sitemap/robots.txt configured
 
+### Production SMTP Configuration
+
+**Issue:** Default SMTP port 587 may not work on all hosting providers.
+
+**Solution for Forpsi Hosting:**
+- SMTP Server: `smtp.forpsi.com`
+- Port: **465** (SSL/TLS) or **587** (STARTTLS)
+- Authentication: Required
+- Documentation: https://support.forpsi.com/kb/a3147/konfigurace-smtp-serveru.aspx
+
+**Environment Variables for Production:**
+```env
+SMTP_HOST=smtp.forpsi.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=your-email@fredonbytes.cloud
+SMTP_PASSWORD=your-password
+```
+
+**Note:** Ensure your email provider supports the SMTP configuration. Test email sending before going live.
+
 ---
 
 ## Maintenance & Updates

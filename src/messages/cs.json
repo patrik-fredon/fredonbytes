@@ -584,6 +584,9 @@
       "timeline": "Vyberte časový harmonogram",
       "message": "Poskytněte více detailů o vašem projektu",
       "privacy": "Musíte souhlasit se zásadami ochrany osobních údajů"
+    },
+    "error": {
+      "message": "Odeslání formuláře se nezdařilo. Zkuste to prosím znovu."
     }
   },
   "pricing": {

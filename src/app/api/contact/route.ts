@@ -3,6 +3,7 @@ import { createHash, randomUUID } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import * as z from "zod";
 
+import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from "@/lib/csrf";
 import { sendEmail } from "@/lib/email";
 import {
   generateAdminContactNotificationHTML,
@@ -35,6 +36,20 @@ const contactSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    // CSRF validation
+    const csrfTokenFromHeader = request.headers.get(CSRF_TOKEN_HEADER_NAME);
+    const csrfTokenFromCookie = request.cookies.get('csrf_token')?.value;
+
+    if (!validateCsrfToken(csrfTokenFromHeader || null, csrfTokenFromCookie || null)) {
+      return NextResponse.json(
+        {
+          error: 'CSRF validation failed',
+          message: 'Invalid or missing CSRF token',
+        },
+        { status: 403 }
+      );
+    }
+
     const body = await request.json();
 
     // Validate the request body

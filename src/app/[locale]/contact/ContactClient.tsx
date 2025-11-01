@@ -21,6 +21,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 import { Button } from "@/components/common/Button";
+import { getCsrfToken } from "@/hooks/useCsrfToken";
 
 const contactSchema = z.object({
   // Step 1: Basic Info
@@ -153,11 +154,19 @@ export default function ContactClient({ locale }: ContactClientProps) {
     setIsSubmitting(true);
 
     try {
+      // Get CSRF token
+      const csrfToken = getCsrfToken();
+      
+      if (!csrfToken) {
+        throw new Error("CSRF token not found");
+      }
+
       // Include locale in the submission
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-csrf-token": csrfToken,
         },
         body: JSON.stringify({
           ...data,
