@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/pricing',
     '/projects',
     '/terms',
+    '/gdpr',
   ]
 
   const sitemapEntries: MetadataRoute.Sitemap = []
@@ -32,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         // Homepage
         priority = 1.0
         changeFrequency = 'daily'
-      } else if (['/about', '/contact', '/pricing', '/projects'].includes(route)) {
+      } else if (['/about', '/contact', '/pricing', '/projects', '/links'].includes(route)) {
         // Important pages
         priority = 0.8
         changeFrequency = 'weekly'
