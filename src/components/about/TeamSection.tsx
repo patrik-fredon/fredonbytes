@@ -98,33 +98,36 @@ export default function TeamSection() {
   };
 
   return (
-    <section className="mb-16 sm:mb-20" aria-labelledby="team-heading" id="team">
+    <section className="mb-16 sm:mb-20 " aria-labelledby="team-heading" id="team">
       {/* Section Header */}
       <div className="text-center mb-8 sm:mb-12 px-4 sm:px-0">
         <motion.h2
           id="team-heading"
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-3 sm:mb-4 leading-tight"
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight font-mono"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.5 }}
         >
+          <span className="text-neon-cyan">{"<"}</span>
           {t("aboutPage.team.title")}
+          <span className="text-neon-cyan">{" />"}</span>
         </motion.h2>
         <motion.p
-          className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed"
+          className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-mono"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
+          <span className="text-neon-purple/50">// </span>
           {t("aboutPage.team.subtitle")}
         </motion.p>
       </div>
 
       {/* Team Grid */}
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto px-4 sm:px-0"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto px-4 sm:px-0 "
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"

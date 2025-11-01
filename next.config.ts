@@ -31,10 +31,10 @@ const withMDX = createMDX({
 });
 
 const nextConfig: NextConfig = {
-    reactStrictMode: true,
+  reactStrictMode: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   // Image optimization
- images: {
+  images: {
     formats: ["image/webp", "image/avif"],
     deviceSizes: [640, 768, 1024, 1280, 1536],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -76,7 +76,7 @@ const nextConfig: NextConfig = {
 
   // Production optimizations
   productionBrowserSourceMaps: false,
-  
+
   // Webpack optimizations
   webpack: (config, { isServer }) => {
     // Optimize bundle size
@@ -128,7 +128,7 @@ const nextConfig: NextConfig = {
         },
       };
     }
-    
+
     return config;
   },
 
@@ -158,11 +158,12 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-              "style-src 'self' 'unsafe-inline'",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' data: https:",
-              "font-src 'self' data:",
-              "connect-src 'self' https://*.supabase.co https://www.google-analytics.com",
+              "font-src 'self' data: https://fonts.gstatic.com",
+              "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://vercel.live",
+              "frame-src https://vercel.live",
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",
@@ -179,8 +180,8 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Access-Control-Allow-Origin",
-            value: process.env.NODE_ENV === "production" 
-              ? "https://fredonbytes.cloud" 
+            value: process.env.NODE_ENV === "production"
+              ? "https://fredonbytes.cloud"
               : "*",
           },
           {
@@ -245,15 +246,10 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   poweredByHeader: false,
 
-  // Output configuration for deployment
-  output: "standalone",
 
   // TypeScript and ESLint
   typescript: {
     ignoreBuildErrors: false,
-  },
-  eslint: {
-    ignoreDuringBuilds: false,
   },
 };
 const configWithIntl = withNextIntl(nextConfig);

@@ -94,8 +94,8 @@ export default function LinkList() {
     >
       {/* Main Platforms */}
       <motion.div variants={itemVariants}>
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
-          Our Platforms
+        <h2 className="text-2xl font-bold text-white mb-6 text-center font-mono">
+          <span className="text-neon-cyan">//</span> Our Platforms
         </h2>
         <div className="space-y-4">
           {mainLinks.map((link, index) => (
@@ -113,8 +113,8 @@ export default function LinkList() {
 
       {/* GitHub Repositories */}
       <motion.div variants={itemVariants}>
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
-          GitHub Repositories
+        <h2 className="text-2xl font-bold text-white mb-6 text-center font-mono">
+          <span className="text-neon-cyan">//</span> GitHub Repositories
         </h2>
         <div className="space-y-4">
           {githubLinks.map((link, index) => (
@@ -133,8 +133,8 @@ export default function LinkList() {
 
       {/* Company Links */}
       <motion.div variants={itemVariants}>
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
-          Company
+        <h2 className="text-2xl font-bold text-white mb-6 text-center font-mono">
+          <span className="text-neon-cyan">//</span> Company
         </h2>
         <div className="space-y-4">
           {companyLinks.map((link, index) => (
@@ -152,11 +152,11 @@ export default function LinkList() {
 
       {/* Footer Info */}
       <motion.div variants={itemVariants} className="text-center pt-8 pb-4">
-        <p className="text-slate-600 dark:text-slate-400 text-sm">
-          Fredonbytes • Brno, Czech Republic • Founded 2023
+        <p className="text-slate-400 text-sm font-mono">
+          <span className="text-neon-cyan">//</span> Fredonbytes • Brno, Czech Republic • Founded 2023
         </p>
-        <p className="text-slate-500 dark:text-slate-500 text-xs mt-2">
-          One Team. Zero Limits.
+        <p className="text-slate-500 text-xs mt-2 font-mono">
+          $ One Team. Zero Limits.
         </p>
       </motion.div>
     </motion.div>

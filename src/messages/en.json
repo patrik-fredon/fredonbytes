@@ -13,8 +13,8 @@
     "getStarted": "Get Started"
   },
   "hero": {
-    "title": "Your All-in-One",
-    "titleHighlight": "IT Powerhouse",
+    "title": "Wir sind",
+    "titleHighlight": "FredonBytes",
     "subtitle": "From code to clicks, we deliver complete digital dominance. Eliminate complexity and supercharge your brand's potential with our unified IT solutions.",
     "codeComments": {
       "creating": "Creating digital excellence...",
@@ -44,7 +44,7 @@
     "description": "Your All-in-One IT Powerhouse. From code to clicks, we deliver complete digital dominance.",
     "contact": {
       "location": "Brno, Czech Republic",
-      "phone": "+420 799 027 984",
+      "phone": "+420 733 517 625",
       "email": "info@fredonbytes.cloud"
     },
     "sections": {
@@ -96,7 +96,7 @@
       "addressCountry": "CZ"
     },
     "contactPoint": {
-      "telephone": "+420799027984",
+      "telephone": "+420733517625",
       "contactType": "customer service",
       "email": "info@fredonbytes.cloud"
     },
@@ -291,6 +291,16 @@
   "services": {
     "title": "Our Services",
     "subtitle": "We offer a comprehensive suite of IT solutions designed to eliminate the need for multiple vendors. From development to marketing, we've got you covered.",
+    "categories": {
+      "development": "Software Development",
+      "design": "Graphic & UX/UI Design",
+      "seo": "SEO & Digital marketing",
+      "social": "Social media management",
+      "consulting": "IT consulting & Cybersecurity",
+      "maintenance": "Maintenance & Support",
+      "all": "All services",
+      "marketing": "Marketing"
+    },
     "items": {
       "development": {
         "title": "Software Development",
@@ -794,6 +804,9 @@
     "categories": {
       "web_development": "Web Development",
       "mobile_app": "Mobile App",
+      "software_development": "Software Development",
+      "marketing": "Marketing",
+      "graphic_design": "Graphic Design",
       "cloud_solution": "Cloud Solution",
       "database": "Database",
       "consulting": "Consulting"

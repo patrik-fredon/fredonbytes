@@ -2,7 +2,7 @@
 
 import { AlertCircle, RefreshCw, Mail } from 'lucide-react';
 
-import { Button } from '@/components/common/Button';
+import CommandButton from '@/components/dev-ui/CommandButton';
 
 export interface ErrorAction {
   label: string;
@@ -51,59 +51,57 @@ export default function ErrorState({
 
   const displayTitle = title || defaultTitles[icon];
 
-  // Icon colors
+  // Terminal icon colors with glow
   const iconColors = {
-    error: 'text-red-600 dark:text-red-400',
-    warning: 'text-yellow-600 dark:text-yellow-400',
-    info: 'text-blue-600 dark:text-blue-400',
+    error: 'text-error-red drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]',
+    warning: 'text-warning-amber drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]',
+    info: 'text-neon-cyan drop-shadow-[0_0_10px_rgba(0,217,255,0.5)]',
   };
 
   return (
     <div className={`text-center ${className}`}>
-      {/* Icon */}
+      {/* Terminal Error Icon */}
       <div className={`${iconColors[icon]} mb-4 flex justify-center`}>
-        <AlertCircle size={48} strokeWidth={1.5} aria-hidden="true" />
+        <AlertCircle size={64} strokeWidth={2} aria-hidden="true" />
       </div>
 
-      {/* Title */}
-      <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
-        {displayTitle}
+      {/* Terminal Title */}
+      <h2 className="text-xl font-mono font-semibold text-white mb-2">
+        {icon === 'error' && '$ ERROR: '}{icon === 'warning' && '$ WARNING: '}{icon === 'info' && '$ INFO: '}{displayTitle}
       </h2>
 
-      {/* Message */}
-      <p className="text-slate-600 dark:text-slate-300 mb-6 max-w-md mx-auto">
+      {/* Terminal Message */}
+      <p className="font-mono text-terminal-muted mb-6 max-w-md mx-auto">
         {message}
       </p>
 
-      {/* Action Buttons */}
+      {/* Terminal Action Buttons */}
       {actions.length > 0 && (
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
           {actions.map((action, index) => (
-            <Button
+            <CommandButton
               key={index}
               onClick={action.onClick}
-              variant={action.variant ?? 'default'}
-              size="lg"
-              loading={action.loading}
-              leftIcon={action.label.toLowerCase().includes('retry') ? <RefreshCw size={18} /> : undefined}
+              variant={icon === 'error' ? 'cyan' : 'purple'}
+              prefix="$"
+              disabled={action.loading}
               className="min-h-[44px]"
-              aria-label={action.label}
             >
-              {action.label}
-            </Button>
+              {action.loading ? 'processing...' : action.label.toLowerCase()}
+            </CommandButton>
           ))}
         </div>
       )}
 
-      {/* Support Contact Information */}
+      {/* Terminal Support Section */}
       {showSupport && (
-        <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">
-            Need help? Contact our support team:
+        <div className="mt-6 pt-6 border-t border-neon-cyan/20">
+          <p className="text-sm font-mono text-terminal-muted mb-2">
+            // Need help? Contact support:
           </p>
           <a
             href={`mailto:${supportEmail}`}
-            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors text-sm font-medium"
+            className="inline-flex items-center gap-2 text-neon-cyan hover:text-white hover:shadow-glow-cyan-subtle transition-all duration-[180ms] text-sm font-mono"
           >
             <Mail size={16} aria-hidden="true" />
             {supportEmail}

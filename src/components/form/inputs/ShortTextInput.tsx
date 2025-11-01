@@ -47,16 +47,15 @@ export default function ShortTextInput({
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        placeholder="Enter your answer..."
+        placeholder="$ Enter your answer..."
         maxLength={MAX_LENGTH}
-        className={`w-full px-4 py-3 rounded-md border transition-all duration-200
-                   bg-white dark:bg-slate-700 
-                   text-slate-900 dark:text-white 
-                   placeholder:text-slate-400 dark:placeholder:text-slate-500
-                   focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+        className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-200
+                   bg-glass-bg backdrop-blur-glass font-mono
+                   text-terminal-light placeholder:text-terminal-light/50
+                   focus:outline-none focus:ring-2 focus:ring-neon-cyan/50 focus:shadow-glow-cyan
                    ${error
-            ? 'border-red-500 dark:border-red-500'
-            : 'border-slate-300 dark:border-slate-600'
+            ? 'border-error-red focus:ring-error-red focus:shadow-glow-red-subtle'
+            : 'border-neon-cyan/40 focus:border-neon-cyan'
           }`}
         aria-label={questionText}
         aria-required={required}
@@ -67,10 +66,10 @@ export default function ShortTextInput({
       {/* Character Counter */}
       <div
         id={`char-count-${questionId}`}
-        className={`text-sm text-right transition-colors duration-200
-                   ${isFocused ? 'text-slate-700 dark:text-slate-300' : 'text-slate-500 dark:text-slate-400'}
-                   ${remainingChars < 20 ? 'text-amber-600 dark:text-amber-400 font-medium' : ''}
-                   ${remainingChars === 0 ? 'text-red-600 dark:text-red-400 font-semibold' : ''}`}
+        className={`text-sm text-right font-mono transition-colors duration-200
+                   ${isFocused ? 'text-neon-cyan' : 'text-terminal-light/70'}
+                   ${remainingChars < 20 ? 'text-warning-amber font-medium' : ''}
+                   ${remainingChars === 0 ? 'text-error-red font-semibold' : ''}`}
         aria-live="polite"
         aria-atomic="true"
       >

@@ -5,11 +5,11 @@
  * and the "All-in-One digital army" concept.
  *
  * Features:
- * - Emotional narrative with multiple paragraphs
+ * - Dev-themed GlassCard design with terminal aesthetic
+ * - 2-column responsive layout (content + mission)
  * - Framer Motion entrance animations with stagger effects
  * - AAA WCAG accessibility compliance
  * - Responsive typography and spacing
- * - Dark mode support
  *
  * @module components/about/CompanyStory
  */
@@ -18,6 +18,8 @@
 
 import { motion, cubicBezier } from "framer-motion";
 import { useTranslations } from "next-intl";
+
+import GlassCard from "@/components/dev-ui/GlassCard";
 
 export default function CompanyStory() {
   const t = useTranslations("aboutPage.companyStory");
@@ -56,7 +58,7 @@ export default function CompanyStory() {
     },
   };
 
-  const missionVariants = {
+  const cardVariants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -64,7 +66,7 @@ export default function CompanyStory() {
       transition: {
         duration: 0.7,
         ease: cubicBezier(0.25, 0.46, 0.45, 0.94),
-        delay: 0.8,
+        delay: 0.3,
       },
     },
   };
@@ -75,55 +77,91 @@ export default function CompanyStory() {
       aria-labelledby="company-story-title"
       id="company-story"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-0">
         <motion.h2
           id="company-story-title"
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-6 sm:mb-8 text-center leading-tight"
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-center leading-tight font-mono"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.5 }}
         >
-          {t("title")}
+          <span className="text-neon-cyan">//</span> {t("title")}
         </motion.h2>
 
-        {/* Story Content with Staggered Animation */}
-        <motion.div
-          className="space-y-4 sm:space-y-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {contentParagraphs.map((paragraph, index) => (
-            <motion.p
-              key={index}
-              variants={itemVariants}
-              className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed text-justify sm:text-left"
-            >
-              {paragraph}
-            </motion.p>
-          ))}
-        </motion.div>
+        {/* 2-Column Layout: Story Content + Mission Card */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+          {/* Story Content - Left Column (2/3 width on desktop) */}
+          <motion.div
+            className="lg:col-span-2"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <GlassCard variant="window" glowColor="normal" className="h-full">
+              <motion.div
+                className="space-y-4 sm:space-y-5"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                {contentParagraphs.map((paragraph, index) => (
+                  <motion.p
+                    key={index}
+                    variants={itemVariants}
+                    className="text-sm sm:text-base text-slate-300 leading-relaxed font-mono"
+                  >
+                    {paragraph}
+                  </motion.p>
+                ))}
+              </motion.div>
+            </GlassCard>
+          </motion.div>
 
-        {/* Mission Statement with Special Emphasis */}
-        <motion.div
-          className="mt-8 sm:mt-12 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-6 sm:p-8 border border-blue-100 dark:border-slate-600"
-          variants={missionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.8 }}
-        >
-          <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-3 sm:mb-4 text-center">
-            Our Mission
-          </h3>
-          <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed text-center italic px-2">
-            &ldquo;{t("mission")}&rdquo;
-          </p>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-3 sm:mt-4 text-center">
-            — {t("founder")}, Founder
-          </p>
-        </motion.div>
+          {/* Mission Statement - Right Column (1/3 width on desktop) */}
+          <motion.div
+            className="lg:col-span-1"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <GlassCard variant="card" glowColor="normal" className="h-full sticky top-24">
+              <div className="space-y-6">
+                {/* Mission Header */}
+                <div className="border-b border-neon-purple/20 pb-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-neon-purple font-mono flex items-center gap-2">
+                    <span className="text-neon-purple">$</span> Our Mission
+                  </h3>
+                </div>
+
+                {/* Mission Content */}
+                <div className="space-y-4">
+                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-mono italic">
+                    &ldquo;{t("mission")}&rdquo;
+                  </p>
+
+                  {/* Founder Attribution */}
+                  <div className="pt-4 border-t border-neon-purple/10">
+                    <p className="text-xs sm:text-sm text-neon-cyan font-mono">
+                      <span className="text-slate-500">//</span> {t("founder")}
+                    </p>
+                    <p className="text-xs text-slate-400 font-mono mt-1">Founder & CEO</p>
+                  </div>
+                </div>
+
+                {/* Decorative Code Element */}
+                <div className="mt-6 p-3 bg-terminal-darker/50 rounded border border-neon-purple/10">
+                  <code className="text-xs text-neon-purple font-mono">
+                    <span className="text-slate-500">{"{"}</span> status: <span className="text-neon-cyan">&quot;building_future&quot;</span> <span className="text-slate-500">{"}"}</span>
+                  </code>
+                </div>
+              </div>
+            </GlassCard>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,40 +1,72 @@
 @import "tailwindcss";
 
-/* CSS Custom Properties for Design System */
-:root {
-  /* Colors */
-  --background: #161A1F;
-  --foreground: #171717;
-  --primary: #0f172a;
-  --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #0f172a;
-  --muted: #f8fafc;
-  --muted-foreground: #64748b;
-  --accent: #e2e8f0;
-  --accent-foreground: #0f172a;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #94a3b8;
 
-  /* Spacing Scale */
-  --radius: 0.5rem;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --inset-shadow-sm: inset 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --inset-shadow-2xs: inset 0 1px 3px 0 rgb(0 0 0 / 0.1);
-  --inset-shadow-2xl: inset 0 1px 4px 0 rgb(0 0 0 / 0.2);
-  --inset-shadow-3xl: inset 0 1px 5px 0 rgb(0 0 0 / 0.3);
-  --tw-inset-shadow-color: var(--color-purple-950);
+/* CSS Custom Properties for Design System - Dev Theme */
+:root {
+  /* Dev Theme Colors (60-30-10 Rule) */
+  --color-terminal-dark: #0A0E27;
+  --color-terminal-darker: #060A1F;
+  --color-neon-cyan: #00D9FF;
+  --color-electric-purple: #A855F7;
+  --color-code-green: #10B981;
+  --color-warning-amber: #F59E0B;
+  --color-error-red: #EF4444;
+
+  /* Primary Colors */
+  --background: #0A0E27;
+  --foreground: #F1F5F9;
+  --primary: #00D9FF;
+  --primary-foreground: #0A0E27;
+  --secondary: #A855F7;
+  --secondary-foreground: #F1F5F9;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --accent: #00D9FF;
+  --accent-foreground: #0A0E27;
+  --destructive: #EF4444;
+  --destructive-foreground: #F1F5F9;
+  --border: #334155;
+  --input: #1E293B;
+  --ring: #00D9FF;
+
+  /* Glow Effects */
+  --glow-cyan: 0 0 20px rgba(0, 217, 255, 0.5);
+  --glow-cyan-intense: 0 0 30px rgba(0, 217, 255, 0.7);
+  --glow-cyan-subtle: 0 0 10px rgba(0, 217, 255, 0.3);
+  --glow-purple: 0 0 20px rgba(168, 85, 247, 0.5);
+  --glow-purple-intense: 0 0 30px rgba(168, 85, 247, 0.7);
+  --glow-purple-subtle: 0 0 10px rgba(168, 85, 247, 0.3);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(14, 19, 48, 0.85);
+  --glass-bg-light: rgba(21, 40, 57, 0.825);
+  --glass-border: rgba(0, 217, 255, 0.3);
+  --glass-border-purple: rgba(168, 85, 247, 0.3);
+
+  /* Spacing & Borders */
+  --radius: 0.375rem;
+  --radius-terminal: 0.5rem;
+
+  /* Shadows with Glow */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+  --shadow-glow-cyan: 0 0 20px rgba(0, 217, 255, 0.4), 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-glow-cyan-strong: 0 0 30px rgba(0, 217, 255, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
+  --shadow-glow-purple: 0 0 20px rgba(168, 85, 247, 0.4), 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-glow-purple-strong: 0 0 30px rgba(168, 85, 247, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
+  --inset-shadow-sm: inset 0 2px 4px 0 rgb(0 0 0 / 0.3);
+  --inset-shadow-md: inset 0 2px 6px 0 rgb(0 0 0 / 0.4);
+
+  /* Grid Pattern */
+  --grid-size: 20px;
+  --grid-color: rgba(0, 0, 5, 0.2);
+  --grid-pattern: linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(var(--grid-color) 1px, transparent 1px);
 
   /* Typography */
-  --font-sans: var(--font-inter), system-ui, -apple-system, arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -44,6 +76,8 @@
   --font-size-3xl: 1.875rem;
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-hero: 4.5rem;
 
   /* Line Heights */
   --line-height-tight: 1.25;
@@ -58,12 +92,25 @@
   --breakpoint-2xl: 1536px;
 
   /* Animation */
-  --transition-fast: 150ms ease;
-  --transition-normal: 300ms ease;
-  --transition-slow: 500ms ease;
+  --transition-instant: 100ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Z-index layers */
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
 }
 
 @theme {
+  /* Base Colors - mapped from existing CSS vars */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -79,29 +126,110 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
+  /* Terminal Colors - from existing design system */
+  --color-terminal-dark: #0A0E27;
+  --color-terminal-darker: #060A1F;
+  --color-terminal-light: #F1F5F9;
+  --color-terminal-muted: #94A3B8;
+
+  /* Neon Colors - from existing design system */
+  --color-neon-cyan: #00D9FF;
+  --color-neon-purple: #A855F7;
+  --color-electric-purple: #A855F7;
+  /* Code Colors - from existing design system */
+  --color-code-bg: #1E293B;
+  --color-code-highlight: rgba(0, 217, 255, 0.1);
+
+  /* Border Radius */
+  --radius: 0.375rem;
+  --radius-terminal: 0.5rem;
+
+  /* Font Families */
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-hero: 4.5rem;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+
+  /* Box Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+  --shadow-glow-cyan: 0 0 20px rgba(0, 217, 255, 0.3), 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-glow-cyan-subtle: 0 0 10px rgba(0, 217, 255, 0.3);
+  --shadow-glow-cyan-intense: 0 0 30px rgba(0, 217, 255, 0.7);
+  --shadow-glow-cyan-strong: 0 0 30px rgba(0, 217, 255, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
+  --shadow-glow-purple: 0 0 20px rgba(168, 85, 247, 0.3), 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-glow-purple-subtle: 0 0 10px rgba(168, 85, 247, 0.3);
+  --shadow-glow-purple-intense: 0 0 30px rgba(168, 85, 247, 0.7);
+  --shadow-glow-purple-strong: 0 0 30px rgba(168, 85, 247, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
+
+  /* Inset Shadows */
   --inset-shadow-sm: inset 0 10px 10px 0 rgb(0 0 0 / 0.4);
   --inset-shadow-2xs: inset 0 2px 24px rgb(0 0 0 / 0.05);
   --inset-shadow-2xl: inset 10px 5px 10px rgb(0 0 0 / 0.2);
   --inset-shadow-3xl: inset 0 1px 5px rgb(0 0 0 / 0.3);
-  --tw-inset-shadow-color: var(--color-slate-950);
+
+  /* Transition Durations */
+  --transition-duration-instant: 100ms;
+  --transition-duration-fast: 180ms;
+  --transition-duration-normal: 300ms;
+  --transition-duration-slow: 500ms;
+  --transition-duration-spring: 400ms;
+
+  /* Transition Timing Functions */
+  --transition-timing-function-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-timing-function-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Backdrop Blur */
+  --backdrop-blur-glass: 24px;
+
+  /* Z-index layers */
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* Additional colors for compatibility */
+  --tw-inset-shadow-color: #020617;
 }
 
-/* Dark Mode */
+/* Dark Mode (Dev Theme) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --primary: #f8fafc;
-    --primary-foreground: #0f172a;
-    --secondary: #1e293b;
-    --secondary-foreground: #f8fafc;
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
-    --accent: #1e293b;
-    --accent-foreground: #f8fafc;
-    --border: #1e293b;
-    --input: #1e293b;
-    --ring: #475569;
+    --background: var(--color-terminal-dark);
+    --foreground: var(--color-terminal-light);
+    --primary: var(--color-neon-cyan);
+    --primary-foreground: var(--color-terminal-dark);
+    --secondary: var(--color-electric-purple);
+    --secondary-foreground: var(--color-terminal-light);
+    --muted: var(--color-code-bg);
+    --muted-foreground: var(--color-terminal-muted);
+    --accent: var(--color-neon-cyan);
+    --accent-foreground: var(--color-terminal-dark);
+    --border: rgba(0, 217, 255, 0.2);
+    --input: var(--color-code-bg);
+    --ring: var(--color-neon-cyan);
   }
 }
 
@@ -132,7 +260,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   line-height: var(--line-height-normal);
   margin: 0;
   padding: 0;
@@ -144,17 +272,20 @@ body {
 
 /* Focus Management for Accessibility */
 *:focus {
-  outline: 2px solid var(--ring);
+  outline: 2px solid var(--color-neon-cyan);
   outline-offset: 2px;
+  box-shadow: var(--glow-cyan-subtle);
 }
 
 *:focus:not(:focus-visible) {
   outline: none;
+  box-shadow: none;
 }
 
 *:focus-visible {
-  outline: 2px solid var(--ring);
+  outline: 2px solid var(--color-neon-cyan);
   outline-offset: 2px;
+  box-shadow: var(--glow-cyan-subtle);
 }
 
 /* Container Utilities */
@@ -535,7 +666,7 @@ input:valid {
   body {
     background: #ffffff;
     color: #171717;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
   }
 
   button {
@@ -773,5 +904,79 @@ input:valid {
     overflow: hidden;
     position: fixed;
     width: 100%;
+  }
+}
+
+/* Dev Theme Utilities */
+.terminal-dark {
+  background-color: var(--color-terminal-dark);
+  color: var(--color-terminal-light);
+}
+
+.neon-cyan {
+  color: var(--color-neon-cyan);
+}
+
+.electric-purple {
+  color: var(--color-electric-purple);
+}
+
+.glow-cyan {
+  box-shadow: var(--glow-cyan);
+}
+
+.glow-purple {
+  box-shadow: var(--glow-purple);
+}
+
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+
+.grid-bg {
+  background-image: var(--grid-pattern);
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+/* Code Block Styling */
+.code-block {
+  background: var(--color-code-bg);
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: var(--font-mono);
+  overflow-x: auto;
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-feature-settings: 'liga' 1, 'calt' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable glow effects for reduced motion */
+  .glow-cyan,
+  .glow-purple,
+  *:focus,
+  *:focus-visible {
+    box-shadow: none !important;
   }
 }

@@ -70,3 +70,5 @@ handoff-manager-installer.js
 .roomodes
 handoffs/
 single-script/handoff-installer-readme.md
+.serena/
+.specify/

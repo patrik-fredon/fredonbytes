@@ -112,8 +112,9 @@
     "foundingDate": "2023"
   },
   "about": {
-    "title": "Über {company}",
-    "subtitle": "Gegründet im Jahr {year}, eliminieren wir die Notwendigkeit mehrerer Anbieter, indem wir Ihre {highlight}digitale All-in-One-Armee{/highlight} werden und nahtlose, wirkungsvolle Ergebnisse unter einem Dach gewährleisten.",
+    "title": "Wer sind wir?",
+    "company": "Fredonbytes!",
+    "subtitle": "Gegründet im Jahr 2023, eliminieren wir die Notwendigkeit mehrerer Anbieter, indem wir Ihre digitale All-in-One-Armee werden und nahtlose, wirkungsvolle Ergebnisse unter einem Dach gewährleisten.",
     "highlight": " digitale All-in-One-Armee",
     "mission": {
       "title": "Unsere Mission",
@@ -290,6 +291,16 @@
   "services": {
     "title": "Unsere Dienstleistungen",
     "subtitle": "Wir bieten eine umfassende Suite von IT-Lösungen, die darauf ausgelegt sind, die Notwendigkeit mehrerer Anbieter zu eliminieren. Von der Entwicklung bis zum Marketing haben wir Sie abgedeckt.",
+    "categories": {
+      "development": "Softwareentwicklung",
+      "design": "Grafik- und UX/UI-Design",
+      "seo": "SEO und digitales Marketing",
+      "social": "Social-Media-Management",
+      "consulting": "IT-Beratung und Cybersicherheit",
+      "maintenance": "Wartung und Support",
+      "all": "Alle Dienstleistungen",
+      "marketing": "Marketing"
+    },
     "items": {
       "development": {
         "title": "Softwareentwicklung",
@@ -299,6 +310,16 @@
           "Mobile Anwendungen",
           "API-Integration",
           "Cloud-Lösungen"
+        ]
+      },
+      "maintenance": {
+        "title": "Wartungs- & Supportdienste",
+        "description": "Proaktive Überwachung, regelmäßige Updates und dedizierter technischer Support, um sicherzustellen, dass Ihre digitalen Lösungen reibungslos und sicher laufen.",
+        "features": [
+          "24/7 Überwachung & Support",
+          "Regelmäßige Updates & Patches",
+          "Leistungsoptimierung",
+          "Backup & Wiederherstellung"
         ]
       },
       "design": {
@@ -783,6 +804,9 @@
     "categories": {
       "web_development": "Webentwicklung",
       "mobile_app": "Mobile App",
+      "software_development": "Softwareentwicklung",
+      "marketing": "Marketing",
+      "graphic_design": "Grafikdesign",
       "cloud_solution": "Cloud-Lösung",
       "database": "Datenbank",
       "consulting": "Beratung"

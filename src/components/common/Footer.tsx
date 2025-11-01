@@ -8,6 +8,7 @@ import React from "react";
 
 import CookieSettingsLink from "./CookieSettingsLink";
 
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const t = useTranslations();
@@ -70,7 +71,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-900 text-white z-90">
+    <footer className="bg-terminal-darker text-terminal-light border-t border-neon-cyan/20 z-90 ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
@@ -87,35 +88,36 @@ export default function Footer() {
                   sizes="32px"
                 />
               </div>
-              <span className="text-xl font-bold">Fredonbytes</span>
+              <span className="text-xl font-mono font-bold text-neon-cyan">Fredonbytes</span>
             </Link>
 
-            <p className="text-slate-300 mb-6 leading-relaxed">
+            <p className="text-terminal-muted mb-6 leading-relaxed font-mono text-sm">
+              <span className="text-neon-cyan/70">{"// "}</span>
               {t("footer.description")}
             </p>
 
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                <span className="text-slate-300 text-sm">
+                <MapPin className="w-4 h-4 text-neon-cyan shrink-0" />
+                <span className="text-terminal-muted text-sm font-mono">
                   {t("footer.contact.location")}
                 </span>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                <Phone className="w-4 h-4 text-neon-cyan shrink-0" />
                 <a
                   href="tel:+420799027984"
-                  className="text-slate-300 text-sm hover:text-white transition-colors duration-200"
+                  className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast -subtle"
                 >
                   {t("footer.contact.phone")}
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-neon-cyan shrink-0" />
                 <a
                   href="mailto:info@fredonbytes.cloud"
-                  className="text-slate-300 text-sm hover:text-white transition-colors duration-200"
+                  className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast -subtle"
                 >
                   {t("footer.contact.email")}
                 </a>
@@ -125,7 +127,8 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">
+            <h3 className="text-lg font-mono font-semibold mb-4 text-neon-cyan">
+              <span className="text-terminal-muted">{"// "}</span>
               {t("footer.sections.quickLinks")}
             </h3>
             <ul className="space-y-2">
@@ -133,7 +136,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-slate-300 hover:text-white transition-colors duration-200 text-sm"
+                    className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono -subtle"
                   >
                     {link.label}
                   </a>
@@ -144,7 +147,8 @@ export default function Footer() {
 
           {/* External Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">
+            <h3 className="text-lg font-mono font-semibold mb-4 text-neon-cyan">
+              <span className="text-terminal-muted">{"// "}</span>
               {t("footer.sections.ourPlatforms")}
             </h3>
             <ul className="space-y-2">
@@ -154,11 +158,11 @@ export default function Footer() {
                     href={link.href}
                     {...(link.href.startsWith("http")
                       ? {
-                          target: "_blank",
-                          rel: "noopener noreferrer",
-                        }
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                      }
                       : {})}
-                    className="text-slate-300 hover:text-white transition-colors duration-200 text-sm"
+                    className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono -subtle"
                   >
                     {link.label}
                   </a>
@@ -169,7 +173,8 @@ export default function Footer() {
 
           {/* Legal & Social */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">
+            <h3 className="text-lg font-mono font-semibold mb-4 text-neon-cyan">
+              <span className="text-terminal-muted">{"// "}</span>
               {t("footer.sections.legalSocial")}
             </h3>
             <ul className="space-y-2 mb-6">
@@ -177,7 +182,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-slate-300 hover:text-white transition-colors duration-200 text-sm"
+                    className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono -subtle"
                   >
                     {link.label}
                   </Link>
@@ -198,7 +203,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-white transition-colors duration-200"
+                    className="text-neon-cyan/70 hover:text-neon-cyan transition-fast "
                     aria-label={social.label}
                   >
                     <Icon className="w-5 h-5" />
@@ -210,15 +215,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-700 mt-12 pt-8">
+        <div className="border-t border-neon-cyan/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-slate-400 text-sm">
+            <div className="text-terminal-muted text-sm font-mono">
+              <span className="text-neon-cyan/70">{"// "}</span>
               {t("footer.copyright", { year: currentYear })}
             </div>
-            <div className="flex items-center space-x-6 text-slate-400 text-sm">
-              <span>{t("footer.taglines.madeWith")}</span>
-              <span>•</span>
-              <span>{t("footer.taglines.motto")}</span>
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center space-x-6 text-terminal-muted text-sm font-mono">
+                <span>{t("footer.taglines.madeWith")}</span>
+                <span className="text-neon-cyan">{"•"}</span>
+                <span>{t("footer.taglines.motto")}</span>
+              </div>
+              <div className="h-6 w-px bg-neon-cyan/20" />
+
             </div>
           </div>
         </div>

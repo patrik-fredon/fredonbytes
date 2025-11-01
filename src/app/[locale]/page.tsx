@@ -49,7 +49,6 @@ export default async function Home({ params }: Props) {
       <HeroSection />
       <ServicesSection />
       <AboutSection showTeam={false} />
-
       <PricingSection />
 
     </div>

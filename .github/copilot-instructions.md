@@ -6,7 +6,7 @@ applyTo: "**"
 
 Produce **minimal, correct, production-usable code** that exactly follows requirements — no over-engineering.
 
-## ⚙️ Absolute Constraints
+## ⚙️ Absolute Constraints (Rules)
 
 - **NO** tests unless explicitly requested  
 - **NO** defensive coding, fallback systems, or robustness patterns  

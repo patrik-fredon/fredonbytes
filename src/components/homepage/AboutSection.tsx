@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, Award, TrendingUp, CheckCircle, ArrowRight } from "lucide-react";
+import { Users, Award, TrendingUp, CheckCircle, ArrowRight, Globe, Smartphone, Shield } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import React from "react";
@@ -9,6 +9,7 @@ import React from "react";
 import { Link } from "@/i18n/navigation";
 
 import { Button } from "../common/Button";
+import GlassCard from "../dev-ui/GlassCard";
 
 export default function AboutSection({ showTeam = true }: { showTeam?: boolean }) {
   const t = useTranslations();
@@ -22,7 +23,28 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
       },
     },
   };
-
+  const stats = [
+    {
+      number: t("services.stats.support.number"),
+      label: t("services.stats.support.label"),
+      icon: Globe,
+    },
+    {
+      number: t("services.stats.team.number"),
+      label: t("services.stats.team.label"),
+      icon: Smartphone,
+    },
+    {
+      number: 2023,
+      label: t("hero.stats.founded"),
+      icon: Shield,
+    },
+    {
+      number: t("services.stats.satisfaction.number"),
+      label: t("services.stats.satisfaction.label"),
+      icon: CheckCircle,
+    },
+  ];
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -108,54 +130,74 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              {t("about.title")}{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                {t("about.company")}
-              </span>
+            <h2 className="text-3xl lg:text-5xl font-bold text-terminal-light mb-6 font-mono">
+              <span className="text-neon-cyan">//</span> {t("about.title")}{" "}
+              <span className="text-neon-cyan">{t("about.company")}</span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed mb-8">
               {t("about.subtitle")}
             </p>
+            {/* Stats - Terminal Styled */}
+            <motion.div variants={itemVariants} className="m-16">
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {stats.map((stat, index) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div key={index} className="text-center group">
+                      <div className="w-14 h-14 mx-auto mb-4 bg-neon-cyan/5 rounded-full flex items-center justify-center border border-neon-cyan/30 group-hover:border-neon-cyan/50 group-hover:shadow-glow-cyan-subtle transition-all">
+                        <Icon className="w-8 h-8 text-neon-purple" />
+                      </div>
+                      <div className="text-3xl font-bold mb-2 text-terminal-light font-mono">
+                        {stat.number}
+                      </div>
+                      <div className="text-terminal-light/70 font-mono text-sm">{stat.label}</div>
+                    </div>
+                  );
+                })}
+              </div>
+
+            </motion.div>
             <Link href="/about">
               <Button
                 variant="gradient"
                 size="xl"
                 rightIcon={<ArrowRight className="w-5 h-5" />}
+                className="font-mono"
               >
-                {t("common.buttons.learnMore")}
+                $ {t("common.buttons.learnMore")} --about
               </Button>
             </Link>
           </motion.div>
 
-          {/* Mission & Vision */}
+          {/* Mission & Vision - Terminal Styled */}
           <motion.div
             variants={itemVariants}
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20"
           >
-            <div className="bg-slate-900 border border-purple-500/20 inset-shadow-sm inset-shadow-slate-950/50 rounded-xl p-8">
-              <h3 className="flex justify-center text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {t("about.mission.title")}
+            <GlassCard className="p-8" glowColor="cyan">
+              <h3 className="flex justify-center text-2xl font-bold text-terminal-light mb-4 font-mono">
+                <span className="text-neon-cyan">//</span> {t("about.mission.title")}
               </h3>
-              <p className="text-slate-700 dark:text-slate-300 leading-relaxed italic">
+              <p className="text-terminal-light/80 leading-relaxed italic">
                 &ldquo;{t("about.mission.description")}&rdquo;
               </p>
-            </div>
-            <div className="bg-slate-900 border border-purple-500/20 inset-shadow-sm inset-shadow-slate-950/50 rounded-xl p-8">
-              <h3 className="text-2xl flex justify-center font-bold text-slate-900 dark:text-white mb-4">
-                {t("about.vision.title")}
+            </GlassCard>
+            <GlassCard className="p-8" glowColor="purple">
+              <h3 className="text-2xl flex justify-center font-bold text-terminal-light mb-4 font-mono">
+                <span className="text-neon-purple">//</span> {t("about.vision.title")}
               </h3>
-              <p className="text-slate-700 dark:text-slate-300 leading-relaxed italic">
+              <p className="text-terminal-light/80 leading-relaxed italic">
                 &ldquo;{t("about.vision.description")}&rdquo;
               </p>
-            </div>
+            </GlassCard>
           </motion.div>
 
 
-          {/* Core Values */}
+          {/* Core Values - Terminal Cards */}
           <motion.div variants={itemVariants} className="mb-20">
-            <h3 className="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">
-              {t("about.values.title")}
+            <h3 className="text-3xl font-bold text-terminal-light text-center mb-12 font-mono">
+              <span className="text-neon-cyan">//</span> {t("about.values.title")}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {values.map((value, index) => {
@@ -164,80 +206,80 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="text-center group"
+                    className="text-center"
                   >
-                    <div className="bg-slate-950/10 border-2 border-slate-950/40 rounded-xl p-6 inset-shadow-2xs inset-shadow-slate-950/50 hover:shadow-xl hover:shadow-purple-950/50 transition-all duration-300 group-hover:-translate-y-2">
-                      <div
-                        className={`w-16 h-16 mx-auto mb-4 bg-slate-900/80 border border-purple-500/20 inset-shadow-2xs inset-shadow-slate-950/50 rounded-xl flex items-center justify-center ${value.color}`}
-                      >
-                        <Icon className="w-8 h-8" />
+                    <GlassCard className="p-6 h-full" glowColor="normal">
+                      <div className="w-16 h-16 mx-auto mb-4 bg-neon-cyan/10 border border-neon-cyan/40 rounded-xl flex items-center justify-center">
+                        <Icon className="w-8 h-8 text-neon-cyan" />
                       </div>
-                      <h4 className="text-lg font-semibold text-white mb-2">
+                      <h4 className="text-lg font-semibold text-terminal-light mb-2 font-mono">
                         {value.title}
                       </h4>
-                      <p className="text-slate-400 text-sm">
+                      <p className="text-terminal-light/80 text-sm">
                         {value.description}
                       </p>
-                    </div>
+                    </GlassCard>
                   </motion.div>
                 );
               })}
             </div>
           </motion.div>
-          {/* Founder Quote */}
+          {/* Founder Quote - Terminal Styled */}
           <motion.div variants={itemVariants} className="m-20">
-            <div className="bg-slate-900 border border-purple-950/20 inset-shadow-sm inset-shadow-slate-950/50 rounded-xl  p-4 text-center">
-              <blockquote className="text-md  font-medium text-slate-900 dark:text-white mb-6 leading-relaxed">
-                &ldquo;{t("about.founderQuote.quote")}&rdquo;
-              </blockquote>
-              <cite className="text-slate-600 dark:text-slate-400 text-sm">
-                — {t("about.founderQuote.author")}
-              </cite>
-            </div>
+
+            <blockquote className="text-lg font-medium text-terminal-light mb-6 leading-relaxed font-mono">
+              <span className="text-neon-purple">//</span> &ldquo;{t("about.founderQuote.quote")}&rdquo;
+            </blockquote>
+            <cite className="text-terminal-light/70 text-sm font-mono">
+              — {t("about.founderQuote.author")}
+            </cite>
+
           </motion.div>
 
-          {/* Team Section */}
+          {/* Team Section - GlassCard */}
           {showTeam && (
             <motion.div variants={itemVariants}>
-              <h3 className="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">
-                {t("about.team.title")}
+              <h3 className="text-3xl font-bold text-terminal-light text-center mb-12 font-mono">
+                <span className="text-neon-cyan">//</span> {t("about.team.title")}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {teamMembers.map((member, index) => (
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
+                    className="group"
                   >
-                    <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
-                      {member.image === "user-placeholder" ? (
-                        <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 dark:from-slate-600 dark:to-slate-700 flex items-center justify-center">
-                          <Users className="w-12 h-12 text-slate-500 dark:text-slate-400" />
-                        </div>
-                      ) : (
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
-                          loading="lazy"
-                          quality={80}
-                          sizes="(max-width: 768px) 96px, (max-width: 1024px) 96px, 96px"
-                        />
-                      )}
-                    </div>
-                    <h4 className="text-lg font-semibold text-slate-900 dark:text-white text-center mb-1">
-                      {member.name}
-                    </h4>
-                    <p className="text-blue-600 dark:text-blue-400 text-sm text-center mb-2 font-medium">
-                      {member.role}
-                    </p>
-                    <p className="text-slate-600 dark:text-slate-400 text-xs text-center mb-3">
-                      {member.expertise}
-                    </p>
-                    <p className="text-slate-700 dark:text-slate-300 text-xs text-center italic">
-                      &ldquo;{member.quote}&rdquo;
-                    </p>
+                    <GlassCard className="p-6 h-full" glowColor="cyan">
+                      <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-neon-cyan/50 shadow-glow-cyan group-hover:border-neon-cyan group-hover:shadow-glow-cyan-strong transition-all duration-200">
+                        {member.image === "user-placeholder" ? (
+                          <div className="w-full h-full bg-gradient-to-br from-terminal-dark to-slate-900 flex items-center justify-center">
+                            <Users className="w-12 h-12 text-neon-cyan" />
+                          </div>
+                        ) : (
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-300"
+                            loading="lazy"
+                            quality={80}
+                            sizes="(max-width: 768px) 96px, (max-width: 1024px) 96px, 96px"
+                          />
+                        )}
+                      </div>
+                      <h4 className="text-lg font-semibold text-terminal-light text-center mb-1 font-mono">
+                        {member.name}
+                      </h4>
+                      <p className="text-neon-cyan text-sm text-center mb-2 font-medium font-mono">
+                        {member.role}
+                      </p>
+                      <p className="text-terminal-light/70 text-xs text-center mb-3">
+                        {member.expertise}
+                      </p>
+                      <p className="text-terminal-light/80 text-xs text-center italic">
+                        <span className="text-neon-cyan">//</span> &ldquo;{member.quote}&rdquo;
+                      </p>
+                    </GlassCard>
                   </motion.div>
                 ))}
               </div>
@@ -246,12 +288,11 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
 
 
 
-          {/* Company Mantra */}
+          {/* Company Mantra - Terminal Styled */}
           <motion.div variants={itemVariants} className="mt-12 text-center">
-            <p className="text-2xl font-bold text-slate-900 dark:text-white">
-              <span className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                {t("about.mantra")}
-              </span>
+            <p className="text-2xl font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent font-mono">
+              <span className="">//</span>{" "}
+              {t("about.mantra")}
             </p>
           </motion.div>
         </motion.div>

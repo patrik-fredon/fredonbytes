@@ -91,45 +91,45 @@ export default function LinkCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 dark:border-slate-700 group">
+      <div className="bg-terminal-dark rounded-2xl p-6 shadow-glow-cyan-subtle hover:shadow-glow-cyan-intense transition-all duration-300 border border-neon-cyan/20 group">
         <div className="flex items-center space-x-4">
           {/* Icon */}
           <motion.div
             variants={iconVariants}
-            className="shrink-0 w-12 h-12 bg-linear-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white"
+            className="shrink-0 w-12 h-12 bg-gradient-to-br from-neon-cyan to-electric-purple rounded-xl flex items-center justify-center text-white border border-neon-cyan/30 shadow-glow-cyan-subtle"
           >
             {getIcon(icon)}
           </motion.div>
 
           {/* Content */}
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+            <h3 className="text-lg font-semibold text-white group-hover:text-neon-cyan transition-colors duration-[180ms] font-mono">
               {title}
             </h3>
             {description && (
-              <p className="text-slate-600 dark:text-slate-400 text-sm mt-1 leading-relaxed">
+              <p className="text-slate-400 text-sm mt-1 leading-relaxed font-mono">
                 {description}
               </p>
             )}
 
             {/* Stats for GitHub repositories */}
             {stats && (
-              <div className="flex items-center space-x-4 mt-2 text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex items-center space-x-4 mt-2 text-xs text-slate-400 font-mono">
                 {stats.repos && (
                   <span className="flex items-center space-x-1">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                    <span className="w-2 h-2 bg-neon-cyan rounded-full shadow-glow-cyan-subtle"></span>
                     <span>{stats.repos} repos</span>
                   </span>
                 )}
                 {stats.commits && (
                   <span className="flex items-center space-x-1">
-                    <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                    <span className="w-2 h-2 bg-code-green rounded-full shadow-glow-green-subtle"></span>
                     <span>{stats.commits} commits</span>
                   </span>
                 )}
                 {stats.stars && (
                   <span className="flex items-center space-x-1">
-                    <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                    <span className="w-2 h-2 bg-warning-amber rounded-full"></span>
                     <span>{stats.stars} stars</span>
                   </span>
                 )}
@@ -140,10 +140,10 @@ export default function LinkCard({
           {/* External Link Indicator */}
           {external && (
             <motion.div
-              className="shrink-0 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors duration-200"
+              className="shrink-0 text-slate-400 group-hover:text-neon-cyan transition-colors duration-[180ms]"
               variants={iconVariants}
             >
-              <ExternalLink className="w-5 h-5" />
+              <ExternalLink className="w-5 h-5 drop-shadow-[0_0_8px_currentColor]" />
             </motion.div>
           )}
         </div>
