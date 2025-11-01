@@ -99,13 +99,13 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-neon-cyan flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-neon-cyan shrink-0" />
                 <span className="text-terminal-muted text-sm font-mono">
                   {t("footer.contact.location")}
                 </span>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-neon-cyan flex-shrink-0" />
+                <Phone className="w-4 h-4 text-neon-cyan shrink-0" />
                 <a
                   href="tel:+420799027984"
                   className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast -subtle"
@@ -114,7 +114,7 @@ export default function Footer() {
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-neon-cyan flex-shrink-0" />
+                <Mail className="w-4 h-4 text-neon-cyan shrink-0" />
                 <a
                   href="mailto:info@fredonbytes.cloud"
                   className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast -subtle"
