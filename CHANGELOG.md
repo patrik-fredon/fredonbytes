@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2025-01-06] - MDX + ISR Implementation Complete
+
+### ✅ Added
+- **GDPR Compliance Page**: Full GDPR compliance statement with 15 sections covering data controller info, GDPR principles, legal basis, data categories, subject rights (Articles 13-22), protection measures, breach notification, international transfers, retention policies, third-party processors, and complaint procedures
+  - `src/app/[locale]/gdpr/page.tsx`: ISR wrapper with 7-day revalidation
+  - `src/app/[locale]/gdpr/page.en.mdx`: English GDPR content (217 lines)
+  - `src/app/[locale]/gdpr/page.cs.mdx`: Czech GDPR content (217 lines)
+  - `src/app/[locale]/gdpr/page.de.mdx`: German GDPR content (217 lines)
+
+- **MDX Content Files**: Converted hardcoded TSX pages to maintainable MDX format
+  - Cookies Policy: 3 locale files (134 lines each) - comprehensive cookie documentation
+  - Privacy Policy: 3 locale files (110 lines each) - GDPR-compliant privacy information
+
+### ♻️ Changed
+- **ISR Optimization**: All legal documentation pages now use Incremental Static Regeneration
+  - `/terms`: 604800s (7 days) revalidation - legal terms change infrequently
+  - `/cookies`: 86400s (1 day) revalidation - cookie policies may update with tracking changes
+  - `/policies`: 604800s (7 days) revalidation - privacy policies are relatively stable
+  - `/gdpr`: 604800s (7 days) revalidation - regulatory compliance content rarely changes
+
+- **Page Structure**: Converted from hardcoded TSX to hybrid MDX + ISR wrapper pattern
+  - `src/app/[locale]/cookies/page.tsx`: Reduced from 333 lines to 34-line ISR wrapper
+  - `src/app/[locale]/policies/page.tsx`: Reduced from 231 lines to 34-line ISR wrapper
+  - `src/app/[locale]/terms/page.tsx`: Added ISR configuration to existing structure
+
+### 🔧 Fixed
+- **MDX Configuration**: Fixed `src/mdx-components.tsx` to properly export `useMDXComponents` connecting to custom MDX component system
+
+### 📊 Performance
+- **Code Reduction**: Removed 564 lines of hardcoded TSX, added 751 lines of maintainable MDX content
+- **Caching**: ISR ensures fast page loads with smart revalidation based on update frequency
+- **SEO**: Server-side rendering with ISR provides optimal SEO for all legal pages
+
+### 📝 Documentation
+- Created `mdx-isr-implementation` memory with complete implementation details
+- Documented ISR revalidation strategy and file structure patterns
+- All legal pages now follow consistent MDX structure with proper localization
+
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
