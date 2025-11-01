@@ -181,6 +181,11 @@ export async function POST(request: NextRequest) {
       text: customerEmailText,
     });
 
+    if (!customerEmail.success) {
+      console.error("Failed to send customer email:", customerEmail.error);
+      throw new Error(`Failed to send confirmation email: ${customerEmail.error}`);
+    }
+
     // Send admin notification email
     const adminEmailHtml = await generateAdminContactNotificationHTML(
       emailData
@@ -197,6 +202,11 @@ export async function POST(request: NextRequest) {
       text: adminEmailText,
       replyTo: validatedData.email,
     });
+
+    if (!adminEmail.success) {
+      console.error("Failed to send admin email:", adminEmail.error);
+      throw new Error(`Failed to send admin notification: ${adminEmail.error}`);
+    }
 
     // Create survey session in unified sessions table
     // Survey questionnaire ID (hardcoded UUID from migrations)

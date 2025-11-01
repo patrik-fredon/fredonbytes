@@ -37,7 +37,19 @@ See `CHANGELOG.md` for full details.
 
 ## Active Tasks
 
-No active tasks at this time.
+### 🧪 Email System Testing Required
+
+After fixing contact form email bugs, verify:
+- [ ] Test contact form submission with valid SMTP credentials
+- [ ] Confirm customer receives email with survey link
+- [ ] Confirm admin receives notification email
+- [ ] Test error handling with invalid SMTP config
+- [ ] Verify `.env.local` has correct settings:
+  - `SMTP_HOST=smtp.forpsi.com`
+  - `SMTP_PORT=465` (or 587)
+  - `SMTP_SECURE=true` (for port 465) or `false` (for port 587)
+  - `SMTP_USER=noreply@fredonbytes.cloud`
+  - `SMTP_PASS=your_password`
 
 ---
 
