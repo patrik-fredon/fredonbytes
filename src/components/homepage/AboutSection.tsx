@@ -9,7 +9,7 @@ import React from "react";
 import { Link } from "@/i18n/navigation";
 
 import { Button } from "../common/Button";
-import { GlassCard } from "../dev-ui/GlassCard";
+import GlassCard from "../dev-ui/GlassCard";
 
 export default function AboutSection({ showTeam = true }: { showTeam?: boolean }) {
   const t = useTranslations();

@@ -112,8 +112,9 @@
     "foundingDate": "2023"
   },
   "about": {
-    "title": "O {company}",
-    "subtitle": "Založeno v roce {year}, odstraňujeme potřebu více dodavatelů tím, že se staneme vaší {highlight}kompletní digitální armádou{/highlight}, zajišťující bezproblémové a vysoce efektivní výsledky pod jednou střechou.",
+    "title": "Kdo jsme?",
+    "company": "Fredonbytes!",
+    "subtitle": "Založeno v roce 2023, odstraňujeme potřebu více dodavatelů tím, že se staneme vaší kompletní digitální armádou, zajišťující bezproblémové a vysoce efektivní výsledky pod jednou střechou.",
     "highlight": " kompletní digitální armádou",
     "mission": {
       "title": "Naše mise",
@@ -290,6 +291,16 @@
   "services": {
     "title": "Naše služby",
     "subtitle": "Nabízíme komplexní sadu IT řešení navržených tak, aby odstranila potřebu více dodavatelů. Od vývoje po marketing, máme vše pokryto.",
+    "categories": {
+      "development": "Vývoj softwaru",
+      "design": "Grafický & UX/UI design",
+      "seo": "SEO & Digitální marketing",
+      "social": "Správa sociálních sítí",
+      "consulting": "IT poradenství & Kybernetická bezpečnost",
+      "maintenance": "Údržba & Podpora",
+      "all": "Všechny služby",
+      "marketing": "Marketing"
+    },
     "items": {
       "development": {
         "title": "Vývoj softwaru",
@@ -339,6 +350,16 @@
           "Plánování infrastruktury",
           "Technologické poradenství",
           "Hodnocení rizik"
+        ]
+      },
+      "maintenance": {
+        "title": "Údržba & Podpora",
+        "description": "Proaktivní monitorování, aktualizace a podpora pro zajištění hladkého chodu vašich digitálních řešení.",
+        "features": [
+          "Pravidelné aktualizace",
+          "Monitorování výkonu",
+          "Zálohy a obnova",
+          "Podpora 24/7"
         ]
       }
     },
@@ -785,7 +806,10 @@
       "mobile_app": "Mobilní aplikace",
       "cloud_solution": "Cloudové řešení",
       "database": "Databáze",
-      "consulting": "Konzultace"
+      "consulting": "Konzultace",
+      "software_development": "Vývoj softwaru",
+      "marketing": "Marketing",
+      "graphic_design": "Grafický design"
     },
     "status": {
       "active": "Aktivní",
@@ -853,6 +877,7 @@
       "keywords": "vývoj webu, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika"
     },
     "about": {
+      "company": "Fredonbytes",
       "title": "O Fredonbytes - Váš partner pro digitální transformaci",
       "description": "Založeno v roce 2023, Fredonbytes odstraňuje potřebu více dodavatelů tím, že se stane vaší kompletní digitální armádou, zajišťující bezproblémové a vysoce efektivní výsledky pod jednou střechou.",
       "keywords": "o fredonbytes, digitální transformace, IT společnost, tým pro vývoj softwaru, brněnská technologie"

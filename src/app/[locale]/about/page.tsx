@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import CompanyStory from '@/components/about/CompanyStory';
 import TeamSection from '@/components/about/TeamSection';
+import GridBackground from '@/components/dev-ui/GridBackground';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -118,17 +119,22 @@ export default async function AboutPage({ params }: Props) {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+      <main className="min-h-screen bg-terminal-dark relative">
+        {/* Grid Background */}
+        <div className="absolute inset-0">
+          <GridBackground />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 relative z-10">
           {/* Page Header */}
           <header className="text-center mb-12 sm:mb-16 lg:mb-20" role="banner">
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 leading-tight">
-              About{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight font-mono">
+              <span className="text-neon-cyan">//</span> About{' '}
+              <span className="bg-gradient-to-r from-neon-cyan via-electric-purple to-electric-purple bg-clip-text text-transparent">
                 FredonBytes
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed px-4">
+            <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed px-4 font-mono">
               {metaT('description')}
             </p>
           </header>

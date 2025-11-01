@@ -71,7 +71,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-terminal-dark/80 backdrop-blur-md z-50"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -86,7 +86,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                 duration: prefersReducedMotion ? 0 : 0.3,
                 ease: [0.4, 0, 0.2, 1],
               }}
-              className="relative bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+              className="relative bg-terminal-dark border border-neon-cyan/30 rounded-2xl shadow-glow-cyan-intense max-w-4xl w-full max-h-[90vh] overflow-hidden"
               role="dialog"
               aria-modal="true"
               aria-labelledby="modal-title"
@@ -95,16 +95,16 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 dark:bg-slate-900/90 rounded-full flex items-center justify-center text-slate-900 dark:text-white hover:bg-white dark:hover:bg-slate-900 transition-colors shadow-lg"
+                className="absolute top-4 right-4 z-10 w-10 h-10 bg-terminal-dark border-2 border-neon-cyan rounded-full flex items-center justify-center text-neon-cyan hover:bg-neon-cyan/10 hover:scale-110 transition-all duration-[180ms] shadow-glow-cyan-intense"
                 aria-label="Close modal"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 drop-shadow-[0_0_8px_currentColor]" />
               </button>
 
               {/* Modal Content */}
               <div className="overflow-y-auto max-h-[90vh]">
                 {/* Project Image */}
-                <div className="relative h-64 md:h-80 overflow-hidden bg-slate-200 dark:bg-slate-700">
+                <div className="relative h-64 md:h-80 overflow-hidden bg-terminal-dark border-b border-neon-cyan/20">
                   {!imageError ? (
                     <Image
                       src={project.image_url}
@@ -118,23 +118,23 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-slate-400">
-                      <span className="text-sm">Image not available</span>
+                      <span className="text-sm font-mono">// Image not available</span>
                     </div>
                   )}
 
                   {/* Badges */}
                   <div className="absolute top-4 left-4 flex gap-2">
                     {project.featured && (
-                      <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-                        {t('badges.featured')}
+                      <span className="bg-gradient-to-r from-neon-cyan to-electric-purple text-white px-3 py-1 rounded-full text-xs font-mono font-medium shadow-glow-cyan-subtle">
+                        $ {t('badges.featured')}
                       </span>
                     )}
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === 'active'
-                        ? 'bg-green-500 text-white'
+                      className={`px-3 py-1 rounded-full text-xs font-mono font-medium border ${project.status === 'active'
+                        ? 'bg-code-green/20 text-code-green border-code-green/30 shadow-glow-green-subtle'
                         : project.status === 'completed'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-slate-500 text-white'
+                          ? 'bg-neon-cyan/20 text-neon-cyan border-neon-cyan/30 shadow-glow-cyan-subtle'
+                          : 'bg-slate-500/20 text-slate-400 border-slate-500/30'
                         }`}
                     >
                       {t(`status.${project.status}` as keyof typeof t)}
@@ -143,24 +143,24 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                 </div>
 
                 {/* Project Details */}
-                <div className="p-6 md:p-8 space-y-6">
+                <div className="p-6 md:p-8 space-y-6 bg-terminal-dark">
                   {/* Title and Date */}
                   <div>
                     <h2
                       id="modal-title"
-                      className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2"
+                      className="text-2xl md:text-3xl font-bold text-white mb-2 font-mono"
                     >
-                      {title}
+                      <span className="text-neon-cyan">//</span> {title}
                     </h2>
-                    <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                      <Calendar className="w-4 h-4" />
+                    <div className="flex items-center gap-2 text-sm text-slate-400 font-mono">
+                      <Calendar className="w-4 h-4 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
                       <time dateTime={project.created_at || undefined}>{formattedDate}</time>
                     </div>
                   </div>
 
                   {/* Description */}
                   <div>
-                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                    <p className="text-slate-300 leading-relaxed whitespace-pre-line font-mono">
                       {description}
                     </p>
                   </div>
@@ -168,8 +168,8 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                   {/* Technologies */}
                   <div>
                     <div className="flex items-center gap-2 mb-3">
-                      <Tag className="w-4 h-4 text-slate-600 dark:text-slate-400" />
-                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
+                      <Tag className="w-4 h-4 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
+                      <h3 className="text-sm font-semibold text-neon-cyan font-mono">
                         {t('modal.technologies')}
                       </h3>
                     </div>
@@ -177,7 +177,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                       {project.technologies.map((tech, index) => (
                         <span
                           key={index}
-                          className="bg-slate-100 dark:bg-slate-700 px-3 py-1.5 rounded-md text-sm text-slate-700 dark:text-slate-300"
+                          className="bg-slate-900/80 border border-neon-cyan/30 px-3 py-1.5 rounded-md text-sm text-slate-300 font-mono"
                         >
                           {tech}
                         </span>
@@ -192,10 +192,10 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                         href={project.live_demo_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg font-medium"
+                        className="flex items-center gap-2 px-6 py-3 bg-neon-cyan/10 border-2 border-neon-cyan text-neon-cyan rounded-lg hover:bg-neon-cyan hover:text-terminal-dark hover:scale-105 transition-all duration-[180ms] shadow-glow-cyan-intense font-mono font-medium"
                       >
-                        <ExternalLink className="w-5 h-5" />
-                        <span>{t('actions.viewLiveDemo')}</span>
+                        <ExternalLink className="w-5 h-5 drop-shadow-[0_0_8px_currentColor]" />
+                        <span>$ {t('actions.viewLiveDemo')}</span>
                       </a>
                     )}
                     {project.github_link && (
@@ -203,10 +203,10 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                         href={project.github_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-slate-700 text-white rounded-lg hover:bg-slate-800 dark:hover:bg-slate-600 transition-colors shadow-md hover:shadow-lg font-medium"
+                        className="flex items-center gap-2 px-6 py-3 bg-electric-purple/10 border-2 border-electric-purple text-electric-purple rounded-lg hover:bg-electric-purple hover:text-white hover:scale-105 transition-all duration-[180ms] shadow-glow-purple-intense font-mono font-medium"
                       >
-                        <Github className="w-5 h-5" />
-                        <span>{t('actions.viewOnGithub')}</span>
+                        <Github className="w-5 h-5 drop-shadow-[0_0_8px_currentColor]" />
+                        <span>$ {t('actions.viewOnGithub')}</span>
                       </a>
                     )}
                   </div>

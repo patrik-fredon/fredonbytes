@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import React, { useState, useEffect } from "react";
 
+import GridBackground from "@/components/dev-ui/GridBackground";
 import { PricingTier, PricingItem } from "@/lib/supabase";
 
 import CurrencyToggle from "./components/CurrencyToggle";
@@ -80,11 +81,14 @@ export default function PricingClient({ locale }: PricingClientProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-terminal-dark relative py-20">
+        <div className="absolute inset-0">
+          <GridBackground />
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-slate-600 dark:text-slate-300">{t('loading')}</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-cyan mx-auto mb-4"></div>
+            <p className="text-slate-300 font-mono">{t('loading')}</p>
           </div>
         </div>
       </div>
@@ -93,10 +97,13 @@ export default function PricingClient({ locale }: PricingClientProps) {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-terminal-dark relative py-20">
+        <div className="absolute inset-0">
+          <GridBackground />
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <p className="text-red-600 dark:text-red-400">{error}</p>
+            <p className="text-error-red font-mono">// Error: {error}</p>
           </div>
         </div>
       </div>
@@ -104,8 +111,11 @@ export default function PricingClient({ locale }: PricingClientProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+    <div className="min-h-screen bg-terminal-dark relative">
+      <div className="absolute inset-0">
+        <GridBackground />
+      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -113,12 +123,12 @@ export default function PricingClient({ locale }: PricingClientProps) {
         >
           {/* Page Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h1 className="text-4xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 font-mono">
+              <span className="bg-gradient-to-r from-neon-cyan via-electric-purple to-electric-purple bg-clip-text text-transparent">
                 {t('title')}
               </span>
             </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8 font-mono">
               {t('subtitle')}
             </p>
 

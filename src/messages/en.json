@@ -291,6 +291,16 @@
   "services": {
     "title": "Our Services",
     "subtitle": "We offer a comprehensive suite of IT solutions designed to eliminate the need for multiple vendors. From development to marketing, we've got you covered.",
+    "categories": {
+      "development": "Software Development",
+      "design": "Graphic & UX/UI Design",
+      "seo": "SEO & Digital marketing",
+      "social": "Social media management",
+      "consulting": "IT consulting & Cybersecurity",
+      "maintenance": "Maintenance & Support",
+      "all": "All services",
+      "marketing": "Marketing"
+    },
     "items": {
       "development": {
         "title": "Software Development",
@@ -794,6 +804,9 @@
     "categories": {
       "web_development": "Web Development",
       "mobile_app": "Mobile App",
+      "software_development": "Software Development",
+      "marketing": "Marketing",
+      "graphic_design": "Graphic Design",
       "cloud_solution": "Cloud Solution",
       "database": "Database",
       "consulting": "Consulting"

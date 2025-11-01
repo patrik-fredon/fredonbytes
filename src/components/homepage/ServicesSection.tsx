@@ -16,7 +16,7 @@ import {
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { TerminalWindow } from "../dev-ui/TerminalWindow";
+import TerminalWindow from "../dev-ui/TerminalWindow";
 
 
 
@@ -167,8 +167,8 @@ export default function ServicesSection() {
     },
   ];
 
-  const filteredServices = activeTab === "all" 
-    ? services 
+  const filteredServices = activeTab === "all"
+    ? services
     : services.filter(service => service.category === activeTab);
 
 
@@ -201,11 +201,10 @@ export default function ServicesSection() {
                 <button
                   key={category.id}
                   onClick={() => setActiveTab(category.id)}
-                  className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-[180ms] ${
-                    activeTab === category.id
+                  className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-[180ms] ${activeTab === category.id
                       ? "bg-neon-cyan/20 text-neon-cyan border border-neon-cyan shadow-glow-cyan-subtle"
                       : "text-slate-400 hover:text-white hover:bg-slate-800/50"
-                  }`}
+                    }`}
                 >
                   {category.label}
                 </button>

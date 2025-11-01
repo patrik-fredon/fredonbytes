@@ -22,7 +22,7 @@ import * as z from "zod";
 
 
 import { Button } from "../common/Button";
-import { CommandButton } from "../dev-ui/CommandButton";
+import CommandButton from "../dev-ui/CommandButton";
 
 const contactSchema = z.object({
   // Step 1: Basic Info
@@ -201,7 +201,7 @@ export default function ContactSection() {
               <span className="text-neon-cyan">//</span> {t("contact.success.message")}
             </p>
             <CommandButton
-              variant="primary"
+              variant="cyan"
               onClick={() => {
                 setIsSubmitted(false);
                 setCurrentStep(1);
@@ -226,45 +226,43 @@ export default function ContactSection() {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              {t("contact.sectionTitle")}
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-mono">
+              <span className="text-neon-cyan">//</span> {t("contact.sectionTitle")}
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8 font-mono">
               {t("contact.sectionDescription")}
             </p>
-            <Button
-              variant="gradient"
-              size="lg"
-              rightIcon={<ArrowRight className="w-5 h-5" />}
+            <CommandButton
+              variant="cyan"
               onClick={() => {
                 const formElement = document.querySelector('form');
                 if (formElement) formElement.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              {t("common.buttons.contactUs")}
-            </Button>
+              $ {t("common.buttons.contactUs")}
+            </CommandButton>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <motion.div variants={itemVariants} className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
-                  {t("contact.getInTouch")}
+                <h3 className="text-2xl font-bold text-white mb-6 font-mono">
+                  <span className="text-neon-cyan">//</span> {t("contact.getInTouch")}
                 </h3>
                 <div className="space-y-6">
                   {/* Email */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                    <div className="w-12 h-12 bg-neon-cyan/20 rounded-lg flex items-center justify-center border border-neon-cyan/30">
+                      <Mail className="w-6 h-6 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                      <h4 className="text-lg font-semibold text-white font-mono">
                         {t("contact.email")}
                       </h4>
                       <a
                         href="mailto:info@fredonbytes.cloud"
-                        className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        className="text-slate-400 hover:text-neon-cyan transition-colors duration-[180ms] font-mono text-sm"
                       >
                         info@fredonbytes.cloud
                       </a>
@@ -273,16 +271,16 @@ export default function ContactSection() {
 
                   {/* Phone */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-green-600 dark:text-green-400" />
+                    <div className="w-12 h-12 bg-code-green/20 rounded-lg flex items-center justify-center border border-code-green/30">
+                      <Phone className="w-6 h-6 text-code-green drop-shadow-[0_0_8px_currentColor]" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                      <h4 className="text-lg font-semibold text-white font-mono">
                         {t("contact.phone")}
                       </h4>
                       <a
                         href="tel:+420799027984"
-                        className="text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                        className="text-slate-400 hover:text-code-green transition-colors duration-[180ms] font-mono text-sm"
                       >
                         +420 799 027 984
                       </a>
@@ -291,14 +289,14 @@ export default function ContactSection() {
 
                   {/* Location */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                    <div className="w-12 h-12 bg-electric-purple/20 rounded-lg flex items-center justify-center border border-electric-purple/30">
+                      <MapPin className="w-6 h-6 text-electric-purple drop-shadow-[0_0_8px_currentColor]" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                      <h4 className="text-lg font-semibold text-white font-mono">
                         {t("contact.location")}
                       </h4>
-                      <p className="text-slate-600 dark:text-slate-400">
+                      <p className="text-slate-400 font-mono text-sm">
                         Brno, Czech Republic
                       </p>
                     </div>
@@ -306,14 +304,14 @@ export default function ContactSection() {
 
                   {/* Response Time */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                    <div className="w-12 h-12 bg-warning-amber/20 rounded-lg flex items-center justify-center border border-warning-amber/30">
+                      <Clock className="w-6 h-6 text-warning-amber drop-shadow-[0_0_8px_currentColor]" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                      <h4 className="text-lg font-semibold text-white font-mono">
                         {t("contact.responseTime")}
                       </h4>
-                      <p className="text-slate-600 dark:text-slate-400">
+                      <p className="text-slate-400 font-mono text-sm">
                         {t("contact.responseTimeValue")}
                       </p>
                     </div>
@@ -321,15 +319,15 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Security Notice */}
-              <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-6">
+              {/* Security Notice - Terminal Styled */}
+              <div className="bg-terminal-dark border border-code-green/20 rounded-lg p-6 shadow-glow-green-subtle">
                 <div className="flex items-center space-x-3 mb-3">
-                  <Shield className="w-5 h-5 text-green-600" />
-                  <h4 className="font-semibold text-slate-900 dark:text-white">
-                    {t("contact.secureConfidential.title")}
+                  <Shield className="w-5 h-5 text-code-green drop-shadow-[0_0_8px_currentColor]" />
+                  <h4 className="font-semibold text-white font-mono">
+                    <span className="text-code-green">//</span> {t("contact.secureConfidential.title")}
                   </h4>
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-sm text-slate-400 font-mono">
                   {t("contact.secureConfidential.message")}
                 </p>
               </div>
@@ -337,7 +335,7 @@ export default function ContactSection() {
 
             {/* Multi-step Form */}
             <motion.div variants={itemVariants}>
-              <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8">
+              <div className="bg-terminal-dark border border-neon-cyan/20 rounded-2xl p-8 shadow-glow-cyan-subtle">
                 {/* Progress Bar - Terminal Style */}
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-4">
@@ -442,9 +440,7 @@ export default function ContactSection() {
                       </div>
 
                       <CommandButton
-                        type="button"
-                        variant="primary"
-                        size="lg"
+                        variant="cyan"
                         onClick={nextStep}
                       >
                         $ continue
@@ -554,17 +550,13 @@ export default function ContactSection() {
 
                       <div className="flex space-x-4">
                         <CommandButton
-                          type="button"
-                          variant="secondary"
-                          size="lg"
+                          variant="purple"
                           onClick={prevStep}
                         >
                           $ back
                         </CommandButton>
                         <CommandButton
-                          type="button"
-                          variant="primary"
-                          size="lg"
+                          variant="cyan"
                           onClick={nextStep}
                         >
                           $ continue
@@ -660,17 +652,13 @@ export default function ContactSection() {
 
                       <div className="flex space-x-4">
                         <CommandButton
-                          type="button"
-                          variant="secondary"
-                          size="lg"
+                          variant="purple"
                           onClick={prevStep}
                         >
                           $ back
                         </CommandButton>
                         <CommandButton
-                          type="submit"
-                          variant="primary"
-                          size="lg"
+                          variant="cyan"
                           disabled={!isValid}
                         >
                           {isSubmitting ? "$ processing..." : "$ send_message"}

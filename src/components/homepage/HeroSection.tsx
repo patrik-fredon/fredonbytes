@@ -20,9 +20,8 @@ import {
 } from "lucide-react";
 
 import { Button } from "../common/Button";
-import { TerminalWindow } from "../dev-ui/TerminalWindow";
-import { GridBackground } from "../dev-ui/GridBackground";
-import { CommandButton } from "../dev-ui/CommandButton";
+import TerminalWindow from "../dev-ui/TerminalWindow";
+import GridBackground from "../dev-ui/GridBackground";
 
 
 
@@ -106,7 +105,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <GridBackground />
       </div>
-      
+
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
@@ -206,14 +205,14 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
             <Link href="/contact">
-              <CommandButton variant="primary" size="lg">
+              <Button variant="neon-cyan" size="lg">
                 $ start_project
-              </CommandButton>
+              </Button>
             </Link>
             <Link href="/projects">
-              <CommandButton variant="secondary" size="lg">
+              <Button variant="secondary" size="lg">
                 $ view_portfolio
-              </CommandButton>
+              </Button>
             </Link>
           </motion.div>
 
