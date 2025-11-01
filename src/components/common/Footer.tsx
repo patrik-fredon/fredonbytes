@@ -41,21 +41,17 @@ export default function Footer() {
   ];
 
   const quickLinks = [
-    { href: "#about", label: t("footer.links.aboutUs") },
+    { href: "/about", label: t("footer.links.aboutUs") },
     { href: "#services", label: t("navigation.services") },
-    { href: "#projects", label: t("navigation.projects") },
-    { href: "#pricing", label: t("navigation.pricing") },
-    { href: "#contact", label: t("navigation.contact") },
+    { href: "/projects", label: t("navigation.projects") },
+    { href: "/pricing", label: t("navigation.pricing") },
+    { href: "/contact", label: t("navigation.contact") },
   ];
 
   const externalLinks = [
     {
       href: "https://me.fredonbytes.cloud",
       label: t("footer.links.personalPortfolio"),
-    },
-    {
-      href: "https://lib.fredonbytes.cloud",
-      label: t("footer.links.projectGallery"),
     },
     {
       href: "https://tech.fredonbytes.cloud",
@@ -65,9 +61,10 @@ export default function Footer() {
   ];
 
   const legalLinks = [
-    { href: "/privacy-policy", label: t("footer.links.privacyPolicy") },
-    { href: "/terms-of-service", label: t("footer.links.termsOfService") },
-    { href: "/cookie-policy", label: t("footer.links.cookiePolicy") },
+    { href: "/policies", label: t("footer.links.privacyPolicy") },
+    { href: "/terms", label: t("footer.links.termsOfService") },
+    { href: "/cookies", label: t("footer.links.cookiePolicy") },
+    { href: "/gdpr", label: t("footer.links.gdpr") },
   ];
 
   return (

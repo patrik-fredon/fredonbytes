@@ -59,7 +59,8 @@
       "technicalSupport": "Technical Support",
       "privacyPolicy": "Privacy Policy",
       "termsOfService": "Terms of Service",
-      "cookiePolicy": "Cookie Policy"
+      "cookiePolicy": "Cookie Policy",
+      "gdpr": "GDPR"
     },
     "social": {
       "githubFredon": "GitHub - FredonBytes",
