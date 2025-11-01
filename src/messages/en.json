@@ -1517,6 +1517,19 @@
       "companyName": "Fredonbytes",
       "tagline": "Your All-in-One IT Powerhouse",
       "location": "Brno, Czech Republic"
+    },
+    "survey": {
+      "subject": "Thank you for your feedback - Fredonbytes",
+      "thankYou": "Thank You for Your Feedback",
+      "feedbackReceived": "We've received your survey response",
+      "greeting": "Thank you",
+      "completionMessage": "Your survey has been submitted successfully!",
+      "feedbackValue": "Your feedback is invaluable in helping us improve our services and better meet your needs.",
+      "whatNext": "What happens next?",
+      "reviewFeedback": "Our team will carefully review your feedback",
+      "improveServices": "We'll use your insights to enhance our services",
+      "followUp": "If needed, we may reach out to discuss your feedback further",
+      "gratitude": "Thank you for taking the time to help us serve you better!"
     }
   },
   "form": {

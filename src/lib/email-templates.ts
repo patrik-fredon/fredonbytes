@@ -473,6 +473,116 @@ export async function generateAdminContactNotificationHTML(data: ContactEmailDat
 }
 
 /**
+ * Survey thank you email data interface
+ */
+export interface SurveyThankYouData {
+  firstName: string;
+  email: string;
+  locale: string;
+}
+
+/**
+ * Generates HTML email template for survey completion thank you
+ * @param data - Survey completion data including customer details
+ * @returns Promise with HTML string for email body
+ */
+export async function generateSurveyThankYouHTML(data: SurveyThankYouData): Promise<string> {
+  const t = await getEmailTranslations(data.locale);
+  
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>${t('survey.thankYou')} - ${t('common.companyName')}</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: linear-gradient(135deg, #10b981, #3b82f6); color: white; padding: 40px 30px; border-radius: 8px 8px 0 0; text-align: center; }
+          .content { background: #f8fafc; padding: 30px; border-radius: 0 0 8px 8px; }
+          .highlight { background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981; margin: 20px 0; }
+          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1 style="margin: 0; font-size: 28px;">🎉 ${t('survey.thankYou')}</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">${t('survey.feedbackReceived')}</p>
+          </div>
+
+          <div class="content">
+            <p>${t('survey.greeting')}, ${escapeHtml(data.firstName)}!</p>
+            
+            <div class="highlight">
+              <h3 style="margin: 0 0 15px 0; color: #059669;">✓ ${t('survey.completionMessage')}</h3>
+              <p style="margin: 0;">${t('survey.feedbackValue')}</p>
+            </div>
+
+            <h3>${t('survey.whatNext')}</h3>
+            <ul>
+              <li>${t('survey.reviewFeedback')}</li>
+              <li>${t('survey.improveServices')}</li>
+              <li>${t('survey.followUp')}</li>
+            </ul>
+
+            <p>${t('survey.gratitude')}</p>
+
+            <div style="text-align: center; margin-top: 30px;">
+              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10b981, #3b82f6); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block;">${t('customer.visitWebsite')}</a>
+            </div>
+          </div>
+
+          <div class="footer">
+            <p><strong>${t('common.companyName')}</strong> - ${t('common.tagline')}</p>
+            <p>${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984</p>
+            <p style="font-size: 12px; margin-top: 15px;">
+              Code. Create. Conquer.
+            </p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+}
+
+/**
+ * Generates plain text version of survey thank you email
+ * @param data - Survey completion data
+ * @returns Promise with plain text string for email body
+ */
+export async function generateSurveyThankYouText(data: SurveyThankYouData): Promise<string> {
+  const t = await getEmailTranslations(data.locale);
+  
+  return `
+🎉 ${t('survey.thankYou')}
+
+${t('survey.greeting')}, ${data.firstName}!
+
+${t('survey.feedbackReceived')}
+
+✓ ${t('survey.completionMessage')}
+${t('survey.feedbackValue')}
+
+${t('survey.whatNext')}
+
+1. ${t('survey.reviewFeedback')}
+2. ${t('survey.improveServices')}
+3. ${t('survey.followUp')}
+
+${t('survey.gratitude')}
+
+Visit us: https://fredonbytes.cloud
+
+---
+${t('common.companyName')} - ${t('common.tagline')}
+${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
+Code. Create. Conquer.
+  `.trim();
+}
+
+/**
  * Generates plain text version of admin notification email
  * @param data - Contact form data
  * @returns Plain text string for email body

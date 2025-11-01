@@ -26,12 +26,19 @@ export interface EmailResult {
 /**
  * Creates and configures SMTP transporter
  * Uses environment variables for SMTP configuration
+ * 
+ * Default configuration for Forpsi SMTP:
+ * - Host: smtp.forpsi.com
+ * - Port: 587 (STARTTLS)
+ * - Authentication required
+ * 
+ * @see https://support.forpsi.com/kb/a3147/konfigurace-smtp-serveru.aspx
  */
 function createTransport(): Transporter {
   const config = {
-    host: process.env.SMTP_HOST ?? 'smtp.gmail.com',
+    host: process.env.SMTP_HOST ?? 'smtp.forpsi.com',
     port: parseInt(process.env.SMTP_PORT ?? '587', 10),
-    secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+    secure: process.env.SMTP_SECURE === 'false', // true for 465, false for 587
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,

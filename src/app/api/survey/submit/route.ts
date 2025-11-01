@@ -189,7 +189,7 @@ export async function POST(request: NextRequest) {
     // Update contact_submissions to mark survey as completed if session is linked
     const { data: contactData } = await supabase
       .from('contact_submissions')
-      .select('id')
+      .select('id, email, first_name, locale')
       .eq('session_id', session_id)
       .maybeSingle();
 
@@ -203,6 +203,88 @@ export async function POST(request: NextRequest) {
         console.error('Error updating contact submission:', contactUpdateError);
         // Don't fail the request if contact update fails
       }
+
+      // Send thank you email to customer
+      try {
+        const { sendEmail } = await import('@/lib/email');
+        const { generateSurveyThankYouHTML, generateSurveyThankYouText } = await import('@/lib/email-templates');
+        const { getTranslations } = await import('next-intl/server');
+
+        const customerEmail = contactData.email as string;
+        const firstName = contactData.first_name as string;
+        const locale = (contactData.locale as string) || 'en';
+
+        // Get translations for email subject
+        const t = await getTranslations({ locale, namespace: 'emails' });
+
+        const emailHtml = await generateSurveyThankYouHTML({
+          firstName,
+          email: customerEmail,
+          locale,
+        });
+
+        const emailText = await generateSurveyThankYouText({
+          firstName,
+          email: customerEmail,
+          locale,
+        });
+
+        await sendEmail({
+          from: 'Fredonbytes <noreply@fredonbytes.cloud>',
+          to: customerEmail,
+          subject: t('survey.subject'),
+          html: emailHtml,
+          text: emailText,
+        });
+
+        console.log('Survey thank you email sent successfully');
+      } catch (emailError) {
+        console.error('Error sending survey thank you email:', emailError);
+        // Don't fail the request if email fails
+      }
+    }
+
+    // Send admin notification with survey responses
+    try {
+      const { sendEmail } = await import('@/lib/email');
+      const { generateAdminNotificationHTML } = await import('@/lib/email-templates');
+
+      // Fetch questions for admin notification
+      const questionIds = sanitizedResponses.map(r => r.question_id);
+      const { data: questionsData } = await supabase
+        .from('questions')
+        .select('id, question_text, answer_type')
+        .in('id', questionIds);
+
+      if (questionsData) {
+        const formattedResponses = sanitizedResponses.map(response => {
+          const question = questionsData.find((q: {id: string}) => q.id === response.question_id);
+          return {
+            question_id: response.question_id,
+            question_text: question ? (question.question_text as string) : 'Unknown question',
+            answer_value: response.answer_value,
+            answer_type: question ? (question.answer_type as string) : 'text',
+          };
+        });
+
+        const adminEmailHtml = generateAdminNotificationHTML({
+          session_id,
+          timestamp: new Date().toISOString(),
+          responses: formattedResponses,
+        });
+
+        await sendEmail({
+          from: 'Survey System <noreply@fredonbytes.cloud>',
+          to: 'info@fredonbytes.cloud',
+          subject: `New Survey Submission - ${session_id}`,
+          html: adminEmailHtml,
+        });
+
+        console.log('Admin notification email sent successfully');
+      }
+    } catch (emailError) {
+      console.error('Error sending admin notification email:', emailError);
+      // Don't fail the request if email fails
     }
 
     // Success response

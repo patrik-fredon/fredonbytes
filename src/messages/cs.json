@@ -1518,6 +1518,19 @@
       "companyName": "Fredonbytes",
       "tagline": "Vaše komplexní IT řešení",
       "location": "Brno, Česká republika"
+    },
+    "survey": {
+      "subject": "Děkujeme za vaši zpětnou vazbu - Fredonbytes",
+      "thankYou": "Děkujeme za vaši zpětnou vazbu",
+      "feedbackReceived": "Vaše zpětná vazba byla přijata",
+      "greeting": "Děkujeme",
+      "completionMessage": "Obdrželi jsme vaši zpětnou vazbu z průzkumu spokojenosti.",
+      "feedbackValue": "Vaše názory jsou pro nás velmi důležité a pomohou nám neustále zlepšovat naše služby.",
+      "whatNext": "Co bude dál?",
+      "reviewFeedback": "<strong>Přezkoumáme vaši zpětnou vazbu:</strong> Náš tým pečlivě analyzuje vaše odpovědi",
+      "improveServices": "<strong>Implementujeme vylepšení:</strong> Vaše návrhy nám pomohou vylepšit naše služby",
+      "followUp": "<strong>Sledování (pokud je potřeba):</strong> Můžeme vás kontaktovat pro další upřesnění",
+      "gratitude": "Děkujeme, že jste součástí naší cesty k dokonalosti!"
     }
   },
   "form": {

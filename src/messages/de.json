@@ -1587,6 +1587,19 @@
       "companyName": "Fredonbytes",
       "tagline": "Ihr All-in-One IT-Kraftpaket",
       "location": "Brünn, Tschechische Republik"
+    },
+    "survey": {
+      "subject": "Vielen Dank für Ihr Feedback - Fredonbytes",
+      "thankYou": "Vielen Dank für Ihr Feedback",
+      "feedbackReceived": "Ihr Feedback wurde empfangen",
+      "greeting": "Vielen Dank",
+      "completionMessage": "Wir haben Ihr Feedback aus unserer Zufriedenheitsumfrage erhalten.",
+      "feedbackValue": "Ihre Erkenntnisse sind für uns von unschätzbarem Wert und helfen uns, unsere Dienstleistungen zu verbessern und weiterhin außergewöhnliche Ergebnisse für unsere Kunden zu liefern.",
+      "whatNext": "Was passiert als Nächstes?",
+      "reviewFeedback": "<strong>Überprüfung:</strong> Unser Team wird Ihr Feedback sorgfältig prüfen",
+      "improveServices": "<strong>Verbesserung:</strong> Wir werden Ihre Vorschläge nutzen, um unsere Dienstleistungen zu verbessern",
+      "followUp": "<strong>Nachverfolgung:</strong> Falls erforderlich, werden wir uns mit Ihnen in Verbindung setzen, um weitere Informationen zu erhalten",
+      "gratitude": "Ihre Meinung hilft uns, besser zu werden. Vielen Dank, dass Sie sich die Zeit genommen haben, Ihre Gedanken mit uns zu teilen."
     }
   },
   "form": {
