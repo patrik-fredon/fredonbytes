@@ -819,7 +819,8 @@
       "consulting": "Konzultace",
       "software_development": "Vývoj softwaru",
       "marketing": "Marketing",
-      "graphic_design": "Grafický design"
+      "graphic_design": "Grafický design",
+      "web_application": "Webové aplikace"
     },
     "status": {
       "active": "Aktivní",

@@ -819,7 +819,8 @@
       "graphic_design": "Graphic Design",
       "cloud_solution": "Cloud Solution",
       "database": "Database",
-      "consulting": "Consulting"
+      "consulting": "Consulting",
+      "web_application": "Web Application"
     },
     "status": {
       "active": "Active",
