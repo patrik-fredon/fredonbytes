@@ -8,7 +8,7 @@ interface GridBackgroundProps {
 export default function GridBackground({
   density = 40,
   color = "rgba(0, 217, 255, 0.1)",
-  opacity = 0.3,
+  opacity = 0.1,
   className = "",
 }: GridBackgroundProps) {
   return (

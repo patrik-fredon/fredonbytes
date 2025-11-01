@@ -128,14 +128,10 @@ export default async function AboutPage({ params }: Props) {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 relative z-10">
           {/* Page Header */}
           <header className="text-center mb-12 sm:mb-16 lg:mb-20" role="banner">
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight font-mono">
-              <span className="text-neon-cyan">//</span> About{' '}
-              <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-purple bg-clip-text text-transparent">
-                FredonBytes
-              </span>
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight font-mono text-terminal-light">
+              // About FredonBytes
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed px-4 font-mono">
-              <span className="text-neon-purple/50">// </span>
+            <p className="text-base sm:text-lg lg:text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed px-4 font-mono">
               {metaT('description')}
             </p>
           </header>

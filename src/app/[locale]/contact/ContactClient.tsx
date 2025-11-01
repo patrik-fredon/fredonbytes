@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Mail,
   Phone,
@@ -187,13 +187,13 @@ export default function ContactClient({ locale }: ContactClientProps) {
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-2xl mx-auto text-center"
           >
-            <div className="w-20 h-20 mx-auto mb-6 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center">
-              <CheckCircle className="w-10 h-10 text-green-600" />
+            <div className="w-20 h-20 mx-auto mb-6 glass-bg backdrop-blur-glass border-2 border-neon-cyan/40 rounded-full flex items-center justify-center shadow-glow-cyan">
+              <CheckCircle className="w-10 h-10 text-neon-cyan" />
             </div>
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
-              {t("contact.success.title")}
+            <h1 className="text-3xl font-mono font-bold text-terminal-light mb-4">
+              // {t("contact.success.title")}
             </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-300 mb-8">
+            <p className="text-xl text-terminal-light/80 mb-8">
               {t("contact.success.message")}
             </p>
             <Button
@@ -222,10 +222,10 @@ export default function ContactClient({ locale }: ContactClientProps) {
         >
           {/* Page Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h1 className="text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              {t("contact.sectionTitle")}
+            <h1 className="text-3xl lg:text-5xl font-mono font-bold text-terminal-light mb-6">
+              // {t("contact.sectionTitle")}
             </h1>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed mb-8">
               {t("contact.sectionDescription")}
             </p>
             <Button
@@ -243,22 +243,22 @@ export default function ContactClient({ locale }: ContactClientProps) {
             {/* Contact Information */}
             <motion.div variants={itemVariants} className="space-y-8">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
-                  {t("contact.getInTouch")}
+                <h2 className="text-2xl font-mono font-bold text-terminal-light mb-6">
+                  // {t("contact.getInTouch")}
                 </h2>
                 <div className="space-y-6">
                   {/* Email */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                    <div className="w-12 h-12 glass-bg backdrop-blur-glass border-2 border-neon-cyan/40 rounded-lg flex items-center justify-center shadow-glow-cyan-subtle">
+                      <Mail className="w-6 h-6 text-neon-cyan" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                      <h3 className="text-lg font-semibold text-terminal-light">
                         {t("contact.email")}
                       </h3>
                       <a
                         href="mailto:info@fredonbytes.cloud"
-                        className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        className="text-terminal-light/80 hover:text-neon-cyan transition-colors"
                       >
                         info@fredonbytes.cloud
                       </a>
@@ -267,30 +267,30 @@ export default function ContactClient({ locale }: ContactClientProps) {
 
                   {/* Phone */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-green-600 dark:text-green-400" />
+                    <div className="w-12 h-12 glass-bg backdrop-blur-glass border-2 border-neon-purple/40 rounded-lg flex items-center justify-center shadow-glow-purple-subtle">
+                      <Phone className="w-6 h-6 text-neon-purple" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                      <h3 className="text-lg font-semibold text-terminal-light">
                         {t("contact.phone")}
                       </h3>
                       <a
                         href="tel:+420799027984"
-                        className="text-slate-600 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                        className="text-terminal-light/80 hover:text-neon-purple transition-colors"
                       >
                         +420 799 027 984
                       </a>
                     </div>
                   </div>                  {/* Location */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                    <div className="w-12 h-12 glass-bg backdrop-blur-glass border-2 border-neon-cyan/40 rounded-lg flex items-center justify-center shadow-glow-cyan-subtle">
+                      <MapPin className="w-6 h-6 text-neon-cyan" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                      <h3 className="text-lg font-semibold text-terminal-light">
                         {t("contact.location")}
                       </h3>
-                      <p className="text-slate-600 dark:text-slate-400">
+                      <p className="text-terminal-light/80">
                         Brno, Czech Republic
                       </p>
                     </div>
@@ -298,14 +298,14 @@ export default function ContactClient({ locale }: ContactClientProps) {
 
                   {/* Response Time */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                    <div className="w-12 h-12 glass-bg backdrop-blur-glass border-2 border-neon-purple/40 rounded-lg flex items-center justify-center shadow-glow-purple-subtle">
+                      <Clock className="w-6 h-6 text-neon-purple" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                      <h3 className="text-lg font-semibold text-terminal-light">
                         {t("contact.responseTime")}
                       </h3>
-                      <p className="text-slate-600 dark:text-slate-400">
+                      <p className="text-terminal-light/80">
                         {t("contact.responseTimeValue")}
                       </p>
                     </div>
@@ -314,117 +314,152 @@ export default function ContactClient({ locale }: ContactClientProps) {
               </div>
 
               {/* Security Notice */}
-              <div className="bg-slate-50 dark:bg-slate-800 rounded-lg p-6">
+              <div className="glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg p-6">
                 <div className="flex items-center space-x-3 mb-3">
-                  <Shield className="w-5 h-5 text-green-600" />
-                  <h3 className="font-semibold text-slate-900 dark:text-white">
+                  <Shield className="w-5 h-5 text-neon-cyan" />
+                  <h3 className="font-mono font-semibold text-terminal-light">
                     {t("contact.secureConfidential.title")}
                   </h3>
                 </div>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-sm text-terminal-light/80">
                   {t("contact.secureConfidential.message")}
                 </p>
               </div>
             </motion.div>            {/* Multi-step Form */}
             <motion.div variants={itemVariants}>
-              <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8">
+              <div className="glass-bg backdrop-blur-glass border-2 border-neon-cyan/40 rounded-2xl p-8 shadow-glow-cyan-subtle">
                 {/* Progress Bar */}
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <span className="text-sm font-mono font-medium text-terminal-light/80">
                       {t("contact.step")} {currentStep} {t("contact.of")} 3
                     </span>
-                    <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <span className="text-sm font-mono font-medium text-terminal-light/80">
                       {Math.round((currentStep / 3) * 100)}%{" "}
                       {t("contact.complete")}
                     </span>
                   </div>
-                  <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                  <div className="w-full bg-terminal-light/10 rounded-full h-2">
                     <div
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full transition-all duration-500"
+                      className="bg-gradient-to-r from-neon-cyan to-neon-purple h-2 rounded-full transition-all duration-500 shadow-glow-cyan-subtle"
                       style={{ width: `${(currentStep / 3) * 100}%` }}
                     />
                   </div>
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  {/* Step 1: Basic Information */}
-                  {currentStep === 1 && (
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      className="space-y-6"
-                    >
+                  <AnimatePresence mode="wait">
+                    {/* Step 1: Basic Information */}
+                    {currentStep === 1 && (
+                      <motion.div
+                        key="step-1"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="space-y-6"
+                      >
                       <div className="flex items-center space-x-3 mb-6">
-                        <User className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                          {t("contact.basicInfo")}
+                        <User className="w-6 h-6 text-neon-cyan" />
+                        <h3 className="text-xl font-mono font-bold text-terminal-light">
+                          // {t("contact.basicInfo")}
                         </h3>
                       </div>                      <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                             {t("contact.firstName")} *
                           </label>
                           <input
                             {...register("firstName")}
-                            className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                            className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light placeholder:text-terminal-light/50"
                             placeholder={t("contact.firstNamePlaceholder")}
                           />
-                          {errors.firstName && (
-                            <p className="mt-1 text-sm text-red-600">
-                              {errors.firstName.message}
-                            </p>
-                          )}
+                          <AnimatePresence>
+                            {errors.firstName && (
+                              <motion.p
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.2 }}
+                                className="mt-1 text-sm text-red-600"
+                              >
+                                {errors.firstName.message}
+                              </motion.p>
+                            )}
+                          </AnimatePresence>
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                             {t("contact.lastName")} *
                           </label>
                           <input
                             {...register("lastName")}
-                            className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                            className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light placeholder:text-terminal-light/50"
                             placeholder={t("contact.lastNamePlaceholder")}
                           />
-                          {errors.lastName && (
-                            <p className="mt-1 text-sm text-red-600">
-                              {errors.lastName.message}
-                            </p>
-                          )}
+                          <AnimatePresence>
+                            {errors.lastName && (
+                              <motion.p
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.2 }}
+                                className="mt-1 text-sm text-red-600"
+                              >
+                                {errors.lastName.message}
+                              </motion.p>
+                            )}
+                          </AnimatePresence>
                         </div>
                       </div>                      <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                           {t("contact.email")} *
                         </label>
                         <input
                           {...register("email")}
                           type="email"
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                          className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light placeholder:text-terminal-light/50"
                           placeholder={t("contact.emailPlaceholder")}
                         />
-                        {errors.email && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.email.message}
-                          </p>
-                        )}
+                        <AnimatePresence>
+                          {errors.email && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ duration: 0.2 }}
+                              className="mt-1 text-sm text-red-600"
+                            >
+                              {errors.email.message}
+                            </motion.p>
+                          )}
+                        </AnimatePresence>
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                           {t("contact.phone")} *
                         </label>
                         <input
                           {...register("phone")}
                           type="tel"
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                          className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light placeholder:text-terminal-light/50"
                           placeholder={t("contact.phonePlaceholder")}
                         />
-                        {errors.phone && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.phone.message}
-                          </p>
-                        )}
+                        <AnimatePresence>
+                          {errors.phone && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ duration: 0.2 }}
+                              className="mt-1 text-sm text-red-600"
+                            >
+                              {errors.phone.message}
+                            </motion.p>
+                          )}
+                        </AnimatePresence>
                       </div>
 
                       <Button
@@ -441,36 +476,38 @@ export default function ContactClient({ locale }: ContactClientProps) {
                   )}                  {/* Step 2: Project Details */}
                   {currentStep === 2 && (
                     <motion.div
+                      key="step-2"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
                       className="space-y-6"
                     >
                       <div className="flex items-center space-x-3 mb-6">
-                        <Building className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                          {t("contact.projectDetails")}
+                        <Building className="w-6 h-6 text-neon-cyan" />
+                        <h3 className="text-xl font-mono font-bold text-terminal-light">
+                          // {t("contact.projectDetails")}
                         </h3>
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                           {t("contact.company")}
                         </label>
                         <input
                           {...register("company")}
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                          className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light placeholder:text-terminal-light/50"
                           placeholder={t("contact.companyPlaceholder")}
                         />
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                           {t("contact.projectType")} *
                         </label>
                         <select
                           {...register("projectType")}
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                          className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light"
                         >
                           <option value="">
                             {t("contact.selectProjectType")}
@@ -481,19 +518,27 @@ export default function ContactClient({ locale }: ContactClientProps) {
                             </option>
                           ))}
                         </select>
-                        {errors.projectType && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.projectType.message}
-                          </p>
-                        )}
+                        <AnimatePresence>
+                          {errors.projectType && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ duration: 0.2 }}
+                              className="mt-1 text-sm text-red-600"
+                            >
+                              {errors.projectType.message}
+                            </motion.p>
+                          )}
+                        </AnimatePresence>
                       </div>                      <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                             {t("contact.budget")} *
                           </label>
                           <select
                             {...register("budget")}
-                            className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                            className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light"
                           >
                             <option value="">
                               {t("contact.selectBudget")}
@@ -504,20 +549,28 @@ export default function ContactClient({ locale }: ContactClientProps) {
                               </option>
                             ))}
                           </select>
-                          {errors.budget && (
-                            <p className="mt-1 text-sm text-red-600">
-                              {errors.budget.message}
-                            </p>
-                          )}
+                          <AnimatePresence>
+                            {errors.budget && (
+                              <motion.p
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.2 }}
+                                className="mt-1 text-sm text-red-600"
+                              >
+                                {errors.budget.message}
+                              </motion.p>
+                            )}
+                          </AnimatePresence>
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                             {t("contact.timeline")} *
                           </label>
                           <select
                             {...register("timeline")}
-                            className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                            className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light"
                           >
                             <option value="">
                               {t("contact.selectTimeline")}
@@ -528,11 +581,19 @@ export default function ContactClient({ locale }: ContactClientProps) {
                               </option>
                             ))}
                           </select>
-                          {errors.timeline && (
-                            <p className="mt-1 text-sm text-red-600">
-                              {errors.timeline.message}
-                            </p>
-                          )}
+                          <AnimatePresence>
+                            {errors.timeline && (
+                              <motion.p
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.2 }}
+                                className="mt-1 text-sm text-red-600"
+                              >
+                                {errors.timeline.message}
+                              </motion.p>
+                            )}
+                          </AnimatePresence>
                         </div>
                       </div>                      <div className="flex space-x-4">
                         <Button
@@ -560,39 +621,49 @@ export default function ContactClient({ locale }: ContactClientProps) {
                   )}                  {/* Step 3: Requirements & Message */}
                   {currentStep === 3 && (
                     <motion.div
+                      key="step-3"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
                       className="space-y-6"
                     >
                       <div className="flex items-center space-x-3 mb-6">
-                        <MessageSquare className="w-6 h-6 text-blue-600" />
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                          {t("contact.projectRequirements")}
+                        <MessageSquare className="w-6 h-6 text-neon-cyan" />
+                        <h3 className="text-xl font-mono font-bold text-terminal-light">
+                          // {t("contact.projectRequirements")}
                         </h3>
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                           {t("contact.projectDescription")} *
                         </label>
                         <textarea
                           {...register("message")}
                           rows={4}
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                          className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light placeholder:text-terminal-light/50"
                           placeholder={t(
                             "contact.projectDescriptionPlaceholder"
                           )}
                         />
-                        {errors.message && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {errors.message.message}
-                          </p>
-                        )}
+                        <AnimatePresence>
+                          {errors.message && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ duration: 0.2 }}
+                              className="mt-1 text-sm text-red-600"
+                            >
+                              {errors.message.message}
+                            </motion.p>
+                          )}
+                        </AnimatePresence>
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">
+                        <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-3">
                           {t("contact.additionalRequirements")}
                         </label>
                         <div className="grid grid-cols-2 gap-3">
@@ -605,9 +676,9 @@ export default function ContactClient({ locale }: ContactClientProps) {
                                 type="checkbox"
                                 value={req}
                                 {...register("requirements")}
-                                className="w-4 h-4 text-blue-600 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 rounded focus:ring-blue-500"
+                                className="w-4 h-4 accent-neon-cyan bg-terminal-dark/50 border-2 border-neon-cyan/30 rounded focus:ring-neon-cyan focus:ring-2"
                               />
-                              <span className="text-sm text-slate-700 dark:text-slate-300">
+                              <span className="text-sm text-terminal-light/80">
                                 {req}
                               </span>
                             </label>
@@ -618,9 +689,9 @@ export default function ContactClient({ locale }: ContactClientProps) {
                           <input
                             type="checkbox"
                             {...register("newsletter")}
-                            className="w-4 h-4 text-blue-600 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 rounded focus:ring-blue-500"
+                            className="w-4 h-4 accent-neon-cyan bg-terminal-dark/50 border-2 border-neon-cyan/30 rounded focus:ring-neon-cyan focus:ring-2"
                           />
-                          <span className="text-sm text-slate-700 dark:text-slate-300">
+                          <span className="text-sm text-terminal-light/80">
                             {t("contact.subscribeNewsletter")}
                           </span>
                         </label>
@@ -629,17 +700,25 @@ export default function ContactClient({ locale }: ContactClientProps) {
                           <input
                             type="checkbox"
                             {...register("privacy")}
-                            className="w-4 h-4 mt-1 text-blue-600 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 rounded focus:ring-blue-500"
+                            className="w-4 h-4 mt-1 accent-neon-cyan bg-terminal-dark/50 border-2 border-neon-cyan/30 rounded focus:ring-neon-cyan focus:ring-2"
                           />
-                          <span className="text-sm text-slate-700 dark:text-slate-300">
+                          <span className="text-sm text-terminal-light/80">
                             {t("contact.agreePolicies")}
                           </span>
                         </label>
-                        {errors.privacy && (
-                          <p className="text-sm text-red-600">
-                            {errors.privacy.message}
-                          </p>
-                        )}
+                        <AnimatePresence>
+                          {errors.privacy && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ duration: 0.2 }}
+                              className="text-sm text-red-600"
+                            >
+                              {errors.privacy.message}
+                            </motion.p>
+                          )}
+                        </AnimatePresence>
                       </div>
 
                       <div className="flex space-x-4">
@@ -666,6 +745,7 @@ export default function ContactClient({ locale }: ContactClientProps) {
                       </div>
                     </motion.div>
                   )}
+                  </AnimatePresence>
                 </form>
               </div>
             </motion.div>

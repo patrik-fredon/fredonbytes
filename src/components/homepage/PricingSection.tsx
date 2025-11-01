@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Button } from "../common/Button";
-import CommandButton from "../dev-ui/CommandButton";
-
+import GlassCard from "../dev-ui/GlassCard";
 import { Link } from "@/i18n/navigation";
 
 
@@ -50,24 +49,24 @@ export default function PricingSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <div className="bg-terminal-darker border border-neon-purple/20 rounded-xl px-8 py-16 shadow-glow-purple-subtle">
+          <GlassCard className="px-8 py-16" glowColor="purple" strongGlow>
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 justify-center items-center gap-12">
               <div className="text-center md:text-left">
-                <h2 className="text-3xl lg:text-5xl font-extrabold mb-6 leading-tight font-mono">
-                  <span className="text-neon-cyan">//</span>{" "}
-                  <span className="bg-gradient-to-r from-neon-cyan to-electric-purple bg-clip-text text-transparent">
-                    {t("homepage.pricingSection.title")}
-                  </span>
+                <h2 className="text-3xl lg:text-5xl font-extrabold mb-6 leading-tight font-mono text-terminal-light">
+                  <span className="text-neon-purple">//</span>{" "}
+                  {t("homepage.pricingSection.title")}
                 </h2>
-                <p className="text-lg lg:text-xl text-slate-300 leading-relaxed font-mono mb-8">
+                <p className="text-lg lg:text-xl text-terminal-light/80 leading-relaxed mb-8">
                   {t("homepage.pricingSection.description")}
                 </p>
 
                 <Link href="/pricing" className="inline-block">
                   <Button
                     variant="gradient"
+                    size="xl"
+                    className="font-mono"
                   >
-                    $ {t("homepage.pricingSection.cta")}
+                    $ {t("homepage.pricingSection.cta")} --explore
                   </Button>
                 </Link>
               </div>
@@ -82,7 +81,7 @@ export default function PricingSection() {
                 />
               </div>
             </div>
-          </div>
+          </GlassCard>
         </motion.div>
       </div >
     </section >

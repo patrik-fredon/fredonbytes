@@ -126,8 +126,8 @@ export default function HeroSection() {
                 fill
                 className="object-contain"
                 priority
-                quality={85}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 448px, 672px"
+                quality={100}
+                sizes="(max-width: 840px) 120vw, (max-width: 1240px) 648px, 672px"
               />
             </div>
           </motion.div>
@@ -160,10 +160,10 @@ export default function HeroSection() {
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-7xl font-bold text-terminal-light mb-6 leading-tight font-mono"
           >
             {t("hero.title")}
-            <span className="block bg-gradient-to-r from-neon-cyan via-electric-purple to-electric-purple bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent mt-2">
               {t("hero.titleHighlight")}
             </span>
           </motion.h1>
@@ -171,7 +171,7 @@ export default function HeroSection() {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-xl sm:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl sm:text-2xl text-terminal-light/80 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
             {t("hero.subtitle")}
           </motion.p>
@@ -181,18 +181,18 @@ export default function HeroSection() {
             variants={itemVariants}
             className="flex flex-wrap justify-center gap-6 mb-10"
           >
-            <div className="flex items-center space-x-2 text-white">
-              <Code className="w-5 h-5 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
+            <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
+              <Code className="w-5 h-5 text-neon-cyan" />
               <span className="font-medium font-mono">
                 {t("hero.valueProps.development")}
               </span>
             </div>
-            <div className="flex items-center space-x-2 text-white">
-              <Zap className="w-5 h-5 text-electric-purple drop-shadow-[0_0_8px_currentColor]" />
+            <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
+              <Zap className="w-5 h-5 text-neon-purple" />
               <span className="font-medium font-mono">{t("hero.valueProps.design")}</span>
             </div>
-            <div className="flex items-center space-x-2 text-white">
-              <Globe className="w-5 h-5 text-code-green drop-shadow-[0_0_8px_currentColor]" />
+            <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
+              <Globe className="w-5 h-5 text-neon-cyan" />
               <span className="font-medium font-mono">
                 {t("hero.valueProps.marketing")}
               </span>
@@ -205,12 +205,12 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
             <Link href="/contact">
-              <Button variant="neon-cyan" size="lg">
-                $ start_project
+              <Button variant="gradient" size="xl" className="font-mono">
+                $ start_project --now
               </Button>
             </Link>
             <Link href="/projects">
-              <Button variant="secondary" size="lg">
+              <Button variant="secondary" size="xl" className="font-mono">
                 $ view_portfolio
               </Button>
             </Link>

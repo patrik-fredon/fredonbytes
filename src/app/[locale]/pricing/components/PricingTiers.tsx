@@ -59,7 +59,7 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
   if (tiers.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-slate-600 dark:text-slate-300">
+        <p className="text-terminal-light/80 font-mono">
           {t('noTiersAvailable')}
         </p>
       </div>
@@ -75,34 +75,42 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
           <motion.div
             key={tier.id}
             variants={itemVariants}
-            className={`relative  bg-terminal-dark rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${tier.popular ? "ring-2 ring-purple-900/50 scale-105" : ""
-              }`}
+            whileHover={{ 
+              y: -4, 
+              scale: tier.popular ? 1.05 : 1.02,
+              transition: { duration: 0.2, ease: "easeOut" } 
+            }}
+            className={`relative bg-glass-bg backdrop-blur-glass rounded-2xl p-8 border-2 ${
+              tier.popular 
+                ? "border-neon-purple shadow-glow-purple-strong scale-105" 
+                : "border-neon-cyan/40 shadow-glow-cyan-subtle hover:border-neon-cyan/50 hover:shadow-glow-cyan"
+            }`}
           >
             {tier.popular && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <div className="bg-purple-950/80 border-2 border-purple-950/20 rounded-xl p-6 inset-shadow-sm inset-shadow-slate-950/50 hover:shadow-xl hover:shadow-purple-950/50 px-4 py-2  text-sm font-medium flex items-center gap-1">
-                  <Star className="w-4 h-4" />
+                <div className="bg-neon-purple/20 border-2 border-neon-purple rounded-xl px-4 py-2 shadow-glow-purple text-sm font-semibold flex items-center gap-2 font-mono text-neon-purple">
+                  <Star className="w-4 h-4 fill-current" />
                   {t('mostPopular')}
                 </div>
               </div>
             )}
 
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+              <h3 className="text-2xl font-bold text-terminal-light mb-2 font-mono">
                 {getLocalizedText(tier.name, locale)}
               </h3>
               <div className="mb-4">
                 {price !== null ? (
-                  <span className="text-4xl font-bold text-slate-900 dark:text-white">
+                  <span className="text-4xl font-bold text-neon-cyan font-mono">
                     {formatPrice(price, currency)}
                   </span>
                 ) : (
-                  <span className="text-4xl font-bold text-slate-900 dark:text-white">
+                  <span className="text-4xl font-bold text-neon-cyan font-mono">
                     {t('customPricing')}
                   </span>
                 )}
               </div>
-              <p className="text-slate-600 dark:text-slate-400 text-sm">
+              <p className="text-terminal-light/80 text-sm">
                 {getLocalizedText(tier.description, locale)}
               </p>
             </div>
@@ -113,8 +121,8 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
                   key={featureIndex}
                   className="flex items-center space-x-3"
                 >
-                  <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-slate-700 dark:text-slate-300 text-sm">
+                  <Check className="w-5 h-5 text-neon-cyan flex-shrink-0" />
+                  <span className="text-terminal-light/80 text-sm">
                     {t(`features.${feature}`)}
                   </span>
                 </li>
@@ -122,13 +130,13 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
             </ul>
 
             <Button
-              variant={tier.popular ? "gradient" : "outline"}
+              variant={tier.popular ? "gradient" : "secondary"}
               size="lg"
-              className="w-full"
+              className="w-full font-mono"
               rightIcon={<ArrowRight className="w-4 h-4" />}
               onClick={handleGetStarted}
             >
-              {getLocalizedText(tier.cta_text, locale)}
+              $ {getLocalizedText(tier.cta_text, locale)}
             </Button>
           </motion.div>
         );

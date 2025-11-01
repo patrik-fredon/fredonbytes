@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import React from "react";
 
 import CookieSettingsLink from "./CookieSettingsLink";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -220,10 +221,14 @@ export default function Footer() {
               <span className="text-neon-cyan/70">{"// "}</span>
               {t("footer.copyright", { year: currentYear })}
             </div>
-            <div className="flex items-center space-x-6 text-terminal-muted text-sm font-mono">
-              <span>{t("footer.taglines.madeWith")}</span>
-              <span className="text-neon-cyan">{"•"}</span>
-              <span>{t("footer.taglines.motto")}</span>
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center space-x-6 text-terminal-muted text-sm font-mono">
+                <span>{t("footer.taglines.madeWith")}</span>
+                <span className="text-neon-cyan">{"•"}</span>
+                <span>{t("footer.taglines.motto")}</span>
+              </div>
+              <div className="h-6 w-px bg-neon-cyan/20" />
+              <ThemeSwitcher />
             </div>
           </div>
         </div>

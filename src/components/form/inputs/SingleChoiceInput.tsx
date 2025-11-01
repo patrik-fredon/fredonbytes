@@ -103,13 +103,13 @@ export default function SingleChoiceInput({
           <label
             key={option.id}
             htmlFor={inputId}
-            className={`flex items-center gap-3 p-4 min-h-[44px] rounded-md border transition-all duration-[180ms] cursor-pointer
+            className={`flex items-center gap-3 p-4 min-h-[44px] rounded-lg border-2 transition-all duration-200 cursor-pointer
                        ${isSelected
-                ? 'border-neon-cyan bg-terminal-dark shadow-glow-cyan-subtle'
-                : 'border-neon-cyan/20 bg-terminal-dark hover:border-neon-cyan/50 hover:shadow-glow-cyan-subtle'
+                ? 'border-neon-cyan bg-glass-bg backdrop-blur-glass shadow-glow-cyan'
+                : 'border-neon-cyan/30 bg-glass-bg backdrop-blur-glass hover:border-neon-cyan/50 hover:shadow-glow-cyan-subtle'
               }
                        ${error ? 'border-error-red' : ''}
-                       focus-within:ring-2 focus-within:ring-neon-cyan`}
+                       focus-within:ring-2 focus-within:ring-neon-cyan/50`}
           >
             {/* Custom Radio Button */}
             <div className="relative flex items-center justify-center">
@@ -124,12 +124,12 @@ export default function SingleChoiceInput({
                 aria-label={option.option_text}
               />
               <div
-                className={`w-5 h-5 rounded-full border-2 transition-all duration-[180ms] flex items-center justify-center
+                className={`w-5 h-5 rounded-full border-2 transition-all duration-200 flex items-center justify-center
                            ${isSelected
-                    ? 'border-neon-cyan bg-neon-cyan'
-                    : 'border-terminal-muted bg-terminal-dark'
+                    ? 'border-neon-cyan bg-neon-cyan shadow-glow-cyan-subtle'
+                    : 'border-neon-cyan/40 bg-terminal-dark'
                   }
-                           peer-focus:ring-2 peer-focus:ring-neon-cyan`}
+                           peer-focus:ring-2 peer-focus:ring-neon-cyan/50`}
               >
                 {isSelected && (
                   <div className="w-2 h-2 rounded-full bg-terminal-dark" />
@@ -139,10 +139,10 @@ export default function SingleChoiceInput({
 
             {/* Option Text */}
             <span
-              className={`flex-1 text-base font-mono transition-colors duration-[180ms]
+              className={`flex-1 text-base font-mono transition-colors duration-200
                          ${isSelected
-                  ? 'text-white font-medium'
-                  : 'text-terminal-muted'
+                  ? 'text-terminal-light font-medium'
+                  : 'text-terminal-light/70'
                 }`}
             >
               {option.option_text}

@@ -16,12 +16,12 @@ export default function CurrencyToggle({ currency, onCurrencyChange }: CurrencyT
 
   return (
     <div className="flex justify-center items-center gap-2 mb-8">
-      <span className="text-sm text-slate-600 dark:text-slate-400 mr-3">
+      <span className="text-sm text-terminal-light/70 mr-3 font-mono">
         {t('currency.label')}
       </span>
-      <div className="relative bg-slate-200 dark:bg-slate-700 rounded-lg p-1">
+      <div className="relative bg-glass-bg backdrop-blur-glass border border-neon-cyan/30 rounded-lg p-1">
         <motion.div
-          className="absolute top-1 bottom-1 bg-white dark:bg-slate-600 rounded-md shadow-sm"
+          className="absolute top-1 bottom-1 bg-neon-cyan/20 border border-neon-cyan rounded-md shadow-glow-cyan-subtle"
           initial={false}
           animate={{
             left: currency === 'EUR' ? '4px' : '50%',
@@ -31,20 +31,20 @@ export default function CurrencyToggle({ currency, onCurrencyChange }: CurrencyT
         />
         <div className="relative flex">
           <button
-            className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors duration-200 ${
+            className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors duration-200 font-mono ${
               currency === 'EUR'
-                ? 'text-slate-900 dark:text-white'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'text-neon-cyan'
+                : 'text-terminal-light/70 hover:text-terminal-light'
             }`}
             onClick={() => onCurrencyChange('EUR')}
           >
             EUR (€)
           </button>
           <button
-            className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors duration-200 ${
+            className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors duration-200 font-mono ${
               currency === 'CZK'
-                ? 'text-slate-900 dark:text-white'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'text-neon-cyan'
+                : 'text-terminal-light/70 hover:text-terminal-light'
             }`}
             onClick={() => onCurrencyChange('CZK')}
           >

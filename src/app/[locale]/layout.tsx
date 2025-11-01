@@ -15,6 +15,7 @@ import "@fontsource/jetbrains-mono/700.css";
 import ClientLayoutWrapper from "../../components/ClientLayoutWrapper";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
+import GridBackground from "@/components/dev-ui/GridBackground";
 
 // Dynamic imports for heavy components
 const AnimatedBackground = dynamic(
@@ -140,6 +141,20 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale} className="scroll-smooth">
       <head>
         <meta name="apple-mobile-web-app-title" content="FredonBytes" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme') || 'dark';
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {
+                  document.documentElement.setAttribute('data-theme', 'dark');
+                }
+              })();
+            `,
+          }}
+        />
       </head>
       <body
         className={`${inter.variable} antialiased min-h-screen flex flex-col relative`}
@@ -147,6 +162,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <NextIntlClientProvider messages={messages}>
           <ClientLayoutWrapper>
             <AnimatedBackground />
+            <GridBackground />
             <Header />
             <main className="flex-1 pt-16 lg:pt-20 relative z-10">
               {children}

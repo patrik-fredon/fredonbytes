@@ -50,16 +50,16 @@ export default function FormNavigation({
       {isOnQuestion && (
         <div className="mb-6 space-y-2">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-mono text-neon-cyan">
+            <p className="text-sm font-mono text-neon-cyan font-semibold">
               $ Question {currentStep}/{totalSteps}
             </p>
-            <p className="text-sm font-mono text-terminal-muted">
+            <p className="text-sm font-mono text-terminal-light/70">
               {Math.round((currentStep / totalSteps) * 100)}%
             </p>
           </div>
-          <div className="h-1.5 bg-terminal-dark rounded-full border border-neon-cyan/30 overflow-hidden">
+          <div className="h-2 bg-glass-bg backdrop-blur-glass rounded-full border border-neon-cyan/40 overflow-hidden shadow-glow-cyan-subtle">
             <div 
-              className="h-full bg-neon-cyan shadow-glow-cyan-subtle transition-all duration-300"
+              className="h-full bg-gradient-to-r from-neon-cyan to-neon-purple shadow-glow-cyan transition-all duration-300 ease-out"
               style={{ width: `${(currentStep / totalSteps) * 100}%` }}
             />
           </div>

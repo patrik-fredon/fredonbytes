@@ -64,13 +64,13 @@ export default function LongTextInput({
         placeholder="$ Enter your detailed answer..."
         rows={MIN_ROWS}
         maxLength={MAX_LENGTH}
-        className={`w-full px-4 py-3 rounded-md border transition-all duration-[180ms] resize-none
-                   bg-terminal-dark font-mono
-                   text-white placeholder:text-terminal-muted
-                   focus:outline-none focus:ring-2 focus:ring-neon-cyan focus:shadow-glow-cyan-subtle
+        className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-200 resize-none
+                   bg-glass-bg backdrop-blur-glass font-mono
+                   text-terminal-light placeholder:text-terminal-light/50
+                   focus:outline-none focus:ring-2 focus:ring-neon-cyan/50 focus:shadow-glow-cyan
                    ${error
             ? 'border-error-red focus:ring-error-red focus:shadow-glow-red-subtle'
-            : 'border-neon-cyan/30 focus:border-neon-cyan'
+            : 'border-neon-cyan/40 focus:border-neon-cyan'
           }`}
         style={{ minHeight: `${MIN_ROWS * 1.5}rem` }}
         aria-label={questionText}
@@ -82,8 +82,8 @@ export default function LongTextInput({
       {/* Character Counter */}
       <div
         id={`char-count-${questionId}`}
-        className={`text-sm text-right font-mono transition-colors duration-[180ms]
-                   ${isFocused ? 'text-neon-cyan' : 'text-terminal-muted'}
+        className={`text-sm text-right font-mono transition-colors duration-200
+                   ${isFocused ? 'text-neon-cyan' : 'text-terminal-light/70'}
                    ${remainingChars < 50 ? 'text-warning-amber font-medium' : ''}
                    ${remainingChars === 0 ? 'text-error-red font-semibold' : ''}`}
         aria-live="polite"

@@ -185,7 +185,7 @@ export default function ServicesSection() {
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-mono">
               <span className="text-neon-cyan">//</span>{" "}
-              <span className="bg-gradient-to-r from-neon-cyan to-electric-purple bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
                 {t("services.title")}
               </span>
             </h2>
@@ -202,7 +202,7 @@ export default function ServicesSection() {
                   key={category.id}
                   onClick={() => setActiveTab(category.id)}
                   className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-[180ms] ${activeTab === category.id
-                    ? "bg-neon-cyan/20 text-neon-cyan border border-neon-cyan shadow-glow-cyan-subtle"
+                    ? "bg-neon-cyan/20 text-neon-purple border border-neon-purple shadow-glow-purple-subtle"
                     : "text-slate-400 hover:text-white hover:bg-slate-800/50"
                     }`}
                 >
@@ -212,27 +212,7 @@ export default function ServicesSection() {
             </div>
           </motion.div>
 
-          {/* Stats - Terminal Styled */}
-          <motion.div variants={itemVariants} className="m-16">
-            <div className="bg-terminal-dark border border-neon-cyan/20 rounded-xl p-8 shadow-glow-cyan-subtle">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {stats.map((stat, index) => {
-                  const Icon = stat.icon;
-                  return (
-                    <div key={index} className="text-center">
-                      <div className="w-14 h-14 mx-auto mb-4 bg-slate-950/50 rounded-full flex items-center justify-center border border-neon-cyan/30">
-                        <Icon className="w-8 h-8 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
-                      </div>
-                      <div className="text-2xl font-bold mb-2 text-white font-mono">
-                        {stat.number}
-                      </div>
-                      <div className="text-slate-400 font-mono text-sm">{stat.label}</div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
+
           {/* Services Grid - TerminalWindow Cards */}
           <motion.div
             variants={itemVariants}
@@ -247,14 +227,26 @@ export default function ServicesSection() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="group hover:-translate-y-2 transition-transform duration-[180ms]"
+                  whileHover={{ 
+                    y: -8, 
+                    transition: { duration: 0.2, ease: "easeOut" } 
+                  }}
+                  className="group"
                 >
                   <TerminalWindow title={service.title} className="h-full">
                     <div className="p-4 space-y-4">
                       <div className="flex items-center space-x-3">
-                        <div className={`w-12 h-12 rounded-xl ${service.iconBg} flex items-center justify-center border border-neon-cyan/20`}>
+                        <motion.div 
+                          className={`w-12 h-12 rounded-xl ${service.iconBg} flex items-center justify-center border border-neon-cyan/20`}
+                          whileHover={{ 
+                            scale: 1.1, 
+                            borderColor: "rgba(0, 217, 255, 0.5)",
+                            boxShadow: "0 0 20px rgba(0, 217, 255, 0.3)",
+                            transition: { duration: 0.2 } 
+                          }}
+                        >
                           <Icon className={`w-8 h-8 ${service.iconColor} drop-shadow-[0_0_10px_currentColor]`} />
-                        </div>
+                        </motion.div>
                         <h3 className="text-lg font-bold text-white font-mono">
                           {service.title}
                         </h3>

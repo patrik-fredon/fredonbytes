@@ -66,25 +66,25 @@ export default function AnimatedBackground() {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Base gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-terminal-darker via-terminal-dark to-terminal-dark" />
+      <div className="absolute inset-0  bg-gradient-to-br from-slate-900/70 to-slate-950/50" />
 
       {/* Grid pattern overlay */}
       <div className="absolute inset-0  opacity-30" />
 
       {/* Large animated gradient blobs - Dev themed */}
       <motion.div
-        className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-neon-cyan/30 to-neon-purple/30 rounded-full filter blur-3xl opacity-20"
+        className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10 rounded-full filter blur-3xl opacity-5"
         variants={pulseVariants}
         animate="animate"
       />
       <motion.div
-        className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-neon-purple/30 to-neon-cyan/30 rounded-full filter blur-3xl opacity-20"
+        className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-neon-purple/10 to-neon-cyan/10 rounded-full filter blur-3xl opacity-5"
         variants={pulseVariants}
         animate="animate"
         transition={{ delay: 1 }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 rounded-full filter blur-3xl opacity-10"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] bg-gradient-to-br from-slate-950/20 to-neon-purple/20 rounded-full filter blur-3xl opacity-10"
         variants={pulseVariants}
         animate="animate"
         transition={{ delay: 0.5 }}

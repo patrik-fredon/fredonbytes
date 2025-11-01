@@ -28,7 +28,7 @@ export default async function ProjectsPage({ params }: Props) {
   const t = await getTranslations('projects');
 
   return (
-    <main className="min-h-screen bg-terminal-dark relative">
+    <main className="min-h-screen relative">
       {/* Grid Background */}
       <div className="absolute inset-0">
         <GridBackground />
@@ -37,12 +37,10 @@ export default async function ProjectsPage({ params }: Props) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 relative z-10">
         {/* Page Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6 font-mono">
-            <span className="bg-gradient-to-r from-neon-cyan via-electric-purple to-electric-purple bg-clip-text text-transparent">
-              {t('title')}
-            </span>
+          <h1 className="text-4xl lg:text-6xl font-bold mb-6 font-mono text-terminal-light">
+            <span className="text-neon-cyan">//</span> {t('title')}
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-mono">
+          <p className="text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed">
             {t('subtitle')}
           </p>
         </div>

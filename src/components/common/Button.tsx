@@ -10,16 +10,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100',
-        destructive: 'bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700',
-        outline: 'border border-slate-300 bg-transparent hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800',
-        secondary: 'bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700',
-        ghost: 'hover:bg-slate-100 dark:hover:bg-slate-800',
-        link: 'text-slate-900 underline-offset-4 hover:underline dark:text-white',
-        gradient: 'bg-purple-500/30 text-white font-extrabold hover:from-blue-900 hover:to-purple-900 hover:shadow-lg hover:shadow-blue-900/30 inset-shadow-2xs inset-shadow-slate-950 border border-purple-500/20',
+        gradient: 'relative bg-neon-purple/50 border-2 border-slate-950/35 rounded-xl shadow-lg inset-shadow-sm inset-shadow-slate-950/80 hover:shadow-slate-950 text-white font-mono',
+        'neon-cyan': 'bg-neon-cyan text-terminal-dark border border-neon-cyan/70 hover:shadow-glow-cyan-strong hover:brightness-110 active:brightness-90 font-semibold',
+        'neon-purple': 'bg-neon-purple text-white border border-neon-purple/70 hover:shadow-glow-purple-strong hover:brightness-110 active:brightness-90 font-semibold',
+        secondary: 'bg-glass-bg backdrop-blur-glass border border-neon-cyan/20 text-terminal-light hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle hover:bg-glass-bg/90',
+        ghost: 'relative bg-neon-cyan/50 border-2 border-slate-950/35 rounded-xl shadow-lg inset-shadow-sm inset-shadow-slate-950/80 hover:shadow-slate-950 text-white font-mono',
+        outline: 'border border-neon-cyan/30 bg-transparent text-terminal-light hover:bg-neon-cyan/10 hover:border-neon-cyan/50 hover:shadow-glow-cyan-subtle',
         terminal: 'bg-terminal-dark text-neon-cyan border border-neon-cyan/50 hover:bg-terminal-darker hover:shadow-glow-cyan font-mono',
-        'neon-cyan': 'bg-neon-cyan/10 text-neon-cyan border border-neon-cyan hover:bg-neon-cyan/20 hover:shadow-glow-cyan-intense',
-        'neon-purple': 'bg-neon-purple/10 text-neon-purple border border-neon-purple hover:bg-neon-purple/20 hover:shadow-glow-purple-intense',
       },
       size: {
         default: 'h-11 px-4 py-2',
@@ -30,7 +27,7 @@ const buttonVariants = cva(
       }
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'gradient',
       size: 'default'
     }
   }
