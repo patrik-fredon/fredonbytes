@@ -78,8 +78,14 @@ function checkRateLimit(key: string): {
 const handleI18nRouting = createIntlMiddleware(routing);
 
 export function middleware(request: NextRequest) {
+  // Skip middleware for static metadata routes
+  const pathname = request.nextUrl.pathname;
+  if (pathname === "/manifest.webmanifest" || pathname === "/robots.txt" || pathname === "/sitemap.xml") {
+    return NextResponse.next();
+  }
+
   // Handle API routes separately (CSRF + rate limiting)
-  if (request.nextUrl.pathname.startsWith("/api/")) {
+  if (pathname.startsWith("/api/")) {
     const method = request.method;
     const pathname = request.nextUrl.pathname;
 

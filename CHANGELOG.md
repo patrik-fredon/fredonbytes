@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- **Vercel Deployment Critical Fixes** (November 1, 2025)
+  - **Tailwind CSS Build Failure**: Downgraded from v4.1.14 to v3.4.17 due to experimental v4 compatibility issues with Vercel's webpack build pipeline
+    - Error: `TypeError: Cannot read properties of undefined (reading 'All')` at `@tailwindcss/postcss` plugin
+    - Root cause: Tailwind v4 `@import "tailwindcss"` syntax and `@tailwindcss/postcss` plugin fail in Vercel production builds
+    - Solution: Migrated to stable v3 with `@tailwind base/components/utilities` directives
+    - Modified: `package.json`, `globals.css`, `postcss.config.mjs`
+  - **Manifest 401 Error**: Fixed `/manifest.webmanifest` returning 401 Unauthorized by adding explicit middleware exclusion for Next.js metadata routes
+    - Modified: `middleware.ts` to skip rate limiting/CSRF for manifest, robots, and sitemap
+  - **CSP Enhancements**: Updated Content Security Policy headers to properly support:
+    - Vercel Live preview tools (`frame-src`)
+    - Google Fonts integration (`style-src`, `font-src`)
+    - Next.js static assets and CSS loading
+    - Modified: `next.config.ts`
+
 ### Added
 
 - **Customer Satisfaction Form System**: Complete dynamic survey feature with session-based access
