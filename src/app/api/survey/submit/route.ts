@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from '@/lib/csrf';
 import { sanitizeAnswerValue } from '@/lib/input-sanitization';
-import { supabase, type Session, type Questionnaire } from '@/lib/supabase';
+import { supabase, type Session, type Questionnaire, type LocalizedString } from '@/lib/supabase';
 
 // Zod schema for request validation
 const submitSurveyRequestSchema = z.object({
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     // CSRF validation
     const csrfTokenFromHeader = request.headers.get(CSRF_TOKEN_HEADER_NAME);
     const csrfTokenFromCookie = request.cookies.get('csrf_token')?.value;
-    
+
     if (!validateCsrfToken(csrfTokenFromHeader || null, csrfTokenFromCookie || null)) {
       return NextResponse.json(
         {
@@ -143,8 +143,8 @@ export async function POST(request: NextRequest) {
     // Sanitize all answer values to prevent XSS attacks
     const sanitizedResponses = responses.map(response => ({
       ...response,
-      answer_value: typeof response.answer_value === 'number' 
-        ? response.answer_value 
+      answer_value: typeof response.answer_value === 'number'
+        ? response.answer_value
         : sanitizeAnswerValue(response.answer_value),
     }));
 
@@ -210,9 +210,9 @@ export async function POST(request: NextRequest) {
         const { generateSurveyThankYouHTML, generateSurveyThankYouText } = await import('@/lib/email-templates');
         const { getTranslations } = await import('next-intl/server');
 
-        const customerEmail = contactData.email as string;
-        const firstName = contactData.first_name as string;
-        const locale = (contactData.locale as string) || 'en';
+        const customerEmail = (contactData as { email: string }).email;
+        const firstName = (contactData as { first_name: string }).first_name;
+        const locale = ((contactData as { locale: string | null }).locale) || 'en';
 
         // Get translations for email subject
         const t = await getTranslations({ locale, namespace: 'emails' });
@@ -258,12 +258,22 @@ export async function POST(request: NextRequest) {
 
       if (questionsData) {
         const formattedResponses = sanitizedResponses.map(response => {
-          const question = questionsData.find((q: {id: string}) => q.id === response.question_id);
+          const question = questionsData.find((q: { id: string }) => q.id === response.question_id) as { id: string; question_text: LocalizedString; answer_type: string } | undefined;
+          
+          // Convert LocalizedString to string (use English as default for admin)
+          let questionText = 'Unknown question';
+          if (question) {
+            const localizedText = question.question_text;
+            questionText = typeof localizedText === 'string' 
+              ? localizedText 
+              : (localizedText.en || localizedText.cs || localizedText.de || 'Unknown question');
+          }
+          
           return {
             question_id: response.question_id,
-            question_text: question ? (question.question_text as string) : 'Unknown question',
+            question_text: questionText,
             answer_value: response.answer_value,
-            answer_type: question ? (question.answer_type as string) : 'text',
+            answer_type: question ? question.answer_type : 'text',
           };
         });
 
