@@ -87,15 +87,25 @@ export default function Header({ className }: HeaderProps) {
   ];
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-fixed transition-normal z-999 ",
-        isScrolled
-          ? "bg-glass-bg backdrop-blur-glass shadow-glow-cyan-subtle border-b border-neon-cyan/20"
-          : "bg-transparent",
-        className
+    <>
+      {/* Backdrop Overlay */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-terminal-darker/80 backdrop-blur-sm z-1035 lg:hidden animate-fade-in"
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
       )}
-    >
+
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 transition-normal z-1040",
+          isScrolled
+            ? "bg-glass-bg backdrop-blur-glass shadow-glow-cyan-subtle border-b border-neon-cyan/20"
+            : "bg-transparent",
+          className
+        )}
+      >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -177,47 +187,41 @@ export default function Header({ className }: HeaderProps) {
             <LanguageSwitcher />
             <button
               onClick={toggleMenu}
-              className={`lg:hidden p-3 text-neon-cyan hover:text-neon-cyan/80 transition-fast mobile-touch-target min-h-[44px] min-w-[44px] flex items-center justify-center ${isMenuOpen ? "hamburger-open" : ""
+              className={`lg:hidden p-3 text-neon-cyan hover:text-neon-cyan transition-fast mobile-touch-target min-h-11 min-w-11 flex items-center justify-center relative group ${isMenuOpen ? "hamburger-open" : ""
                 }`}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
             >
-              <div className="w-6 h-6 flex flex-col justify-center">
-                <span className="hamburger-line bg-neon-cyan"></span>
-                <span className="hamburger-line bg-neon-cyan"></span>
-                <span className="hamburger-line bg-neon-cyan"></span>
+              <div className="w-7 h-7 flex flex-col justify-center items-center relative">
+                <span className="hamburger-line bg-neon-cyan shadow-glow-cyan-subtle"></span>
+                <span className="hamburger-line bg-neon-cyan shadow-glow-cyan-subtle"></span>
+                <span className="hamburger-line bg-neon-cyan shadow-glow-cyan-subtle"></span>
               </div>
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 rounded-lg bg-neon-cyan/10 opacity-0 group-hover:opacity-100 transition-fast blur-sm"></div>
             </button>
           </div>
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="lg:hidden relative top-full left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-lg mobile-nav animate-slide-up">
-              <div className="px-4 py-4 space-y-2 safe-area-bottom">
-                {navItems.map((item) =>
-                  item.isRoute ? (
-                    <IntlLink
-                      key={item.href}
-                      href={item.href}
-                      onClick={closeMenu}
-                      className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium mobile-touch-target py-3 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px] flex items-center"
-                    >
-                      {t(item.key)}
-                    </IntlLink>
-                  ) : (
-                    <IntlLink
-                      key={item.href}
-                      href={item.href}
-                      onClick={closeMenu}
-                      className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium mobile-touch-target py-3 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px] flex items-center"
-                    >
-                      {t(item.key)}
-                    </IntlLink>
-                  )
-                )}
+            <div className="lg:hidden fixed top-16 left-0 right-0 bottom-0 z-1036 mobile-nav animate-slide-up overflow-y-auto">
+              <div className="min-h-full bg-terminal-dark/95 backdrop-blur-glass border-t border-neon-cyan/30 shadow-glow-cyan grid-bg">
+                <div className="px-6 py-6 space-y-3 safe-area-bottom">
+                {navItems.map((item) => (
+                  <IntlLink
+                    key={item.href}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="flex items-center text-terminal-light hover:text-neon-cyan transition-fast font-medium font-mono mobile-touch-target py-4 px-4 rounded-lg hover:bg-neon-cyan/10 hover:border-neon-cyan/30 hover:shadow-glow-cyan-subtle min-h-12 border border-transparent"
+                  >
+                    <span className="text-neon-cyan mr-2">›</span>
+                    {t(item.key)}
+                  </IntlLink>
+                ))}
 
-                <div className="border-t border-slate-200 dark:border-slate-700 pt-4 mt-4">
-                  <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3 px-2">
+                <div className="border-t border-neon-cyan/20 pt-4 mt-4">
+                  <p className="text-xs font-medium text-terminal-muted mb-3 px-2 font-mono uppercase tracking-wider">
+                    <span className="text-electric-purple">// </span>
                     {t("external.externalLinks")}
                   </p>
                   {externalLinks.map((link) => (
@@ -227,32 +231,30 @@ export default function Header({ className }: HeaderProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={closeMenu}
-                      className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-2 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px] flex items-center"
+                      className="flex items-center text-terminal-light hover:text-electric-purple transition-fast py-3 px-4 rounded-lg hover:bg-electric-purple/10 hover:border-electric-purple/30 hover:shadow-glow-purple-subtle min-h-11 font-mono border border-transparent"
                     >
+                      <span className="text-electric-purple mr-2">↗</span>
                       {t(link.key)}
                     </a>
                   ))}
                   <IntlLink
                     href="/links"
                     onClick={closeMenu}
-                    className="block text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-2 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px] flex items-center"
+                    className="flex items-center text-terminal-light hover:text-electric-purple transition-fast py-3 px-4 rounded-lg hover:bg-electric-purple/10 hover:border-electric-purple/30 hover:shadow-glow-purple-subtle min-h-11 font-mono border border-transparent"
                   >
+                    <span className="text-electric-purple mr-2">⚡</span>
                     {t("navigation.allLinks")}
                   </IntlLink>
                 </div>
 
-                <div className="border-t border-slate-200 dark:border-slate-700 pt-4 mb-4">
-                  <div className="px-2">
-                    <LanguageSwitcher />
-                  </div>
-                </div>
-
-                <div className="pt-2 px-2">
-                  <IntlLink href="/contact" onClick={closeMenu} className="block">
-                    <Button variant="gradient" size="lg" className="w-full min-h-11">
+                <div className="border-t border-neon-cyan/20 pt-6 mt-6">
+                  <IntlLink href="/contact" onClick={closeMenu} className="block mb-4">
+                    <Button variant="gradient" size="lg" className="w-full min-h-[52px] text-base font-mono shadow-glow-cyan">
+                      <span className="mr-2">▶</span>
                       {t("navigation.getStarted")}
                     </Button>
                   </IntlLink>
+                </div>
                 </div>
               </div>
             </div>
@@ -260,5 +262,6 @@ export default function Header({ className }: HeaderProps) {
         </div>
       </nav>
     </header>
+    </>
   );
 }

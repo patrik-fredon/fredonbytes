@@ -199,7 +199,7 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
             <h3 className="text-3xl font-bold text-terminal-light text-center mb-12 font-mono">
               <span className="text-neon-cyan">//</span> {t("about.values.title")}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
               {values.map((value, index) => {
                 const Icon = value.icon;
                 return (

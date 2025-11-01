@@ -2,7 +2,7 @@
 
 import { Github, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import React from "react";
 

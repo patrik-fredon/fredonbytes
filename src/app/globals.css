@@ -103,7 +103,10 @@
   --z-dropdown: 1000;
   --z-sticky: 1020;
   --z-fixed: 1030;
+  --z-1035: 1035;
+  --z-1036: 1036;
   --z-modal-backdrop: 1040;
+  --z-1040: 1040;
   --z-modal: 1050;
   --z-popover: 1060;
   --z-tooltip: 1070;
@@ -205,7 +208,10 @@
   --z-dropdown: 1000;
   --z-sticky: 1020;
   --z-fixed: 1030;
+  --z-1035: 1035;
+  --z-1036: 1036;
   --z-modal-backdrop: 1040;
+  --z-1040: 1040;
   --z-modal: 1050;
   --z-popover: 1060;
   --z-tooltip: 1070;
@@ -349,7 +355,7 @@ body {
   /* Ensure proper spacing for mobile navigation */
   .mobile-nav {
     max-height: calc(100vh - 80px);
-    overflow-y: auto;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     width: 100%;
     left: 0;
@@ -412,41 +418,69 @@ body {
   }
 }
 
-/* Hamburger Menu Animations */
+/* Hamburger Menu Animations - Dev Theme */
 .hamburger-line {
   display: block;
-  width: 25px;
+  width: 28px;
   height: 3px;
   background-color: currentColor;
   margin: 5px 0;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
+  border-radius: 2px;
+  -webkit-transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   -webkit-transform-origin: center;
   -moz-transform-origin: center;
   -ms-transform-origin: center;
   transform-origin: center;
+  box-shadow: 0 0 8px rgba(0, 217, 255, 0.4);
 }
 
 .hamburger-open .hamburger-line:nth-child(1) {
-  -webkit-transform: rotate(45deg) translate(6px, 6px);
-  -moz-transform: rotate(45deg) translate(6px, 6px);
-  -ms-transform: rotate(45deg) translate(6px, 6px);
-  transform: rotate(45deg) translate(6px, 6px);
+  -webkit-transform: rotate(45deg) translate(7px, 7px);
+  -moz-transform: rotate(45deg) translate(7px, 7px);
+  -ms-transform: rotate(45deg) translate(7px, 7px);
+  transform: rotate(45deg) translate(7px, 7px);
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.6);
 }
 
 .hamburger-open .hamburger-line:nth-child(2) {
   opacity: 0;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
 }
 
 .hamburger-open .hamburger-line:nth-child(3) {
-  -webkit-transform: rotate(-45deg) translate(6px, -6px);
-  -moz-transform: rotate(-45deg) translate(6px, -6px);
-  -ms-transform: rotate(-45deg) translate(6px, -6px);
-  transform: rotate(-45deg) translate(6px, -6px);
+  -webkit-transform: rotate(-45deg) translate(7px, -7px);
+  -moz-transform: rotate(-45deg) translate(7px, -7px);
+  -ms-transform: rotate(-45deg) translate(7px, -7px);
+  transform: rotate(-45deg) translate(7px, -7px);
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.6);
 }
 
-/* Mobile Navigation Sliding Animation */
+/* Mobile Navigation Sliding Animation - Dev Theme */
+.mobile-nav {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-neon-cyan) transparent;
+}
+
+.mobile-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mobile-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mobile-nav::-webkit-scrollbar-thumb {
+  background: var(--color-neon-cyan);
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
+}
+
 .mobile-nav-enter {
   transform: translateY(-100%);
   opacity: 0;
@@ -458,9 +492,9 @@ body {
   -ms-transform: translateY(0);
   transform: translateY(0);
   opacity: 1;
-  -webkit-transition: transform 300ms ease-out, opacity 300ms ease-out;
-  -moz-transition: transform 300ms ease-out, opacity 300ms ease-out;
-  transition: transform 300ms ease-out, opacity 300ms ease-out;
+  -webkit-transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 300ms ease-out;
+  -moz-transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 300ms ease-out;
+  transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 300ms ease-out;
 }
 
 .mobile-nav-exit {
@@ -797,37 +831,36 @@ input:valid {
   }
 }
 
-/* Enhanced Mobile Navigation Improvements */
+/* Enhanced Mobile Navigation Improvements - Dev Theme */
 @media (max-width: 767px) {
   .mobile-nav {
-    /* Ensure proper z-index for mobile menu */
-    z-index: 9999;
-
-    /* Improve scrolling on mobile */
+    /* Terminal-themed scrolling */
     -webkit-overflow-scrolling: touch;
-
-    /* Better backdrop */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    
+    /* Glass effect with terminal backdrop */
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
   }
 
-  /* Improve touch targets in mobile menu */
+  /* Dev-themed touch targets in mobile menu */
   .mobile-nav a,
   .mobile-nav button {
     min-height: 48px;
-    padding: 12px 16px;
+    padding: 14px 16px;
     display: flex;
     align-items: center;
     border-radius: 8px;
-    margin: 4px 0;
-    transition: all 0.2s ease;
+    margin: 6px 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
   }
 
-  /* Add visual feedback for touch */
+  /* Terminal-style visual feedback for touch */
   .mobile-nav a:active,
   .mobile-nav button:active {
-    background-color: rgba(59, 130, 246, 0.1);
-    transform: scale(0.98);
+    background-color: rgba(0, 217, 255, 0.15);
+    transform: scale(0.97);
+    box-shadow: inset 0 2px 8px rgba(0, 217, 255, 0.2);
   }
 
   /* Improve focus indicators on mobile */

@@ -216,7 +216,7 @@ export default function ServicesSection() {
           {/* Services Grid - TerminalWindow Cards */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10"
           >
             {filteredServices.map((service, index) => {
               const Icon = service.icon;
@@ -227,22 +227,22 @@ export default function ServicesSection() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  whileHover={{ 
-                    y: -8, 
-                    transition: { duration: 0.2, ease: "easeOut" } 
+                  whileHover={{
+                    y: -8,
+                    transition: { duration: 0.2, ease: "easeOut" }
                   }}
                   className="group"
                 >
                   <TerminalWindow title={service.title} className="h-full">
                     <div className="p-4 space-y-4">
                       <div className="flex items-center space-x-3">
-                        <motion.div 
+                        <motion.div
                           className={`w-12 h-12 rounded-xl ${service.iconBg} flex items-center justify-center border border-neon-cyan/20`}
-                          whileHover={{ 
-                            scale: 1.1, 
+                          whileHover={{
+                            scale: 1.1,
                             borderColor: "rgba(0, 217, 255, 0.5)",
                             boxShadow: "0 0 20px rgba(0, 217, 255, 0.3)",
-                            transition: { duration: 0.2 } 
+                            transition: { duration: 0.2 }
                           }}
                         >
                           <Icon className={`w-8 h-8 ${service.iconColor} drop-shadow-[0_0_10px_currentColor]`} />
