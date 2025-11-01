@@ -7,6 +7,10 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 import "../globals.css";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/jetbrains-mono/600.css";
+import "@fontsource/jetbrains-mono/700.css";
 
 import ClientLayoutWrapper from "../../components/ClientLayoutWrapper";
 import Footer from "../../components/common/Footer";
@@ -53,6 +57,10 @@ const inter = Inter({
   variable: "--font-inter",
   fallback: ["system-ui", "arial", "sans-serif"],
 });
+
+// Note: JetBrains Mono loaded via @fontsource imports above
+// Variable set via CSS: --font-jetbrains-mono
+// Font features: 'liga' 1, 'calt' 1 for ligatures
 
 export const metadata: Metadata = {
   title: "Fredonbytes - Your All-in-One IT Powerhouse",

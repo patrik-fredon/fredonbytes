@@ -89,9 +89,9 @@ export default function Header({ className }: HeaderProps) {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-fixed transition-normal",
         isScrolled
-          ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-200 dark:border-slate-700"
+          ? "bg-glass-bg backdrop-blur-glass shadow-glow-cyan-subtle border-b border-neon-cyan/20"
           : "bg-transparent",
         className
       )}
@@ -115,7 +115,7 @@ export default function Header({ className }: HeaderProps) {
                 sizes="(max-width: 1024px) 32px, 40px"
               />
             </div>
-            <span className="text-xl lg:text-2xl font-bold text-slate-900 dark:text-white">
+            <span className="text-xl lg:text-2xl font-mono font-bold text-neon-cyan">
               Fredonbytes
             </span>
           </IntlLink>
@@ -127,7 +127,7 @@ export default function Header({ className }: HeaderProps) {
                 <IntlLink
                   key={item.href}
                   href={item.href}
-                  className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium"
+                  className="text-terminal-light hover:text-neon-cyan transition-fast font-medium hover:shadow-glow-cyan-subtle"
                 >
                   {t(item.key)}
                 </IntlLink>
@@ -135,7 +135,7 @@ export default function Header({ className }: HeaderProps) {
                 <IntlLink
                   key={item.href}
                   href={item.href}
-                  className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium"
+                  className="text-terminal-light hover:text-neon-cyan transition-fast font-medium hover:shadow-glow-cyan-subtle"
                 >
                   {t(item.key)}
                 </IntlLink>
@@ -144,25 +144,25 @@ export default function Header({ className }: HeaderProps) {
 
             {/* External Links Dropdown */}
             <div className="relative group">
-              <button className="text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 font-medium flex items-center space-x-1">
+              <button className="text-terminal-light hover:text-neon-cyan transition-fast font-medium flex items-center space-x-1">
                 <span>{t("navigation.links")}</span>
                 <ChevronDown className="w-4 h-4" />
               </button>
-              <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute top-full right-0 mt-2 w-48 bg-terminal-dark rounded-lg shadow-glow-cyan border border-neon-cyan/20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-normal">
                 {externalLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 first:rounded-t-lg last:rounded-b-lg transition-colors duration-200"
+                    className="block px-4 py-2 text-terminal-light hover:text-neon-cyan hover:bg-neon-cyan/10 first:rounded-t-lg last:rounded-b-lg transition-fast"
                   >
                     {t(link.key)}
                   </a>
                 ))}
                 <IntlLink
                   href="/links"
-                  className="block px-4 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 last:rounded-b-lg transition-colors duration-200 border-t border-slate-200 dark:border-slate-600"
+                  className="block px-4 py-2 text-terminal-light hover:text-neon-cyan hover:bg-neon-cyan/10 last:rounded-b-lg transition-fast border-t border-neon-cyan/20"
                 >
                   {t("navigation.allLinks")}
                 </IntlLink>
@@ -176,7 +176,7 @@ export default function Header({ className }: HeaderProps) {
           {/* CTA Button */}
           <div className="hidden lg:block">
             <IntlLink href="/contact">
-              <Button variant="gradient" size="lg">
+              <Button variant="neon-cyan" size="lg">
                 {t("navigation.getStarted")}
               </Button>
             </IntlLink>
@@ -185,15 +185,15 @@ export default function Header({ className }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className={`lg:hidden p-3 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 mobile-touch-target min-h-[44px] min-w-[44px] flex items-center justify-center ${isMenuOpen ? "hamburger-open" : ""
+            className={`lg:hidden p-3 text-neon-cyan hover:text-neon-cyan/80 transition-fast mobile-touch-target min-h-[44px] min-w-[44px] flex items-center justify-center ${isMenuOpen ? "hamburger-open" : ""
               }`}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
             <div className="w-6 h-6 flex flex-col justify-center">
-              <span className="hamburger-line"></span>
-              <span className="hamburger-line"></span>
-              <span className="hamburger-line"></span>
+              <span className="hamburger-line bg-neon-cyan"></span>
+              <span className="hamburger-line bg-neon-cyan"></span>
+              <span className="hamburger-line bg-neon-cyan"></span>
             </div>
           </button>
         </div>

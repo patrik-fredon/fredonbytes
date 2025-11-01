@@ -6,7 +6,7 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none hover:scale-105 active:scale-95 min-h-[44px]',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none hover:scale-105 active:scale-95 min-h-[44px]',
   {
     variants: {
       variant: {
@@ -16,7 +16,10 @@ const buttonVariants = cva(
         secondary: 'bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700',
         ghost: 'hover:bg-slate-100 dark:hover:bg-slate-800',
         link: 'text-slate-900 underline-offset-4 hover:underline dark:text-white',
-        gradient: 'bg-purple-500/30 text-white font-extrabold hover:from-blue-900 hover:to-purple-900 hover:shadow-lg hover:shadow-blue-900/30 inset-shadow-2xs inset-shadow-slate-950 border border-purple-500/20'
+        gradient: 'bg-purple-500/30 text-white font-extrabold hover:from-blue-900 hover:to-purple-900 hover:shadow-lg hover:shadow-blue-900/30 inset-shadow-2xs inset-shadow-slate-950 border border-purple-500/20',
+        terminal: 'bg-terminal-dark text-neon-cyan border border-neon-cyan/50 hover:bg-terminal-darker hover:shadow-glow-cyan font-mono',
+        'neon-cyan': 'bg-neon-cyan/10 text-neon-cyan border border-neon-cyan hover:bg-neon-cyan/20 hover:shadow-glow-cyan-intense',
+        'neon-purple': 'bg-neon-purple/10 text-neon-purple border border-neon-purple hover:bg-neon-purple/20 hover:shadow-glow-purple-intense',
       },
       size: {
         default: 'h-11 px-4 py-2',

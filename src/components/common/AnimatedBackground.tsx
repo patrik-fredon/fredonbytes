@@ -66,36 +66,39 @@ export default function AnimatedBackground() {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Base gradient background */}
-      <div className="absolute inset-0 bg-linear-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
+      <div className="absolute inset-0 bg-gradient-to-br from-terminal-darker via-terminal-dark to-terminal-dark" />
+      
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 grid-bg opacity-30" />
 
-      {/* Large animated gradient blobs */}
+      {/* Large animated gradient blobs - Dev themed */}
       <motion.div
-        className="absolute -top-40 -right-40 w-96 h-96 bg-linear-to-br from-blue-400 to-purple-600 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+        className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-neon-cyan/30 to-neon-purple/30 rounded-full filter blur-3xl opacity-20"
         variants={pulseVariants}
         animate="animate"
       />
       <motion.div
-        className="absolute -bottom-40 -left-40 w-96 h-96 bg-linear-to-br from-purple-400 to-pink-600 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+        className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-neon-purple/30 to-neon-cyan/30 rounded-full filter blur-3xl opacity-20"
         variants={pulseVariants}
         animate="animate"
         transition={{ delay: 1 }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-lg h-[32h-128radient-to-br from-cyan-400 to-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-10"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 rounded-full filter blur-3xl opacity-10"
         variants={pulseVariants}
         animate="animate"
         transition={{ delay: 0.5 }}
       />
 
-      {/* Additional moving gradient orbs */}
+      {/* Additional moving gradient orbs - Dev themed */}
       <motion.div
-        className="absolute top-1/4 right-1/4 w-64 h-64 bg-linear-to-br from-green-400 to-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-15"
+        className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 rounded-full filter blur-2xl opacity-15"
         variants={orbitVariants}
         animate="animate"
         style={{ transformOrigin: '200px 200px' }}
       />
       <motion.div
-        className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-15"
+        className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-gradient-to-br from-neon-purple/20 to-neon-cyan/20 rounded-full filter blur-2xl opacity-15"
         variants={orbitVariants}
         animate="animate"
         transition={{ delay: 30 }}
@@ -104,11 +107,11 @@ export default function AnimatedBackground() {
 
       {/* Floating development icons */}
       {floatingIcons.map((item, index) => {
-        const { Icon, position, color, delay } = item
+        const { Icon, position, delay } = item
         return (
           <motion.div
             key={index}
-            className={`absolute ${color} opacity-[0.08] dark:opacity-[0.12]`}
+            className="absolute text-neon-cyan opacity-[0.08]"
             style={position}
             variants={floatingVariants}
             animate="animate"
@@ -119,26 +122,14 @@ export default function AnimatedBackground() {
         )
       })}
 
-      {/* Subtle grid pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
-          }}
-        />
-      </div>
+
 
       {/* Animated code-like particles */}
       <div className="absolute inset-0">
         {particlePositions.map((position, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400 dark:bg-blue-300 rounded-full opacity-20"
+            className="absolute w-1 h-1 bg-neon-cyan rounded-full opacity-20"
             style={{
               left: `${position.left}%`,
               top: `${position.top}%`,
@@ -149,9 +140,9 @@ export default function AnimatedBackground() {
               scale: [1, 1.5, 1],
             }}
             transition={prefersReducedMotion ? {} : {
-              duration: 3 + (i % 4), // Use index instead of random for variation
+              duration: 3 + (i % 4),
               repeat: Infinity,
-              delay: (i % 3) * 0.5, // Use index instead of random for variation
+              delay: (i % 3) * 0.5,
               ease: "easeInOut" as const
             }}
           />
@@ -160,7 +151,7 @@ export default function AnimatedBackground() {
 
       {/* Subtle geometric shapes */}
       <motion.div
-        className="absolute top-1/3 left-1/6 w-16 h-16 border border-blue-200 dark:border-blue-800 opacity-20"
+        className="absolute top-1/3 left-1/6 w-16 h-16 border border-neon-cyan/20 opacity-20"
         animate={prefersReducedMotion ? {} : {
           rotate: [0, 180, 360],
           scale: [1, 1.1, 1],
@@ -172,7 +163,7 @@ export default function AnimatedBackground() {
         }}
       />
       <motion.div
-        className="absolute bottom-1/3 right-1/6 w-12 h-12 border border-purple-200 dark:border-purple-800 opacity-20 rounded-full"
+        className="absolute bottom-1/3 right-1/6 w-12 h-12 border border-neon-purple/20 opacity-20 rounded-full"
         animate={prefersReducedMotion ? {} : {
           rotate: [360, 180, 0],
           scale: [1, 0.9, 1],

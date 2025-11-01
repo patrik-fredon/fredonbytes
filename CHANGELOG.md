@@ -271,3 +271,117 @@ No migration required for existing implementations.
 ---
 
 **Note**: This changelog will be updated with each release. For detailed commit history, please refer to the Git repository.
+
+
+---
+
+## [Planned] Dev-Themed UI/UX Refactor - November 2025
+
+### 🎨 Complete Visual Transformation
+**Theme:** Terminal/IDE-inspired developer interface with breathtaking modern design
+
+### 🎯 Design System
+**Color Palette (NEW):**
+- Primary (60%): Deep Terminal Dark `#0A0E27`
+- Secondary (30%): Neon Cyan `#00D9FF`  
+- Accent (10%): Electric Purple `#A855F7`
+
+**Typography:**
+- Added JetBrains Mono for code/dev elements
+- Maintained Inter for UI text
+- Enhanced type scale for better hierarchy
+
+**Animation System:**
+- Performance-first (transform/opacity only)
+- Timing: 120-400ms range
+- Respect prefers-reduced-motion
+- SSR/ISR compatible
+
+### 🧩 New Components (9)
+1. `TerminalWindow` - Window chrome with controls
+2. `CodeBlock` - Syntax highlighted code
+3. `GridBackground` - Animated grid patterns
+4. `GlassCard` - Glassmorphic cards
+5. `CommandButton` - Terminal buttons
+6. `SyntaxText` - Inline syntax coloring
+7. `TerminalProgress` - Build progress bars
+8. `SplitPane` - IDE-style layouts
+9. `CodeCard` - Code-themed cards
+
+### ♻️ Refactored Components (20+)
+- **Core:** Button, Header, Footer, AnimatedBackground
+- **Forms:** All input components (5), navigation, error states
+- **Homepage:** HeroSection, AboutSection, ServicesSection, ContactSection, PricingSection
+- **Content:** Project cards, team cards, pricing tiers
+
+### 📄 Refactored Pages
+- **Homepage:** 6 sections with terminal aesthetic
+- **Static:** About, Contact, Pricing, Projects, Links
+- **Dynamic:** Form/Survey system, modals, calculator
+- **Legal:** Policies, Terms, Cookies
+
+### ⚡ Performance Optimizations
+- SSR/ISR implementation verified
+- Client-side JS minimized  
+- Animations optimized (transform/opacity only)
+- Font loading strategy improved
+- Image optimization enhanced
+- Target metrics: Lighthouse 95+, LCP < 2.5s
+
+### ♿ Accessibility Enhancements
+- WCAG AAA compliance
+- Enhanced keyboard navigation
+- Improved focus states (cyan ring + glow)
+- Screen reader optimization
+- Color contrast verification
+- Touch target sizing (≥ 44x44px)
+
+### 📱 Responsive Design
+- Mobile: Simplified terminal chrome
+- Tablet: Two-column layouts
+- Desktop: Full effects and animations
+- Touch-friendly interactions
+- Horizontal scroll for code blocks
+
+### 🔧 Technical Improvements
+- TypeScript strict mode maintained
+- Biome linting standards enforced
+- Cross-browser compatibility verified
+- Dark mode refinement
+- Bundle size optimization
+
+### 📚 Documentation
+- Updated `GENERAL.md` with new design system
+- Created comprehensive `TODO.md` (38 tasks, 7 phases)
+- Documented animation best practices
+- Added component usage examples
+- Updated project memories
+
+### 🎯 Implementation Phases
+1. Foundation - CSS system & config
+2. Core Components - Reusable dev-UI  
+3. Form Components - Terminal inputs
+4. Homepage Sections - Hero to contact
+5. Static Pages - About to links
+6. Dynamic Pages - Forms & modals
+7. Polish & Optimization - Testing & refinement
+
+### 📊 Success Metrics
+- Visual: Consistent dev theme, breathtaking design
+- Performance: Lighthouse 95+, Core Web Vitals met
+- Accessibility: WCAG AAA compliance
+- Technical: SSR/ISR verified, minimal client JS
+- Code: Clean, maintainable, documented
+
+### 🔮 Impact
+Complete transformation showcasing modern web development capabilities with professional developer-themed aesthetic, optimized performance, and production-ready code quality.
+
+**Status:** Planning Complete | Implementation Ready
+**Estimated Timeline:** 15-20 development days
+**Risk Level:** Medium (extensive but well-planned)
+**Impact Level:** HIGH
+
+---
+
+*Planning completed November 1, 2025*
+*Implementation: Phase 1 starts next*
