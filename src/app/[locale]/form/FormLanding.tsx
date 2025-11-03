@@ -47,6 +47,19 @@ export default function FormLanding() {
         localStorage.setItem(`form_csrf_${data.session_id}`, data.csrf_token);
       }
 
+      // Store preloaded questions in sessionStorage (solves blank container issue)
+      if (data.questions && data.questions.length > 0) {
+        try {
+          sessionStorage.setItem(
+            `form_questions_${data.session_id}`,
+            JSON.stringify(data.questions)
+          );
+        } catch (storageErr) {
+          console.warn('Failed to cache questions in sessionStorage:', storageErr);
+          // Continue anyway - FormClient will fetch if needed
+        }
+      }
+
       // Navigate to form with session_id using locale-aware router
       router.push(`/form/${data.session_id}`);
     } catch (err) {

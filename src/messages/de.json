@@ -445,6 +445,13 @@
         "step": "Schritt {current} von {total}",
         "progress": "{percent}% Abgeschlossen"
       },
+      "image": {
+        "label": "Bilder hochladen",
+        "uploading": "Wird hochgeladen...",
+        "uploadedFile": "Bild erfolgreich hochgeladen",
+        "sizeWarning": "Maximal 5MB pro Bild, 50MB gesamt",
+        "remaining": "Verbleibend: {size}"
+      },
       "basicInfo": {
         "title": "Grundinformationen",
         "firstName": {
@@ -1640,6 +1647,29 @@
       "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
       "submissionFailed": "Das Absenden des Formulars ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
       "loadFailed": "Das Laden der Fragen ist fehlgeschlagen. Bitte aktualisieren Sie die Seite."
+    },
+    "image": {
+      "remaining": "Übrig",
+      "sizeWarning": "Maximal 50 MB Bilder hochladen. \n5 MB pro Bild.",
+      "uploading": "Hochladen",
+      "label": "Bild",
+      "uploadedFile": "Bild hochgeladen"
+    },
+    "thankYouScreen": {
+      "newsletterInfo": {
+        "subscriptionInfo": "// Wir senden nur gelegentlich Updates. \nAbmelden jederzeit möglich.",
+        "subscribing": "Verarbeitung..",
+        "subscribe_newsletter": "Newsletter abonnieren",
+        "subscriptionSuccess": "✓ Newsletter erfolgreich abonniert!",
+        "subscriptionThanks": "// Überprüfen Sie Ihren Posteingang auf Bestätigung",
+        "finishButton": "return_to_homepage",
+        "contactNote": "// Fragen? \nKontaktieren Sie uns unter",
+        "newsletterEmail": "$ E-Mail-Adresse",
+        "newsletterInfo": "Abonnieren Sie Updates und Neuigkeiten von FredonBytes",
+        "thankYouMessage": "Vielen Dank, dass Sie uns dabei helfen, unsere Dienstleistungen zu verbessern.",
+        "thankYouTitle": "// Ihr Feedback wurde erfolgreich übermittelt.",
+        "thankYouHeading": "✓ Erfolgreich bereitgestellt!"
+      }
     }
   },
   "survey": {

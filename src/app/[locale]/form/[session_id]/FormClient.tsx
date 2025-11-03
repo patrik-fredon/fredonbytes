@@ -100,6 +100,9 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Detect reduced motion preference
   const prefersReducedMotion = useReducedMotion();
 
+  // CSRF token state
+  const [csrfToken, setCsrfToken] = useState<string>('');
+
   // State management - Start at step 1 (first question) since welcome is on landing page
   const [formState, setFormState] = useState<FormState>({
     questions: [],
@@ -118,6 +121,28 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     try {
       setFormState((prev) => ({ ...prev, isLoading: true, error: null }));
 
+      // Try to load preloaded questions from sessionStorage first (solves blank container issue)
+      if (typeof window !== 'undefined' && window.sessionStorage) {
+        try {
+          const cached = sessionStorage.getItem(`form_questions_${sessionId}`);
+          if (cached) {
+            const cachedQuestions = JSON.parse(cached) as ValidatableQuestion[];
+            if (cachedQuestions && cachedQuestions.length > 0) {
+              setFormState((prev) => ({
+                ...prev,
+                questions: cachedQuestions,
+                isLoading: false,
+              }));
+              return; // Skip API fetch - use preloaded data
+            }
+          }
+        } catch (cacheErr) {
+          console.warn('Failed to load cached questions, fetching from API:', cacheErr);
+          // Continue to API fetch as fallback
+        }
+      }
+
+      // Fallback: Fetch from API if not in cache
       const response = await fetch(`/api/form/questions?locale=${locale}`);
       const data: QuestionsResponse = await response.json();
 
@@ -200,7 +225,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     }
   }, [formState.currentStep, formState.questions.length]);
 
-  // Load saved answers from localStorage on mount
+  // Load saved answers on mount
   useEffect(() => {
     const savedAnswers = loadAnswers(sessionId);
 
@@ -216,6 +241,14 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       }));
     }
   }, [sessionId]);
+
+  // Load CSRF token from cookies (middleware sets it automatically)
+  useEffect(() => {
+    const token = getCsrfToken();
+    if (token) {
+      setCsrfToken(token);
+    }
+  }, []);
 
   // Navigation handlers
   const handleNext = () => {
@@ -594,6 +627,8 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
                           )
                         }
                         error={formState.validationError}
+                        sessionId={sessionId}
+                        csrfToken={csrfToken}
                       />
                     </fieldset>
 

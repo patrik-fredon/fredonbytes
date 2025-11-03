@@ -5,7 +5,7 @@ export interface ValidatableQuestion {
   id: string;
   question_text: string; // Can be LocalizedString or string - we only use the ID for validation
   description?: string | null;
-  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating';
+  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating' | 'image';
   required: boolean;
   display_order: number;
   active: boolean;
@@ -77,12 +77,34 @@ export function validateAnswer(
       }
       break;
 
-    default:
-      // Unknown answer type
-      return {
-        question_id: question.id,
-        message: 'Invalid question type',
-      };
+    case 'image':
+      // For image type, answer should be a non-empty array of URLs
+      if (!Array.isArray(answer) || answer.length === 0) {
+        return {
+          question_id: question.id,
+          message: 'Please upload at least one image',
+        };
+      }
+      // Validate all URLs are non-empty strings
+      if (!answer.every(url => typeof url === 'string' && url.trim() !== '')) {
+        return {
+          question_id: question.id,
+          message: 'Invalid image data',
+        };
+      }
+      break;
+
+    case 'rating':
+      // Rating can be number or string, just needs to exist
+      if (answer === undefined || answer === null) {
+        return {
+          question_id: question.id,
+          message: 'Please provide a rating',
+        };
+      }
+      break;
+
+
   }
 
   return null;

@@ -1,63 +1,51 @@
 # TODO
 
-> Mobile navigation improvements completed
-
-## Completed Work
-
-### ✅ Mobile Navigation Improvements (2025-11-01)
-
-Fixed mobile navigation overlay and enhanced with terminal/dev theme:
-
-**Issues Fixed:**
-- Z-index positioning (mobile nav now properly overlays full viewport)
-- Changed from `relative` to `fixed` positioning for full-screen overlay
-- Added backdrop overlay with proper layering
-
-**Enhancements:**
-- Improved hamburger icon with neon glow effects and spring animations
-- Terminal/dev-themed styling with glass effects and grid background
-- Neon cyan accents for nav items, electric purple for external links
-- Terminal-style symbols and mono font throughout
-- Custom scrollbar with neon theme
-- Touch-optimized with proper feedback states
-
-**Files Modified:**
-- `src/components/common/Header.tsx` - Fixed positioning and enhanced styling
-- `src/app/globals.css` - Enhanced animations and added z-index utilities
-
-See `mobile_navigation_improvements` memory for full technical details.
-
-### ✅ MDX + ISR Implementation (2025-01-06)
-
-All legal documentation pages optimized with MDX content management and ISR caching.
-
-See `CHANGELOG.md` for full details.
-
----
-
 ## Active Tasks
-
-### 🧪 Email System Testing Required
-
-After fixing contact form email bugs, verify:
-- [ ] Test contact form submission with valid SMTP credentials
-- [ ] Confirm customer receives email with survey link
-- [ ] Confirm admin receives notification email
-- [ ] Test error handling with invalid SMTP config
-- [ ] Verify `.env.local` has correct settings:
-  - `SMTP_HOST=smtp.forpsi.com`
-  - `SMTP_PORT=465` (or 587)
-  - `SMTP_SECURE=true` (for port 465) or `false` (for port 587)
-  - `SMTP_USER=noreply@fredonbytes.cloud`
-  - `SMTP_PASS=your_password`
+_No active tasks - all features completed._
 
 ---
 
-## Future Considerations
+## Completed in this session
 
-When new pages or features are added:
-- Follow established MDX + ISR pattern for content pages
-- Use terminal/dev theme styling for consistent look
-- Ensure proper z-index layering for overlays
-- Maintain mobile-first responsive design
-- Test across different screen sizes and devices
+### Form Image Upload Feature (Base Implementation)
+- ✅ TODO-1: Database migration for image support (07_add_form_images.sql)
+- ✅ TODO-2: Storage bucket setup documentation (STORAGE_SETUP.md)
+- ✅ TODO-3: Image upload API endpoint (/api/form/upload)
+- ✅ TODO-4: Session creation API with question preloading
+- ✅ TODO-5: ImageUploadInput component
+- ✅ TODO-6: QuestionStep updated to render image input
+- ✅ TODO-7: Form validation supports image type
+- ✅ TODO-8: Form storage tracks image sizes
+- ✅ TODO-9: FormLanding caches preloaded questions
+- ✅ TODO-10: FormClient uses cached questions
+- ✅ TODO-11: Submit endpoint verified (no changes needed)
+- ✅ TODO-12: i18n translations added (en, cs, de)
+- ✅ TODO-13: Image validation utilities created
+
+### Bug Fixes Applied
+- ✅ Fixed IntlError: Moved form.image translations to correct object
+- ✅ Fixed 403 CSRF validation: Changed to header-based token
+- ✅ Fixed 500 after upload: Disabled RLS on form_answer_images (migration 08)
+- ✅ Added missing `uploadedFile` translation key
+
+### Multiple Image Upload Enhancement
+- ✅ Modified ImageUploadInput to support multiple files
+- ✅ Added gallery view with grid layout (2-3 columns)
+- ✅ Individual remove buttons per image
+- ✅ Sequential upload with per-file progress
+- ✅ Updated validation to handle string[] for image type
+- ✅ Updated translations to reflect multiple images
+- ✅ Changed answer value from string to string[]
+
+## Deployment Checklist
+- [ ] Run migration 07: `supabase migration up` (add image support)
+- [ ] Run migration 08: `supabase migration up` (fix form_answer_images RLS)
+- [ ] Run migration 09: `supabase migration up` (fix newsletter_subscribers schema)
+- [ ] Configure storage bucket per STORAGE_SETUP.md
+- [ ] Test single image upload
+- [ ] Test multiple image upload
+- [ ] Verify 50MB session limit enforcement
+- [ ] Verify 5MB per-file limit enforcement
+- [ ] Test image removal functionality
+- [ ] Verify blank container fix
+- [ ] Test all locales (cs, de, en)

@@ -445,6 +445,13 @@
         "step": "Step {current} of {total}",
         "progress": "{percent}% Complete"
       },
+      "image": {
+        "label": "Upload Images",
+        "uploading": "Uploading...",
+        "uploadedFile": "Image uploaded successfully",
+        "sizeWarning": "Maximum 5MB per image, 50MB total",
+        "remaining": "Remaining: {size}"
+      },
       "basicInfo": {
         "title": "Basic Information",
         "firstName": {
@@ -1570,6 +1577,29 @@
       "invalidEmail": "Please enter a valid email address",
       "submissionFailed": "Failed to submit form. Please try again.",
       "loadFailed": "Failed to load questions. Please refresh the page."
+    },
+    "image": {
+      "remaining": "Remaining",
+      "sizeWarning": "Maximum 50MB images upload. 5MB per image.",
+      "uploading": "Uploading",
+      "label": "Image",
+      "uploadedFile": "Image uploaded"
+    },
+    "thankYouScreen": {
+      "newsletterInfo": {
+        "subscriptionInfo": "We'll only send occasional updates. Unsubscribe anytime.",
+        "subscribing": "Processing..",
+        "subscribe_newsletter": "Subscribe newsletter",
+        "subscriptionSuccess": "✓ Successfully subscribed to newsletter!",
+        "subscriptionThanks": "Check your inbox for confirmation",
+        "finishButton": "return_to_homepage",
+        "contactNote": "// Questions? Contact us at",
+        "newsletterEmail": "$ Email Address",
+        "newsletterInfo": "Subscribe to updates and news from FredonBytes",
+        "thankYouMessage": "$ Thank you for helping us improve our services.",
+        "thankYouTitle": "// Your feedback has been successfully submitted.",
+        "thankYouHeading": "✓ Successfully Deployed!"
+      }
     }
   },
   "survey": {

@@ -2,12 +2,31 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
 import { generateCsrfToken, CSRF_TOKEN_COOKIE_NAME } from '@/lib/csrf';
-import { supabase } from '@/lib/supabase';
+import { supabase, type Question, type LocalizedString } from '@/lib/supabase';
 
 // Schema for session creation request
 const createSessionSchema = z.object({
   locale: z.enum(['en', 'cs', 'de']).default('cs'),
 });
+
+// Localized question interface (same as in questions/route.ts)
+export interface LocalizedQuestion {
+  id: string;
+  question_text: string;
+  description?: string | null;
+  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating' | 'image';
+  required: boolean;
+  display_order: number;
+  active: boolean;
+  options?: LocalizedQuestionOption[];
+}
+
+export interface LocalizedQuestionOption {
+  id: string;
+  question_id: string;
+  option_text: string;
+  display_order: number;
+}
 
 // Response interface
 export interface CreateFormSessionResponse {
@@ -15,6 +34,7 @@ export interface CreateFormSessionResponse {
   session_id?: string;
   csrf_token?: string;
   questionnaire_id?: string;
+  questions?: LocalizedQuestion[]; // NEW: Preloaded questions
   error?: string;
 }
 
@@ -88,14 +108,58 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create response with CSRF token in cookie
+    // Fetch questions for locale to preload (solves blank container issue)
+    const questionnaireId = (questionnaireData as any).id;
+    const { data: questionsData, error: questionsError } = await supabase
+      .from('questions')
+      .select(`
+        id,
+        question_text,
+        description,
+        answer_type,
+        required,
+        display_order,
+        active,
+        options:question_options(id, question_id, option_text, display_order)
+      `)
+      .eq('questionnaire_id', questionnaireId)
+      .eq('active', true)
+      .order('display_order', { ascending: true });
+
+    let localizedQuestions: LocalizedQuestion[] = [];
+
+    if (!questionsError && questionsData) {
+      // Helper to extract localized string
+      const getLocalizedString = (str: LocalizedString | string): string => {
+        if (typeof str === 'string') return str;
+        return str[locale as keyof LocalizedString] || str.en || '';
+      };
+
+      localizedQuestions = (questionsData as Question[]).map((q) => ({
+        id: q.id,
+        question_text: getLocalizedString(q.question_text),
+        description: q.description ? getLocalizedString(q.description) : null,
+        answer_type: q.answer_type as LocalizedQuestion['answer_type'],
+        required: q.required,
+        display_order: q.display_order,
+        active: q.active,
+        options: q.options?.map((opt) => ({
+          id: opt.id,
+          question_id: opt.question_id,
+          option_text: getLocalizedString(opt.option_text),
+          display_order: opt.display_order,
+        })).sort((a, b) => a.display_order - b.display_order),
+      }));
+    }
+
+    // Create response with CSRF token in cookie AND preloaded questions
     const response = NextResponse.json(
       {
         success: true,
         session_id: sessionId,
         csrf_token: csrfToken,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        questionnaire_id: (questionnaireData as any).id,
+        questionnaire_id: questionnaireId,
+        questions: localizedQuestions, // NEW: Preloaded for immediate use
       } as CreateFormSessionResponse,
       { status: 201 }
     );

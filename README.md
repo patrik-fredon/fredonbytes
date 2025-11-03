@@ -246,8 +246,8 @@ src/
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run lint:fix` - Auto-fix ESLint issues
+- `npm run lint` - Run Biome
+- `npm run lint:fix` - Auto-fix Biome issues
 - `npm run type-check` - Run TypeScript compiler
 - `npm run pre-deploy` - Full validation + build
 - `npm run translations:validate` - Validate translation files
@@ -282,9 +282,9 @@ This project is proprietary and confidential. All rights reserved by Fredonbytes
 
 ## 📞 Support
 
-- **Email:** info@fredonbytes.cloud
+- **Email:** <info@fredonbytes.com>
 - **Phone:** +420 799 027 984
-- **Website:** [fredonbytes.cloud](https://fredonbytes.cloud)
+- **Website:** [fredonbytes.com](https://fredonbytes.com)
 - **Location:** Brno, Czech Republic
 
 ---

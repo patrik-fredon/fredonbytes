@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import React from 'react'
 
 import ChecklistInput from '@/components/form/inputs/ChecklistInput'
+import ImageUploadInput from '@/components/form/inputs/ImageUploadInput'
 import MultipleChoiceInput from '@/components/form/inputs/MultipleChoiceInput'
 import SingleChoiceInput from '@/components/form/inputs/SingleChoiceInput'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
@@ -15,6 +16,8 @@ interface QuestionStepProps {
   answer: AnswerValue | undefined
   onAnswerChange: (value: AnswerValue) => void
   error: string | null
+  sessionId?: string
+  csrfToken?: string
 }
 
 /**
@@ -31,6 +34,8 @@ export default function QuestionStep({
   answer,
   onAnswerChange,
   error,
+  sessionId,
+  csrfToken,
 }: QuestionStepProps) {
   const prefersReducedMotion = useReducedMotion()
 
@@ -113,6 +118,26 @@ export default function QuestionStep({
             questionId={question.id}
             questionText={question.question_text}
             options={question.options}
+          />
+        )
+
+      case 'image':
+        if (!sessionId || !csrfToken) {
+          return (
+            <div className="text-error-red font-mono">
+              Session configuration error
+            </div>
+          )
+        }
+        return (
+          <ImageUploadInput
+            value={(answer as string) || null}
+            onChange={(value) => onAnswerChange(value || '')}
+            required={question.required}
+            error={error || undefined}
+            questionId={question.id}
+            sessionId={sessionId}
+            csrfToken={csrfToken}
           />
         )
 

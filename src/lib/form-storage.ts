@@ -13,6 +13,7 @@ export interface LocalStorageData {
   answers: Record<string, AnswerValue>;
   timestamp: number;
   expiresAt: number;
+  totalImageSize?: number; // Track total image size in bytes for session limit
 }
 
 /**
@@ -48,6 +49,7 @@ export function createNewStorageData(sessionId: string): LocalStorageData {
   return {
     session_id: sessionId,
     answers: {},
+    totalImageSize: 0,
     timestamp: now,
     expiresAt: now + EXPIRATION_MS,
   };
@@ -226,5 +228,64 @@ export function clearExpiredData(): void {
     });
   } catch (error) {
     console.error('[FormStorage] Error clearing expired data:', error);
+  }
+}
+
+
+/**
+ * Update total image size for a session
+ * 
+ * @param sessionId - Session ID
+ * @param additionalSize - Bytes to add to total
+ */
+export function updateTotalImageSize(sessionId: string, additionalSize: number): void {
+  if (!isLocalStorageAvailable()) {
+    return;
+  }
+
+  try {
+    const key = getStorageKey(sessionId);
+    const stored = window.localStorage.getItem(key);
+    
+    if (!stored) {
+      // Create new if doesn't exist
+      const newData = createNewStorageData(sessionId);
+      newData.totalImageSize = additionalSize;
+      window.localStorage.setItem(key, JSON.stringify(newData));
+      return;
+    }
+
+    const data: LocalStorageData = JSON.parse(stored);
+    data.totalImageSize = (data.totalImageSize || 0) + additionalSize;
+    window.localStorage.setItem(key, JSON.stringify(data));
+  } catch (error) {
+    console.error('[FormStorage] Error updating image size:', error);
+  }
+}
+
+/**
+ * Get total image size for a session
+ * 
+ * @param sessionId - Session ID
+ * @returns Total size in bytes, or 0 if not found
+ */
+export function getTotalImageSize(sessionId: string): number {
+  if (!isLocalStorageAvailable()) {
+    return 0;
+  }
+
+  try {
+    const key = getStorageKey(sessionId);
+    const stored = window.localStorage.getItem(key);
+    
+    if (!stored) {
+      return 0;
+    }
+
+    const data: LocalStorageData = JSON.parse(stored);
+    return data.totalImageSize || 0;
+  } catch (error) {
+    console.error('[FormStorage] Error getting image size:', error);
+    return 0;
   }
 }

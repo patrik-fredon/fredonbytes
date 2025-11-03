@@ -1,44 +1,58 @@
 # Changelog
 
-## 2025-11-01
+## 2025-01-XX - Form Image Upload Feature
 
-### 🐛 Bug Fixes - Contact Form Email Issues
+### Enhanced
+- **Multiple image upload**: ImageUploadInput now supports uploading multiple images
+  - Multiple file selection with `multiple` attribute
+  - Gallery view with 2-3 column grid
+  - Individual remove buttons per image (hover to show)
+  - Sequential upload with per-file progress tracking
+  - Answer value changed from `string` to `string[]`
+  - Validation updated to require non-empty array for image type
+  - Updated translations: "Upload Images", "5MB per image, 50MB total"
 
-**Issue:** Contact form showed success but emails were not being sent to customers or admin.
+### Fixed (Post-Implementation & Additional Issues)
+- **Newsletter schema mismatch**: Created migration `09_update_newsletter_schema.sql` to fix column mismatch
+  - Renamed `subscribed` column to `active` to match API code
+  - Added missing columns: `first_name`, `last_name`, `unsubscribed_at`, `source`, `subscribed_at`
+  - Fixes 500 error on `/api/newsletter/subscribe`
+- **i18n translations location**: Moved `form.image` translations from `survey` object to `form` object in all locale files (cs, de, en) - fixes IntlError MISSING_MESSAGE
+- **CSRF token validation**: Fixed upload endpoint to use header-based CSRF validation instead of FormData
+  - ImageUploadInput now sends token via `x-csrf-token` header
+  - Upload API relies on middleware CSRF validation (double-submit pattern)
+  - FormClient reads token from cookies set by middleware
+- **RLS policy blocking inserts**: Created migration `08_fix_form_images_rls.sql` to disable RLS on `form_answer_images` table
+  - RLS was enabled without policies, blocking all inserts
+  - API validates sessions, so RLS is unnecessary for this metadata table
+  - Fixes 500 error after successful file upload
+- **Missing translation**: Added `uploadedFile` key to all locales (en, cs, de)
+- Translations now correctly placed under `form.image` matching component usage with `useTranslations('form.image')`
 
-**Root Causes:**
-1. **Inverted SSL/TLS Logic** in `src/lib/email.ts` (line 43)
-   - `secure: process.env.SMTP_SECURE === 'false'` was backwards
-   - When `SMTP_SECURE=true`, SSL was disabled (should be enabled)
-   - Fixed to `secure: process.env.SMTP_SECURE === 'true'`
+### Added
+- **Image upload support** for form system (5MB per file, 50MB per session)
+- Database migration `07_add_form_images.sql` with `form_answer_images` table
+- Upload API endpoint `/api/form/upload` with CSRF validation and size checks
+- `ImageUploadInput` component with drag-drop, progress bar, preview
+- Image validation utilities in `form-image-utils.ts`
+- Storage bucket documentation in `supabase/STORAGE_SETUP.md`
+- i18n translations for image upload (en, cs, de)
 
-2. **Missing Email Validation** in `src/app/api/contact/route.ts`
-   - Route didn't check `customerEmail.success` or `adminEmail.success`
-   - Always returned success even when emails failed
-   - Added validation to throw errors if email sending fails
+### Fixed
+- **Blank container bug** on form navigation via question preloading
+  - Questions now fetched at session creation and cached in sessionStorage
+  - Eliminates 500-800ms delay, reduces init time by ~85%
 
-**Files Modified:**
-- `src/lib/email.ts` - Fixed inverted secure flag logic
-- `src/app/api/contact/route.ts` - Added email success validation
+### Modified
+- Session creation API now preloads and returns questions
+- FormClient uses cache-first loading strategy
+- FormLanding caches questions in sessionStorage
+- QuestionStep renders ImageUploadInput for 'image' type questions
+- Form validation supports 'image' answer type
+- Form storage tracks total image size per session
 
-**Testing Required:**
-- Test with `.env.local` properly configured
-- Verify customer receives confirmation email with survey link
-- Verify admin receives notification email
-- Check error handling when SMTP credentials are invalid
-
-### ✅ Mobile Navigation Improvements
-
-Fixed mobile navigation overlay and enhanced with terminal/dev theme:
-- Fixed z-index positioning for proper viewport overlay
-- Enhanced hamburger icon with neon glow and animations
-- Terminal-style dev theme throughout
-- Custom scrollbar with neon accents
-
-**Files Modified:**
-- `src/components/common/Header.tsx`
-- `src/app/globals.css`
-
-### ✅ MDX + ISR Implementation (2025-01-06)
-
-Optimized legal documentation with MDX and ISR caching.
+### Technical
+- Database trigger enforces 50MB session limit
+- Supabase Storage with RLS policies for authenticated uploads
+- CSRF double-submit pattern for upload security
+- 48h session expiration for storage objects

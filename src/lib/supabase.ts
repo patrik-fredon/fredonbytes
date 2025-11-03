@@ -13,7 +13,7 @@ export interface Question {
   id: string;
   question_text: LocalizedString;
   description?: LocalizedString | null;
-  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating';
+  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating' | 'image';
   required: boolean;
   display_order: number;
   active: boolean;

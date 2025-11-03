@@ -445,6 +445,13 @@
         "step": "Krok {current} z {total}",
         "progress": "Dokončeno {percent}%"
       },
+      "image": {
+        "label": "Nahrát obrázky",
+        "uploading": "Nahrávání...",
+        "uploadedFile": "Obrázek úspěšně nahrán",
+        "sizeWarning": "Maximálně 5MB na obrázek, 50MB celkem",
+        "remaining": "Zbývá: {size}"
+      },
       "basicInfo": {
         "title": "Základní informace",
         "firstName": {
@@ -1571,6 +1578,29 @@
       "invalidEmail": "Zadejte prosím platnou emailovou adresu",
       "submissionFailed": "Odeslání formuláře se nezdařilo. Zkuste to prosím znovu.",
       "loadFailed": "Načtení otázek se nezdařilo. Obnovte prosím stránku."
+    },
+    "image": {
+      "remaining": "Zbývající",
+      "sizeWarning": "Maximálně 50 MB nahrání obrázků. \n5 MB na obrázek.",
+      "uploading": "Nahrávání",
+      "label": "Obraz",
+      "uploadedFile": "Obrázek nahrán"
+    },
+    "thankYouScreen": {
+      "newsletterInfo": {
+        "subscriptionInfo": "// Aktualizace budeme posílat pouze příležitostně. \nZ odběru se můžete kdykoli odhlásit.",
+        "subscribing": "Zpracovává se..",
+        "subscribe_newsletter": "Přihlásit se k odběru newsletteru",
+        "subscriptionSuccess": "✓ Úspěšně jste se přihlásili k odběru novinek!",
+        "subscriptionThanks": "// Potvrďte svou doručenou poštu",
+        "finishButton": "return_to_homepage",
+        "contactNote": "// Otázky? \nKontaktujte nás na",
+        "newsletterEmail": "$ E-mailová adresa",
+        "newsletterInfo": "Přihlaste se k odběru aktualizací a novinek z FredonBytes",
+        "thankYouMessage": "Děkujeme, že nám pomáháte zlepšovat naše služby.",
+        "thankYouTitle": "// Vaše zpětná vazba byla úspěšně odeslána.",
+        "thankYouHeading": "✓ Úspěšně nasazeno!"
+      }
     }
   },
   "survey": {

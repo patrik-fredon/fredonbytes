@@ -3,7 +3,7 @@
 import { AlertCircle, RefreshCw, Mail } from 'lucide-react';
 
 import CommandButton from '@/components/dev-ui/CommandButton';
-
+import TerminalWindow from '../dev-ui/TerminalWindow';
 export interface ErrorAction {
   label: string;
   onClick: () => void;
@@ -59,55 +59,57 @@ export default function ErrorState({
   };
 
   return (
-    <div className={`text-center ${className}`}>
-      {/* Terminal Error Icon */}
-      <div className={`${iconColors[icon]} mb-4 flex justify-center`}>
-        <AlertCircle size={64} strokeWidth={2} aria-hidden="true" />
-      </div>
-
-      {/* Terminal Title */}
-      <h2 className="text-xl font-mono font-semibold text-white mb-2">
-        {icon === 'error' && '$ ERROR: '}{icon === 'warning' && '$ WARNING: '}{icon === 'info' && '$ INFO: '}{displayTitle}
-      </h2>
-
-      {/* Terminal Message */}
-      <p className="font-mono text-terminal-muted mb-6 max-w-md mx-auto">
-        {message}
-      </p>
-
-      {/* Terminal Action Buttons */}
-      {actions.length > 0 && (
-        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
-          {actions.map((action, index) => (
-            <CommandButton
-              key={index}
-              onClick={action.onClick}
-              variant={icon === 'error' ? 'cyan' : 'purple'}
-              prefix="$"
-              disabled={action.loading}
-              className="min-h-[44px]"
-            >
-              {action.loading ? 'processing...' : action.label.toLowerCase()}
-            </CommandButton>
-          ))}
+    <TerminalWindow title="error.log">
+      <div className={`text-center ${className}`}>
+        {/* Terminal Error Icon */}
+        <div className={`${iconColors[icon]} mb-4 flex justify-center`}>
+          <AlertCircle size={64} strokeWidth={2} aria-hidden="true" />
         </div>
-      )}
 
-      {/* Terminal Support Section */}
-      {showSupport && (
-        <div className="mt-6 pt-6 border-t border-neon-cyan/20">
-          <p className="text-sm font-mono text-terminal-muted mb-2">
+        {/* Terminal Title */}
+        <h2 className="text-xl font-mono font-semibold text-white mb-2">
+          {icon === 'error' && '$ ERROR: '}{icon === 'warning' && '$ WARNING: '}{icon === 'info' && '$ INFO: '}{displayTitle}
+        </h2>
+
+        {/* Terminal Message */}
+        <p className="font-mono text-terminal-muted mb-6 max-w-md mx-auto">
+          {message}
+        </p>
+
+        {/* Terminal Action Buttons */}
+        {actions.length > 0 && (
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
+            {actions.map((action, index) => (
+              <CommandButton
+                key={index}
+                onClick={action.onClick}
+                variant={icon === 'error' ? 'cyan' : 'purple'}
+                prefix="$"
+                disabled={action.loading}
+                className="min-h-[44px]"
+              >
+                {action.loading ? 'processing...' : action.label.toLowerCase()}
+              </CommandButton>
+            ))}
+          </div>
+        )}
+
+        {/* Terminal Support Section */}
+        {showSupport && (
+          <div className="mt-6 pt-6 border-t border-neon-cyan/20">
+            <p className="text-sm font-mono text-terminal-muted mb-2">
             // Need help? Contact support:
-          </p>
-          <a
-            href={`mailto:${supportEmail}`}
-            className="inline-flex items-center gap-2 text-neon-cyan hover:text-white hover:shadow-glow-cyan-subtle transition-all duration-[180ms] text-sm font-mono"
-          >
-            <Mail size={16} aria-hidden="true" />
-            {supportEmail}
-          </a>
-        </div>
-      )}
-    </div>
+            </p>
+            <a
+              href={`mailto:${supportEmail}`}
+              className="inline-flex items-center gap-2 text-neon-cyan hover:text-white hover:shadow-glow-cyan-subtle transition-all duration-[180ms] text-sm font-mono"
+            >
+              <Mail size={16} aria-hidden="true" />
+              {supportEmail}
+            </a>
+          </div>
+        )}
+      </div>
+    </TerminalWindow>
   );
 }

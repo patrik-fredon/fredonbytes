@@ -4,11 +4,11 @@ import { motion } from 'framer-motion'
 import { CheckCircle, Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
-
+import { useTranslations } from 'next-intl'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { getCsrfToken } from '@/hooks/useCsrfToken'
 
-import CommandButton from '../dev-ui/CommandButton'
+import { Button } from '../common/Button'
 
 interface ThankYouScreenProps {
   onRedirect?: () => void
@@ -41,7 +41,7 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
 
     try {
       const csrfToken = getCsrfToken()
-      
+
       const response = await fetch('/api/newsletter/subscribe', {
         method: 'POST',
         headers: {
@@ -70,7 +70,7 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
       setIsSubscribing(false)
     }
   }
-
+  const t = useTranslations('form.thankYouScreen.newsletterInfo')
   // Handle manual finish button click
   const handleFinish = () => {
     if (onRedirect) {
@@ -108,19 +108,19 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
       {/* Terminal Success Message */}
       <div className="space-y-4">
         <h1 className="text-3xl lg:text-4xl font-mono font-bold text-white">
-          $ ✓ Successfully Deployed!
+          {t('thankYouHeading')}
         </h1>
-        <p className="text-lg font-mono text-neon-cyan max-w-2xl mx-auto leading-relaxed">
-          // Your feedback has been successfully submitted.
+        <p className="text-lg font-mono text-neon-purple max-w-2xl mx-auto leading-relaxed">
+          {t('thankYouTitle')}
         </p>
         <p className="text-base font-mono text-terminal-muted">
-          // Thank you for helping us improve our services.
+          {t('thankYouMessage')}
         </p>
       </div>
 
       {/* Terminal Branding */}
       <div className="pt-4">
-        <p className="text-sm font-mono font-semibold text-neon-cyan">
+        <p className="text-sm font-mono font-semibold text-neon-purple">
           — FredonBytes Team
         </p>
       </div>
@@ -137,7 +137,7 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
               className="mt-1 w-5 h-5 rounded border-2 border-neon-cyan/50 bg-terminal-dark/80 text-neon-cyan focus:ring-2 focus:ring-neon-cyan/50 focus:ring-offset-0 cursor-pointer checked:bg-neon-cyan checked:border-neon-cyan hover:border-neon-cyan transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             />
             <span className="flex-1 text-sm font-mono text-terminal-muted group-hover:text-neon-cyan transition-colors duration-[180ms]">
-              // Subscribe to updates and news from FredonBytes
+              {t('newsletterInfo')}
             </span>
           </label>
 
@@ -152,7 +152,7 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
             >
               <div>
                 <label htmlFor="newsletter-email" className="block text-sm font-mono font-medium text-neon-cyan mb-2">
-                  $ Email Address <span className="text-error-red">*</span>
+                  {t('newsletterEmail')} <span className="text-error-red">*</span>
                 </label>
                 <input
                   id="newsletter-email"
@@ -172,7 +172,7 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
                   className="w-full px-4 py-2 border border-neon-cyan/30 rounded-md bg-terminal-dark font-mono text-white placeholder:text-terminal-muted focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-[180ms] disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <p className="mt-1 text-xs font-mono text-terminal-muted">
-                  // We'll only send occasional updates. Unsubscribe anytime.
+                  {t('subscriptionInfo')}
                 </p>
               </div>
 
@@ -186,9 +186,9 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
                 </motion.p>
               )}
 
-              <CommandButton
+              <Button
                 onClick={handleNewsletterSubscription}
-                variant="cyan"
+                variant="gradient"
                 prefix="$"
                 disabled={isSubscribing || !email}
                 className="w-full"
@@ -196,12 +196,12 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
                 {isSubscribing ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin inline mr-2" />
-                    subscribing...
+                    {t('subscribing')}
                   </>
                 ) : (
-                  'subscribe_newsletter'
+                  t('subscribe_newsletter')
                 )}
-              </CommandButton>
+              </Button>
             </motion.div>
           )}
         </div>
@@ -213,32 +213,32 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
         >
           <CheckCircle className="w-8 h-8 text-code-green mx-auto" />
           <p className="text-sm font-mono text-code-green">
-            ✓ Successfully subscribed to newsletter!
+            {t('subscriptionSuccess')}
           </p>
           <p className="text-xs font-mono text-terminal-muted">
-            // Check your inbox for confirmation
+            {t('subscriptionThanks')}
           </p>
         </motion.div>
       )}
 
       {/* Return to Homepage Button */}
       <div className="pt-8 space-y-3">
-        <CommandButton
+        <Button
           onClick={handleFinish}
-          variant="purple"
+          variant="gradient"
           prefix="$"
           className="min-w-[200px]"
         >
-          return_to_homepage
-        </CommandButton>
+          {t('finishButton')}
+        </Button>
       </div>
 
       {/* Terminal Contact Note */}
       <p className="text-xs font-mono text-terminal-muted max-w-md mx-auto pt-4">
-        // Questions? Contact us at{' '}
+        {t('contactNote')}{' '}
         <a
           href="mailto:info@fredonbytes.cloud"
-          className="text-neon-cyan hover:text-white hover:shadow-glow-cyan-subtle transition-all duration-[180ms]"
+          className="text-neon-cyan hover:text-white transition-all duration-[180ms]"
         >
           info@fredonbytes.cloud
         </a>
