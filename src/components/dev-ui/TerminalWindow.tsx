@@ -19,9 +19,9 @@ export default function TerminalWindow({
       <div className="flex items-center justify-between px-4 py-3 bg-code-bg border-b border-slate-950/40 inset-shadow-2xs inset-shadow-slate-950">
         {/* Chrome Controls */}
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500" />
-          <div className="w-3 h-3 rounded-full bg-green-500" />
+          <div className="w-3 h-3 rounded-full bg-red-500 hover:w-4 hover:h-4" />
+          <div className="w-3 h-3 rounded-full bg-yellow-500 hover:w-4 hover:h-4" />
+          <div className="w-3 h-3 rounded-full bg-green-500 hover:w-4 hover:h-4" />
         </div>
 
         {/* Title */}

@@ -255,9 +255,9 @@ export async function generateCustomerConfirmationHTML(data: ContactEmailData): 
   const t = await getEmailTranslations(data.locale);
   const surveySection = data.surveyLink
     ? `
-      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 20px; margin: 25px 0; text-align: center;">
-        <h3 style="margin: 0 0 10px 0; color: #1e40af; font-size: 16px;">📊 ${t('customer.surveyInvitation')}</h3>
-        <a href="${data.surveyLink}" class="cta" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 10px 0; font-weight: 600;">
+      <div style="background: rgba(14, 19, 48, 0.85); border: 1px solid rgba(0, 217, 255, 0.3); border-radius: 12px; padding: 20px; margin: 25px 0; text-align: center; box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);">
+        <h3 style="margin: 0 0 10px 0; color: #00D9FF; font-size: 16px; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> 📊 ${t('customer.surveyInvitation')}</h3>
+        <a href="${data.surveyLink}" style="background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 10px 0; font-weight: 600; box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);">
           ${t('customer.surveyButton')}
         </a>
       </div>
@@ -272,47 +272,47 @@ export async function generateCustomerConfirmationHTML(data: ContactEmailData): 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>${t('customer.thankYou')} - ${t('common.companyName')}</title>
         <style>
-          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+          body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; }
-          .content { background: #f8fafc; padding: 30px; border-radius: 0 0 8px 8px; }
-          .highlight { background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981; margin: 20px 0; }
-          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; }
-          .cta { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 20px 0; }
+          .header { background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
+          .content { background: #0A0E27; padding: 30px; border-radius: 0 0 12px 12px; border: 1px solid rgba(0, 217, 255, 0.3); }
+          .highlight { background: rgba(14, 19, 48, 0.85); padding: 20px; border-radius: 8px; border-left: 4px solid #10B981; margin: 20px 0; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 217, 255, 0.3); color: #94A3B8; }
+          .cta { background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 20px 0; font-weight: 600; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 24px;">${t('customer.greeting')}, ${escapeHtml(data.firstName)}!</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.9;">${t('customer.thankYou')}</p>
+            <h1 style="margin: 0; font-size: 24px; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t('customer.greeting')}, ${escapeHtml(data.firstName)}!</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t('customer.thankYou')}</p>
           </div>
 
           <div class="content">
             <div class="highlight">
-              <h3 style="margin: 0 0 15px 0; color: #059669;">✓ ${t('customer.confirmationMessage')}</h3>
-              <p style="margin: 0;">${t('customer.responseTime')}</p>
+              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t('customer.confirmationMessage')}</h3>
+              <p style="margin: 0; color: #F1F5F9;">${t('customer.responseTime')}</p>
             </div>
 
             ${surveySection}
 
-            <h3>${t('customer.whatHappensNext')}</h3>
-            <ol>
+            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t('customer.whatHappensNext')}</h3>
+            <ol style="color: #F1F5F9;">
               <li>${t('customer.steps.review')}</li>
               <li>${t('customer.steps.response')}</li>
               <li>${t('customer.steps.consultation')}</li>
               <li>${t('customer.steps.proposal')}</li>
             </ol>
 
-            <div style="background: white; padding: 20px; border-radius: 8px; margin: 25px 0;">
-              <h4 style="margin: 0 0 10px 0;">${t('customer.projectSummary')}</h4>
-              <p style="margin: 5px 0;"><strong>${t('admin.projectDetails')}:</strong> ${escapeHtml(data.projectType)}</p>
-              <p style="margin: 5px 0;"><strong>Budget:</strong> ${escapeHtml(data.budget)}</p>
-              <p style="margin: 5px 0;"><strong>Timeline:</strong> ${escapeHtml(data.timeline)}</p>
+            <div style="background: rgba(14, 19, 48, 0.85); padding: 20px; border-radius: 8px; margin: 25px 0; border: 1px solid rgba(168, 85, 247, 0.3);">
+              <h4 style="margin: 0 0 10px 0; color: #A855F7; font-family: 'Courier New', monospace;">${t('customer.projectSummary')}</h4>
+              <p style="margin: 5px 0; color: #F1F5F9;"><strong>${t('admin.projectDetails')}:</strong> ${escapeHtml(data.projectType)}</p>
+              <p style="margin: 5px 0; color: #F1F5F9;"><strong>Budget:</strong> ${escapeHtml(data.budget)}</p>
+              <p style="margin: 5px 0; color: #F1F5F9;"><strong>Timeline:</strong> ${escapeHtml(data.timeline)}</p>
             </div>
 
-            <p>${t('customer.inTheMeantime')}</p>
-            <ul>
+            <p style="color: #F1F5F9;">${t('customer.inTheMeantime')}</p>
+            <ul style="color: #F1F5F9;">
               ${t.raw('customer.suggestions').map((s: string) => `<li>${s}</li>`).join('')}
             </ul>
 
@@ -322,9 +322,9 @@ export async function generateCustomerConfirmationHTML(data: ContactEmailData): 
           </div>
 
           <div class="footer">
-            <p><strong>${t('common.companyName')}</strong> - ${t('common.tagline')}</p>
-            <p>${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984</p>
-            <p style="font-size: 12px; margin-top: 15px;">
+            <p><strong style="color: #00D9FF;">${t('common.companyName')}</strong> <span style="color: #94A3B8;">//</span> ${t('common.tagline')}</p>
+            <p>${t('common.location')} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #A855F7;">
               Code. Create. Conquer.
             </p>
           </div>
@@ -342,11 +342,11 @@ export async function generateCustomerConfirmationHTML(data: ContactEmailData): 
 export async function generateCustomerConfirmationText(data: ContactEmailData): Promise<string> {
   const t = await getEmailTranslations(data.locale);
   const surveySection = data.surveyLink
-    ? `\n\n${t('customer.surveyInvitation')}\n${t('customer.surveyButton')}: ${data.surveyLink}\n`
+    ? `\n\n// 📊 ${t('customer.surveyInvitation')}\n${t('customer.surveyButton')}: ${data.surveyLink}\n`
     : '';
 
   return `
-${t('customer.greeting')}, ${data.firstName}!
+// ${t('customer.greeting')}, ${data.firstName}!
 
 ${t('customer.thankYou')}
 
@@ -354,7 +354,7 @@ ${t('customer.thankYou')}
 ${t('customer.responseTime')}
 ${surveySection}
 
-${t('customer.whatHappensNext')}
+// ${t('customer.whatHappensNext')}
 
 1. ${t('customer.steps.review')}
 2. ${t('customer.steps.response')}
@@ -372,9 +372,9 @@ ${t('customer.inTheMeantime')}
 - Call us directly at +420 799 027 984
 
 ---
-${t('common.companyName')} - ${t('common.tagline')}
+${t('common.companyName')} // ${t('common.tagline')}
 ${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
-Code. Create. Conquer.
+// Code. Create. Conquer.
   `.trim();
 }
 
@@ -497,47 +497,47 @@ export async function generateSurveyThankYouHTML(data: SurveyThankYouData): Prom
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>${t('survey.thankYou')} - ${t('common.companyName')}</title>
         <style>
-          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+          body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #10b981, #3b82f6); color: white; padding: 40px 30px; border-radius: 8px 8px 0 0; text-align: center; }
-          .content { background: #f8fafc; padding: 30px; border-radius: 0 0 8px 8px; }
-          .highlight { background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981; margin: 20px 0; }
-          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; }
+          .header { background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 40px 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5); }
+          .content { background: #0A0E27; padding: 30px; border-radius: 0 0 12px 12px; border: 1px solid rgba(16, 185, 129, 0.3); }
+          .highlight { background: rgba(14, 19, 48, 0.85); padding: 20px; border-radius: 8px; border-left: 4px solid #10B981; margin: 20px 0; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 217, 255, 0.3); color: #94A3B8; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 28px;">🎉 ${t('survey.thankYou')}</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.9;">${t('survey.feedbackReceived')}</p>
+            <h1 style="margin: 0; font-size: 28px; font-family: 'Courier New', monospace;"><span style="color: #10B981;">//</span> 🎉 ${t('survey.thankYou')}</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t('survey.feedbackReceived')}</p>
           </div>
 
           <div class="content">
-            <p>${t('survey.greeting')}, ${escapeHtml(data.firstName)}!</p>
+            <p style="color: #F1F5F9;"><span style="color: #00D9FF;">//</span> ${t('survey.greeting')}, ${escapeHtml(data.firstName)}!</p>
             
             <div class="highlight">
-              <h3 style="margin: 0 0 15px 0; color: #059669;">✓ ${t('survey.completionMessage')}</h3>
-              <p style="margin: 0;">${t('survey.feedbackValue')}</p>
+              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t('survey.completionMessage')}</h3>
+              <p style="margin: 0; color: #F1F5F9;">${t('survey.feedbackValue')}</p>
             </div>
 
-            <h3>${t('survey.whatNext')}</h3>
-            <ul>
+            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t('survey.whatNext')}</h3>
+            <ul style="color: #F1F5F9;">
               <li>${t('survey.reviewFeedback')}</li>
               <li>${t('survey.improveServices')}</li>
               <li>${t('survey.followUp')}</li>
             </ul>
 
-            <p>${t('survey.gratitude')}</p>
+            <p style="color: #F1F5F9;">${t('survey.gratitude')}</p>
 
             <div style="text-align: center; margin-top: 30px;">
-              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10b981, #3b82f6); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block;">${t('customer.visitWebsite')}</a>
+              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t('customer.visitWebsite')}</a>
             </div>
           </div>
 
           <div class="footer">
-            <p><strong>${t('common.companyName')}</strong> - ${t('common.tagline')}</p>
-            <p>${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984</p>
-            <p style="font-size: 12px; margin-top: 15px;">
+            <p><strong style="color: #00D9FF;">${t('common.companyName')}</strong> <span style="color: #94A3B8;">//</span> ${t('common.tagline')}</p>
+            <p>${t('common.location')} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #10B981;">
               Code. Create. Conquer.
             </p>
           </div>
@@ -556,16 +556,16 @@ export async function generateSurveyThankYouText(data: SurveyThankYouData): Prom
   const t = await getEmailTranslations(data.locale);
 
   return `
-🎉 ${t('survey.thankYou')}
+// 🎉 ${t('survey.thankYou')}
 
-${t('survey.greeting')}, ${data.firstName}!
+// ${t('survey.greeting')}, ${data.firstName}!
 
 ${t('survey.feedbackReceived')}
 
 ✓ ${t('survey.completionMessage')}
 ${t('survey.feedbackValue')}
 
-${t('survey.whatNext')}
+// ${t('survey.whatNext')}
 
 1. ${t('survey.reviewFeedback')}
 2. ${t('survey.improveServices')}
@@ -576,9 +576,9 @@ ${t('survey.gratitude')}
 Visit us: https://fredonbytes.cloud
 
 ---
-${t('common.companyName')} - ${t('common.tagline')}
+${t('common.companyName')} // ${t('common.tagline')}
 ${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
-Code. Create. Conquer.
+// Code. Create. Conquer.
   `.trim();
 }
 
@@ -652,53 +652,53 @@ export async function generateNewsletterWelcomeHTML(data: NewsletterWelcomeData)
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>${t('newsletter.welcome')} - ${t('common.companyName')}</title>
         <style>
-          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+          body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 40px 30px; border-radius: 8px 8px 0 0; text-align: center; }
-          .content { background: #f8fafc; padding: 30px; border-radius: 0 0 8px 8px; }
-          .highlight { background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981; margin: 20px 0; }
-          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; }
-          .cta { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 20px 0; }
+          .header { background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 40px 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
+          .content { background: #0A0E27; padding: 30px; border-radius: 0 0 12px 12px; border: 1px solid rgba(0, 217, 255, 0.3); }
+          .highlight { background: rgba(14, 19, 48, 0.85); padding: 20px; border-radius: 8px; border-left: 4px solid #10B981; margin: 20px 0; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 217, 255, 0.3); color: #94A3B8; }
+          .cta { background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 20px 0; font-weight: 600; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 28px;">📬 ${t('newsletter.welcome')}</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.9;">${t('newsletter.thanksForSubscribing')}</p>
+            <h1 style="margin: 0; font-size: 28px; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> 📬 ${t('newsletter.welcome')}</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t('newsletter.thanksForSubscribing')}</p>
           </div>
 
           <div class="content">
-            <p>${t('newsletter.greeting')}, ${escapeHtml(displayName)}!</p>
+            <p style="color: #F1F5F9;"><span style="color: #00D9FF;">//</span> ${t('newsletter.greeting')}, ${escapeHtml(displayName)}!</p>
             
             <div class="highlight">
-              <h3 style="margin: 0 0 15px 0; color: #059669;">✓ ${t('newsletter.subscriptionConfirmed')}</h3>
-              <p style="margin: 0;">${t('newsletter.whatToExpect')}</p>
+              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t('newsletter.subscriptionConfirmed')}</h3>
+              <p style="margin: 0; color: #F1F5F9;">${t('newsletter.whatToExpect')}</p>
             </div>
 
-            <h3>${t('newsletter.youWillReceive')}</h3>
-            <ul>
+            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t('newsletter.youWillReceive')}</h3>
+            <ul style="color: #F1F5F9;">
               <li>${t('newsletter.benefits.updates')}</li>
               <li>${t('newsletter.benefits.tips')}</li>
               <li>${t('newsletter.benefits.offers')}</li>
               <li>${t('newsletter.benefits.news')}</li>
             </ul>
 
-            <p>${t('newsletter.stayTuned')}</p>
+            <p style="color: #F1F5F9;">${t('newsletter.stayTuned')}</p>
 
             <div style="text-align: center;">
               <a href="https://fredonbytes.cloud" class="cta">${t('customer.visitWebsite')}</a>
             </div>
 
-            <p style="font-size: 12px; color: #64748b; margin-top: 30px;">
+            <p style="font-size: 12px; color: #94A3B8; margin-top: 30px;">
               ${t('newsletter.unsubscribeInfo')}
             </p>
           </div>
 
           <div class="footer">
-            <p><strong>${t('common.companyName')}</strong> - ${t('common.tagline')}</p>
-            <p>${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984</p>
-            <p style="font-size: 12px; margin-top: 15px;">
+            <p><strong style="color: #00D9FF;">${t('common.companyName')}</strong> <span style="color: #94A3B8;">//</span> ${t('common.tagline')}</p>
+            <p>${t('common.location')} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #A855F7;">
               Code. Create. Conquer.
             </p>
           </div>
@@ -720,16 +720,16 @@ export async function generateNewsletterWelcomeText(data: NewsletterWelcomeData)
     : data.email.split('@')[0];
 
   return `
-📬 ${t('newsletter.welcome')}
+// 📬 ${t('newsletter.welcome')}
 
-${t('newsletter.greeting')}, ${displayName}!
+// ${t('newsletter.greeting')}, ${displayName}!
 
 ${t('newsletter.thanksForSubscribing')}
 
 ✓ ${t('newsletter.subscriptionConfirmed')}
 ${t('newsletter.whatToExpect')}
 
-${t('newsletter.youWillReceive')}
+// ${t('newsletter.youWillReceive')}
 
 • ${t('newsletter.benefits.updates')}
 • ${t('newsletter.benefits.tips')}
@@ -743,9 +743,9 @@ Visit us: https://fredonbytes.cloud
 ${t('newsletter.unsubscribeInfo')}
 
 ---
-${t('common.companyName')} - ${t('common.tagline')}
+${t('common.companyName')} // ${t('common.tagline')}
 ${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
-Code. Create. Conquer.
+// Code. Create. Conquer.
   `.trim();
 }
 
@@ -774,48 +774,48 @@ export async function generateFormThankYouHTML(data: FormThankYouData): Promise<
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>${t('form.thankYou')} - ${t('common.companyName')}</title>
         <style>
-          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+          body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #10b981, #3b82f6); color: white; padding: 40px 30px; border-radius: 8px 8px 0 0; text-align: center; }
-          .content { background: #f8fafc; padding: 30px; border-radius: 0 0 8px 8px; }
-          .highlight { background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981; margin: 20px 0; }
-          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; }
+          .header { background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 40px 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5); }
+          .content { background: #0A0E27; padding: 30px; border-radius: 0 0 12px 12px; border: 1px solid rgba(16, 185, 129, 0.3); }
+          .highlight { background: rgba(14, 19, 48, 0.85); padding: 20px; border-radius: 8px; border-left: 4px solid #10B981; margin: 20px 0; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 217, 255, 0.3); color: #94A3B8; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 28px;">🎉 ${t('form.thankYou')}</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.9;">${t('form.feedbackReceived')}</p>
+            <h1 style="margin: 0; font-size: 28px; font-family: 'Courier New', monospace;"><span style="color: #10B981;">//</span> 🎉 ${t('form.thankYou')}</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t('form.feedbackReceived')}</p>
           </div>
 
           <div class="content">
-            <p>${t('form.greeting')}, ${escapeHtml(displayName)}!</p>
+            <p style="color: #F1F5F9;"><span style="color: #00D9FF;">//</span> ${t('form.greeting')}, ${escapeHtml(displayName)}!</p>
             
             <div class="highlight">
-              <h3 style="margin: 0 0 15px 0; color: #059669;">✓ ${t('form.completionMessage')}</h3>
-              <p style="margin: 0;">${t('form.feedbackValue')}</p>
+              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t('form.completionMessage')}</h3>
+              <p style="margin: 0; color: #F1F5F9;">${t('form.feedbackValue')}</p>
             </div>
 
-            <h3>${t('form.whatNext')}</h3>
-            <ul>
+            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t('form.whatNext')}</h3>
+            <ul style="color: #F1F5F9;">
               <li>${t('form.reviewFeedback')}</li>
               <li>${t('form.improveServices')}</li>
               <li>${t('form.followUp')}</li>
               <li>${t('form.next')}</li>
             </ul>
 
-            <p>${t('form.gratitude')}</p>
+            <p style="color: #F1F5F9;">${t('form.gratitude')}</p>
 
             <div style="text-align: center; margin-top: 30px;">
-              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10b981, #3b82f6); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block;">${t('customer.visitWebsite')}</a>
+              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t('customer.visitWebsite')}</a>
             </div>
           </div>
 
           <div class="footer">
-            <p><strong>${t('common.companyName')}</strong> - ${t('common.tagline')}</p>
-            <p>${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984</p>
-            <p style="font-size: 12px; margin-top: 15px;">
+            <p><strong style="color: #00D9FF;">${t('common.companyName')}</strong> <span style="color: #94A3B8;">//</span> ${t('common.tagline')}</p>
+            <p>${t('common.location')} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #10B981;">
               Code. Create. Conquer.
             </p>
           </div>
@@ -835,16 +835,16 @@ export async function generateFormThankYouText(data: FormThankYouData): Promise<
   const displayName = data.email.split('@')[0];
 
   return `
-🎉 ${t('form.thankYou')}
+// 🎉 ${t('form.thankYou')}
 
-${t('form.greeting')}, ${displayName}!
+// ${t('form.greeting')}, ${displayName}!
 
 ${t('form.feedbackReceived')}
 
 ✓ ${t('form.completionMessage')}
 ${t('form.feedbackValue')}
 
-${t('form.whatNext')}
+// ${t('form.whatNext')}
 
 1. ${t('form.reviewFeedback')}
 2. ${t('form.improveServices')}
@@ -855,8 +855,8 @@ ${t('form.gratitude')}
 Visit us: https://fredonbytes.cloud
 
 ---
-${t('common.companyName')} - ${t('common.tagline')}
+${t('common.companyName')} // ${t('common.tagline')}
 ${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
-Code. Create. Conquer.
+// Code. Create. Conquer.
   `.trim();
 }
