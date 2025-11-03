@@ -1538,8 +1538,8 @@
     }
   },
   "form": {
-    "title": "Customer Satisfaction Form",
-    "subtitle": "Thank you for taking the time to share your feedback with us. Your insights help us improve our services and better serve you.",
+    "title": "// Let's get to know each other!",
+    "subtitle": "Thanks so much for filling out this form! It's going to be a big help in making sure we get the perfect wireframe for your project, and we're really excited to get to know you better.",
     "estimatedTime": "Estimated time: 3-5 minutes",
     "startButton": "Start",
     "starting": "Starting...",

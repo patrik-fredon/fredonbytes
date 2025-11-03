@@ -135,11 +135,11 @@ export default function QuestionStep({
           </h2>
           {question.required ? (
             <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 whitespace-nowrap">
-              Required
+              *
             </span>
           ) : (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 whitespace-nowrap">
-              Optional
+            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium   whitespace-nowrap">
+
             </span>
           )}
         </div>

@@ -5,9 +5,10 @@ import dynamic from "next/dynamic";
 import { useState, useEffect, useCallback, useRef } from "react";
 
 import ErrorState from "@/components/form/ErrorState";
-import FormBackground from "@/components/form/FormBackground";
 import FormNavigation from "@/components/form/FormNavigation";
 import QuestionStep from "@/components/form/QuestionStep";
+import TerminalWindow from "@/components/dev-ui/TerminalWindow";
+
 // Lazy load ThankYouScreen since it's only needed at the end
 const ThankYouScreen = dynamic(
   () => import("@/components/form/ThankYouScreen"),
@@ -446,17 +447,19 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   if (formState.isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-        <FormBackground />
+        <TerminalWindow title="Loading...">
 
-        {/* Form container */}
-        <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-slate-600 dark:text-slate-300">
-              Loading survey questions...
-            </p>
+          {/* Form container */}
+          <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+              <p className="text-slate-600 dark:text-slate-300">
+                Loading survey questions...
+              </p>
+            </div>
           </div>
-        </div>
+
+        </TerminalWindow>
       </div>
     );
   }
@@ -464,31 +467,32 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Render error state
   if (formState.error && !formState.isSubmitting) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-        <FormBackground />
+      <div className="min-h-screen flex items-center justify-center relative overflow-hidden ">
+        <TerminalWindow title="Error Loading Survey">
 
-        {/* Form container */}
-        <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
-          <ErrorState
-            title={
-              formState.isLoading
-                ? "Unable to Load Survey"
-                : "Submission Failed"
-            }
-            message={formState.error}
-            actions={[
-              {
-                label: "Retry",
-                onClick: formState.isLoading
-                  ? retryLoadQuestions
-                  : handleSubmit,
-                variant: "default",
-              },
-            ]}
-            showSupport={true}
-            icon="error"
-          />
-        </div>
+          {/* Form container */}
+          <div className="relative z-10 w-full max-w-2xl  rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 ">
+            <ErrorState
+              title={
+                formState.isLoading
+                  ? "Unable to Load Survey"
+                  : "Submission Failed"
+              }
+              message={formState.error}
+              actions={[
+                {
+                  label: "Retry",
+                  onClick: formState.isLoading
+                    ? retryLoadQuestions
+                    : handleSubmit,
+                  variant: "default",
+                },
+              ]}
+              showSupport={true}
+              icon="error"
+            />
+          </div>
+        </TerminalWindow>
       </div>
     );
   }
@@ -496,74 +500,121 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Render form
   return (
     <main
-      className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center p-10 relative overflow-hidden"
       role="main"
-      aria-label="Customer Satisfaction Survey"
+      aria-label="Customer Project Initiation Form"
     >
-      <FormBackground />
-
-      {/* Submission Error Modal */}
-      {formState.submissionError && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="relative w-full max-w-md bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 border border-slate-200/50 dark:border-slate-700/50 animate-in zoom-in duration-200">
-            <ErrorState
-              title="Submission Failed"
-              message={formState.submissionError}
-              actions={[
-                {
-                  label: "Retry Submission",
-                  onClick: handleSubmit,
-                  variant: "default",
-                  loading: formState.isSubmitting,
-                },
-                {
-                  label: "Close",
-                  onClick: closeSubmissionError,
-                  variant: "outline",
-                },
-              ]}
-              showSupport={true}
-              icon="error"
-            />
+      <TerminalWindow className="relative z-10 w-full max-w-2xl  rounded-xl shadow-2xl ">
+        {/* Submission Error Modal */}
+        {formState.submissionError && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-12  backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="relative w-full max-w-md rounded-xl shadow-2xl p-6 animate-in zoom-in duration-200">
+              <ErrorState
+                title="Submission Failed"
+                message={formState.submissionError}
+                actions={[
+                  {
+                    label: "Retry Submission",
+                    onClick: handleSubmit,
+                    variant: "default",
+                    loading: formState.isSubmitting,
+                  },
+                  {
+                    label: "Close",
+                    onClick: closeSubmissionError,
+                    variant: "outline",
+                  },
+                ]}
+                showSupport={true}
+                icon="error"
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* Skip link for screen readers */}
-      <a
-        href="#form-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-md focus:shadow-lg"
-      >
-        Skip to form content
-      </a>
 
-      {/* Form container */}
-      <div
-        id="form-content"
-        className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50"
-      >
-        {/* ARIA live region for announcements */}
+
+        {/* Form container */}
         <div
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-          className="sr-only"
+          id="form-content"
+          className="relative z-10 w-full max-w-4xl rounded-xl shadow-2xl p-8 sm:p-10 md:p-12 "
         >
-          {formState.currentStep >= 1 &&
-            formState.currentStep <= formState.questions.length &&
-            `Question ${formState.currentStep} of ${formState.questions.length}`}
-          {formState.currentStep > formState.questions.length &&
-            "Thank you for completing the form"}
-          {formState.validationError && `Error: ${formState.validationError}`}
-        </div>
+          {/* ARIA live region for announcements */}
+          <div
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            className="sr-only"
+          >
+            {formState.currentStep >= 1 &&
+              formState.currentStep <= formState.questions.length &&
+              `Question ${formState.currentStep} of ${formState.questions.length}`}
+            {formState.currentStep > formState.questions.length &&
+              "Thank you for completing the form"}
+            {formState.validationError && `Error: ${formState.validationError}`}
+          </div>
 
-        {/* AnimatePresence wrapper for exit animations */}
-        <AnimatePresence mode="wait" custom={formState.direction}>
-          {/* Question Steps (Steps 1 to questions.length) */}
-          {formState.currentStep >= 1 &&
-            formState.currentStep <= formState.questions.length && (
+          {/* AnimatePresence wrapper for exit animations */}
+          <AnimatePresence mode="wait" custom={formState.direction}>
+            {/* Question Steps (Steps 1 to questions.length) */}
+            {formState.currentStep >= 1 &&
+              formState.currentStep <= formState.questions.length && (
+                <motion.div
+                  key={`question-${formState.currentStep}`}
+                  custom={formState.direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={slideTransition}
+                  style={animatedStyle}
+                  ref={questionContainerRef}
+                >
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleNext();
+                    }}
+                    className="space-y-6"
+                  >
+                    <fieldset className="border-0 p-4 m-4">
+                      <legend className="sr-only">
+                        Question {formState.currentStep} of{" "}
+                        {formState.questions.length}
+                      </legend>
+                      <QuestionStep
+                        question={formState.questions[formState.currentStep - 1]}
+                        answer={formState.answers.get(
+                          formState.questions[formState.currentStep - 1]?.id
+                        )}
+                        onAnswerChange={(value) =>
+                          handleAnswerChange(
+                            formState.questions[formState.currentStep - 1].id,
+                            value
+                          )
+                        }
+                        error={formState.validationError}
+                      />
+                    </fieldset>
+
+                    {/* Form Navigation */}
+                    <FormNavigation
+                      currentStep={formState.currentStep}
+                      totalSteps={formState.questions.length}
+                      canGoNext={canGoNext}
+                      canGoPrevious={canGoPrevious}
+                      isSubmitting={formState.isSubmitting}
+                      onPrevious={handlePrevious}
+                      onNext={handleNext}
+                    />
+                  </form>
+                </motion.div>
+              )}
+
+            {/* Thank You Screen (Step questions.length + 1) */}
+            {formState.currentStep > formState.questions.length && (
               <motion.div
-                key={`question-${formState.currentStep}`}
+                key="thankyou"
                 custom={formState.direction}
                 variants={slideVariants}
                 initial="enter"
@@ -571,66 +622,13 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
                 exit="exit"
                 transition={slideTransition}
                 style={animatedStyle}
-                ref={questionContainerRef}
               >
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    handleNext();
-                  }}
-                  className="space-y-8"
-                >
-                  <fieldset className="border-0 p-0 m-0">
-                    <legend className="sr-only">
-                      Question {formState.currentStep} of{" "}
-                      {formState.questions.length}
-                    </legend>
-                    <QuestionStep
-                      question={formState.questions[formState.currentStep - 1]}
-                      answer={formState.answers.get(
-                        formState.questions[formState.currentStep - 1]?.id
-                      )}
-                      onAnswerChange={(value) =>
-                        handleAnswerChange(
-                          formState.questions[formState.currentStep - 1].id,
-                          value
-                        )
-                      }
-                      error={formState.validationError}
-                    />
-                  </fieldset>
-
-                  {/* Form Navigation */}
-                  <FormNavigation
-                    currentStep={formState.currentStep}
-                    totalSteps={formState.questions.length}
-                    canGoNext={canGoNext}
-                    canGoPrevious={canGoPrevious}
-                    isSubmitting={formState.isSubmitting}
-                    onPrevious={handlePrevious}
-                    onNext={handleNext}
-                  />
-                </form>
+                <ThankYouScreen />
               </motion.div>
             )}
-
-          {/* Thank You Screen (Step questions.length + 1) */}
-          {formState.currentStep > formState.questions.length && (
-            <motion.div
-              key="thankyou"
-              custom={formState.direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={slideTransition}
-              style={animatedStyle}
-            >
-              <ThankYouScreen />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+          </AnimatePresence>
+        </div>
+      </TerminalWindow>
     </main>
   );
 }

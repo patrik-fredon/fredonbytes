@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import CommandButton from '@/components/dev-ui/CommandButton';
+import { Button } from '@/components/common/Button';
 
 interface FormNavigationProps {
   currentStep: number;
@@ -48,7 +48,7 @@ export default function FormNavigation({
     <div className="w-full">
       {/* Terminal Progress Bar - only show on question steps */}
       {isOnQuestion && (
-        <div className="mb-6 space-y-2">
+        <div className="mb-6 space-y-6">
           <div className="flex items-center justify-between">
             <p className="text-sm font-mono text-neon-cyan font-semibold">
               $ Question {currentStep}/{totalSteps}
@@ -58,7 +58,7 @@ export default function FormNavigation({
             </p>
           </div>
           <div className="h-2 bg-glass-bg backdrop-blur-glass rounded-full border border-neon-cyan/40 overflow-hidden shadow-glow-cyan-subtle">
-            <div 
+            <div
               className="h-full bg-gradient-to-r from-neon-cyan to-neon-purple shadow-glow-cyan transition-all duration-300 ease-out"
               style={{ width: `${(currentStep / totalSteps) * 100}%` }}
             />
@@ -67,30 +67,32 @@ export default function FormNavigation({
       )}
 
       {/* Terminal Navigation Buttons */}
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
+      <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full">
         {/* Previous button - hidden on welcome screen */}
         {canGoPrevious && (
-          <CommandButton
-            variant="cyan"
+          <Button
+            variant="gradient"
             prefix="$"
             onClick={onPrevious}
             disabled={!canGoPrevious || isSubmitting}
-            className="w-full sm:w-auto sm:min-w-[140px]"
+            className="w-full sm:w-auto sm:min-w-[140px] mt-10"
           >
             previous
-          </CommandButton>
+            <ChevronLeft className="w-4 h-4 ml-2" />
+          </Button>
         )}
 
         {/* Next/Submit button */}
-        <CommandButton
-          variant={isOnLastQuestion ? 'purple' : 'cyan'}
+        <Button
+          variant={isOnLastQuestion ? 'gradient' : 'neon-purple'}
           prefix="$"
           onClick={onNext}
           disabled={!canGoNext || isSubmitting}
-          className="w-full sm:flex-1 sm:min-w-[140px]"
+          className="max-w-1 flex mt-10  sm:flex-1 sm:min-w-[140px]"
         >
           {isSubmitting ? 'processing...' : isOnLastQuestion ? 'submit' : 'next'}
-        </CommandButton>
+          <ChevronRight className="w-4 h-4 ml-2" />
+        </Button>
       </div>
     </div>
   );

@@ -1608,8 +1608,8 @@
     }
   },
   "form": {
-    "title": "Kundenzufriedenheitsformular",
-    "subtitle": "Vielen Dank, dass Sie sich die Zeit nehmen, Ihr Feedback mit uns zu teilen. Ihre Erkenntnisse helfen uns, unsere Dienstleistungen zu verbessern.",
+    "title": "// Lasst uns einander kennenlernen!",
+    "subtitle": "Vielen Dank für das Ausfüllen dieses Formulars! \nEs wird eine große Hilfe sein, um sicherzustellen, dass wir das perfekte Wireframe für Ihr Projekt erhalten, und wir freuen uns sehr, Sie besser kennenzulernen.",
     "estimatedTime": "Geschätzte Zeit: 3-5 Minuten",
     "startButton": "Starten",
     "starting": "Wird gestartet...",

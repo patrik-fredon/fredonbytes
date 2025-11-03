@@ -1539,8 +1539,8 @@
     }
   },
   "form": {
-    "title": "Formulář spokojenosti zákazníků",
-    "subtitle": "Děkujeme, že si uděláte čas a podělíte se s námi o svou zpětnou vazbu. Vaše poznatky nám pomáhají zlepšovat naše služby.",
+    "title": "// Poznejme se!",
+    "subtitle": "Moc děkujeme za vyplnění tohoto formuláře! \nBude to velká pomoc při zajišťování dokonalého drátového modelu pro váš projekt a jsme opravdu rádi, že vás můžeme lépe poznat.",
     "estimatedTime": "Odhadovaný čas: 3-5 minut",
     "startButton": "Začít",
     "starting": "Spouštění...",
