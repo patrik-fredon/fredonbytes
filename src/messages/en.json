@@ -1549,12 +1549,13 @@
       "feedbackReceived": "We've received your form response",
       "greeting": "Thank you",
       "completionMessage": "Your form has been submitted successfully!",
-      "feedbackValue": "Your feedback is invaluable in helping us improve our services and better meet your needs.",
+      "feedbackValue": "Your requirements will better help us design a tailor-made solution for you!",
       "whatNext": "What happens next?",
-      "reviewFeedback": "Our team will carefully review your feedback",
-      "improveServices": "We'll use your insights to enhance our services",
+      "reviewFeedback": "Our team will carefully review your needs",
+      "improveServices": "Your answers will help us create the implementation plan and future steps.",
       "followUp": "If needed, we may reach out to discuss your feedback further",
-      "gratitude": "Thank you for taking the time to help us serve you better!"
+      "gratitude": "Thank you for taking the time to enter the IT world without worries!",
+      "next": "We will schedule the first meeting (online or in person) and we can start!"
     },
     "newsletter": {
       "subject": "Welcome to Fredonbytes Newsletter!",

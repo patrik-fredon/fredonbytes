@@ -297,6 +297,39 @@ export async function POST(request: NextRequest) {
       // Non-blocking, continue
     }
 
+    // Send customer thank you email if email is provided (non-blocking)
+    if (email) {
+      try {
+        const { generateFormThankYouHTML, generateFormThankYouText } = await import('@/lib/email-templates');
+        const { getTranslations } = await import('next-intl/server');
+
+        const t = await getTranslations({ locale: sessionLocale, namespace: 'emails' });
+
+        const emailHtml = await generateFormThankYouHTML({
+          email,
+          locale: sessionLocale,
+        });
+
+        const emailText = await generateFormThankYouText({
+          email,
+          locale: sessionLocale,
+        });
+
+        await sendEmail({
+          from: 'Fredonbytes <info@fredonbytes.com>',
+          to: email,
+          subject: t('form.subject'),
+          html: emailHtml,
+          text: emailText,
+        });
+
+        console.log('Form thank you email sent successfully');
+      } catch (emailError) {
+        console.error('Error sending form thank you email:', emailError);
+        // Don't fail the request if email fails
+      }
+    }
+
     // Send admin notification email (non-blocking)
     try {
       // Fetch question details to include in email

@@ -640,7 +640,7 @@ export interface NewsletterWelcomeData {
  */
 export async function generateNewsletterWelcomeHTML(data: NewsletterWelcomeData): Promise<string> {
   const t = await getEmailTranslations(data.locale);
-  const displayName = data.firstName 
+  const displayName = data.firstName
     ? `${data.firstName}${data.lastName ? ` ${data.lastName}` : ''}`
     : data.email.split('@')[0];
 
@@ -715,7 +715,7 @@ export async function generateNewsletterWelcomeHTML(data: NewsletterWelcomeData)
  */
 export async function generateNewsletterWelcomeText(data: NewsletterWelcomeData): Promise<string> {
   const t = await getEmailTranslations(data.locale);
-  const displayName = data.firstName 
+  const displayName = data.firstName
     ? `${data.firstName}${data.lastName ? ` ${data.lastName}` : ''}`
     : data.email.split('@')[0];
 
@@ -741,6 +741,118 @@ ${t('newsletter.stayTuned')}
 Visit us: https://fredonbytes.cloud
 
 ${t('newsletter.unsubscribeInfo')}
+
+---
+${t('common.companyName')} - ${t('common.tagline')}
+${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
+Code. Create. Conquer.
+  `.trim();
+}
+
+/**
+ * Form thank you email data interface
+ */
+export interface FormThankYouData {
+  email: string;
+  locale: string;
+}
+
+/**
+ * Generates HTML email template for form completion thank you
+ * @param data - Form completion data including customer email and locale
+ * @returns Promise with HTML string for email body
+ */
+export async function generateFormThankYouHTML(data: FormThankYouData): Promise<string> {
+  const t = await getEmailTranslations(data.locale);
+  const displayName = data.email.split('@')[0];
+
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>${t('form.thankYou')} - ${t('common.companyName')}</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: linear-gradient(135deg, #10b981, #3b82f6); color: white; padding: 40px 30px; border-radius: 8px 8px 0 0; text-align: center; }
+          .content { background: #f8fafc; padding: 30px; border-radius: 0 0 8px 8px; }
+          .highlight { background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981; margin: 20px 0; }
+          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1 style="margin: 0; font-size: 28px;">🎉 ${t('form.thankYou')}</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">${t('form.feedbackReceived')}</p>
+          </div>
+
+          <div class="content">
+            <p>${t('form.greeting')}, ${escapeHtml(displayName)}!</p>
+            
+            <div class="highlight">
+              <h3 style="margin: 0 0 15px 0; color: #059669;">✓ ${t('form.completionMessage')}</h3>
+              <p style="margin: 0;">${t('form.feedbackValue')}</p>
+            </div>
+
+            <h3>${t('form.whatNext')}</h3>
+            <ul>
+              <li>${t('form.reviewFeedback')}</li>
+              <li>${t('form.improveServices')}</li>
+              <li>${t('form.followUp')}</li>
+              <li>${t('form.next')}</li>
+            </ul>
+
+            <p>${t('form.gratitude')}</p>
+
+            <div style="text-align: center; margin-top: 30px;">
+              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10b981, #3b82f6); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block;">${t('customer.visitWebsite')}</a>
+            </div>
+          </div>
+
+          <div class="footer">
+            <p><strong>${t('common.companyName')}</strong> - ${t('common.tagline')}</p>
+            <p>${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984</p>
+            <p style="font-size: 12px; margin-top: 15px;">
+              Code. Create. Conquer.
+            </p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+}
+
+/**
+ * Generates plain text version of form thank you email
+ * @param data - Form completion data
+ * @returns Promise with plain text string for email body
+ */
+export async function generateFormThankYouText(data: FormThankYouData): Promise<string> {
+  const t = await getEmailTranslations(data.locale);
+  const displayName = data.email.split('@')[0];
+
+  return `
+🎉 ${t('form.thankYou')}
+
+${t('form.greeting')}, ${displayName}!
+
+${t('form.feedbackReceived')}
+
+✓ ${t('form.completionMessage')}
+${t('form.feedbackValue')}
+
+${t('form.whatNext')}
+
+1. ${t('form.reviewFeedback')}
+2. ${t('form.improveServices')}
+3. ${t('form.followUp')}
+
+${t('form.gratitude')}
+
+Visit us: https://fredonbytes.cloud
 
 ---
 ${t('common.companyName')} - ${t('common.tagline')}

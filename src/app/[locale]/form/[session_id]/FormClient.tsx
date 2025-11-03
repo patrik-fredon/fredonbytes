@@ -388,6 +388,18 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       })
     );
 
+    // Extract email from answers if present (look for email-like values)
+    let extractedEmail: string | null = null;
+    for (const [, answer_value] of answers.entries()) {
+      if (typeof answer_value === 'string' && answer_value.includes('@') && answer_value.includes('.')) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailRegex.test(answer_value)) {
+          extractedEmail = answer_value;
+          break;
+        }
+      }
+    }
+
     try {
       // Call POST /api/form/submit
       const response = await fetch("/api/form/submit", {
@@ -400,6 +412,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
           session_id: sessionId,
           responses,
           locale,
+          email: extractedEmail,
         }),
       });
 

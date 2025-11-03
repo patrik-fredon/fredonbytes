@@ -1613,6 +1613,20 @@
       "followUp": "<strong>Nachverfolgung:</strong> Falls erforderlich, werden wir uns mit Ihnen in Verbindung setzen, um weitere Informationen zu erhalten",
       "gratitude": "Ihre Meinung hilft uns, besser zu werden. Vielen Dank, dass Sie sich die Zeit genommen haben, Ihre Gedanken mit uns zu teilen."
     },
+    "form": {
+      "subject": "Vielen Dank für Ihr Feedback - Fredonbytes",
+      "thankYou": "Vielen Dank für Ihr Feedback",
+      "feedbackReceived": "Wir haben Ihre Formularantwort erhalten",
+      "greeting": "Vielen Dank",
+      "completionMessage": "Ihr Formular wurde erfolgreich übermittelt!",
+      "feedbackValue": "Ihre Anforderungen werden uns besser dabei helfen, eine maßgeschneiderte Lösung für Sie zu entwerfen!",
+      "whatNext": "Was passiert als Nächstes?",
+      "reviewFeedback": "Unser Team wird Ihr Feedback sorgfältig prüfen",
+      "improveServices": "Ihre Antworten helfen uns, den Implementierungsplan und die zukünftigen Schritte zu erstellen.",
+      "followUp": "Bei Bedarf werden wir uns mit Ihnen in Verbindung setzen, um Ihr Feedback weiter zu besprechen",
+      "gratitude": "Vielen Dank, dass Sie sich Zeit genommen haben, um sorgenfrei in die IT-Welt einzutreten!",
+      "next": "Wir planen das erste Treffen (online oder persönlich) und können beginnen!"
+    },
     "newsletter": {
       "subject": "Willkommen beim Fredonbytes Newsletter!",
       "welcome": "Willkommen zu unserem Newsletter",

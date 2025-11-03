@@ -1550,12 +1550,13 @@
       "feedbackReceived": "Vaše odpovědi z formuláře byly přijaty",
       "greeting": "Děkujeme",
       "completionMessage": "Váš formulář byl úspěšně odeslán!",
-      "feedbackValue": "Vaše zpětná vazba je pro nás velmi důležitá a pomáhá nám zlepšovat naše služby.",
+      "feedbackValue": "Vaše požadavky nám lépe pomohou navrhnout Vám řešení na míru!",
       "whatNext": "Co bude dál?",
       "reviewFeedback": "Náš tým pečlivě přezkoumá vaši zpětnou vazbu",
-      "improveServices": "Využijeme vaše náměty k vylepšení našich služeb",
+      "improveServices": "Váše odpovědi nám pomohou vytvořit implementační plán a budoucí kroky.",
       "followUp": "V případě potřeby vás můžeme kontaktovat pro další upřesnění",
-      "gratitude": "Děkujeme, že jste si udělali čas a pomohli nám vás lépe obsluhovat!"
+      "gratitude": "Děkujeme, že jste si našli čas pro váš vstup do IT světa bez starostí!",
+      "next": "Naplánujeme první schůzku (online nebo osobně) a můžeme začít!"
     },
     "newsletter": {
       "subject": "Vítejte v newsletteru Fredonbytes!",
