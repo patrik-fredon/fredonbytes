@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import dynamic from 'next/dynamic';
-import { useTranslations } from 'next-intl';
-import { useState, useMemo } from 'react';
+import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
+import { useState, useMemo } from "react";
 
-import type { Project } from '@/lib/supabase';
+import type { Project } from "@/lib/supabase";
 
-import ProjectCard from './ProjectCard';
+import ProjectCard from "./ProjectCard";
 
 // Dynamic imports for heavy components to reduce initial bundle size
-const ProjectFilter = dynamic(() => import('./ProjectFilter'), {
+const ProjectFilter = dynamic(() => import("./ProjectFilter"), {
   loading: () => (
     <div className="mb-8 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg animate-pulse" />
   ),
 });
 
-const ProjectModal = dynamic(() => import('./ProjectModal'), {
+const ProjectModal = dynamic(() => import("./ProjectModal"), {
   ssr: false, // Modal doesn't need SSR
 });
 
@@ -24,12 +24,14 @@ interface ProjectsClientProps {
 }
 
 export default function ProjectsClient({ projects }: ProjectsClientProps) {
-  const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([]);
+  const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>(
+    [],
+  );
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const t = useTranslations('projects');
+  const t = useTranslations("projects");
 
   // Extract unique technologies from all projects
   const allTechnologies = useMemo(() => {
@@ -50,7 +52,11 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
   }, [projects]);
 
   // Extract unique statuses
-  const allStatuses: Array<'active' | 'completed' | 'archived'> = ['active', 'completed', 'archived'];
+  const allStatuses: Array<"active" | "completed" | "archived"> = [
+    "active",
+    "completed",
+    "archived",
+  ];
 
   // Filter projects based on selected filters
   const filteredProjects = useMemo(() => {
@@ -68,7 +74,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
       // Filter by technologies (project must have ALL selected technologies)
       if (selectedTechnologies.length > 0) {
         const hasAllTechnologies = selectedTechnologies.every((tech) =>
-          project.technologies.includes(tech)
+          project.technologies.includes(tech),
         );
         if (!hasAllTechnologies) {
           return false;
@@ -116,19 +122,28 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
       {filteredProjects.length === 0 ? (
         <div className="text-center py-16">
           <p className="text-xl text-slate-600 dark:text-slate-400">
-            {t('empty.noResults')}
+            {t("empty.noResults")}
           </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} onOpenModal={handleOpenModal} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              onOpenModal={handleOpenModal}
+            />
           ))}
         </div>
       )}
 
       {/* Project Modal */}
-      <ProjectModal project={selectedProject} isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </>
   );
 }

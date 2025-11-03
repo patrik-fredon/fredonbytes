@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
-import { supabase, type PricingTier } from '@/lib/supabase';
+import { supabase, type PricingTier } from "@/lib/supabase";
 
 // Response interface for pricing tiers endpoint
 export interface PricingTiersResponse {
@@ -11,24 +11,24 @@ export interface PricingTiersResponse {
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const type = searchParams.get('type');
-    const popular = searchParams.get('popular');
-    const _locale = searchParams.get('locale') || 'en'; // Accept locale parameter for future use
+    const type = searchParams.get("type");
+    const popular = searchParams.get("popular");
+    const _locale = searchParams.get("locale") || "en"; // Accept locale parameter for future use
 
     // Build query
     let query = supabase
-      .from('pricing_tiers')
-      .select('*')
-      .eq('active', true)
-      .order('type', { ascending: true });
+      .from("pricing_tiers")
+      .select("*")
+      .eq("active", true)
+      .order("type", { ascending: true });
 
     // Apply optional filters
-    if (type && ['starter', 'professional', 'enterprise'].includes(type)) {
-      query = query.eq('type', type);
+    if (type && ["starter", "professional", "enterprise"].includes(type)) {
+      query = query.eq("type", type);
     }
 
-    if (popular === 'true') {
-      query = query.eq('popular', true);
+    if (popular === "true") {
+      query = query.eq("popular", true);
     }
 
     // Execute query
@@ -36,13 +36,13 @@ export async function GET(request: NextRequest) {
 
     // Handle database errors
     if (error) {
-      console.error('Database error fetching pricing tiers:', error);
+      console.error("Database error fetching pricing tiers:", error);
       return NextResponse.json(
         {
           tiers: [],
-          error: 'Failed to fetch pricing tiers from database',
+          error: "Failed to fetch pricing tiers from database",
         } as PricingTiersResponse,
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
         {
           tiers: [],
         } as PricingTiersResponse,
-        { status: 200 }
+        { status: 200 },
       );
     }
 
@@ -66,21 +66,21 @@ export async function GET(request: NextRequest) {
       {
         tiers: tiersData,
       } as PricingTiersResponse,
-      { 
+      {
         status: 200,
         headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=7200',
+          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=7200",
         },
-      }
+      },
     );
   } catch (error) {
-    console.error('Unexpected error in pricing tiers endpoint:', error);
+    console.error("Unexpected error in pricing tiers endpoint:", error);
     return NextResponse.json(
       {
         tiers: [],
-        error: 'Internal server error',
+        error: "Internal server error",
       } as PricingTiersResponse,
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

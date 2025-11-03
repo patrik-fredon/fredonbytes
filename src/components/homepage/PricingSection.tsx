@@ -7,7 +7,6 @@ import { Button } from "../common/Button";
 import GlassCard from "../dev-ui/GlassCard";
 import { Link } from "@/i18n/navigation";
 
-
 interface ServiceOption {
   id: string;
   name: string;
@@ -27,7 +26,6 @@ interface CalculatorState {
 export default function PricingSection() {
   const t = useTranslations();
 
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -38,7 +36,6 @@ export default function PricingSection() {
       },
     },
   };
-
 
   return (
     <section id="pricing" className="py-20 lg:py-24">
@@ -61,11 +58,7 @@ export default function PricingSection() {
                 </p>
 
                 <Link href="/pricing" className="inline-block">
-                  <Button
-                    variant="gradient"
-                    size="xl"
-                    className="font-mono"
-                  >
+                  <Button variant="gradient" size="xl" className="font-mono">
                     $ {t("homepage.pricingSection.cta")} --explore
                   </Button>
                 </Link>
@@ -83,7 +76,7 @@ export default function PricingSection() {
             </div>
           </GlassCard>
         </motion.div>
-      </div >
-    </section >
+      </div>
+    </section>
   );
 }

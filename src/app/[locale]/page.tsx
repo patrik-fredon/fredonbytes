@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import { setRequestLocale } from "next-intl/server";
 
-
 import HeroSection from "../../components/homepage/HeroSection";
 import {
   AboutSectionSkeleton,
@@ -15,7 +14,7 @@ const AboutSection = dynamic(
   {
     ssr: true,
     loading: () => <AboutSectionSkeleton />,
-  }
+  },
 );
 
 const ServicesSection = dynamic(
@@ -23,7 +22,7 @@ const ServicesSection = dynamic(
   {
     ssr: true,
     loading: () => <ServicesSectionSkeleton />,
-  }
+  },
 );
 
 const PricingSection = dynamic(
@@ -31,7 +30,7 @@ const PricingSection = dynamic(
   {
     ssr: true,
     loading: () => <PricingSectionSkeleton />,
-  }
+  },
 );
 
 type Props = {
@@ -50,7 +49,6 @@ export default async function Home({ params }: Props) {
       <ServicesSection />
       <AboutSection showTeam={false} />
       <PricingSection />
-
     </div>
   );
 }

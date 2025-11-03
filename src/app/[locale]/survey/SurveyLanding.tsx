@@ -90,29 +90,29 @@ export default function SurveyLanding() {
     animate: prefersReducedMotion
       ? {}
       : {
-        y: [-10, 10, -10],
-        rotate: [0, 5, 0, -5, 0],
-        scale: [1, 1.05, 1],
-        transition: {
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut" as const,
+          y: [-10, 10, -10],
+          rotate: [0, 5, 0, -5, 0],
+          scale: [1, 1.05, 1],
+          transition: {
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut" as const,
+          },
         },
-      },
   };
 
   const pulseVariants = {
     animate: prefersReducedMotion
       ? {}
       : {
-        scale: [1, 1.2, 1],
-        opacity: [0.3, 0.6, 0.3],
-        transition: {
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut" as const,
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.6, 0.3],
+          transition: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut" as const,
+          },
         },
-      },
   };
 
   const handleStart = async () => {

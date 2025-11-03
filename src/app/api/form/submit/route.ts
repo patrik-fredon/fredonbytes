@@ -30,7 +30,7 @@ const submitRequestSchema = z.object({
       z.object({
         question_id: z.string().uuid("Invalid question ID format"),
         answer_value: z.union([z.string(), z.array(z.string()), z.number()]),
-      })
+      }),
     )
     .min(1, "At least one response is required"),
   metadata: z
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
     if (
       !validateCsrfToken(
         csrfTokenFromHeader || null,
-        csrfTokenFromCookie || null
+        csrfTokenFromCookie || null,
       )
     ) {
       return NextResponse.json(
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
           message: "CSRF validation failed",
           error: "Invalid or missing CSRF token",
         } as SubmitResponse,
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
           message: "Validation failed",
           error: validationResult.error.errors.map((e) => e.message).join(", "),
         } as SubmitResponse,
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
           message: "Form questionnaire not found",
           error: "Database error",
         } as SubmitResponse,
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -148,7 +148,7 @@ export async function POST(request: NextRequest) {
             message: "Failed to verify session",
             error: "Database error",
           } as SubmitResponse,
-          { status: 500 }
+          { status: 500 },
         );
       }
 
@@ -161,7 +161,7 @@ export async function POST(request: NextRequest) {
             message: "Form already submitted",
             error: "This session has already been completed",
           } as SubmitResponse,
-          { status: 409 }
+          { status: 409 },
         );
       }
 
@@ -193,14 +193,16 @@ export async function POST(request: NextRequest) {
               message: "Failed to create session",
               error: "Database error",
             } as SubmitResponse,
-            { status: 500 }
+            { status: 500 },
           );
         }
       }
     } else {
       // Create new session
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { data: newSession, error: createSessionError } = await (supabase as any)
+      const { data: newSession, error: createSessionError } = await (
+        supabase as any
+      )
         .from("sessions")
         .insert({
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -225,7 +227,7 @@ export async function POST(request: NextRequest) {
             message: "Failed to create session",
             error: "Database error",
           } as SubmitResponse,
-          { status: 500 }
+          { status: 500 },
         );
       }
 
@@ -252,7 +254,7 @@ export async function POST(request: NextRequest) {
           message: "Failed to update session",
           error: "Database error",
         } as SubmitResponse,
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -277,7 +279,7 @@ export async function POST(request: NextRequest) {
           message: "Failed to save answers",
           error: "Database error",
         } as SubmitResponse,
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -300,10 +302,14 @@ export async function POST(request: NextRequest) {
     // Send customer thank you email if email is provided (non-blocking)
     if (email) {
       try {
-        const { generateFormThankYouHTML, generateFormThankYouText } = await import('@/lib/email-templates');
-        const { getTranslations } = await import('next-intl/server');
+        const { generateFormThankYouHTML, generateFormThankYouText } =
+          await import("@/lib/email-templates");
+        const { getTranslations } = await import("next-intl/server");
 
-        const t = await getTranslations({ locale: sessionLocale, namespace: 'emails' });
+        const t = await getTranslations({
+          locale: sessionLocale,
+          namespace: "emails",
+        });
 
         const emailHtml = await generateFormThankYouHTML({
           email,
@@ -316,16 +322,16 @@ export async function POST(request: NextRequest) {
         });
 
         await sendEmail({
-          from: 'Fredonbytes <info@fredonbytes.com>',
+          from: "Fredonbytes <info@fredonbytes.com>",
           to: email,
-          subject: t('form.subject'),
+          subject: t("form.subject"),
           html: emailHtml,
           text: emailText,
         });
 
-        console.log('Form thank you email sent successfully');
+        console.log("Form thank you email sent successfully");
       } catch (emailError) {
-        console.error('Error sending form thank you email:', emailError);
+        console.error("Error sending form thank you email:", emailError);
         // Don't fail the request if email fails
       }
     }
@@ -344,7 +350,7 @@ export async function POST(request: NextRequest) {
         const formattedResponses: FormResponseData[] = sanitizedResponses.map(
           (response) => {
             const question = (questions as Question[]).find(
-              (q: Question) => q.id === response.question_id
+              (q: Question) => q.id === response.question_id,
             );
             const questionText = question?.question_text as
               | LocalizedString
@@ -355,7 +361,7 @@ export async function POST(request: NextRequest) {
               answer_value: response.answer_value,
               answer_type: question?.answer_type || "unknown",
             };
-          }
+          },
         );
 
         // Generate email HTML
@@ -371,7 +377,7 @@ export async function POST(request: NextRequest) {
           to: process.env.ADMIN_EMAIL || "info@fredonbytes.com",
           subject: `New Customer Satisfaction Form - ${sessionId!.substring(
             0,
-            8
+            8,
           )}`,
           html: emailHtml,
         });
@@ -392,7 +398,7 @@ export async function POST(request: NextRequest) {
         message: "Form submitted successfully",
         session_id: sessionId,
       } as SubmitResponse,
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Unexpected error in submit endpoint:", error);
@@ -402,7 +408,7 @@ export async function POST(request: NextRequest) {
         message: "Internal server error",
         error: error instanceof Error ? error.message : "Unknown error",
       } as SubmitResponse,
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

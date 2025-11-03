@@ -11,7 +11,7 @@ interface JoinSurveyPageProps {
 /**
  * Join page for shareable survey links.
  * Redirects to the main survey page with the provided session_id.
- * 
+ *
  * Usage: Share link like /cs/survey/join/[session_id] with clients
  */
 export default async function JoinSurveyPage({ params }: JoinSurveyPageProps) {

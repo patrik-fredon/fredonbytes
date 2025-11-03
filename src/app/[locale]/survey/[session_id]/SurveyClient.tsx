@@ -10,11 +10,7 @@ import FormNavigation from "@/components/form/FormNavigation";
 import QuestionStep from "@/components/form/QuestionStep";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { logError, getUserFriendlyErrorMessage } from "@/lib/error-logger";
-import {
-  loadAnswers,
-  saveAnswer,
-  clearStorageData,
-} from "@/lib/form-storage";
+import { loadAnswers, saveAnswer, clearStorageData } from "@/lib/form-storage";
 import {
   validateAnswer,
   validateAllAnswers,
@@ -37,7 +33,7 @@ const ThankYouScreen = dynamic(
         <p className="text-slate-600 dark:text-slate-300">Loading...</p>
       </div>
     ),
-  }
+  },
 );
 
 // Adapter to convert SurveyQuestion to Question format for reusing form components
@@ -124,7 +120,7 @@ export default function SurveyClient({
   // Helper function to get localized text
   const getLocalizedText = (
     text: LocalizedString | string,
-    locale: string
+    locale: string,
   ): string => {
     if (typeof text === "string") return text;
     return text[locale as keyof LocalizedString] || text.en || "";
@@ -138,7 +134,7 @@ export default function SurveyClient({
       setSurveyState((prev) => ({ ...prev, isLoading: true, error: null }));
 
       const response = await fetch(
-        `/api/survey/questions?session_id=${sessionId}&locale=${locale}`
+        `/api/survey/questions?session_id=${sessionId}&locale=${locale}`,
       );
       const data: SurveyQuestionsResponse = await response.json();
 
@@ -205,7 +201,7 @@ export default function SurveyClient({
       const timer = setTimeout(() => {
         const firstInput =
           questionContainerRef.current?.querySelector<HTMLElement>(
-            'input:not([type="hidden"]), textarea, select, button'
+            'input:not([type="hidden"]), textarea, select, button',
           );
 
         if (firstInput) {
@@ -290,7 +286,7 @@ export default function SurveyClient({
   // Handle answer changes with localStorage persistence
   const handleAnswerChange = (
     questionId: string,
-    value: AnswerValue | number
+    value: AnswerValue | number,
   ) => {
     try {
       saveAnswer(`survey_${sessionId}`, questionId, value);
@@ -335,7 +331,7 @@ export default function SurveyClient({
     if (validationErrors.length > 0) {
       const firstUnansweredIndex = findFirstUnansweredRequired(
         questions,
-        answers
+        answers,
       );
 
       if (firstUnansweredIndex !== -1) {
@@ -358,7 +354,7 @@ export default function SurveyClient({
       ([question_id, answer_value]) => ({
         question_id,
         answer_value,
-      })
+      }),
     );
 
     try {
@@ -484,12 +480,12 @@ export default function SurveyClient({
               surveyState.completed
                 ? []
                 : [
-                  {
-                    label: "Try Again",
-                    onClick: retryLoadQuestions,
-                    variant: "default" as const,
-                  },
-                ]
+                    {
+                      label: "Try Again",
+                      onClick: retryLoadQuestions,
+                      variant: "default" as const,
+                    },
+                  ]
             }
           />
         </div>
@@ -516,7 +512,7 @@ export default function SurveyClient({
                 <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
                   {Math.round(
                     (surveyState.currentStep / surveyState.questions.length) *
-                    100
+                      100,
                   )}
                   %
                 </span>
@@ -525,9 +521,10 @@ export default function SurveyClient({
                 <div
                   className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full transition-all duration-300"
                   style={{
-                    width: `${(surveyState.currentStep / surveyState.questions.length) *
+                    width: `${
+                      (surveyState.currentStep / surveyState.questions.length) *
                       100
-                      }%`,
+                    }%`,
                   }}
                 />
               </div>
@@ -555,12 +552,12 @@ export default function SurveyClient({
                       surveyState.questions[surveyState.currentStep - 1]
                     }
                     answer={surveyState.answers.get(
-                      surveyState.questions[surveyState.currentStep - 1].id
+                      surveyState.questions[surveyState.currentStep - 1].id,
                     )}
                     onAnswerChange={(value) =>
                       handleAnswerChange(
                         surveyState.questions[surveyState.currentStep - 1].id,
-                        value
+                        value,
                       )
                     }
                     error={surveyState.validationError}

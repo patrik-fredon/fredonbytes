@@ -1,7 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, Award, TrendingUp, CheckCircle, ArrowRight, Globe, Smartphone, Shield } from "lucide-react";
+import {
+  Users,
+  Award,
+  TrendingUp,
+  CheckCircle,
+  ArrowRight,
+  Globe,
+  Smartphone,
+  Shield,
+} from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import React from "react";
@@ -11,7 +20,11 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "../common/Button";
 import GlassCard from "../dev-ui/GlassCard";
 
-export default function AboutSection({ showTeam = true }: { showTeam?: boolean }) {
+export default function AboutSection({
+  showTeam = true,
+}: {
+  showTeam?: boolean;
+}) {
   const t = useTranslations();
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -139,7 +152,6 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
             </p>
             {/* Stats - Terminal Styled */}
             <motion.div variants={itemVariants} className="m-16">
-
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {stats.map((stat, index) => {
                   const Icon = stat.icon;
@@ -151,12 +163,13 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
                       <div className="text-3xl font-bold mb-2 text-terminal-light font-mono">
                         {stat.number}
                       </div>
-                      <div className="text-terminal-light/70 font-mono text-sm">{stat.label}</div>
+                      <div className="text-terminal-light/70 font-mono text-sm">
+                        {stat.label}
+                      </div>
                     </div>
                   );
                 })}
               </div>
-
             </motion.div>
             <Link href="/about">
               <Button
@@ -177,7 +190,8 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
           >
             <GlassCard className="p-8" glowColor="cyan">
               <h3 className="flex justify-center text-2xl font-bold text-terminal-light mb-4 font-mono">
-                <span className="text-neon-cyan">//</span> {t("about.mission.title")}
+                <span className="text-neon-cyan">//</span>{" "}
+                {t("about.mission.title")}
               </h3>
               <p className="text-terminal-light/80 leading-relaxed italic">
                 &ldquo;{t("about.mission.description")}&rdquo;
@@ -185,7 +199,8 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
             </GlassCard>
             <GlassCard className="p-8" glowColor="purple">
               <h3 className="text-2xl flex justify-center font-bold text-terminal-light mb-4 font-mono">
-                <span className="text-neon-purple">//</span> {t("about.vision.title")}
+                <span className="text-neon-purple">//</span>{" "}
+                {t("about.vision.title")}
               </h3>
               <p className="text-terminal-light/80 leading-relaxed italic">
                 &ldquo;{t("about.vision.description")}&rdquo;
@@ -193,11 +208,11 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
             </GlassCard>
           </motion.div>
 
-
           {/* Core Values - Terminal Cards */}
           <motion.div variants={itemVariants} className="mb-20">
             <h3 className="text-3xl font-bold text-terminal-light text-center mb-12 font-mono">
-              <span className="text-neon-cyan">//</span> {t("about.values.title")}
+              <span className="text-neon-cyan">//</span>{" "}
+              {t("about.values.title")}
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
               {values.map((value, index) => {
@@ -226,21 +241,21 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
           </motion.div>
           {/* Founder Quote - Terminal Styled */}
           <motion.div variants={itemVariants} className="m-20">
-
             <blockquote className="text-lg font-medium text-terminal-light mb-6 leading-relaxed font-mono">
-              <span className="text-neon-purple">//</span> &ldquo;{t("about.founderQuote.quote")}&rdquo;
+              <span className="text-neon-purple">//</span> &ldquo;
+              {t("about.founderQuote.quote")}&rdquo;
             </blockquote>
             <cite className="text-terminal-light/70 text-sm font-mono">
               — {t("about.founderQuote.author")}
             </cite>
-
           </motion.div>
 
           {/* Team Section - GlassCard */}
           {showTeam && (
             <motion.div variants={itemVariants}>
               <h3 className="text-3xl font-bold text-terminal-light text-center mb-12 font-mono">
-                <span className="text-neon-cyan">//</span> {t("about.team.title")}
+                <span className="text-neon-cyan">//</span>{" "}
+                {t("about.team.title")}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {teamMembers.map((member, index) => (
@@ -277,7 +292,8 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
                         {member.expertise}
                       </p>
                       <p className="text-terminal-light/80 text-xs text-center italic">
-                        <span className="text-neon-cyan">//</span> &ldquo;{member.quote}&rdquo;
+                        <span className="text-neon-cyan">//</span> &ldquo;
+                        {member.quote}&rdquo;
                       </p>
                     </GlassCard>
                   </motion.div>
@@ -286,13 +302,10 @@ export default function AboutSection({ showTeam = true }: { showTeam?: boolean }
             </motion.div>
           )}
 
-
-
           {/* Company Mantra - Terminal Styled */}
           <motion.div variants={itemVariants} className="mt-12 text-center">
             <p className="text-2xl font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent font-mono">
-              <span className="">//</span>{" "}
-              {t("about.mantra")}
+              <span className="">//</span> {t("about.mantra")}
             </p>
           </motion.div>
         </motion.div>

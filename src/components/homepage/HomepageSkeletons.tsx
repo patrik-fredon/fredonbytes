@@ -8,7 +8,7 @@ export function ProjectsSectionSkeleton() {
             <div className="h-12 bg-slate-700/50 rounded w-1/3 mx-auto"></div>
             <div className="h-6 bg-slate-700/30 rounded w-2/3 mx-auto"></div>
           </div>
-          
+
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
@@ -26,7 +26,6 @@ export function ProjectsSectionSkeleton() {
   );
 }
 
-
 export function AboutSectionSkeleton() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -37,11 +36,14 @@ export function AboutSectionSkeleton() {
             <div className="h-12 bg-slate-700/50 rounded w-1/3 mx-auto"></div>
             <div className="h-6 bg-slate-700/30 rounded w-2/3 mx-auto"></div>
           </div>
-          
+
           {/* Mission & Vision */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {[1, 2].map((i) => (
-              <div key={i} className="bg-slate-800/50 rounded-2xl p-8 space-y-4">
+              <div
+                key={i}
+                className="bg-slate-800/50 rounded-2xl p-8 space-y-4"
+              >
                 <div className="h-8 bg-slate-700/50 rounded w-1/2"></div>
                 <div className="space-y-2">
                   <div className="h-4 bg-slate-700/30 rounded"></div>
@@ -51,11 +53,14 @@ export function AboutSectionSkeleton() {
               </div>
             ))}
           </div>
-          
+
           {/* Core Values */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="bg-slate-800/50 rounded-2xl p-6 space-y-4">
+              <div
+                key={i}
+                className="bg-slate-800/50 rounded-2xl p-6 space-y-4"
+              >
                 <div className="w-16 h-16 bg-slate-700/50 rounded-full mx-auto"></div>
                 <div className="h-6 bg-slate-700/40 rounded w-3/4 mx-auto"></div>
                 <div className="space-y-2">
@@ -65,11 +70,14 @@ export function AboutSectionSkeleton() {
               </div>
             ))}
           </div>
-          
+
           {/* Team */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="bg-slate-800/50 rounded-2xl p-6 space-y-4">
+              <div
+                key={i}
+                className="bg-slate-800/50 rounded-2xl p-6 space-y-4"
+              >
                 <div className="w-24 h-24 bg-slate-700/50 rounded-full mx-auto"></div>
                 <div className="h-5 bg-slate-700/40 rounded w-3/4 mx-auto"></div>
                 <div className="h-4 bg-slate-700/30 rounded w-1/2 mx-auto"></div>
@@ -96,11 +104,14 @@ export function ServicesSectionSkeleton() {
             <div className="h-12 bg-slate-700/50 rounded w-1/3 mx-auto"></div>
             <div className="h-6 bg-slate-700/30 rounded w-2/3 mx-auto"></div>
           </div>
-          
+
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="bg-slate-800/50 rounded-2xl p-8 space-y-6">
+              <div
+                key={i}
+                className="bg-slate-800/50 rounded-2xl p-8 space-y-6"
+              >
                 <div className="w-16 h-16 bg-slate-700/50 rounded-full"></div>
                 <div className="h-7 bg-slate-700/40 rounded w-3/4"></div>
                 <div className="space-y-2">
@@ -119,7 +130,7 @@ export function ServicesSectionSkeleton() {
               </div>
             ))}
           </div>
-          
+
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[1, 2, 3, 4].map((i) => (
@@ -145,7 +156,7 @@ export function PricingSectionSkeleton() {
             <div className="h-12 bg-slate-700/50 rounded w-1/3 mx-auto"></div>
             <div className="h-6 bg-slate-700/30 rounded w-2/3 mx-auto"></div>
           </div>
-          
+
           {/* Pricing Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
@@ -177,7 +188,7 @@ export function ContactSectionSkeleton() {
             <div className="h-12 bg-slate-700/50 rounded w-1/3 mx-auto"></div>
             <div className="h-6 bg-slate-700/30 rounded w-2/3 mx-auto"></div>
           </div>
-          
+
           {/* Contact Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
@@ -192,7 +203,7 @@ export function ContactSectionSkeleton() {
                 </div>
               ))}
             </div>
-            
+
             {/* Form */}
             <div className="bg-slate-800/50 rounded-2xl p-8 space-y-6">
               <div className="h-2 bg-slate-700/50 rounded"></div>

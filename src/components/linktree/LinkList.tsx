@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import React from 'react'
-import { useTranslations } from 'next-intl'
-import LinkCard from '../common/LinkCard'
+import { motion } from "framer-motion";
+import React from "react";
+import { useTranslations } from "next-intl";
+import LinkCard from "../common/LinkCard";
 
 export default function LinkList() {
   const containerVariants = {
@@ -12,10 +12,10 @@ export default function LinkList() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  }
+        delayChildren: 0.2,
+      },
+    },
+  };
   const t = useTranslations("linktree");
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -24,66 +24,66 @@ export default function LinkList() {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut" as const
-      }
-    }
-  }
+        ease: "easeOut" as const,
+      },
+    },
+  };
 
   const mainLinks = [
     {
-      title: t('personalPortfolioTitle'),
-      description: t('personalPortfolioDescription'),
-      url: 'https://me.fredonbytes.cloud',
-      icon: 'portfolio'
+      title: t("personalPortfolioTitle"),
+      description: t("personalPortfolioDescription"),
+      url: "https://me.fredonbytes.cloud",
+      icon: "portfolio",
     },
     {
-      title: t('projectGalleryTitle'),
-      description: t('projectGalleryDescription'),
-      url: 'https://lib.fredonbytes.cloud',
-      icon: 'gallery'
+      title: t("projectGalleryTitle"),
+      description: t("projectGalleryDescription"),
+      url: "https://lib.fredonbytes.cloud",
+      icon: "gallery",
     },
     {
-      title: t('techSupportTitle'),
-      description: t('techSupportDescription'),
-      url: 'https://tech.fredonbytes.cloud',
-      icon: 'support'
-    }
-  ]
+      title: t("techSupportTitle"),
+      description: t("techSupportDescription"),
+      url: "https://tech.fredonbytes.cloud",
+      icon: "support",
+    },
+  ];
 
   const githubLinks = [
     {
-      title: t('githubOrgTitle'),
-      description: t('githubOrgDescription'),
-      url: 'https://github.com/FredonBytes',
-      icon: 'github',
+      title: t("githubOrgTitle"),
+      description: t("githubOrgDescription"),
+      url: "https://github.com/FredonBytes",
+      icon: "github",
       stats: {
         repos: 12,
         commits: 847,
-        stars: 156
-      }
+        stars: 156,
+      },
     },
     {
-      title: t('githubPersonalTitle'),
-      description: t('githubPersonalDescription'),
-      url: 'https://github.com/patrik-fredon',
-      icon: 'github',
+      title: t("githubPersonalTitle"),
+      description: t("githubPersonalDescription"),
+      url: "https://github.com/patrik-fredon",
+      icon: "github",
       stats: {
         repos: 28,
         commits: 1243,
-        stars: 89
-      }
-    }
-  ]
+        stars: 89,
+      },
+    },
+  ];
 
   const companyLinks = [
     {
-      title: t('companyWebsiteTitle'),
-      description: t('companyWebsiteDescription'),
-      url: '/',
-      icon: 'website',
-      external: false
-    }
-  ]
+      title: t("companyWebsiteTitle"),
+      description: t("companyWebsiteDescription"),
+      url: "/",
+      icon: "website",
+      external: false,
+    },
+  ];
 
   return (
     <motion.div
@@ -95,7 +95,8 @@ export default function LinkList() {
       {/* Main Platforms */}
       <motion.div variants={itemVariants}>
         <h2 className="text-2xl font-bold text-white mb-6 text-center font-mono">
-          <span className="text-neon-cyan">//</span> <span className="text-neon-purple">{t('ourPlatformsHeading')}</span>
+          <span className="text-neon-cyan">//</span>{" "}
+          <span className="text-neon-purple">{t("ourPlatformsHeading")}</span>
         </h2>
         <div className="space-y-4">
           {mainLinks.map((link, index) => (
@@ -114,7 +115,8 @@ export default function LinkList() {
       {/* GitHub Repositories */}
       <motion.div variants={itemVariants}>
         <h2 className="text-2xl font-bold text-white mb-6 text-center font-mono">
-          <span className="text-neon-cyan">//</span> <span className="text-neon-purple">{t('githubHeading')}</span>
+          <span className="text-neon-cyan">//</span>{" "}
+          <span className="text-neon-purple">{t("githubHeading")}</span>
         </h2>
         <div className="space-y-4">
           {githubLinks.map((link, index) => (
@@ -134,7 +136,8 @@ export default function LinkList() {
       {/* Company Links */}
       <motion.div variants={itemVariants}>
         <h2 className="text-2xl font-bold text-white mb-6 text-center font-mono">
-          <span className="text-neon-cyan">//</span> <span className="text-neon-purple">{t('companyHeading')}</span>
+          <span className="text-neon-cyan">//</span>{" "}
+          <span className="text-neon-purple">{t("companyHeading")}</span>
         </h2>
         <div className="space-y-4">
           {companyLinks.map((link, index) => (
@@ -153,12 +156,12 @@ export default function LinkList() {
       {/* Footer Info */}
       <motion.div variants={itemVariants} className="text-center pt-8 pb-4">
         <p className="text-slate-400 text-sm font-mono">
-          <span className="text-neon-cyan">//</span> {t('footerLocation')}
+          <span className="text-neon-cyan">//</span> {t("footerLocation")}
         </p>
         <p className="text-slate-500 text-xs mt-2 font-mono">
-          $ {t('footerTagline')}
+          $ {t("footerTagline")}
         </p>
       </motion.div>
     </motion.div>
-  )
+  );
 }

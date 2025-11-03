@@ -25,7 +25,9 @@ export default function HeroSection() {
   const [terminalLines, setTerminalLines] = useState<TerminalLine[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const [compilationStatus, setCompilationStatus] = useState<"typing" | "compiling" | "ready">("typing");
+  const [compilationStatus, setCompilationStatus] = useState<
+    "typing" | "compiling" | "ready"
+  >("typing");
 
   // Simple terminal state (mobile)
   const [typedText, setTypedText] = useState("");
@@ -41,8 +43,14 @@ export default function HeroSection() {
   ];
 
   const fullCodeStructure = [
-    { line: 1, code: 'import { Innovation, Quality, Performance } from "@fredonbytes/core";' },
-    { line: 2, code: 'import type { WebProject, DeploymentConfig } from "@fredonbytes/types";' },
+    {
+      line: 1,
+      code: 'import { Innovation, Quality, Performance } from "@fredonbytes/core";',
+    },
+    {
+      line: 2,
+      code: 'import type { WebProject, DeploymentConfig } from "@fredonbytes/types";',
+    },
     { line: 3, code: "" },
     { line: 4, code: "interface DigitalSolution {" },
     { line: 5, code: "  development: boolean;" },
@@ -53,11 +61,17 @@ export default function HeroSection() {
     { line: 10, code: "" },
     { line: 11, code: "export class Fredonbytes implements DigitalSolution {" },
     { line: 12, code: "  async buildWebsite(): Promise<WebProject> {" },
-    { line: 13, code: '    return await this.compile({ framework: "Next.js", style: "Modern" });' },
+    {
+      line: 13,
+      code: '    return await this.compile({ framework: "Next.js", style: "Modern" });',
+    },
     { line: 14, code: "  }" },
     { line: 15, code: "" },
     { line: 16, code: "  async deployToCloud(): Promise<void> {" },
-    { line: 17, code: '    await this.optimize("performance", "seo", "accessibility");' },
+    {
+      line: 17,
+      code: '    await this.optimize("performance", "seo", "accessibility");',
+    },
     { line: 18, code: "  }" },
     { line: 19, code: "}" },
   ];
@@ -132,18 +146,27 @@ export default function HeroSection() {
         setTerminalLines((prev) =>
           prev.map((line, idx) =>
             idx === currentLineIndex
-              ? { ...line, isTyping: true, displayText: targetText.substring(0, charIndex + 1) }
-              : line
-          )
+              ? {
+                  ...line,
+                  isTyping: true,
+                  displayText: targetText.substring(0, charIndex + 1),
+                }
+              : line,
+          ),
         );
         setCharIndex(charIndex + 1);
       } else {
         setTerminalLines((prev) =>
           prev.map((line, idx) =>
             idx === currentLineIndex
-              ? { ...line, isTyping: false, isComplete: true, displayText: targetText }
-              : line
-          )
+              ? {
+                  ...line,
+                  isTyping: false,
+                  isComplete: true,
+                  displayText: targetText,
+                }
+              : line,
+          ),
         );
         setCurrentLineIndex(currentLineIndex + 1);
         setCharIndex(0);
@@ -163,25 +186,41 @@ export default function HeroSection() {
       let key = 0;
 
       const patterns = [
-        { regex: /(import|export|class|interface|async|await|return|from|type|const|implements)/g, color: "text-neon-purple" },
-        { regex: /(\bPromise\b|\bWebProject\b|\bDeploymentConfig\b|\bDigitalSolution\b|\bFredonbytes\b)/g, color: "text-neon-cyan" },
+        {
+          regex:
+            /(import|export|class|interface|async|await|return|from|type|const|implements)/g,
+          color: "text-neon-purple",
+        },
+        {
+          regex:
+            /(\bPromise\b|\bWebProject\b|\bDeploymentConfig\b|\bDigitalSolution\b|\bFredonbytes\b)/g,
+          color: "text-neon-cyan",
+        },
         { regex: /(boolean|void)/g, color: "text-code-green" },
         { regex: /(".*?"|'.*?')/g, color: "text-code-green" },
         { regex: /(@fredonbytes\/\w+)/g, color: "text-neon-cyan" },
-        { regex: /(buildWebsite|deployToCloud|optimize|compile)/g, color: "text-yellow-400" },
+        {
+          regex: /(buildWebsite|deployToCloud|optimize|compile)/g,
+          color: "text-yellow-400",
+        },
       ];
 
-      const tokens: Array<{ text: string; color: string; start: number; end: number }> = [];
+      const tokens: Array<{
+        text: string;
+        color: string;
+        start: number;
+        end: number;
+      }> = [];
 
       patterns.forEach(({ regex, color }) => {
         const matches = [...text.matchAll(regex)];
-        matches.forEach(match => {
+        matches.forEach((match) => {
           if (match.index !== undefined) {
             tokens.push({
               text: match[0],
               color,
               start: match.index,
-              end: match.index + match[0].length
+              end: match.index + match[0].length,
             });
           }
         });
@@ -189,8 +228,13 @@ export default function HeroSection() {
 
       tokens.sort((a, b) => a.start - b.start);
 
-      const mergedTokens: Array<{ text: string; color: string; start: number; end: number }> = [];
-      tokens.forEach(token => {
+      const mergedTokens: Array<{
+        text: string;
+        color: string;
+        start: number;
+        end: number;
+      }> = [];
+      tokens.forEach((token) => {
         const lastToken = mergedTokens[mergedTokens.length - 1];
         if (lastToken && token.start < lastToken.end) {
           return;
@@ -199,18 +243,18 @@ export default function HeroSection() {
       });
 
       let lastIndex = 0;
-      mergedTokens.forEach(token => {
+      mergedTokens.forEach((token) => {
         if (token.start > lastIndex) {
           parts.push(
             <span key={`plain-${key++}`} className="text-terminal-light">
               {text.substring(lastIndex, token.start)}
-            </span>
+            </span>,
           );
         }
         parts.push(
           <span key={`colored-${key++}`} className={token.color}>
             {token.text}
-          </span>
+          </span>,
         );
         lastIndex = token.end;
       });
@@ -219,16 +263,27 @@ export default function HeroSection() {
         parts.push(
           <span key={`plain-${key++}`} className="text-terminal-light">
             {text.substring(lastIndex)}
-          </span>
+          </span>,
         );
       }
 
-      return parts.length > 0 ? parts : <span className="text-terminal-light">{text}</span>;
+      return parts.length > 0 ? (
+        parts
+      ) : (
+        <span className="text-terminal-light">{text}</span>
+      );
     };
 
-    const lineOpacity = isComplete ? "opacity-100" : isTyping ? "opacity-90" : "opacity-0";
-    const lineTransform = isComplete || isTyping ? "translate-y-0" : "translate-y-2";
-    const lineGlow = isTyping ? "drop-shadow-[0_0_8px_rgba(0,217,255,0.3)]" : "";
+    const lineOpacity = isComplete
+      ? "opacity-100"
+      : isTyping
+        ? "opacity-90"
+        : "opacity-0";
+    const lineTransform =
+      isComplete || isTyping ? "translate-y-0" : "translate-y-2";
+    const lineGlow = isTyping
+      ? "drop-shadow-[0_0_8px_rgba(0,217,255,0.3)]"
+      : "";
 
     return (
       <div
@@ -236,8 +291,9 @@ export default function HeroSection() {
         style={{ transform: lineTransform }}
       >
         <span
-          className={`text-slate-500 select-none w-10 text-right mr-4 transition-opacity duration-500 ${isComplete || isTyping ? "opacity-100" : "opacity-0"
-            }`}
+          className={`text-slate-500 select-none w-10 text-right mr-4 transition-opacity duration-500 ${
+            isComplete || isTyping ? "opacity-100" : "opacity-0"
+          }`}
         >
           {line.lineNumber}
         </span>
@@ -289,7 +345,10 @@ export default function HeroSection() {
             animate="visible"
             className="max-w-4xl mx-auto"
           >
-            <motion.div variants={itemVariants} className="mb-10 mx-auto max-w-md">
+            <motion.div
+              variants={itemVariants}
+              className="mb-10 mx-auto max-w-md"
+            >
               <div className="relative w-full h-64 sm:h-40 mx-auto">
                 <Image
                   src="/FredonBytes_GraphicLogo.png"
@@ -303,16 +362,25 @@ export default function HeroSection() {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="mb-8 mx-auto max-w-2xl">
+            <motion.div
+              variants={itemVariants}
+              className="mb-8 mx-auto max-w-2xl"
+            >
               <TerminalWindow title="fredonbytes.ts">
                 <div className="font-mono text-sm space-y-1">
                   <div className="flex">
-                    <span className="text-slate-500 select-none w-8 text-right mr-4">1</span>
+                    <span className="text-slate-500 select-none w-8 text-right mr-4">
+                      1
+                    </span>
                     <span className="text-neon-cyan">{"//"} </span>
-                    <span className="text-slate-400">{t("hero.codeComments.creating")}</span>
+                    <span className="text-slate-400">
+                      {t("hero.codeComments.creating")}
+                    </span>
                   </div>
                   <div className="flex">
-                    <span className="text-slate-500 select-none w-8 text-right mr-4">2</span>
+                    <span className="text-slate-500 select-none w-8 text-right mr-4">
+                      2
+                    </span>
                     <span className="text-code-green">
                       {typedText}
                       <span className="animate-pulse text-neon-cyan">|</span>
@@ -339,18 +407,27 @@ export default function HeroSection() {
               {t("hero.subtitle")}
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-10">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap justify-center gap-4 mb-10"
+            >
               <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
                 <Code className="w-5 h-5 text-neon-cyan" />
-                <span className="font-medium font-mono text-sm">{t("hero.valueProps.development")}</span>
+                <span className="font-medium font-mono text-sm">
+                  {t("hero.valueProps.development")}
+                </span>
               </div>
               <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
                 <Zap className="w-5 h-5 text-neon-purple" />
-                <span className="font-medium font-mono text-sm">{t("hero.valueProps.design")}</span>
+                <span className="font-medium font-mono text-sm">
+                  {t("hero.valueProps.design")}
+                </span>
               </div>
               <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
                 <Globe className="w-5 h-5 text-neon-cyan" />
-                <span className="font-medium font-mono text-sm">{t("hero.valueProps.marketing")}</span>
+                <span className="font-medium font-mono text-sm">
+                  {t("hero.valueProps.marketing")}
+                </span>
               </div>
             </motion.div>
 
@@ -359,12 +436,20 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
             >
               <Link href="/contact" className="w-full sm:w-auto">
-                <Button variant="gradient" size="xl" className="font-mono w-full sm:w-auto">
+                <Button
+                  variant="gradient"
+                  size="xl"
+                  className="font-mono w-full sm:w-auto"
+                >
                   $ start_project --now
                 </Button>
               </Link>
               <Link href="/projects" className="w-full sm:w-auto">
-                <Button variant="secondary" size="xl" className="font-mono w-full sm:w-auto">
+                <Button
+                  variant="secondary"
+                  size="xl"
+                  className="font-mono w-full sm:w-auto"
+                >
                   $ view_portfolio
                 </Button>
               </Link>
@@ -375,8 +460,6 @@ export default function HeroSection() {
 
       {/* Desktop View (Hidden on mobile/tablet) */}
       <section className="relative min-h-screen hidden lg:flex items-center justify-center overflow-hidden py-20">
-
-
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
@@ -385,15 +468,14 @@ export default function HeroSection() {
             className="max-w-7xl mx-auto"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap:16 lg:gap-24  items-center">
-
-              <motion.div variants={itemVariants} className="flex flex-col items-center lg:items-start space-y-8">
-
-
+              <motion.div
+                variants={itemVariants}
+                className="flex flex-col items-center lg:items-start space-y-8"
+              >
                 <div className="w-full max-w-2xl lg:max-w-none">
                   <TerminalWindow
                     title={
                       <div className="flex items-center justify-between w-full m-2 ">
-
                         <div className="flex items-center gap-6 ">
                           {compilationStatus === "typing" && (
                             <span className="text-xs text-yellow-400 animate-pulse flex items-center gap-2">
@@ -464,15 +546,21 @@ export default function HeroSection() {
                 >
                   <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
                     <Code className="w-5 h-5 text-neon-cyan" />
-                    <span className="font-medium font-mono text-sm">{t("hero.valueProps.development")}</span>
+                    <span className="font-medium font-mono text-sm">
+                      {t("hero.valueProps.development")}
+                    </span>
                   </div>
                   <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
                     <Zap className="w-5 h-5 text-neon-purple" />
-                    <span className="font-medium font-mono text-sm">{t("hero.valueProps.design")}</span>
+                    <span className="font-medium font-mono text-sm">
+                      {t("hero.valueProps.design")}
+                    </span>
                   </div>
                   <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
                     <Globe className="w-5 h-5 text-neon-cyan" />
-                    <span className="font-medium font-mono text-sm">{t("hero.valueProps.marketing")}</span>
+                    <span className="font-medium font-mono text-sm">
+                      {t("hero.valueProps.marketing")}
+                    </span>
                   </div>
                 </motion.div>
 
@@ -481,12 +569,20 @@ export default function HeroSection() {
                   className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full sm:w-auto"
                 >
                   <Link href="/contact" className="w-full sm:w-auto">
-                    <Button variant="gradient" size="xl" className="font-mono w-full sm:w-auto">
+                    <Button
+                      variant="gradient"
+                      size="xl"
+                      className="font-mono w-full sm:w-auto"
+                    >
                       $ start_project --now
                     </Button>
                   </Link>
                   <Link href="/projects" className="w-full sm:w-auto">
-                    <Button variant="secondary" size="xl" className="font-mono w-full sm:w-auto">
+                    <Button
+                      variant="secondary"
+                      size="xl"
+                      className="font-mono w-full sm:w-auto"
+                    >
                       $ view_portfolio
                     </Button>
                   </Link>

@@ -8,7 +8,6 @@ import React from "react";
 
 import CookieSettingsLink from "./CookieSettingsLink";
 
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const t = useTranslations();
@@ -85,7 +84,9 @@ export default function Footer() {
                   sizes="32px"
                 />
               </div>
-              <span className="text-xl font-mono font-bold text-neon-cyan">Fredonbytes</span>
+              <span className="text-xl font-mono font-bold text-neon-cyan">
+                Fredonbytes
+              </span>
             </Link>
 
             <p className="text-terminal-muted mb-6 leading-relaxed font-mono text-sm">
@@ -155,9 +156,9 @@ export default function Footer() {
                     href={link.href}
                     {...(link.href.startsWith("http")
                       ? {
-                        target: "_blank",
-                        rel: "noopener noreferrer",
-                      }
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        }
                       : {})}
                     className="text-terminal-muted hover:text-neon-cyan transition-fast text-sm font-mono -subtle"
                   >
@@ -225,7 +226,6 @@ export default function Footer() {
                 <span>{t("footer.taglines.motto")}</span>
               </div>
               <div className="h-6 w-px bg-neon-cyan/20" />
-
             </div>
           </div>
         </div>

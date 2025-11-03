@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-import { supabase, type Technology } from '@/lib/supabase';
+import { supabase, type Technology } from "@/lib/supabase";
 
 // Response interface for technologies endpoint
 export interface TechnologiesResponse {
@@ -12,20 +12,20 @@ export async function GET() {
   try {
     // Execute query to get all technologies
     const { data, error } = await supabase
-      .from('technologies')
-      .select('*')
-      .order('category', { ascending: true })
-      .order('name', { ascending: true });
+      .from("technologies")
+      .select("*")
+      .order("category", { ascending: true })
+      .order("name", { ascending: true });
 
     // Handle database errors
     if (error) {
-      console.error('Database error fetching technologies:', error);
+      console.error("Database error fetching technologies:", error);
       return NextResponse.json(
         {
           technologies: [],
-          error: 'Failed to fetch technologies from database',
+          error: "Failed to fetch technologies from database",
         } as TechnologiesResponse,
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -35,7 +35,7 @@ export async function GET() {
         {
           technologies: [],
         } as TechnologiesResponse,
-        { status: 200 }
+        { status: 200 },
       );
     }
 
@@ -47,21 +47,22 @@ export async function GET() {
       {
         technologies: technologiesData,
       } as TechnologiesResponse,
-      { 
+      {
         status: 200,
         headers: {
-          'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=172800',
+          "Cache-Control":
+            "public, s-maxage=86400, stale-while-revalidate=172800",
         },
-      }
+      },
     );
   } catch (error) {
-    console.error('Unexpected error in technologies endpoint:', error);
+    console.error("Unexpected error in technologies endpoint:", error);
     return NextResponse.json(
       {
         technologies: [],
-        error: 'Internal server error',
+        error: "Internal server error",
       } as TechnologiesResponse,
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

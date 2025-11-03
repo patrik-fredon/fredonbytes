@@ -3,8 +3,8 @@
  * Replaces Resend API with standard SMTP configuration
  */
 
-import nodemailer from 'nodemailer';
-import type { Transporter } from 'nodemailer';
+import nodemailer from "nodemailer";
+import type { Transporter } from "nodemailer";
 
 // Email configuration interface
 export interface EmailOptions {
@@ -26,26 +26,26 @@ export interface EmailResult {
 /**
  * Creates and configures SMTP transporter
  * Uses environment variables for SMTP configuration
- * 
+ *
  * Default configuration for Forpsi SMTP:
  * - Host: smtp.forpsi.com
  * - Port: 587 (STARTTLS)
  * - Authentication required
- * 
+ *
  * @see https://support.forpsi.com/kb/a3147/konfigurace-smtp-serveru.aspx
  */
 function createTransport(): Transporter {
   const config = {
-    host: process.env.SMTP_HOST ?? 'smtp.forpsi.com',
-    port: parseInt(process.env.SMTP_PORT ?? '587', 10),
-    secure: process.env.SMTP_SECURE === 'true', // true for 465, false for 587
+    host: process.env.SMTP_HOST ?? "smtp.forpsi.com",
+    port: parseInt(process.env.SMTP_PORT ?? "587", 10),
+    secure: process.env.SMTP_SECURE === "true", // true for 465, false for 587
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
     tls: {
-      rejectUnauthorized: process.env.SMTP_REJECT_UNAUTHORIZED !== 'false',
-      minVersion: 'TLSv1.2' as const,
+      rejectUnauthorized: process.env.SMTP_REJECT_UNAUTHORIZED !== "false",
+      minVersion: "TLSv1.2" as const,
     },
   };
 
@@ -63,7 +63,7 @@ export async function sendEmail(options: EmailOptions): Promise<EmailResult> {
 
     const mailOptions = {
       from: options.from,
-      to: Array.isArray(options.to) ? options.to.join(', ') : options.to,
+      to: Array.isArray(options.to) ? options.to.join(", ") : options.to,
       subject: options.subject,
       html: options.html,
       text: options.text,
@@ -77,10 +77,10 @@ export async function sendEmail(options: EmailOptions): Promise<EmailResult> {
       messageId: info.messageId,
     };
   } catch (error) {
-    console.error('Email sending error:', error);
+    console.error("Email sending error:", error);
     return {
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
+      error: error instanceof Error ? error.message : "Unknown error",
     };
   }
 }

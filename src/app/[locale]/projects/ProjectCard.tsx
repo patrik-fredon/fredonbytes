@@ -1,12 +1,17 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, memo } from "react";
 
-import  TerminalWindow  from "@/components/dev-ui/TerminalWindow";
+import TerminalWindow from "@/components/dev-ui/TerminalWindow";
+import {
+  projectCardVariants,
+  projectCardHoverVariants,
+  projectCardTransition,
+} from "@/lib/animation-variants";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { Project } from "@/lib/supabase";
@@ -16,35 +21,6 @@ interface ProjectCardProps {
   index: number;
   onOpenModal?: (project: Project) => void;
 }
-
-// Define animation variants outside component to prevent recreation
-const createCardVariants = (
-  prefersReducedMotion: boolean,
-  index: number
-): Variants => ({
-  hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: prefersReducedMotion ? 0 : 0.5,
-      delay: prefersReducedMotion ? 0 : index * 0.1,
-      ease: [0.4, 0, 0.2, 1] as const,
-    },
-  },
-});
-
-const createHoverVariants = (prefersReducedMotion: boolean) =>
-  prefersReducedMotion
-    ? {}
-    : {
-      scale: 1.02,
-      y: -8,
-      transition: {
-        duration: 0.3,
-        ease: [0.4, 0, 0.2, 1] as const,
-      },
-    };
 
 const ProjectCard = memo(
   ({ project, index, onOpenModal }: ProjectCardProps) => {
@@ -56,7 +32,7 @@ const ProjectCard = memo(
     });
     const [imageError, setImageError] = useState(false);
     const locale = useLocale() as "en" | "cs" | "de";
-    const t = useTranslations('projects');
+    const t = useTranslations("projects");
 
     // Get localized content
     const title = project.title[locale] || project.title.en;
@@ -66,8 +42,13 @@ const ProjectCard = memo(
       project.description.en;
 
     // Use memoized animation variants
-    const cardVariants = createCardVariants(prefersReducedMotion, index);
-    const hoverVariants = createHoverVariants(prefersReducedMotion);
+    const cardVariants = prefersReducedMotion
+      ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
+      : projectCardVariants;
+    const cardTransition = prefersReducedMotion
+      ? { duration: 0 }
+      : projectCardTransition(index);
+    const hoverVariants = prefersReducedMotion ? {} : projectCardHoverVariants;
 
     const handleCardClick = (e: React.MouseEvent) => {
       // Don't open modal if clicking on links
@@ -84,6 +65,7 @@ const ProjectCard = memo(
         variants={cardVariants}
         initial="hidden"
         animate={isIntersecting ? "visible" : "hidden"}
+        transition={cardTransition}
         whileHover={hoverVariants}
         onClick={handleCardClick}
         role="button"
@@ -97,7 +79,10 @@ const ProjectCard = memo(
         aria-label={`View details for ${title}`}
         className="cursor-pointer"
       >
-        <TerminalWindow title={title} className="h-full hover:shadow-glow-cyan-intense transition-shadow duration-300">
+        <TerminalWindow
+          title={title}
+          className="h-full hover:shadow-glow-cyan-intense transition-shadow duration-300"
+        >
           {/* Project Image */}
           <div className="relative h-48 overflow-hidden bg-terminal-dark border-b border-neon-cyan/20">
             {!imageError ? (
@@ -121,19 +106,20 @@ const ProjectCard = memo(
             {/* Featured Badge */}
             {project.featured && (
               <div className="absolute top-4 left-4 bg-gradient-to-r from-neon-cyan to-electric-purple text-white px-3 py-1 rounded-full text-xs font-mono font-medium shadow-glow-cyan-subtle">
-                $ {t('badges.featured')}
+                $ {t("badges.featured")}
               </div>
             )}
 
             {/* Status Badge */}
             <div className="absolute top-4 right-4">
               <span
-                className={`px-3 py-1 rounded-full text-xs font-mono font-medium border ${project.status === "active"
-                  ? "bg-code-green/20 text-code-green border-code-green/30 shadow-glow-green-subtle"
-                  : project.status === "completed"
-                    ? "bg-neon-cyan/20 text-neon-cyan border-neon-cyan/30 shadow-glow-cyan-subtle"
-                    : "bg-slate-500/20 text-slate-400 border-slate-500/30"
-                  }`}
+                className={`px-3 py-1 rounded-full text-xs font-mono font-medium border ${
+                  project.status === "active"
+                    ? "bg-code-green/20 text-code-green border-code-green/30 shadow-glow-green-subtle"
+                    : project.status === "completed"
+                      ? "bg-neon-cyan/20 text-neon-cyan border-neon-cyan/30 shadow-glow-cyan-subtle"
+                      : "bg-slate-500/20 text-slate-400 border-slate-500/30"
+                }`}
               >
                 {t(`status.${project.status}` as keyof typeof t)}
               </span>
@@ -147,7 +133,7 @@ const ProjectCard = memo(
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-terminal-dark border-2 border-neon-cyan rounded-full flex items-center justify-center text-neon-cyan hover:scale-110 transition-transform shadow-glow-cyan-intense"
-                  aria-label={t('actions.viewLiveDemo')}
+                  aria-label={t("actions.viewLiveDemo")}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <ExternalLink className="w-5 h-5 drop-shadow-[0_0_8px_currentColor]" />
@@ -159,7 +145,7 @@ const ProjectCard = memo(
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-terminal-dark border-2 border-electric-purple rounded-full flex items-center justify-center text-electric-purple hover:scale-110 transition-transform shadow-glow-purple-intense"
-                  aria-label={t('actions.viewOnGithub')}
+                  aria-label={t("actions.viewOnGithub")}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <Github className="w-5 h-5 drop-shadow-[0_0_8px_currentColor]" />
@@ -200,7 +186,7 @@ const ProjectCard = memo(
         </TerminalWindow>
       </motion.div>
     );
-  }
+  },
 );
 
 ProjectCard.displayName = "ProjectCard";

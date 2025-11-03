@@ -8,13 +8,12 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 // Bundle analyzer setup
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
-
 
 const withMDX = createMDX({
   options: {
@@ -69,9 +68,12 @@ const nextConfig: NextConfig = {
 
   // Compiler optimizations
   compiler: {
-    removeConsole: process.env.NODE_ENV === "production" ? {
-      exclude: ["error", "warn"],
-    } : false,
+    removeConsole:
+      process.env.NODE_ENV === "production"
+        ? {
+            exclude: ["error", "warn"],
+          }
+        : false,
   },
 
   // Production optimizations
@@ -84,42 +86,42 @@ const nextConfig: NextConfig = {
       config.optimization = {
         ...config.optimization,
         splitChunks: {
-          chunks: 'all',
+          chunks: "all",
           cacheGroups: {
             default: false,
             vendors: false,
             // Framework chunk for React/Next.js core
             framework: {
-              name: 'framework',
+              name: "framework",
               test: /[\/]node_modules[\/](react|react-dom|next|scheduler)[\/]/,
               priority: 40,
               enforce: true,
             },
             // Radix UI components chunk
             radixUI: {
-              name: 'radix-ui',
+              name: "radix-ui",
               test: /[\/]node_modules[\/]@radix-ui[\/]/,
               priority: 35,
               enforce: true,
             },
             // Framer Motion chunk (large animation library)
             framerMotion: {
-              name: 'framer-motion',
+              name: "framer-motion",
               test: /[\/]node_modules[\/]framer-motion[\/]/,
               priority: 30,
               enforce: true,
             },
             // Vendor chunk for other node_modules
             vendor: {
-              name: 'vendor',
+              name: "vendor",
               test: /[\/]node_modules[\/]/,
               priority: 20,
             },
             // Common chunk for shared code
             common: {
-              name: 'common',
+              name: "common",
               minChunks: 2,
-              chunks: 'all',
+              chunks: "all",
               priority: 10,
               reuseExistingChunk: true,
               enforce: true,
@@ -180,9 +182,10 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Access-Control-Allow-Origin",
-            value: process.env.NODE_ENV === "production"
-              ? "https://fredonbytes.cloud"
-              : "*",
+            value:
+              process.env.NODE_ENV === "production"
+                ? "https://fredonbytes.cloud"
+                : "*",
           },
           {
             key: "Access-Control-Allow-Methods",
@@ -246,7 +249,6 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   poweredByHeader: false,
 
-
   // TypeScript and ESLint
   typescript: {
     ignoreBuildErrors: false,
@@ -255,4 +257,3 @@ const nextConfig: NextConfig = {
 const configWithIntl = withNextIntl(nextConfig);
 const configWithMDX = withMDX(configWithIntl);
 export default withBundleAnalyzer(configWithMDX);
-

@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Filter, X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { motion } from "framer-motion";
+import { Filter, X } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
 
-import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface ProjectFilterProps {
   technologies: string[];
   categories: string[];
-  statuses: Array<'active' | 'completed' | 'archived'>;
+  statuses: Array<"active" | "completed" | "archived">;
   selectedTechnologies: string[];
   selectedCategory: string | null;
   selectedStatus: string | null;
@@ -34,9 +34,12 @@ export default function ProjectFilter({
 }: ProjectFilterProps) {
   const prefersReducedMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
-  const t = useTranslations('projects');
+  const t = useTranslations("projects");
 
-  const hasActiveFilters = selectedTechnologies.length > 0 || selectedStatus !== null || selectedCategory !== null;
+  const hasActiveFilters =
+    selectedTechnologies.length > 0 ||
+    selectedStatus !== null ||
+    selectedCategory !== null;
 
   const toggleTechnology = (tech: string) => {
     if (selectedTechnologies.includes(tech)) {
@@ -66,11 +69,13 @@ export default function ProjectFilter({
         >
           <Filter className="w-5 h-5 text-slate-600 dark:text-slate-400" />
           <span className="text-slate-900 dark:text-white font-medium">
-            {t('filters.title')}
+            {t("filters.title")}
           </span>
           {hasActiveFilters && (
             <span className="ml-2 px-2 py-0.5 bg-blue-600 text-white text-xs rounded-full">
-              {selectedTechnologies.length + (selectedStatus ? 1 : 0) + (selectedCategory ? 1 : 0)}
+              {selectedTechnologies.length +
+                (selectedStatus ? 1 : 0) +
+                (selectedCategory ? 1 : 0)}
             </span>
           )}
         </button>
@@ -82,7 +87,7 @@ export default function ProjectFilter({
             aria-label="Clear all filters"
           >
             <X className="w-4 h-4" />
-            <span className="text-sm font-medium">{t('filters.clearAll')}</span>
+            <span className="text-sm font-medium">{t("filters.clearAll")}</span>
           </button>
         )}
       </div>
@@ -92,7 +97,7 @@ export default function ProjectFilter({
         id="filter-panel"
         initial={false}
         animate={{
-          height: isOpen ? 'auto' : 0,
+          height: isOpen ? "auto" : 0,
           opacity: isOpen ? 1 : 0,
         }}
         transition={{
@@ -105,17 +110,18 @@ export default function ProjectFilter({
           {/* Category Filter */}
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">
-              {t('filters.category')}
+              {t("filters.category")}
             </h3>
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => handleCategoryChange(category)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedCategory === category
-                      ? 'bg-blue-600 text-white shadow-md'
-                      : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
-                    }`}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    selectedCategory === category
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600"
+                  }`}
                   aria-pressed={selectedCategory === category}
                 >
                   {t(`categories.${category}` as keyof typeof t)}
@@ -127,17 +133,18 @@ export default function ProjectFilter({
           {/* Status Filter */}
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">
-              {t('filters.status')}
+              {t("filters.status")}
             </h3>
             <div className="flex flex-wrap gap-2">
               {statuses.map((status) => (
                 <button
                   key={status}
                   onClick={() => handleStatusChange(status)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedStatus === status
-                      ? 'bg-blue-600 text-white shadow-md'
-                      : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
-                    }`}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    selectedStatus === status
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600"
+                  }`}
                   aria-pressed={selectedStatus === status}
                 >
                   {t(`status.${status}` as keyof typeof t)}
@@ -149,17 +156,18 @@ export default function ProjectFilter({
           {/* Technology Filter */}
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">
-              {t('filters.technologies')}
+              {t("filters.technologies")}
             </h3>
             <div className="flex flex-wrap gap-2">
               {technologies.map((tech) => (
                 <button
                   key={tech}
                   onClick={() => toggleTechnology(tech)}
-                  className={`px-3 py-1.5 rounded-md text-sm transition-all ${selectedTechnologies.includes(tech)
-                      ? 'bg-blue-600 text-white shadow-md'
-                      : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
-                    }`}
+                  className={`px-3 py-1.5 rounded-md text-sm transition-all ${
+                    selectedTechnologies.includes(tech)
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600"
+                  }`}
                   aria-pressed={selectedTechnologies.includes(tech)}
                 >
                   {tech}

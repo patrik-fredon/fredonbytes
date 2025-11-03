@@ -24,23 +24,25 @@ const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
 const MAX_REQUESTS_PER_WINDOW = 10; // 10 requests per minute per IP
 
 // Cleanup old entries every 5 minutes
-setInterval(() => {
-  const now = Date.now();
-  for (const [key, entry] of rateLimitMap.entries()) {
-    if (now > entry.resetTime) {
-      rateLimitMap.delete(key);
+setInterval(
+  () => {
+    const now = Date.now();
+    for (const [key, entry] of rateLimitMap.entries()) {
+      if (now > entry.resetTime) {
+        rateLimitMap.delete(key);
+      }
     }
-  }
-}, 5 * 60 * 1000);
+  },
+  5 * 60 * 1000,
+);
 
 function getRateLimitKey(request: NextRequest): string {
   // Use IP address as the rate limit key
   // Try multiple headers for IP detection (Vercel, Cloudflare, etc.)
   const forwardedFor = request.headers.get("x-forwarded-for");
-  const ip =
-    forwardedFor ? (forwardedFor.split(",")[0]?.trim() || "unknown") :
-    request.headers.get("x-real-ip") ||
-    "unknown";
+  const ip = forwardedFor
+    ? forwardedFor.split(",")[0]?.trim() || "unknown"
+    : request.headers.get("x-real-ip") || "unknown";
   const pathname = request.nextUrl.pathname;
   return `${ip}:${pathname}`;
 }
@@ -80,7 +82,11 @@ const handleI18nRouting = createIntlMiddleware(routing);
 export function middleware(request: NextRequest) {
   // Skip middleware for static metadata routes
   const pathname = request.nextUrl.pathname;
-  if (pathname === "/manifest.webmanifest" || pathname === "/robots.txt" || pathname === "/sitemap.xml") {
+  if (
+    pathname === "/manifest.webmanifest" ||
+    pathname === "/robots.txt" ||
+    pathname === "/sitemap.xml"
+  ) {
     return NextResponse.next();
   }
 
@@ -102,11 +108,13 @@ export function middleware(request: NextRequest) {
     // Only check CSRF for state-changing methods (POST, PUT, DELETE, PATCH)
     // EXCEPT for session creation endpoints which generate CSRF tokens
     const requiresCsrf = ["POST", "PUT", "DELETE", "PATCH"].includes(method);
-    const isExempt = csrfExemptPaths.some(exemptPath => pathname === exemptPath);
+    const isExempt = csrfExemptPaths.some(
+      (exemptPath) => pathname === exemptPath,
+    );
 
     if (requiresCsrf && !isExempt) {
       const csrfTokenFromCookie = request.cookies.get(
-        CSRF_TOKEN_COOKIE_NAME
+        CSRF_TOKEN_COOKIE_NAME,
       )?.value;
       const csrfTokenFromHeader = request.headers.get(CSRF_TOKEN_HEADER_NAME);
 
@@ -114,7 +122,7 @@ export function middleware(request: NextRequest) {
       if (
         !validateCsrfToken(
           csrfTokenFromHeader || null,
-          csrfTokenFromCookie || null
+          csrfTokenFromCookie || null,
         )
       ) {
         return NextResponse.json(
@@ -122,15 +130,21 @@ export function middleware(request: NextRequest) {
             error: "CSRF validation failed",
             message: "Invalid or missing CSRF token",
           },
-          { status: 403 }
+          { status: 403 },
         );
       }
     }
 
     // Apply rate limiting to all API routes (except health checks and PWA endpoints)
-    const pwaEndpoints = ["/api/share", "/api/open-file", "/api/handle-protocol"];
-    const isPwaEndpoint = pwaEndpoints.some(endpoint => pathname === endpoint);
-    
+    const pwaEndpoints = [
+      "/api/share",
+      "/api/open-file",
+      "/api/handle-protocol",
+    ];
+    const isPwaEndpoint = pwaEndpoints.some(
+      (endpoint) => pathname === endpoint,
+    );
+
     if (!request.nextUrl.pathname.startsWith("/api/health") && !isPwaEndpoint) {
       const key = getRateLimitKey(request);
       const { allowed, remaining, resetTime } = checkRateLimit(key);
@@ -151,7 +165,7 @@ export function middleware(request: NextRequest) {
               "X-RateLimit-Remaining": "0",
               "X-RateLimit-Reset": new Date(resetTime).toISOString(),
             },
-          }
+          },
         );
       }
 
@@ -159,12 +173,12 @@ export function middleware(request: NextRequest) {
       const response = NextResponse.next();
       response.headers.set(
         "X-RateLimit-Limit",
-        MAX_REQUESTS_PER_WINDOW.toString()
+        MAX_REQUESTS_PER_WINDOW.toString(),
       );
       response.headers.set("X-RateLimit-Remaining", remaining.toString());
       response.headers.set(
         "X-RateLimit-Reset",
-        new Date(resetTime).toISOString()
+        new Date(resetTime).toISOString(),
       );
 
       // Set CSRF token cookie if not present (for GET requests and API routes that need it)

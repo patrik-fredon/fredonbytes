@@ -17,21 +17,25 @@ interface PricingTiersProps {
 }
 
 const getLocalizedText = (text: LocalizedString, locale: string): string => {
-  return text[locale as keyof LocalizedString] || text.en || '';
+  return text[locale as keyof LocalizedString] || text.en || "";
 };
 
 const formatPrice = (price: number | null, currency: Currency): string => {
-  if (price === null) return '';
+  if (price === null) return "";
 
-  if (currency === 'CZK') {
+  if (currency === "CZK") {
     return `${price.toLocaleString()} Kč`;
   } else {
     return `€${price.toLocaleString()}`;
   }
 };
 
-export default function PricingTiers({ tiers, currency, locale }: PricingTiersProps) {
-  const t = useTranslations('pricing');
+export default function PricingTiers({
+  tiers,
+  currency,
+  locale,
+}: PricingTiersProps) {
+  const t = useTranslations("pricing");
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -47,9 +51,9 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
 
   const handleGetStarted = () => {
     // Scroll to contact section or redirect to contact page
-    const contactElement = document.getElementById('contact');
+    const contactElement = document.getElementById("contact");
     if (contactElement) {
-      contactElement.scrollIntoView({ behavior: 'smooth' });
+      contactElement.scrollIntoView({ behavior: "smooth" });
     } else {
       // If no contact section on page, redirect to contact page
       window.location.href = `/${locale}/contact`;
@@ -60,7 +64,7 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
     return (
       <div className="text-center py-12">
         <p className="text-terminal-light/80 font-mono">
-          {t('noTiersAvailable')}
+          {t("noTiersAvailable")}
         </p>
       </div>
     );
@@ -69,7 +73,7 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
       {tiers.map((tier) => {
-        const price = currency === 'CZK' ? tier.price_czk : tier.price_eur;
+        const price = currency === "CZK" ? tier.price_czk : tier.price_eur;
 
         return (
           <motion.div
@@ -78,18 +82,19 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
             whileHover={{
               y: -4,
               scale: tier.popular ? 1.05 : 1.02,
-              transition: { duration: 0.2, ease: "easeOut" }
+              transition: { duration: 0.2, ease: "easeOut" },
             }}
-            className={`relative bg-glass-bg backdrop-blur-glass rounded-2xl p-8 border-2 ${tier.popular
-              ? "border-neon-purple shadow-glow-purple-strong scale-105"
-              : "border-neon-cyan/40 shadow-glow-cyan-subtle hover:border-neon-cyan/50 hover:shadow-glow-cyan"
-              }`}
+            className={`relative bg-glass-bg backdrop-blur-glass rounded-2xl p-8 border-2 ${
+              tier.popular
+                ? "border-neon-purple shadow-glow-purple-strong scale-105"
+                : "border-neon-cyan/40 shadow-glow-cyan-subtle hover:border-neon-cyan/50 hover:shadow-glow-cyan"
+            }`}
           >
             {tier.popular && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                 <div className="bg-neon-purple/20 border-2 border-neon-purple rounded-xl px-4 py-2 shadow-glow-purple text-sm font-semibold flex items-center gap-2 font-mono text-neon-purple">
                   <Star className="w-4 h-4 fill-current" />
-                  {t('mostPopular')}
+                  {t("mostPopular")}
                 </div>
               </div>
             )}
@@ -105,7 +110,7 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
                   </span>
                 ) : (
                   <span className="text-4xl font-bold text-neon-cyan font-mono">
-                    {t('customPricing')}
+                    {t("customPricing")}
                   </span>
                 )}
               </div>
@@ -116,10 +121,7 @@ export default function PricingTiers({ tiers, currency, locale }: PricingTiersPr
 
             <ul className="space-y-3 mb-8">
               {tier.features.map((feature, featureIndex) => (
-                <li
-                  key={featureIndex}
-                  className="flex items-center space-x-3"
-                >
+                <li key={featureIndex} className="flex items-center space-x-3">
                   <Check className="w-5 h-5 text-neon-cyan flex-shrink-0" />
                   <span className="text-terminal-light/80 text-sm">
                     {t(`features.${feature}`)}

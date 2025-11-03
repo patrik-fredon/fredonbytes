@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
-import { supabase, type Question, type LocalizedString } from '@/lib/supabase';
+import { supabase, type Question, type LocalizedString } from "@/lib/supabase";
 
 // Response interface for questions endpoint
 export interface QuestionsResponse {
@@ -14,7 +14,13 @@ export interface LocalizedQuestion {
   id: string;
   question_text: string;
   description?: string | null;
-  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating';
+  answer_type:
+    | "short_text"
+    | "long_text"
+    | "single_choice"
+    | "multiple_choice"
+    | "checklist"
+    | "rating";
   required: boolean;
   display_order: number;
   active: boolean;
@@ -30,66 +36,68 @@ export interface LocalizedQuestionOption {
 }
 
 // Force dynamic rendering for this route
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   try {
     // Get locale from query params (default to 'en')
     const searchParams = request.nextUrl.searchParams;
-    const locale = searchParams.get('locale') || 'en';
+    const locale = searchParams.get("locale") || "en";
 
     // Validate locale
-    if (!['en', 'cs', 'de'].includes(locale)) {
+    if (!["en", "cs", "de"].includes(locale)) {
       return NextResponse.json(
         {
           questions: [],
-          error: 'Invalid locale. Supported locales: en, cs, de',
+          error: "Invalid locale. Supported locales: en, cs, de",
         } as QuestionsResponse,
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     // Get the form questionnaire ID
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data: questionnaire, error: questionnaireError } = await (supabase as any)
-      .from('questionnaires')
-      .select('id')
-      .eq('type', 'form')
-      .eq('active', true)
+    const { data: questionnaire, error: questionnaireError } = await (
+      supabase as any
+    )
+      .from("questionnaires")
+      .select("id")
+      .eq("type", "form")
+      .eq("active", true)
       .maybeSingle();
 
     if (questionnaireError || !questionnaire) {
-      console.error('Error fetching form questionnaire:', questionnaireError);
+      console.error("Error fetching form questionnaire:", questionnaireError);
       return NextResponse.json(
         {
           questions: [],
-          error: 'Form questionnaire not found',
+          error: "Form questionnaire not found",
         } as QuestionsResponse,
-        { status: 404 }
+        { status: 404 },
       );
     }
 
     // Fetch questions with their options for the form questionnaire
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { data, error } = await (supabase as any)
-      .from('questions')
+      .from("questions")
       .select(`
         *,
         options:question_options(*)
       `)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .eq('questionnaire_id', (questionnaire as any).id)
-      .eq('active', true)
-      .order('display_order', { ascending: true });
+      .eq("questionnaire_id", (questionnaire as any).id)
+      .eq("active", true)
+      .order("display_order", { ascending: true });
 
     if (error) {
-      console.error('Database error fetching questions:', error);
+      console.error("Database error fetching questions:", error);
       return NextResponse.json(
         {
           questions: [],
-          error: 'Failed to fetch questions from database',
+          error: "Failed to fetch questions from database",
         } as QuestionsResponse,
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -99,7 +107,7 @@ export async function GET(request: NextRequest) {
           questions: [],
           locale,
         } as QuestionsResponse,
-        { status: 200 }
+        { status: 200 },
       );
     }
 
@@ -113,15 +121,19 @@ export async function GET(request: NextRequest) {
 
       return {
         ...question,
-        question_text: questionText[locale as keyof LocalizedString] || questionText.en,
-        description: description ? (description[locale as keyof LocalizedString] || description.en) : null,
+        question_text:
+          questionText[locale as keyof LocalizedString] || questionText.en,
+        description: description
+          ? description[locale as keyof LocalizedString] || description.en
+          : null,
         options: question.options
           ?.sort((a, b) => a.display_order - b.display_order)
           .map((option) => {
             const optionText = option.option_text as LocalizedString;
             return {
               ...option,
-              option_text: optionText[locale as keyof LocalizedString] || optionText.en,
+              option_text:
+                optionText[locale as keyof LocalizedString] || optionText.en,
             };
           }),
       };
@@ -135,20 +147,19 @@ export async function GET(request: NextRequest) {
       {
         status: 200,
         headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+          "Cache-Control":
+            "public, s-maxage=3600, stale-while-revalidate=86400",
         },
-      }
+      },
     );
   } catch (error) {
-    console.error('Unexpected error in questions endpoint:', error);
+    console.error("Unexpected error in questions endpoint:", error);
     return NextResponse.json(
       {
         questions: [],
-        error: 'Internal server error',
+        error: "Internal server error",
       } as QuestionsResponse,
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
-
-

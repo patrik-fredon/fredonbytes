@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
-import { supabase, type PricingItem } from '@/lib/supabase';
+import { supabase, type PricingItem } from "@/lib/supabase";
 
 // Response interface for pricing items endpoint
 export interface PricingItemsResponse {
@@ -11,20 +11,20 @@ export interface PricingItemsResponse {
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const category = searchParams.get('category');
-    const _locale = searchParams.get('locale') || 'en'; // Accept locale parameter for future use
+    const category = searchParams.get("category");
+    const _locale = searchParams.get("locale") || "en"; // Accept locale parameter for future use
 
     // Build query
     let query = supabase
-      .from('pricing_items')
-      .select('*')
-      .eq('active', true)
-      .order('category', { ascending: true })
-      .order('base_price_eur', { ascending: true });
+      .from("pricing_items")
+      .select("*")
+      .eq("active", true)
+      .order("category", { ascending: true })
+      .order("base_price_eur", { ascending: true });
 
     // Apply optional category filter
     if (category) {
-      query = query.eq('category', category);
+      query = query.eq("category", category);
     }
 
     // Execute query
@@ -32,13 +32,13 @@ export async function GET(request: NextRequest) {
 
     // Handle database errors
     if (error) {
-      console.error('Database error fetching pricing items:', error);
+      console.error("Database error fetching pricing items:", error);
       return NextResponse.json(
         {
           items: [],
-          error: 'Failed to fetch pricing items from database',
+          error: "Failed to fetch pricing items from database",
         } as PricingItemsResponse,
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
         {
           items: [],
         } as PricingItemsResponse,
-        { status: 200 }
+        { status: 200 },
       );
     }
 
@@ -62,21 +62,21 @@ export async function GET(request: NextRequest) {
       {
         items: itemsData,
       } as PricingItemsResponse,
-      { 
+      {
         status: 200,
         headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=7200',
+          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=7200",
         },
-      }
+      },
     );
   } catch (error) {
-    console.error('Unexpected error in pricing items endpoint:', error);
+    console.error("Unexpected error in pricing items endpoint:", error);
     return NextResponse.json(
       {
         items: [],
-        error: 'Internal server error',
+        error: "Internal server error",
       } as PricingItemsResponse,
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

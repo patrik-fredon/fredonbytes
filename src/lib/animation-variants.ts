@@ -149,6 +149,30 @@ export const cardHover = {
   },
 };
 
+// Project Card Variants (memoized)
+export const projectCardVariants = Object.freeze({
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+});
+
+export const projectCardTransition = (index: number) => ({
+  duration: 0.5,
+  delay: index * 0.1,
+  ease: [0.4, 0, 0.2, 1] as const,
+});
+
+export const projectCardHoverVariants = Object.freeze({
+  scale: 1.02,
+  y: -8,
+  transition: {
+    duration: 0.3,
+    ease: [0.4, 0, 0.2, 1] as const,
+  },
+});
+
 // Page Transition Variants
 export const pageVariants = {
   initial: {
@@ -194,7 +218,7 @@ export const modalBackdropVariants = {
 // Utility: Create custom variant with reduced motion support
 export function createVariant(
   variant: Record<string, Variant>,
-  respectReducedMotion = true
+  respectReducedMotion = true,
 ): Record<string, Variant> {
   if (!respectReducedMotion) return variant;
 

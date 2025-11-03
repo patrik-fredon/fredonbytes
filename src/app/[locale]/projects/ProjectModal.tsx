@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Github, Calendar, Tag } from 'lucide-react';
-import Image from 'next/image';
-import { useLocale, useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ExternalLink, Github, Calendar, Tag } from "lucide-react";
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
-import { useReducedMotion } from '@/hooks/useReducedMotion';
-import type { Project } from '@/lib/supabase';
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import type { Project } from "@/lib/supabase";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -15,34 +15,38 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-export default function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
+export default function ProjectModal({
+  project,
+  isOpen,
+  onClose,
+}: ProjectModalProps) {
   const prefersReducedMotion = useReducedMotion();
   const [imageError, setImageError] = useState(false);
-  const locale = useLocale() as 'en' | 'cs' | 'de';
-  const t = useTranslations('projects');
+  const locale = useLocale() as "en" | "cs" | "de";
+  const t = useTranslations("projects");
 
   // Close modal on Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === "Escape" && isOpen) {
         onClose();
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
@@ -55,11 +59,11 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
   // Format date
   const formattedDate = project.created_at
     ? new Date(project.created_at).toLocaleDateString(locale, {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    })
-    : 'N/A';
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : "N/A";
 
   return (
     <AnimatePresence>
@@ -79,9 +83,17 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
           {/* Modal */}
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
             <motion.div
-              initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.95, y: prefersReducedMotion ? 0 : 20 }}
+              initial={{
+                opacity: 0,
+                scale: prefersReducedMotion ? 1 : 0.95,
+                y: prefersReducedMotion ? 0 : 20,
+              }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.95, y: prefersReducedMotion ? 0 : 20 }}
+              exit={{
+                opacity: 0,
+                scale: prefersReducedMotion ? 1 : 0.95,
+                y: prefersReducedMotion ? 0 : 20,
+              }}
               transition={{
                 duration: prefersReducedMotion ? 0 : 0.3,
                 ease: [0.4, 0, 0.2, 1],
@@ -118,7 +130,9 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-slate-400">
-                      <span className="text-sm font-mono">// Image not available</span>
+                      <span className="text-sm font-mono">
+                        // Image not available
+                      </span>
                     </div>
                   )}
 
@@ -126,16 +140,17 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                   <div className="absolute top-4 left-4 flex gap-2">
                     {project.featured && (
                       <span className="bg-gradient-to-r from-neon-cyan to-electric-purple text-white px-3 py-1 rounded-full text-xs font-mono font-medium shadow-glow-cyan-subtle">
-                        $ {t('badges.featured')}
+                        $ {t("badges.featured")}
                       </span>
                     )}
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-mono font-medium border ${project.status === 'active'
-                        ? 'bg-code-green/20 text-code-green border-code-green/30 shadow-glow-green-subtle'
-                        : project.status === 'completed'
-                          ? 'bg-neon-cyan/20 text-neon-cyan border-neon-cyan/30 shadow-glow-cyan-subtle'
-                          : 'bg-slate-500/20 text-slate-400 border-slate-500/30'
-                        }`}
+                      className={`px-3 py-1 rounded-full text-xs font-mono font-medium border ${
+                        project.status === "active"
+                          ? "bg-code-green/20 text-code-green border-code-green/30 shadow-glow-green-subtle"
+                          : project.status === "completed"
+                            ? "bg-neon-cyan/20 text-neon-cyan border-neon-cyan/30 shadow-glow-cyan-subtle"
+                            : "bg-slate-500/20 text-slate-400 border-slate-500/30"
+                      }`}
                     >
                       {t(`status.${project.status}` as keyof typeof t)}
                     </span>
@@ -154,7 +169,9 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     </h2>
                     <div className="flex items-center gap-2 text-sm text-slate-400 font-mono">
                       <Calendar className="w-4 h-4 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
-                      <time dateTime={project.created_at || undefined}>{formattedDate}</time>
+                      <time dateTime={project.created_at || undefined}>
+                        {formattedDate}
+                      </time>
                     </div>
                   </div>
 
@@ -170,7 +187,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     <div className="flex items-center gap-2 mb-3">
                       <Tag className="w-4 h-4 text-neon-cyan drop-shadow-[0_0_8px_currentColor]" />
                       <h3 className="text-sm font-semibold text-neon-cyan font-mono">
-                        {t('modal.technologies')}
+                        {t("modal.technologies")}
                       </h3>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -195,7 +212,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                         className="flex items-center gap-2 px-6 py-3 bg-neon-cyan/10 border-2 border-neon-cyan text-neon-cyan rounded-lg hover:bg-neon-cyan hover:text-terminal-dark hover:scale-105 transition-all duration-[180ms] shadow-glow-cyan-intense font-mono font-medium"
                       >
                         <ExternalLink className="w-5 h-5 drop-shadow-[0_0_8px_currentColor]" />
-                        <span>$ {t('actions.viewLiveDemo')}</span>
+                        <span>$ {t("actions.viewLiveDemo")}</span>
                       </a>
                     )}
                     {project.github_link && (
@@ -206,7 +223,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                         className="flex items-center gap-2 px-6 py-3 bg-electric-purple/10 border-2 border-electric-purple text-electric-purple rounded-lg hover:bg-electric-purple hover:text-white hover:scale-105 transition-all duration-[180ms] shadow-glow-purple-intense font-mono font-medium"
                       >
                         <Github className="w-5 h-5 drop-shadow-[0_0_8px_currentColor]" />
-                        <span>$ {t('actions.viewOnGithub')}</span>
+                        <span>$ {t("actions.viewOnGithub")}</span>
                       </a>
                     )}
                   </div>

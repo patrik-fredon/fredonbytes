@@ -20,20 +20,22 @@ export interface AdminNotificationData {
  * @param data - Survey response data including session_id, timestamp, and responses
  * @returns HTML string for email body
  */
-export function generateAdminNotificationHTML(data: AdminNotificationData): string {
+export function generateAdminNotificationHTML(
+  data: AdminNotificationData,
+): string {
   const { session_id, timestamp, responses } = data;
 
   // Format timestamp for display
-  const formattedDate = new Date(timestamp).toLocaleString('en-US', {
-    dateStyle: 'full',
-    timeStyle: 'long',
+  const formattedDate = new Date(timestamp).toLocaleString("en-US", {
+    dateStyle: "full",
+    timeStyle: "long",
   });
 
   // Generate response sections
   const responsesHtml = responses
     .map((response, index) => {
       const answerDisplay = Array.isArray(response.answer_value)
-        ? `<ul style="margin: 8px 0; padding-left: 20px;">${response.answer_value.map(val => `<li>${escapeHtml(String(val))}</li>`).join('')}</ul>`
+        ? `<ul style="margin: 8px 0; padding-left: 20px;">${response.answer_value.map((val) => `<li>${escapeHtml(String(val))}</li>`).join("")}</ul>`
         : `<p style="margin: 8px 0;">${escapeHtml(String(response.answer_value))}</p>`;
 
       return `
@@ -51,7 +53,7 @@ export function generateAdminNotificationHTML(data: AdminNotificationData): stri
         </div>
       `;
     })
-    .join('');
+    .join("");
 
   return `
     <!DOCTYPE html>
@@ -172,7 +174,7 @@ export function generateAdminNotificationHTML(data: AdminNotificationData): stri
               </div>
               <div class="info-row">
                 <span class="info-label">Total Responses:</span>
-                <span class="info-value">${responses.length} question${responses.length !== 1 ? 's' : ''}</span>
+                <span class="info-value">${responses.length} question${responses.length !== 1 ? "s" : ""}</span>
               </div>
             </div>
 
@@ -210,15 +212,14 @@ export function generateAdminNotificationHTML(data: AdminNotificationData): stri
  */
 function escapeHtml(text: string): string {
   const map: Record<string, string> = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;',
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
   };
   return text.replace(/[&<>"']/g, (char) => map[char]);
 }
-
 
 // Contact form email template interfaces
 export interface ContactEmailData {
@@ -242,8 +243,8 @@ export interface ContactEmailData {
  * @returns Promise with translation function
  */
 async function getEmailTranslations(locale: string) {
-  const { getTranslations } = await import('next-intl/server');
-  return await getTranslations({ locale, namespace: 'emails' });
+  const { getTranslations } = await import("next-intl/server");
+  return await getTranslations({ locale, namespace: "emails" });
 }
 
 /**
@@ -251,18 +252,20 @@ async function getEmailTranslations(locale: string) {
  * @param data - Contact form data including customer details and survey link
  * @returns Promise with HTML string for email body
  */
-export async function generateCustomerConfirmationHTML(data: ContactEmailData): Promise<string> {
+export async function generateCustomerConfirmationHTML(
+  data: ContactEmailData,
+): Promise<string> {
   const t = await getEmailTranslations(data.locale);
   const surveySection = data.surveyLink
     ? `
       <div style="background: rgba(14, 19, 48, 0.85); border: 1px solid rgba(0, 217, 255, 0.3); border-radius: 12px; padding: 20px; margin: 25px 0; text-align: center; box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);">
-        <h3 style="margin: 0 0 10px 0; color: #00D9FF; font-size: 16px; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> 📊 ${t('customer.surveyInvitation')}</h3>
+        <h3 style="margin: 0 0 10px 0; color: #00D9FF; font-size: 16px; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> 📊 ${t("customer.surveyInvitation")}</h3>
         <a href="${data.surveyLink}" style="background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 10px 0; font-weight: 600; box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);">
-          ${t('customer.surveyButton')}
+          ${t("customer.surveyButton")}
         </a>
       </div>
     `
-    : '';
+    : "";
 
   return `
     <!DOCTYPE html>
@@ -270,7 +273,7 @@ export async function generateCustomerConfirmationHTML(data: ContactEmailData): 
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${t('customer.thankYou')} - ${t('common.companyName')}</title>
+        <title>${t("customer.thankYou")} - ${t("common.companyName")}</title>
         <style>
           body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -284,46 +287,49 @@ export async function generateCustomerConfirmationHTML(data: ContactEmailData): 
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 24px; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t('customer.greeting')}, ${escapeHtml(data.firstName)}!</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t('customer.thankYou')}</p>
+            <h1 style="margin: 0; font-size: 24px; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t("customer.greeting")}, ${escapeHtml(data.firstName)}!</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t("customer.thankYou")}</p>
           </div>
 
           <div class="content">
             <div class="highlight">
-              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t('customer.confirmationMessage')}</h3>
-              <p style="margin: 0; color: #F1F5F9;">${t('customer.responseTime')}</p>
+              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t("customer.confirmationMessage")}</h3>
+              <p style="margin: 0; color: #F1F5F9;">${t("customer.responseTime")}</p>
             </div>
 
             ${surveySection}
 
-            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t('customer.whatHappensNext')}</h3>
+            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t("customer.whatHappensNext")}</h3>
             <ol style="color: #F1F5F9;">
-              <li>${t('customer.steps.review')}</li>
-              <li>${t('customer.steps.response')}</li>
-              <li>${t('customer.steps.consultation')}</li>
-              <li>${t('customer.steps.proposal')}</li>
+              <li>${t("customer.steps.review")}</li>
+              <li>${t("customer.steps.response")}</li>
+              <li>${t("customer.steps.consultation")}</li>
+              <li>${t("customer.steps.proposal")}</li>
             </ol>
 
             <div style="background: rgba(14, 19, 48, 0.85); padding: 20px; border-radius: 8px; margin: 25px 0; border: 1px solid rgba(168, 85, 247, 0.3);">
-              <h4 style="margin: 0 0 10px 0; color: #A855F7; font-family: 'Courier New', monospace;">${t('customer.projectSummary')}</h4>
-              <p style="margin: 5px 0; color: #F1F5F9;"><strong>${t('admin.projectDetails')}:</strong> ${escapeHtml(data.projectType)}</p>
+              <h4 style="margin: 0 0 10px 0; color: #A855F7; font-family: 'Courier New', monospace;">${t("customer.projectSummary")}</h4>
+              <p style="margin: 5px 0; color: #F1F5F9;"><strong>${t("admin.projectDetails")}:</strong> ${escapeHtml(data.projectType)}</p>
               <p style="margin: 5px 0; color: #F1F5F9;"><strong>Budget:</strong> ${escapeHtml(data.budget)}</p>
               <p style="margin: 5px 0; color: #F1F5F9;"><strong>Timeline:</strong> ${escapeHtml(data.timeline)}</p>
             </div>
 
-            <p style="color: #F1F5F9;">${t('customer.inTheMeantime')}</p>
+            <p style="color: #F1F5F9;">${t("customer.inTheMeantime")}</p>
             <ul style="color: #F1F5F9;">
-              ${t.raw('customer.suggestions').map((s: string) => `<li>${s}</li>`).join('')}
+              ${t
+                .raw("customer.suggestions")
+                .map((s: string) => `<li>${s}</li>`)
+                .join("")}
             </ul>
 
             <div style="text-align: center;">
-              <a href="https://fredonbytes.cloud" class="cta">${t('customer.visitWebsite')}</a>
+              <a href="https://fredonbytes.cloud" class="cta">${t("customer.visitWebsite")}</a>
             </div>
           </div>
 
           <div class="footer">
-            <p><strong style="color: #00D9FF;">${t('common.companyName')}</strong> <span style="color: #94A3B8;">//</span> ${t('common.tagline')}</p>
-            <p>${t('common.location')} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p><strong style="color: #00D9FF;">${t("common.companyName")}</strong> <span style="color: #94A3B8;">//</span> ${t("common.tagline")}</p>
+            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
             <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #A855F7;">
               Code. Create. Conquer.
             </p>
@@ -339,41 +345,43 @@ export async function generateCustomerConfirmationHTML(data: ContactEmailData): 
  * @param data - Contact form data
  * @returns Promise with plain text string for email body
  */
-export async function generateCustomerConfirmationText(data: ContactEmailData): Promise<string> {
+export async function generateCustomerConfirmationText(
+  data: ContactEmailData,
+): Promise<string> {
   const t = await getEmailTranslations(data.locale);
   const surveySection = data.surveyLink
-    ? `\n\n// 📊 ${t('customer.surveyInvitation')}\n${t('customer.surveyButton')}: ${data.surveyLink}\n`
-    : '';
+    ? `\n\n// 📊 ${t("customer.surveyInvitation")}\n${t("customer.surveyButton")}: ${data.surveyLink}\n`
+    : "";
 
   return `
-// ${t('customer.greeting')}, ${data.firstName}!
+// ${t("customer.greeting")}, ${data.firstName}!
 
-${t('customer.thankYou')}
+${t("customer.thankYou")}
 
-✓ ${t('customer.confirmationMessage')}
-${t('customer.responseTime')}
+✓ ${t("customer.confirmationMessage")}
+${t("customer.responseTime")}
 ${surveySection}
 
-// ${t('customer.whatHappensNext')}
+// ${t("customer.whatHappensNext")}
 
-1. ${t('customer.steps.review')}
-2. ${t('customer.steps.response')}
-3. ${t('customer.steps.consultation')}
-4. ${t('customer.steps.proposal')}
+1. ${t("customer.steps.review")}
+2. ${t("customer.steps.response")}
+3. ${t("customer.steps.consultation")}
+4. ${t("customer.steps.proposal")}
 
-${t('customer.projectSummary')}
-- ${t('admin.projectDetails')}: ${data.projectType}
+${t("customer.projectSummary")}
+- ${t("admin.projectDetails")}: ${data.projectType}
 - Budget: ${data.budget}
 - Timeline: ${data.timeline}
 
-${t('customer.inTheMeantime')}
+${t("customer.inTheMeantime")}
 - Check out our project portfolio: https://fredonbytes.cloud
 - Follow us on social media for updates
 - Call us directly at +420 799 027 984
 
 ---
-${t('common.companyName')} // ${t('common.tagline')}
-${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
+${t("common.companyName")} // ${t("common.tagline")}
+${t("common.location")} | info@fredonbytes.cloud | +420 799 027 984
 // Code. Create. Conquer.
   `.trim();
 }
@@ -383,21 +391,23 @@ ${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
  * @param data - Contact form data
  * @returns HTML string for email body
  */
-export async function generateAdminContactNotificationHTML(data: ContactEmailData): Promise<string> {
+export async function generateAdminContactNotificationHTML(
+  data: ContactEmailData,
+): Promise<string> {
   const t = await getEmailTranslations(data.locale);
   const requirementsHtml =
     data.requirements && data.requirements.length > 0
       ? `
         <div class="section">
-          <div class="label">${t('admin.additionalRequirements')}</div>
+          <div class="label">${t("admin.additionalRequirements")}</div>
           <div class="value">
             <div class="requirements">
-              ${data.requirements.map((req) => `<span class="tag">${escapeHtml(req)}</span>`).join('')}
+              ${data.requirements.map((req) => `<span class="tag">${escapeHtml(req)}</span>`).join("")}
             </div>
           </div>
         </div>
       `
-      : '';
+      : "";
 
   return `
     <!DOCTYPE html>
@@ -405,7 +415,7 @@ export async function generateAdminContactNotificationHTML(data: ContactEmailDat
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${t('admin.newSubmission')} - ${t('common.companyName')}</title>
+        <title>${t("admin.newSubmission")} - ${t("common.companyName")}</title>
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -422,23 +432,23 @@ export async function generateAdminContactNotificationHTML(data: ContactEmailDat
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 24px;">${t('admin.newSubmission')}</h1>
+            <h1 style="margin: 0; font-size: 24px;">${t("admin.newSubmission")}</h1>
             <p style="margin: 10px 0 0 0; opacity: 0.9;">fredonbytes.cloud</p>
           </div>
 
           <div class="content">
             <div class="section">
-              <div class="label">${t('admin.contactInfo')}</div>
+              <div class="label">${t("admin.contactInfo")}</div>
               <div class="value">
                 <strong>Name:</strong> ${escapeHtml(data.firstName)} ${escapeHtml(data.lastName)}<br>
                 <strong>Email:</strong> <a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a><br>
                 <strong>Phone:</strong> <a href="tel:${escapeHtml(data.phone)}">${escapeHtml(data.phone)}</a>
-                ${data.company ? `<br><strong>Company:</strong> ${escapeHtml(data.company)}` : ''}
+                ${data.company ? `<br><strong>Company:</strong> ${escapeHtml(data.company)}` : ""}
               </div>
             </div>
 
             <div class="section">
-              <div class="label">${t('admin.projectDetails')}</div>
+              <div class="label">${t("admin.projectDetails")}</div>
               <div class="value">
                 <strong>Type:</strong> ${escapeHtml(data.projectType)}<br>
                 <strong>Budget:</strong> ${escapeHtml(data.budget)}<br>
@@ -447,24 +457,24 @@ export async function generateAdminContactNotificationHTML(data: ContactEmailDat
             </div>
 
             <div class="section">
-              <div class="label">${t('admin.projectDescription')}</div>
-              <div class="value">${escapeHtml(data.message).replace(/\n/g, '<br>')}</div>
+              <div class="label">${t("admin.projectDescription")}</div>
+              <div class="value">${escapeHtml(data.message).replace(/\n/g, "<br>")}</div>
             </div>
 
             ${requirementsHtml}
 
             <div class="section">
-              <div class="label">${t('admin.preferences')}</div>
+              <div class="label">${t("admin.preferences")}</div>
               <div class="value">
-                ${t('admin.newsletterSubscription')}: ${data.requirements?.includes('newsletter') ? t('admin.yes') : t('admin.no')}<br>
-                ${t('admin.privacyAccepted')}: ${t('admin.yes')}
+                ${t("admin.newsletterSubscription")}: ${data.requirements?.includes("newsletter") ? t("admin.yes") : t("admin.no")}<br>
+                ${t("admin.privacyAccepted")}: ${t("admin.yes")}
               </div>
             </div>
           </div>
 
           <div class="footer">
-            <p>${t('admin.footerNote')}</p>
-            <p>${t('admin.respondWithin')}</p>
+            <p>${t("admin.footerNote")}</p>
+            <p>${t("admin.respondWithin")}</p>
           </div>
         </div>
       </body>
@@ -486,7 +496,9 @@ export interface SurveyThankYouData {
  * @param data - Survey completion data including customer details
  * @returns Promise with HTML string for email body
  */
-export async function generateSurveyThankYouHTML(data: SurveyThankYouData): Promise<string> {
+export async function generateSurveyThankYouHTML(
+  data: SurveyThankYouData,
+): Promise<string> {
   const t = await getEmailTranslations(data.locale);
 
   return `
@@ -495,7 +507,7 @@ export async function generateSurveyThankYouHTML(data: SurveyThankYouData): Prom
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${t('survey.thankYou')} - ${t('common.companyName')}</title>
+        <title>${t("survey.thankYou")} - ${t("common.companyName")}</title>
         <style>
           body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -508,35 +520,35 @@ export async function generateSurveyThankYouHTML(data: SurveyThankYouData): Prom
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 28px; font-family: 'Courier New', monospace;"><span style="color: #10B981;">//</span> 🎉 ${t('survey.thankYou')}</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t('survey.feedbackReceived')}</p>
+            <h1 style="margin: 0; font-size: 28px; font-family: 'Courier New', monospace;"><span style="color: #10B981;">//</span> 🎉 ${t("survey.thankYou")}</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t("survey.feedbackReceived")}</p>
           </div>
 
           <div class="content">
-            <p style="color: #F1F5F9;"><span style="color: #00D9FF;">//</span> ${t('survey.greeting')}, ${escapeHtml(data.firstName)}!</p>
+            <p style="color: #F1F5F9;"><span style="color: #00D9FF;">//</span> ${t("survey.greeting")}, ${escapeHtml(data.firstName)}!</p>
             
             <div class="highlight">
-              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t('survey.completionMessage')}</h3>
-              <p style="margin: 0; color: #F1F5F9;">${t('survey.feedbackValue')}</p>
+              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t("survey.completionMessage")}</h3>
+              <p style="margin: 0; color: #F1F5F9;">${t("survey.feedbackValue")}</p>
             </div>
 
-            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t('survey.whatNext')}</h3>
+            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t("survey.whatNext")}</h3>
             <ul style="color: #F1F5F9;">
-              <li>${t('survey.reviewFeedback')}</li>
-              <li>${t('survey.improveServices')}</li>
-              <li>${t('survey.followUp')}</li>
+              <li>${t("survey.reviewFeedback")}</li>
+              <li>${t("survey.improveServices")}</li>
+              <li>${t("survey.followUp")}</li>
             </ul>
 
-            <p style="color: #F1F5F9;">${t('survey.gratitude')}</p>
+            <p style="color: #F1F5F9;">${t("survey.gratitude")}</p>
 
             <div style="text-align: center; margin-top: 30px;">
-              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t('customer.visitWebsite')}</a>
+              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t("customer.visitWebsite")}</a>
             </div>
           </div>
 
           <div class="footer">
-            <p><strong style="color: #00D9FF;">${t('common.companyName')}</strong> <span style="color: #94A3B8;">//</span> ${t('common.tagline')}</p>
-            <p>${t('common.location')} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p><strong style="color: #00D9FF;">${t("common.companyName")}</strong> <span style="color: #94A3B8;">//</span> ${t("common.tagline")}</p>
+            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
             <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #10B981;">
               Code. Create. Conquer.
             </p>
@@ -552,32 +564,34 @@ export async function generateSurveyThankYouHTML(data: SurveyThankYouData): Prom
  * @param data - Survey completion data
  * @returns Promise with plain text string for email body
  */
-export async function generateSurveyThankYouText(data: SurveyThankYouData): Promise<string> {
+export async function generateSurveyThankYouText(
+  data: SurveyThankYouData,
+): Promise<string> {
   const t = await getEmailTranslations(data.locale);
 
   return `
-// 🎉 ${t('survey.thankYou')}
+// 🎉 ${t("survey.thankYou")}
 
-// ${t('survey.greeting')}, ${data.firstName}!
+// ${t("survey.greeting")}, ${data.firstName}!
 
-${t('survey.feedbackReceived')}
+${t("survey.feedbackReceived")}
 
-✓ ${t('survey.completionMessage')}
-${t('survey.feedbackValue')}
+✓ ${t("survey.completionMessage")}
+${t("survey.feedbackValue")}
 
-// ${t('survey.whatNext')}
+// ${t("survey.whatNext")}
 
-1. ${t('survey.reviewFeedback')}
-2. ${t('survey.improveServices')}
-3. ${t('survey.followUp')}
+1. ${t("survey.reviewFeedback")}
+2. ${t("survey.improveServices")}
+3. ${t("survey.followUp")}
 
-${t('survey.gratitude')}
+${t("survey.gratitude")}
 
 Visit us: https://fredonbytes.cloud
 
 ---
-${t('common.companyName')} // ${t('common.tagline')}
-${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
+${t("common.companyName")} // ${t("common.tagline")}
+${t("common.location")} | info@fredonbytes.cloud | +420 799 027 984
 // Code. Create. Conquer.
   `.trim();
 }
@@ -587,39 +601,41 @@ ${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
  * @param data - Contact form data
  * @returns Plain text string for email body
  */
-export async function generateAdminContactNotificationText(data: ContactEmailData): Promise<string> {
+export async function generateAdminContactNotificationText(
+  data: ContactEmailData,
+): Promise<string> {
   const t = await getEmailTranslations(data.locale);
   const requirementsText =
     data.requirements && data.requirements.length > 0
-      ? `\n${t('admin.additionalRequirements')}:\n${data.requirements.map((req) => `- ${req}`).join('\n')}\n`
-      : '';
+      ? `\n${t("admin.additionalRequirements")}:\n${data.requirements.map((req) => `- ${req}`).join("\n")}\n`
+      : "";
 
   return `
-${t('admin.newSubmission')}
+${t("admin.newSubmission")}
 fredonbytes.cloud
 
-${t('admin.contactInfo')}:
+${t("admin.contactInfo")}:
 Name: ${data.firstName} ${data.lastName}
 Email: ${data.email}
 Phone: ${data.phone}
-${data.company ? `Company: ${data.company}` : ''}
+${data.company ? `Company: ${data.company}` : ""}
 
-${t('admin.projectDetails')}:
+${t("admin.projectDetails")}:
 Type: ${data.projectType}
 Budget: ${data.budget}
 Timeline: ${data.timeline}
 
-${t('admin.projectDescription')}:
+${t("admin.projectDescription")}:
 ${data.message}
 ${requirementsText}
 
-${t('admin.preferences')}:
-${t('admin.newsletterSubscription')}: ${data.requirements?.includes('newsletter') ? t('admin.yes') : t('admin.no')}
-${t('admin.privacyAccepted')}: ${t('admin.yes')}
+${t("admin.preferences")}:
+${t("admin.newsletterSubscription")}: ${data.requirements?.includes("newsletter") ? t("admin.yes") : t("admin.no")}
+${t("admin.privacyAccepted")}: ${t("admin.yes")}
 
 ---
-${t('admin.footerNote')}
-${t('admin.respondWithin')}
+${t("admin.footerNote")}
+${t("admin.respondWithin")}
   `.trim();
 }
 
@@ -638,11 +654,13 @@ export interface NewsletterWelcomeData {
  * @param data - Newsletter subscription data
  * @returns Promise with HTML string for email body
  */
-export async function generateNewsletterWelcomeHTML(data: NewsletterWelcomeData): Promise<string> {
+export async function generateNewsletterWelcomeHTML(
+  data: NewsletterWelcomeData,
+): Promise<string> {
   const t = await getEmailTranslations(data.locale);
   const displayName = data.firstName
-    ? `${data.firstName}${data.lastName ? ` ${data.lastName}` : ''}`
-    : data.email.split('@')[0];
+    ? `${data.firstName}${data.lastName ? ` ${data.lastName}` : ""}`
+    : data.email.split("@")[0];
 
   return `
     <!DOCTYPE html>
@@ -650,7 +668,7 @@ export async function generateNewsletterWelcomeHTML(data: NewsletterWelcomeData)
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${t('newsletter.welcome')} - ${t('common.companyName')}</title>
+        <title>${t("newsletter.welcome")} - ${t("common.companyName")}</title>
         <style>
           body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -664,40 +682,40 @@ export async function generateNewsletterWelcomeHTML(data: NewsletterWelcomeData)
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 28px; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> 📬 ${t('newsletter.welcome')}</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t('newsletter.thanksForSubscribing')}</p>
+            <h1 style="margin: 0; font-size: 28px; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> 📬 ${t("newsletter.welcome")}</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t("newsletter.thanksForSubscribing")}</p>
           </div>
 
           <div class="content">
-            <p style="color: #F1F5F9;"><span style="color: #00D9FF;">//</span> ${t('newsletter.greeting')}, ${escapeHtml(displayName)}!</p>
+            <p style="color: #F1F5F9;"><span style="color: #00D9FF;">//</span> ${t("newsletter.greeting")}, ${escapeHtml(displayName)}!</p>
             
             <div class="highlight">
-              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t('newsletter.subscriptionConfirmed')}</h3>
-              <p style="margin: 0; color: #F1F5F9;">${t('newsletter.whatToExpect')}</p>
+              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t("newsletter.subscriptionConfirmed")}</h3>
+              <p style="margin: 0; color: #F1F5F9;">${t("newsletter.whatToExpect")}</p>
             </div>
 
-            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t('newsletter.youWillReceive')}</h3>
+            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t("newsletter.youWillReceive")}</h3>
             <ul style="color: #F1F5F9;">
-              <li>${t('newsletter.benefits.updates')}</li>
-              <li>${t('newsletter.benefits.tips')}</li>
-              <li>${t('newsletter.benefits.offers')}</li>
-              <li>${t('newsletter.benefits.news')}</li>
+              <li>${t("newsletter.benefits.updates")}</li>
+              <li>${t("newsletter.benefits.tips")}</li>
+              <li>${t("newsletter.benefits.offers")}</li>
+              <li>${t("newsletter.benefits.news")}</li>
             </ul>
 
-            <p style="color: #F1F5F9;">${t('newsletter.stayTuned')}</p>
+            <p style="color: #F1F5F9;">${t("newsletter.stayTuned")}</p>
 
             <div style="text-align: center;">
-              <a href="https://fredonbytes.cloud" class="cta">${t('customer.visitWebsite')}</a>
+              <a href="https://fredonbytes.cloud" class="cta">${t("customer.visitWebsite")}</a>
             </div>
 
             <p style="font-size: 12px; color: #94A3B8; margin-top: 30px;">
-              ${t('newsletter.unsubscribeInfo')}
+              ${t("newsletter.unsubscribeInfo")}
             </p>
           </div>
 
           <div class="footer">
-            <p><strong style="color: #00D9FF;">${t('common.companyName')}</strong> <span style="color: #94A3B8;">//</span> ${t('common.tagline')}</p>
-            <p>${t('common.location')} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p><strong style="color: #00D9FF;">${t("common.companyName")}</strong> <span style="color: #94A3B8;">//</span> ${t("common.tagline")}</p>
+            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
             <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #A855F7;">
               Code. Create. Conquer.
             </p>
@@ -713,38 +731,40 @@ export async function generateNewsletterWelcomeHTML(data: NewsletterWelcomeData)
  * @param data - Newsletter subscription data
  * @returns Promise with plain text string for email body
  */
-export async function generateNewsletterWelcomeText(data: NewsletterWelcomeData): Promise<string> {
+export async function generateNewsletterWelcomeText(
+  data: NewsletterWelcomeData,
+): Promise<string> {
   const t = await getEmailTranslations(data.locale);
   const displayName = data.firstName
-    ? `${data.firstName}${data.lastName ? ` ${data.lastName}` : ''}`
-    : data.email.split('@')[0];
+    ? `${data.firstName}${data.lastName ? ` ${data.lastName}` : ""}`
+    : data.email.split("@")[0];
 
   return `
-// 📬 ${t('newsletter.welcome')}
+// 📬 ${t("newsletter.welcome")}
 
-// ${t('newsletter.greeting')}, ${displayName}!
+// ${t("newsletter.greeting")}, ${displayName}!
 
-${t('newsletter.thanksForSubscribing')}
+${t("newsletter.thanksForSubscribing")}
 
-✓ ${t('newsletter.subscriptionConfirmed')}
-${t('newsletter.whatToExpect')}
+✓ ${t("newsletter.subscriptionConfirmed")}
+${t("newsletter.whatToExpect")}
 
-// ${t('newsletter.youWillReceive')}
+// ${t("newsletter.youWillReceive")}
 
-• ${t('newsletter.benefits.updates')}
-• ${t('newsletter.benefits.tips')}
-• ${t('newsletter.benefits.offers')}
-• ${t('newsletter.benefits.news')}
+• ${t("newsletter.benefits.updates")}
+• ${t("newsletter.benefits.tips")}
+• ${t("newsletter.benefits.offers")}
+• ${t("newsletter.benefits.news")}
 
-${t('newsletter.stayTuned')}
+${t("newsletter.stayTuned")}
 
 Visit us: https://fredonbytes.cloud
 
-${t('newsletter.unsubscribeInfo')}
+${t("newsletter.unsubscribeInfo")}
 
 ---
-${t('common.companyName')} // ${t('common.tagline')}
-${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
+${t("common.companyName")} // ${t("common.tagline")}
+${t("common.location")} | info@fredonbytes.cloud | +420 799 027 984
 // Code. Create. Conquer.
   `.trim();
 }
@@ -762,9 +782,11 @@ export interface FormThankYouData {
  * @param data - Form completion data including customer email and locale
  * @returns Promise with HTML string for email body
  */
-export async function generateFormThankYouHTML(data: FormThankYouData): Promise<string> {
+export async function generateFormThankYouHTML(
+  data: FormThankYouData,
+): Promise<string> {
   const t = await getEmailTranslations(data.locale);
-  const displayName = data.email.split('@')[0];
+  const displayName = data.email.split("@")[0];
 
   return `
     <!DOCTYPE html>
@@ -772,7 +794,7 @@ export async function generateFormThankYouHTML(data: FormThankYouData): Promise<
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${t('form.thankYou')} - ${t('common.companyName')}</title>
+        <title>${t("form.thankYou")} - ${t("common.companyName")}</title>
         <style>
           body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -785,36 +807,36 @@ export async function generateFormThankYouHTML(data: FormThankYouData): Promise<
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0; font-size: 28px; font-family: 'Courier New', monospace;"><span style="color: #10B981;">//</span> 🎉 ${t('form.thankYou')}</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t('form.feedbackReceived')}</p>
+            <h1 style="margin: 0; font-size: 28px; font-family: 'Courier New', monospace;"><span style="color: #10B981;">//</span> 🎉 ${t("form.thankYou")}</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.95;">${t("form.feedbackReceived")}</p>
           </div>
 
           <div class="content">
-            <p style="color: #F1F5F9;"><span style="color: #00D9FF;">//</span> ${t('form.greeting')}, ${escapeHtml(displayName)}!</p>
+            <p style="color: #F1F5F9;"><span style="color: #00D9FF;">//</span> ${t("form.greeting")}, ${escapeHtml(displayName)}!</p>
             
             <div class="highlight">
-              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t('form.completionMessage')}</h3>
-              <p style="margin: 0; color: #F1F5F9;">${t('form.feedbackValue')}</p>
+              <h3 style="margin: 0 0 15px 0; color: #10B981;">✓ ${t("form.completionMessage")}</h3>
+              <p style="margin: 0; color: #F1F5F9;">${t("form.feedbackValue")}</p>
             </div>
 
-            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t('form.whatNext')}</h3>
+            <h3 style="color: #00D9FF; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> ${t("form.whatNext")}</h3>
             <ul style="color: #F1F5F9;">
-              <li>${t('form.reviewFeedback')}</li>
-              <li>${t('form.improveServices')}</li>
-              <li>${t('form.followUp')}</li>
-              <li>${t('form.next')}</li>
+              <li>${t("form.reviewFeedback")}</li>
+              <li>${t("form.improveServices")}</li>
+              <li>${t("form.followUp")}</li>
+              <li>${t("form.next")}</li>
             </ul>
 
-            <p style="color: #F1F5F9;">${t('form.gratitude')}</p>
+            <p style="color: #F1F5F9;">${t("form.gratitude")}</p>
 
             <div style="text-align: center; margin-top: 30px;">
-              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t('customer.visitWebsite')}</a>
+              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t("customer.visitWebsite")}</a>
             </div>
           </div>
 
           <div class="footer">
-            <p><strong style="color: #00D9FF;">${t('common.companyName')}</strong> <span style="color: #94A3B8;">//</span> ${t('common.tagline')}</p>
-            <p>${t('common.location')} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p><strong style="color: #00D9FF;">${t("common.companyName")}</strong> <span style="color: #94A3B8;">//</span> ${t("common.tagline")}</p>
+            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
             <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #10B981;">
               Code. Create. Conquer.
             </p>
@@ -830,33 +852,35 @@ export async function generateFormThankYouHTML(data: FormThankYouData): Promise<
  * @param data - Form completion data
  * @returns Promise with plain text string for email body
  */
-export async function generateFormThankYouText(data: FormThankYouData): Promise<string> {
+export async function generateFormThankYouText(
+  data: FormThankYouData,
+): Promise<string> {
   const t = await getEmailTranslations(data.locale);
-  const displayName = data.email.split('@')[0];
+  const displayName = data.email.split("@")[0];
 
   return `
-// 🎉 ${t('form.thankYou')}
+// 🎉 ${t("form.thankYou")}
 
-// ${t('form.greeting')}, ${displayName}!
+// ${t("form.greeting")}, ${displayName}!
 
-${t('form.feedbackReceived')}
+${t("form.feedbackReceived")}
 
-✓ ${t('form.completionMessage')}
-${t('form.feedbackValue')}
+✓ ${t("form.completionMessage")}
+${t("form.feedbackValue")}
 
-// ${t('form.whatNext')}
+// ${t("form.whatNext")}
 
-1. ${t('form.reviewFeedback')}
-2. ${t('form.improveServices')}
-3. ${t('form.followUp')}
+1. ${t("form.reviewFeedback")}
+2. ${t("form.improveServices")}
+3. ${t("form.followUp")}
 
-${t('form.gratitude')}
+${t("form.gratitude")}
 
 Visit us: https://fredonbytes.cloud
 
 ---
-${t('common.companyName')} // ${t('common.tagline')}
-${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
+${t("common.companyName")} // ${t("common.tagline")}
+${t("common.location")} | info@fredonbytes.cloud | +420 799 027 984
 // Code. Create. Conquer.
   `.trim();
 }

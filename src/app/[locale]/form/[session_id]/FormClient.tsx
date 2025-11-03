@@ -19,32 +19,24 @@ const ThankYouScreen = dynamic(
         <p className="text-slate-600 dark:text-slate-300">Loading...</p>
       </div>
     ),
-  }
+  },
 );
 import { getCsrfToken } from "@/hooks/useCsrfToken";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { logError, getUserFriendlyErrorMessage } from "@/lib/error-logger";
-import {
-  loadAnswers,
-  saveAnswer,
-  clearStorageData,
-} from "@/lib/form-storage";
+import { loadAnswers, saveAnswer, clearStorageData } from "@/lib/form-storage";
 import {
   validateAnswer,
   validateAllAnswers,
   findFirstUnansweredRequired,
   type ValidatableQuestion,
 } from "@/lib/form-validation";
-import type {
-  Question,
-  AnswerValue,
-  LocalizedString,
-} from "@/lib/supabase";
+import type { Question, AnswerValue, LocalizedString } from "@/lib/supabase";
 
 // Helper function to extract localized string based on locale
 function getLocalizedString(
   localizedStr: LocalizedString | string,
-  locale: string
+  locale: string,
 ): string {
   // If it's already a string, return it
   if (typeof localizedStr === "string") {
@@ -101,7 +93,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   const prefersReducedMotion = useReducedMotion();
 
   // CSRF token state
-  const [csrfToken, setCsrfToken] = useState<string>('');
+  const [csrfToken, setCsrfToken] = useState<string>("");
 
   // State management - Start at step 1 (first question) since welcome is on landing page
   const [formState, setFormState] = useState<FormState>({
@@ -122,7 +114,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       setFormState((prev) => ({ ...prev, isLoading: true, error: null }));
 
       // Try to load preloaded questions from sessionStorage first (solves blank container issue)
-      if (typeof window !== 'undefined' && window.sessionStorage) {
+      if (typeof window !== "undefined" && window.sessionStorage) {
         try {
           const cached = sessionStorage.getItem(`form_questions_${sessionId}`);
           if (cached) {
@@ -137,7 +129,10 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
             }
           }
         } catch (cacheErr) {
-          console.warn('Failed to load cached questions, fetching from API:', cacheErr);
+          console.warn(
+            "Failed to load cached questions, fetching from API:",
+            cacheErr,
+          );
           // Continue to API fetch as fallback
         }
       }
@@ -168,7 +163,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
             option_text: getLocalizedString(option.option_text, locale),
             display_order: option.display_order,
           })),
-        })
+        }),
       );
 
       setFormState((prev) => ({
@@ -213,7 +208,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
         // Find the first focusable input element
         const firstInput =
           questionContainerRef.current?.querySelector<HTMLElement>(
-            'input:not([type="hidden"]), textarea, select, button'
+            'input:not([type="hidden"]), textarea, select, button',
           );
 
         if (firstInput) {
@@ -360,7 +355,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       // Validation failed - navigate to first unanswered required question
       const firstUnansweredIndex = findFirstUnansweredRequired(
         questions,
-        answers
+        answers,
       );
 
       if (firstUnansweredIndex !== -1) {
@@ -385,13 +380,17 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       ([question_id, answer_value]) => ({
         question_id,
         answer_value,
-      })
+      }),
     );
 
     // Extract email from answers if present (look for email-like values)
     let extractedEmail: string | null = null;
     for (const [, answer_value] of answers.entries()) {
-      if (typeof answer_value === 'string' && answer_value.includes('@') && answer_value.includes('.')) {
+      if (
+        typeof answer_value === "string" &&
+        answer_value.includes("@") &&
+        answer_value.includes(".")
+      ) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (emailRegex.test(answer_value)) {
           extractedEmail = answer_value;
@@ -494,7 +493,6 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
         <TerminalWindow title="Loading...">
-
           {/* Form container */}
           <div className="relative z-10 w-full max-w-2xl bg-white/95 dark:bg-slate-800/95 rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 border border-slate-200/50 dark:border-slate-700/50">
             <div className="text-center">
@@ -504,7 +502,6 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
               </p>
             </div>
           </div>
-
         </TerminalWindow>
       </div>
     );
@@ -515,7 +512,6 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
     return (
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden ">
         <TerminalWindow title="Error Loading Survey">
-
           {/* Form container */}
           <div className="relative z-10 w-full max-w-2xl  rounded-xl shadow-2xl p-6 sm:p-8 md:p-10 ">
             <ErrorState
@@ -578,8 +574,6 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
           </div>
         )}
 
-
-
         {/* Form container */}
         <div
           id="form-content"
@@ -629,14 +623,16 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
                         {formState.questions.length}
                       </legend>
                       <QuestionStep
-                        question={formState.questions[formState.currentStep - 1]}
+                        question={
+                          formState.questions[formState.currentStep - 1]
+                        }
                         answer={formState.answers.get(
-                          formState.questions[formState.currentStep - 1]?.id
+                          formState.questions[formState.currentStep - 1]?.id,
                         )}
                         onAnswerChange={(value) =>
                           handleAnswerChange(
                             formState.questions[formState.currentStep - 1].id,
-                            value
+                            value,
                           )
                         }
                         error={formState.validationError}

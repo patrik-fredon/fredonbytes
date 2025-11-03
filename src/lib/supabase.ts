@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
 
 // TypeScript interfaces for database tables
 
@@ -13,7 +13,14 @@ export interface Question {
   id: string;
   question_text: LocalizedString;
   description?: LocalizedString | null;
-  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating' | 'image';
+  answer_type:
+    | "short_text"
+    | "long_text"
+    | "single_choice"
+    | "multiple_choice"
+    | "checklist"
+    | "rating"
+    | "image";
   required: boolean;
   display_order: number;
   active: boolean;
@@ -114,7 +121,7 @@ export interface NewsletterSubscriber {
 // Unified schema interfaces
 export interface Questionnaire {
   id: string;
-  type: 'form' | 'survey';
+  type: "form" | "survey";
   title: LocalizedString;
   description?: LocalizedString | null;
   active: boolean;
@@ -158,7 +165,13 @@ export interface SurveyQuestion {
   id: string;
   question_text: LocalizedString;
   description?: LocalizedString | null;
-  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating';
+  answer_type:
+    | "short_text"
+    | "long_text"
+    | "single_choice"
+    | "multiple_choice"
+    | "checklist"
+    | "rating";
   required: boolean;
   display_order: number;
   active: boolean;
@@ -204,7 +217,7 @@ export interface Project {
   github_link?: string | null;
   live_demo_link?: string | null;
   technologies: string[];
-  status: 'active' | 'completed' | 'archived';
+  status: "active" | "completed" | "archived";
   display_order: number;
   featured: boolean;
   visible: boolean;
@@ -234,7 +247,7 @@ export interface PricingTier {
   id: string;
   name: LocalizedString;
   description: LocalizedString;
-  type: 'starter' | 'professional' | 'enterprise';
+  type: "starter" | "professional" | "enterprise";
   price_czk: number | null;
   price_eur: number | null;
   features: string[];
@@ -264,108 +277,132 @@ type Database = {
     Tables: {
       questionnaires: {
         Row: Questionnaire;
-        Insert: Omit<Questionnaire, 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Omit<Questionnaire, 'id' | 'created_at' | 'updated_at'>>;
+        Insert: Omit<Questionnaire, "id" | "created_at" | "updated_at">;
+        Update: Partial<
+          Omit<Questionnaire, "id" | "created_at" | "updated_at">
+        >;
       };
       questions: {
         Row: Question;
-        Insert: Omit<Question, 'id' | 'created_at' | 'updated_at' | 'options'>;
-        Update: Partial<Omit<Question, 'id' | 'created_at' | 'updated_at' | 'options'>>;
+        Insert: Omit<Question, "id" | "created_at" | "updated_at" | "options">;
+        Update: Partial<
+          Omit<Question, "id" | "created_at" | "updated_at" | "options">
+        >;
       };
       question_options: {
         Row: QuestionOption;
-        Insert: Omit<QuestionOption, 'id' | 'created_at'>;
-        Update: Partial<Omit<QuestionOption, 'id' | 'created_at'>>;
+        Insert: Omit<QuestionOption, "id" | "created_at">;
+        Update: Partial<Omit<QuestionOption, "id" | "created_at">>;
       };
       sessions: {
         Row: Session;
-        Insert: Omit<Session, 'created_at' | 'expires_at'>;
-        Update: Partial<Omit<Session, 'created_at' | 'expires_at'>>;
+        Insert: Omit<Session, "created_at" | "expires_at">;
+        Update: Partial<Omit<Session, "created_at" | "expires_at">>;
       };
       form_answers: {
         Row: FormResponse;
-        Insert: Omit<FormResponse, 'id' | 'submitted_at'>;
-        Update: Partial<Omit<FormResponse, 'id' | 'submitted_at'>>;
+        Insert: Omit<FormResponse, "id" | "submitted_at">;
+        Update: Partial<Omit<FormResponse, "id" | "submitted_at">>;
       };
       survey_answers: {
         Row: SurveyAnswer;
-        Insert: Omit<SurveyAnswer, 'id' | 'submitted_at'>;
-        Update: Partial<Omit<SurveyAnswer, 'id' | 'submitted_at'>>;
+        Insert: Omit<SurveyAnswer, "id" | "submitted_at">;
+        Update: Partial<Omit<SurveyAnswer, "id" | "submitted_at">>;
       };
       session_cache: {
         Row: SessionCache;
-        Insert: Omit<SessionCache, 'id' | 'created_at' | 'expires_at'>;
-        Update: Partial<Omit<SessionCache, 'id' | 'created_at' | 'expires_at'>>;
+        Insert: Omit<SessionCache, "id" | "created_at" | "expires_at">;
+        Update: Partial<Omit<SessionCache, "id" | "created_at" | "expires_at">>;
       };
       form_sessions: {
         Row: FormSession;
-        Insert: Omit<FormSession, 'created_at'>;
-        Update: Partial<Omit<FormSession, 'created_at'>>;
+        Insert: Omit<FormSession, "created_at">;
+        Update: Partial<Omit<FormSession, "created_at">>;
       };
       form_responses: {
         Row: FormResponse;
-        Insert: Omit<FormResponse, 'id' | 'submitted_at'>;
-        Update: Partial<Omit<FormResponse, 'id' | 'submitted_at'>>;
+        Insert: Omit<FormResponse, "id" | "submitted_at">;
+        Update: Partial<Omit<FormResponse, "id" | "submitted_at">>;
       };
       cookie_consents: {
         Row: CookieConsent;
-        Insert: Omit<CookieConsent, 'id' | 'created_at' | 'updated_at' | 'consent_timestamp'>;
-        Update: Partial<Omit<CookieConsent, 'id' | 'created_at' | 'updated_at' | 'consent_timestamp'>>;
+        Insert: Omit<
+          CookieConsent,
+          "id" | "created_at" | "updated_at" | "consent_timestamp"
+        >;
+        Update: Partial<
+          Omit<
+            CookieConsent,
+            "id" | "created_at" | "updated_at" | "consent_timestamp"
+          >
+        >;
       };
       contact_submissions: {
         Row: ContactSubmission;
-        Insert: Omit<ContactSubmission, 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Omit<ContactSubmission, 'id' | 'created_at' | 'updated_at'>>;
+        Insert: Omit<ContactSubmission, "id" | "created_at" | "updated_at">;
+        Update: Partial<
+          Omit<ContactSubmission, "id" | "created_at" | "updated_at">
+        >;
       };
       newsletter_subscribers: {
         Row: NewsletterSubscriber;
-        Insert: Omit<NewsletterSubscriber, 'id' | 'created_at' | 'subscribed_at'>;
-        Update: Partial<Omit<NewsletterSubscriber, 'id' | 'created_at' | 'subscribed_at'>>;
+        Insert: Omit<
+          NewsletterSubscriber,
+          "id" | "created_at" | "subscribed_at"
+        >;
+        Update: Partial<
+          Omit<NewsletterSubscriber, "id" | "created_at" | "subscribed_at">
+        >;
       };
       survey_questions: {
         Row: SurveyQuestion;
-        Insert: Omit<SurveyQuestion, 'id' | 'created_at' | 'updated_at' | 'options'>;
-        Update: Partial<Omit<SurveyQuestion, 'id' | 'created_at' | 'updated_at' | 'options'>>;
+        Insert: Omit<
+          SurveyQuestion,
+          "id" | "created_at" | "updated_at" | "options"
+        >;
+        Update: Partial<
+          Omit<SurveyQuestion, "id" | "created_at" | "updated_at" | "options">
+        >;
       };
       survey_question_options: {
         Row: SurveyQuestionOption;
-        Insert: Omit<SurveyQuestionOption, 'id' | 'created_at'>;
-        Update: Partial<Omit<SurveyQuestionOption, 'id' | 'created_at'>>;
+        Insert: Omit<SurveyQuestionOption, "id" | "created_at">;
+        Update: Partial<Omit<SurveyQuestionOption, "id" | "created_at">>;
       };
       survey_sessions: {
         Row: SurveySession;
-        Insert: Omit<SurveySession, 'created_at'>;
-        Update: Partial<Omit<SurveySession, 'created_at'>>;
+        Insert: Omit<SurveySession, "created_at">;
+        Update: Partial<Omit<SurveySession, "created_at">>;
       };
       survey_responses: {
         Row: SurveyResponse;
-        Insert: Omit<SurveyResponse, 'id' | 'submitted_at'>;
-        Update: Partial<Omit<SurveyResponse, 'id' | 'submitted_at'>>;
+        Insert: Omit<SurveyResponse, "id" | "submitted_at">;
+        Update: Partial<Omit<SurveyResponse, "id" | "submitted_at">>;
       };
       projects: {
         Row: Project;
-        Insert: Omit<Project, 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Omit<Project, 'id' | 'created_at' | 'updated_at'>>;
+        Insert: Omit<Project, "id" | "created_at" | "updated_at">;
+        Update: Partial<Omit<Project, "id" | "created_at" | "updated_at">>;
       };
       project_technologies: {
         Row: ProjectTechnology;
-        Insert: Omit<ProjectTechnology, 'id' | 'created_at'>;
-        Update: Partial<Omit<ProjectTechnology, 'id' | 'created_at'>>;
+        Insert: Omit<ProjectTechnology, "id" | "created_at">;
+        Update: Partial<Omit<ProjectTechnology, "id" | "created_at">>;
       };
       technologies: {
         Row: Technology;
-        Insert: Omit<Technology, 'id' | 'created_at'>;
-        Update: Partial<Omit<Technology, 'id' | 'created_at'>>;
+        Insert: Omit<Technology, "id" | "created_at">;
+        Update: Partial<Omit<Technology, "id" | "created_at">>;
       };
       pricing_tiers: {
         Row: PricingTier;
-        Insert: Omit<PricingTier, 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Omit<PricingTier, 'id' | 'created_at' | 'updated_at'>>;
+        Insert: Omit<PricingTier, "id" | "created_at" | "updated_at">;
+        Update: Partial<Omit<PricingTier, "id" | "created_at" | "updated_at">>;
       };
       pricing_items: {
         Row: PricingItem;
-        Insert: Omit<PricingItem, 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Omit<PricingItem, 'id' | 'created_at' | 'updated_at'>>;
+        Insert: Omit<PricingItem, "id" | "created_at" | "updated_at">;
+        Update: Partial<Omit<PricingItem, "id" | "created_at" | "updated_at">>;
       };
     };
     Views: {

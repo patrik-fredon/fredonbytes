@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
 /**
  * Custom hook to detect user's reduced motion preference
@@ -8,33 +8,33 @@ import { useEffect, useState } from 'react'
  * @returns boolean - true if user prefers reduced motion
  */
 export function useReducedMotion(): boolean {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
     // Check if window is available (client-side only)
-    if (typeof window === 'undefined') {
-      return
+    if (typeof window === "undefined") {
+      return;
     }
 
     // Create media query
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
     // Set initial value
-    setPrefersReducedMotion(mediaQuery.matches)
+    setPrefersReducedMotion(mediaQuery.matches);
 
     // Create event listener for changes
     const handleChange = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event.matches)
-    }
+      setPrefersReducedMotion(event.matches);
+    };
 
     // Add event listener
-    mediaQuery.addEventListener('change', handleChange)
+    mediaQuery.addEventListener("change", handleChange);
 
     // Cleanup
     return () => {
-      mediaQuery.removeEventListener('change', handleChange)
-    }
-  }, [])
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
 
-  return prefersReducedMotion
+  return prefersReducedMotion;
 }

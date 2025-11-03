@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
-import { supabase, type Project } from '@/lib/supabase';
+import { supabase, type Project } from "@/lib/supabase";
 
 // Response interface for projects endpoint
 export interface ProjectsResponse {
@@ -11,29 +11,29 @@ export interface ProjectsResponse {
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const status = searchParams.get('status');
-    const category = searchParams.get('category');
-    const featured = searchParams.get('featured');
-    const _locale = searchParams.get('locale') || 'en'; // Accept locale parameter for future use
+    const status = searchParams.get("status");
+    const category = searchParams.get("category");
+    const featured = searchParams.get("featured");
+    const _locale = searchParams.get("locale") || "en"; // Accept locale parameter for future use
 
     // Build query
     let query = supabase
-      .from('projects')
-      .select('*')
-      .eq('visible', true)
-      .order('display_order', { ascending: true });
+      .from("projects")
+      .select("*")
+      .eq("visible", true)
+      .order("display_order", { ascending: true });
 
     // Apply optional filters
-    if (status && ['active', 'completed', 'archived'].includes(status)) {
-      query = query.eq('status', status);
+    if (status && ["active", "completed", "archived"].includes(status)) {
+      query = query.eq("status", status);
     }
 
     if (category) {
-      query = query.eq('category', category);
+      query = query.eq("category", category);
     }
 
-    if (featured === 'true') {
-      query = query.eq('featured', true);
+    if (featured === "true") {
+      query = query.eq("featured", true);
     }
 
     // Execute query
@@ -41,13 +41,13 @@ export async function GET(request: NextRequest) {
 
     // Handle database errors
     if (error) {
-      console.error('Database error fetching projects:', error);
+      console.error("Database error fetching projects:", error);
       return NextResponse.json(
         {
           projects: [],
-          error: 'Failed to fetch projects from database',
+          error: "Failed to fetch projects from database",
         } as ProjectsResponse,
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
         {
           projects: [],
         } as ProjectsResponse,
-        { status: 200 }
+        { status: 200 },
       );
     }
 
@@ -71,21 +71,21 @@ export async function GET(request: NextRequest) {
       {
         projects: projectsData,
       } as ProjectsResponse,
-      { 
+      {
         status: 200,
         headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=7200',
+          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=7200",
         },
-      }
+      },
     );
   } catch (error) {
-    console.error('Unexpected error in projects endpoint:', error);
+    console.error("Unexpected error in projects endpoint:", error);
     return NextResponse.json(
       {
         projects: [],
-        error: 'Internal server error',
+        error: "Internal server error",
       } as ProjectsResponse,
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

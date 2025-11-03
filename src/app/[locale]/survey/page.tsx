@@ -1,11 +1,11 @@
-import type { Metadata, Viewport } from 'next';
-import dynamic from 'next/dynamic';
-import { setRequestLocale } from 'next-intl/server';
+import type { Metadata, Viewport } from "next";
+import dynamic from "next/dynamic";
+import { setRequestLocale } from "next-intl/server";
 
-import FormLoadingSkeleton from '@/components/form/FormLoadingSkeleton';
+import FormLoadingSkeleton from "@/components/form/FormLoadingSkeleton";
 
 // Dynamic import for SurveyLanding with loading skeleton
-const SurveyLanding = dynamic(() => import('./SurveyLanding'), {
+const SurveyLanding = dynamic(() => import("./SurveyLanding"), {
   loading: () => <FormLoadingSkeleton />,
 });
 
@@ -17,16 +17,17 @@ type Props = {
  * Metadata for the survey landing page
  */
 export const metadata: Metadata = {
-  title: 'Customer Satisfaction Survey - FredonBytes',
-  description: 'Help us improve our services by sharing your feedback. Take our quick customer satisfaction survey.',
+  title: "Customer Satisfaction Survey - FredonBytes",
+  description:
+    "Help us improve our services by sharing your feedback. Take our quick customer satisfaction survey.",
   openGraph: {
-    title: 'Customer Satisfaction Survey - FredonBytes',
-    description: 'Help us improve our services by sharing your feedback.',
-    url: 'https://fredonbytes.cloud/survey',
+    title: "Customer Satisfaction Survey - FredonBytes",
+    description: "Help us improve our services by sharing your feedback.",
+    url: "https://fredonbytes.cloud/survey",
   },
   twitter: {
-    title: 'Customer Satisfaction Survey - FredonBytes',
-    description: 'Help us improve our services by sharing your feedback.',
+    title: "Customer Satisfaction Survey - FredonBytes",
+    description: "Help us improve our services by sharing your feedback.",
   },
   robots: {
     index: false,
@@ -35,9 +36,9 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
-  themeColor: '#0f172a',
+  themeColor: "#0f172a",
 };
 
 /**

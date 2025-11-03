@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { CheckCircle, Loader2 } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
-import { useTranslations } from 'next-intl'
-import { useReducedMotion } from '@/hooks/useReducedMotion'
-import { getCsrfToken } from '@/hooks/useCsrfToken'
+import { motion } from "framer-motion";
+import { CheckCircle, Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { useTranslations } from "next-intl";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { getCsrfToken } from "@/hooks/useCsrfToken";
 
-import { Button } from '../common/Button'
+import { Button } from "../common/Button";
 
 interface ThankYouScreenProps {
-  onRedirect?: () => void
+  onRedirect?: () => void;
 }
 
 /**
@@ -21,82 +21,96 @@ interface ThankYouScreenProps {
  * @param onRedirect - Optional callback function for manual redirect (defaults to router.push('/'))
  */
 export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
-  const router = useRouter()
-  const prefersReducedMotion = useReducedMotion()
-  const [newsletterOptin, setNewsletterOptin] = useState(false)
-  const [email, setEmail] = useState('')
-  const [isSubscribing, setIsSubscribing] = useState(false)
-  const [subscriptionSuccess, setSubscriptionSuccess] = useState(false)
-  const [subscriptionError, setSubscriptionError] = useState<string | null>(null)
+  const router = useRouter();
+  const prefersReducedMotion = useReducedMotion();
+  const [newsletterOptin, setNewsletterOptin] = useState(false);
+  const [email, setEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
+  const [subscriptionError, setSubscriptionError] = useState<string | null>(
+    null,
+  );
 
   // Handle newsletter subscription
   const handleNewsletterSubscription = async () => {
-    if (!email || !email.includes('@')) {
-      setSubscriptionError('Please enter a valid email address')
-      return
+    if (!email || !email.includes("@")) {
+      setSubscriptionError("Please enter a valid email address");
+      return;
     }
 
-    setIsSubscribing(true)
-    setSubscriptionError(null)
+    setIsSubscribing(true);
+    setSubscriptionError(null);
 
     try {
-      const csrfToken = getCsrfToken()
+      const csrfToken = getCsrfToken();
 
-      const response = await fetch('/api/newsletter/subscribe', {
-        method: 'POST',
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'x-csrf-token': csrfToken || '',
+          "Content-Type": "application/json",
+          "x-csrf-token": csrfToken || "",
         },
         body: JSON.stringify({
           email,
-          source: 'thank_you_screen',
+          source: "thank_you_screen",
         }),
-      })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to subscribe to newsletter')
+        throw new Error(data.error || "Failed to subscribe to newsletter");
       }
 
-      setSubscriptionSuccess(true)
-      setNewsletterOptin(false)
+      setSubscriptionSuccess(true);
+      setNewsletterOptin(false);
     } catch (error) {
       setSubscriptionError(
-        error instanceof Error ? error.message : 'Failed to subscribe. Please try again.'
-      )
+        error instanceof Error
+          ? error.message
+          : "Failed to subscribe. Please try again.",
+      );
     } finally {
-      setIsSubscribing(false)
+      setIsSubscribing(false);
     }
-  }
-  const t = useTranslations('form.thankYouScreen.newsletterInfo')
+  };
+  const t = useTranslations("form.thankYouScreen.newsletterInfo");
   // Handle manual finish button click
   const handleFinish = () => {
     if (onRedirect) {
-      onRedirect()
+      onRedirect();
     } else {
-      router.push('/')
+      router.push("/");
     }
-  }
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: prefersReducedMotion ? 0.01 : 0.5, ease: 'easeOut' }}
+      transition={{
+        duration: prefersReducedMotion ? 0.01 : 0.5,
+        ease: "easeOut",
+      }}
       className="text-center space-y-8"
     >
       {/* Terminal Success Checkmark with Glow */}
       <motion.div
-        initial={{ scale: prefersReducedMotion ? 1 : 0, rotate: prefersReducedMotion ? 0 : -180 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={prefersReducedMotion ? { duration: 0.01 } : {
-          type: 'spring',
-          stiffness: 200,
-          damping: 15,
-          delay: 0.2,
+        initial={{
+          scale: prefersReducedMotion ? 1 : 0,
+          rotate: prefersReducedMotion ? 0 : -180,
         }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={
+          prefersReducedMotion
+            ? { duration: 0.01 }
+            : {
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+                delay: 0.2,
+              }
+        }
         className="flex justify-center"
       >
         <CheckCircle
@@ -108,13 +122,13 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
       {/* Terminal Success Message */}
       <div className="space-y-4">
         <h1 className="text-3xl lg:text-4xl font-mono font-bold text-white">
-          {t('thankYouHeading')}
+          {t("thankYouHeading")}
         </h1>
         <p className="text-lg font-mono text-neon-purple max-w-2xl mx-auto leading-relaxed">
-          {t('thankYouTitle')}
+          {t("thankYouTitle")}
         </p>
         <p className="text-base font-mono text-terminal-muted">
-          {t('thankYouMessage')}
+          {t("thankYouMessage")}
         </p>
       </div>
 
@@ -137,7 +151,7 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
               className="mt-1 w-5 h-5 rounded border-2 border-neon-cyan/50 bg-terminal-dark/80 text-neon-cyan focus:ring-2 focus:ring-neon-cyan/50 focus:ring-offset-0 cursor-pointer checked:bg-neon-cyan checked:border-neon-cyan hover:border-neon-cyan transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             />
             <span className="flex-1 text-sm font-mono text-terminal-muted group-hover:text-neon-cyan transition-colors duration-[180ms]">
-              {t('newsletterInfo')}
+              {t("newsletterInfo")}
             </span>
           </label>
 
@@ -145,26 +159,30 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
           {newsletterOptin && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
               className="space-y-3"
             >
               <div>
-                <label htmlFor="newsletter-email" className="block text-sm font-mono font-medium text-neon-cyan mb-2">
-                  {t('newsletterEmail')} <span className="text-error-red">*</span>
+                <label
+                  htmlFor="newsletter-email"
+                  className="block text-sm font-mono font-medium text-neon-cyan mb-2"
+                >
+                  {t("newsletterEmail")}{" "}
+                  <span className="text-error-red">*</span>
                 </label>
                 <input
                   id="newsletter-email"
                   type="email"
                   value={email}
                   onChange={(e) => {
-                    setEmail(e.target.value)
-                    setSubscriptionError(null)
+                    setEmail(e.target.value);
+                    setSubscriptionError(null);
                   }}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter' && email) {
-                      handleNewsletterSubscription()
+                    if (e.key === "Enter" && email) {
+                      handleNewsletterSubscription();
                     }
                   }}
                   placeholder="$ your.email@example.com"
@@ -172,7 +190,7 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
                   className="w-full px-4 py-2 border border-neon-cyan/30 rounded-md bg-terminal-dark font-mono text-white placeholder:text-terminal-muted focus:ring-2 focus:ring-neon-cyan focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-[180ms] disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <p className="mt-1 text-xs font-mono text-terminal-muted">
-                  {t('subscriptionInfo')}
+                  {t("subscriptionInfo")}
                 </p>
               </div>
 
@@ -196,10 +214,10 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
                 {isSubscribing ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin inline mr-2" />
-                    {t('subscribing')}
+                    {t("subscribing")}
                   </>
                 ) : (
-                  t('subscribe_newsletter')
+                  t("subscribe_newsletter")
                 )}
               </Button>
             </motion.div>
@@ -213,10 +231,10 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
         >
           <CheckCircle className="w-8 h-8 text-code-green mx-auto" />
           <p className="text-sm font-mono text-code-green">
-            {t('subscriptionSuccess')}
+            {t("subscriptionSuccess")}
           </p>
           <p className="text-xs font-mono text-terminal-muted">
-            {t('subscriptionThanks')}
+            {t("subscriptionThanks")}
           </p>
         </motion.div>
       )}
@@ -229,13 +247,13 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
           prefix="$"
           className="min-w-[200px]"
         >
-          {t('finishButton')}
+          {t("finishButton")}
         </Button>
       </div>
 
       {/* Terminal Contact Note */}
       <p className="text-xs font-mono text-terminal-muted max-w-md mx-auto pt-4">
-        {t('contactNote')}{' '}
+        {t("contactNote")}{" "}
         <a
           href="mailto:info@fredonbytes.cloud"
           className="text-neon-cyan hover:text-white transition-all duration-[180ms]"
@@ -244,5 +262,5 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
         </a>
       </p>
     </motion.div>
-  )
+  );
 }

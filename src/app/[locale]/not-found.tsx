@@ -12,18 +12,13 @@ export default async function NotFound() {
         <div className="text-center p-6">
           <h1 className="text-9xl font-bold text-neon-cyan mb-4">404</h1>
           <h2 className="text-3xl font-semibold text-neon-purple mb-4">
-            {t('notFoundHeading')}
+            {t("notFoundHeading")}
           </h2>
           <p className="text-slate-400 mb-8 w-full max-w-md mx-auto">
-            {t('notFoundDescription')}
+            {t("notFoundDescription")}
           </p>
-          <Link
-            href="/"
-            className="inline-block px-8 py-3 transition-colors"
-          >
-            <Button variant="gradient">
-              {t('goHomeButton')}
-            </Button>
+          <Link href="/" className="inline-block px-8 py-3 transition-colors">
+            <Button variant="gradient">{t("goHomeButton")}</Button>
           </Link>
         </div>
       </TerminalWindow>

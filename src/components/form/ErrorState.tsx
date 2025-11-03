@@ -1,13 +1,20 @@
-'use client'
+"use client";
 
-import { AlertCircle, RefreshCw, Mail } from 'lucide-react';
+import { AlertCircle, RefreshCw, Mail } from "lucide-react";
 
-import CommandButton from '@/components/dev-ui/CommandButton';
-import TerminalWindow from '../dev-ui/TerminalWindow';
+import CommandButton from "@/components/dev-ui/CommandButton";
+import TerminalWindow from "../dev-ui/TerminalWindow";
 export interface ErrorAction {
   label: string;
   onClick: () => void;
-  variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'gradient';
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link"
+    | "gradient";
   loading?: boolean;
 }
 
@@ -17,14 +24,14 @@ export interface ErrorStateProps {
   actions?: ErrorAction[];
   showSupport?: boolean;
   supportEmail?: string;
-  icon?: 'error' | 'warning' | 'info';
+  icon?: "error" | "warning" | "info";
   className?: string;
 }
 
 /**
  * ErrorState component for displaying user-friendly error messages
  * with retry functionality and support contact information
- * 
+ *
  * @param title - Optional title for the error (defaults based on icon type)
  * @param message - The error message to display
  * @param actions - Array of action buttons (e.g., retry, cancel)
@@ -38,24 +45,24 @@ export default function ErrorState({
   message,
   actions = [],
   showSupport = true,
-  supportEmail = 'info@fredonbytes.cloud',
-  icon = 'error',
-  className = '',
+  supportEmail = "info@fredonbytes.cloud",
+  icon = "error",
+  className = "",
 }: ErrorStateProps) {
   // Default titles based on icon type
   const defaultTitles = {
-    error: 'Something Went Wrong',
-    warning: 'Warning',
-    info: 'Information',
+    error: "Something Went Wrong",
+    warning: "Warning",
+    info: "Information",
   };
 
   const displayTitle = title || defaultTitles[icon];
 
   // Terminal icon colors with glow
   const iconColors = {
-    error: 'text-error-red drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]',
-    warning: 'text-warning-amber drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]',
-    info: 'text-neon-cyan drop-shadow-[0_0_10px_rgba(0,217,255,0.5)]',
+    error: "text-error-red drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]",
+    warning: "text-warning-amber drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]",
+    info: "text-neon-cyan drop-shadow-[0_0_10px_rgba(0,217,255,0.5)]",
   };
 
   return (
@@ -68,7 +75,10 @@ export default function ErrorState({
 
         {/* Terminal Title */}
         <h2 className="text-xl font-mono font-semibold text-white mb-2">
-          {icon === 'error' && '$ ERROR: '}{icon === 'warning' && '$ WARNING: '}{icon === 'info' && '$ INFO: '}{displayTitle}
+          {icon === "error" && "$ ERROR: "}
+          {icon === "warning" && "$ WARNING: "}
+          {icon === "info" && "$ INFO: "}
+          {displayTitle}
         </h2>
 
         {/* Terminal Message */}
@@ -83,12 +93,12 @@ export default function ErrorState({
               <CommandButton
                 key={index}
                 onClick={action.onClick}
-                variant={icon === 'error' ? 'cyan' : 'purple'}
+                variant={icon === "error" ? "cyan" : "purple"}
                 prefix="$"
                 disabled={action.loading}
                 className="min-h-[44px]"
               >
-                {action.loading ? 'processing...' : action.label.toLowerCase()}
+                {action.loading ? "processing..." : action.label.toLowerCase()}
               </CommandButton>
             ))}
           </div>
@@ -98,7 +108,7 @@ export default function ErrorState({
         {showSupport && (
           <div className="mt-6 pt-6 border-t border-neon-cyan/20">
             <p className="text-sm font-mono text-terminal-muted mb-2">
-            // Need help? Contact support:
+              // Need help? Contact support:
             </p>
             <a
               href={`mailto:${supportEmail}`}

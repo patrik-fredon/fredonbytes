@@ -21,7 +21,6 @@ export default function FormLanding() {
   const [isStarting, setIsStarting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-
   const handleStart = async () => {
     setIsStarting(true);
     setError(null);
@@ -52,10 +51,13 @@ export default function FormLanding() {
         try {
           sessionStorage.setItem(
             `form_questions_${data.session_id}`,
-            JSON.stringify(data.questions)
+            JSON.stringify(data.questions),
           );
         } catch (storageErr) {
-          console.warn('Failed to cache questions in sessionStorage:', storageErr);
+          console.warn(
+            "Failed to cache questions in sessionStorage:",
+            storageErr,
+          );
           // Continue anyway - FormClient will fetch if needed
         }
       }
@@ -72,8 +74,6 @@ export default function FormLanding() {
   return (
     <div className="container  mx-auto px-4 py-12 lg:py-20 ">
       <div className="min-h-[calc(100vh-20rem)] flex items-center justify-center relative">
-
-
         {/* Main content */}
         <TerminalWindow className="relative z-10 w-full max-w-2xl  rounded-xl shadow-2xl">
           <div className="p-8 lg:p-12">

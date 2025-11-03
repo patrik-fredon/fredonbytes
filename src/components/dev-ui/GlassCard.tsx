@@ -16,16 +16,24 @@ export default function GlassCard({
   className = "",
 }: GlassCardProps) {
   const borderColor =
-    glowColor === "cyan" ? "border-neon-cyan/35" :
-      glowColor === "normal" ? "border-slate-800/50" : "border-neon-purple/35";
+    glowColor === "cyan"
+      ? "border-neon-cyan/35"
+      : glowColor === "normal"
+        ? "border-slate-800/50"
+        : "border-neon-purple/35";
   const shadowClass =
-    glowColor === "cyan" ? " inset-shadow-3xl inset-shadow-neon-cyan/80"
-      : glowColor === "normal" ? "inset-shadow-sm inset-shadow-slate-950/80" : "inset-shadow-3xl inset-shadow-neon-purple/80"
+    glowColor === "cyan"
+      ? " inset-shadow-3xl inset-shadow-neon-cyan/80"
+      : glowColor === "normal"
+        ? "inset-shadow-sm inset-shadow-slate-950/80"
+        : "inset-shadow-3xl inset-shadow-neon-purple/80";
 
   const hoverShadow =
-    glowColor === "cyan" ? "hover:-translate-y-1 hover:shadow-glow-cyan-strong hover:border-neon-cyan/50"
-      : glowColor === "normal" ? "" : "hover:-translate-y-1 hover:shadow-glow-purple-strong hover:border-neon-purple/50"
-
+    glowColor === "cyan"
+      ? "hover:-translate-y-1 hover:shadow-glow-cyan-strong hover:border-neon-cyan/50"
+      : glowColor === "normal"
+        ? ""
+        : "hover:-translate-y-1 hover:shadow-glow-purple-strong hover:border-neon-purple/50";
 
   return (
     <div

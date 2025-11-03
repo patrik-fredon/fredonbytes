@@ -14,18 +14,18 @@ import ProjectsLoadingSkeleton from "./ProjectsLoadingSkeleton";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'projects' });
+  const t = await getTranslations({ locale, namespace: "projects" });
 
   return {
-    title: `${t('title')} | FredonBytes`,
-    description: t('subtitle'),
+    title: `${t("title")} | FredonBytes`,
+    description: t("subtitle"),
   };
 }
 
 export default async function ProjectsPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations('projects');
+  const t = await getTranslations("projects");
 
   return (
     <main className="min-h-screen relative">
@@ -38,10 +38,10 @@ export default async function ProjectsPage({ params }: Props) {
         {/* Page Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-6xl font-bold mb-6 font-mono text-terminal-light">
-            <span className="text-neon-cyan">//</span> {t('title')}
+            <span className="text-neon-cyan">//</span> {t("title")}
           </h1>
           <p className="text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed">
-            {t('subtitle')}
+            {t("subtitle")}
           </p>
         </div>
 

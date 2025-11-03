@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from "react";
 
-import type { ValidatableQuestionOption } from '@/lib/form-validation'
+import type { ValidatableQuestionOption } from "@/lib/form-validation";
 
 interface SingleChoiceInputProps {
-  value: string
-  onChange: (value: string) => void
-  required: boolean
-  error?: string
-  questionId: string
-  questionText: string
-  options?: ValidatableQuestionOption[]
+  value: string;
+  onChange: (value: string) => void;
+  required: boolean;
+  error?: string;
+  questionId: string;
+  questionText: string;
+  options?: ValidatableQuestionOption[];
 }
 
 /**
@@ -36,53 +36,58 @@ export default function SingleChoiceInput({
   questionText,
   options = [],
 }: SingleChoiceInputProps) {
-  const radioGroupRef = useRef<HTMLDivElement>(null)
+  const radioGroupRef = useRef<HTMLDivElement>(null);
 
   // Sort options by display_order
-  const sortedOptions = [...options].sort((a, b) => a.display_order - b.display_order)
+  const sortedOptions = [...options].sort(
+    (a, b) => a.display_order - b.display_order,
+  );
 
   // Handle keyboard navigation (arrow keys)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!radioGroupRef.current?.contains(document.activeElement)) return
+      if (!radioGroupRef.current?.contains(document.activeElement)) return;
 
-      const currentIndex = sortedOptions.findIndex((opt) => opt.option_text === value)
+      const currentIndex = sortedOptions.findIndex(
+        (opt) => opt.option_text === value,
+      );
 
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-        e.preventDefault()
-        const nextIndex = (currentIndex + 1) % sortedOptions.length
-        onChange(sortedOptions[nextIndex].option_text)
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        e.preventDefault();
+        const nextIndex = (currentIndex + 1) % sortedOptions.length;
+        onChange(sortedOptions[nextIndex].option_text);
         // Focus the next radio button
-        const nextRadio = radioGroupRef.current?.querySelectorAll('input[type="radio"]')[
-          nextIndex
-        ] as HTMLInputElement
-        nextRadio?.focus()
-      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-        e.preventDefault()
-        const prevIndex = currentIndex <= 0 ? sortedOptions.length - 1 : currentIndex - 1
-        onChange(sortedOptions[prevIndex].option_text)
+        const nextRadio = radioGroupRef.current?.querySelectorAll(
+          'input[type="radio"]',
+        )[nextIndex] as HTMLInputElement;
+        nextRadio?.focus();
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        const prevIndex =
+          currentIndex <= 0 ? sortedOptions.length - 1 : currentIndex - 1;
+        onChange(sortedOptions[prevIndex].option_text);
         // Focus the previous radio button
-        const prevRadio = radioGroupRef.current?.querySelectorAll('input[type="radio"]')[
-          prevIndex
-        ] as HTMLInputElement
-        prevRadio?.focus()
+        const prevRadio = radioGroupRef.current?.querySelectorAll(
+          'input[type="radio"]',
+        )[prevIndex] as HTMLInputElement;
+        prevRadio?.focus();
       }
-    }
+    };
 
-    const groupElement = radioGroupRef.current
-    groupElement?.addEventListener('keydown', handleKeyDown)
+    const groupElement = radioGroupRef.current;
+    groupElement?.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      groupElement?.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [value, onChange, sortedOptions])
+      groupElement?.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [value, onChange, sortedOptions]);
 
   if (!options || options.length === 0) {
     return (
       <div className="text-warning-amber font-mono text-sm">
         No options available for this question.
       </div>
-    )
+    );
   }
 
   return (
@@ -96,19 +101,20 @@ export default function SingleChoiceInput({
       aria-describedby={error ? `error-${questionId}` : undefined}
     >
       {sortedOptions.map((option) => {
-        const isSelected = value === option.option_text
-        const inputId = `${questionId}-option-${option.id}`
+        const isSelected = value === option.option_text;
+        const inputId = `${questionId}-option-${option.id}`;
 
         return (
           <label
             key={option.id}
             htmlFor={inputId}
             className={`flex items-center gap-3 p-4 min-h-[44px] rounded-lg border-2 transition-all duration-200 cursor-pointer
-                       ${isSelected
-                ? 'border-neon-cyan bg-glass-bg backdrop-blur-glass shadow-glow-cyan'
-                : 'border-neon-cyan/30 bg-glass-bg backdrop-blur-glass hover:border-neon-cyan/50 hover:shadow-glow-cyan-subtle'
-              }
-                       ${error ? 'border-error-red' : ''}
+                       ${
+                         isSelected
+                           ? "border-neon-cyan bg-glass-bg backdrop-blur-glass shadow-glow-cyan"
+                           : "border-neon-cyan/30 bg-glass-bg backdrop-blur-glass hover:border-neon-cyan/50 hover:shadow-glow-cyan-subtle"
+                       }
+                       ${error ? "border-error-red" : ""}
                        focus-within:ring-2 focus-within:ring-neon-cyan/50`}
           >
             {/* Custom Radio Button */}
@@ -125,10 +131,11 @@ export default function SingleChoiceInput({
               />
               <div
                 className={`w-5 h-5 rounded-full border-2 transition-all duration-200 flex items-center justify-center
-                           ${isSelected
-                    ? 'border-neon-cyan bg-neon-cyan shadow-glow-cyan-subtle'
-                    : 'border-neon-cyan/40 bg-terminal-dark'
-                  }
+                           ${
+                             isSelected
+                               ? "border-neon-cyan bg-neon-cyan shadow-glow-cyan-subtle"
+                               : "border-neon-cyan/40 bg-terminal-dark"
+                           }
                            peer-focus:ring-2 peer-focus:ring-neon-cyan/50`}
               >
                 {isSelected && (
@@ -140,10 +147,11 @@ export default function SingleChoiceInput({
             {/* Option Text */}
             <span
               className={`flex-1 text-base font-mono transition-colors duration-200
-                         ${isSelected
-                  ? 'text-terminal-light font-medium'
-                  : 'text-terminal-light/70'
-                }`}
+                         ${
+                           isSelected
+                             ? "text-terminal-light font-medium"
+                             : "text-terminal-light/70"
+                         }`}
             >
               {option.option_text}
             </span>
@@ -166,8 +174,8 @@ export default function SingleChoiceInput({
               </svg>
             )}
           </label>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

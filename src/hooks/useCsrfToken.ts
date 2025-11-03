@@ -3,9 +3,9 @@
  * Usage: const csrfToken = useCsrfToken();
  */
 
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export function useCsrfToken(): string | null {
   const [token, setToken] = useState<string | null>(null);
@@ -13,14 +13,14 @@ export function useCsrfToken(): string | null {
   useEffect(() => {
     // Get CSRF token from cookie
     const getCsrfToken = () => {
-      if (typeof document === 'undefined') {
+      if (typeof document === "undefined") {
         return null;
       }
-      
-      const cookies = document.cookie.split(';');
+
+      const cookies = document.cookie.split(";");
       for (const cookie of cookies) {
-        const [name, value] = cookie.trim().split('=');
-        if (name === 'csrf_token') {
+        const [name, value] = cookie.trim().split("=");
+        if (name === "csrf_token") {
           return decodeURIComponent(value);
         }
       }
@@ -38,14 +38,14 @@ export function useCsrfToken(): string | null {
  * Use this in API calls
  */
 export function getCsrfToken(): string | null {
-  if (typeof document === 'undefined') {
+  if (typeof document === "undefined") {
     return null;
   }
 
-  const cookies = document.cookie.split(';');
+  const cookies = document.cookie.split(";");
   for (const cookie of cookies) {
-    const [name, value] = cookie.trim().split('=');
-    if (name === 'csrf_token') {
+    const [name, value] = cookie.trim().split("=");
+    if (name === "csrf_token") {
       return decodeURIComponent(value);
     }
   }

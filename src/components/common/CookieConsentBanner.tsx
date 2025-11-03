@@ -85,7 +85,7 @@ export default function CookieConsentBanner() {
   };
 
   const handleSaveCustomPreferences = async (
-    preferences: CookiePreferences
+    preferences: CookiePreferences,
   ) => {
     setIsLoading(true);
     await saveConsent(preferences);

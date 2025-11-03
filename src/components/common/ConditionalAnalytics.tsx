@@ -1,31 +1,31 @@
-'use client';
+"use client";
 
 /**
  * ConditionalAnalytics Component
- * 
+ *
  * Conditionally loads analytics and marketing scripts based on user cookie consent.
  * This component respects GDPR/CCPA requirements by only loading scripts when
  * the user has explicitly consented to the respective cookie categories.
- * 
+ *
  * Script Loading Strategy:
  * - All scripts use Next.js Script component with strategy="afterInteractive"
  * - Scripts load after the page becomes interactive (after hydration)
  * - Async attribute ensures non-blocking parallel downloads
  * - Error handlers provide graceful degradation if scripts fail to load
  * - Conditional rendering based on cookie consent prevents unauthorized tracking
- * 
+ *
  * Performance Optimizations:
  * - Scripts don't block initial page load or First Contentful Paint (FCP)
  * - Async loading allows parallel script downloads
  * - Deferred execution until after page interactivity
  * - No impact on Largest Contentful Paint (LCP) or Time to Interactive (TTI)
- * 
+ *
  * Supported Scripts:
  * - Analytics: Google Analytics (requires NEXT_PUBLIC_GA_ID)
  * - Marketing: Facebook Pixel (requires NEXT_PUBLIC_FB_PIXEL_ID)
  * - Marketing: LinkedIn Insight Tag (requires NEXT_PUBLIC_LINKEDIN_PARTNER_ID)
  * - Marketing: Google Ads (requires NEXT_PUBLIC_GOOGLE_ADS_ID)
- * 
+ *
  * Environment Variables:
  * - NEXT_PUBLIC_GA_ID: Google Analytics Measurement ID (e.g., G-XXXXXXXXXX)
  * - NEXT_PUBLIC_FB_PIXEL_ID: Facebook Pixel ID (optional)
@@ -33,10 +33,10 @@
  * - NEXT_PUBLIC_GOOGLE_ADS_ID: Google Ads Conversion ID (optional)
  */
 
-import Script from 'next/script';
-import { useEffect, useState } from 'react';
+import Script from "next/script";
+import { useEffect, useState } from "react";
 
-const COOKIE_CONSENT_NAME = 'cookie-consent';
+const COOKIE_CONSENT_NAME = "cookie-consent";
 
 interface CookiePreferences {
   essential: boolean;
@@ -60,19 +60,19 @@ export default function ConditionalAnalytics() {
     // Check cookie consent on mount
     const checkConsent = () => {
       const consentCookie = getCookie(COOKIE_CONSENT_NAME);
-      
+
       if (consentCookie) {
         try {
           const consentData: CookieConsentData = JSON.parse(consentCookie);
           setConsent(consentData.preferences);
         } catch (error) {
-          console.error('Error parsing cookie consent:', error);
+          console.error("Error parsing cookie consent:", error);
           setConsent(null);
         }
       } else {
         setConsent(null);
       }
-      
+
       setIsLoaded(true);
     };
 
@@ -83,10 +83,10 @@ export default function ConditionalAnalytics() {
       checkConsent();
     };
 
-    window.addEventListener('cookieConsentUpdated', handleConsentChange);
+    window.addEventListener("cookieConsentUpdated", handleConsentChange);
 
     return () => {
-      window.removeEventListener('cookieConsentUpdated', handleConsentChange);
+      window.removeEventListener("cookieConsentUpdated", handleConsentChange);
     };
   }, []);
 
@@ -114,17 +114,19 @@ export default function ConditionalAnalytics() {
             async
             onLoad={() => {
               // Initialize Google Analytics
-              window.gtag = window.gtag || function(...args: unknown[]) {
-                (window.dataLayer = window.dataLayer || []).push(...args);
-              };
-              window.gtag('js', new Date());
-              window.gtag('config', gaId, {
+              window.gtag =
+                window.gtag ||
+                function (...args: unknown[]) {
+                  (window.dataLayer = window.dataLayer || []).push(...args);
+                };
+              window.gtag("js", new Date());
+              window.gtag("config", gaId, {
                 anonymize_ip: true, // Anonymize IP for GDPR compliance
-                cookie_flags: 'SameSite=Lax;Secure',
+                cookie_flags: "SameSite=Lax;Secure",
               });
             }}
             onError={(e) => {
-              console.error('Failed to load Google Analytics:', e);
+              console.error("Failed to load Google Analytics:", e);
             }}
           />
         </>
@@ -155,7 +157,7 @@ export default function ConditionalAnalytics() {
                 `,
               }}
               onError={(e) => {
-                console.error('Failed to load Facebook Pixel:', e);
+                console.error("Failed to load Facebook Pixel:", e);
               }}
             />
           )}
@@ -183,7 +185,7 @@ export default function ConditionalAnalytics() {
                 `,
               }}
               onError={(e) => {
-                console.error('Failed to load LinkedIn Insight Tag:', e);
+                console.error("Failed to load LinkedIn Insight Tag:", e);
               }}
             />
           )}
@@ -197,14 +199,16 @@ export default function ConditionalAnalytics() {
               strategy="afterInteractive"
               async
               onLoad={() => {
-                window.gtag = window.gtag || function(...args: unknown[]) {
-                (window.dataLayer = window.dataLayer || []).push(...args);
-              };
-                window.gtag('js', new Date());
-                window.gtag('config', googleAdsId);
+                window.gtag =
+                  window.gtag ||
+                  function (...args: unknown[]) {
+                    (window.dataLayer = window.dataLayer || []).push(...args);
+                  };
+                window.gtag("js", new Date());
+                window.gtag("config", googleAdsId);
               }}
               onError={(e) => {
-                console.error('Failed to load Google Ads:', e);
+                console.error("Failed to load Google Ads:", e);
               }}
             />
           )}
@@ -216,15 +220,15 @@ export default function ConditionalAnalytics() {
 
 // Helper function to get cookie
 function getCookie(name: string): string | null {
-  if (typeof document === 'undefined') return null;
-  
+  if (typeof document === "undefined") return null;
+
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
-  
+
   if (parts.length === 2) {
-    return parts.pop()?.split(';').shift() || null;
+    return parts.pop()?.split(";").shift() || null;
   }
-  
+
   return null;
 }
 

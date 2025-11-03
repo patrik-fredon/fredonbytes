@@ -1,7 +1,7 @@
-import type { AnswerValue } from './supabase';
+import type { AnswerValue } from "./supabase";
 
 // Storage key prefix for form data
-const STORAGE_KEY = 'fredonbytes_form_data';
+const STORAGE_KEY = "fredonbytes_form_data";
 
 // Expiration time in milliseconds (24 hours)
 const EXPIRATION_HOURS = 24;
@@ -21,12 +21,12 @@ export interface LocalStorageData {
  */
 function isLocalStorageAvailable(): boolean {
   try {
-    if (typeof window === 'undefined' || !window.localStorage) {
+    if (typeof window === "undefined" || !window.localStorage) {
       return false;
     }
     // Test if we can actually use it
-    const testKey = '__test__';
-    window.localStorage.setItem(testKey, 'test');
+    const testKey = "__test__";
+    window.localStorage.setItem(testKey, "test");
     window.localStorage.removeItem(testKey);
     return true;
   } catch {
@@ -66,23 +66,23 @@ function getStorageData(sessionId: string): LocalStorageData | null {
   try {
     const key = getStorageKey(sessionId);
     const stored = window.localStorage.getItem(key);
-    
+
     if (!stored) {
       return null;
     }
 
     const data: LocalStorageData = JSON.parse(stored);
-    
+
     // Validate data structure
     if (!data.session_id || !data.answers || !data.expiresAt) {
-      console.warn('[FormStorage] Invalid data structure, clearing storage');
+      console.warn("[FormStorage] Invalid data structure, clearing storage");
       clearStorageData(sessionId);
       return null;
     }
 
     return data;
   } catch (error) {
-    console.error('[FormStorage] Error reading from localStorage:', error);
+    console.error("[FormStorage] Error reading from localStorage:", error);
     return null;
   }
 }
@@ -96,17 +96,17 @@ function getStorageData(sessionId: string): LocalStorageData | null {
 export function saveAnswer(
   sessionId: string,
   questionId: string,
-  value: AnswerValue
+  value: AnswerValue,
 ): void {
   if (!isLocalStorageAvailable()) {
-    console.warn('[FormStorage] localStorage is not available');
+    console.warn("[FormStorage] localStorage is not available");
     return;
   }
 
   try {
     // Get existing data or create new
     let data = getStorageData(sessionId);
-    
+
     if (!data) {
       data = createNewStorageData(sessionId);
     }
@@ -120,12 +120,12 @@ export function saveAnswer(
     window.localStorage.setItem(key, JSON.stringify(data));
   } catch (error) {
     // Handle QuotaExceededError
-    if (error instanceof DOMException && error.name === 'QuotaExceededError') {
-      console.error('[FormStorage] localStorage quota exceeded');
+    if (error instanceof DOMException && error.name === "QuotaExceededError") {
+      console.error("[FormStorage] localStorage quota exceeded");
       // Optionally, try to clear old data and retry
       // For now, just log the error
     } else {
-      console.error('[FormStorage] Error saving to localStorage:', error);
+      console.error("[FormStorage] Error saving to localStorage:", error);
     }
   }
 }
@@ -135,14 +135,16 @@ export function saveAnswer(
  * @param sessionId - The session ID
  * @returns The answers object or null if expired/not found
  */
-export function loadAnswers(sessionId: string): Record<string, AnswerValue> | null {
+export function loadAnswers(
+  sessionId: string,
+): Record<string, AnswerValue> | null {
   if (!isLocalStorageAvailable()) {
     return null;
   }
 
   try {
     const data = getStorageData(sessionId);
-    
+
     if (!data) {
       return null;
     }
@@ -155,7 +157,7 @@ export function loadAnswers(sessionId: string): Record<string, AnswerValue> | nu
 
     return data.answers;
   } catch (error) {
-    console.error('[FormStorage] Error loading from localStorage:', error);
+    console.error("[FormStorage] Error loading from localStorage:", error);
     return null;
   }
 }
@@ -173,7 +175,7 @@ export function clearStorageData(sessionId: string): void {
     const key = getStorageKey(sessionId);
     window.localStorage.removeItem(key);
   } catch (error) {
-    console.error('[FormStorage] Error clearing localStorage:', error);
+    console.error("[FormStorage] Error clearing localStorage:", error);
   }
 }
 
@@ -195,7 +197,7 @@ export function getAllFormSessionKeys(): string[] {
     }
     return keys;
   } catch (error) {
-    console.error('[FormStorage] Error getting session keys:', error);
+    console.error("[FormStorage] Error getting session keys:", error);
     return [];
   }
 }
@@ -227,18 +229,20 @@ export function clearExpiredData(): void {
       }
     });
   } catch (error) {
-    console.error('[FormStorage] Error clearing expired data:', error);
+    console.error("[FormStorage] Error clearing expired data:", error);
   }
 }
 
-
 /**
  * Update total image size for a session
- * 
+ *
  * @param sessionId - Session ID
  * @param additionalSize - Bytes to add to total
  */
-export function updateTotalImageSize(sessionId: string, additionalSize: number): void {
+export function updateTotalImageSize(
+  sessionId: string,
+  additionalSize: number,
+): void {
   if (!isLocalStorageAvailable()) {
     return;
   }
@@ -246,7 +250,7 @@ export function updateTotalImageSize(sessionId: string, additionalSize: number):
   try {
     const key = getStorageKey(sessionId);
     const stored = window.localStorage.getItem(key);
-    
+
     if (!stored) {
       // Create new if doesn't exist
       const newData = createNewStorageData(sessionId);
@@ -259,13 +263,13 @@ export function updateTotalImageSize(sessionId: string, additionalSize: number):
     data.totalImageSize = (data.totalImageSize || 0) + additionalSize;
     window.localStorage.setItem(key, JSON.stringify(data));
   } catch (error) {
-    console.error('[FormStorage] Error updating image size:', error);
+    console.error("[FormStorage] Error updating image size:", error);
   }
 }
 
 /**
  * Get total image size for a session
- * 
+ *
  * @param sessionId - Session ID
  * @returns Total size in bytes, or 0 if not found
  */
@@ -277,7 +281,7 @@ export function getTotalImageSize(sessionId: string): number {
   try {
     const key = getStorageKey(sessionId);
     const stored = window.localStorage.getItem(key);
-    
+
     if (!stored) {
       return 0;
     }
@@ -285,7 +289,7 @@ export function getTotalImageSize(sessionId: string): number {
     const data: LocalStorageData = JSON.parse(stored);
     return data.totalImageSize || 0;
   } catch (error) {
-    console.error('[FormStorage] Error getting image size:', error);
+    console.error("[FormStorage] Error getting image size:", error);
     return 0;
   }
 }

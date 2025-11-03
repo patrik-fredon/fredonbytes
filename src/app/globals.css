@@ -1,33 +1,32 @@
 @import "tailwindcss";
 
-
 /* CSS Custom Properties for Design System - Dev Theme */
 :root {
   /* Dev Theme Colors (60-30-10 Rule) */
-  --color-terminal-dark: #0A0E27;
-  --color-terminal-darker: #060A1F;
-  --color-neon-cyan: #00D9FF;
-  --color-electric-purple: #A855F7;
-  --color-code-green: #10B981;
-  --color-warning-amber: #F59E0B;
-  --color-error-red: #EF4444;
+  --color-terminal-dark: #0a0e27;
+  --color-terminal-darker: #060a1f;
+  --color-neon-cyan: #00d9ff;
+  --color-electric-purple: #a855f7;
+  --color-code-green: #10b981;
+  --color-warning-amber: #f59e0b;
+  --color-error-red: #ef4444;
 
   /* Primary Colors */
-  --background: #0A0E27;
-  --foreground: #F1F5F9;
-  --primary: #00D9FF;
-  --primary-foreground: #0A0E27;
-  --secondary: #A855F7;
-  --secondary-foreground: #F1F5F9;
-  --muted: #1E293B;
-  --muted-foreground: #94A3B8;
-  --accent: #00D9FF;
-  --accent-foreground: #0A0E27;
-  --destructive: #EF4444;
-  --destructive-foreground: #F1F5F9;
+  --background: #0a0e27;
+  --foreground: #f1f5f9;
+  --primary: #00d9ff;
+  --primary-foreground: #0a0e27;
+  --secondary: #a855f7;
+  --secondary-foreground: #f1f5f9;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #00d9ff;
+  --accent-foreground: #0a0e27;
+  --destructive: #ef4444;
+  --destructive-foreground: #f1f5f9;
   --border: #334155;
-  --input: #1E293B;
-  --ring: #00D9FF;
+  --input: #1e293b;
+  --ring: #00d9ff;
 
   /* Glow Effects */
   --glow-cyan: 0 0 20px rgba(0, 217, 255, 0.5);
@@ -50,23 +49,30 @@
   /* Shadows with Glow */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.5);
-  --shadow-glow-cyan: 0 0 20px rgba(0, 217, 255, 0.4), 0 4px 6px -1px rgb(0 0 0 / 0.5);
-  --shadow-glow-cyan-strong: 0 0 30px rgba(0, 217, 255, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
-  --shadow-glow-purple: 0 0 20px rgba(168, 85, 247, 0.4), 0 4px 6px -1px rgb(0 0 0 / 0.5);
-  --shadow-glow-purple-strong: 0 0 30px rgba(168, 85, 247, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --shadow-xl:
+    0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+  --shadow-glow-cyan:
+    0 0 20px rgba(0, 217, 255, 0.4), 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-glow-cyan-strong:
+    0 0 30px rgba(0, 217, 255, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
+  --shadow-glow-purple:
+    0 0 20px rgba(168, 85, 247, 0.4), 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-glow-purple-strong:
+    0 0 30px rgba(168, 85, 247, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
   --inset-shadow-sm: inset 0 2px 4px 0 rgb(0 0 0 / 0.3);
   --inset-shadow-md: inset 0 2px 6px 0 rgb(0 0 0 / 0.4);
 
   /* Grid Pattern */
   --grid-size: 20px;
   --grid-color: rgba(0, 0, 5, 0.2);
-  --grid-pattern: linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+  --grid-pattern:
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
     linear-gradient(var(--grid-color) 1px, transparent 1px);
 
   /* Typography */
-  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -131,17 +137,17 @@
   --color-ring: var(--ring);
 
   /* Terminal Colors - from existing design system */
-  --color-terminal-dark: #0A0E27;
-  --color-terminal-darker: #060A1F;
-  --color-terminal-light: #F1F5F9;
-  --color-terminal-muted: #94A3B8;
+  --color-terminal-dark: #0a0e27;
+  --color-terminal-darker: #060a1f;
+  --color-terminal-light: #f1f5f9;
+  --color-terminal-muted: #94a3b8;
 
   /* Neon Colors - from existing design system */
-  --color-neon-cyan: #00D9FF;
-  --color-neon-purple: #A855F7;
-  --color-electric-purple: #A855F7;
+  --color-neon-cyan: #00d9ff;
+  --color-neon-purple: #a855f7;
+  --color-electric-purple: #a855f7;
   /* Code Colors - from existing design system */
-  --color-code-bg: #1E293B;
+  --color-code-bg: #1e293b;
   --color-code-highlight: rgba(0, 217, 255, 0.1);
 
   /* Border Radius */
@@ -149,7 +155,7 @@
   --radius-terminal: 0.5rem;
 
   /* Font Families */
-  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-family-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
 
   /* Font Sizes */
   --font-size-xs: 0.75rem;
@@ -172,16 +178,22 @@
   /* Box Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.5);
-  --shadow-glow-cyan: 0 0 20px rgba(0, 217, 255, 0.3), 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --shadow-xl:
+    0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+  --shadow-glow-cyan:
+    0 0 20px rgba(0, 217, 255, 0.3), 0 4px 6px -1px rgb(0 0 0 / 0.5);
   --shadow-glow-cyan-subtle: 0 0 10px rgba(0, 217, 255, 0.3);
   --shadow-glow-cyan-intense: 0 0 30px rgba(0, 217, 255, 0.7);
-  --shadow-glow-cyan-strong: 0 0 30px rgba(0, 217, 255, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
-  --shadow-glow-purple: 0 0 20px rgba(168, 85, 247, 0.3), 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-glow-cyan-strong:
+    0 0 30px rgba(0, 217, 255, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
+  --shadow-glow-purple:
+    0 0 20px rgba(168, 85, 247, 0.3), 0 4px 6px -1px rgb(0 0 0 / 0.5);
   --shadow-glow-purple-subtle: 0 0 10px rgba(168, 85, 247, 0.3);
   --shadow-glow-purple-intense: 0 0 30px rgba(168, 85, 247, 0.7);
-  --shadow-glow-purple-strong: 0 0 30px rgba(168, 85, 247, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
+  --shadow-glow-purple-strong:
+    0 0 30px rgba(168, 85, 247, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
 
   /* Inset Shadows */
   --inset-shadow-sm: inset 0 10px 10px 0 rgb(0 0 0 / 0.4);
@@ -339,7 +351,6 @@ body {
 
 /* Enhanced Mobile Optimizations */
 @media (max-width: 767px) {
-
   /* Improve text readability on mobile */
   body {
     -webkit-text-size-adjust: 100%;
@@ -492,9 +503,15 @@ body {
   -ms-transform: translateY(0);
   transform: translateY(0);
   opacity: 1;
-  -webkit-transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 300ms ease-out;
-  -moz-transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 300ms ease-out;
-  transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 300ms ease-out;
+  -webkit-transition:
+    transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 300ms ease-out;
+  -moz-transition:
+    transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 300ms ease-out;
+  transition:
+    transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 300ms ease-out;
 }
 
 .mobile-nav-exit {
@@ -508,14 +525,19 @@ body {
   -ms-transform: translateY(-100%);
   transform: translateY(-100%);
   opacity: 0;
-  -webkit-transition: transform 300ms ease-in, opacity 300ms ease-in;
-  -moz-transition: transform 300ms ease-in, opacity 300ms ease-in;
-  transition: transform 300ms ease-in, opacity 300ms ease-in;
+  -webkit-transition:
+    transform 300ms ease-in,
+    opacity 300ms ease-in;
+  -moz-transition:
+    transform 300ms ease-in,
+    opacity 300ms ease-in;
+  transition:
+    transform 300ms ease-in,
+    opacity 300ms ease-in;
 }
 
 /* Touch-Friendly Interactive Elements */
 @media (hover: none) and (pointer: coarse) {
-
   button,
   [role="button"],
   input[type="submit"],
@@ -544,7 +566,6 @@ body {
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -570,7 +591,6 @@ body {
 
 /* Print Styles */
 @media print {
-
   *,
   *::before,
   *::after {
@@ -700,7 +720,7 @@ input:valid {
   body {
     background: #ffffff;
     color: #171717;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-family: "JetBrains Mono", "Courier New", monospace;
   }
 
   button {
@@ -773,7 +793,6 @@ input:valid {
 
 /* Additional Mobile Responsive Utilities */
 @media (max-width: 640px) {
-
   /* Extra small screens - ensure no horizontal scroll */
   html,
   body {
@@ -804,7 +823,6 @@ input:valid {
 
 /* Tablet optimizations */
 @media (min-width: 768px) and (max-width: 1023px) {
-
   /* Optimize touch targets for tablet */
   button,
   a,
@@ -821,7 +839,6 @@ input:valid {
 
 /* Large screen optimizations */
 @media (min-width: 1024px) {
-
   /* Ensure desktop navigation has proper hover states */
   button:hover,
   a:hover,
@@ -836,7 +853,7 @@ input:valid {
   .mobile-nav {
     /* Terminal-themed scrolling */
     -webkit-overflow-scrolling: touch;
-    
+
     /* Glass effect with terminal backdrop */
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
@@ -912,7 +929,6 @@ input:valid {
 
 /* Mobile Performance Optimizations */
 @media (max-width: 767px) {
-
   /* Optimize animations for mobile */
   * {
     -webkit-transform: translateZ(0);
@@ -988,14 +1004,15 @@ input:valid {
 
 code {
   font-family: var(--font-mono);
-  font-feature-settings: 'liga' 1, 'calt' 1;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -1030,7 +1047,7 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:checked::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;

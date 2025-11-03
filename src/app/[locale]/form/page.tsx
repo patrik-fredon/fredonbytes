@@ -1,6 +1,6 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from "next-intl/server";
 
-import FormLanding from './FormLanding';
+import FormLanding from "./FormLanding";
 
 type Props = {
   params: Promise<{ locale: string }>;

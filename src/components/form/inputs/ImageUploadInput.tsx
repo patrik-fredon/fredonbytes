@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import { Upload, X, Image as ImageIcon } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { useState, useRef } from 'react';
+import { Upload, X, Image as ImageIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useState, useRef } from "react";
 
 import {
   validateImageFile,
   getFormattedSize,
   MAX_FILE_SIZE,
-  getRemainingSize
-} from '@/lib/form-image-utils';
-import { getTotalImageSize, updateTotalImageSize } from '@/lib/form-storage';
+  getRemainingSize,
+} from "@/lib/form-image-utils";
+import { getTotalImageSize, updateTotalImageSize } from "@/lib/form-storage";
 
 interface ImageUploadInputProps {
   value: string[] | null;
@@ -37,7 +37,7 @@ export default function ImageUploadInput({
   sessionId,
   csrfToken,
 }: ImageUploadInputProps) {
-  const t = useTranslations('form.image');
+  const t = useTranslations("form.image");
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [uploadingFiles, setUploadingFiles] = useState<UploadingFile[]>([]);
@@ -51,9 +51,9 @@ export default function ImageUploadInput({
   const handleFileSelect = async (files: FileList) => {
     setUploadError(null);
     const fileArray = Array.from(files);
-    
+
     // Initialize uploading state for all files
-    setUploadingFiles(fileArray.map(f => ({ name: f.name, progress: 0 })));
+    setUploadingFiles(fileArray.map((f) => ({ name: f.name, progress: 0 })));
     setUploading(true);
 
     const newUrls: string[] = [];
@@ -62,41 +62,47 @@ export default function ImageUploadInput({
     // Upload files sequentially
     for (let i = 0; i < fileArray.length; i++) {
       const file = fileArray[i];
-      
+
       // Validate file
       const validation = validateImageFile(file);
       if (!validation.valid) {
-        setUploadingFiles(prev => prev.map((f, idx) => 
-          idx === i ? { ...f, error: validation.error || 'Invalid file' } : f
-        ));
+        setUploadingFiles((prev) =>
+          prev.map((f, idx) =>
+            idx === i ? { ...f, error: validation.error || "Invalid file" } : f,
+          ),
+        );
         continue;
       }
 
       // Check remaining space
       if (file.size > currentRemaining) {
-        setUploadingFiles(prev => prev.map((f, idx) => 
-          idx === i ? { 
-            ...f, 
-            error: `Limit exceeded. ${getFormattedSize(currentRemaining)} remaining` 
-          } : f
-        ));
+        setUploadingFiles((prev) =>
+          prev.map((f, idx) =>
+            idx === i
+              ? {
+                  ...f,
+                  error: `Limit exceeded. ${getFormattedSize(currentRemaining)} remaining`,
+                }
+              : f,
+          ),
+        );
         break; // Stop uploading more files
       }
 
       try {
         const formData = new FormData();
-        formData.append('file', file);
-        formData.append('session_id', sessionId);
-        formData.append('question_id', questionId);
+        formData.append("file", file);
+        formData.append("session_id", sessionId);
+        formData.append("question_id", questionId);
 
-        setUploadingFiles(prev => prev.map((f, idx) => 
-          idx === i ? { ...f, progress: 50 } : f
-        ));
+        setUploadingFiles((prev) =>
+          prev.map((f, idx) => (idx === i ? { ...f, progress: 50 } : f)),
+        );
 
-        const response = await fetch('/api/form/upload', {
-          method: 'POST',
+        const response = await fetch("/api/form/upload", {
+          method: "POST",
           headers: {
-            'x-csrf-token': csrfToken,
+            "x-csrf-token": csrfToken,
           },
           body: formData,
         });
@@ -104,24 +110,28 @@ export default function ImageUploadInput({
         const data = await response.json();
 
         if (!response.ok || !data.success) {
-          throw new Error(data.error || 'Upload failed');
+          throw new Error(data.error || "Upload failed");
         }
 
         // Update progress
-        setUploadingFiles(prev => prev.map((f, idx) => 
-          idx === i ? { ...f, progress: 100 } : f
-        ));
+        setUploadingFiles((prev) =>
+          prev.map((f, idx) => (idx === i ? { ...f, progress: 100 } : f)),
+        );
 
         updateTotalImageSize(sessionId, file.size);
         newUrls.push(data.image_url);
         currentRemaining -= file.size;
       } catch (err) {
-        setUploadingFiles(prev => prev.map((f, idx) => 
-          idx === i ? { 
-            ...f, 
-            error: err instanceof Error ? err.message : 'Upload failed' 
-          } : f
-        ));
+        setUploadingFiles((prev) =>
+          prev.map((f, idx) =>
+            idx === i
+              ? {
+                  ...f,
+                  error: err instanceof Error ? err.message : "Upload failed",
+                }
+              : f,
+          ),
+        );
       }
     }
 
@@ -136,7 +146,7 @@ export default function ImageUploadInput({
       setUploading(false);
       setUploadingFiles([]);
       if (fileInputRef.current) {
-        fileInputRef.current.value = '';
+        fileInputRef.current.value = "";
       }
     }, 1000);
   };
@@ -149,7 +159,7 @@ export default function ImageUploadInput({
   };
 
   const handleRemove = (urlToRemove: string) => {
-    const updatedUrls = uploadedImages.filter(url => url !== urlToRemove);
+    const updatedUrls = uploadedImages.filter((url) => url !== urlToRemove);
     onChange(updatedUrls.length > 0 ? updatedUrls : null);
   };
 
@@ -179,19 +189,19 @@ export default function ImageUploadInput({
                    hover:bg-glass-bg/80 hover:border-neon-cyan
                    focus:outline-none focus:ring-2 focus:ring-neon-cyan/50
                    disabled:opacity-50 disabled:cursor-not-allowed
-                   ${error ? 'border-error-red' : 'border-neon-cyan/40'}`}
+                   ${error ? "border-error-red" : "border-neon-cyan/40"}`}
       >
         <div className="flex flex-col items-center gap-3">
           <Upload className="w-12 h-12 text-neon-cyan" />
           <div className="text-center">
             <p className="text-terminal-light font-mono font-semibold">
-              {uploading ? t('uploading') : t('label')}
+              {uploading ? t("uploading") : t("label")}
             </p>
             <p className="text-sm text-terminal-light/70 mt-1">
-              {t('sizeWarning')}
+              {t("sizeWarning")}
             </p>
             <p className="text-xs text-terminal-light/50 mt-1">
-              {t('remaining', { size: getFormattedSize(remaining) })}
+              {t("remaining", { size: getFormattedSize(remaining) })}
             </p>
           </div>
         </div>
@@ -260,9 +270,7 @@ export default function ImageUploadInput({
       )}
 
       {uploadError && (
-        <p className="text-sm text-error-red font-mono">
-          {uploadError}
-        </p>
+        <p className="text-sm text-error-red font-mono">{uploadError}</p>
       )}
     </div>
   );

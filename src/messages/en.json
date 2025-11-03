@@ -1422,11 +1422,7 @@
           "webDevelopment": {
             "name": "Web Development",
             "description": "Custom website or web application",
-            "included": [
-              "Responsive Design",
-              "SEO Basic",
-              "Contact Forms"
-            ]
+            "included": ["Responsive Design", "SEO Basic", "Contact Forms"]
           },
           "mobileApp": {
             "name": "Mobile App",
@@ -1449,11 +1445,7 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monthly SEO and digital marketing services",
-            "included": [
-              "Keyword Research",
-              "Content Strategy",
-              "Analytics"
-            ]
+            "included": ["Keyword Research", "Content Strategy", "Analytics"]
           },
           "socialMedia": {
             "name": "Social Media",

@@ -33,7 +33,7 @@
     },
     "types": ["node"]
   },
-    "include": [
+  "include": [
     "src",
     ".next/types/**/*.ts",
     ".next-env.d.ts",

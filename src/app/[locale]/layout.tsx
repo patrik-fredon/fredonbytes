@@ -11,7 +11,6 @@ import "@fontsource/jetbrains-mono/500.css";
 import "@fontsource/jetbrains-mono/600.css";
 import "@fontsource/jetbrains-mono/700.css";
 
-
 import ClientLayoutWrapper from "../../components/ClientLayoutWrapper";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
@@ -24,21 +23,21 @@ const AnimatedBackground = dynamic(
     loading: () => (
       <div className="fixed inset-0 bg-linear-to-br from-slate-900 via-slate-800 to-slate-900" />
     ),
-  }
+  },
 );
 
 const CookieConsentBanner = dynamic(
   () => import("../../components/common/CookieConsentBanner"),
   {
     loading: () => null,
-  }
+  },
 );
 
 const ConditionalAnalytics = dynamic(
   () => import("../../components/common/ConditionalAnalytics"),
   {
     loading: () => null,
-  }
+  },
 );
 
 const WebVitals = dynamic(
@@ -48,7 +47,7 @@ const WebVitals = dynamic(
     })),
   {
     loading: () => null,
-  }
+  },
 );
 
 // JetBrains Mono loaded via @fontsource imports above
@@ -61,7 +60,7 @@ export const metadata: Metadata = {
     "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
   keywords:
     "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic",
-  authors: [{ name: "Fredonbytes", url: "https://fredonbytes.cloud" }],
+  authors: [{ name: "Fredonbytes", url: "https://fredonbytes.com" }],
   creator: "Fredonbytes",
   publisher: "Fredonbytes",
   robots: "index, follow",
@@ -73,7 +72,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://fredonbytes.cloud",
+    url: "https://fredonbytes.com",
     siteName: "Fredonbytes",
     title: "Fredonbytes - Your All-in-One IT Powerhouse",
     description:
@@ -97,7 +96,7 @@ export const metadata: Metadata = {
     images: ["/FredonBytes_GraphicLogo.png"],
   },
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cloud"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.com",
   ),
 };
 
@@ -115,7 +114,24 @@ type Props = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 };
-
+function configureHeadForTheme() {
+  return <head>
+    <meta name="apple-mobile-web-app-title" content="FredonBytes" />
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme') || 'dark';
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {
+                  document.documentElement.setAttribute('data-theme', 'dark');
+                }
+              })();
+            `,
+      }} />
+  </head>;
+}
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
 
@@ -130,27 +146,13 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="scroll-smooth">
-      <head>
-        <meta name="apple-mobile-web-app-title" content="FredonBytes" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const theme = localStorage.getItem('theme') || 'dark';
-                  document.documentElement.setAttribute('data-theme', theme);
-                } catch (e) {
-                  document.documentElement.setAttribute('data-theme', 'dark');
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
+    <html lang={locale} className="scroll-smooth" suppressHydrationWarning={true}>
+      {configureHeadForTheme()}
       <body
         className="antialiased min-h-screen flex flex-col relative"
-        style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace" }}
+        style={{
+          fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace",
+        }}
       >
         <NextIntlClientProvider messages={messages}>
           <ClientLayoutWrapper>
@@ -169,4 +171,6 @@ export default async function LocaleLayout({ children, params }: Props) {
       </body>
     </html>
   );
+
+
 }

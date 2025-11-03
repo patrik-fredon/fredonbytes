@@ -1,11 +1,18 @@
-import type { Question, AnswerValue } from './supabase';
+import type { Question, AnswerValue } from "./supabase";
 
 // Generic question interface for validation that works with both Question and AdaptedQuestion
 export interface ValidatableQuestion {
   id: string;
   question_text: string; // Can be LocalizedString or string - we only use the ID for validation
   description?: string | null;
-  answer_type: 'short_text' | 'long_text' | 'single_choice' | 'multiple_choice' | 'checklist' | 'rating' | 'image';
+  answer_type:
+    | "short_text"
+    | "long_text"
+    | "single_choice"
+    | "multiple_choice"
+    | "checklist"
+    | "rating"
+    | "image";
   required: boolean;
   display_order: number;
   active: boolean;
@@ -37,7 +44,7 @@ export interface ValidationError {
  */
 export function validateAnswer(
   question: Question | ValidatableQuestion,
-  answer: AnswerValue | undefined
+  answer: AnswerValue | undefined,
 ): ValidationError | null {
   // If question is not required and answer is empty, it's valid
   if (!question.required) {
@@ -48,63 +55,63 @@ export function validateAnswer(
   if (answer === undefined || answer === null) {
     return {
       question_id: question.id,
-      message: 'This question is required',
+      message: "This question is required",
     };
   }
 
   // Validate based on answer type
   switch (question.answer_type) {
-    case 'short_text':
-    case 'long_text':
-    case 'single_choice':
+    case "short_text":
+    case "long_text":
+    case "single_choice":
       // For text and single choice, answer should be a non-empty string
-      if (typeof answer !== 'string' || answer.trim() === '') {
+      if (typeof answer !== "string" || answer.trim() === "") {
         return {
           question_id: question.id,
-          message: 'This question is required',
+          message: "This question is required",
         };
       }
       break;
 
-    case 'multiple_choice':
-    case 'checklist':
+    case "multiple_choice":
+    case "checklist":
       // For multiple choice and checklist, answer should be a non-empty array
       if (!Array.isArray(answer) || answer.length === 0) {
         return {
           question_id: question.id,
-          message: 'Please select at least one option',
+          message: "Please select at least one option",
         };
       }
       break;
 
-    case 'image':
+    case "image":
       // For image type, answer should be a non-empty array of URLs
       if (!Array.isArray(answer) || answer.length === 0) {
         return {
           question_id: question.id,
-          message: 'Please upload at least one image',
+          message: "Please upload at least one image",
         };
       }
       // Validate all URLs are non-empty strings
-      if (!answer.every(url => typeof url === 'string' && url.trim() !== '')) {
+      if (
+        !answer.every((url) => typeof url === "string" && url.trim() !== "")
+      ) {
         return {
           question_id: question.id,
-          message: 'Invalid image data',
+          message: "Invalid image data",
         };
       }
       break;
 
-    case 'rating':
+    case "rating":
       // Rating can be number or string, just needs to exist
       if (answer === undefined || answer === null) {
         return {
           question_id: question.id,
-          message: 'Please provide a rating',
+          message: "Please provide a rating",
         };
       }
       break;
-
-
   }
 
   return null;
@@ -119,7 +126,7 @@ export function validateAnswer(
  */
 export function validateAllAnswers(
   questions: (Question | ValidatableQuestion)[],
-  answers: Map<string, AnswerValue>
+  answers: Map<string, AnswerValue>,
 ): ValidationError[] {
   const errors: ValidationError[] = [];
 
@@ -144,7 +151,7 @@ export function validateAllAnswers(
  */
 export function findFirstUnansweredRequired(
   questions: (Question | ValidatableQuestion)[],
-  answers: Map<string, AnswerValue>
+  answers: Map<string, AnswerValue>,
 ): number {
   for (let i = 0; i < questions.length; i++) {
     const question = questions[i];

@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { MapPin, Mail, Phone } from 'lucide-react'
-import Image from 'next/image'
-import React from 'react'
-import { useTranslations } from 'next-intl'
+import { motion } from "framer-motion";
+import { MapPin, Mail, Phone } from "lucide-react";
+import Image from "next/image";
+import React from "react";
+import { useTranslations } from "next-intl";
 
 export default function ProfileHeader() {
   const t = useTranslations("linktree");
@@ -16,10 +16,10 @@ export default function ProfileHeader() {
       transition: {
         duration: 0.6,
         ease: "easeOut" as const,
-        staggerChildren: 0.1
-      }
-    }
-  }
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -28,10 +28,10 @@ export default function ProfileHeader() {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut" as const
-      }
-    }
-  }
+        ease: "easeOut" as const,
+      },
+    },
+  };
 
   return (
     <motion.div
@@ -41,7 +41,10 @@ export default function ProfileHeader() {
       className="text-center mb-12"
     >
       {/* Profile Image */}
-      <motion.div variants={itemVariants} className="relative w-32 h-32 mx-auto mb-6">
+      <motion.div
+        variants={itemVariants}
+        className="relative w-32 h-32 mx-auto mb-6"
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan to-electric-purple rounded-full animate-pulse shadow-glow-cyan-intense"></div>
         <div className="relative w-full h-full bg-terminal-dark border-2 border-neon-cyan rounded-full p-1">
           <Image
@@ -61,14 +64,15 @@ export default function ProfileHeader() {
         variants={itemVariants}
         className="text-3xl lg:text-4xl font-bold text-white mb-2 font-mono"
       >
-        <span className="text-neon-cyan">//</span> <span className="text-neon-purple">Fredonbytes</span>
+        <span className="text-neon-cyan">//</span>{" "}
+        <span className="text-neon-purple">Fredonbytes</span>
       </motion.h1>
 
       <motion.p
         variants={itemVariants}
         className="text-lg text-slate-300 mb-4 font-mono"
       >
-        {t('profileHeader.title')}
+        {t("profileHeader.title")}
       </motion.p>
 
       {/* Short Description */}
@@ -76,7 +80,8 @@ export default function ProfileHeader() {
         variants={itemVariants}
         className="text-slate-400 max-w-2xl mx-auto mb-6 leading-relaxed font-mono"
       >
-        <span className="text-neon-cyan">//</span> {t('profileHeader.description')}
+        <span className="text-neon-cyan">//</span>{" "}
+        {t("profileHeader.description")}
       </motion.p>
 
       {/* Company Info */}
@@ -109,14 +114,11 @@ export default function ProfileHeader() {
       </motion.div>
 
       {/* Motto */}
-      <motion.div
-        variants={itemVariants}
-        className="mt-8 text-center"
-      >
+      <motion.div variants={itemVariants} className="mt-8 text-center">
         <p className="text-lg font-semibold bg-gradient-to-r from-neon-cyan to-electric-purple bg-clip-text text-transparent font-mono">
           $ Code. Create. Conquer.
         </p>
       </motion.div>
     </motion.div>
-  )
+  );
 }

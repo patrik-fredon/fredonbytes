@@ -12,7 +12,9 @@ export function generateCsrfToken(): string {
   // Use Web Crypto API for edge runtime compatibility
   const array = new Uint8Array(32);
   crypto.getRandomValues(array);
-  return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
+  return Array.from(array, (byte) => byte.toString(16).padStart(2, "0")).join(
+    "",
+  );
 }
 
 /**
@@ -23,7 +25,7 @@ export function generateCsrfToken(): string {
  */
 export function validateCsrfToken(
   tokenFromRequest: string | null,
-  tokenFromCookie: string | null
+  tokenFromCookie: string | null,
 ): boolean {
   if (!tokenFromRequest || !tokenFromCookie) {
     return false;
@@ -46,9 +48,9 @@ export function validateCsrfToken(
 /**
  * CSRF token cookie name
  */
-export const CSRF_TOKEN_COOKIE_NAME = 'csrf_token';
+export const CSRF_TOKEN_COOKIE_NAME = "csrf_token";
 
 /**
  * CSRF token header name
  */
-export const CSRF_TOKEN_HEADER_NAME = 'x-csrf-token';
+export const CSRF_TOKEN_HEADER_NAME = "x-csrf-token";

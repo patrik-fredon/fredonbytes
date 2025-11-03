@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 
 import { Button } from "@/components/common/Button";
 import { PricingItem, LocalizedString } from "@/lib/supabase";
-import { getIconComponent } from '@/lib/icon-mapper';
+import { getIconComponent } from "@/lib/icon-mapper";
 
 import { Currency } from "../PricingClient";
 
@@ -24,31 +24,38 @@ interface CalculatorState {
 }
 
 const getLocalizedText = (text: LocalizedString, locale: string): string => {
-  return text[locale as keyof LocalizedString] || text.en || '';
+  return text[locale as keyof LocalizedString] || text.en || "";
 };
 
 const formatPrice = (price: number, currency: Currency): string => {
-  if (currency === 'CZK') {
+  if (currency === "CZK") {
     return `${price.toLocaleString()} Kč`;
   } else {
     return `€${price.toLocaleString()}`;
   }
 };
 
-export default function PricingCalculator({ items, currency, locale }: PricingCalculatorProps) {
-  const t = useTranslations('pricing');
+export default function PricingCalculator({
+  items,
+  currency,
+  locale,
+}: PricingCalculatorProps) {
+  const t = useTranslations("pricing");
   const [calculatorOpen, setCalculatorOpen] = useState(false);
   const [calculatorState, setCalculatorState] = useState<CalculatorState>({});
   const [totalCost, setTotalCost] = useState(0);
 
   // Group items by category
-  const itemsByCategory = items.reduce((acc, item) => {
-    if (!acc[item.category]) {
-      acc[item.category] = [];
-    }
-    acc[item.category].push(item);
-    return acc;
-  }, {} as Record<string, PricingItem[]>);
+  const itemsByCategory = items.reduce(
+    (acc, item) => {
+      if (!acc[item.category]) {
+        acc[item.category] = [];
+      }
+      acc[item.category].push(item);
+      return acc;
+    },
+    {} as Record<string, PricingItem[]>,
+  );
 
   useEffect(() => {
     const initialState: CalculatorState = {};
@@ -65,7 +72,8 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
       if (state.selected) {
         const item = items.find((i) => i.id === itemId);
         if (item) {
-          const price = currency === 'CZK' ? item.base_price_czk : item.base_price_eur;
+          const price =
+            currency === "CZK" ? item.base_price_czk : item.base_price_eur;
           total += price * state.quantity;
         }
       }
@@ -99,9 +107,9 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
 
   const handleGetQuote = () => {
     // Scroll to contact section or redirect to contact page
-    const contactElement = document.getElementById('contact');
+    const contactElement = document.getElementById("contact");
     if (contactElement) {
-      contactElement.scrollIntoView({ behavior: 'smooth' });
+      contactElement.scrollIntoView({ behavior: "smooth" });
     } else {
       // If no contact section on page, redirect to contact page
       window.location.href = `/${locale}/contact`;
@@ -114,7 +122,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
         <div className="text-center">
           <Calculator className="w-12 h-12 text-slate-400 mx-auto mb-4" />
           <p className="text-slate-600 dark:text-slate-300">
-            {t('calculator.noItemsAvailable')}
+            {t("calculator.noItemsAvailable")}
           </p>
         </div>
       </div>
@@ -127,11 +135,11 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
         <div className="flex items-center justify-center space-x-3 mb-4">
           <Calculator className="w-8 h-8 text-blue-600" />
           <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
-            {t('calculator.title')}
+            {t("calculator.title")}
           </h3>
         </div>
         <p className="text-slate-600 dark:text-slate-300">
-          {t('calculator.description')}
+          {t("calculator.description")}
         </p>
       </div>
 
@@ -143,7 +151,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
             onClick={() => setCalculatorOpen(true)}
             rightIcon={<Calculator className="w-5 h-5" />}
           >
-            {t('calculator.openButton')}
+            {t("calculator.openButton")}
           </Button>
         </div>
       ) : (
@@ -159,7 +167,10 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
                     selected: false,
                     quantity: 1,
                   };
-                  const price = currency === 'CZK' ? item.base_price_czk : item.base_price_eur;
+                  const price =
+                    currency === "CZK"
+                      ? item.base_price_czk
+                      : item.base_price_eur;
 
                   // Get the icon component based on the string stored in database
                   const IconComponent = getIconComponent(item.icon);
@@ -167,19 +178,21 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
                   return (
                     <div
                       key={item.id}
-                      className={`border-2 rounded-xl p-6 transition-all duration-300 cursor-pointer ${state.selected
-                        ? "border-purple-600 bg-purple-950/50 "
-                        : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
-                        }`}
+                      className={`border-2 rounded-xl p-6 transition-all duration-300 cursor-pointer ${
+                        state.selected
+                          ? "border-purple-600 bg-purple-950/50 "
+                          : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
+                      }`}
                       onClick={() => toggleItem(item.id)}
                     >
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center space-x-3">
                           <div
-                            className={`w-10 h-10 rounded-lg flex items-center justify-center ${state.selected
-                              ? "bg-purple-600 text-white"
-                              : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
-                              }`}
+                            className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                              state.selected
+                                ? "bg-purple-600 text-white"
+                                : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
+                            }`}
                           >
                             <IconComponent className="w-5 h-5" />
                           </div>
@@ -247,10 +260,10 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="text-xl font-bold mb-2">
-                  {t('calculator.estimatedTotal')}
+                  {t("calculator.estimatedTotal")}
                 </h4>
                 <p className="opacity-90 text-sm">
-                  {t('calculator.basedOnSelection')}
+                  {t("calculator.basedOnSelection")}
                 </p>
               </div>
               <div className="text-right">
@@ -264,7 +277,7 @@ export default function PricingCalculator({ items, currency, locale }: PricingCa
                     onClick={handleGetQuote}
                     rightIcon={<ArrowRight className="w-4 h-4" />}
                   >
-                    {t('calculator.getQuote')}
+                    {t("calculator.getQuote")}
                   </Button>
                 </div>
               </div>

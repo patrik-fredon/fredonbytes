@@ -18,8 +18,6 @@ import React, { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import TerminalWindow from "../dev-ui/TerminalWindow";
 
-
-
 export default function ServicesSection() {
   const t = useTranslations();
   const [activeTab, setActiveTab] = useState<string>("all");
@@ -69,9 +67,15 @@ export default function ServicesSection() {
   ];
   const serviceCategories = [
     { id: "all", label: t("services.categories.all") || "All Services" },
-    { id: "development", label: t("services.categories.development") || "Development" },
+    {
+      id: "development",
+      label: t("services.categories.development") || "Development",
+    },
     { id: "design", label: t("services.categories.design") || "Design" },
-    { id: "marketing", label: t("services.categories.marketing") || "Marketing" },
+    {
+      id: "marketing",
+      label: t("services.categories.marketing") || "Marketing",
+    },
   ];
 
   const services = [
@@ -167,10 +171,10 @@ export default function ServicesSection() {
     },
   ];
 
-  const filteredServices = activeTab === "all"
-    ? services
-    : services.filter(service => service.category === activeTab);
-
+  const filteredServices =
+    activeTab === "all"
+      ? services
+      : services.filter((service) => service.category === activeTab);
 
   return (
     <section id="services" className="py-20 lg:py-24">
@@ -201,17 +205,17 @@ export default function ServicesSection() {
                 <button
                   key={category.id}
                   onClick={() => setActiveTab(category.id)}
-                  className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-[180ms] ${activeTab === category.id
-                    ? "bg-neon-cyan/20 text-neon-purple border border-neon-purple shadow-glow-purple-subtle"
-                    : "text-slate-400 hover:text-white hover:bg-slate-800/50"
-                    }`}
+                  className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-[180ms] ${
+                    activeTab === category.id
+                      ? "bg-neon-cyan/20 text-neon-purple border border-neon-purple shadow-glow-purple-subtle"
+                      : "text-slate-400 hover:text-white hover:bg-slate-800/50"
+                  }`}
                 >
                   {category.label}
                 </button>
               ))}
             </div>
           </motion.div>
-
 
           {/* Services Grid - TerminalWindow Cards */}
           <motion.div
@@ -229,7 +233,7 @@ export default function ServicesSection() {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   whileHover={{
                     y: -8,
-                    transition: { duration: 0.2, ease: "easeOut" }
+                    transition: { duration: 0.2, ease: "easeOut" },
                   }}
                   className="group"
                 >
@@ -242,10 +246,12 @@ export default function ServicesSection() {
                             scale: 1.1,
                             borderColor: "rgba(0, 217, 255, 0.5)",
                             boxShadow: "0 0 20px rgba(0, 217, 255, 0.3)",
-                            transition: { duration: 0.2 }
+                            transition: { duration: 0.2 },
                           }}
                         >
-                          <Icon className={`w-8 h-8 ${service.iconColor} drop-shadow-[0_0_10px_currentColor]`} />
+                          <Icon
+                            className={`w-8 h-8 ${service.iconColor} drop-shadow-[0_0_10px_currentColor]`}
+                          />
                         </motion.div>
                         <h3 className="text-lg font-bold text-white font-mono">
                           {service.title}
@@ -257,7 +263,9 @@ export default function ServicesSection() {
                       </p>
 
                       <div className="space-y-2">
-                        <p className="text-neon-cyan text-xs font-mono">// Features:</p>
+                        <p className="text-neon-cyan text-xs font-mono">
+                          // Features:
+                        </p>
                         <ul className="space-y-1">
                           {service.features.map((feature, featureIndex) => (
                             <li
@@ -276,7 +284,6 @@ export default function ServicesSection() {
               );
             })}
           </motion.div>
-
         </motion.div>
       </div>
     </section>

@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import React from 'react'
+import { motion } from "framer-motion";
+import React from "react";
 
-import ChecklistInput from '@/components/form/inputs/ChecklistInput'
-import ImageUploadInput from '@/components/form/inputs/ImageUploadInput'
-import MultipleChoiceInput from '@/components/form/inputs/MultipleChoiceInput'
-import SingleChoiceInput from '@/components/form/inputs/SingleChoiceInput'
-import { useReducedMotion } from '@/hooks/useReducedMotion'
-import type { ValidatableQuestion } from '@/lib/form-validation'
-import type { AnswerValue } from '@/lib/supabase'
+import ChecklistInput from "@/components/form/inputs/ChecklistInput";
+import ImageUploadInput from "@/components/form/inputs/ImageUploadInput";
+import MultipleChoiceInput from "@/components/form/inputs/MultipleChoiceInput";
+import SingleChoiceInput from "@/components/form/inputs/SingleChoiceInput";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import type { ValidatableQuestion } from "@/lib/form-validation";
+import type { AnswerValue } from "@/lib/supabase";
 
 interface QuestionStepProps {
-  question: ValidatableQuestion
-  answer: AnswerValue | undefined
-  onAnswerChange: (value: AnswerValue) => void
-  error: string | null
-  sessionId?: string
-  csrfToken?: string
+  question: ValidatableQuestion;
+  answer: AnswerValue | undefined;
+  onAnswerChange: (value: AnswerValue) => void;
+  error: string | null;
+  sessionId?: string;
+  csrfToken?: string;
 }
 
 /**
@@ -37,17 +37,17 @@ export default function QuestionStep({
   sessionId,
   csrfToken,
 }: QuestionStepProps) {
-  const prefersReducedMotion = useReducedMotion()
+  const prefersReducedMotion = useReducedMotion();
 
   // Render the appropriate input component based on answer_type
   const renderInput = () => {
     switch (question.answer_type) {
-      case 'short_text':
+      case "short_text":
         // TODO: Replace with ShortTextInput component (Task 11.1)
         return (
           <input
             type="text"
-            value={(answer as string) || ''}
+            value={(answer as string) || ""}
             onChange={(e) => onAnswerChange(e.target.value)}
             placeholder="Enter your answer..."
             className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700
@@ -60,13 +60,13 @@ export default function QuestionStep({
             aria-invalid={!!error}
             aria-describedby={error ? `error-${question.id}` : undefined}
           />
-        )
+        );
 
-      case 'long_text':
+      case "long_text":
         // TODO: Replace with LongTextInput component (Task 11.2)
         return (
           <textarea
-            value={(answer as string) || ''}
+            value={(answer as string) || ""}
             onChange={(e) => onAnswerChange(e.target.value)}
             placeholder="Enter your detailed answer..."
             rows={5}
@@ -80,12 +80,12 @@ export default function QuestionStep({
             aria-invalid={!!error}
             aria-describedby={error ? `error-${question.id}` : undefined}
           />
-        )
+        );
 
-      case 'single_choice':
+      case "single_choice":
         return (
           <SingleChoiceInput
-            value={(answer as string) || ''}
+            value={(answer as string) || ""}
             onChange={(value) => onAnswerChange(value)}
             required={question.required}
             error={error || undefined}
@@ -93,9 +93,9 @@ export default function QuestionStep({
             questionText={question.question_text}
             options={question.options}
           />
-        )
+        );
 
-      case 'multiple_choice':
+      case "multiple_choice":
         return (
           <MultipleChoiceInput
             value={(answer as string[]) || []}
@@ -106,9 +106,9 @@ export default function QuestionStep({
             questionText={question.question_text}
             options={question.options}
           />
-        )
+        );
 
-      case 'checklist':
+      case "checklist":
         return (
           <ChecklistInput
             value={(answer as string[]) || []}
@@ -119,36 +119,36 @@ export default function QuestionStep({
             questionText={question.question_text}
             options={question.options}
           />
-        )
+        );
 
-      case 'image':
+      case "image":
         if (!sessionId || !csrfToken) {
           return (
             <div className="text-error-red font-mono">
               Session configuration error
             </div>
-          )
+          );
         }
         return (
           <ImageUploadInput
             value={answer ? (answer as string[]) : null}
-            onChange={(value) => onAnswerChange(value || '')}
+            onChange={(value) => onAnswerChange(value || "")}
             required={question.required}
             error={error || undefined}
             questionId={question.id}
             sessionId={sessionId}
             csrfToken={csrfToken}
           />
-        )
+        );
 
       default:
         return (
           <div className="text-red-600 dark:text-red-400">
             Unsupported question type: {question.answer_type}
           </div>
-        )
+        );
     }
-  }
+  };
 
   return (
     <div className="space-y-6">
@@ -163,9 +163,7 @@ export default function QuestionStep({
               *
             </span>
           ) : (
-            <span className="inline-flex  justify-center px-2.5 py-1 rounded-full text-xs font-medium   whitespace-nowrap">
-
-            </span>
+            <span className="inline-flex  justify-center px-2.5 py-1 rounded-full text-xs font-medium   whitespace-nowrap"></span>
           )}
         </div>
 
@@ -184,7 +182,10 @@ export default function QuestionStep({
       {error && (
         <motion.div
           initial={{ opacity: 0, x: 0 }}
-          animate={{ opacity: 1, x: prefersReducedMotion ? 0 : [0, -10, 10, -10, 10, 0] }}
+          animate={{
+            opacity: 1,
+            x: prefersReducedMotion ? 0 : [0, -10, 10, -10, 10, 0],
+          }}
           transition={{ duration: prefersReducedMotion ? 0.01 : 0.4 }}
           className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20
                    px-4 py-3 rounded-md border border-red-200 dark:border-red-800"
@@ -210,5 +211,5 @@ export default function QuestionStep({
         </motion.div>
       )}
     </div>
-  )
+  );
 }

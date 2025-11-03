@@ -62,7 +62,7 @@ export default function TeamMemberCard({
       whileHover={{
         y: -4,
         scale: 1.02,
-        transition: { duration: 0.2, ease: "easeOut" }
+        transition: { duration: 0.2, ease: "easeOut" },
       }}
       aria-label={`${member.name} - ${member.position}`}
       tabIndex={0}
@@ -130,7 +130,9 @@ export default function TeamMemberCard({
           {/* Decorative Code Element */}
           <div className="w-full pt-2">
             <code className="text-xs text-slate-500 font-mono block text-center">
-              <span className="text-neon-cyan/30">{"{ "}active: true{" }"}</span>
+              <span className="text-neon-cyan/30">
+                {"{ "}active: true{" }"}
+              </span>
             </code>
           </div>
         </div>

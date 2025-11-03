@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 
-import { generateCsrfToken, CSRF_TOKEN_COOKIE_NAME } from '@/lib/csrf';
-import { supabase } from '@/lib/supabase';
+import { generateCsrfToken, CSRF_TOKEN_COOKIE_NAME } from "@/lib/csrf";
+import { supabase } from "@/lib/supabase";
 
 // Schema for session creation request
 const createSessionSchema = z.object({
-  locale: z.enum(['en', 'cs', 'de']).default('cs'),
+  locale: z.enum(["en", "cs", "de"]).default("cs"),
 });
 
 // Response interface
@@ -31,9 +31,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Invalid request data',
+          error: "Invalid request data",
         } as CreateSurveySessionResponse,
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -41,21 +41,23 @@ export async function POST(request: NextRequest) {
 
     // Find active survey questionnaire
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data: questionnaireData, error: questionnaireError } = await (supabase as any)
-      .from('questionnaires')
-      .select('id')
-      .eq('type', 'survey')
-      .eq('active', true)
+    const { data: questionnaireData, error: questionnaireError } = await (
+      supabase as any
+    )
+      .from("questionnaires")
+      .select("id")
+      .eq("type", "survey")
+      .eq("active", true)
       .maybeSingle();
 
     if (questionnaireError || !questionnaireData) {
-      console.error('Error fetching survey questionnaire:', questionnaireError);
+      console.error("Error fetching survey questionnaire:", questionnaireError);
       return NextResponse.json(
         {
           success: false,
-          error: 'Survey questionnaire not found',
+          error: "Survey questionnaire not found",
         } as CreateSurveySessionResponse,
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -66,7 +68,7 @@ export async function POST(request: NextRequest) {
     const sessionId = crypto.randomUUID();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error: sessionError } = await (supabase as any)
-      .from('sessions')
+      .from("sessions")
       .insert({
         session_id: sessionId,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -78,13 +80,13 @@ export async function POST(request: NextRequest) {
       });
 
     if (sessionError) {
-      console.error('Error creating session:', sessionError);
+      console.error("Error creating session:", sessionError);
       return NextResponse.json(
         {
           success: false,
-          error: 'Failed to create session',
+          error: "Failed to create session",
         } as CreateSurveySessionResponse,
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -96,30 +98,30 @@ export async function POST(request: NextRequest) {
         csrf_token: csrfToken,
         questionnaire_id: questionnaireData.id,
       } as CreateSurveySessionResponse,
-      { status: 201 }
+      { status: 201 },
     );
 
     // Set CSRF token cookie (NOT httpOnly so client can read it for header)
     // This is safe because we validate both cookie AND header match (double-submit pattern)
     response.cookies.set(CSRF_TOKEN_COOKIE_NAME, csrfToken, {
       httpOnly: false, // Client needs to read this for x-csrf-token header
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
       maxAge: 48 * 60 * 60, // 48 hours
-      path: '/',
+      path: "/",
     });
 
     return response;
   } catch (error) {
-    console.error('Unexpected error in survey session creation:', error);
+    console.error("Unexpected error in survey session creation:", error);
     return NextResponse.json(
       {
         success: false,
-        error: 'Internal server error',
+        error: "Internal server error",
       } as CreateSurveySessionResponse,
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";

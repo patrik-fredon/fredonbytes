@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import { Button } from '@/components/common/Button';
+import { Button } from "@/components/common/Button";
 
 interface FormNavigationProps {
   currentStep: number;
@@ -17,7 +17,7 @@ interface FormNavigationProps {
 /**
  * FormNavigation component provides Previous/Next navigation controls for the form.
  * Displays progress indicator and handles button states based on current step.
- * 
+ *
  * @param currentStep - Current step number (0 = welcome, 1-n = questions, n+1 = thank you)
  * @param totalSteps - Total number of questions
  * @param canGoNext - Whether navigation to next step is allowed
@@ -39,7 +39,7 @@ export default function FormNavigation({
   const isOnLastQuestion = currentStep === totalSteps;
 
   // Determine button text based on current step
-  const nextButtonText = isOnLastQuestion ? 'Submit' : 'Next';
+  const nextButtonText = isOnLastQuestion ? "Submit" : "Next";
 
   // Determine if we're on a question step (not welcome or thank you)
   const isOnQuestion = currentStep > 0 && currentStep <= totalSteps;
@@ -84,13 +84,17 @@ export default function FormNavigation({
 
         {/* Next/Submit button */}
         <Button
-          variant={isOnLastQuestion ? 'gradient' : 'neon-purple'}
+          variant={isOnLastQuestion ? "gradient" : "neon-purple"}
           prefix="$"
           onClick={onNext}
           disabled={!canGoNext || isSubmitting}
           className="max-w-1 flex mt-10  sm:flex-1 sm:min-w-[140px]"
         >
-          {isSubmitting ? 'processing...' : isOnLastQuestion ? 'submit' : 'next'}
+          {isSubmitting
+            ? "processing..."
+            : isOnLastQuestion
+              ? "submit"
+              : "next"}
           <ChevronRight className="w-4 h-4 ml-2" />
         </Button>
       </div>

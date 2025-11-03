@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
             error: "Failed to update cookie consent",
             details: updateError.message,
           },
-          { status: 500 }
+          { status: 500 },
         );
       }
 
@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
           error: "Failed to store cookie consent",
           details: insertError.message,
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -140,14 +140,14 @@ export async function POST(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Validation failed", details: error.errors },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     console.error("Unexpected error in cookie consent API:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -164,7 +164,7 @@ export async function GET(request: NextRequest) {
     if (!sessionId) {
       return NextResponse.json(
         { error: "Missing session_id parameter" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -175,7 +175,7 @@ export async function GET(request: NextRequest) {
     } catch {
       return NextResponse.json(
         { error: "Invalid session_id format" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -192,14 +192,14 @@ export async function GET(request: NextRequest) {
         // No consent found for this session
         return NextResponse.json(
           { consent: null, message: "No consent found for this session" },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
       console.error("Error fetching cookie consent:", error);
       return NextResponse.json(
         { error: "Failed to fetch cookie consent", details: error.message },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -220,7 +220,7 @@ export async function GET(request: NextRequest) {
     console.error("Unexpected error in cookie consent GET API:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -1,7 +1,7 @@
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-import PricingClient from './PricingClient';
+import PricingClient from "./PricingClient";
 
 interface PricingPageProps {
   params: Promise<{
@@ -13,15 +13,15 @@ export async function generateMetadata({
   params,
 }: PricingPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'pricing' });
+  const t = await getTranslations({ locale, namespace: "pricing" });
 
   return {
-    title: t('meta.title'),
-    description: t('meta.description'),
+    title: t("meta.title"),
+    description: t("meta.description"),
     openGraph: {
-      title: t('meta.title'),
-      description: t('meta.description'),
-      type: 'website',
+      title: t("meta.title"),
+      description: t("meta.description"),
+      type: "website",
     },
   };
 }

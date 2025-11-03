@@ -128,7 +128,11 @@ export default function CompanyStory() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
           >
-            <GlassCard variant="card" glowColor="normal" className="h-full sticky top-24">
+            <GlassCard
+              variant="card"
+              glowColor="normal"
+              className="h-full sticky top-24"
+            >
               <div className="space-y-6">
                 {/* Mission Header */}
                 <div className="border-b border-neon-purple/20 pb-4">
@@ -148,14 +152,20 @@ export default function CompanyStory() {
                     <p className="text-xs sm:text-sm text-neon-cyan font-mono">
                       <span className="text-slate-500">//</span> {t("founder")}
                     </p>
-                    <p className="text-xs text-slate-400 font-mono mt-1">Founder & CEO</p>
+                    <p className="text-xs text-slate-400 font-mono mt-1">
+                      Founder & CEO
+                    </p>
                   </div>
                 </div>
 
                 {/* Decorative Code Element */}
                 <div className="mt-6 p-3 bg-terminal-darker/50 rounded border border-neon-purple/10">
                   <code className="text-xs text-neon-purple font-mono">
-                    <span className="text-slate-500">{"{"}</span> status: <span className="text-neon-cyan">&quot;building_future&quot;</span> <span className="text-slate-500">{"}"}</span>
+                    <span className="text-slate-500">{"{"}</span> status:{" "}
+                    <span className="text-neon-cyan">
+                      &quot;building_future&quot;
+                    </span>{" "}
+                    <span className="text-slate-500">{"}"}</span>
                   </code>
                 </div>
               </div>

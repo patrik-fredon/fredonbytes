@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 // Required root layout when root not-found.tsx exists
 // This is a minimal pass-through layout

@@ -98,7 +98,11 @@ export default function TeamSection() {
   };
 
   return (
-    <section className="mb-16 sm:mb-20 " aria-labelledby="team-heading" id="team">
+    <section
+      className="mb-16 sm:mb-20 "
+      aria-labelledby="team-heading"
+      id="team"
+    >
       {/* Section Header */}
       <div className="text-center mb-8 sm:mb-12 px-4 sm:px-0">
         <motion.h2

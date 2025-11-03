@@ -28,7 +28,7 @@ const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 /**
  * Generate cache key for a session
  */
-function getCacheKey(type: 'form' | 'survey', sessionId: string): string {
+function getCacheKey(type: "form" | "survey", sessionId: string): string {
   return `${type}_session_${sessionId}`;
 }
 
@@ -44,9 +44,9 @@ function isValid(data: CachedSessionData): boolean {
  * Save session data to localStorage
  */
 export function saveToCache(
-  type: 'form' | 'survey',
+  type: "form" | "survey",
   sessionId: string,
-  data: Partial<CachedSessionData>
+  data: Partial<CachedSessionData>,
 ): void {
   try {
     const existing = loadFromCache(type, sessionId);
@@ -60,7 +60,7 @@ export function saveToCache(
     const key = getCacheKey(type, sessionId);
     localStorage.setItem(key, JSON.stringify(cacheData));
   } catch (error) {
-    console.error('Error saving to cache:', error);
+    console.error("Error saving to cache:", error);
   }
 }
 
@@ -69,8 +69,8 @@ export function saveToCache(
  * Returns null if cache is expired or doesn't exist
  */
 export function loadFromCache(
-  type: 'form' | 'survey',
-  sessionId: string
+  type: "form" | "survey",
+  sessionId: string,
 ): CachedSessionData | null {
   try {
     const key = getCacheKey(type, sessionId);
@@ -90,7 +90,7 @@ export function loadFromCache(
 
     return data;
   } catch (error) {
-    console.error('Error loading from cache:', error);
+    console.error("Error loading from cache:", error);
     return null;
   }
 }
@@ -99,9 +99,9 @@ export function loadFromCache(
  * Update answers in cache
  */
 export function updateAnswers(
-  type: 'form' | 'survey',
+  type: "form" | "survey",
   sessionId: string,
-  answers: Record<string, string | string[] | number | boolean>
+  answers: Record<string, string | string[] | number | boolean>,
 ): void {
   saveToCache(type, sessionId, { answers });
 }
@@ -110,9 +110,9 @@ export function updateAnswers(
  * Update current step in cache
  */
 export function updateStep(
-  type: 'form' | 'survey',
+  type: "form" | "survey",
   sessionId: string,
-  step: number
+  step: number,
 ): void {
   saveToCache(type, sessionId, { currentStep: step });
 }
@@ -120,15 +120,15 @@ export function updateStep(
 /**
  * Clear specific session cache
  */
-export function clearCache(type: 'form' | 'survey', sessionId: string): void {
+export function clearCache(type: "form" | "survey", sessionId: string): void {
   try {
     const key = getCacheKey(type, sessionId);
     localStorage.removeItem(key);
-    
+
     // Also remove CSRF token
     localStorage.removeItem(`${type}_csrf_${sessionId}`);
   } catch (error) {
-    console.error('Error clearing cache:', error);
+    console.error("Error clearing cache:", error);
   }
 }
 
@@ -139,10 +139,11 @@ export function clearExpiredCaches(): void {
   try {
     const keys = Object.keys(localStorage);
     const sessionKeys = keys.filter(
-      key => key.startsWith('form_session_') || key.startsWith('survey_session_')
+      (key) =>
+        key.startsWith("form_session_") || key.startsWith("survey_session_"),
     );
 
-    sessionKeys.forEach(key => {
+    sessionKeys.forEach((key) => {
       try {
         const cached = localStorage.getItem(key);
         if (cached) {
@@ -157,18 +158,21 @@ export function clearExpiredCaches(): void {
       }
     });
   } catch (error) {
-    console.error('Error clearing expired caches:', error);
+    console.error("Error clearing expired caches:", error);
   }
 }
 
 /**
  * Get CSRF token from localStorage
  */
-export function getCsrfToken(type: 'form' | 'survey', sessionId: string): string | null {
+export function getCsrfToken(
+  type: "form" | "survey",
+  sessionId: string,
+): string | null {
   try {
     return localStorage.getItem(`${type}_csrf_${sessionId}`);
   } catch (error) {
-    console.error('Error getting CSRF token:', error);
+    console.error("Error getting CSRF token:", error);
     return null;
   }
 }
@@ -177,13 +181,13 @@ export function getCsrfToken(type: 'form' | 'survey', sessionId: string): string
  * Save CSRF token to localStorage
  */
 export function saveCsrfToken(
-  type: 'form' | 'survey',
+  type: "form" | "survey",
   sessionId: string,
-  token: string
+  token: string,
 ): void {
   try {
     localStorage.setItem(`${type}_csrf_${sessionId}`, token);
   } catch (error) {
-    console.error('Error saving CSRF token:', error);
+    console.error("Error saving CSRF token:", error);
   }
 }

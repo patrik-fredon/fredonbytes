@@ -12,10 +12,7 @@ import {
   generateCustomerConfirmationText,
   type ContactEmailData,
 } from "@/lib/email-templates";
-import {
-  sanitizeString,
-  sanitizeStringArray,
-} from "@/lib/input-sanitization";
+import { sanitizeString, sanitizeStringArray } from "@/lib/input-sanitization";
 import { supabase } from "@/lib/supabase";
 
 const contactSchema = z.object({
@@ -38,15 +35,20 @@ export async function POST(request: NextRequest) {
   try {
     // CSRF validation
     const csrfTokenFromHeader = request.headers.get(CSRF_TOKEN_HEADER_NAME);
-    const csrfTokenFromCookie = request.cookies.get('csrf_token')?.value;
+    const csrfTokenFromCookie = request.cookies.get("csrf_token")?.value;
 
-    if (!validateCsrfToken(csrfTokenFromHeader || null, csrfTokenFromCookie || null)) {
+    if (
+      !validateCsrfToken(
+        csrfTokenFromHeader || null,
+        csrfTokenFromCookie || null,
+      )
+    ) {
       return NextResponse.json(
         {
-          error: 'CSRF validation failed',
-          message: 'Invalid or missing CSRF token',
+          error: "CSRF validation failed",
+          message: "Invalid or missing CSRF token",
         },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -183,16 +185,16 @@ export async function POST(request: NextRequest) {
 
     if (!customerEmail.success) {
       console.error("Failed to send customer email:", customerEmail.error);
-      throw new Error(`Failed to send confirmation email: ${customerEmail.error}`);
+      throw new Error(
+        `Failed to send confirmation email: ${customerEmail.error}`,
+      );
     }
 
     // Send admin notification email
-    const adminEmailHtml = await generateAdminContactNotificationHTML(
-      emailData
-    );
-    const adminEmailText = await generateAdminContactNotificationText(
-      emailData
-    );
+    const adminEmailHtml =
+      await generateAdminContactNotificationHTML(emailData);
+    const adminEmailText =
+      await generateAdminContactNotificationText(emailData);
 
     const adminEmail = await sendEmail({
       from: "Contact Form <info@fredonbytes.com>",
@@ -210,7 +212,7 @@ export async function POST(request: NextRequest) {
 
     // Create survey session in unified sessions table
     // Survey questionnaire ID (hardcoded UUID from migrations)
-    const surveyQuestionnaireId = '22222222-2222-2222-2222-222222222222';
+    const surveyQuestionnaireId = "22222222-2222-2222-2222-222222222222";
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error: sessionError } = await (supabase as any)
@@ -235,7 +237,7 @@ export async function POST(request: NextRequest) {
         .from("contact_submissions")
         .update({
           session_id: sessionId,
-          survey_sent: true
+          survey_sent: true,
         })
         .eq("id", (contactSubmission as any).id);
     }
@@ -248,7 +250,7 @@ export async function POST(request: NextRequest) {
         customerEmailId: customerEmail.messageId,
         adminEmailId: adminEmail.messageId,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Contact form submission error:", error);
@@ -256,7 +258,7 @@ export async function POST(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid form data", details: error.errors },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -265,7 +267,7 @@ export async function POST(request: NextRequest) {
         error: "Internal server error",
         message: error instanceof Error ? error.message : "Unknown error",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

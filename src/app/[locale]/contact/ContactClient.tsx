@@ -130,7 +130,8 @@ export default function ContactClient({ locale }: ContactClientProps) {
     t("contact.form.requirements.features.options.5"),
     t("contact.form.requirements.features.options.6"),
     t("contact.form.requirements.features.options.7"),
-  ]; const nextStep = async () => {
+  ];
+  const nextStep = async () => {
     let fieldsToValidate: (keyof ContactFormData)[] = [];
 
     if (currentStep === 1) {
@@ -184,11 +185,15 @@ export default function ContactClient({ locale }: ContactClientProps) {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert(t("contact.error.message") || "Failed to submit form. Please try again.");
+      alert(
+        t("contact.error.message") ||
+          "Failed to submit form. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
-  }; if (isSubmitted) {
+  };
+  if (isSubmitted) {
     return (
       <main className="min-h-screen ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
@@ -207,12 +212,7 @@ export default function ContactClient({ locale }: ContactClientProps) {
               {t("contact.success.message")}
             </p>
             <Link href="/">
-              <Button
-                variant="gradient"
-
-              >
-                {t("contact.success.cta")}
-              </Button>
+              <Button variant="gradient">{t("contact.success.cta")}</Button>
             </Link>
           </motion.div>
         </div>
@@ -237,8 +237,8 @@ export default function ContactClient({ locale }: ContactClientProps) {
             <p className="text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed mb-8">
               {t("contact.sectionDescription")}
             </p>
-
-          </motion.div>          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          </motion.div>{" "}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <motion.div variants={itemVariants} className="space-y-8">
               <div>
@@ -263,7 +263,6 @@ export default function ContactClient({ locale }: ContactClientProps) {
                       </a>
                     </div>
                   </div>
-
                   {/* Phone */}
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 glass-bg backdrop-blur-glass border-2 border-neon-purple/40 rounded-lg flex items-center justify-center shadow-glow-purple-subtle">
@@ -280,7 +279,8 @@ export default function ContactClient({ locale }: ContactClientProps) {
                         +420 799 027 984
                       </a>
                     </div>
-                  </div>                  {/* Location */}
+                  </div>{" "}
+                  {/* Location */}
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 glass-bg backdrop-blur-glass border-2 border-neon-cyan/40 rounded-lg flex items-center justify-center shadow-glow-cyan-subtle">
                       <MapPin className="w-6 h-6 text-neon-cyan" />
@@ -294,7 +294,6 @@ export default function ContactClient({ locale }: ContactClientProps) {
                       </p>
                     </div>
                   </div>
-
                   {/* Response Time */}
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 glass-bg backdrop-blur-glass border-2 border-neon-purple/40 rounded-lg flex items-center justify-center shadow-glow-purple-subtle">
@@ -324,7 +323,8 @@ export default function ContactClient({ locale }: ContactClientProps) {
                   {t("contact.secureConfidential.message")}
                 </p>
               </div>
-            </motion.div>            {/* Multi-step Form */}
+            </motion.div>{" "}
+            {/* Multi-step Form */}
             <motion.div variants={itemVariants}>
               <div className="glass-bg backdrop-blur-glass bg-terminal-dark border-2 border-slate-950/30 rounded-2xl p-8 shadow-lg inset-shadow-2xs inset-shadow-slate-950/30">
                 {/* Progress Bar */}
@@ -361,9 +361,10 @@ export default function ContactClient({ locale }: ContactClientProps) {
                         <div className="flex items-center space-x-3 mb-6">
                           <User className="w-6 h-6 text-neon-cyan" />
                           <h3 className="text-xl font-mono font-bold text-terminal-light">
-                          // {t("contact.basicInfo")}
+                            // {t("contact.basicInfo")}
                           </h3>
-                        </div>                      <div className="grid grid-cols-2 gap-4">
+                        </div>{" "}
+                        <div className="grid grid-cols-2 gap-4">
                           <div>
                             <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                               {t("contact.firstName")} *
@@ -411,7 +412,8 @@ export default function ContactClient({ locale }: ContactClientProps) {
                               )}
                             </AnimatePresence>
                           </div>
-                        </div>                      <div>
+                        </div>{" "}
+                        <div>
                           <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                             {t("contact.email")} *
                           </label>
@@ -435,7 +437,6 @@ export default function ContactClient({ locale }: ContactClientProps) {
                             )}
                           </AnimatePresence>
                         </div>
-
                         <div>
                           <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                             {t("contact.phone")} *
@@ -460,7 +461,6 @@ export default function ContactClient({ locale }: ContactClientProps) {
                             )}
                           </AnimatePresence>
                         </div>
-
                         <Button
                           type="button"
                           variant="gradient"
@@ -472,7 +472,8 @@ export default function ContactClient({ locale }: ContactClientProps) {
                           {t("contact.continue")}
                         </Button>
                       </motion.div>
-                    )}                  {/* Step 2: Project Details */}
+                    )}{" "}
+                    {/* Step 2: Project Details */}
                     {currentStep === 2 && (
                       <motion.div
                         key="step-2"
@@ -485,10 +486,9 @@ export default function ContactClient({ locale }: ContactClientProps) {
                         <div className="flex items-center space-x-3 mb-6">
                           <Building className="w-6 h-6 text-neon-cyan" />
                           <h3 className="text-xl font-mono font-bold text-terminal-light">
-                          // {t("contact.projectDetails")}
+                            // {t("contact.projectDetails")}
                           </h3>
                         </div>
-
                         <div>
                           <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                             {t("contact.company")}
@@ -499,7 +499,6 @@ export default function ContactClient({ locale }: ContactClientProps) {
                             placeholder={t("contact.companyPlaceholder")}
                           />
                         </div>
-
                         <div>
                           <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                             {t("contact.projectType")} *
@@ -530,7 +529,8 @@ export default function ContactClient({ locale }: ContactClientProps) {
                               </motion.p>
                             )}
                           </AnimatePresence>
-                        </div>                      <div className="grid grid-cols-2 gap-4">
+                        </div>{" "}
+                        <div className="grid grid-cols-2 gap-4">
                           <div>
                             <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                               {t("contact.budget")} *
@@ -594,7 +594,8 @@ export default function ContactClient({ locale }: ContactClientProps) {
                               )}
                             </AnimatePresence>
                           </div>
-                        </div>                      <div className="flex space-x-4">
+                        </div>{" "}
+                        <div className="flex space-x-4">
                           <Button
                             type="button"
                             variant="outline"
@@ -617,7 +618,8 @@ export default function ContactClient({ locale }: ContactClientProps) {
                           </Button>
                         </div>
                       </motion.div>
-                    )}                  {/* Step 3: Requirements & Message */}
+                    )}{" "}
+                    {/* Step 3: Requirements & Message */}
                     {currentStep === 3 && (
                       <motion.div
                         key="step-3"
@@ -630,10 +632,9 @@ export default function ContactClient({ locale }: ContactClientProps) {
                         <div className="flex items-center space-x-3 mb-6">
                           <MessageSquare className="w-6 h-6 text-neon-cyan" />
                           <h3 className="text-xl font-mono font-bold text-terminal-light">
-                          // {t("contact.projectRequirements")}
+                            // {t("contact.projectRequirements")}
                           </h3>
                         </div>
-
                         <div>
                           <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
                             {t("contact.projectDescription")} *
@@ -643,7 +644,7 @@ export default function ContactClient({ locale }: ContactClientProps) {
                             rows={4}
                             className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light placeholder:text-terminal-light/50"
                             placeholder={t(
-                              "contact.projectDescriptionPlaceholder"
+                              "contact.projectDescriptionPlaceholder",
                             )}
                           />
                           <AnimatePresence>
@@ -660,7 +661,6 @@ export default function ContactClient({ locale }: ContactClientProps) {
                             )}
                           </AnimatePresence>
                         </div>
-
                         <div>
                           <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-3">
                             {t("contact.additionalRequirements")}
@@ -683,7 +683,8 @@ export default function ContactClient({ locale }: ContactClientProps) {
                               </label>
                             ))}
                           </div>
-                        </div>                      <div className="space-y-4">
+                        </div>{" "}
+                        <div className="space-y-4">
                           <label className="flex items-center space-x-2 cursor-pointer group">
                             <input
                               type="checkbox"
@@ -719,7 +720,6 @@ export default function ContactClient({ locale }: ContactClientProps) {
                             )}
                           </AnimatePresence>
                         </div>
-
                         <div className="flex space-x-4">
                           <Button
                             type="button"

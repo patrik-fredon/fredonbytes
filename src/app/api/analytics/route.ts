@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 
-import { sanitizeString } from '@/lib/input-sanitization';
+import { sanitizeString } from "@/lib/input-sanitization";
 
 export async function POST(request: NextRequest) {
   try {
@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     const webVitalsSchema = z.object({
       name: z.string().min(1).max(50),
       value: z.number().min(0),
-      rating: z.enum(['good', 'needs-improvement', 'poor']),
+      rating: z.enum(["good", "needs-improvement", "poor"]),
       delta: z.number(),
       id: z.string().max(100),
       navigationType: z.string().max(50).optional(),
@@ -22,8 +22,11 @@ export async function POST(request: NextRequest) {
 
     if (!validationResult.success) {
       return NextResponse.json(
-        { error: 'Invalid metric data', details: validationResult.error.errors },
-        { status: 400 }
+        {
+          error: "Invalid metric data",
+          details: validationResult.error.errors,
+        },
+        { status: 400 },
       );
     }
 
@@ -34,12 +37,14 @@ export async function POST(request: NextRequest) {
       ...metric,
       name: sanitizeString(metric.name),
       id: sanitizeString(metric.id),
-      navigationType: metric.navigationType ? sanitizeString(metric.navigationType) : undefined,
+      navigationType: metric.navigationType
+        ? sanitizeString(metric.navigationType)
+        : undefined,
     };
 
     // Log the metric (in production, you would send this to your analytics service)
     // Using console.warn for visibility (ESLint allows warn/error)
-    console.warn('[Web Vitals Analytics]', {
+    console.warn("[Web Vitals Analytics]", {
       timestamp: new Date().toISOString(),
       metric: sanitizedMetric.name,
       value: sanitizedMetric.value,
@@ -54,7 +59,7 @@ export async function POST(request: NextRequest) {
     // - Vercel Analytics
     // - Custom analytics database
     // - Third-party monitoring services (DataDog, New Relic, etc.)
-    
+
     // Example: Store in database (commented out - implement as needed)
     // await storeMetricInDatabase(sanitizedMetric);
 
@@ -62,19 +67,19 @@ export async function POST(request: NextRequest) {
     // await sendToAnalyticsService(sanitizedMetric);
 
     return NextResponse.json(
-      { success: true, message: 'Metric received' },
-      { status: 200 }
+      { success: true, message: "Metric received" },
+      { status: 200 },
     );
   } catch (error) {
-    console.error('Error processing Web Vitals metric:', error);
-    
+    console.error("Error processing Web Vitals metric:", error);
+
     // Return success even on error to avoid disrupting user experience
     return NextResponse.json(
-      { success: true, message: 'Metric received' },
-      { status: 200 }
+      { success: true, message: "Metric received" },
+      { status: 200 },
     );
   }
 }
 
 // Disable caching for this endpoint
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
