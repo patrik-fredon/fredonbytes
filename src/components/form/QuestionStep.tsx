@@ -131,7 +131,7 @@ export default function QuestionStep({
         }
         return (
           <ImageUploadInput
-            value={(answer as string) || null}
+            value={answer ? (answer as string[]) : null}
             onChange={(value) => onAnswerChange(value || '')}
             required={question.required}
             error={error || undefined}
@@ -155,15 +155,15 @@ export default function QuestionStep({
       {/* Question Text with Required/Optional Indicator */}
       <div className="space-y-2">
         <div className="flex items-start gap-3">
-          <h2 className="text-2xl lg:text-3xl font-semibold text-slate-900 dark:text-white flex-1">
+          <h2 className="text-2xl flex justify-center lg:text-3xl font-semibold text-slate-900 dark:text-white flex-1">
             {question.question_text}
           </h2>
           {question.required ? (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 whitespace-nowrap">
+            <span className="inline-flex justify-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 whitespace-nowrap">
               *
             </span>
           ) : (
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium   whitespace-nowrap">
+            <span className="inline-flex  justify-center px-2.5 py-1 rounded-full text-xs font-medium   whitespace-nowrap">
 
             </span>
           )}
@@ -171,7 +171,7 @@ export default function QuestionStep({
 
         {/* Description (if provided) */}
         {question.description && (
-          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p className="text-base flex justify-center text-neon-purple dark:text-neon-purple leading-relaxed">
             {question.description}
           </p>
         )}

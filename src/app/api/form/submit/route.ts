@@ -167,23 +167,23 @@ export async function POST(request: NextRequest) {
 
       // If session doesn't exist, create it
       if (!existingSession) {
-      // If session doesn't exist, create it
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { error: createSessionError } = await (supabase as any)
-        .from("sessions")
-        .insert({
-          session_id: sessionId,
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          questionnaire_id: (questionnaire as any).id,
-          original_session_id: original_session_id || null,
-          locale: sessionLocale,
-          ip_address_hash: metadata?.ip_address
-            ? hashIpAddress(metadata.ip_address)
-            : null,
-          user_agent: metadata?.user_agent || null,
-          email: email || null,
-          newsletter_optin: newsletter_optin || false,
-        });
+        // If session doesn't exist, create it
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const { error: createSessionError } = await (supabase as any)
+          .from("sessions")
+          .insert({
+            session_id: sessionId,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            questionnaire_id: (questionnaire as any).id,
+            original_session_id: original_session_id || null,
+            locale: sessionLocale,
+            ip_address_hash: metadata?.ip_address
+              ? hashIpAddress(metadata.ip_address)
+              : null,
+            user_agent: metadata?.user_agent || null,
+            email: email || null,
+            newsletter_optin: newsletter_optin || false,
+          });
 
         if (createSessionError) {
           console.error("Error creating session:", createSessionError);
@@ -334,8 +334,8 @@ export async function POST(request: NextRequest) {
 
         // Send email via SMTP
         await sendEmail({
-          from: "Customer Feedback <noreply@fredonbytes.cloud>",
-          to: process.env.ADMIN_EMAIL || "info@fredonbytes.cloud",
+          from: "Customer Feedback <info@fredonbytes.com>",
+          to: process.env.ADMIN_EMAIL || "info@fredonbytes.com",
           subject: `New Customer Satisfaction Form - ${sessionId!.substring(
             0,
             8

@@ -55,7 +55,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<UploadRes
       .from('sessions')
       .select('session_id, expires_at')
       .eq('session_id', sessionId)
-      .single();
+      .single<{ session_id: string; expires_at: string }>();
 
     if (sessionError || !session) {
       logError('SessionValidation', new Error('Invalid or expired session'), { sessionId });
@@ -85,7 +85,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<UploadRes
     const { data: currentImages } = await supabase
       .from('form_answer_images')
       .select('file_size')
-      .eq('session_id', sessionId);
+      .eq('session_id', sessionId)
+      .returns<Array<{ file_size: number }>>();
 
     const currentTotalSize = currentImages?.reduce((sum, img) => sum + img.file_size, 0) || 0;
 
@@ -136,12 +137,12 @@ export async function POST(request: NextRequest): Promise<NextResponse<UploadRes
         file_size: file.size,
         mime_type: file.type,
         original_filename: file.name,
-      });
+      } as any);
 
     if (metadataError) {
       // Attempt to delete uploaded file if metadata insert fails
       await supabase.storage.from('form-uploads').remove([filePath]);
-      
+
       logError('MetadataInsert', metadataError, { sessionId, questionId });
       return NextResponse.json(
         { success: false, error: 'Failed to save image metadata' },

@@ -13,7 +13,7 @@
     "getStarted": "Get Started"
   },
   "hero": {
-    "title": "Wir sind",
+    "title": "We are",
     "titleHighlight": "FredonBytes",
     "subtitle": "From code to clicks, we deliver complete digital dominance. Eliminate complexity and supercharge your brand's potential with our unified IT solutions.",
     "codeComments": {
@@ -1542,6 +1542,36 @@
       "improveServices": "We'll use your insights to enhance our services",
       "followUp": "If needed, we may reach out to discuss your feedback further",
       "gratitude": "Thank you for taking the time to help us serve you better!"
+    },
+    "form": {
+      "subject": "Thank you for your feedback - Fredonbytes",
+      "thankYou": "Thank You for Your Feedback",
+      "feedbackReceived": "We've received your form response",
+      "greeting": "Thank you",
+      "completionMessage": "Your form has been submitted successfully!",
+      "feedbackValue": "Your feedback is invaluable in helping us improve our services and better meet your needs.",
+      "whatNext": "What happens next?",
+      "reviewFeedback": "Our team will carefully review your feedback",
+      "improveServices": "We'll use your insights to enhance our services",
+      "followUp": "If needed, we may reach out to discuss your feedback further",
+      "gratitude": "Thank you for taking the time to help us serve you better!"
+    },
+    "newsletter": {
+      "subject": "Welcome to Fredonbytes Newsletter!",
+      "welcome": "Welcome to Our Newsletter",
+      "thanksForSubscribing": "Thank you for subscribing",
+      "greeting": "Hello",
+      "subscriptionConfirmed": "Your subscription has been confirmed!",
+      "whatToExpect": "You're now part of our community and will receive the latest updates, tips, and exclusive offers.",
+      "youWillReceive": "Here's what you can expect:",
+      "benefits": {
+        "updates": "Latest project updates and case studies",
+        "tips": "Expert tips and insights on web development and digital marketing",
+        "offers": "Exclusive offers and early access to new services",
+        "news": "Industry news and trends"
+      },
+      "stayTuned": "Stay tuned for our next newsletter!",
+      "unsubscribeInfo": "You can unsubscribe at any time by clicking the unsubscribe link in any email."
     }
   },
   "form": {
@@ -1651,5 +1681,36 @@
   },
   "company": {
     "foundingDate": "2023"
+  },
+  "linktree": {
+    "linktree": {
+      "companyWebsiteTitle": "Main Website"
+    },
+    "personalPortfolioTitle": "Personal Fredon's portfolio",
+    "personalPortfolioDescription": "You will find personal CV of Fredon here",
+    "projectGalleryTitle": "Projects gallery & dev hub",
+    "projectGalleryDescription": "Projects gallery and dev hub of FredonBytes | Useful component snippets, documentation, and much more!",
+    "techSupportTitle": "Do you have an issue? Let us know!",
+    "techSupportDescription": "Have an issue with one of our projects? Fill out the form to contact us!",
+    "githubOrgTitle": "FredonBytes | GitHub",
+    "githubOrgDescription": "Official GitHub repository of FredonBytes",
+    "githubPersonalTitle": "Patrik Fredon | GitHub",
+    "githubPersonalDescription": "Official Patrik Fredon's GitHub repository",
+    "companyWebsiteTitle": "FredonBytes | Main page",
+    "companyWebsiteDescription": "FredonBytes official main page.",
+    "ourPlatformsHeading": "FredonBytes | Linktree",
+    "githubHeading": "GitHub",
+    "companyHeading": "Company",
+    "footerLocation": "Et in tenebris codicem inveni lucem.",
+    "footerTagline": "- Fredon",
+    "profileHeader": {
+      "title": "$ Your All-in-One IT Powerhouse",
+      "description": "From code to clicks, we deliver complete digital dominance.         Full-spectrum IT solutions combining cutting-edge development,         striking design, and strategic marketing—all under one roof."
+    }
+  },
+  "notFound": {
+    "notFoundHeading": "Page Not Found",
+    "notFoundDescription": "We are sorry, but there seems to be an issue as we cannot find this page. Did you type the address correctly?",
+    "goHomeButton": "Go Home"
   }
 }

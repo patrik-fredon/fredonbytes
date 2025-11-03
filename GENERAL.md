@@ -11,18 +11,21 @@
 ## Tech Stack
 
 ### Core Framework
+
 - **Next.js:** 15.5.4 (App Router, React 19)
 - **TypeScript:** 5.9.3 (strict mode)
 - **React:** 19.0.0
 
 ### Styling & Design
+
 - **Tailwind CSS:** 4.1.14 (utility-first, custom design tokens)
 - **Framer Motion:** 12.16.0 (performant animations)
-- **Fonts:** 
+- **Fonts:**
   - Inter (UI text, variable font)
   - JetBrains Mono (code/dev elements, monospace)
 
 ### Content & Data
+
 - **MDX:** @next/mdx 3.1.1 (Markdown + JSX)
 - **Remark/Rehype:** Plugins for enhanced Markdown processing
   - remark-gfm, remark-breaks, remark-frontmatter
@@ -31,16 +34,19 @@
 - **Validation:** Zod 3.25.51 (schema validation)
 
 ### Forms & Interactions
+
 - **React Hook Form:** 7.57.0 (performant form handling)
 - **Zod:** Type-safe validation schemas
 - **Email:** Nodemailer 7.0.9
 
 ### Internationalization
+
 - **next-intl:** 4.3.12
 - **Supported Languages:** Czech (cs), German (de), English (en)
 - **Routing:** localePrefix: "always" (`/cs/`, `/de/`, `/en/`)
 
 ### Development Tools
+
 - **Linting:** Biome 2.2.0 (fast, modern linter + formatter)
 - **Bundle Analysis:** @next/bundle-analyzer 15.5.6
 - **Performance:** Lighthouse (target: 95+ score)
@@ -138,27 +144,32 @@ fredonbytes/
 ### Color Palette
 
 **Primary Colors (60-30-10 Rule):**
+
 1. **Deep Terminal Dark** `#0A0E27` (60%) - Backgrounds, foundation
 2. **Neon Cyan** `#00D9FF` (30%) - Interactive elements, CTAs
 3. **Electric Purple** `#A855F7` (10%) - Highlights, accents
 
 **Supporting Colors:**
+
 - Code Green: `#10B981` (success)
 - Warning Amber: `#F59E0B` (warnings)
 - Error Red: `#EF4444` (errors)
 - Neutral Grays: slate-800 through slate-100
 
 **Glow Effects:**
+
 - Cyan Glow: `0 0 20px rgba(0, 217, 255, 0.5)`
 - Purple Glow: `0 0 20px rgba(168, 85, 247, 0.5)`
 
 ### Typography
 
 **Fonts:**
+
 - **Inter** (variable) - UI text, body content
 - **JetBrains Mono** - Code, dev elements, technical terms
 
 **Type Scale:**
+
 - Hero: 4.5rem / 72px
 - H1: 3rem / 48px
 - H2: 2.25rem / 36px
@@ -169,17 +180,20 @@ fredonbytes/
 ### Animation System
 
 **Timing:**
+
 - Instant: 100ms
 - Fast: 180ms (micro-interactions)
 - Normal: 300ms (transitions)
 - Slow: 500ms (page loads)
 
 **Easing:**
+
 - Default: `cubic-bezier(0.2, 0.8, 0.2, 1)`
 - Enter: `cubic-bezier(0.05, 0.8, 0.2, 1)`
 - Exit: `cubic-bezier(0.4, 0, 0.2, 1)`
 
 **Rules:**
+
 - ONLY animate `transform` and `opacity`
 - Use `will-change` sparingly
 - Always respect `prefers-reduced-motion`
@@ -188,6 +202,7 @@ fredonbytes/
 ### UI Components
 
 **Dev-Themed Components:**
+
 - **TerminalWindow** - Window chrome with 3-dot controls
 - **CodeBlock** - Syntax highlighted code
 - **GlassCard** - Glassmorphic cards
@@ -195,6 +210,7 @@ fredonbytes/
 - **GridBackground** - Animated grid patterns
 
 **Common Components:**
+
 - Button (variants: primary, secondary, ghost, outline, terminal)
 - Header (glassmorphic, scrollable)
 - Footer (code comment style)
@@ -208,12 +224,14 @@ fredonbytes/
 ### Code Style
 
 **TypeScript:**
+
 - Strict mode enabled
 - Explicit return types for functions
 - No `any` types (use `unknown` if needed)
 - Interface for object types, Type for unions/intersections
 
 **React:**
+
 - Functional components with hooks
 - Server Components by default
 - Client components ONLY when needed:
@@ -225,12 +243,14 @@ fredonbytes/
 - React.memo for expensive components
 
 **Styling:**
+
 - Tailwind utility classes (preferred)
 - CSS modules for complex styling
 - CSS variables for theming
 - No inline styles (except dynamic values)
 
 **Naming Conventions:**
+
 - Components: PascalCase (e.g., `TerminalWindow.tsx`)
 - Utilities: camelCase (e.g., `formatCurrency`)
 - Constants: UPPER_SNAKE_CASE (e.g., `DEFAULT_LOCALE`)
@@ -239,30 +259,35 @@ fredonbytes/
 ### Performance Best Practices
 
 **SSR/ISR:**
+
 - Default to Server Components
 - Use ISR for dynamic content (revalidate)
 - Minimize client-side JavaScript
 - Lazy-load animations
 
 **Images:**
+
 - Next.js Image component everywhere
 - WebP with fallback
 - Proper sizing and srcset
 - Priority for above-fold images
 
 **Fonts:**
+
 - Self-hosted fonts
 - `font-display: swap`
 - Preload critical fonts
 - Subset fonts
 
 **Animations:**
+
 - Transform/opacity only
 - Intersection Observer for scroll animations
 - Lazy-load Framer Motion
 - Profile with React DevTools
 
 **Targets:**
+
 - Lighthouse Score: ≥ 95
 - LCP: < 2.5s
 - FID: < 100ms
@@ -298,6 +323,7 @@ fredonbytes/
 ## Commands
 
 ### Development
+
 ```bash
 npm run dev               # Start dev server (localhost:3000)
 npm run build             # Production build
@@ -310,6 +336,7 @@ npm run generate-icons    # Icon generation script
 ```
 
 ### Quality Checks
+
 ```bash
 npm run lint              # Check code style
 npm run format            # Auto-format code
@@ -342,6 +369,7 @@ NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
 ## Key Features
 
 ### Internationalization
+
 - 3 languages: Czech (default), German, English
 - URL-based routing with locale prefix
 - Translation management via JSON files
@@ -349,6 +377,7 @@ NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
 - Manual language switcher
 
 ### Forms & Surveys
+
 - Session-based form system
 - Multi-step navigation
 - Progress persistence (localStorage)
@@ -357,6 +386,7 @@ NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
 - Supabase storage
 
 ### Projects Portfolio
+
 - Filterable project grid
 - Technology tags
 - Modal details
@@ -364,12 +394,14 @@ NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
 - Responsive grid layout
 
 ### Pricing System
+
 - Multiple tiers
 - Interactive calculator
 - Currency toggle (CZK, EUR, USD)
 - Feature comparisons
 
 ### Analytics & Tracking
+
 - Cookie consent management
 - GDPR compliance
 - Conditional analytics loading
@@ -380,6 +412,7 @@ NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
 ## Browser Support
 
 **Supported:**
+
 - Chrome/Edge: last 2 versions
 - Firefox: last 2 versions  
 - Safari: last 2 versions
@@ -387,6 +420,7 @@ NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
 - Android: ≥ 10
 
 **Graceful Degradation:**
+
 - Older browsers get functional UI
 - CSS fallbacks for modern features
 - No JavaScript requirement for core content
@@ -396,12 +430,14 @@ NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
 ## Deployment
 
 ### Recommended Platform
+
 - Vercel (optimal for Next.js)
 - Automatic deployments from git
 - Edge network delivery
 - Environment variable management
 
 ### Build Output
+
 ```bash
 npm run build
 # Output: .next/ directory
@@ -409,6 +445,7 @@ npm run build
 ```
 
 ### Pre-Deployment Checklist
+
 - [ ] All environment variables set
 - [ ] Database migrations run
 - [ ] Build succeeds without errors
@@ -423,12 +460,14 @@ npm run build
 **Issue:** Default SMTP port 587 may not work on all hosting providers.
 
 **Solution for Forpsi Hosting:**
+
 - SMTP Server: `smtp.forpsi.com`
 - Port: **465** (SSL/TLS) or **587** (STARTTLS)
 - Authentication: Required
-- Documentation: https://support.forpsi.com/kb/a3147/konfigurace-smtp-serveru.aspx
+- Documentation: <https://support.forpsi.com/kb/a3147/konfigurace-smtp-serveru.aspx>
 
 **Environment Variables for Production:**
+
 ```env
 SMTP_HOST=smtp.forpsi.com
 SMTP_PORT=465
@@ -444,6 +483,7 @@ SMTP_PASSWORD=your-password
 ## Maintenance & Updates
 
 ### Regular Tasks
+
 - Monitor Core Web Vitals
 - Review accessibility
 - Update dependencies monthly
@@ -452,6 +492,7 @@ SMTP_PASSWORD=your-password
 - Review analytics
 
 ### When Adding Features
+
 1. Update TypeScript types
 2. Add translations (cs, de, en)
 3. Write accessible markup
@@ -463,18 +504,18 @@ SMTP_PASSWORD=your-password
 
 ## Resources & Documentation
 
-- **Next.js:** https://nextjs.org/docs
-- **Tailwind CSS:** https://tailwindcss.com/docs
-- **Framer Motion:** https://www.framer.com/motion/
-- **Supabase:** https://supabase.com/docs
-- **next-intl:** https://next-intl-docs.vercel.app/
+- **Next.js:** <https://nextjs.org/docs>
+- **Tailwind CSS:** <https://tailwindcss.com/docs>
+- **Framer Motion:** <https://www.framer.com/motion/>
+- **Supabase:** <https://supabase.com/docs>
+- **next-intl:** <https://next-intl-docs.vercel.app/>
 
 ---
 
 ## Contact & Support
 
-- **Website:** https://fredonbytes.cloud
-- **Email:** info@fredonbytes.cloud
+- **Website:** <https://fredonbytes.cloud>
+- **Email:** <info@fredonbytes.cloud>
 - **Phone:** +420 799 027 984
 - **Location:** Brno, Czech Republic
 

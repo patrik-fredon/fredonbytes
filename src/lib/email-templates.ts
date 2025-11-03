@@ -622,3 +622,129 @@ ${t('admin.footerNote')}
 ${t('admin.respondWithin')}
   `.trim();
 }
+
+/**
+ * Newsletter welcome email data interface
+ */
+export interface NewsletterWelcomeData {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  locale: string;
+}
+
+/**
+ * Generates HTML email template for newsletter welcome
+ * @param data - Newsletter subscription data
+ * @returns Promise with HTML string for email body
+ */
+export async function generateNewsletterWelcomeHTML(data: NewsletterWelcomeData): Promise<string> {
+  const t = await getEmailTranslations(data.locale);
+  const displayName = data.firstName 
+    ? `${data.firstName}${data.lastName ? ` ${data.lastName}` : ''}`
+    : data.email.split('@')[0];
+
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>${t('newsletter.welcome')} - ${t('common.companyName')}</title>
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 40px 30px; border-radius: 8px 8px 0 0; text-align: center; }
+          .content { background: #f8fafc; padding: 30px; border-radius: 0 0 8px 8px; }
+          .highlight { background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981; margin: 20px 0; }
+          .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; }
+          .cta { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 20px 0; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1 style="margin: 0; font-size: 28px;">📬 ${t('newsletter.welcome')}</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">${t('newsletter.thanksForSubscribing')}</p>
+          </div>
+
+          <div class="content">
+            <p>${t('newsletter.greeting')}, ${escapeHtml(displayName)}!</p>
+            
+            <div class="highlight">
+              <h3 style="margin: 0 0 15px 0; color: #059669;">✓ ${t('newsletter.subscriptionConfirmed')}</h3>
+              <p style="margin: 0;">${t('newsletter.whatToExpect')}</p>
+            </div>
+
+            <h3>${t('newsletter.youWillReceive')}</h3>
+            <ul>
+              <li>${t('newsletter.benefits.updates')}</li>
+              <li>${t('newsletter.benefits.tips')}</li>
+              <li>${t('newsletter.benefits.offers')}</li>
+              <li>${t('newsletter.benefits.news')}</li>
+            </ul>
+
+            <p>${t('newsletter.stayTuned')}</p>
+
+            <div style="text-align: center;">
+              <a href="https://fredonbytes.cloud" class="cta">${t('customer.visitWebsite')}</a>
+            </div>
+
+            <p style="font-size: 12px; color: #64748b; margin-top: 30px;">
+              ${t('newsletter.unsubscribeInfo')}
+            </p>
+          </div>
+
+          <div class="footer">
+            <p><strong>${t('common.companyName')}</strong> - ${t('common.tagline')}</p>
+            <p>${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984</p>
+            <p style="font-size: 12px; margin-top: 15px;">
+              Code. Create. Conquer.
+            </p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+}
+
+/**
+ * Generates plain text version of newsletter welcome email
+ * @param data - Newsletter subscription data
+ * @returns Promise with plain text string for email body
+ */
+export async function generateNewsletterWelcomeText(data: NewsletterWelcomeData): Promise<string> {
+  const t = await getEmailTranslations(data.locale);
+  const displayName = data.firstName 
+    ? `${data.firstName}${data.lastName ? ` ${data.lastName}` : ''}`
+    : data.email.split('@')[0];
+
+  return `
+📬 ${t('newsletter.welcome')}
+
+${t('newsletter.greeting')}, ${displayName}!
+
+${t('newsletter.thanksForSubscribing')}
+
+✓ ${t('newsletter.subscriptionConfirmed')}
+${t('newsletter.whatToExpect')}
+
+${t('newsletter.youWillReceive')}
+
+• ${t('newsletter.benefits.updates')}
+• ${t('newsletter.benefits.tips')}
+• ${t('newsletter.benefits.offers')}
+• ${t('newsletter.benefits.news')}
+
+${t('newsletter.stayTuned')}
+
+Visit us: https://fredonbytes.cloud
+
+${t('newsletter.unsubscribeInfo')}
+
+---
+${t('common.companyName')} - ${t('common.tagline')}
+${t('common.location')} | info@fredonbytes.cloud | +420 799 027 984
+Code. Create. Conquer.
+  `.trim();
+}

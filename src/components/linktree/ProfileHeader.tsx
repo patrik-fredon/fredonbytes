@@ -4,8 +4,10 @@ import { motion } from 'framer-motion'
 import { MapPin, Mail, Phone } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
+import { useTranslations } from 'next-intl'
 
 export default function ProfileHeader() {
+  const t = useTranslations("linktree");
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -59,14 +61,14 @@ export default function ProfileHeader() {
         variants={itemVariants}
         className="text-3xl lg:text-4xl font-bold text-white mb-2 font-mono"
       >
-        <span className="text-neon-cyan">//</span> Fredonbytes
+        <span className="text-neon-cyan">//</span> <span className="text-neon-purple">Fredonbytes</span>
       </motion.h1>
-      
+
       <motion.p
         variants={itemVariants}
         className="text-lg text-slate-300 mb-4 font-mono"
       >
-        $ Your All-in-One IT Powerhouse
+        {t('profileHeader.title')}
       </motion.p>
 
       {/* Short Description */}
@@ -74,9 +76,7 @@ export default function ProfileHeader() {
         variants={itemVariants}
         className="text-slate-400 max-w-2xl mx-auto mb-6 leading-relaxed font-mono"
       >
-        <span className="text-neon-cyan">//</span> From code to clicks, we deliver complete digital dominance. 
-        Full-spectrum IT solutions combining cutting-edge development, 
-        striking design, and strategic marketing—all under one roof.
+        <span className="text-neon-cyan">//</span> {t('profileHeader.description')}
       </motion.p>
 
       {/* Company Info */}
@@ -90,8 +90,8 @@ export default function ProfileHeader() {
         </div>
         <div className="flex items-center space-x-2">
           <Phone className="w-4 h-4 text-electric-purple drop-shadow-[0_0_8px_currentColor]" />
-          <a 
-            href="tel:+420799027984" 
+          <a
+            href="tel:+420799027984"
             className="hover:text-neon-cyan transition-colors duration-[180ms]"
           >
             +420 799 027 984
@@ -99,8 +99,8 @@ export default function ProfileHeader() {
         </div>
         <div className="flex items-center space-x-2">
           <Mail className="w-4 h-4 text-code-green drop-shadow-[0_0_8px_currentColor]" />
-          <a 
-            href="mailto:info@fredonbytes.cloud" 
+          <a
+            href="mailto:info@fredonbytes.cloud"
             className="hover:text-code-green transition-colors duration-[180ms]"
           >
             info@fredonbytes.cloud

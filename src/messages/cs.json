@@ -1543,6 +1543,36 @@
       "improveServices": "<strong>Implementujeme vylepšení:</strong> Vaše návrhy nám pomohou vylepšit naše služby",
       "followUp": "<strong>Sledování (pokud je potřeba):</strong> Můžeme vás kontaktovat pro další upřesnění",
       "gratitude": "Děkujeme, že jste součástí naší cesty k dokonalosti!"
+    },
+    "form": {
+      "subject": "Děkujeme za vaši zpětnou vazbu - Fredonbytes",
+      "thankYou": "Děkujeme za vaši zpětnou vazbu",
+      "feedbackReceived": "Vaše odpovědi z formuláře byly přijaty",
+      "greeting": "Děkujeme",
+      "completionMessage": "Váš formulář byl úspěšně odeslán!",
+      "feedbackValue": "Vaše zpětná vazba je pro nás velmi důležitá a pomáhá nám zlepšovat naše služby.",
+      "whatNext": "Co bude dál?",
+      "reviewFeedback": "Náš tým pečlivě přezkoumá vaši zpětnou vazbu",
+      "improveServices": "Využijeme vaše náměty k vylepšení našich služeb",
+      "followUp": "V případě potřeby vás můžeme kontaktovat pro další upřesnění",
+      "gratitude": "Děkujeme, že jste si udělali čas a pomohli nám vás lépe obsluhovat!"
+    },
+    "newsletter": {
+      "subject": "Vítejte v newsletteru Fredonbytes!",
+      "welcome": "Vítejte v našem newsletteru",
+      "thanksForSubscribing": "Děkujeme za přihlášení k odběru",
+      "greeting": "Ahoj",
+      "subscriptionConfirmed": "Váš odběr byl potvrzen!",
+      "whatToExpect": "Nyní jste součástí naší komunity a budete dostávat nejnovější aktualizace, tipy a exkluzivní nabídky.",
+      "youWillReceive": "Co můžete očekávat:",
+      "benefits": {
+        "updates": "Nejnovější aktualizace projektů a případové studie",
+        "tips": "Odborné tipy a poznatky o webovém vývoji a digitálním marketingu",
+        "offers": "Exkluzivní nabídky a přednostní přístup k novým službám",
+        "news": "Novinky a trendy z oboru"
+      },
+      "stayTuned": "Těšte se na náš další newsletter!",
+      "unsubscribeInfo": "Z odběru se můžete kdykoli odhlásit kliknutím na odkaz pro odhlášení v kterémkoli e-mailu."
     }
   },
   "form": {
@@ -1649,5 +1679,36 @@
       "title": "Jste připraveni vyrazit na cestu?",
       "description": "Od klidu v digitálním světě vás dělí jediné kliknutí..."
     }
+  },
+  "linktree": {
+    "linktree": {
+      "companyWebsiteTitle": "Hlavní web"
+    },
+    "personalPortfolioTitle": "Osobní Fredonovo portfolio",
+    "personalPortfolioDescription": "Zde najdete osobní CV Fredona",
+    "projectGalleryTitle": "Galerie projektů",
+    "projectGalleryDescription": "Galerie projektů a dev hub FredonBytes | \nUžitečné úryvky komponent, dokumentace a mnoho dalšího!",
+    "techSupportTitle": "Máte problém? \nDejte nám vědět!",
+    "techSupportDescription": "Vyplňte formulář a kontaktujte nás s jakýmkoliv problémem ohledně některého z našich projektů!﻿",
+    "githubOrgTitle": "FredonBytes | \nGitHub",
+    "githubOrgDescription": "Oficiální GitHub úložiště FredonBytes",
+    "githubPersonalTitle": "Patrik Fredon | \nGitHub",
+    "githubPersonalDescription": "Oficiální úložiště GitHub Patrika Fredona",
+    "companyWebsiteTitle": "FredonBytes | \nHlavní stránka",
+    "ourPlatformsHeading": "FredonBytes | \nLinktree",
+    "githubHeading": "GitHub",
+    "companyHeading": "Společnost",
+    "footerLocation": "Et in tenebris codicem inveni lucem.",
+    "footerTagline": "- Fredon",
+    "profileHeader": {
+      "title": "$ Vaše IT síla na jednom místě",
+      "description": "Od kódu po kliknutí poskytujeme kompletní digitální dominanci.         \nPlnospektrální IT řešení kombinující špičkový vývoj, výrazný design a strategický marketing – vše pod jednou střechou."
+    },
+    "companyWebsiteDescription": "Oficiální hlavní stránka FredonBytes."
+  },
+  "notFound": {
+    "notFoundHeading": "Stránka nenalezena",
+    "notFoundDescription": "Je nám líto, ale zdá se, že došlo k problému, protože tuto stránku nemůžeme najít. \nZadali jste adresu správně?",
+    "goHomeButton": "Jít domů"
   }
 }

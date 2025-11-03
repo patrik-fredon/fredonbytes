@@ -1612,6 +1612,23 @@
       "improveServices": "<strong>Verbesserung:</strong> Wir werden Ihre Vorschläge nutzen, um unsere Dienstleistungen zu verbessern",
       "followUp": "<strong>Nachverfolgung:</strong> Falls erforderlich, werden wir uns mit Ihnen in Verbindung setzen, um weitere Informationen zu erhalten",
       "gratitude": "Ihre Meinung hilft uns, besser zu werden. Vielen Dank, dass Sie sich die Zeit genommen haben, Ihre Gedanken mit uns zu teilen."
+    },
+    "newsletter": {
+      "subject": "Willkommen beim Fredonbytes Newsletter!",
+      "welcome": "Willkommen zu unserem Newsletter",
+      "thanksForSubscribing": "Vielen Dank für Ihr Abonnement",
+      "greeting": "Hallo",
+      "subscriptionConfirmed": "Ihr Abonnement wurde bestätigt!",
+      "whatToExpect": "Sie sind jetzt Teil unserer Community und erhalten die neuesten Updates, Tipps und exklusive Angebote.",
+      "youWillReceive": "Das erwartet Sie:",
+      "benefits": {
+        "updates": "Neueste Projekt-Updates und Fallstudien",
+        "tips": "Expertentipps und Einblicke in Webentwicklung und digitales Marketing",
+        "offers": "Exklusive Angebote und frühzeitiger Zugang zu neuen Dienstleistungen",
+        "news": "Branchenneuigkeiten und Trends"
+      },
+      "stayTuned": "Freuen Sie sich auf unseren nächsten Newsletter!",
+      "unsubscribeInfo": "Sie können sich jederzeit abmelden, indem Sie auf den Abmeldelink in jeder E-Mail klicken."
     }
   },
   "form": {
@@ -1718,5 +1735,36 @@
       "title": "Sind Sie bereit, Ihre Reise zu beginnen?",
       "description": "Sie sind nur einen Klick davon entfernt, in der digitalen Welt beruhigt zu sein ..."
     }
+  },
+  "linktree": {
+    "linktree": {
+      "companyWebsiteTitle": "Hauptwebsite"
+    },
+    "personalPortfolioTitle": "Persönliches Fredons Portfolio",
+    "personalPortfolioDescription": "Den persönlichen Lebenslauf von Fredon finden Sie hier",
+    "projectGalleryTitle": "Projektgalerie",
+    "projectGalleryDescription": "Projektgalerie und Entwicklungszentrum von FredonBytes | \nNützliche Komponentenausschnitte, Dokumentation und vieles mehr!",
+    "techSupportTitle": "Haben Sie ein Problem? \nLassen Sie es uns wissen!",
+    "techSupportDescription": "Füllen Sie das Formular aus, um uns bei Problemen mit einem unserer Projekte zu erreichen!﻿",
+    "githubOrgTitle": "FredonBytes | \nGitHub",
+    "githubOrgDescription": "Offizielles GitHub-Repository von FredonBytes",
+    "githubPersonalTitle": "Patrik Fredon | \nGitHub",
+    "githubPersonalDescription": "Offizielles GitHub-Repository von Patrik Fredon",
+    "companyWebsiteTitle": "FredonBytes | \nHauptseite",
+    "ourPlatformsHeading": "FredonBytes | \nLinktree",
+    "githubHeading": "GitHub",
+    "companyHeading": "Unternehmen",
+    "footerLocation": "Et in tenebris codicem inveni lucem.",
+    "footerTagline": "- Fredon",
+    "profileHeader": {
+      "title": "$ Ihr All-in-One-IT-Kraftpaket",
+      "description": "Vom Code bis zu den Klicks liefern wir vollständige digitale Dominanz.         \nUmfassende IT-Lösungen, die modernste Entwicklung, markantes Design und strategisches Marketing vereinen – alles unter einem Dach."
+    },
+    "companyWebsiteDescription": "Offizielle Hauptseite von FredonBytes."
+  },
+  "notFound": {
+    "notFoundHeading": "Seite nicht gefunden",
+    "notFoundDescription": "Es tut uns leid, aber es scheint ein Problem zu geben, da wir diese Seite nicht finden können. \nHaben Sie die Adresse richtig eingegeben?",
+    "goHomeButton": "Nach Hause gehen"
   }
 }

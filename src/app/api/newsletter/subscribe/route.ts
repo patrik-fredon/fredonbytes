@@ -76,6 +76,42 @@ export async function POST(request: NextRequest) {
         throw new Error('Failed to reactivate subscription');
       }
 
+      // Send welcome back email for reactivated subscriber
+      try {
+        const { sendEmail } = await import('@/lib/email');
+        const { generateNewsletterWelcomeHTML, generateNewsletterWelcomeText } = await import('@/lib/email-templates');
+        const { getTranslations } = await import('next-intl/server');
+
+        const t = await getTranslations({ locale: sanitizedData.locale, namespace: 'emails' });
+
+        const emailHtml = await generateNewsletterWelcomeHTML({
+          email: sanitizedData.email,
+          firstName: sanitizedData.first_name || undefined,
+          lastName: sanitizedData.last_name || undefined,
+          locale: sanitizedData.locale,
+        });
+
+        const emailText = await generateNewsletterWelcomeText({
+          email: sanitizedData.email,
+          firstName: sanitizedData.first_name || undefined,
+          lastName: sanitizedData.last_name || undefined,
+          locale: sanitizedData.locale,
+        });
+
+        await sendEmail({
+          from: 'Fredonbytes Newsletter <newsletter@fredonbytes.cloud>',
+          to: sanitizedData.email,
+          subject: t('newsletter.subject'),
+          html: emailHtml,
+          text: emailText,
+        });
+
+        console.log('Newsletter reactivation email sent successfully');
+      } catch (emailError) {
+        console.error('Error sending newsletter reactivation email:', emailError);
+        // Don't fail the request if email fails
+      }
+
       return NextResponse.json(
         {
           success: true,
@@ -100,6 +136,42 @@ export async function POST(request: NextRequest) {
     if (insertError) {
       console.error('Error creating newsletter subscription:', insertError);
       throw new Error('Failed to subscribe to newsletter');
+    }
+
+    // Send welcome email to new subscriber
+    try {
+      const { sendEmail } = await import('@/lib/email');
+      const { generateNewsletterWelcomeHTML, generateNewsletterWelcomeText } = await import('@/lib/email-templates');
+      const { getTranslations } = await import('next-intl/server');
+
+      const t = await getTranslations({ locale: sanitizedData.locale, namespace: 'emails' });
+
+      const emailHtml = await generateNewsletterWelcomeHTML({
+        email: sanitizedData.email,
+        firstName: sanitizedData.first_name || undefined,
+        lastName: sanitizedData.last_name || undefined,
+        locale: sanitizedData.locale,
+      });
+
+      const emailText = await generateNewsletterWelcomeText({
+        email: sanitizedData.email,
+        firstName: sanitizedData.first_name || undefined,
+        lastName: sanitizedData.last_name || undefined,
+        locale: sanitizedData.locale,
+      });
+
+      await sendEmail({
+        from: 'Fredonbytes Newsletter <newsletter@fredonbytes.cloud>',
+        to: sanitizedData.email,
+        subject: t('newsletter.subject'),
+        html: emailHtml,
+        text: emailText,
+      });
+
+      console.log('Newsletter welcome email sent successfully');
+    } catch (emailError) {
+      console.error('Error sending newsletter welcome email:', emailError);
+      // Don't fail the request if email fails
     }
 
     return NextResponse.json(
