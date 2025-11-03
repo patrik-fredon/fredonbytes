@@ -19,6 +19,7 @@ import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { Link } from "@/i18n/navigation";
 
 import { Button } from "@/components/common/Button";
 import { getCsrfToken } from "@/hooks/useCsrfToken";
@@ -156,7 +157,7 @@ export default function ContactClient({ locale }: ContactClientProps) {
     try {
       // Get CSRF token
       const csrfToken = getCsrfToken();
-      
+
       if (!csrfToken) {
         throw new Error("CSRF token not found");
       }
@@ -205,15 +206,14 @@ export default function ContactClient({ locale }: ContactClientProps) {
             <p className="text-xl text-terminal-light/80 mb-8">
               {t("contact.success.message")}
             </p>
-            <Button
-              variant="gradient"
-              onClick={() => {
-                setIsSubmitted(false);
-                setCurrentStep(1);
-              }}
-            >
-              {t("contact.success.cta")}
-            </Button>
+            <Link href="/">
+              <Button
+                variant="gradient"
+
+              >
+                {t("contact.success.cta")}
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </main>

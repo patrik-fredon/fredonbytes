@@ -438,7 +438,7 @@
     "success": {
       "title": "Vielen Dank!",
       "message": "Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
-      "cta": "Weitere Nachricht senden"
+      "cta": "Gehen Sie zur Startseite"
     },
     "form": {
       "steps": {

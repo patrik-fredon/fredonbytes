@@ -174,7 +174,7 @@ export async function POST(request: NextRequest) {
     const customerEmailText = await generateCustomerConfirmationText(emailData);
 
     const customerEmail = await sendEmail({
-      from: "Fredonbytes <noreply@fredonbytes.cloud>",
+      from: "Fredonbytes <info@fredonbytes.com>",
       to: validatedData.email,
       subject: t("customer.subject"),
       html: customerEmailHtml,
@@ -195,7 +195,7 @@ export async function POST(request: NextRequest) {
     );
 
     const adminEmail = await sendEmail({
-      from: "Contact Form <noreply@fredonbytes.cloud>",
+      from: "Contact Form <info@fredonbytes.com>",
       to: "info@fredonbytes.cloud",
       subject: `New Contact Form Submission from ${sanitizedData.firstName} ${sanitizedData.lastName}`,
       html: adminEmailHtml,
@@ -211,7 +211,7 @@ export async function POST(request: NextRequest) {
     // Create survey session in unified sessions table
     // Survey questionnaire ID (hardcoded UUID from migrations)
     const surveyQuestionnaireId = '22222222-2222-2222-2222-222222222222';
-    
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error: sessionError } = await (supabase as any)
       .from("sessions")
@@ -233,9 +233,9 @@ export async function POST(request: NextRequest) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await (supabase as any)
         .from("contact_submissions")
-        .update({ 
+        .update({
           session_id: sessionId,
-          survey_sent: true 
+          survey_sent: true
         })
         .eq("id", (contactSubmission as any).id);
     }

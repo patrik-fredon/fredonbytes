@@ -356,10 +356,10 @@ ${surveySection}
 
 ${t('customer.whatHappensNext')}
 
-1. ${t('customer.steps.review').replace(/<\/?strong>/g, '')}
-2. ${t('customer.steps.response').replace(/<\/?strong>/g, '')}
-3. ${t('customer.steps.consultation').replace(/<\/?strong>/g, '')}
-4. ${t('customer.steps.proposal').replace(/<\/?strong>/g, '')}
+1. ${t('customer.steps.review')}
+2. ${t('customer.steps.response')}
+3. ${t('customer.steps.consultation')}
+4. ${t('customer.steps.proposal')}
 
 ${t('customer.projectSummary')}
 - ${t('admin.projectDetails')}: ${data.projectType}
@@ -488,7 +488,7 @@ export interface SurveyThankYouData {
  */
 export async function generateSurveyThankYouHTML(data: SurveyThankYouData): Promise<string> {
   const t = await getEmailTranslations(data.locale);
-  
+
   return `
     <!DOCTYPE html>
     <html>
@@ -554,7 +554,7 @@ export async function generateSurveyThankYouHTML(data: SurveyThankYouData): Prom
  */
 export async function generateSurveyThankYouText(data: SurveyThankYouData): Promise<string> {
   const t = await getEmailTranslations(data.locale);
-  
+
   return `
 🎉 ${t('survey.thankYou')}
 

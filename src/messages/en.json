@@ -438,7 +438,7 @@
     "success": {
       "title": "Thank You!",
       "message": "Your message has been sent successfully. We'll get back to you within 24 hours.",
-      "cta": "Send Another Message"
+      "cta": "Go to homepage"
     },
     "form": {
       "steps": {
@@ -1496,10 +1496,10 @@
       "surveyButton": "Complete Survey",
       "whatHappensNext": "What happens next?",
       "steps": {
-        "review": "<strong>Review (within 2 hours):</strong> Our team will review your requirements",
-        "response": "<strong>Response (within 24 hours):</strong> We'll reach out to discuss your project",
-        "consultation": "<strong>Consultation:</strong> Free strategy session to understand your needs",
-        "proposal": "<strong>Proposal:</strong> Detailed project proposal and timeline"
+        "review": "Review (within 2 hours): Our team will review your requirements",
+        "response": "Response (within 24 hours): We'll reach out to discuss your project",
+        "consultation": "Consultation: Free strategy session to understand your needs",
+        "proposal": "Proposal: Detailed project proposal and timeline"
       },
       "projectSummary": "Your Project Summary:",
       "inTheMeantime": "In the meantime, feel free to:",

@@ -438,7 +438,7 @@
     "success": {
       "title": "Děkujeme!",
       "message": "Vaše zpráva byla úspěšně odeslána. Ozveme se vám do 24 hodin.",
-      "cta": "Odeslat další zprávu"
+      "cta": "Přejít na domovskou stránku"
     },
     "form": {
       "steps": {
