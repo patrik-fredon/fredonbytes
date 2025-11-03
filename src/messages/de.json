@@ -12,6 +12,13 @@
     "allLinks": "Alle Links",
     "getStarted": "Loslegen"
   },
+  "metadata": {
+    "siteName": "Fredonbytes",
+    "title": "Fredonbytes - Ihr All-in-One IT-Partner",
+    "description": "Vom Code bis zum Klick bieten wir vollständige digitale Lösungen. Umfassende IT-Dienstleistungen einschließlich Softwareentwicklung, Grafikdesign, SEO und Social-Media-Marketing.",
+    "keywords": "Webentwicklung, Softwareentwicklung, IT-Lösungen, Grafikdesign, SEO, Social-Media-Marketing, Brno, Tschechien",
+    "logoAlt": "Fredonbytes Logo"
+  },
   "hero": {
     "title": "Ihr All-in-One",
     "titleHighlight": "IT-Kraftzentrum",
@@ -1519,7 +1526,11 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monatliche SEO und digitale Marketing-Dienste",
-            "included": ["Keyword-Recherche", "Content-Strategie", "Analytik"]
+            "included": [
+              "Keyword-Recherche",
+              "Content-Strategie",
+              "Analytik"
+            ]
           },
           "socialMedia": {
             "name": "Social Media",

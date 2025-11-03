@@ -12,6 +12,13 @@
     "allLinks": "Všechny odkazy",
     "getStarted": "Začít"
   },
+  "metadata": {
+    "siteName": "Fredonbytes",
+    "title": "Fredonbytes - Váš komplexní IT partner",
+    "description": "Od kódu po kliknutí, poskytujeme kompletní digitální řešení. Komplexní IT služby včetně vývoje softwaru, grafického designu, SEO a marketingu na sociálních sítích.",
+    "keywords": "vývoj webu, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika",
+    "logoAlt": "Logo Fredonbytes"
+  },
   "hero": {
     "title": "My jsme",
     "titleHighlight": "FredonBytes",

@@ -12,6 +12,13 @@
     "allLinks": "All Links",
     "getStarted": "Get Started"
   },
+  "metadata": {
+    "siteName": "Fredonbytes",
+    "title": "Fredonbytes - Your All-in-One IT Powerhouse",
+    "description": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
+    "keywords": "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic",
+    "logoAlt": "Fredonbytes Logo"
+  },
   "hero": {
     "title": "We are",
     "titleHighlight": "FredonBytes",
@@ -1422,7 +1429,11 @@
           "webDevelopment": {
             "name": "Web Development",
             "description": "Custom website or web application",
-            "included": ["Responsive Design", "SEO Basic", "Contact Forms"]
+            "included": [
+              "Responsive Design",
+              "SEO Basic",
+              "Contact Forms"
+            ]
           },
           "mobileApp": {
             "name": "Mobile App",
@@ -1445,7 +1456,11 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monthly SEO and digital marketing services",
-            "included": ["Keyword Research", "Content Strategy", "Analytics"]
+            "included": [
+              "Keyword Research",
+              "Content Strategy",
+              "Analytics"
+            ]
           },
           "socialMedia": {
             "name": "Social Media",

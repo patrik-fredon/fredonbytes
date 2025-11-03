@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
+import { generateLocalizedMetadata } from "@/config/metadata";
 import "../globals.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/500.css";
@@ -54,51 +55,14 @@ const WebVitals = dynamic(
 // Variable set via CSS: --font-jetbrains-mono
 // Font features: 'liga' 1, 'calt' 1 for ligatures
 
-export const metadata: Metadata = {
-  title: "Fredonbytes - Your All-in-One IT Powerhouse",
-  description:
-    "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
-  keywords:
-    "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic",
-  authors: [{ name: "Fredonbytes", url: "https://fredonbytes.com" }],
-  creator: "Fredonbytes",
-  publisher: "Fredonbytes",
-  robots: "index, follow",
-  icons: {
-    icon: "/FredonBytes_GraphicLogo.png",
-    shortcut: "/FredonBytes_GraphicLogo.png",
-    apple: "/FredonBytes_GraphicLogo.png",
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://fredonbytes.com",
-    siteName: "Fredonbytes",
-    title: "Fredonbytes - Your All-in-One IT Powerhouse",
-    description:
-      "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
-    images: [
-      {
-        url: "/FredonBytes_GraphicLogo.png",
-        width: 1200,
-        height: 630,
-        alt: "Fredonbytes Logo",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@Fredonbytes",
-    creator: "@FredonBytes",
-    title: "Fredonbytes - Your All-in-One IT Powerhouse",
-    description:
-      "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
-    images: ["/FredonBytes_GraphicLogo.png"],
-  },
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.com",
-  ),
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generateLocalizedMetadata(locale);
+}
 
 export const viewport: Viewport = {
   width: "device-width",
