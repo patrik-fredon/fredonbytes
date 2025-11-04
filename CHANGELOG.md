@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- **Docker & Coolify Deployment Support**: Added production-ready Docker configuration for Coolify deployment. Created multi-stage Dockerfile with Alpine Linux base (deps → builder → runner) for optimized Next.js standalone builds. Created docker-compose.yml with Redis 7-alpine caching layer (256MB memory limit, LRU eviction), health checks for both services, named volumes for Redis persistence, internal networking, and Coolify-compatible container naming. Added /api/health endpoint for container health monitoring. Updated next.config.ts with output: 'standalone'. Updated .env.example with REDIS_URL configuration. ([Dockerfile](Dockerfile) | [docker-compose.yml](docker-compose.yml) | [.dockerignore](.dockerignore) | [next.config.ts](next.config.ts) | [.env.example](.env.example) | [src/app/api/health/route.ts](src/app/api/health/route.ts))
+
 ### Changed
 
 - **Complete Framer Motion Migration to CSS Animations**: Migrated entire project from Framer Motion (~40KB) to pure CSS animations for better mobile performance, reduced bundle size, and improved reliability. Added comprehensive animation utility classes to `globals.css` including hover effects (`hover-lift`, `hover-scale`), modal animations (`modal-backdrop`, `modal-content`), slide transitions (`slide-in-left/right/bottom`), fade effects (`fade-in-scale`), and stagger support. All animations are GPU-accelerated (transform + opacity only) and respect `prefers-reduced-motion`. Migration patterns documented in `FRAMER_MOTION_MIGRATION.md`. Removed `framer-motion` dependency from `package.json`. ([globals.css](src/app/globals.css) +205 lines animation utilities | All 22 component files | [FRAMER_MOTION_MIGRATION.md](FRAMER_MOTION_MIGRATION.md))
