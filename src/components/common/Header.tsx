@@ -3,16 +3,15 @@
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import React, {
-  useState,
-  useEffect,
-  useTransition,
+import {
+  startTransition,
   useCallback,
+  useEffect,
   useRef,
+  useState,
 } from "react";
-
-import { cn } from "@/lib/utils";
 import { Link as IntlLink } from "@/i18n/navigation";
+import { cn } from "@/lib/utils";
 
 import { Button } from "./Button";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -24,7 +23,6 @@ interface HeaderProps {
 export default function Header({ className }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isPending, startTransition] = useTransition();
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
   const t = useTranslations();
 
@@ -168,7 +166,10 @@ export default function Header({ className }: HeaderProps) {
 
               {/* External Links Dropdown */}
               <div className="relative group z-20">
-                <button className="py-3 px-5 text-terminal-light hover:text-neon-cyan transition-normal font-medium font-mono flex items-center space-x-1 hover:shadow-glow-cyan-subtle rounded-lg">
+                <button
+                  type="button"
+                  className="py-3 px-5 text-terminal-light hover:text-neon-cyan transition-normal font-medium font-mono flex items-center space-x-1 hover:shadow-glow-cyan-subtle rounded-lg"
+                >
                   <span>{t("navigation.links")}</span>
                   <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
@@ -207,10 +208,11 @@ export default function Header({ className }: HeaderProps) {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="lg:hidden flex relative items-center space-x-4">
+            <div className="lg:hidden flex relative items-center space-x-2">
               <button
+                type="button"
                 onClick={toggleMenu}
-                className={`relative lg:hidden flex items-center justify-center  p-4 text-neon-cyan hover:text-neon-cyan transition-fast mobile-touch-target min-h-11 min-w-11  group ${
+                className={`relative lg:hidden flex items-center justify-center  p-2 text-neon-cyan hover:text-neon-cyan transition-fast mobile-touch-target   group ${
                   isMenuOpen ? "hamburger-open" : ""
                 }`}
                 aria-label="Toggle menu"
@@ -248,7 +250,7 @@ export default function Header({ className }: HeaderProps) {
 
               <div className="border-t border-neon-cyan/20 pt-4 mt-4">
                 <p className="text-xs font-medium text-terminal-muted mb-3 px-2 font-mono uppercase tracking-wider">
-                  <span className="text-electric-purple">// </span>
+                  <span className="text-electric-purple">{`// `}</span>
                   {t("external.externalLinks")}
                 </p>
                 {externalLinks.map((link) => (

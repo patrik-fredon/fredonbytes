@@ -1,6 +1,5 @@
-import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Suspense } from "react";
 
 import GridBackground from "@/components/dev-ui/GridBackground";
@@ -28,7 +27,7 @@ export default async function ProjectsPage({ params }: Props) {
   const t = await getTranslations("projects");
 
   return (
-    <main className="min-h-screen relative">
+    <div className="min-h-screen relative">
       {/* Grid Background */}
       <div className="absolute inset-0">
         <GridBackground />
@@ -50,6 +49,6 @@ export default async function ProjectsPage({ params }: Props) {
           <ProjectsGrid />
         </Suspense>
       </div>
-    </main>
+    </div>
   );
 }

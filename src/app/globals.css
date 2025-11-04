@@ -454,8 +454,8 @@ body {
   width: 10px;
   height: 1px;
   background-color: currentColor;
-  margin: 5px 0;
-  border-radius: 2px;
+  margin: 1px 0;
+  border-radius: 1px;
   -webkit-transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   -moz-transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -468,10 +468,10 @@ body {
 }
 
 .hamburger-open .hamburger-line:nth-child(1) {
-  -webkit-transform: rotate(45deg) translate(7px, 7px);
-  -moz-transform: rotate(45deg) translate(7px, 7px);
-  -ms-transform: rotate(45deg) translate(7px, 7px);
-  transform: rotate(45deg) translate(7px, 7px);
+  -webkit-transform: rotate(45deg) translate(2px, 2px);
+  -moz-transform: rotate(45deg) translate(2px, 2px);
+  -ms-transform: rotate(45deg) translate(2px, 2px);
+  transform: rotate(45deg) translate(2px, 2px);
   box-shadow: 0 0 12px rgba(0, 217, 255, 0.6);
 }
 
@@ -485,10 +485,10 @@ body {
 
 .hamburger-open .hamburger-line:nth-child(3) {
   transform: rotate(-45deg) translate(2px, -2px);
-  -webkit-transform: rotate(-45deg) translate(7px, -7px);
-  -moz-transform: rotate(-45deg) translate(7px, -7px);
-  -ms-transform: rotate(-45deg) translate(7px, -7px);
-  transform: rotate(-45deg) translate(7px, -7px);
+  -webkit-transform: rotate(-45deg) translate(2px, -2px);
+  -moz-transform: rotate(-45deg) translate(2px, -2px);
+  -ms-transform: rotate(-45deg) translate(2px, -2px);
+
   box-shadow: 0 0 12px rgba(0, 217, 255, 0.6);
 }
 
@@ -1235,5 +1235,259 @@ input[type="checkbox"]:disabled {
 
   .section-animate-child:nth-child(10) {
     animation-delay: 0.5s;
+  }
+}
+
+/* ========================================
+   Reusable Animation Utilities (Framer Motion Replacement)
+   ======================================== */
+
+/* Card hover effects - replaces motion.div whileHover */
+.hover-lift {
+  transition:
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.hover-scale {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-scale-sm:hover {
+  transform: scale(1.02);
+}
+
+/* Button tap effect - replaces whileTap */
+.active-scale:active {
+  transform: scale(0.95);
+}
+
+/* Modal/Backdrop animations */
+@keyframes backdrop-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-backdrop {
+  animation: backdrop-fade-in 0.2s ease-out forwards;
+}
+
+.modal-content {
+  animation: modal-scale-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Slide transitions */
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-bottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  animation: slide-in-left 0.3s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.3s ease-out forwards;
+}
+
+.slide-in-bottom {
+  animation: slide-in-bottom 0.3s ease-out forwards;
+}
+
+/* Fade with scale */
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-in-scale {
+  animation: fade-in-scale 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Rotate animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Success checkmark animation */
+@keyframes checkmark-draw {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.checkmark-animation {
+  stroke-dasharray: 100;
+  animation: checkmark-draw 0.6s ease-out forwards;
+}
+
+/* Floating animation for icons */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Stagger delays for list items */
+.stagger-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.stagger-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.stagger-item:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.stagger-item:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.stagger-item:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.stagger-item:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.stagger-item:nth-child(7) {
+  animation-delay: 0.35s;
+}
+.stagger-item:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+/* Progress bar animation */
+@keyframes progress-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress-width, 100%);
+  }
+}
+
+.progress-animate {
+  animation: progress-fill 0.5s ease-out forwards;
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .hover-lift:hover,
+  .hover-scale:hover,
+  .hover-scale-sm:hover {
+    transform: none !important;
+  }
+
+  .modal-backdrop,
+  .modal-content,
+  .slide-in-left,
+  .slide-in-right,
+  .slide-in-bottom,
+  .fade-in-scale,
+  .animate-spin,
+  .animate-float,
+  .pulse-glow,
+  .progress-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

@@ -1,16 +1,16 @@
 "use client";
 
 import {
+  ArrowRight,
+  CheckCircle,
   Code,
+  Globe,
   Palette,
   Search,
   Share2,
   Shield,
-  ArrowRight,
-  CheckCircle,
-  Zap,
-  Globe,
   Smartphone,
+  Zap,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
@@ -160,7 +160,7 @@ export default function ServicesSection() {
           {/* Section Header */}
           <div className="section-animate-child text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-mono">
-              <span className="text-neon-cyan">//</span>{" "}
+              <span className="text-neon-cyan">{`//`}</span>{" "}
               <span className="bg-linear-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
                 {t("services.title")}
               </span>
@@ -175,6 +175,7 @@ export default function ServicesSection() {
             <div className="flex flex-wrap justify-center gap-2 bg-terminal-dark border border-neon-purple/20  rounded-lg p-2">
               {serviceCategories.map((category) => (
                 <button
+                  type="button"
                   key={category.id}
                   onClick={() => setActiveTab(category.id)}
                   className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-fast ${
@@ -216,7 +217,7 @@ export default function ServicesSection() {
 
                       <div className="space-y-2">
                         <p className="text-neon-cyan text-xs font-mono">
-                          // Features:
+                          {`//`} Features:
                         </p>
                         <ul className="space-y-1">
                           {service.features.map((feature, featureIndex) => (

@@ -3,26 +3,25 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
-  ArrowRight,
   ArrowLeft,
-  CheckCircle,
-  User,
+  ArrowRight,
   Building,
+  CheckCircle,
+  Clock,
+  Mail,
+  MapPin,
   MessageSquare,
+  Phone,
   Shield,
+  User,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Link } from "@/i18n/navigation";
-
 import { Button } from "@/components/common/Button";
 import { getCsrfToken } from "@/hooks/useCsrfToken";
+import { Link } from "@/i18n/navigation";
 
 const contactSchema = z.object({
   // Step 1: Basic Info
@@ -195,7 +194,7 @@ export default function ContactClient({ locale }: ContactClientProps) {
   };
   if (isSubmitted) {
     return (
-      <main className="min-h-screen ">
+      <div className="min-h-screen z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -216,12 +215,12 @@ export default function ContactClient({ locale }: ContactClientProps) {
             </Link>
           </motion.div>
         </div>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className="min-h-screen ">
+    <div className="min-h-screen z-10">
       <div className="container mx-auto mt-10 px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
         <motion.div
           variants={containerVariants}
@@ -751,6 +750,6 @@ export default function ContactClient({ locale }: ContactClientProps) {
           </div>
         </motion.div>
       </div>
-    </main>
+    </div>
   );
 }

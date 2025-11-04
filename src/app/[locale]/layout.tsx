@@ -3,19 +3,18 @@ import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-
-import { routing } from "@/i18n/routing";
 import { generateLocalizedMetadata } from "@/config/metadata";
+import { routing } from "@/i18n/routing";
 import "../globals.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/500.css";
 import "@fontsource/jetbrains-mono/600.css";
 import "@fontsource/jetbrains-mono/700.css";
 
+import GridBackground from "@/components/dev-ui/GridBackground";
 import ClientLayoutWrapper from "../../components/ClientLayoutWrapper";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
-import GridBackground from "@/components/dev-ui/GridBackground";
 
 // Dynamic imports for heavy components
 const AnimatedBackground = dynamic(
@@ -108,7 +107,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className="antialiased min-h-screen flex flex-col relative"
         style={{
-          fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace",
+          fontFamily: "'JetBrains Mono', monospace",
         }}
       >
         <NextIntlClientProvider messages={messages}>

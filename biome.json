@@ -16,11 +16,15 @@
   },
   "linter": {
     "rules": {
+      "security": {
+        "noDangerouslySetInnerHtml": "warn"
+      },
       "correctness": {
         "noUnusedVariables": {
           "level": "error",
           "fix": "none"
-        }
+        },
+        "useUniqueElementIds": "off"
       },
       "style": {
         "useConst": {

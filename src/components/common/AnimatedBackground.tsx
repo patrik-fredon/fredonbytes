@@ -2,18 +2,18 @@
 
 import { motion } from "framer-motion";
 import {
-  Code,
-  Zap,
-  Globe,
-  Database,
-  Server,
-  Cpu,
-  Terminal,
   Cloud,
-  Smartphone,
+  Code,
+  Cpu,
+  Database,
+  Globe,
   Monitor,
+  Server,
+  Smartphone,
+  Terminal,
+  Zap,
 } from "lucide-react";
-import React, { useMemo } from "react";
+import React from "react";
 
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { generateParticlePositions } from "@/lib/seeded-random";

@@ -2,10 +2,10 @@
 
 import { Globe, Loader2 } from "lucide-react";
 import { useLocale } from "next-intl";
-import React, { useState, useEffect, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Locale, routing } from "@/i18n/routing";
+import { type Locale, routing } from "@/i18n/routing";
 
 interface LanguageSwitcherProps {
   variant?: "desktop" | "mobile";
@@ -63,6 +63,7 @@ export default function LanguageSwitcher({
       <div className="flex items-center justify-center gap-3 py-4">
         {routing.locales.map((lang, index) => (
           <button
+            type="button"
             key={lang}
             onClick={() => handleLocaleChange(lang)}
             disabled={isPending}
@@ -96,6 +97,7 @@ export default function LanguageSwitcher({
   return (
     <div className="relative group">
       <button
+        type="button"
         className="flex items-center space-x-2 text-terminal-light hover:text-neon-cyan transition-fast font-medium min-h-[44px] min-w-[44px] px-2 py-2"
         aria-label="Language switcher"
         disabled={isPending}
@@ -114,6 +116,7 @@ export default function LanguageSwitcher({
       <div className="absolute top-full right-0 mt-2 rounded-lg shadow-lg border border-neon-cyan/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 bg-terminal-dark/95 backdrop-blur-md">
         {routing.locales.map((lang) => (
           <button
+            type="button"
             key={lang}
             onClick={() => handleLocaleChange(lang)}
             disabled={isPending}

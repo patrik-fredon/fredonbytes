@@ -1,10 +1,10 @@
 "use client";
 
-import { Github, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import React from "react";
+import { Link } from "@/i18n/navigation";
 
 import CookieSettingsLink from "./CookieSettingsLink";
 
@@ -225,7 +225,6 @@ export default function Footer() {
                 <span className="text-neon-cyan">{"•"}</span>
                 <span>{t("footer.taglines.motto")}</span>
               </div>
-              <div className="h-6 w-px bg-neon-cyan/20" />
             </div>
           </div>
         </div>

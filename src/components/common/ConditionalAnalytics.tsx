@@ -34,7 +34,7 @@
  */
 
 import Script from "next/script";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 const COOKIE_CONSENT_NAME = "cookie-consent";
 
@@ -55,7 +55,7 @@ interface CookieConsentData {
 export default function ConditionalAnalytics() {
   const [consent, setConsent] = useState<CookiePreferences | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-
+  const uniqueKey = useId();
   useEffect(() => {
     // Check cookie consent on mount
     const checkConsent = () => {
@@ -107,29 +107,27 @@ export default function ConditionalAnalytics() {
       {/* Strategy: afterInteractive - loads after page becomes interactive */}
       {/* This ensures analytics doesn't block initial page load */}
       {consent?.analytics && gaId && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            strategy="afterInteractive"
-            async
-            onLoad={() => {
-              // Initialize Google Analytics
-              window.gtag =
-                window.gtag ||
-                function (...args: unknown[]) {
-                  (window.dataLayer = window.dataLayer || []).push(...args);
-                };
-              window.gtag("js", new Date());
-              window.gtag("config", gaId, {
-                anonymize_ip: true, // Anonymize IP for GDPR compliance
-                cookie_flags: "SameSite=Lax;Secure",
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+          strategy="afterInteractive"
+          async
+          onLoad={() => {
+            // Initialize Google Analytics
+            window.gtag =
+              window.gtag ||
+              ((...args: unknown[]) => {
+                (window.dataLayer || []).push(...args);
               });
-            }}
-            onError={(e) => {
-              console.error("Failed to load Google Analytics:", e);
-            }}
-          />
-        </>
+            window.gtag("js", new Date());
+            window.gtag("config", gaId, {
+              anonymize_ip: true, // Anonymize IP for GDPR compliance
+              cookie_flags: "SameSite=Lax;Secure",
+            });
+          }}
+          onError={(e) => {
+            console.error("Failed to load Google Analytics:", e);
+          }}
+        />
       )}
 
       {/* Marketing Scripts - Only load if marketing consent is given */}
@@ -140,7 +138,7 @@ export default function ConditionalAnalytics() {
           {/* Async loading prevents blocking of other resources */}
           {fbPixelId && (
             <Script
-              id="facebook-pixel"
+              id={uniqueKey}
               strategy="afterInteractive"
               dangerouslySetInnerHTML={{
                 __html: `
@@ -167,7 +165,7 @@ export default function ConditionalAnalytics() {
           {/* The script itself sets async=true for the dynamically created script tag */}
           {linkedInPartnerId && (
             <Script
-              id="linkedin-insight"
+              id={uniqueKey}
               strategy="afterInteractive"
               dangerouslySetInnerHTML={{
                 __html: `
@@ -201,9 +199,9 @@ export default function ConditionalAnalytics() {
               onLoad={() => {
                 window.gtag =
                   window.gtag ||
-                  function (...args: unknown[]) {
-                    (window.dataLayer = window.dataLayer || []).push(...args);
-                  };
+                  ((...args: unknown[]) => {
+                    (window.dataLayer || []).push(...args);
+                  });
                 window.gtag("js", new Date());
                 window.gtag("config", googleAdsId);
               }}

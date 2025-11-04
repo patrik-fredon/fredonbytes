@@ -1,14 +1,13 @@
 "use client";
-
 import { motion } from "framer-motion";
+import { CheckCircle, Code, Globe, Zap } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { Code, Zap, Globe, CheckCircle } from "lucide-react";
 import { Button } from "../common/Button";
-import TerminalWindow from "../dev-ui/TerminalWindow";
 import GridBackground from "../dev-ui/GridBackground";
+import TerminalWindow from "../dev-ui/TerminalWindow";
 
 interface TerminalLine {
   lineNumber: number;
@@ -112,13 +111,7 @@ export default function HeroSection() {
     }, typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [
-    mobileCharIndex,
-    isDeleting,
-    mobileLineIndex,
-    mobileCodeSnippets,
-    isMobileTerminalVisible,
-  ]);
+  }, [mobileCharIndex, isDeleting, mobileLineIndex, isMobileTerminalVisible]);
 
   // Desktop advanced terminal initialization
   useEffect(() => {
@@ -194,7 +187,7 @@ export default function HeroSection() {
     }, typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [currentLineIndex, charIndex, fullCodeStructure, compilationStatus]);
+  }, [currentLineIndex, charIndex, compilationStatus]);
 
   const renderCodeLine = (line: TerminalLine) => {
     const { displayText, isTyping, isComplete } = line;
