@@ -34,12 +34,13 @@ export default function HeroSection() {
   const [mobileLineIndex, setMobileLineIndex] = useState(0);
   const [mobileCharIndex, setMobileCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isMobileTerminalVisible, setIsMobileTerminalVisible] = useState(false);
 
   const mobileCodeSnippets = [
-    "const success = await buildAmazingWebsite();",
-    'function createDigitalDominance() { return "Fredonbytes"; }',
-    "const innovation = () => code + creativity + strategy;",
-    "export default class Fredonbytes extends Excellence {}",
+    "const success = buildWebsite();",
+    'return "Innovation + Code";',
+    "const result = optimize();",
+    "export class Fredonbytes {}",
   ];
 
   const fullCodeStructure = [
@@ -76,11 +77,22 @@ export default function HeroSection() {
     { line: 19, code: "}" },
   ];
 
-  // Mobile simple typing effect
+  // Mobile terminal visibility detection
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsMobileTerminalVisible(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Mobile simple typing effect - only runs when visible
+  useEffect(() => {
+    if (!isMobileTerminalVisible) return;
+
     const currentLine = mobileCodeSnippets[mobileLineIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
-    const pauseTime = isDeleting ? 1000 : 2000;
+    const typingSpeed = isDeleting ? 30 : 80;
+    const pauseAfterTyping = 1500;
+    const pauseBeforeDeleting = 500;
 
     const timer = setTimeout(() => {
       if (!isDeleting && mobileCharIndex < currentLine.length) {
@@ -90,15 +102,23 @@ export default function HeroSection() {
         setTypedText(currentLine.substring(0, mobileCharIndex - 1));
         setMobileCharIndex(mobileCharIndex - 1);
       } else if (!isDeleting && mobileCharIndex === currentLine.length) {
-        setTimeout(() => setIsDeleting(true), pauseTime);
+        setTimeout(() => setIsDeleting(true), pauseAfterTyping);
       } else if (isDeleting && mobileCharIndex === 0) {
-        setIsDeleting(false);
-        setMobileLineIndex((prev) => (prev + 1) % mobileCodeSnippets.length);
+        setTimeout(() => {
+          setIsDeleting(false);
+          setMobileLineIndex((prev) => (prev + 1) % mobileCodeSnippets.length);
+        }, pauseBeforeDeleting);
       }
     }, typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [mobileCharIndex, isDeleting, mobileLineIndex, mobileCodeSnippets]);
+  }, [
+    mobileCharIndex,
+    isDeleting,
+    mobileLineIndex,
+    mobileCodeSnippets,
+    isMobileTerminalVisible,
+  ]);
 
   // Desktop advanced terminal initialization
   useEffect(() => {
@@ -366,28 +386,32 @@ export default function HeroSection() {
               variants={itemVariants}
               className="mb-8 mx-auto max-w-2xl"
             >
-              <TerminalWindow title="fredonbytes.ts">
-                <div className="font-mono text-sm space-y-1">
-                  <div className="flex">
-                    <span className="text-slate-500 select-none w-8 text-right mr-4">
-                      1
-                    </span>
-                    <span className="text-neon-cyan">{"//"} </span>
-                    <span className="text-slate-400">
-                      {t("hero.codeComments.creating")}
-                    </span>
+              {isMobileTerminalVisible ? (
+                <TerminalWindow title="fredonbytes.ts">
+                  <div className="font-mono text-xs sm:text-sm space-y-1 py-2">
+                    <div className="flex">
+                      <span className="text-slate-500 select-none w-6 sm:w-8 text-right mr-2 sm:mr-4">
+                        1
+                      </span>
+                      <span className="text-neon-cyan">{"//"} </span>
+                      <span className="text-slate-400 text-xs sm:text-sm">
+                        {t("hero.codeComments.creating")}
+                      </span>
+                    </div>
+                    <div className="flex">
+                      <span className="text-slate-500 select-none w-6 sm:w-8 text-right mr-2 sm:mr-4">
+                        2
+                      </span>
+                      <span className="text-code-green text-xs sm:text-sm">
+                        {typedText}
+                        <span className="animate-pulse text-neon-cyan">|</span>
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex">
-                    <span className="text-slate-500 select-none w-8 text-right mr-4">
-                      2
-                    </span>
-                    <span className="text-code-green">
-                      {typedText}
-                      <span className="animate-pulse text-neon-cyan">|</span>
-                    </span>
-                  </div>
-                </div>
-              </TerminalWindow>
+                </TerminalWindow>
+              ) : (
+                <div className="h-24 bg-terminal-dark/50 rounded-lg border border-neon-cyan/20 animate-pulse" />
+              )}
             </motion.div>
 
             <motion.h1

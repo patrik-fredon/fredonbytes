@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
   Users,
   Award,
@@ -26,16 +25,6 @@ export default function AboutSection({
   showTeam?: boolean;
 }) {
   const t = useTranslations();
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  };
   const stats = [
     {
       number: t("services.stats.support.number"),
@@ -58,17 +47,6 @@ export default function AboutSection({
       icon: CheckCircle,
     },
   ];
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut" as const,
-      },
-    },
-  };
 
   const values = [
     {
@@ -135,14 +113,9 @@ export default function AboutSection({
   return (
     <section id="about" className="py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        <div className="section-animate">
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <div className="section-animate-child text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-terminal-light mb-6 font-mono">
               <span className="text-neon-cyan">//</span> {t("about.title")}{" "}
               <span className="text-neon-cyan">{t("about.company")}</span>
@@ -151,7 +124,7 @@ export default function AboutSection({
               {t("about.subtitle")}
             </p>
             {/* Stats - Terminal Styled */}
-            <motion.div variants={itemVariants} className="m-16">
+            <div className="m-16">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {stats.map((stat, index) => {
                   const Icon = stat.icon;
@@ -170,7 +143,7 @@ export default function AboutSection({
                   );
                 })}
               </div>
-            </motion.div>
+            </div>
             <Link href="/about">
               <Button
                 variant="gradient"
@@ -181,13 +154,10 @@ export default function AboutSection({
                 $ {t("common.buttons.learnMore")} --about
               </Button>
             </Link>
-          </motion.div>
+          </div>
 
           {/* Mission & Vision - Terminal Styled */}
-          <motion.div
-            variants={itemVariants}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20"
-          >
+          <div className="section-animate-child grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             <GlassCard className="p-8" glowColor="cyan">
               <h3 className="flex justify-center text-2xl font-bold text-terminal-light mb-4 font-mono">
                 <span className="text-neon-cyan">//</span>{" "}
@@ -206,10 +176,10 @@ export default function AboutSection({
                 &ldquo;{t("about.vision.description")}&rdquo;
               </p>
             </GlassCard>
-          </motion.div>
+          </div>
 
           {/* Core Values - Terminal Cards */}
-          <motion.div variants={itemVariants} className="mb-20">
+          <div className="section-animate-child mb-20">
             <h3 className="text-3xl font-bold text-terminal-light text-center mb-12 font-mono">
               <span className="text-neon-cyan">//</span>{" "}
               {t("about.values.title")}
@@ -218,11 +188,7 @@ export default function AboutSection({
               {values.map((value, index) => {
                 const Icon = value.icon;
                 return (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="text-center"
-                  >
+                  <div key={index} className="text-center">
                     <GlassCard className="p-6 h-full" glowColor="normal">
                       <div className="w-16 h-16 mx-auto mb-4 bg-neon-cyan/10 border border-neon-cyan/40 rounded-xl flex items-center justify-center">
                         <Icon className="w-8 h-8 text-neon-cyan" />
@@ -234,13 +200,13 @@ export default function AboutSection({
                         {value.description}
                       </p>
                     </GlassCard>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
-          </motion.div>
+          </div>
           {/* Founder Quote - Terminal Styled */}
-          <motion.div variants={itemVariants} className="m-20">
+          <div className="section-animate-child m-20">
             <blockquote className="text-lg font-medium text-terminal-light mb-6 leading-relaxed font-mono">
               <span className="text-neon-purple">//</span> &ldquo;
               {t("about.founderQuote.quote")}&rdquo;
@@ -248,26 +214,22 @@ export default function AboutSection({
             <cite className="text-terminal-light/70 text-sm font-mono">
               — {t("about.founderQuote.author")}
             </cite>
-          </motion.div>
+          </div>
 
           {/* Team Section - GlassCard */}
           {showTeam && (
-            <motion.div variants={itemVariants}>
+            <div className="section-animate-child">
               <h3 className="text-3xl font-bold text-terminal-light text-center mb-12 font-mono">
                 <span className="text-neon-cyan">//</span>{" "}
                 {t("about.team.title")}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {teamMembers.map((member, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="group"
-                  >
+                  <div key={index} className="group">
                     <GlassCard className="p-6 h-full" glowColor="cyan">
                       <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-neon-cyan/50 shadow-glow-cyan group-hover:border-neon-cyan group-hover:shadow-glow-cyan-strong transition-all duration-200">
                         {member.image === "user-placeholder" ? (
-                          <div className="w-full h-full bg-gradient-to-br from-terminal-dark to-slate-900 flex items-center justify-center">
+                          <div className="w-full h-full bg-linear-to-br from-terminal-dark to-slate-900 flex items-center justify-center">
                             <Users className="w-12 h-12 text-neon-cyan" />
                           </div>
                         ) : (
@@ -296,19 +258,19 @@ export default function AboutSection({
                         {member.quote}&rdquo;
                       </p>
                     </GlassCard>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {/* Company Mantra - Terminal Styled */}
-          <motion.div variants={itemVariants} className="mt-12 text-center">
-            <p className="text-2xl font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent font-mono">
+          <div className="section-animate-child mt-12 text-center">
+            <p className="text-2xl font-bold bg-linear-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent font-mono">
               <span className="">//</span> {t("about.mantra")}
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

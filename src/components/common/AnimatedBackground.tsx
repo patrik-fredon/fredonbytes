@@ -102,7 +102,7 @@ export default function AnimatedBackground() {
           : allFloatingIcons,
       );
     };
-    
+
     updateIcons();
     window.addEventListener("resize", updateIcons);
     return () => window.removeEventListener("resize", updateIcons);

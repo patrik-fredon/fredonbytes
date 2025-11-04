@@ -294,7 +294,8 @@
       "subtitle": "Die digitale Armee hinter Ihrem Erfolg",
       "noPhoto": "Teammitglied Foto",
       "readMore": "Mehr über {name} erfahren"
-    }
+    },
+    "title": "// Über FredonBytes"
   },
   "services": {
     "title": "Unsere Dienstleistungen",
@@ -1526,11 +1527,7 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monatliche SEO und digitale Marketing-Dienste",
-            "included": [
-              "Keyword-Recherche",
-              "Content-Strategie",
-              "Analytik"
-            ]
+            "included": ["Keyword-Recherche", "Content-Strategie", "Analytik"]
           },
           "socialMedia": {
             "name": "Social Media",

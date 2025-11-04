@@ -294,7 +294,8 @@
       "subtitle": "Digitální armáda za vaším úspěchem",
       "noPhoto": "Fotografie člena týmu",
       "readMore": "Přečtěte si více o {name}"
-    }
+    },
+    "title": "// O FredonBytes"
   },
   "services": {
     "title": "Naše služby",

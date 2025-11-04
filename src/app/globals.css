@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
+@import "@fontsource/jetbrains-mono/700.css";
 
 /* CSS Custom Properties for Design System - Dev Theme */
 :root {
@@ -72,7 +76,7 @@
     linear-gradient(var(--grid-color) 1px, transparent 1px);
 
   /* Typography */
-  --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+  --font-mono: "JetBrains Mono", monospace;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -155,7 +159,7 @@
   --radius-terminal: 0.5rem;
 
   /* Font Families */
-  --font-family-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+  --font-family-mono: "JetBrains Mono", monospace;
 
   /* Font Sizes */
   --font-size-xs: 0.75rem;
@@ -237,9 +241,11 @@
   .z-1035 {
     z-index: 1035;
   }
+
   .z-1036 {
     z-index: 1036;
   }
+
   .z-1040 {
     z-index: 1040;
   }
@@ -442,11 +448,11 @@ body {
   }
 }
 
-/* Hamburger Menu Animations - Dev Theme */
+/* Hamburger Menu Animations - Optimized for INP */
 .hamburger-line {
   display: block;
-  width: 28px;
-  height: 3px;
+  width: 10px;
+  height: 1px;
   background-color: currentColor;
   margin: 5px 0;
   border-radius: 2px;
@@ -457,6 +463,7 @@ body {
   -moz-transform-origin: center;
   -ms-transform-origin: center;
   transform-origin: center;
+  will-change: transform;
   box-shadow: 0 0 8px rgba(0, 217, 255, 0.4);
 }
 
@@ -477,6 +484,7 @@ body {
 }
 
 .hamburger-open .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(2px, -2px);
   -webkit-transform: rotate(-45deg) translate(7px, -7px);
   -moz-transform: rotate(-45deg) translate(7px, -7px);
   -ms-transform: rotate(-45deg) translate(7px, -7px);
@@ -793,11 +801,13 @@ input:valid {
 }
 
 .animate-slide-up {
-  animation: slide-up 0.3s ease-out;
+  animation: slide-up 0.25s ease-out;
+  will-change: transform, opacity;
 }
 
 .animate-fade-in {
-  animation: fade-in 0.2s ease-out;
+  animation: fade-in 0.15s ease-out;
+  will-change: opacity;
 }
 
 .animate-scale-in {
@@ -1079,4 +1089,151 @@ input[type="checkbox"]:focus-visible {
 input[type="checkbox"]:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* ========================================
+   Mobile-Optimized Section Animations
+   ======================================== */
+
+/* Fade-in animation for homepage sections - GPU accelerated */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered child animations */
+@keyframes fadeInStagger {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section container animation classes */
+.section-animate {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* Child elements with stagger effect */
+.section-animate-child {
+  opacity: 0;
+  animation: fadeInStagger 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* Stagger delays for children (up to 10 items) */
+.section-animate-child:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.section-animate-child:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.section-animate-child:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.section-animate-child:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.section-animate-child:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.section-animate-child:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.section-animate-child:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.section-animate-child:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+.section-animate-child:nth-child(9) {
+  animation-delay: 0.9s;
+}
+
+.section-animate-child:nth-child(10) {
+  animation-delay: 1s;
+}
+
+/* Ensure content is visible as fallback (accessibility & mobile) */
+@media (prefers-reduced-motion: reduce) {
+  .section-animate,
+  .section-animate-child {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 767px) {
+  .section-animate {
+    animation-duration: 0.4s;
+    /* Faster on mobile */
+  }
+
+  .section-animate-child {
+    animation-duration: 0.4s;
+  }
+
+  /* Reduce stagger delays on mobile for faster perception */
+  .section-animate-child:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+
+  .section-animate-child:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .section-animate-child:nth-child(3) {
+    animation-delay: 0.15s;
+  }
+
+  .section-animate-child:nth-child(4) {
+    animation-delay: 0.2s;
+  }
+
+  .section-animate-child:nth-child(5) {
+    animation-delay: 0.25s;
+  }
+
+  .section-animate-child:nth-child(6) {
+    animation-delay: 0.3s;
+  }
+
+  .section-animate-child:nth-child(7) {
+    animation-delay: 0.35s;
+  }
+
+  .section-animate-child:nth-child(8) {
+    animation-delay: 0.4s;
+  }
+
+  .section-animate-child:nth-child(9) {
+    animation-delay: 0.45s;
+  }
+
+  .section-animate-child:nth-child(10) {
+    animation-delay: 0.5s;
+  }
 }

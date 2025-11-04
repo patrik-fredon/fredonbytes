@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import React from "react";
 import { Button } from "../common/Button";
 import GlassCard from "../dev-ui/GlassCard";
 import { Link } from "@/i18n/navigation";
@@ -26,26 +26,10 @@ interface CalculatorState {
 export default function PricingSection() {
   const t = useTranslations();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
   return (
     <section id="pricing" className="py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        <div className="section-animate">
           <GlassCard className="px-8 py-16" glowColor="normal" strongGlow>
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 justify-center items-center gap-12">
               <div className="text-center md:text-left">
@@ -63,7 +47,7 @@ export default function PricingSection() {
                   </Button>
                 </Link>
               </div>
-              <div className="text-center relative w-full aspect-[16/9] max-w-2xl mx-auto">
+              <div className="text-center relative w-full aspect-video max-w-2xl mx-auto">
                 <Image
                   src="https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/fredonbytes-assets/logo_bigger.avif"
                   alt="Premium Benefits - Fredonbytes Professional Services"
@@ -75,7 +59,7 @@ export default function PricingSection() {
               </div>
             </div>
           </GlassCard>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

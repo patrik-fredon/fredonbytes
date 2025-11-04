@@ -49,7 +49,6 @@ export default function FormNavigation({
       {/* Terminal Progress Bar - only show on question steps */}
       {isOnQuestion && (
         <div className=" m-4 p-4 space-y-6">
-
           <div className="h-1 m-6 bg-glass-bg backdrop-blur-glass rounded-full border border-neon-cyan/40 overflow-hidden shadow-glow-cyan-subtle">
             <div
               className="h-full bg-gradient-to-r from-neon-cyan to-neon-purple shadow-glow-cyan transition-all duration-300 ease-out"

@@ -547,7 +547,10 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       role="main"
       aria-label="Customer Project Initiation Form"
     >
-      <TerminalWindow className="relative z-10 w-full max-w-3xl  rounded-xl shadow-2xl " title="First steps">
+      <TerminalWindow
+        className="relative z-10 w-full max-w-3xl  rounded-xl shadow-2xl "
+        title="First steps"
+      >
         {/* Submission Error Modal */}
         {formState.submissionError && (
           <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm animate-in fade-in duration-200">

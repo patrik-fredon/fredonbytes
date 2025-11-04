@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
   Code,
   Palette,
@@ -21,28 +20,6 @@ import TerminalWindow from "../dev-ui/TerminalWindow";
 export default function ServicesSection() {
   const t = useTranslations();
   const [activeTab, setActiveTab] = useState<string>("all");
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut" as const,
-      },
-    },
-  };
   const stats = [
     {
       number: t("services.stats.support.number"),
@@ -179,33 +156,28 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        <div className="section-animate">
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <div className="section-animate-child text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 font-mono">
               <span className="text-neon-cyan">//</span>{" "}
-              <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
                 {t("services.title")}
               </span>
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-mono">
               {t("services.subtitle")}
             </p>
-          </motion.div>
+          </div>
 
           {/* IDE-Style Tab Navigation */}
-          <motion.div variants={itemVariants} className="mb-8">
+          <div className="section-animate-child mb-8">
             <div className="flex flex-wrap justify-center gap-2 bg-terminal-dark border border-neon-purple/20  rounded-lg p-2">
               {serviceCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setActiveTab(category.id)}
-                  className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-[180ms] ${
+                  className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-fast ${
                     activeTab === category.id
                       ? "bg-neon-cyan/20 text-neon-purple border border-neon-purple shadow-glow-purple-subtle"
                       : "text-slate-400 hover:text-white hover:bg-slate-800/50"
@@ -215,44 +187,24 @@ export default function ServicesSection() {
                 </button>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Services Grid - TerminalWindow Cards */}
-          <motion.div
-            variants={itemVariants}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10"
-          >
+          <div className="section-animate-child grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
             {filteredServices.map((service, index) => {
               const Icon = service.icon;
               return (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  whileHover={{
-                    y: -8,
-                    transition: { duration: 0.2, ease: "easeOut" },
-                  }}
-                  className="group"
-                >
+                <div key={index} className="group">
                   <TerminalWindow title={service.title} className="h-full">
                     <div className="p-4 space-y-4">
                       <div className="flex items-center space-x-3">
-                        <motion.div
-                          className={`w-12 h-12 rounded-xl ${service.iconBg} flex items-center justify-center border border-neon-cyan/20`}
-                          whileHover={{
-                            scale: 1.1,
-                            borderColor: "rgba(0, 217, 255, 0.5)",
-                            boxShadow: "0 0 20px rgba(0, 217, 255, 0.3)",
-                            transition: { duration: 0.2 },
-                          }}
+                        <div
+                          className={`w-12 h-12 rounded-xl ${service.iconBg} flex items-center justify-center border border-neon-cyan/20 transition-all duration-200 hover:scale-110 hover:border-neon-cyan/50 hover:shadow-glow-cyan`}
                         >
                           <Icon
                             className={`w-8 h-8 ${service.iconColor} drop-shadow-[0_0_10px_currentColor]`}
                           />
-                        </motion.div>
+                        </div>
                         <h3 className="text-lg font-bold text-white font-mono">
                           {service.title}
                         </h3>
@@ -280,11 +232,11 @@ export default function ServicesSection() {
                       </div>
                     </div>
                   </TerminalWindow>
-                </motion.div>
+                </div>
               );
             })}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -79,22 +79,11 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 function configureHeadForTheme() {
-  return <head>
-    <meta name="apple-mobile-web-app-title" content="FredonBytes" />
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `
-              (function() {
-                try {
-                  const theme = localStorage.getItem('theme') || 'dark';
-                  document.documentElement.setAttribute('data-theme', theme);
-                } catch (e) {
-                  document.documentElement.setAttribute('data-theme', 'dark');
-                }
-              })();
-            `,
-      }} />
-  </head>;
+  return (
+    <head>
+      <meta name="apple-mobile-web-app-title" content="FredonBytes" />
+    </head>
+  );
 }
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
@@ -110,7 +99,11 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="scroll-smooth" suppressHydrationWarning={true}>
+    <html
+      lang={locale}
+      className="scroll-smooth"
+      suppressHydrationWarning={true}
+    >
       {configureHeadForTheme()}
       <body
         className="antialiased min-h-screen flex flex-col relative"
@@ -135,6 +128,4 @@ export default async function LocaleLayout({ children, params }: Props) {
       </body>
     </html>
   );
-
-
 }

@@ -3,7 +3,13 @@
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import React, { useState, useEffect, useTransition, useCallback, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useTransition,
+  useCallback,
+  useRef,
+} from "react";
 
 import { cn } from "@/lib/utils";
 import { Link as IntlLink } from "@/i18n/navigation";
@@ -201,94 +207,94 @@ export default function Header({ className }: HeaderProps) {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="lg:hidden flex items-center space-x-4">
-              <LanguageSwitcher />
+            <div className="lg:hidden flex relative items-center space-x-4">
               <button
                 onClick={toggleMenu}
-                className={`lg:hidden p-3 text-neon-cyan hover:text-neon-cyan transition-fast mobile-touch-target min-h-11 min-w-11 flex items-center justify-center relative group ${
+                className={`relative lg:hidden flex items-center justify-center  p-4 text-neon-cyan hover:text-neon-cyan transition-fast mobile-touch-target min-h-11 min-w-11  group ${
                   isMenuOpen ? "hamburger-open" : ""
                 }`}
                 aria-label="Toggle menu"
                 aria-expanded={isMenuOpen}
               >
-                <div className="w-7 h-7 flex flex-col justify-center items-center relative">
-                  <span className="hamburger-line bg-neon-cyan shadow-glow-cyan-subtle"></span>
-                  <span className="hamburger-line bg-neon-cyan shadow-glow-cyan-subtle"></span>
+                <div className="w-5 h-5 flex flex-col justify-center items-center relative">
+                  <span className="hamburger-line bg-neon-purple shadow-glow-cyan-subtle"></span>
+                  <span className="hamburger-line bg-neon-purple shadow-glow-cyan-subtle"></span>
                   <span className="hamburger-line bg-neon-cyan shadow-glow-cyan-subtle"></span>
                 </div>
                 {/* Glow effect on hover */}
                 <div className="absolute inset-0 rounded-lg bg-neon-cyan/10 opacity-0 group-hover:opacity-100 transition-fast blur-sm"></div>
               </button>
             </div>
-
-            {/* Mobile Navigation */}
-            {isMenuOpen && (
-              <div className="lg:hidden fixed top-16 left-0 right-0 bottom-0 z-1036 mobile-nav animate-slide-up overflow-y-auto">
-                <div className="min-h-full bg-terminal-dark/95 backdrop-blur-glass border-t border-neon-cyan/30 shadow-glow-cyan grid-bg">
-                  <div className="px-6 py-6 space-y-3 safe-area-bottom">
-                    {navItems.map((item) => (
-                      <IntlLink
-                        key={item.href}
-                        href={item.href}
-                        onClick={closeMenu}
-                        className="flex items-center text-terminal-light hover:text-neon-cyan transition-fast font-medium font-mono mobile-touch-target py-4 px-4 rounded-lg hover:bg-neon-cyan/10 hover:border-neon-cyan/30 hover:shadow-glow-cyan-subtle min-h-12 border border-transparent"
-                      >
-                        <span className="text-neon-cyan mr-2">›</span>
-                        {t(item.key)}
-                      </IntlLink>
-                    ))}
-
-                    <div className="border-t border-neon-cyan/20 pt-4 mt-4">
-                      <p className="text-xs font-medium text-terminal-muted mb-3 px-2 font-mono uppercase tracking-wider">
-                        <span className="text-electric-purple">// </span>
-                        {t("external.externalLinks")}
-                      </p>
-                      {externalLinks.map((link) => (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={closeMenu}
-                          className="flex items-center text-terminal-light hover:text-electric-purple transition-fast py-3 px-4 rounded-lg hover:bg-electric-purple/10 hover:border-electric-purple/30 hover:shadow-glow-purple-subtle min-h-11 font-mono border border-transparent"
-                        >
-                          <span className="text-electric-purple mr-2">↗</span>
-                          {t(link.key)}
-                        </a>
-                      ))}
-                      <IntlLink
-                        href="/links"
-                        onClick={closeMenu}
-                        className="flex items-center text-terminal-light hover:text-electric-purple transition-fast py-3 px-4 rounded-lg hover:bg-electric-purple/10 hover:border-electric-purple/30 hover:shadow-glow-purple-subtle min-h-11 font-mono border border-transparent"
-                      >
-                        <span className="text-electric-purple mr-2">⚡</span>
-                        {t("navigation.allLinks")}
-                      </IntlLink>
-                    </div>
-
-                    <div className="border-t border-neon-cyan/20 pt-6 mt-6">
-                      <IntlLink
-                        href="/contact"
-                        onClick={closeMenu}
-                        className="block mb-4"
-                      >
-                        <Button
-                          variant="gradient"
-                          size="lg"
-                          className="w-full min-h-[52px] text-base font-mono shadow-glow-cyan"
-                        >
-                          <span className="mr-2">▶</span>
-                          {t("navigation.getStarted")}
-                        </Button>
-                      </IntlLink>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </nav>
       </header>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="lg:hidden fixed top-16 left-0 right-0 bottom-0 z-1036 mobile-nav animate-slide-up overflow-y-auto">
+          <div className="min-h-full bg-terminal-dark/95 backdrop-blur-glass border-t border-neon-cyan/30 shadow-glow-cyan grid-bg">
+            <div className="px-4 py-4 space-y-3 safe-area-bottom">
+              {navItems.map((item) => (
+                <IntlLink
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMenu}
+                  className="flex items-center text-terminal-light hover:text-neon-cyan transition-fast font-medium font-mono mobile-touch-target py-4 px-4 rounded-lg hover:bg-neon-cyan/10 hover:border-neon-cyan/30 hover:shadow-glow-cyan-subtle min-h-12 border border-transparent"
+                >
+                  <span className="text-neon-cyan mr-2">›</span>
+                  {t(item.key)}
+                </IntlLink>
+              ))}
+
+              <div className="border-t border-neon-cyan/20 pt-4 mt-4">
+                <p className="text-xs font-medium text-terminal-muted mb-3 px-2 font-mono uppercase tracking-wider">
+                  <span className="text-electric-purple">// </span>
+                  {t("external.externalLinks")}
+                </p>
+                {externalLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMenu}
+                    className="flex items-center text-terminal-light hover:text-electric-purple transition-fast py-3 px-4 rounded-lg hover:bg-electric-purple/10 hover:border-electric-purple/30 hover:shadow-glow-purple-subtle min-h-11 font-mono border border-transparent"
+                  >
+                    <span className="text-electric-purple mr-2">↗</span>
+                    {t(link.key)}
+                  </a>
+                ))}
+                <IntlLink
+                  href="/links"
+                  onClick={closeMenu}
+                  className="flex items-center text-terminal-light hover:text-electric-purple transition-fast py-3 px-4 rounded-lg hover:bg-electric-purple/10 hover:border-electric-purple/30 hover:shadow-glow-purple-subtle min-h-11 font-mono border border-transparent"
+                >
+                  <span className="text-electric-purple mr-2">⚡</span>
+                  {t("navigation.allLinks")}
+                </IntlLink>
+              </div>
+
+              <div className="border-t border-neon-cyan/20 pt-6 mt-6">
+                <IntlLink
+                  href="/contact"
+                  onClick={closeMenu}
+                  className="block mb-4"
+                >
+                  <Button
+                    variant="gradient"
+                    size="lg"
+                    className="w-full min-h-[52px] text-base font-mono shadow-glow-cyan"
+                  >
+                    <span className="mr-2">▶</span>
+                    {t("navigation.getStarted")}
+                  </Button>
+                </IntlLink>
+              </div>
+              <LanguageSwitcher variant="mobile" />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -1,12 +1,19 @@
 import dynamic from "next/dynamic";
 import { setRequestLocale } from "next-intl/server";
 
-import HeroSection from "../../components/homepage/HeroSection";
 import {
   AboutSectionSkeleton,
-  ServicesSectionSkeleton,
   PricingSectionSkeleton,
+  ServicesSectionSkeleton,
 } from "../../components/homepage/HomepageSkeletons";
+
+// Hero section with SSR for SEO but optimized animations
+const HeroSection = dynamic(
+  () => import("../../components/homepage/HeroSection"),
+  {
+    ssr: true,
+  },
+);
 
 // Dynamic imports for below-the-fold sections with Suspense
 const AboutSection = dynamic(

@@ -34,6 +34,7 @@ export default function CurrencyToggle({
         />
         <div className="relative flex">
           <button
+            type="button"
             className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors duration-200 font-mono ${
               currency === "EUR"
                 ? "text-neon-cyan"
@@ -44,6 +45,7 @@ export default function CurrencyToggle({
             EUR (€)
           </button>
           <button
+            type="button"
             className={`px-4 py-2 text-sm font-semibold rounded-md transition-colors duration-200 font-mono ${
               currency === "CZK"
                 ? "text-neon-cyan"

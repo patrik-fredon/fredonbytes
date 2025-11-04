@@ -79,7 +79,7 @@ export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const metaT = await getTranslations({ locale, namespace: "aboutPage.meta" });
-
+  const t = await getTranslations({ locale, namespace: "aboutPage" });
   // Structured data for SEO
   const structuredData = {
     "@context": "https://schema.org",
@@ -126,7 +126,7 @@ export default async function AboutPage({ params }: Props) {
           {/* Page Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20" role="banner">
             <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight font-mono text-terminal-light">
-              // About FredonBytes
+              {t("title")}
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed px-4 font-mono">
               {metaT("description")}
