@@ -1708,7 +1708,11 @@
         "thankYouTitle": "// Ihr Feedback wurde erfolgreich übermittelt.",
         "thankYouHeading": "✓ Erfolgreich bereitgestellt!"
       }
-    }
+    },
+    "question": "Frage",
+    "previous": "vorherige",
+    "submit": "Einreichen",
+    "next": "Nächste"
   },
   "survey": {
     "title": "Kundenzufriedenheitsumfrage",

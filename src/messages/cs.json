@@ -1639,7 +1639,11 @@
         "thankYouTitle": "// Vaše zpětná vazba byla úspěšně odeslána.",
         "thankYouHeading": "✓ Úspěšně nasazeno!"
       }
-    }
+    },
+    "question": "Otázka",
+    "previous": "předchozí",
+    "submit": "Předložit",
+    "next": "Další"
   },
   "survey": {
     "title": "Průzkum spokojenosti zákazníků",

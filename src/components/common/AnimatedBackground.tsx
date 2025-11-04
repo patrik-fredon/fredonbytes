@@ -88,12 +88,24 @@ export default function AnimatedBackground() {
     },
   ];
 
-  // Reduce icons on mobile (< 768px)
-  const floatingIcons = useMemo(() => {
-    if (typeof window === "undefined") return allFloatingIcons.slice(0, 3);
-    return window.innerWidth < 768
-      ? allFloatingIcons.slice(0, 3)
-      : allFloatingIcons;
+  // Reduce icons on mobile (< 768px) - use useState to prevent hydration mismatch
+  const [floatingIcons, setFloatingIcons] = React.useState(() =>
+    allFloatingIcons.slice(0, 3),
+  );
+
+  React.useEffect(() => {
+    // Only run on client after hydration
+    const updateIcons = () => {
+      setFloatingIcons(
+        window.innerWidth < 768
+          ? allFloatingIcons.slice(0, 3)
+          : allFloatingIcons,
+      );
+    };
+    
+    updateIcons();
+    window.addEventListener("resize", updateIcons);
+    return () => window.removeEventListener("resize", updateIcons);
   }, []);
 
   const floatingVariants = {

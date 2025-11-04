@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/common/Button";
 
 interface FormNavigationProps {
@@ -40,7 +40,7 @@ export default function FormNavigation({
 
   // Determine button text based on current step
   const nextButtonText = isOnLastQuestion ? "Submit" : "Next";
-
+  const t = useTranslations("form");
   // Determine if we're on a question step (not welcome or thank you)
   const isOnQuestion = currentStep > 0 && currentStep <= totalSteps;
 
@@ -48,20 +48,21 @@ export default function FormNavigation({
     <div className="w-full">
       {/* Terminal Progress Bar - only show on question steps */}
       {isOnQuestion && (
-        <div className="mb-6 space-y-6">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-mono text-neon-cyan font-semibold">
-              $ Question {currentStep}/{totalSteps}
-            </p>
-            <p className="text-sm font-mono text-terminal-light/70">
-              {Math.round((currentStep / totalSteps) * 100)}%
-            </p>
-          </div>
-          <div className="h-2 bg-glass-bg backdrop-blur-glass rounded-full border border-neon-cyan/40 overflow-hidden shadow-glow-cyan-subtle">
+        <div className=" m-4 p-4 space-y-6">
+
+          <div className="h-1 m-6 bg-glass-bg backdrop-blur-glass rounded-full border border-neon-cyan/40 overflow-hidden shadow-glow-cyan-subtle">
             <div
               className="h-full bg-gradient-to-r from-neon-cyan to-neon-purple shadow-glow-cyan transition-all duration-300 ease-out"
               style={{ width: `${(currentStep / totalSteps) * 100}%` }}
             />
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-mono text-neon-cyan/50 font-semibold">
+              $ {t("question")} {currentStep}/{totalSteps}
+            </p>
+            <p className="text-xs font-mono text-terminal-light/70">
+              {Math.round((currentStep / totalSteps) * 100)}%
+            </p>
           </div>
         </div>
       )}
@@ -77,7 +78,7 @@ export default function FormNavigation({
             disabled={!canGoPrevious || isSubmitting}
             className="w-full sm:w-auto sm:min-w-[140px] mt-10"
           >
-            previous
+            {t("previous")}
             <ChevronLeft className="w-4 h-4 ml-2" />
           </Button>
         )}
@@ -91,10 +92,10 @@ export default function FormNavigation({
           className="max-w-1 flex mt-10  sm:flex-1 sm:min-w-[140px]"
         >
           {isSubmitting
-            ? "processing..."
+            ? t("submitting")
             : isOnLastQuestion
-              ? "submit"
-              : "next"}
+              ? t("submit")
+              : t("next")}
           <ChevronRight className="w-4 h-4 ml-2" />
         </Button>
       </div>

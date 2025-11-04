@@ -151,15 +151,15 @@ export default function QuestionStep({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Question Text with Required/Optional Indicator */}
       <div className="space-y-2">
-        <div className="flex items-start gap-3">
-          <h2 className="text-2xl flex justify-center lg:text-3xl font-semibold text-slate-900 dark:text-white flex-1">
+        <div className="flex items-start gap-2 ">
+          <span className="flex justify-start text-2xl lg:text-3xl font-semibold text-neon-cyan dark:text-neon-purple flex-1">
             {question.question_text}
-          </h2>
+          </span>
           {question.required ? (
-            <span className="inline-flex justify-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 whitespace-nowrap">
+            <span className="inline-flex justify-center px-2.5 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 whitespace-nowrap">
               *
             </span>
           ) : (
@@ -169,14 +169,14 @@ export default function QuestionStep({
 
         {/* Description (if provided) */}
         {question.description && (
-          <p className="text-base flex justify-center text-neon-purple dark:text-neon-purple leading-relaxed">
+          <span className="text-sm inline-flex justify-start text-neon-purple/50 dark:text-neon-cyan/50 leading-relaxed m-4">
             {question.description}
-          </p>
+          </span>
         )}
       </div>
 
       {/* Input Component */}
-      <div className="pt-2">{renderInput()}</div>
+      <div className="p-0">{renderInput()}</div>
 
       {/* Validation Error Message */}
       {error && (

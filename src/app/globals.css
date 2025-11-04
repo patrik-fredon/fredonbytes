@@ -232,6 +232,19 @@
   --tw-inset-shadow-color: #020617;
 }
 
+/* Tailwind 4 Z-Index Utilities - Explicit layer generation required */
+@layer utilities {
+  .z-1035 {
+    z-index: 1035;
+  }
+  .z-1036 {
+    z-index: 1036;
+  }
+  .z-1040 {
+    z-index: 1040;
+  }
+}
+
 /* Dark Mode (Dev Theme) */
 @media (prefers-color-scheme: dark) {
   :root {

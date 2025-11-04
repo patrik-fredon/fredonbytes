@@ -294,11 +294,12 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
       return;
     }
 
-    // Move to previous step
+    // Move to previous step and clear any stale validation errors
     setFormState((prev) => ({
       ...prev,
       currentStep: currentStep - 1,
       direction: "backward",
+      validationError: null,
     }));
   };
 
@@ -542,15 +543,15 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   // Render form
   return (
     <main
-      className="min-h-screen flex items-center justify-center p-10 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center p-3 relative overflow-hidden"
       role="main"
       aria-label="Customer Project Initiation Form"
     >
-      <TerminalWindow className="relative z-10 w-full max-w-2xl  rounded-xl shadow-2xl ">
+      <TerminalWindow className="relative z-10 w-full max-w-3xl  rounded-xl shadow-2xl " title="First steps">
         {/* Submission Error Modal */}
         {formState.submissionError && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-12  backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="relative w-full max-w-md rounded-xl shadow-2xl p-6 animate-in zoom-in duration-200">
+          <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="relative w-full max-w-3xl rounded-xl shadow-2xl  animate-in zoom-in duration-200">
               <ErrorState
                 title="Submission Failed"
                 message={formState.submissionError}
@@ -577,7 +578,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
         {/* Form container */}
         <div
           id="form-content"
-          className="relative z-10 w-full max-w-4xl rounded-xl shadow-2xl p-8 sm:p-10 md:p-12 "
+          className="relative z-10 w-full max-w-4xl rounded-xl shadow-2xl  "
         >
           {/* ARIA live region for announcements */}
           <div
@@ -617,7 +618,7 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
                     }}
                     className="space-y-6"
                   >
-                    <fieldset className="border-0 p-4 m-4">
+                    <fieldset className="border-0 p-0 m-4">
                       <legend className="sr-only">
                         Question {formState.currentStep} of{" "}
                         {formState.questions.length}

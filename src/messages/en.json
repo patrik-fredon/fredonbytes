@@ -1638,7 +1638,11 @@
         "thankYouTitle": "// Your feedback has been successfully submitted.",
         "thankYouHeading": "✓ Successfully Deployed!"
       }
-    }
+    },
+    "question": "Question",
+    "previous": "previous",
+    "submit": "Submit",
+    "next": "Next"
   },
   "survey": {
     "title": "Customer Satisfaction Survey",

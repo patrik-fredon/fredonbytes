@@ -3,7 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useTransition, useCallback, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 import { Link as IntlLink } from "@/i18n/navigation";
@@ -18,6 +18,8 @@ interface HeaderProps {
 export default function Header({ className }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
   const t = useTranslations();
 
   useEffect(() => {
@@ -29,37 +31,53 @@ export default function Header({ className }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Cleanup body class on unmount
+  // Manage body scroll lock - decoupled from state update
   useEffect(() => {
-    return () => {
-      if (typeof document !== "undefined") {
-        document.body.classList.remove("menu-open");
-      }
-    };
-  }, []);
-
-  const toggleMenu = () => {
-    const newState = !isMenuOpen;
-    setIsMenuOpen(newState);
-
-    // Prevent body scroll when menu is open on mobile
     if (typeof document !== "undefined") {
-      if (newState) {
+      if (isMenuOpen) {
         document.body.classList.add("menu-open");
       } else {
         document.body.classList.remove("menu-open");
       }
     }
-  };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+    return () => {
+      if (typeof document !== "undefined") {
+        document.body.classList.remove("menu-open");
+      }
+    };
+  }, [isMenuOpen]);
 
-    // Re-enable body scroll
-    if (typeof document !== "undefined") {
-      document.body.classList.remove("menu-open");
+  // Cleanup debounce timer on unmount
+  useEffect(() => {
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
     }
-  };
+
+    debounceTimerRef.current = setTimeout(() => {
+      startTransition(() => {
+        setIsMenuOpen((prev) => !prev);
+      });
+    }, 150);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+
+    startTransition(() => {
+      setIsMenuOpen(false);
+    });
+  }, []);
 
   const navItems = [
     { href: "/about", key: "navigation.about", isRoute: true },

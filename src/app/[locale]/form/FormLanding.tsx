@@ -92,13 +92,13 @@ export default function FormLanding() {
 
             {/* Welcome Message */}
             <div className="space-y-4">
-              <h1 className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white">
+              <h1 className="text-3xl lg:text-4xl font-bold text-neon-purple dark:text-neon-cyan">
                 {t("title")}
               </h1>
-              <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg text-white dark:text-white max-w-2xl mx-auto leading-relaxed">
                 {t("subtitle")}
               </p>
-              <p className="text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-sm text-white/30 dark:text-white/30">
                 <span className="inline-flex items-center gap-2">
                   <svg
                     className="w-4 h-4"
@@ -143,7 +143,7 @@ export default function FormLanding() {
             </div>
 
             {/* Privacy Note */}
-            <p className="text-xs text-slate-400 dark:text-slate-500 max-w-md mx-auto">
+            <p className="text-xs text-white/50 dark:text-white/50 max-w-md mx-auto">
               {t("privacyNote")}
             </p>
           </div>
