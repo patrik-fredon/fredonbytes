@@ -15,6 +15,7 @@ import {
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { Project } from "@/lib/supabase";
+import { getBlurDataURL } from "@/lib/image-utils";
 
 interface ProjectCardProps {
   project: Project;
@@ -93,6 +94,8 @@ const ProjectCard = memo(
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
                 loading={index < 3 ? "eager" : "lazy"}
                 priority={index < 3}
+                placeholder="blur"
+                blurDataURL={getBlurDataURL()}
                 quality={80}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 onError={() => setImageError(true)}

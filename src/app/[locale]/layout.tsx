@@ -1,27 +1,33 @@
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
+import { JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { generateLocalizedMetadata } from "@/config/metadata";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
-import "@fontsource/jetbrains-mono/400.css";
-import "@fontsource/jetbrains-mono/500.css";
-import "@fontsource/jetbrains-mono/600.css";
-import "@fontsource/jetbrains-mono/700.css";
 
 import GridBackground from "@/components/dev-ui/GridBackground";
 import ClientLayoutWrapper from "../../components/ClientLayoutWrapper";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: true,
+  variable: "--font-jetbrains-mono",
+});
+
 // Dynamic imports for heavy components
 const AnimatedBackground = dynamic(
   () => import("../../components/common/AnimatedBackground"),
   {
+
     loading: () => (
-      <div className="fixed inset-0 bg-linear-to-br from-slate-900 via-slate-800 to-slate-900" />
+      <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
     ),
   },
 );
@@ -29,6 +35,7 @@ const AnimatedBackground = dynamic(
 const CookieConsentBanner = dynamic(
   () => import("../../components/common/CookieConsentBanner"),
   {
+
     loading: () => null,
   },
 );
@@ -36,6 +43,7 @@ const CookieConsentBanner = dynamic(
 const ConditionalAnalytics = dynamic(
   () => import("../../components/common/ConditionalAnalytics"),
   {
+
     loading: () => null,
   },
 );
@@ -46,6 +54,7 @@ const WebVitals = dynamic(
       default: mod.WebVitals,
     })),
   {
+
     loading: () => null,
   },
 );
@@ -100,22 +109,23 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className="scroll-smooth"
+      className={`scroll-smooth ${jetbrainsMono.variable}`}
       suppressHydrationWarning={true}
     >
       {configureHeadForTheme()}
-      <body
-        className="antialiased min-h-screen flex flex-col relative"
-        style={{
-          fontFamily: "'JetBrains Mono', monospace",
-        }}
-      >
+      <body className="antialiased min-h-screen flex flex-col relative font-jetbrains-mono">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-slate-900 focus:text-cyan-400 focus:rounded-md focus:border focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(0,217,255,0.5)]"
+        >
+          Skip to main content
+        </a>
         <NextIntlClientProvider messages={messages}>
           <ClientLayoutWrapper>
             <AnimatedBackground />
             <GridBackground />
             <Header />
-            <main className="flex-1 pt-16 lg:pt-20 relative z-10">
+            <main id="main" className="flex-1 pt-16 lg:pt-20 relative z-10">
               {children}
             </main>
             <Footer />

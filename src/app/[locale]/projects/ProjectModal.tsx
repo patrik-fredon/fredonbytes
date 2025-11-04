@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { Project } from "@/lib/supabase";
+import { getBlurDataURL } from "@/lib/image-utils";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -123,6 +124,8 @@ export default function ProjectModal({
                       alt={title}
                       fill
                       className="object-cover"
+                      placeholder="blur"
+                      blurDataURL={getBlurDataURL(896, 320)}
                       quality={90}
                       sizes="(max-width: 768px) 100vw, 896px"
                       onError={() => setImageError(true)}
