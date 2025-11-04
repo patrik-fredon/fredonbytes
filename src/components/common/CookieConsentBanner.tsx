@@ -1,8 +1,8 @@
 "use client";
 import { X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState, useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import { Button } from "@/components/common/Button";
 import CookieCustomizeModal from "./CookieCustomizeModal";
 
 const COOKIE_CONSENT_NAME = "cookie-consent";
@@ -159,47 +159,51 @@ export default function CookieConsentBanner() {
   return (
     <>
       <div className="fixed bottom-0 left-0 right-0 z-9999 p-4 sm:p-6 animate-slide-up">
-        <div className="max-w-7xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700">
+        <div className="max-w-4xl mx-auto bg-terminal-darker rounded-lg shadow-2xl border border-neon-purple/50">
           <div className="p-6 sm:p-8">
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
                   {t("title")}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-xs sm:text-sm text-gray-300 mb-4">
                   {t("description")}
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  <button
+                  <Button
+                    variant="neon-purple"
                     onClick={handleAcceptAll}
                     disabled={isLoading}
-                    className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-4 py-2  font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {t("acceptAll")}
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                    variant="gradient"
                     onClick={handleRejectAll}
                     disabled={isLoading}
-                    className="px-6 py-2.5 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-4 py-2 font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {t("necessaryOnly")}
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                    variant="gradient"
                     onClick={handleCustomize}
                     disabled={isLoading}
-                    className="px-6 py-2.5 border-2 border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-4 py-2  font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {t("customize")}
-                  </button>
+                  </Button>
                 </div>
               </div>
-              <button
+              <Button
+                variant="gradient"
                 onClick={() => setShowBanner(false)}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                className=" transition-colors"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
-              </button>
+              </Button>
             </div>
           </div>
         </div>

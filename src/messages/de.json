@@ -1125,6 +1125,11 @@
           }
         }
       }
+    },
+    "preferences": {
+      "savePreferences": "Einstellungen speichern",
+      "acceptAll": "Alle akzeptieren",
+      "rejectAll": "Nur notwendig"
     }
   },
   "pages": {
@@ -1527,7 +1532,11 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monatliche SEO und digitale Marketing-Dienste",
-            "included": ["Keyword-Recherche", "Content-Strategie", "Analytik"]
+            "included": [
+              "Keyword-Recherche",
+              "Content-Strategie",
+              "Analytik"
+            ]
           },
           "socialMedia": {
             "name": "Social Media",

@@ -2,7 +2,7 @@
 import { Settings } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-
+import { Button } from "@/components/common/Button";
 import type { CookiePreferences } from "./CookieConsentBanner";
 import CookieCustomizeModal from "./CookieCustomizeModal";
 
@@ -82,13 +82,14 @@ export default function CookieSettingsLink() {
 
   return (
     <>
-      <button
+      <Button
+        variant={null}
         onClick={() => setShowModal(true)}
         className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
       >
         <Settings className="w-4 h-4" />
         <span>{t("savePreferences")}</span>
-      </button>
+      </Button>
 
       {showModal && (
         <CookieCustomizeModal

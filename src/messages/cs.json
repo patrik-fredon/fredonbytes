@@ -977,7 +977,10 @@
       "preferences": {
         "title": "Preferenční cookies",
         "description": "Pamatují si vaše preference a nastavení pro lepší zážitek."
-      }
+      },
+      "savePreferences": "Uložit předvolby",
+      "acceptAll": "Přijmout vše",
+      "rejectAll": "Pouze nezbytné"
     },
     "termsOfService": {
       "title": "Podmínky služby",
