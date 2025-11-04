@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Suspense } from "react";
 
 import GridBackground from "@/components/dev-ui/GridBackground";
+import { routing } from "@/i18n/routing";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -10,6 +11,10 @@ type Props = {
 
 import ProjectsGrid from "./ProjectsGrid";
 import ProjectsLoadingSkeleton from "./ProjectsLoadingSkeleton";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;

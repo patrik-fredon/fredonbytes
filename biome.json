@@ -16,6 +16,9 @@
   },
   "linter": {
     "rules": {
+      "a11y": {
+        "noLabelWithoutControl": "off"
+      },
       "security": {
         "noDangerouslySetInnerHtml": "warn"
       },

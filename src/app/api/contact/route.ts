@@ -95,14 +95,15 @@ export async function POST(request: NextRequest) {
       process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cloud";
     const surveyLink = `${siteUrl}/survey/${sessionId}`;
 
-    // Store contact submission in database (without session_id initially)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data: contactSubmission, error: dbError } = await (supabase as any)
+    // Prepare database operations for parallel execution
+    const surveyQuestionnaireId = "22222222-2222-2222-2222-222222222222";
+
+    const contactInsertPromise = (supabase as any)
       .from("contact_submissions")
       .insert({
         first_name: sanitizedData.firstName,
         last_name: sanitizedData.lastName,
-        email: validatedData.email, // Email not sanitized - already validated by Zod
+        email: validatedData.email,
         phone: sanitizedData.phone,
         company: sanitizedData.company || null,
         project_type: sanitizedData.projectType,
@@ -121,31 +122,57 @@ export async function POST(request: NextRequest) {
       .select()
       .single();
 
-    if (dbError || !contactSubmission) {
-      console.error("Database error:", dbError);
+    const newsletterPromise = validatedData.newsletter
+      ? (supabase as any)
+          .from("newsletter_subscribers")
+          .insert({
+            email: validatedData.email,
+            first_name: sanitizedData.firstName,
+            last_name: sanitizedData.lastName,
+            locale: validatedData.locale,
+            active: true,
+            source: "contact_form",
+          })
+          .select()
+          .single()
+      : Promise.resolve({ data: null, error: null });
+
+    const sessionInsertPromise = (supabase as any)
+      .from("sessions")
+      .insert({
+        session_id: sessionId,
+        questionnaire_id: surveyQuestionnaireId,
+        locale: validatedData.locale,
+        ip_address_hash: ipAddressHash,
+        user_agent: userAgent,
+        email: validatedData.email,
+        newsletter_optin: validatedData.newsletter || false,
+      });
+
+    // Execute all inserts in parallel
+    const [contactResult, newsletterResult, sessionResult] = await Promise.all(
+      [contactInsertPromise, newsletterPromise, sessionInsertPromise],
+    );
+
+    // Handle contact submission error
+    if (contactResult.error || !contactResult.data) {
+      console.error("Database error:", contactResult.error);
       throw new Error("Failed to store contact submission");
     }
 
-    // Handle newsletter subscription
-    if (validatedData.newsletter) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { error: newsletterError } = await (supabase as any)
-        .from("newsletter_subscribers")
-        .insert({
-          email: validatedData.email, // Email not sanitized - already validated by Zod
-          first_name: sanitizedData.firstName,
-          last_name: sanitizedData.lastName,
-          locale: validatedData.locale,
-          active: true,
-          source: "contact_form",
-        })
-        .select()
-        .single();
+    const contactSubmission = contactResult.data;
 
-      // Ignore duplicate email errors (constraint violation)
-      if (newsletterError && !newsletterError.message.includes("duplicate")) {
-        console.error("Newsletter subscription error:", newsletterError);
-      }
+    // Log newsletter subscription errors (ignore duplicates)
+    if (
+      newsletterResult.error &&
+      !newsletterResult.error.message.includes("duplicate")
+    ) {
+      console.error("Newsletter subscription error:", newsletterResult.error);
+    }
+
+    // Log session creation errors (non-critical)
+    if (sessionResult.error) {
+      console.error("Session creation error:", sessionResult.error);
     }
 
     // Prepare email data
@@ -210,28 +237,8 @@ export async function POST(request: NextRequest) {
       throw new Error(`Failed to send admin notification: ${adminEmail.error}`);
     }
 
-    // Create survey session in unified sessions table
-    // Survey questionnaire ID (hardcoded UUID from migrations)
-    const surveyQuestionnaireId = "22222222-2222-2222-2222-222222222222";
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { error: sessionError } = await (supabase as any)
-      .from("sessions")
-      .insert({
-        session_id: sessionId,
-        questionnaire_id: surveyQuestionnaireId,
-        locale: validatedData.locale,
-        ip_address_hash: ipAddressHash,
-        user_agent: userAgent,
-        email: validatedData.email,
-        newsletter_optin: validatedData.newsletter || false,
-      });
-
-    if (sessionError) {
-      console.error("Session creation error:", sessionError);
-      // Don't fail the request if session creation fails
-    } else {
-      // Link session to contact submission
+    // Link session to contact submission if session was created successfully
+    if (!sessionResult.error) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await (supabase as any)
         .from("contact_submissions")

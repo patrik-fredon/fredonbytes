@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { deduplicateRequest } from "@/lib/request-cache";
 import { supabase, type Project } from "@/lib/supabase";
 
 // Response interface for projects endpoint
@@ -16,28 +17,34 @@ export async function GET(request: NextRequest) {
     const featured = searchParams.get("featured");
     const _locale = searchParams.get("locale") || "en"; // Accept locale parameter for future use
 
-    // Build query
-    let query = supabase
-      .from("projects")
-      .select("*")
-      .eq("visible", true)
-      .order("display_order", { ascending: true });
+    // Generate cache key from query parameters
+    const cacheKey = `projects:${searchParams.toString()}`;
 
-    // Apply optional filters
-    if (status && ["active", "completed", "archived"].includes(status)) {
-      query = query.eq("status", status);
-    }
+    // Deduplicate concurrent requests
+    const { data, error } = await deduplicateRequest(cacheKey, async () => {
+      // Build query
+      let query = supabase
+        .from("projects")
+        .select("*")
+        .eq("visible", true)
+        .order("display_order", { ascending: true });
 
-    if (category) {
-      query = query.eq("category", category);
-    }
+      // Apply optional filters
+      if (status && ["active", "completed", "archived"].includes(status)) {
+        query = query.eq("status", status);
+      }
 
-    if (featured === "true") {
-      query = query.eq("featured", true);
-    }
+      if (category) {
+        query = query.eq("category", category);
+      }
 
-    // Execute query
-    const { data, error } = await query;
+      if (featured === "true") {
+        query = query.eq("featured", true);
+      }
+
+      // Execute query
+      return await query;
+    });
 
     // Handle database errors
     if (error) {

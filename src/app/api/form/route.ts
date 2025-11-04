@@ -88,38 +88,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate CSRF token
+    // Generate CSRF token and session ID
     const csrfToken = generateCsrfToken();
-
-    // Create session
     const sessionId = crypto.randomUUID();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { error: sessionError } = await (supabase as any)
+    const questionnaireId = (questionnaireData as any).id;
+
+    // Prepare parallel operations
+    const sessionInsertPromise = (supabase as any)
       .from("sessions")
       .insert({
         session_id: sessionId,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        questionnaire_id: (questionnaireData as any).id,
+        questionnaire_id: questionnaireId,
         locale,
         csrf_token: csrfToken,
         started_at: new Date().toISOString(),
-        expires_at: new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString(), // 48 hours
+        expires_at: new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString(),
       });
 
-    if (sessionError) {
-      console.error("Error creating session:", sessionError);
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Failed to create session",
-        } as CreateFormSessionResponse,
-        { status: 500 },
-      );
-    }
-
-    // Fetch questions for locale to preload (solves blank container issue)
-    const questionnaireId = (questionnaireData as any).id;
-    const { data: questionsData, error: questionsError } = await supabase
+    const questionsFetchPromise = supabase
       .from("questions")
       .select(`
         id,
@@ -134,6 +120,26 @@ export async function POST(request: NextRequest) {
       .eq("questionnaire_id", questionnaireId)
       .eq("active", true)
       .order("display_order", { ascending: true });
+
+    // Execute session creation and questions fetch in parallel
+    const [sessionResult, questionsResult] = await Promise.all([
+      sessionInsertPromise,
+      questionsFetchPromise,
+    ]);
+
+    // Handle session creation error
+    if (sessionResult.error) {
+      console.error("Error creating session:", sessionResult.error);
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Failed to create session",
+        } as CreateFormSessionResponse,
+        { status: 500 },
+      );
+    }
+
+    const { data: questionsData, error: questionsError } = questionsResult;
 
     let localizedQuestions: LocalizedQuestion[] = [];
 

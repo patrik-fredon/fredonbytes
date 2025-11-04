@@ -5,21 +5,21 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
-  Building,
   CheckCircle,
   Clock,
   Mail,
   MapPin,
-  MessageSquare,
   Phone,
   Shield,
   User,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/common/Button";
+import FormSkeleton from "@/components/form/FormSkeleton";
 import { getCsrfToken } from "@/hooks/useCsrfToken";
 import { Link } from "@/i18n/navigation";
 
@@ -50,6 +50,17 @@ type ContactFormData = z.infer<typeof contactSchema>;
 interface ContactClientProps {
   locale: string;
 }
+
+// Lazy load Step 2 & 3 components (loaded only when needed)
+const Step2Content = dynamic(() => import("./Step2").then(mod => ({ default: mod.Step2 })), {
+  loading: () => <FormSkeleton />,
+  ssr: false
+});
+
+const Step3Content = dynamic(() => import("./Step3").then(mod => ({ default: mod.Step3 })), {
+  loading: () => <FormSkeleton />,
+  ssr: false
+});
 
 export default function ContactClient({ locale }: ContactClientProps) {
   const t = useTranslations();
@@ -186,7 +197,7 @@ export default function ContactClient({ locale }: ContactClientProps) {
       console.error("Error submitting form:", error);
       alert(
         t("contact.error.message") ||
-          "Failed to submit form. Please try again.",
+        "Failed to submit form. Please try again.",
       );
     } finally {
       setIsSubmitting(false);
@@ -339,7 +350,7 @@ export default function ContactClient({ locale }: ContactClientProps) {
                   </div>
                   <div className="w-full bg-terminal-light/10 rounded-full h-2">
                     <div
-                      className="bg-gradient-to-r from-neon-cyan to-neon-purple h-2 rounded-full transition-all duration-500 shadow-glow-cyan-subtle"
+                      className="bg-linear-to-r from-neon-cyan to-neon-purple h-2 rounded-full transition-all duration-500 shadow-glow-cyan-subtle"
                       style={{ width: `${(currentStep / 3) * 100}%` }}
                     />
                   </div>
@@ -474,274 +485,28 @@ export default function ContactClient({ locale }: ContactClientProps) {
                     )}{" "}
                     {/* Step 2: Project Details */}
                     {currentStep === 2 && (
-                      <motion.div
-                        key="step-2"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-6"
-                      >
-                        <div className="flex items-center space-x-3 mb-6">
-                          <Building className="w-6 h-6 text-neon-cyan" />
-                          <h3 className="text-xl font-mono font-bold text-terminal-light">
-                            // {t("contact.projectDetails")}
-                          </h3>
-                        </div>
-                        <div>
-                          <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
-                            {t("contact.company")}
-                          </label>
-                          <input
-                            {...register("company")}
-                            className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light placeholder:text-terminal-light/50"
-                            placeholder={t("contact.companyPlaceholder")}
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
-                            {t("contact.projectType")} *
-                          </label>
-                          <select
-                            {...register("projectType")}
-                            className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light"
-                          >
-                            <option value="">
-                              {t("contact.selectProjectType")}
-                            </option>
-                            {projectTypes.map((type) => (
-                              <option key={type} value={type}>
-                                {type}
-                              </option>
-                            ))}
-                          </select>
-                          <AnimatePresence>
-                            {errors.projectType && (
-                              <motion.p
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                transition={{ duration: 0.2 }}
-                                className="mt-1 text-sm text-red-600"
-                              >
-                                {errors.projectType.message}
-                              </motion.p>
-                            )}
-                          </AnimatePresence>
-                        </div>{" "}
-                        <div className="grid grid-cols-2 gap-4">
-                          <div>
-                            <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
-                              {t("contact.budget")} *
-                            </label>
-                            <select
-                              {...register("budget")}
-                              className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light"
-                            >
-                              <option value="">
-                                {t("contact.selectBudget")}
-                              </option>
-                              {budgetRanges.map((range) => (
-                                <option key={range} value={range}>
-                                  {range}
-                                </option>
-                              ))}
-                            </select>
-                            <AnimatePresence>
-                              {errors.budget && (
-                                <motion.p
-                                  initial={{ opacity: 0, y: -10 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: -10 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="mt-1 text-sm text-red-600"
-                                >
-                                  {errors.budget.message}
-                                </motion.p>
-                              )}
-                            </AnimatePresence>
-                          </div>
-
-                          <div>
-                            <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
-                              {t("contact.timeline")} *
-                            </label>
-                            <select
-                              {...register("timeline")}
-                              className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light"
-                            >
-                              <option value="">
-                                {t("contact.selectTimeline")}
-                              </option>
-                              {timelines.map((timeline) => (
-                                <option key={timeline} value={timeline}>
-                                  {timeline}
-                                </option>
-                              ))}
-                            </select>
-                            <AnimatePresence>
-                              {errors.timeline && (
-                                <motion.p
-                                  initial={{ opacity: 0, y: -10 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: -10 }}
-                                  transition={{ duration: 0.2 }}
-                                  className="mt-1 text-sm text-red-600"
-                                >
-                                  {errors.timeline.message}
-                                </motion.p>
-                              )}
-                            </AnimatePresence>
-                          </div>
-                        </div>{" "}
-                        <div className="flex space-x-4">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="lg"
-                            className="flex-1"
-                            onClick={prevStep}
-                            leftIcon={<ArrowLeft className="w-4 h-4" />}
-                          >
-                            {t("contact.back")}
-                          </Button>
-                          <Button
-                            type="button"
-                            variant="gradient"
-                            size="lg"
-                            className="flex-1"
-                            onClick={nextStep}
-                            rightIcon={<ArrowRight className="w-4 h-4" />}
-                          >
-                            {t("contact.continue")}
-                          </Button>
-                        </div>
-                      </motion.div>
+                      <Step2Content
+                        register={register}
+                        errors={errors}
+                        t={t}
+                        nextStep={nextStep}
+                        prevStep={prevStep}
+                        projectTypes={projectTypes}
+                        budgetRanges={budgetRanges}
+                        timelines={timelines}
+                      />
                     )}{" "}
                     {/* Step 3: Requirements & Message */}
                     {currentStep === 3 && (
-                      <motion.div
-                        key="step-3"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-6"
-                      >
-                        <div className="flex items-center space-x-3 mb-6">
-                          <MessageSquare className="w-6 h-6 text-neon-cyan" />
-                          <h3 className="text-xl font-mono font-bold text-terminal-light">
-                            // {t("contact.projectRequirements")}
-                          </h3>
-                        </div>
-                        <div>
-                          <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-2">
-                            {t("contact.projectDescription")} *
-                          </label>
-                          <textarea
-                            {...register("message")}
-                            rows={4}
-                            className="w-full px-4 py-3 glass-bg backdrop-blur-glass border-2 border-neon-cyan/30 rounded-lg focus:border-neon-cyan focus:shadow-glow-cyan-subtle transition-all duration-200 text-terminal-light placeholder:text-terminal-light/50"
-                            placeholder={t(
-                              "contact.projectDescriptionPlaceholder",
-                            )}
-                          />
-                          <AnimatePresence>
-                            {errors.message && (
-                              <motion.p
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                transition={{ duration: 0.2 }}
-                                className="mt-1 text-sm text-red-600"
-                              >
-                                {errors.message.message}
-                              </motion.p>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                        <div>
-                          <label className="block text-sm font-mono font-medium text-terminal-light/90 mb-3">
-                            {t("contact.additionalRequirements")}
-                          </label>
-                          <div className="grid grid-cols-2 gap-3">
-                            {requirements.map((req) => (
-                              <label
-                                key={req}
-                                className="flex items-center space-x-2 cursor-pointer group"
-                              >
-                                <input
-                                  type="checkbox"
-                                  value={req}
-                                  {...register("requirements")}
-                                  className="w-5 h-5 rounded border-2 border-neon-cyan/50 bg-terminal-dark/80 text-neon-cyan focus:ring-2 focus:ring-neon-cyan/50 focus:ring-offset-0 cursor-pointer checked:bg-neon-cyan checked:border-neon-cyan hover:border-neon-cyan transition-colors"
-                                />
-                                <span className="text-sm text-terminal-light/80 group-hover:text-terminal-light transition-colors">
-                                  {req}
-                                </span>
-                              </label>
-                            ))}
-                          </div>
-                        </div>{" "}
-                        <div className="space-y-4">
-                          <label className="flex items-center space-x-2 cursor-pointer group">
-                            <input
-                              type="checkbox"
-                              {...register("newsletter")}
-                              className="w-5 h-5 rounded border-2 border-neon-cyan/50 bg-terminal-dark/80 text-neon-cyan focus:ring-2 focus:ring-neon-cyan/50 focus:ring-offset-0 cursor-pointer checked:bg-neon-cyan checked:border-neon-cyan hover:border-neon-cyan transition-colors"
-                            />
-                            <span className="text-sm text-terminal-light/80 group-hover:text-terminal-light transition-colors">
-                              {t("contact.subscribeNewsletter")}
-                            </span>
-                          </label>
-
-                          <label className="flex items-start space-x-2 cursor-pointer group">
-                            <input
-                              type="checkbox"
-                              {...register("privacy")}
-                              className="w-5 h-5 mt-1 rounded border-2 border-neon-cyan/50 bg-terminal-dark/80 text-neon-cyan focus:ring-2 focus:ring-neon-cyan/50 focus:ring-offset-0 cursor-pointer checked:bg-neon-cyan checked:border-neon-cyan hover:border-neon-cyan transition-colors"
-                            />
-                            <span className="text-sm text-terminal-light/80 group-hover:text-terminal-light transition-colors">
-                              {t("contact.agreePolicies")}
-                            </span>
-                          </label>
-                          <AnimatePresence>
-                            {errors.privacy && (
-                              <motion.p
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                transition={{ duration: 0.2 }}
-                                className="text-sm text-red-600"
-                              >
-                                {errors.privacy.message}
-                              </motion.p>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                        <div className="flex space-x-4">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="lg"
-                            className="flex-1"
-                            onClick={prevStep}
-                            leftIcon={<ArrowLeft className="w-4 h-4" />}
-                          >
-                            {t("contact.back")}
-                          </Button>
-                          <Button
-                            type="submit"
-                            variant="gradient"
-                            size="lg"
-                            className="flex-1"
-                            loading={isSubmitting}
-                            disabled={!isValid}
-                          >
-                            {t("contact.sendMessage")}
-                          </Button>
-                        </div>
-                      </motion.div>
+                      <Step3Content
+                        register={register}
+                        errors={errors}
+                        t={t}
+                        prevStep={prevStep}
+                        isSubmitting={isSubmitting}
+                        isValid={isValid}
+                        requirements={requirements}
+                      />
                     )}
                   </AnimatePresence>
                 </form>

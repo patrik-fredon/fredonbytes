@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { deduplicateRequest } from "@/lib/request-cache";
 import { supabase, type PricingItem } from "@/lib/supabase";
 
 // Response interface for pricing items endpoint
@@ -14,21 +15,27 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get("category");
     const _locale = searchParams.get("locale") || "en"; // Accept locale parameter for future use
 
-    // Build query
-    let query = supabase
-      .from("pricing_items")
-      .select("*")
-      .eq("active", true)
-      .order("category", { ascending: true })
-      .order("base_price_eur", { ascending: true });
+    // Generate cache key from query parameters
+    const cacheKey = `pricing-items:${searchParams.toString()}`;
 
-    // Apply optional category filter
-    if (category) {
-      query = query.eq("category", category);
-    }
+    // Deduplicate concurrent requests
+    const { data, error } = await deduplicateRequest(cacheKey, async () => {
+      // Build query
+      let query = supabase
+        .from("pricing_items")
+        .select("*")
+        .eq("active", true)
+        .order("category", { ascending: true })
+        .order("base_price_eur", { ascending: true });
 
-    // Execute query
-    const { data, error } = await query;
+      // Apply optional category filter
+      if (category) {
+        query = query.eq("category", category);
+      }
+
+      // Execute query
+      return await query;
+    });
 
     // Handle database errors
     if (error) {

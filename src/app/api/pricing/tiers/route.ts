@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { deduplicateRequest } from "@/lib/request-cache";
 import { supabase, type PricingTier } from "@/lib/supabase";
 
 // Response interface for pricing tiers endpoint
@@ -15,24 +16,30 @@ export async function GET(request: NextRequest) {
     const popular = searchParams.get("popular");
     const _locale = searchParams.get("locale") || "en"; // Accept locale parameter for future use
 
-    // Build query
-    let query = supabase
-      .from("pricing_tiers")
-      .select("*")
-      .eq("active", true)
-      .order("type", { ascending: true });
+    // Generate cache key from query parameters
+    const cacheKey = `pricing-tiers:${searchParams.toString()}`;
 
-    // Apply optional filters
-    if (type && ["starter", "professional", "enterprise"].includes(type)) {
-      query = query.eq("type", type);
-    }
+    // Deduplicate concurrent requests
+    const { data, error } = await deduplicateRequest(cacheKey, async () => {
+      // Build query
+      let query = supabase
+        .from("pricing_tiers")
+        .select("*")
+        .eq("active", true)
+        .order("type", { ascending: true });
 
-    if (popular === "true") {
-      query = query.eq("popular", true);
-    }
+      // Apply optional filters
+      if (type && ["starter", "professional", "enterprise"].includes(type)) {
+        query = query.eq("type", type);
+      }
 
-    // Execute query
-    const { data, error } = await query;
+      if (popular === "true") {
+        query = query.eq("popular", true);
+      }
+
+      // Execute query
+      return await query;
+    });
 
     // Handle database errors
     if (error) {

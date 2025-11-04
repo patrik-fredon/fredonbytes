@@ -7,11 +7,16 @@ import {
   ServicesSectionSkeleton,
 } from "../../components/homepage/HomepageSkeletons";
 
-// Hero section with SSR for SEO but optimized animations
+// Hero section - client-only for optimal animation performance
 const HeroSection = dynamic(
   () => import("../../components/homepage/HeroSection"),
   {
-    ssr: true,
+
+    loading: () => (
+      <section className="relative min-h-screen flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+      </section>
+    ),
   },
 );
 

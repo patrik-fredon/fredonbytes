@@ -72,3 +72,4 @@ handoffs/
 single-script/handoff-installer-readme.md
 .serena/
 .specify/
+.playwright-mcp
