@@ -99,10 +99,17 @@ export function middleware(request: NextRequest) {
 
     // Construct redirect URL with primary domain
     // IMPORTANT: Use hostname (not host) to exclude port - critical for proxied/tunneled deployments
-    // When behind Cloudflare tunnel or Coolify's Traefik, the port should NEVER be in the redirect URL
     url.protocol = protocol;
     url.hostname = domainConfig.primary;
-    url.port = ""; // Explicitly remove port for clean URLs behind proxy
+
+    // Remove port only when running behind a proxy or in production
+    // This preserves local development workflows where port may be needed (e.g., localhost:3000)
+    const isProduction = process.env.NODE_ENV === "production";
+    const behindProxy = process.env.BEHIND_PROXY === "true";
+
+    if (isProduction || behindProxy) {
+      url.port = ""; // Remove port for clean URLs behind proxy/in production
+    }
 
     if (process.env.NODE_ENV !== "production") {
       console.log("[Middleware] 🔄 Redirecting:", host, "→", url.toString());
