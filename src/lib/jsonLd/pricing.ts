@@ -78,9 +78,26 @@ export async function getPricingSchemas(locale: string): Promise<Schema[]> {
       "@type": "ListItem",
       position: pos,
       name: locale === "cs" ? labelCs : labelEn,
-      item: `${baseUrl}${locale === "cs" ? "" : `/${locale}`}${path}`.replace(/([^:]\/)\/+/g, "$1"),
+      item: normalizeUrl(`${baseUrl}${locale === "cs" ? "" : `/${locale}`}${path}`),
     })),
   };
 
   return [offersSchema, breadcrumbSchema];
+}
+
+/**
+ * Normalize URL by removing duplicate slashes while preserving protocol
+ * @param url - URL string to normalize
+ * @returns Normalized URL string
+ */
+function normalizeUrl(url: string): string {
+  try {
+    // Parse and reconstruct URL to handle protocol, slashes, etc.
+    const parsed = new URL(url);
+    // Reconstruct with normalized pathname
+    return `${parsed.protocol}//${parsed.host}${parsed.pathname}${parsed.search}${parsed.hash}`;
+  } catch {
+    // Fallback: Remove duplicate slashes except after protocol
+    return url.replace(/([^:]\/)\/+/g, "$1");
+  }
 }
