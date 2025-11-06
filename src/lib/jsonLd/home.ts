@@ -199,8 +199,12 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     ],
   });
 
-  // FAQ Schema for rich snippets - map over FAQ indices
-  const faqCount = 6;
+  // FAQ Schema for rich snippets - derive count from translations
+  const faqItems = faqT('items') as unknown;
+  const faqCount = Array.isArray(faqItems)
+    ? faqItems.length
+    : (faqItems && typeof faqItems === 'object' ? Object.keys(faqItems).length : 0);
+
   const faqSchema = createSchema("FAQPage", {
     mainEntity: Array.from({ length: faqCount }, (_, i) =>
       createSchema("Question", {
