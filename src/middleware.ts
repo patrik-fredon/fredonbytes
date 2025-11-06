@@ -92,7 +92,6 @@ export function middleware(request: NextRequest) {
     // When behind Cloudflare tunnel or Coolify's Traefik, the port should NEVER be in the redirect URL
     url.protocol = protocol;
     url.hostname = domainConfig.primary;
-    url.port = ""; // Explicitly remove port for clean URLs behind proxy
 
     // 301 Permanent Redirect - SEO-friendly, tells search engines domain has moved
     return NextResponse.redirect(url, 301);
