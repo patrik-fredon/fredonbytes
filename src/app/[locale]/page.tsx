@@ -13,7 +13,6 @@ import AboutSection from "../../components/homepage/AboutSection";
 const HeroSection = dynamic(
   () => import("../../components/homepage/HeroSection"),
   {
-
     loading: () => (
       <section className="relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
@@ -53,9 +52,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonicalUrl = `${baseUrl}${localePrefix}`;
 
   // Enhanced keywords with Czech market focus
-  const enhancedKeywords = locale === "cs"
-    ? "tvorba webových stránek Brno, vývoj webů Brno, IT firma Brno, vývoj software Brno, digitální marketing ČR, SEO optimalizace Brno, grafický design Brno, tvorba e-shopů, webové aplikace Brno, IT řešení pro firmy, vývoj mobilních aplikací ČR, WordPress Brno, Next.js vývoj, React vývoj Brno"
-    : t("keywords");
+  const enhancedKeywords =
+    locale === "cs"
+      ? "tvorba webových stránek Brno, vývoj webů Brno, IT firma Brno, vývoj software Brno, digitální marketing ČR, SEO optimalizace Brno, grafický design Brno, tvorba e-shopů, webové aplikace Brno, IT řešení pro firmy, vývoj mobilních aplikací ČR, WordPress Brno, Next.js vývoj, React vývoj Brno"
+      : t("keywords");
 
   return {
     title: t("title"),
@@ -157,7 +157,7 @@ export default async function Home({ params }: Props) {
         "@type": "ContactPoint",
         telephone: "+420799027984",
         contactType: "customer service",
-        email: "info@fredonbytes.cloud",
+        email: "info@fredonbytes.com",
         availableLanguage: ["Czech", "English", "German"],
         areaServed: "CZ",
       },
@@ -229,9 +229,10 @@ export default async function Home({ params }: Props) {
       {
         "@type": "Service",
         name: locale === "cs" ? "Vývoj webových stránek" : "Web Development",
-        description: locale === "cs"
-          ? "Tvorba moderních, rychlých a SEO optimalizovaných webových stránek a aplikací"
-          : "Development of modern, fast and SEO optimized websites and applications",
+        description:
+          locale === "cs"
+            ? "Tvorba moderních, rychlých a SEO optimalizovaných webových stránek a aplikací"
+            : "Development of modern, fast and SEO optimized websites and applications",
         provider: {
           "@id": `${baseUrl}/#organization`,
         },
@@ -241,9 +242,10 @@ export default async function Home({ params }: Props) {
       {
         "@type": "Service",
         name: locale === "cs" ? "Grafický design" : "Graphic Design",
-        description: locale === "cs"
-          ? "Profesionální grafický design pro vaši značku a online prezentaci"
-          : "Professional graphic design for your brand and online presence",
+        description:
+          locale === "cs"
+            ? "Profesionální grafický design pro vaši značku a online prezentaci"
+            : "Professional graphic design for your brand and online presence",
         provider: {
           "@id": `${baseUrl}/#organization`,
         },
@@ -253,9 +255,10 @@ export default async function Home({ params }: Props) {
       {
         "@type": "Service",
         name: locale === "cs" ? "SEO optimalizace" : "SEO Optimization",
-        description: locale === "cs"
-          ? "Komplexní SEO služby pro lepší viditelnost ve vyhledávačích"
-          : "Comprehensive SEO services for better search engine visibility",
+        description:
+          locale === "cs"
+            ? "Komplexní SEO služby pro lepší viditelnost ve vyhledávačích"
+            : "Comprehensive SEO services for better search engine visibility",
         provider: {
           "@id": `${baseUrl}/#organization`,
         },
@@ -265,9 +268,10 @@ export default async function Home({ params }: Props) {
       {
         "@type": "Service",
         name: locale === "cs" ? "Digitální marketing" : "Digital Marketing",
-        description: locale === "cs"
-          ? "Marketing na sociálních sítích a online propagace"
-          : "Social media marketing and online promotion",
+        description:
+          locale === "cs"
+            ? "Marketing na sociálních sítích a online propagace"
+            : "Social media marketing and online promotion",
         provider: {
           "@id": `${baseUrl}/#organization`,
         },
