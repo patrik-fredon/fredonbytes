@@ -10,6 +10,15 @@ import {
 } from "./lib/csrf";
 import { domainConfig } from "./lib/domain-config";
 
+// Environment configuration flags
+const isDev = process.env.NODE_ENV !== "production";
+const stripPort = !isDev || process.env.BEHIND_PROXY === "true";
+
+// Simple dev-only logger
+function debug(...args: unknown[]) {
+  if (isDev) console.log("[Middleware]", ...args);
+}
+
 // Simple in-memory rate limiter
 // In production, consider using Redis or a dedicated rate limiting service
 interface RateLimitEntry {
@@ -84,14 +93,14 @@ export function middleware(request: NextRequest) {
   // Redirect secondary domains to primary domain (301 permanent redirect)
   const host = request.headers.get("host");
 
-  // Debug logging for multi-domain setup (only in development)
-  if (process.env.NODE_ENV !== "production") {
-    console.log("[Middleware] Host:", host);
-    console.log("[Middleware] Primary domain:", domainConfig.primary);
-    console.log("[Middleware] Secondary domains:", domainConfig.secondary);
-    console.log("[Middleware] Strategy:", domainConfig.strategy);
-    console.log("[Middleware] Should redirect:", host ? domainConfig.shouldRedirect(host) : false);
-  }
+  // Debug logging for multi-domain setup
+  debug(
+    "Host:", host,
+    "Primary:", domainConfig.primary,
+    "Secondaries:", domainConfig.secondary,
+    "Strategy:", domainConfig.strategy,
+    "WillRedirect:", !!host && domainConfig.shouldRedirect(host)
+  );
 
   if (host && domainConfig.shouldRedirect(host)) {
     const protocol = request.headers.get("x-forwarded-proto") || "https";
@@ -102,18 +111,13 @@ export function middleware(request: NextRequest) {
     url.protocol = protocol;
     url.hostname = domainConfig.primary;
 
-    // Remove port only when running behind a proxy or in production
+    // Remove port when running behind a proxy or in production
     // This preserves local development workflows where port may be needed (e.g., localhost:3000)
-    const isProduction = process.env.NODE_ENV === "production";
-    const behindProxy = process.env.BEHIND_PROXY === "true";
-
-    if (isProduction || behindProxy) {
+    if (stripPort) {
       url.port = ""; // Remove port for clean URLs behind proxy/in production
     }
 
-    if (process.env.NODE_ENV !== "production") {
-      console.log("[Middleware] 🔄 Redirecting:", host, "→", url.toString());
-    }
+    debug("Redirecting →", url.toString());
 
     // 301 Permanent Redirect - SEO-friendly, tells search engines domain has moved
     return NextResponse.redirect(url, 301);

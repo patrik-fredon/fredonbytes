@@ -78,7 +78,7 @@ export async function getPricingSchemas(locale: string): Promise<Schema[]> {
       "@type": "ListItem",
       position: pos,
       name: locale === "cs" ? labelCs : labelEn,
-      item: `${baseUrl}${locale === "cs" ? "" : `/${locale}`}${path}`,
+      item: `${baseUrl}${locale === "cs" ? "" : `/${locale}`}${path}`.replace(/([^:]\/)\/+/g, "$1"),
     })),
   };
 
