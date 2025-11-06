@@ -88,8 +88,11 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
 
     // Construct redirect URL with primary domain
+    // IMPORTANT: Use hostname (not host) to exclude port - critical for proxied/tunneled deployments
+    // When behind Cloudflare tunnel or Coolify's Traefik, the port should NEVER be in the redirect URL
     url.protocol = protocol;
-    url.host = domainConfig.primary;
+    url.hostname = domainConfig.primary;
+    url.port = ""; // Explicitly remove port for clean URLs behind proxy
 
     // 301 Permanent Redirect - SEO-friendly, tells search engines domain has moved
     return NextResponse.redirect(url, 301);
