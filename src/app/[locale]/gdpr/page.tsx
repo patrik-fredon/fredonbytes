@@ -40,7 +40,7 @@ export async function generateMetadata({
     alternates: {
       canonical: pageUrl,
       languages: {
-        cs: `${baseUrl}/gdpr`,
+        cs: `${baseUrl}/cs/gdpr`,
         en: `${baseUrl}/en/gdpr`,
         de: `${baseUrl}/de/gdpr`,
       },
@@ -53,6 +53,24 @@ export async function generateMetadata({
       siteName: "FredonBytes",
       locale: locale === "cs" ? "cs_CZ" : locale === "de" ? "de_DE" : "en_US",
       type: "website",
+      images: [
+        {
+          url: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+          secureUrl: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+          width: 1200,
+          height: 630,
+          alt: "FredonBytes GDPR Compliance",
+          type: "image/png",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description:
+        descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      creator: "@FredonBytes",
+      images: [`${baseUrl}/FredonBytes_GraphicLogo.png`],
     },
     robots: {
       index: true,

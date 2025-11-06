@@ -27,7 +27,7 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        cs: `${baseUrl}/pricing`,
+        cs: `${baseUrl}/cs/pricing`,
         en: `${baseUrl}/en/pricing`,
         de: `${baseUrl}/de/pricing`,
       },

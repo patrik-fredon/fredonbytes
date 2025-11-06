@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: pageUrl,
       languages: {
-        cs: `${baseUrl}/cookies`,
+        cs: `${baseUrl}/cs/cookies`,
         en: `${baseUrl}/en/cookies`,
         de: `${baseUrl}/de/cookies`,
       },
