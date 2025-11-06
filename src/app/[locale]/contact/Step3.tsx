@@ -35,7 +35,7 @@ export function Step3({
 			<div className="flex items-center space-x-3 mb-6">
 				<MessageSquare className="w-6 h-6 text-neon-cyan" />
 				<h3 className="text-xl font-mono font-bold text-terminal-light">
-          // {t("contact.projectRequirements")}
+					{'//'} {t("contact.projectRequirements")}
 				</h3>
 			</div>
 			<div>

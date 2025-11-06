@@ -611,7 +611,9 @@
     },
     "error": {
       "message": "Odeslání formuláře se nezdařilo. Zkuste to prosím znovu."
-    }
+    },
+    "privacyPolicy": "Zásady ochrany osobních údajů",
+    "agreeToPrivacy": "Souhlas se zásadami"
   },
   "pricing": {
     "title": "Vyberte si svůj plán",
