@@ -30,13 +30,19 @@ export const domainConfig = {
   /**
    * Secondary domains that should redirect to primary
    * Comma-separated list from environment variable
+   * Falls back to default domains if env var is not set or empty
    */
-  secondary:
-    (process.env.NEXT_PUBLIC_SECONDARY_DOMAINS || "")
+  get secondary(): string[] {
+    const envDomains = (process.env.NEXT_PUBLIC_SECONDARY_DOMAINS || "")
       .split(",")
       .map((d) => d.trim())
-      .filter(Boolean) ||
-    ["fredonbytes.cloud", "fredonbytes.com", "fredonbytes.eu", "fredonbytes.tech"],
+      .filter(Boolean);
+
+    // Use fallback if env var is not set or results in empty array
+    return envDomains.length > 0
+      ? envDomains
+      : ["fredonbytes.cloud", "fredonbytes.com", "fredonbytes.eu", "fredonbytes.tech"];
+  },
 
   /**
    * Support/contact email address

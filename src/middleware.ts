@@ -83,15 +83,37 @@ export function middleware(request: NextRequest) {
   // DOMAIN REDIRECT LOGIC - Execute first, before any other middleware
   // Redirect secondary domains to primary domain (301 permanent redirect)
   const host = request.headers.get("host");
+
+  // Debug logging for multi-domain setup (only in development)
+  if (process.env.NODE_ENV !== "production") {
+    console.log("[Middleware] Host:", host);
+    console.log("[Middleware] Primary domain:", domainConfig.primary);
+    console.log("[Middleware] Secondary domains:", domainConfig.secondary);
+    console.log("[Middleware] Strategy:", domainConfig.strategy);
+    console.log("[Middleware] Should redirect:", host ? domainConfig.shouldRedirect(host) : false);
+  }
+
   if (host && domainConfig.shouldRedirect(host)) {
     const protocol = request.headers.get("x-forwarded-proto") || "https";
     const url = request.nextUrl.clone();
 
     // Construct redirect URL with primary domain
     // IMPORTANT: Use hostname (not host) to exclude port - critical for proxied/tunneled deployments
-    // When behind Cloudflare tunnel or Coolify's Traefik, the port should NEVER be in the redirect URL
     url.protocol = protocol;
     url.hostname = domainConfig.primary;
+
+    // Remove port only when running behind a proxy or in production
+    // This preserves local development workflows where port may be needed (e.g., localhost:3000)
+    const isProduction = process.env.NODE_ENV === "production";
+    const behindProxy = process.env.BEHIND_PROXY === "true";
+
+    if (isProduction || behindProxy) {
+      url.port = ""; // Remove port for clean URLs behind proxy/in production
+    }
+
+    if (process.env.NODE_ENV !== "production") {
+      console.log("[Middleware] 🔄 Redirecting:", host, "→", url.toString());
+    }
 
     // 301 Permanent Redirect - SEO-friendly, tells search engines domain has moved
     return NextResponse.redirect(url, 301);
