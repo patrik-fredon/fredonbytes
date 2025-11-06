@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import * as z from "zod";
 
 import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from "@/lib/csrf";
+import { domainConfig } from "@/lib/domain-config";
 import { sendEmail } from "@/lib/email";
 import {
   generateAdminContactNotificationHTML,
@@ -91,8 +92,7 @@ export async function POST(request: NextRequest) {
     const ipAddressHash = createHash("sha256").update(ipAddress).digest("hex");
 
     // Generate survey link
-    const siteUrl =
-      process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz";
+    const siteUrl = domainConfig.siteUrl;
     const surveyLink = `${siteUrl}/survey/${sessionId}`;
 
     // Prepare database operations for parallel execution
@@ -203,7 +203,7 @@ export async function POST(request: NextRequest) {
     const customerEmailText = await generateCustomerConfirmationText(emailData);
 
     const customerEmail = await sendEmail({
-      from: "Fredonbytes <info@fredonbytes.cz>",
+      from: `Fredonbytes <${domainConfig.supportEmail}>`,
       to: validatedData.email,
       subject: t("customer.subject"),
       html: customerEmailHtml,
@@ -224,8 +224,8 @@ export async function POST(request: NextRequest) {
       await generateAdminContactNotificationText(emailData);
 
     const adminEmail = await sendEmail({
-      from: "Contact Form <info@fredonbytes.cz>",
-      to: "info@fredonbytes.cz",
+      from: `Contact Form <${domainConfig.contactEmail}>`,
+      to: domainConfig.contactEmail,
       subject: `New Contact Form Submission from ${sanitizedData.firstName} ${sanitizedData.lastName}`,
       html: adminEmailHtml,
       text: adminEmailText,
