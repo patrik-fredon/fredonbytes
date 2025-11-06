@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import {
-  PricingSectionSkeleton,
-  ServicesSectionSkeleton,
-} from "../../components/homepage/HomepageSkeletons";
+import { PricingSectionSkeleton } from "../../components/homepage/HomepageSkeletons";
 import FAQSection from "../../components/homepage/FAQSection";
 import AboutSection from "../../components/homepage/AboutSection";
+import ServicesSection from "../../components/homepage/ServicesSection";
 
 // Hero section - client-only for optimal animation performance
 const HeroSection = dynamic(
@@ -21,14 +19,6 @@ const HeroSection = dynamic(
   },
 );
 
-const ServicesSection = dynamic(
-  () => import("../../components/homepage/ServicesSection"),
-  {
-    ssr: true,
-    loading: () => <ServicesSectionSkeleton />,
-  },
-);
-
 const PricingSection = dynamic(
   () => import("../../components/homepage/PricingSection"),
   {
@@ -39,6 +29,7 @@ const PricingSection = dynamic(
 
 type Props = {
   params: Promise<{ locale: string }>;
+  searchParams?: Promise<{ category?: string }>;
 };
 
 // Enhanced metadata for homepage with Czech market optimization
@@ -113,8 +104,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // ISR configuration for homepage - revalidate every 24 hours
 export const revalidate = 86400; // 24 hours
 
-export default async function Home({ params }: Props) {
+export default async function Home({ params, searchParams }: Props) {
   const { locale } = await params;
+  const resolvedSearchParams = await searchParams;
+  const category = resolvedSearchParams?.category;
 
   // Enable static rendering
   setRequestLocale(locale);
@@ -393,7 +386,7 @@ export default async function Home({ params }: Props) {
 
       <div className="min-h-screen relative z-10">
         <HeroSection />
-        <ServicesSection />
+        <ServicesSection locale={locale} category={category} />
         <AboutSection locale={locale} showTeam={false} />
         <PricingSection />
         <FAQSection locale={locale} />
