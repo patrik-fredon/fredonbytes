@@ -1,3 +1,38 @@
+# =============================================================================
+# FREDONBYTES - DOCKER COMPOSE FOR COOLIFY
+# =============================================================================
+#
+# This docker-compose file is optimized for Coolify hosting platform.
+# https://coolify.io/docs/knowledge-base/docker/compose
+#
+# DEPLOYMENT STEPS:
+#
+# 1. Create a new service in Coolify with type "Docker Compose"
+# 2. Copy this docker-compose.yml content to Coolify
+# 3. Configure environment variables in Coolify UI:
+#    - Required variables (marked with :?) will show with red border
+#    - Optional variables (marked with :-) have default values
+# 4. Set primary domain in Coolify for your app service
+# 5. Deploy!
+#
+# ENVIRONMENT VARIABLES:
+# All environment variables are auto-detected by Coolify UI.
+# See .env.example for detailed documentation of each variable.
+#
+# NETWORKING:
+# - Port 3000 is exposed for local development/testing
+# - In Coolify, traffic is routed via Traefik proxy (labels configured)
+# - Redis is internal-only (traefik.enable=false)
+#
+# VOLUMES:
+# - redis-data: Persistent Redis storage (managed by Coolify)
+#
+# HEALTH CHECKS:
+# - App: HTTP check on /api/health endpoint
+# - Redis: Redis CLI ping command
+#
+# =============================================================================
+
 services:
   app:
     container_name: fredonbytes-app
@@ -7,22 +42,49 @@ services:
     ports:
       - "3000:3000"
     environment:
+      # Node.js & Application
       - NODE_ENV=production
       - REDIS_URL=redis://redis:6379
-      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
-      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL:?}
-      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY:?}
-      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY:?}
-      - SMTP_HOST=${SMTP_HOST:?}
+      - CSRF_SECRET=${CSRF_SECRET:?}
+
+      # Multi-Domain Configuration
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:?}
+      - NEXT_PUBLIC_PRIMARY_DOMAIN=${NEXT_PUBLIC_PRIMARY_DOMAIN:?}
+      - NEXT_PUBLIC_SECONDARY_DOMAINS=${NEXT_PUBLIC_SECONDARY_DOMAINS:-}
+      - NEXT_PUBLIC_DOMAIN_STRATEGY=${NEXT_PUBLIC_DOMAIN_STRATEGY:-primary}
+
+      # Email Configuration (Domain-Aware)
+      - NEXT_PUBLIC_SUPPORT_EMAIL=${NEXT_PUBLIC_SUPPORT_EMAIL:?}
+      - NEXT_PUBLIC_CONTACT_EMAIL=${NEXT_PUBLIC_CONTACT_EMAIL:?}
+
+      # SMTP Configuration (Nodemailer)
+      - SMTP_HOST=${SMTP_HOST:-smtp.forpsi.com}
       - SMTP_PORT=${SMTP_PORT:-587}
       - SMTP_SECURE=${SMTP_SECURE:-false}
       - SMTP_USER=${SMTP_USER:?}
       - SMTP_PASS=${SMTP_PASS:?}
-      - ADMIN_EMAIL=${ADMIN_EMAIL:?}
-      - EMAIL_FROM_CONTACT=${EMAIL_FROM_CONTACT}
-      - EMAIL_FROM_SURVEY=${EMAIL_FROM_SURVEY}
-      - EMAIL_FROM_GENERAL=${EMAIL_FROM_GENERAL}
-      - CSRF_SECRET=${CSRF_SECRET:?}
+      - SMTP_REJECT_UNAUTHORIZED=${SMTP_REJECT_UNAUTHORIZED:-true}
+
+      # Database (Supabase)
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL:?}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY:?}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY:?}
+
+      # SEO Verification (Optional)
+      - NEXT_PUBLIC_GOOGLE_VERIFICATION=${NEXT_PUBLIC_GOOGLE_VERIFICATION:-}
+      - NEXT_PUBLIC_BING_VERIFICATION=${NEXT_PUBLIC_BING_VERIFICATION:-}
+
+    labels:
+      # Coolify Management Labels
+      - "coolify.managed=true"
+      # Traefik Routing (for Coolify proxy integration)
+      - "traefik.enable=true"
+      - "traefik.http.routers.fredonbytes.rule=Host(`${NEXT_PUBLIC_PRIMARY_DOMAIN:?}`)"
+      - "traefik.http.routers.fredonbytes.entrypoints=websecure"
+      - "traefik.http.routers.fredonbytes.tls=true"
+      - "traefik.http.routers.fredonbytes.tls.certresolver=letsencrypt"
+      - "traefik.http.services.fredonbytes.loadbalancer.server.port=3000"
+
     depends_on:
       redis:
         condition: service_healthy
@@ -41,6 +103,11 @@ services:
     volumes:
       - redis-data:/data
     restart: unless-stopped
+    labels:
+      # Coolify Management Labels
+      - "coolify.managed=true"
+      # Exclude from public exposure (internal service only)
+      - "traefik.enable=false"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
