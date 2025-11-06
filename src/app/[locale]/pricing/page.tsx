@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import PricingClient from "./PricingClient";
@@ -13,17 +13,16 @@ export async function generateMetadata({
   params,
 }: PricingPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pricing" });
-  const metaT = await getTranslations({ locale, namespace: "meta.pricing" });
+  const t = await getTranslations({ locale, namespace: "pricing.meta" });
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
   const canonicalUrl = `${baseUrl}${localePrefix}/pricing`;
 
   return {
-    title: metaT("title"),
-    description: metaT("description"),
-    keywords: metaT("keywords"),
+    title: t("title"),
+    description: t("description"),
+    keywords: t("keywords"),
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -33,8 +32,8 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: metaT("title"),
-      description: metaT("description"),
+      title: t("title"),
+      description: t("description"),
       type: "website",
       url: canonicalUrl,
       siteName: "Fredonbytes",
@@ -52,8 +51,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: metaT("title"),
-      description: metaT("description"),
+      title: t("title"),
+      description: t("description"),
     },
     robots: {
       index: true,

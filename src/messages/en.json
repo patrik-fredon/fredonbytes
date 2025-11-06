@@ -809,7 +809,8 @@
     },
     "meta": {
       "title": "Transparent Pricing Plans - Choose Your IT Solution",
-      "description": "Transparent pricing with no hidden fees. Scale your business with our flexible IT solutions from starter to enterprise plans."
+      "description": "Transparent pricing with no hidden fees. Scale your business with our flexible IT solutions from starter to enterprise plans.",
+      "keywords": "price list, IT service prices, web development prices, transparent prices, business plans, IT solutions, flexible prices, digital services, pricing plans, IT services for businesses"
     },
     "loading": "Loading pricing information...",
     "currency": {
@@ -1483,7 +1484,11 @@
           "webDevelopment": {
             "name": "Web Development",
             "description": "Custom website or web application",
-            "included": ["Responsive Design", "SEO Basic", "Contact Forms"]
+            "included": [
+              "Responsive Design",
+              "SEO Basic",
+              "Contact Forms"
+            ]
           },
           "mobileApp": {
             "name": "Mobile App",
@@ -1506,7 +1511,11 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monthly SEO and digital marketing services",
-            "included": ["Keyword Research", "Content Strategy", "Analytics"]
+            "included": [
+              "Keyword Research",
+              "Content Strategy",
+              "Analytics"
+            ]
           },
           "socialMedia": {
             "name": "Social Media",

@@ -809,7 +809,8 @@
     },
     "meta": {
       "title": "Transparente Preispläne - Wählen Sie Ihre IT-Lösung",
-      "description": "Transparente Preise ohne versteckte Gebühren. Skalieren Sie Ihr Unternehmen mit unseren flexiblen IT-Lösungen von Starter- bis Enterprise-Plänen."
+      "description": "Transparente Preise ohne versteckte Gebühren. Skalieren Sie Ihr Unternehmen mit unseren flexiblen IT-Lösungen von Starter- bis Enterprise-Plänen.",
+      "keywords": "Preisliste, IT-Dienstleistungspreise, Webentwicklungspreise, transparente Preise, Geschäftspläne, IT-Lösungen, flexible Preise, digitale Dienste, Preispläne, IT-Dienste für Unternehmen"
     },
     "loading": "Preisinformationen werden geladen...",
     "currency": {
@@ -1582,7 +1583,11 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monatliche SEO und digitale Marketing-Dienste",
-            "included": ["Keyword-Recherche", "Content-Strategie", "Analytik"]
+            "included": [
+              "Keyword-Recherche",
+              "Content-Strategie",
+              "Analytik"
+            ]
           },
           "socialMedia": {
             "name": "Social Media",
