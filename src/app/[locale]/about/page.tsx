@@ -134,10 +134,10 @@ export default async function AboutPage({ params }: Props) {
           </div>
 
           {/* Company Story Section */}
-          <CompanyStory />
+          <CompanyStory locale={locale} />
 
           {/* Team Section */}
-          <TeamSection />
+          <TeamSection locale={locale} />
         </div>
       </section>
     </>

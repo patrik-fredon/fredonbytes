@@ -7,8 +7,7 @@
  * Features:
  * - Dev-themed GlassCard design with terminal aesthetic
  * - Photo display with fallback placeholder
- * - Hover effects with glow animation
- * - Framer Motion transitions
+ * - CSS hover effects with smooth transitions (zero JS overhead)
  * - AAA WCAG accessibility compliance
  * - Responsive design
  *
@@ -17,7 +16,6 @@
 
 "use client";
 
-import { motion, type Variants } from "framer-motion";
 import { User } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -27,46 +25,24 @@ import type { TeamMember } from "@/lib/types/about";
 
 interface TeamMemberCardProps {
   member: TeamMember;
+  locale: string;
   index?: number;
 }
 
 export default function TeamMemberCard({
   member,
+  locale,
   index = 0,
 }: TeamMemberCardProps) {
   const [imageError, setImageError] = useState(false);
-
-  // Animation variants
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        delay: index * 0.1,
-        ease: "easeOut",
-      },
-    },
-  };
 
   // Alternate glow colors for visual variety
   const glowColor = index % 2 === 0 ? "cyan" : "purple";
 
   return (
-    <motion.article
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      whileHover={{
-        y: -4,
-        scale: 1.02,
-        transition: { duration: 0.2, ease: "easeOut" },
-      }}
+    <article
       aria-label={`${member.name} - ${member.position}`}
-      tabIndex={0}
-      className="h-full"
+      className="h-full transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]"
     >
       <GlassCard variant="card" glowColor={glowColor} className="h-full">
         <div className="flex flex-col items-center space-y-4">
@@ -137,6 +113,6 @@ export default function TeamMemberCard({
           </div>
         </div>
       </GlassCard>
-    </motion.article>
+    </article>
   );
 }
