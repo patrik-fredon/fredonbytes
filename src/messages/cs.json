@@ -15,7 +15,7 @@
   "metadata": {
     "siteName": "Fredonbytes",
     "title": "Fredonbytes - Váš komplexní IT partner",
-    "description": "Od kódu po kliknutí, poskytujeme kompletní digitální řešení. Komplexní IT služby včetně vývoje softwaru, grafického designu, SEO a marketingu na sociálních sítích.",
+    "description": "🚀 Tvorba webů Brno | Vývoj aplikací | SEO optimalizace. Komplexní IT řešení pro vaši firmu. ✓ Moderní technologie ✓ 24/7 podpora ✓ Zaručená kvalita. Kontaktujte nás ještě dnes!",
     "keywords": "vývoj webu, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika",
     "logoAlt": "Logo Fredonbytes"
   },
@@ -86,8 +86,8 @@
   },
   "seo": {
     "defaultTitle": "Fredonbytes - Vaše komplexní IT řešení",
-    "defaultDescription": "Od kódu po kliky, zajišťujeme kompletní digitální převahu. Komplexní IT řešení včetně vývoje softwaru, grafického designu, SEO a marketingu na sociálních sítích.",
-    "keywords": "vývoj webu, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika",
+    "defaultDescription": "Tvorba webů a aplikací na míru v Brně. ✓ React & Next.js experti ✓ SEO optimalizace ✓ Moderní design ✓ Rychlá realizace. Získejte ZDARMA konzultaci a odhad ceny!",
+    "keywords": "tvorba webových stránek Brno, vývoj webů Brno, IT firma Brno, vývoj software Brno, digitální marketing ČR, SEO optimalizace Brno, grafický design Brno, tvorba e-shopů, webové aplikace Brno, IT řešení pro firmy, vývoj mobilních aplikací ČR, WordPress Brno, Next.js vývoj, React vývoj Brno",
     "siteName": "Fredonbytes",
     "twitterHandle": "@Fredonbytes",
     "twitterCreator": "@FredonBytes"
@@ -1768,5 +1768,39 @@
     "notFoundHeading": "Stránka nenalezena",
     "notFoundDescription": "Je nám líto, ale zdá se, že došlo k problému, protože tuto stránku nemůžeme najít. \nZadali jste adresu správně?",
     "goHomeButton": "Jít domů"
+  },
+  "faq": {
+    "title": "Často kladené otázky",
+    "subtitle": "Máte otázky? Máme odpovědi. Prozkoumejte nejčastější dotazy o našich službách a procesech.",
+    "items": [
+      {
+        "question": "Jaké technologie používáte pro vývoj webových aplikací?",
+        "answer": "Používáme nejmodernější technologie včetně React, Next.js 15, TypeScript, Node.js a dalších. Specializujeme se na moderní framework pro rychlé, SEO-optimalizované a škálovatelné aplikace. Vybíráme technologie podle potřeb vašeho projektu."
+      },
+      {
+        "question": "Jak dlouho trvá vývoj webové stránky nebo aplikace?",
+        "answer": "Doba realizace závisí na složitosti projektu. Jednoduchá prezentační webová stránka může být hotová za 2-4 týdny, komplexní webová aplikace nebo e-shop za 2-4 měsíce. Po analýze vašich požadavků vám poskytneme přesný odhad."
+      },
+      {
+        "question": "Poskytujete podporu a údržbu po dokončení projektu?",
+        "answer": "Ano! Všechny naše balíčky zahrnují záruční podporu (3-6 měsíců podle plánu). Po skončení záruky nabízíme měsíční údržbu, aktualizace zabezpečení, monitoring výkonu a technickou podporu 24/7 pro Enterprise plán."
+      },
+      {
+        "question": "Jak řešíte SEO optimalizaci webových stránek?",
+        "answer": "SEO je součástí každého našeho projektu. Implementujeme technické SEO (rychlost načítání, strukturovaná data, meta tagy), on-page optimalizaci (klíčová slova, obsah, struktura) a zajišťujeme mobilní optimalizaci. Pro pokročilé SEO nabízíme měsíční služby včetně analýzy, link buildingu a content marketingu."
+      },
+      {
+        "question": "Můžu si vybrat vlastní design nebo používáte šablony?",
+        "answer": "Vytváříme 100% vlastní design na míru vašim potřebám a brandingu. Nepoužíváme prefabrikované šablony. Každý projekt začíná důkladnou analýzou vaší značky, cílové skupiny a konkurence. Design konzultujeme s vámi v každé fázi."
+      },
+      {
+        "question": "Jaké jsou platební podmínky a co je zahrnuto v ceně?",
+        "answer": "Běžně pracujeme se zálohou 40% při zahájení projektu, 40% po předání k testování a 20% po dokončení. Cena zahrnuje analýzu, design, vývoj, testování, nasazení a školení. Transparentní ceník najdete na stránce Ceník. Nabízíme i měsíční splátky pro větší projekty."
+      }
+    ],
+    "cta": {
+      "question": "Nenašli jste odpověď na svou otázku?",
+      "button": "Kontaktujte nás"
+    }
   }
 }

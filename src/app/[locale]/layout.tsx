@@ -90,6 +90,19 @@ function configureHeadForTheme() {
   return (
     <head>
       <meta name="apple-mobile-web-app-title" content="FredonBytes" />
+
+      {/* Resource hints for performance optimization */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+      <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+
+      {/* Geo-targeting for Czech Republic */}
+      <meta name="geo.region" content="CZ-JM" />
+      <meta name="geo.placename" content="Brno" />
+      <meta name="geo.position" content="49.1951;16.6068" />
+      <meta name="ICBM" content="49.1951, 16.6068" />
     </head>
   );
 }
