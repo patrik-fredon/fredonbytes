@@ -1,5 +1,7 @@
-import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Button } from "@/components/common/Button";
+import GlassCard from "@/components/dev-ui/GlassCard";
 
 interface FAQItem {
   question: string;
@@ -45,7 +47,7 @@ export default async function FAQSection({ locale }: FAQSectionProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-terminal-light font-mono">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-electric-purple font-mono">
             {t("title")}
           </h2>
           <p className="text-lg sm:text-xl text-terminal-light/80 max-w-3xl mx-auto font-mono">
@@ -58,11 +60,11 @@ export default async function FAQSection({ locale }: FAQSectionProps) {
           {faqs.map((faq, index) => (
             <details
               key={index}
-              className="group border border-terminal-light/20 rounded-lg overflow-hidden bg-slate-900/50 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-300"
+              className="group border border-slate-800/50 rounded-lg overflow-hidden shadow-xl inset-shadow-sm inset-shadow-slate-950/80  bg-glass-bg backdrop-blur-glass  transition-all duration-300"
             >
               <summary className="px-6 py-4 flex items-center justify-between cursor-pointer list-none hover:bg-slate-800/50 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
-                <h3 className="text-lg sm:text-xl font-semibold text-terminal-light font-mono pr-4">
-                  {faq.question}
+                <h3 className="text-lg sm:text-xl font-semibold text-terminal-light/80 font-mono pr-4">
+                  <span className="text-neon-purple">{'// '}</span>{faq.question}
                 </h3>
                 <svg
                   className="flex-shrink-0 w-6 h-6 text-cyan-400 transition-transform duration-300 group-open:rotate-180"
@@ -91,12 +93,14 @@ export default async function FAQSection({ locale }: FAQSectionProps) {
           <p className="text-terminal-light/80 font-mono mb-4">
             {t("cta.question")}
           </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-3 bg-cyan-400 text-slate-900 font-bold rounded-lg hover:bg-cyan-300 transition-colors duration-200 font-mono"
-          >
-            {t("cta.button")}
-          </Link>
+          <Button variant="gradient">
+            <Link
+              href="/contact"
+              className="inline-block px-8 py-3  text-terminal-light/80 font-bold  transition-colors duration-200 font-mono"
+            >
+              {t("cta.button")}
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

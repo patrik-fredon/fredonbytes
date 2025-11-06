@@ -90,7 +90,10 @@
     "keywords": "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic",
     "siteName": "Fredonbytes",
     "twitterHandle": "@Fredonbytes",
-    "twitterCreator": "@FredonBytes"
+    "twitterCreator": "@FredonBytes",
+    "title": "Fredonbytes - Your All-in-One IT Powerhouse",
+    "logoAlt": "Fredonbytes Logo",
+    "description": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing."
   },
   "jsonLd": {
     "organizationName": "Fredonbytes",
@@ -1762,5 +1765,39 @@
     "notFoundHeading": "Page Not Found",
     "notFoundDescription": "We are sorry, but there seems to be an issue as we cannot find this page. Did you type the address correctly?",
     "goHomeButton": "Go Home"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Have questions? We have answers. Explore the most common questions about our services and processes.",
+    "items": [
+      {
+        "question": "What technologies do you use for web application development?",
+        "answer": "We use the most modern technologies including React, Next.js 15, TypeScript, Node.js and others. We specialize in modern frameworks for fast, SEO-optimized and scalable applications. We select technologies according to your project's needs."
+      },
+      {
+        "question": "How long does it take to develop a website or application?",
+        "answer": "The implementation time depends on the complexity of the project. A simple presentation website can be completed in 2-4 weeks, a complex web application or e-shop in 2-4 months. After analyzing your requirements, we will provide you with an accurate estimate."
+      },
+      {
+        "question": "Do you provide support and maintenance after project completion?",
+        "answer": "Yes! All our packages include warranty support (3-6 months depending on the plan). After the warranty period, we offer monthly maintenance, security updates, performance monitoring and 24/7 technical support for the Enterprise plan."
+      },
+      {
+        "question": "How do you handle SEO optimization of websites?",
+        "answer": "SEO is part of every project we do. We implement technical SEO (loading speed, structured data, meta tags), on-page optimization (keywords, content, structure) and ensure mobile optimization. For advanced SEO, we offer monthly services including analysis, link building and content marketing."
+      },
+      {
+        "question": "Can I choose my own design or do you use templates?",
+        "answer": "We create 100% custom designs tailored to your needs and branding. We don't use prefabricated templates. Each project starts with a thorough analysis of your brand, target audience and competition. We consult the design with you at every stage."
+      },
+      {
+        "question": "What are the payment terms and what is included in the price?",
+        "answer": "We usually work with a 1/3 deposit at project start, and the remaining 2/3 upon completion, provided all pre-agreed criteria and our set deadlines are met. The price includes analysis, design, development, testing, deployment and training. You can find a transparent price list on the Pricing page. We also offer monthly installments for larger projects."
+      }
+    ],
+    "cta": {
+      "question": "Didn't find the answer to your question?",
+      "button": "Contact us"
+    }
   }
 }

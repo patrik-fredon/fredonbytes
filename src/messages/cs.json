@@ -90,7 +90,10 @@
     "keywords": "tvorba webových stránek Brno, vývoj webů Brno, IT firma Brno, vývoj software Brno, digitální marketing ČR, SEO optimalizace Brno, grafický design Brno, tvorba e-shopů, webové aplikace Brno, IT řešení pro firmy, vývoj mobilních aplikací ČR, WordPress Brno, Next.js vývoj, React vývoj Brno",
     "siteName": "Fredonbytes",
     "twitterHandle": "@Fredonbytes",
-    "twitterCreator": "@FredonBytes"
+    "twitterCreator": "@FredonBytes",
+    "title": "Fredonbytes - Váš komplexní IT partner",
+    "logoAlt": "Logo Fredonbytes",
+    "description": "🚀 Tvorba webů Brno | Vývoj aplikací | SEO optimalizace. Komplexní IT řešení pro vaši firmu. ✓ Moderní technologie ✓ 24/7 podpora ✓ Zaručená kvalita. Kontaktujte nás ještě dnes!"
   },
   "jsonLd": {
     "organizationName": "Fredonbytes",
@@ -1795,7 +1798,7 @@
       },
       {
         "question": "Jaké jsou platební podmínky a co je zahrnuto v ceně?",
-        "answer": "Běžně pracujeme se zálohou 40% při zahájení projektu, 40% po předání k testování a 20% po dokončení. Cena zahrnuje analýzu, design, vývoj, testování, nasazení a školení. Transparentní ceník najdete na stránce Ceník. Nabízíme i měsíční splátky pro větší projekty."
+        "answer": "Běžně pracujeme se zálohou ve výši jedné třetiny při zahájení projektu a zbylých dvou třetin po jeho dokončení. Tato podmínka platí za předpokladu, že splníme všechna předem určená kritéria a stanovené termíny. Cena zahrnuje analýzu, design, vývoj, testování, nasazení a školení. Transparentní ceník najdete na stránce Ceník. Pro větší projekty nabízíme také měsíční splátky."
       }
     ],
     "cta": {
