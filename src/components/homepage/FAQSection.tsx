@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/common/Button";
-import GlassCard from "@/components/dev-ui/GlassCard";
 
 interface FAQItem {
   question: string;
