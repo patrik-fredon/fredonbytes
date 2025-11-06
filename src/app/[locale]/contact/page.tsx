@@ -50,9 +50,11 @@ export async function generateMetadata({
       images: [
         {
           url: `${siteUrl}/fredonbytes-logo-with-background.png`,
+          secureUrl: `${siteUrl}/fredonbytes-logo-with-background.png`,
           width: 1200,
           height: 630,
           alt: "FredonBytes - Your All-in-One Digital Army",
+          type: "image/png",
         },
       ],
     },

@@ -84,9 +84,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [
         {
           url: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+          secureUrl: `${baseUrl}/FredonBytes_GraphicLogo.png`,
           width: 1200,
           height: 630,
           alt: t("logoAlt"),
+          type: "image/png",
         },
       ],
     },

@@ -38,6 +38,17 @@ export async function generateMetadata({
       type: "website",
       url: canonicalUrl,
       siteName: "Fredonbytes",
+      locale: locale === "cs" ? "cs_CZ" : locale === "de" ? "de_DE" : "en_US",
+      images: [
+        {
+          url: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+          secureUrl: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+          width: 1200,
+          height: 630,
+          alt: "Fredonbytes Pricing Plans",
+          type: "image/png",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",

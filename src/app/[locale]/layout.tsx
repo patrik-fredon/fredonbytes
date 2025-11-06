@@ -91,6 +91,22 @@ function configureHeadForTheme() {
     <head>
       <meta name="apple-mobile-web-app-title" content="FredonBytes" />
 
+      {/* Site Verification for Search Engines */}
+      {/* Google Search Console - Add your verification code to .env as NEXT_PUBLIC_GOOGLE_VERIFICATION */}
+      {process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION && (
+        <meta
+          name="google-site-verification"
+          content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION}
+        />
+      )}
+      {/* Bing Webmaster Tools - Add your verification code to .env as NEXT_PUBLIC_BING_VERIFICATION */}
+      {process.env.NEXT_PUBLIC_BING_VERIFICATION && (
+        <meta
+          name="msvalidate.01"
+          content={process.env.NEXT_PUBLIC_BING_VERIFICATION}
+        />
+      )}
+
       {/* Resource hints for performance optimization */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
