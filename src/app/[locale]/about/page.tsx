@@ -75,6 +75,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// ISR configuration - revalidate every 7 days
+export const revalidate = 604800; // 7 days in seconds
+
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
