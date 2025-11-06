@@ -83,6 +83,16 @@ export function middleware(request: NextRequest) {
   // DOMAIN REDIRECT LOGIC - Execute first, before any other middleware
   // Redirect secondary domains to primary domain (301 permanent redirect)
   const host = request.headers.get("host");
+
+  // Debug logging for multi-domain setup (only in development)
+  if (process.env.NODE_ENV !== "production") {
+    console.log("[Middleware] Host:", host);
+    console.log("[Middleware] Primary domain:", domainConfig.primary);
+    console.log("[Middleware] Secondary domains:", domainConfig.secondary);
+    console.log("[Middleware] Strategy:", domainConfig.strategy);
+    console.log("[Middleware] Should redirect:", host ? domainConfig.shouldRedirect(host) : false);
+  }
+
   if (host && domainConfig.shouldRedirect(host)) {
     const protocol = request.headers.get("x-forwarded-proto") || "https";
     const url = request.nextUrl.clone();
@@ -93,6 +103,10 @@ export function middleware(request: NextRequest) {
     url.protocol = protocol;
     url.hostname = domainConfig.primary;
     url.port = ""; // Explicitly remove port for clean URLs behind proxy
+
+    if (process.env.NODE_ENV !== "production") {
+      console.log("[Middleware] 🔄 Redirecting:", host, "→", url.toString());
+    }
 
     // 301 Permanent Redirect - SEO-friendly, tells search engines domain has moved
     return NextResponse.redirect(url, 301);
