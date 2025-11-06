@@ -677,7 +677,10 @@
         "design": "Design Services",
         "marketing": "Marketing Services",
         "consulting": "Consulting Services",
-        "support": "Maintenance and Support"
+        "support": "Maintenance and Support",
+        "copywriting": "Copywriting Services",
+        "seo": "SEO Services",
+        "social_media": "Social Media Management"
       },
       "features": {
         "responsive_design": "Responsive Design",
@@ -720,7 +723,46 @@
         "order_processing": "Order Processing",
         "multi_page": "Multi-Page Application",
         "advanced_seo": "Advanced SEO",
-        "contact_forms": "Contact Forms"
+        "contact_forms": "Contact Forms",
+        "keyword_optimization": "Keyword Optimization",
+        "content_creation": "Content Creation",
+        "seo_friendly": "SEO-Friendly Structure",
+        "technical_documentation": "Technical Documentation",
+        "product_description": "Product Descriptions",
+        "expert_content": "Expert Content Creation",
+        "content_planning": "Content Planning",
+        "topic_research": "Topic Research",
+        "content_calendar": "Content Calendar",
+        "print_design": "Print Design",
+        "digital_graphics": "Digital Graphics",
+        "brand_consistency": "Brand Consistency",
+        "logo_design": "Logo Design",
+        "brand_guidelines": "Brand Guidelines",
+        "color_palette": "Color Palette",
+        "typography": "Typography",
+        "user_research": "User Research",
+        "wireframing": "Wireframing",
+        "prototyping": "Prototyping",
+        "usability_testing": "Usability Testing",
+        "monthly_reports": "Monthly Reporting",
+        "position_tracking": "Position Tracking",
+        "content_optimization": "Content Optimization",
+        "link_building": "Link Building",
+        "technical_audit": "Technical SEO Audit",
+        "keyword_analysis": "Keyword Analysis",
+        "competitor_analysis": "Competitor Analysis",
+        "seo_report": "SEO Reporting",
+        "google_business": "Google My Business Setup",
+        "local_listings": "Local Listings",
+        "review_management": "Review Management",
+        "local_keywords": "Local Keywords",
+        "graphic_design": "Graphic Design",
+        "content_writing": "Content Writing",
+        "video_editing": "Video Editing",
+        "community_management": "Community Management",
+        "ad_creation": "Ad Creation",
+        "targeting": "Audience Targeting",
+        "performance_analysis": "Performance Analysis"
       },
       "toggle": "Calculate Custom Quote",
       "services": {
@@ -1433,11 +1475,7 @@
           "webDevelopment": {
             "name": "Web Development",
             "description": "Custom website or web application",
-            "included": [
-              "Responsive Design",
-              "SEO Basic",
-              "Contact Forms"
-            ]
+            "included": ["Responsive Design", "SEO Basic", "Contact Forms"]
           },
           "mobileApp": {
             "name": "Mobile App",
@@ -1460,11 +1498,7 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monthly SEO and digital marketing services",
-            "included": [
-              "Keyword Research",
-              "Content Strategy",
-              "Analytics"
-            ]
+            "included": ["Keyword Research", "Content Strategy", "Analytics"]
           },
           "socialMedia": {
             "name": "Social Media",
