@@ -1,17 +1,17 @@
-"use client";
-
-import { useTranslations } from "next-intl";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 
 interface FAQItem {
   question: string;
   answer: string;
 }
 
-export default function FAQSection() {
-  const t = useTranslations("faq");
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+interface FAQSectionProps {
+  locale: string;
+}
+
+export default async function FAQSection({ locale }: FAQSectionProps) {
+  const t = await getTranslations({ locale, namespace: "faq" });
 
   const faqs: FAQItem[] = [
     {
@@ -40,10 +40,6 @@ export default function FAQSection() {
     },
   ];
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
     <section className="py-16 sm:py-20 lg:py-24 relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,40 +53,36 @@ export default function FAQSection() {
           </p>
         </div>
 
-        {/* FAQ Items */}
+        {/* FAQ Items - Native HTML details/summary for zero-JS accordion */}
         <div className="max-w-4xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
-            <div
+            <details
               key={index}
-              className="border border-terminal-light/20 rounded-lg overflow-hidden bg-slate-900/50 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-300"
+              className="group border border-terminal-light/20 rounded-lg overflow-hidden bg-slate-900/50 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-300"
             >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-slate-800/50 transition-colors duration-200"
-                aria-expanded={openIndex === index}
-              >
+              <summary className="px-6 py-4 flex items-center justify-between cursor-pointer list-none hover:bg-slate-800/50 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
                 <h3 className="text-lg sm:text-xl font-semibold text-terminal-light font-mono pr-4">
                   {faq.question}
                 </h3>
-                <ChevronDown
-                  className={`flex-shrink-0 w-6 h-6 text-cyan-400 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
+                <svg
+                  className="flex-shrink-0 w-6 h-6 text-cyan-400 transition-transform duration-300 group-open:rotate-180"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </summary>
 
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openIndex === index
-                    ? "max-h-96 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <div className="px-6 pb-4 text-terminal-light/80 font-mono leading-relaxed">
-                  {faq.answer}
-                </div>
+              <div className="px-6 pb-4 text-terminal-light/80 font-mono leading-relaxed animate-in fade-in duration-200">
+                {faq.answer}
               </div>
-            </div>
+            </details>
           ))}
         </div>
 
@@ -99,12 +91,12 @@ export default function FAQSection() {
           <p className="text-terminal-light/80 font-mono mb-4">
             {t("cta.question")}
           </p>
-          <a
+          <Link
             href="/contact"
             className="inline-block px-8 py-3 bg-cyan-400 text-slate-900 font-bold rounded-lg hover:bg-cyan-300 transition-colors duration-200 font-mono"
           >
             {t("cta.button")}
-          </a>
+          </Link>
         </div>
       </div>
     </section>

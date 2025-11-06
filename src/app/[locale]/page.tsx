@@ -7,6 +7,7 @@ import {
   PricingSectionSkeleton,
   ServicesSectionSkeleton,
 } from "../../components/homepage/HomepageSkeletons";
+import FAQSection from "../../components/homepage/FAQSection";
 
 // Hero section - client-only for optimal animation performance
 const HeroSection = dynamic(
@@ -43,25 +44,6 @@ const PricingSection = dynamic(
   {
     ssr: true,
     loading: () => <PricingSectionSkeleton />,
-  },
-);
-
-const FAQSection = dynamic(
-  () => import("../../components/homepage/FAQSection"),
-  {
-    ssr: true,
-    loading: () => (
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="container mx-auto px-4 animate-pulse">
-          <div className="h-12 bg-slate-700/50 rounded w-64 mx-auto mb-8" />
-          <div className="space-y-4 max-w-4xl mx-auto">
-            <div className="h-16 bg-slate-700/50 rounded" />
-            <div className="h-16 bg-slate-700/50 rounded" />
-            <div className="h-16 bg-slate-700/50 rounded" />
-          </div>
-        </div>
-      </section>
-    ),
   },
 );
 
@@ -419,7 +401,7 @@ export default async function Home({ params }: Props) {
         <ServicesSection />
         <AboutSection showTeam={false} />
         <PricingSection />
-        <FAQSection />
+        <FAQSection locale={locale} />
       </div>
     </>
   );
