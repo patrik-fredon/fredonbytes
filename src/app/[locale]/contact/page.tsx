@@ -80,6 +80,77 @@ export async function generateMetadata({
 export default async function ContactPage({ params }: ContactPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "contact.meta" });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const localePrefix = locale === "cs" ? "" : `/${locale}`;
 
-  return <ContactClient locale={locale} />;
+  // ContactPage with ContactPoint schema for SEO
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": `${baseUrl}${localePrefix}/contact#contactpage`,
+    url: `${baseUrl}${localePrefix}/contact`,
+    name: t("title"),
+    description: t("description"),
+    mainEntity: {
+      "@type": "Organization",
+      "@id": `${baseUrl}/#organization`,
+      name: "Fredonbytes",
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          telephone: "+420799027984",
+          email: "info@fredonbytes.cz",
+          contactType: "Customer Service",
+          areaServed: "CZ",
+          availableLanguage: ["Czech", "English", "German"],
+          hoursAvailable: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:00",
+            closes: "17:00",
+          },
+        },
+      ],
+    },
+  };
+
+  // BreadcrumbList schema for navigation hierarchy
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: locale === "cs" ? "Domů" : locale === "de" ? "Startseite" : "Home",
+        item: `${baseUrl}${localePrefix}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: t("title"),
+        item: `${baseUrl}${localePrefix}/contact`,
+      },
+    ],
+  };
+
+  return (
+    <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(contactSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <ContactClient locale={locale} />
+    </>
+  );
 }

@@ -83,6 +83,9 @@ export default async function AboutPage({ params }: Props) {
   setRequestLocale(locale);
   const metaT = await getTranslations({ locale, namespace: "aboutPage.meta" });
   const t = await getTranslations({ locale, namespace: "aboutPage" });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const localePrefix = locale === "cs" ? "" : `/${locale}`;
+
   // Structured data for SEO
   const structuredData = {
     "@context": "https://schema.org",
@@ -118,12 +121,36 @@ export default async function AboutPage({ params }: Props) {
     },
   };
 
+  // BreadcrumbList schema for navigation hierarchy
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: locale === "cs" ? "Domů" : locale === "de" ? "Startseite" : "Home",
+        item: `${baseUrl}${localePrefix}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: metaT("title"),
+        item: `${baseUrl}${localePrefix}/about`,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <section className="min-h-screen  relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 relative z-10">
