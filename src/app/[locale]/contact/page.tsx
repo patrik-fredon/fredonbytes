@@ -9,6 +9,9 @@ interface ContactPageProps {
   }>;
 }
 
+// ISR configuration - revalidate every 24 hours
+export const revalidate = 86400;
+
 export async function generateMetadata({
   params,
 }: ContactPageProps): Promise<Metadata> {
