@@ -1,16 +1,19 @@
-"use client";
-
 import { Github, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import React from "react";
 import { Link } from "@/i18n/navigation";
 
 import CookieSettingsLink from "./CookieSettingsLink";
 
-export default function Footer() {
+interface FooterProps {
+  locale: string;
+}
+
+export default async function Footer({ locale }: FooterProps) {
+  // Generate current year on server at build/request time
   const currentYear = new Date().getFullYear();
-  const t = useTranslations();
+  const t = await getTranslations({ locale });
 
   const socialLinks = [
     {

@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Users,
   Award,
@@ -11,7 +9,7 @@ import {
   Shield,
 } from "lucide-react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import React from "react";
 
 import { Link } from "@/i18n/navigation";
@@ -19,12 +17,16 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "../common/Button";
 import GlassCard from "../dev-ui/GlassCard";
 
-export default function AboutSection({
-  showTeam = true,
-}: {
+interface AboutSectionProps {
+  locale: string;
   showTeam?: boolean;
-}) {
-  const t = useTranslations();
+}
+
+export default async function AboutSection({
+  locale,
+  showTeam = true,
+}: AboutSectionProps) {
+  const t = await getTranslations({ locale });
   const stats = [
     {
       number: t("services.stats.support.number"),

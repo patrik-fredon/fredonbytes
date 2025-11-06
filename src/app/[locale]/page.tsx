@@ -3,11 +3,11 @@ import dynamic from "next/dynamic";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import {
-  AboutSectionSkeleton,
   PricingSectionSkeleton,
   ServicesSectionSkeleton,
 } from "../../components/homepage/HomepageSkeletons";
 import FAQSection from "../../components/homepage/FAQSection";
+import AboutSection from "../../components/homepage/AboutSection";
 
 // Hero section - client-only for optimal animation performance
 const HeroSection = dynamic(
@@ -19,15 +19,6 @@ const HeroSection = dynamic(
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
       </section>
     ),
-  },
-);
-
-// Dynamic imports for below-the-fold sections with Suspense
-const AboutSection = dynamic(
-  () => import("../../components/homepage/AboutSection"),
-  {
-    ssr: true,
-    loading: () => <AboutSectionSkeleton />,
   },
 );
 
@@ -399,7 +390,7 @@ export default async function Home({ params }: Props) {
       <div className="min-h-screen relative z-10">
         <HeroSection />
         <ServicesSection />
-        <AboutSection showTeam={false} />
+        <AboutSection locale={locale} showTeam={false} />
         <PricingSection />
         <FAQSection locale={locale} />
       </div>

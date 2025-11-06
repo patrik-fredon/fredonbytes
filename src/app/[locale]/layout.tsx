@@ -141,7 +141,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <main id="main" className="flex-1 pt-16 lg:pt-20 relative z-10">
               {children}
             </main>
-            <Footer />
+            <Footer locale={locale} />
             <CookieConsentBanner />
             <ConditionalAnalytics />
             <WebVitals />
