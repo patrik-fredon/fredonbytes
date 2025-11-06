@@ -92,17 +92,17 @@ export default function Header({ className }: HeaderProps) {
 
   const externalLinks = [
     {
-      href: "https://me.fredonbytes.cloud",
+      href: "https://me.fredonbytes.cz",
       key: "navigation.portfolio",
       external: true,
     },
     {
-      href: "https://lib.fredonbytes.cloud",
+      href: "https://lib.fredonbytes.cz",
       key: "navigation.gallery",
       external: true,
     },
     {
-      href: "https://tech.fredonbytes.cloud",
+      href: "https://tech.fredonbytes.cz",
       key: "navigation.support",
       external: true,
     },

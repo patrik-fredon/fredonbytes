@@ -194,7 +194,7 @@ export function generateAdminNotificationHTML(
 
           <div class="footer">
             <p><strong>FredonBytes</strong> - Customer Satisfaction System</p>
-            <p>This email was automatically generated from fredonbytes.cloud</p>
+            <p>This email was automatically generated from fredonbytes.cz</p>
             <p style="font-size: 12px; margin-top: 15px; color: #94a3b8;">
               Session ID: ${escapeHtml(session_id)}
             </p>
@@ -323,13 +323,13 @@ export async function generateCustomerConfirmationHTML(
             </ul>
 
             <div style="text-align: center;">
-              <a href="https://fredonbytes.cloud" class="cta">${t("customer.visitWebsite")}</a>
+              <a href="https://fredonbytes.cz" class="cta">${t("customer.visitWebsite")}</a>
             </div>
           </div>
 
           <div class="footer">
             <p><strong style="color: #00D9FF;">${t("common.companyName")}</strong> <span style="color: #94A3B8;">//</span> ${t("common.tagline")}</p>
-            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cz" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cz</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
             <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #A855F7;">
               Code. Create. Conquer.
             </p>
@@ -375,13 +375,13 @@ ${t("customer.projectSummary")}
 - Timeline: ${data.timeline}
 
 ${t("customer.inTheMeantime")}
-- Check out our project portfolio: https://fredonbytes.cloud
+- Check out our project portfolio: https://fredonbytes.cz
 - Follow us on social media for updates
 - Call us directly at +420 799 027 984
 
 ---
 ${t("common.companyName")} // ${t("common.tagline")}
-${t("common.location")} | info@fredonbytes.cloud | +420 799 027 984
+${t("common.location")} | info@fredonbytes.cz | +420 799 027 984
 // Code. Create. Conquer.
   `.trim();
 }
@@ -433,7 +433,7 @@ export async function generateAdminContactNotificationHTML(
         <div class="container">
           <div class="header">
             <h1 style="margin: 0; font-size: 24px;">${t("admin.newSubmission")}</h1>
-            <p style="margin: 10px 0 0 0; opacity: 0.9;">fredonbytes.cloud</p>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">fredonbytes.cz</p>
           </div>
 
           <div class="content">
@@ -542,13 +542,13 @@ export async function generateSurveyThankYouHTML(
             <p style="color: #F1F5F9;">${t("survey.gratitude")}</p>
 
             <div style="text-align: center; margin-top: 30px;">
-              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t("customer.visitWebsite")}</a>
+              <a href="https://fredonbytes.cz" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t("customer.visitWebsite")}</a>
             </div>
           </div>
 
           <div class="footer">
             <p><strong style="color: #00D9FF;">${t("common.companyName")}</strong> <span style="color: #94A3B8;">//</span> ${t("common.tagline")}</p>
-            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cz" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cz</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
             <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #10B981;">
               Code. Create. Conquer.
             </p>
@@ -587,11 +587,11 @@ ${t("survey.feedbackValue")}
 
 ${t("survey.gratitude")}
 
-Visit us: https://fredonbytes.cloud
+Visit us: https://fredonbytes.cz
 
 ---
 ${t("common.companyName")} // ${t("common.tagline")}
-${t("common.location")} | info@fredonbytes.cloud | +420 799 027 984
+${t("common.location")} | info@fredonbytes.cz | +420 799 027 984
 // Code. Create. Conquer.
   `.trim();
 }
@@ -612,7 +612,7 @@ export async function generateAdminContactNotificationText(
 
   return `
 ${t("admin.newSubmission")}
-fredonbytes.cloud
+fredonbytes.cz
 
 ${t("admin.contactInfo")}:
 Name: ${data.firstName} ${data.lastName}
@@ -705,7 +705,7 @@ export async function generateNewsletterWelcomeHTML(
             <p style="color: #F1F5F9;">${t("newsletter.stayTuned")}</p>
 
             <div style="text-align: center;">
-              <a href="https://fredonbytes.cloud" class="cta">${t("customer.visitWebsite")}</a>
+              <a href="https://fredonbytes.cz" class="cta">${t("customer.visitWebsite")}</a>
             </div>
 
             <p style="font-size: 12px; color: #94A3B8; margin-top: 30px;">
@@ -715,7 +715,7 @@ export async function generateNewsletterWelcomeHTML(
 
           <div class="footer">
             <p><strong style="color: #00D9FF;">${t("common.companyName")}</strong> <span style="color: #94A3B8;">//</span> ${t("common.tagline")}</p>
-            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cz" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cz</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
             <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #A855F7;">
               Code. Create. Conquer.
             </p>
@@ -758,13 +758,13 @@ ${t("newsletter.whatToExpect")}
 
 ${t("newsletter.stayTuned")}
 
-Visit us: https://fredonbytes.cloud
+Visit us: https://fredonbytes.cz
 
 ${t("newsletter.unsubscribeInfo")}
 
 ---
 ${t("common.companyName")} // ${t("common.tagline")}
-${t("common.location")} | info@fredonbytes.cloud | +420 799 027 984
+${t("common.location")} | info@fredonbytes.cz | +420 799 027 984
 // Code. Create. Conquer.
   `.trim();
 }
@@ -830,13 +830,13 @@ export async function generateFormThankYouHTML(
             <p style="color: #F1F5F9;">${t("form.gratitude")}</p>
 
             <div style="text-align: center; margin-top: 30px;">
-              <a href="https://fredonbytes.cloud" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t("customer.visitWebsite")}</a>
+              <a href="https://fredonbytes.cz" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t("customer.visitWebsite")}</a>
             </div>
           </div>
 
           <div class="footer">
             <p><strong style="color: #00D9FF;">${t("common.companyName")}</strong> <span style="color: #94A3B8;">//</span> ${t("common.tagline")}</p>
-            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cloud" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cloud</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
+            <p>${t("common.location")} | <a href="mailto:info@fredonbytes.cz" style="color: #00D9FF; text-decoration: none;">info@fredonbytes.cz</a> | <a href="tel:+420799027984" style="color: #00D9FF; text-decoration: none;">+420 799 027 984</a></p>
             <p style="font-size: 12px; margin-top: 15px; font-family: 'Courier New', monospace; color: #10B981;">
               Code. Create. Conquer.
             </p>
@@ -876,11 +876,11 @@ ${t("form.feedbackValue")}
 
 ${t("form.gratitude")}
 
-Visit us: https://fredonbytes.cloud
+Visit us: https://fredonbytes.cz
 
 ---
 ${t("common.companyName")} // ${t("common.tagline")}
-${t("common.location")} | info@fredonbytes.cloud | +420 799 027 984
+${t("common.location")} | info@fredonbytes.cz | +420 799 027 984
 // Code. Create. Conquer.
   `.trim();
 }

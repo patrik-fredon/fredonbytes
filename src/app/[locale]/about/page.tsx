@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "aboutPage.meta" });
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cloud";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz";
   const pageUrl = `${siteUrl}/${locale}/about`;
 
   return {
@@ -90,8 +90,8 @@ export default async function AboutPage({ params }: Props) {
     mainEntity: {
       "@type": "Organization",
       name: "FredonBytes",
-      url: "https://fredonbytes.cloud",
-      logo: "https://fredonbytes.cloud/fredonbytes-logo-with-background.png",
+      url: "https://fredonbytes.cz",
+      logo: "https://fredonbytes.cz/fredonbytes-logo-with-background.png",
       description: metaT("description"),
       foundingDate: "2023",
       founder: {
@@ -108,7 +108,7 @@ export default async function AboutPage({ params }: Props) {
         "@type": "ContactPoint",
         telephone: "+420799027984",
         contactType: "customer service",
-        email: "info@fredonbytes.cloud",
+        email: "info@fredonbytes.cz",
       },
       sameAs: [
         "https://github.com/FredonBytes",

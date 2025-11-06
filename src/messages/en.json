@@ -52,7 +52,7 @@
     "contact": {
       "location": "Brno, Czech Republic",
       "phone": "+420 733 517 625",
-      "email": "info@fredonbytes.cloud"
+      "email": "info@fredonbytes.cz"
     },
     "sections": {
       "quickLinks": "Quick Links",
@@ -109,7 +109,7 @@
     "contactPoint": {
       "telephone": "+420733517625",
       "contactType": "customer service",
-      "email": "info@fredonbytes.cloud"
+      "email": "info@fredonbytes.cz"
     },
     "services": [
       "Software Development",
@@ -574,7 +574,7 @@
       "title": "Get in Touch",
       "email": {
         "title": "Email",
-        "value": "info@fredonbytes.cloud"
+        "value": "info@fredonbytes.cz"
       },
       "phone": {
         "title": "Phone",
@@ -1177,7 +1177,7 @@
           "title": "13. Contact Information",
           "intro": "For questions about these Terms of Service, please contact us:",
           "company": "Fredonbytes",
-          "email": "legal@fredonbytes.cloud",
+          "email": "legal@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Czech Republic"
         }
@@ -1294,7 +1294,7 @@
           "title": "10. Contact Us",
           "intro": "If you have any questions about this privacy policy or wish to exercise your rights, please contact us:",
           "company": "Fredonbytes",
-          "email": "privacy@fredonbytes.cloud",
+          "email": "privacy@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Czech Republic"
         }
@@ -1458,7 +1458,7 @@
           "title": "8. Contact Us",
           "intro": "If you have any questions about our use of cookies, please contact us:",
           "company": "Fredonbytes",
-          "email": "privacy@fredonbytes.cloud",
+          "email": "privacy@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Czech Republic"
         }
@@ -1552,7 +1552,7 @@
       "projectSummary": "Your Project Summary:",
       "inTheMeantime": "In the meantime, feel free to:",
       "suggestions": [
-        "Check out our <a href=\"https://fredonbytes.cloud\">project portfolio</a>",
+        "Check out our <a href=\"https://fredonbytes.cz\">project portfolio</a>",
         "Follow us on social media for updates",
         "Call us directly at <a href=\"tel:+420799027984\">+420 799 027 984</a>"
       ],
@@ -1570,7 +1570,7 @@
       "privacyAccepted": "Privacy policy accepted",
       "yes": "Yes",
       "no": "No",
-      "footerNote": "This message was sent from the contact form on fredonbytes.cloud",
+      "footerNote": "This message was sent from the contact form on fredonbytes.cz",
       "respondWithin": "Please respond within 24 hours as promised on the website."
     },
     "common": {

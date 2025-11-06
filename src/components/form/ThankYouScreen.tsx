@@ -255,10 +255,10 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
       <p className="text-xs font-mono text-terminal-muted max-w-md mx-auto pt-4">
         {t("contactNote")}{" "}
         <a
-          href="mailto:info@fredonbytes.cloud"
+          href="mailto:info@fredonbytes.cz"
           className="text-neon-cyan hover:text-white transition-all duration-[180ms]"
         >
-          info@fredonbytes.cloud
+          info@fredonbytes.cz
         </a>
       </p>
     </motion.div>

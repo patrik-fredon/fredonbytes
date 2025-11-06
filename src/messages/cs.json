@@ -52,7 +52,7 @@
     "contact": {
       "location": "Brno, Česká republika",
       "phone": "+420 799 027 984",
-      "email": "info@fredonbytes.cloud"
+      "email": "info@fredonbytes.cz"
     },
     "sections": {
       "quickLinks": "Rychlé odkazy",
@@ -109,7 +109,7 @@
     "contactPoint": {
       "telephone": "+420799027984",
       "contactType": "customer service",
-      "email": "info@fredonbytes.cloud"
+      "email": "info@fredonbytes.cz"
     },
     "services": [
       "Software Development",
@@ -574,7 +574,7 @@
       "title": "Kontaktujte nás",
       "email": {
         "title": "Email",
-        "value": "info@fredonbytes.cloud"
+        "value": "info@fredonbytes.cz"
       },
       "phone": {
         "title": "Telefon",
@@ -1178,7 +1178,7 @@
           "title": "13. Kontaktní informace",
           "intro": "Pro dotazy týkající se těchto Podmínek služby nás prosím kontaktujte:",
           "company": "Fredonbytes",
-          "email": "legal@fredonbytes.cloud",
+          "email": "legal@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Česká republika"
         }
@@ -1295,7 +1295,7 @@
           "title": "10. Kontaktujte nás",
           "intro": "Pokud máte jakékoli dotazy týkající se těchto zásad ochrany osobních údajů nebo si přejete uplatnit svá práva, kontaktujte nás:",
           "company": "Fredonbytes",
-          "email": "privacy@fredonbytes.cloud",
+          "email": "privacy@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Česká republika"
         }
@@ -1459,7 +1459,7 @@
           "title": "8. Kontaktujte nás",
           "intro": "Pokud máte jakékoli dotazy ohledně našeho používání cookies, kontaktujte nás:",
           "company": "Fredonbytes",
-          "email": "privacy@fredonbytes.cloud",
+          "email": "privacy@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Česká republika"
         }
@@ -1561,7 +1561,7 @@
       "projectSummary": "Souhrn vašeho projektu:",
       "inTheMeantime": "Mezitím můžete:",
       "suggestions": [
-        "Podívejte se na naše <a href=\"https://fredonbytes.cloud\">projektové portfolio</a>",
+        "Podívejte se na naše <a href=\"https://fredonbytes.cz\">projektové portfolio</a>",
         "Sledujte nás na sociálních sítích pro aktualizace",
         "Zavolejte nám přímo na <a href=\"tel:+420799027984\">+420 799 027 984</a>"
       ],
@@ -1579,7 +1579,7 @@
       "privacyAccepted": "Přijaty zásady ochrany osobních údajů",
       "yes": "Ano",
       "no": "Ne",
-      "footerNote": "Tato zpráva byla odeslána z kontaktního formuláře na fredonbytes.cloud",
+      "footerNote": "Tato zpráva byla odeslána z kontaktního formuláře na fredonbytes.cz",
       "respondWithin": "Prosím, odpovězte do 24 hodin, jak je slíbeno na webu."
     },
     "common": {

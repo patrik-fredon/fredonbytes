@@ -15,7 +15,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact.meta" });
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cloud";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz";
   const pageUrl = `${siteUrl}/${locale}/contact`;
 
   return {

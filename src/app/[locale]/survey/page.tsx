@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Customer Satisfaction Survey - FredonBytes",
     description: "Help us improve our services by sharing your feedback.",
-    url: "https://fredonbytes.cloud/survey",
+    url: "https://fredonbytes.cz/survey",
   },
   twitter: {
     title: "Customer Satisfaction Survey - FredonBytes",

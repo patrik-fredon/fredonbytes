@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
 
     // Generate survey link
     const siteUrl =
-      process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cloud";
+      process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz";
     const surveyLink = `${siteUrl}/survey/${sessionId}`;
 
     // Prepare database operations for parallel execution
@@ -203,7 +203,7 @@ export async function POST(request: NextRequest) {
     const customerEmailText = await generateCustomerConfirmationText(emailData);
 
     const customerEmail = await sendEmail({
-      from: "Fredonbytes <info@fredonbytes.com>",
+      from: "Fredonbytes <info@fredonbytes.cz>",
       to: validatedData.email,
       subject: t("customer.subject"),
       html: customerEmailHtml,
@@ -224,8 +224,8 @@ export async function POST(request: NextRequest) {
       await generateAdminContactNotificationText(emailData);
 
     const adminEmail = await sendEmail({
-      from: "Contact Form <info@fredonbytes.com>",
-      to: "info@fredonbytes.cloud",
+      from: "Contact Form <info@fredonbytes.cz>",
+      to: "info@fredonbytes.cz",
       subject: `New Contact Form Submission from ${sanitizedData.firstName} ${sanitizedData.lastName}`,
       html: adminEmailHtml,
       text: adminEmailText,

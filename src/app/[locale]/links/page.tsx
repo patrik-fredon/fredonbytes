@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: "Links - Fredonbytes",
     description:
       "All important links for Fredonbytes - Your All-in-One IT Powerhouse.",
-    url: "https://fredonbytes.cloud/links",
+    url: "https://fredonbytes.cz/links",
   },
   twitter: {
     title: "Links - Fredonbytes",

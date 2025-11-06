@@ -150,7 +150,7 @@ export default async function Home({ params, searchParams }: Props) {
         "@type": "ContactPoint",
         telephone: "+420799027984",
         contactType: "customer service",
-        email: "info@fredonbytes.com",
+        email: "info@fredonbytes.cz",
         availableLanguage: ["Czech", "English", "German"],
         areaServed: "CZ",
       },
@@ -171,7 +171,7 @@ export default async function Home({ params, searchParams }: Props) {
     name: "Fredonbytes",
     image: `${baseUrl}/FredonBytes_GraphicLogo.png`,
     telephone: "+420799027984",
-    email: "info@fredonbytes.cloud",
+    email: "info@fredonbytes.cz",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Brno",

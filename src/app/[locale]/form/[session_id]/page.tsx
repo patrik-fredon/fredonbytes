@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Customer Satisfaction Survey - FredonBytes",
     description:
       "Share your feedback with FredonBytes. Help us improve our services.",
-    url: "https://fredonbytes.cloud/form",
+    url: "https://fredonbytes.cz/form",
   },
   twitter: {
     title: "Customer Satisfaction Survey - FredonBytes",

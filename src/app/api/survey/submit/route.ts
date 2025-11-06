@@ -251,7 +251,7 @@ export async function POST(request: NextRequest) {
         });
 
         await sendEmail({
-          from: "Fredonbytes <noreply@fredonbytes.cloud>",
+          from: "Fredonbytes <noreply@fredonbytes.cz>",
           to: customerEmail,
           subject: t("survey.subject"),
           html: emailHtml,
@@ -319,8 +319,8 @@ export async function POST(request: NextRequest) {
         });
 
         await sendEmail({
-          from: "Survey System <noreply@fredonbytes.cloud>",
-          to: "info@fredonbytes.cloud",
+          from: "Survey System <noreply@fredonbytes.cz>",
+          to: "info@fredonbytes.cz",
           subject: `New Survey Submission - ${session_id}`,
           html: adminEmailHtml,
         });

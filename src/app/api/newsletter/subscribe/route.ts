@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
         });
 
         await sendEmail({
-          from: "Fredonbytes Newsletter <info@fredonbytes.com>",
+          from: "Fredonbytes Newsletter <info@fredonbytes.cz>",
           to: sanitizedData.email,
           subject: t("newsletter.subject"),
           html: emailHtml,
@@ -184,7 +184,7 @@ export async function POST(request: NextRequest) {
       });
 
       await sendEmail({
-        from: "Fredonbytes Newsletter <info@fredonbytes.com>",
+        from: "Fredonbytes Newsletter <info@fredonbytes.cz>",
         to: sanitizedData.email,
         subject: t("newsletter.subject"),
         html: emailHtml,

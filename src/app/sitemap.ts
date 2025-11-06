@@ -3,7 +3,7 @@ import { routing } from "@/i18n/routing";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cloud";
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
 
   // Define all static routes (excluding session-based/invitation-only pages)
   const routes = [
