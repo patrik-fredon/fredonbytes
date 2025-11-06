@@ -17,29 +17,55 @@ interface FormPageProps {
   }>;
 }
 
+// No caching for dynamic session pages
+export const revalidate = false;
+
 /**
  * Metadata for the customer satisfaction form page
  */
-export const metadata: Metadata = {
-  title: "Customer Satisfaction Survey - FredonBytes",
-  description:
-    "Share your feedback with FredonBytes. Help us improve our services by completing this brief customer satisfaction survey.",
-  openGraph: {
-    title: "Customer Satisfaction Survey - FredonBytes",
+export async function generateMetadata({
+  params,
+}: FormPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+
+  const titles = {
+    cs: "Kontaktní formulář | FredonBytes",
+    en: "Customer Satisfaction Survey | FredonBytes",
+    de: "Kundenzufriedenheitsumfrage | FredonBytes",
+  };
+
+  const descriptions = {
+    cs: "Sdílejte svou zpětnou vazbu s FredonBytes. Pomozte nám zlepšit naše služby vyplněním tohoto krátkého formuláře.",
+    en: "Share your feedback with FredonBytes. Help us improve our services by completing this brief customer satisfaction survey.",
+    de: "Teilen Sie Ihr Feedback mit FredonBytes. Helfen Sie uns, unsere Dienstleistungen durch Ausfüllen dieser kurzen Umfrage zu verbessern.",
+  };
+
+  return {
+    title: titles[locale as keyof typeof titles] || titles.en,
     description:
-      "Share your feedback with FredonBytes. Help us improve our services.",
-    url: "https://fredonbytes.cloud/form",
-  },
-  twitter: {
-    title: "Customer Satisfaction Survey - FredonBytes",
-    description:
-      "Share your feedback with FredonBytes. Help us improve our services.",
-  },
-  robots: {
-    index: false, // Don't index individual form sessions
-    follow: false,
-  },
-};
+      descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    openGraph: {
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description:
+        descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      url: `${baseUrl}/${locale}/form`,
+      siteName: "FredonBytes",
+      locale: locale === "cs" ? "cs_CZ" : locale === "de" ? "de_DE" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description:
+        descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      creator: "@FredonBytes",
+    },
+    robots: {
+      index: false, // Don't index individual form sessions
+      follow: false,
+    },
+  };
+}
 
 export const viewport: Viewport = {
   width: "device-width",

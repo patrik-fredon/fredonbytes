@@ -6,7 +6,7 @@ export async function generateLocalizedMetadata(
 ): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "metadata" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
   const canonicalUrl = `${baseUrl}${localePrefix}`;
 
@@ -45,9 +45,11 @@ export async function generateLocalizedMetadata(
       images: [
         {
           url: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+          secureUrl: `${baseUrl}/FredonBytes_GraphicLogo.png`,
           width: 1200,
           height: 630,
           alt: t("logoAlt"),
+          type: "image/png",
         },
       ],
     },

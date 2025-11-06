@@ -19,6 +19,11 @@
     "keywords": "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic",
     "logoAlt": "Fredonbytes Logo"
   },
+  "manifest": {
+    "name": "Fredonbytes - Your All-in-One IT Powerhouse",
+    "shortName": "Fredonbytes",
+    "description": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing."
+  },
   "hero": {
     "title": "We are",
     "titleHighlight": "FredonBytes",
@@ -52,7 +57,7 @@
     "contact": {
       "location": "Brno, Czech Republic",
       "phone": "+420 733 517 625",
-      "email": "info@fredonbytes.cloud"
+      "email": "info@fredonbytes.cz"
     },
     "sections": {
       "quickLinks": "Quick Links",
@@ -90,7 +95,10 @@
     "keywords": "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic",
     "siteName": "Fredonbytes",
     "twitterHandle": "@Fredonbytes",
-    "twitterCreator": "@FredonBytes"
+    "twitterCreator": "@FredonBytes",
+    "title": "Fredonbytes - Your All-in-One IT Powerhouse",
+    "logoAlt": "Fredonbytes Logo",
+    "description": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing."
   },
   "jsonLd": {
     "organizationName": "Fredonbytes",
@@ -106,7 +114,7 @@
     "contactPoint": {
       "telephone": "+420733517625",
       "contactType": "customer service",
-      "email": "info@fredonbytes.cloud"
+      "email": "info@fredonbytes.cz"
     },
     "services": [
       "Software Development",
@@ -571,7 +579,7 @@
       "title": "Get in Touch",
       "email": {
         "title": "Email",
-        "value": "info@fredonbytes.cloud"
+        "value": "info@fredonbytes.cz"
       },
       "phone": {
         "title": "Phone",
@@ -1174,7 +1182,7 @@
           "title": "13. Contact Information",
           "intro": "For questions about these Terms of Service, please contact us:",
           "company": "Fredonbytes",
-          "email": "legal@fredonbytes.cloud",
+          "email": "legal@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Czech Republic"
         }
@@ -1291,7 +1299,7 @@
           "title": "10. Contact Us",
           "intro": "If you have any questions about this privacy policy or wish to exercise your rights, please contact us:",
           "company": "Fredonbytes",
-          "email": "privacy@fredonbytes.cloud",
+          "email": "privacy@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Czech Republic"
         }
@@ -1455,7 +1463,7 @@
           "title": "8. Contact Us",
           "intro": "If you have any questions about our use of cookies, please contact us:",
           "company": "Fredonbytes",
-          "email": "privacy@fredonbytes.cloud",
+          "email": "privacy@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Czech Republic"
         }
@@ -1549,7 +1557,7 @@
       "projectSummary": "Your Project Summary:",
       "inTheMeantime": "In the meantime, feel free to:",
       "suggestions": [
-        "Check out our <a href=\"https://fredonbytes.cloud\">project portfolio</a>",
+        "Check out our <a href=\"https://fredonbytes.cz\">project portfolio</a>",
         "Follow us on social media for updates",
         "Call us directly at <a href=\"tel:+420799027984\">+420 799 027 984</a>"
       ],
@@ -1567,7 +1575,7 @@
       "privacyAccepted": "Privacy policy accepted",
       "yes": "Yes",
       "no": "No",
-      "footerNote": "This message was sent from the contact form on fredonbytes.cloud",
+      "footerNote": "This message was sent from the contact form on fredonbytes.cz",
       "respondWithin": "Please respond within 24 hours as promised on the website."
     },
     "common": {
@@ -1762,5 +1770,39 @@
     "notFoundHeading": "Page Not Found",
     "notFoundDescription": "We are sorry, but there seems to be an issue as we cannot find this page. Did you type the address correctly?",
     "goHomeButton": "Go Home"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Have questions? We have answers. Explore the most common questions about our services and processes.",
+    "items": [
+      {
+        "question": "What technologies do you use for web application development?",
+        "answer": "We use the most modern technologies including React, Next.js 15, TypeScript, Node.js and others. We specialize in modern frameworks for fast, SEO-optimized and scalable applications. We select technologies according to your project's needs."
+      },
+      {
+        "question": "How long does it take to develop a website or application?",
+        "answer": "The implementation time depends on the complexity of the project. A simple presentation website can be completed in 2-4 weeks, a complex web application or e-shop in 2-4 months. After analyzing your requirements, we will provide you with an accurate estimate."
+      },
+      {
+        "question": "Do you provide support and maintenance after project completion?",
+        "answer": "Yes! All our packages include warranty support (3-6 months depending on the plan). After the warranty period, we offer monthly maintenance, security updates, performance monitoring and 24/7 technical support for the Enterprise plan."
+      },
+      {
+        "question": "How do you handle SEO optimization of websites?",
+        "answer": "SEO is part of every project we do. We implement technical SEO (loading speed, structured data, meta tags), on-page optimization (keywords, content, structure) and ensure mobile optimization. For advanced SEO, we offer monthly services including analysis, link building and content marketing."
+      },
+      {
+        "question": "Can I choose my own design or do you use templates?",
+        "answer": "We create 100% custom designs tailored to your needs and branding. We don't use prefabricated templates. Each project starts with a thorough analysis of your brand, target audience and competition. We consult the design with you at every stage."
+      },
+      {
+        "question": "What are the payment terms and what is included in the price?",
+        "answer": "We usually work with a 1/3 deposit at project start, and the remaining 2/3 upon completion, provided all pre-agreed criteria and our set deadlines are met. The price includes analysis, design, development, testing, deployment and training. You can find a transparent price list on the Pricing page. We also offer monthly installments for larger projects."
+      }
+    ],
+    "cta": {
+      "question": "Didn't find the answer to your question?",
+      "button": "Contact us"
+    }
   }
 }

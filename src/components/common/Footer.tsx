@@ -1,16 +1,19 @@
-"use client";
-
 import { Github, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import React from "react";
 import { Link } from "@/i18n/navigation";
 
 import CookieSettingsLink from "./CookieSettingsLink";
 
-export default function Footer() {
+interface FooterProps {
+  locale: string;
+}
+
+export default async function Footer({ locale }: FooterProps) {
+  // Generate current year on server at build/request time
   const currentYear = new Date().getFullYear();
-  const t = useTranslations();
+  const t = await getTranslations({ locale });
 
   const socialLinks = [
     {
@@ -49,11 +52,11 @@ export default function Footer() {
 
   const externalLinks = [
     {
-      href: "https://me.fredonbytes.cloud",
+      href: "https://me.fredonbytes.cz",
       label: t("footer.links.personalPortfolio"),
     },
     {
-      href: "https://tech.fredonbytes.cloud",
+      href: "https://tech.fredonbytes.cz",
       label: t("footer.links.technicalSupport"),
     },
     { href: "/links", label: t("navigation.allLinks") },
@@ -114,7 +117,7 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-neon-cyan shrink-0" />
                 <a
-                  href="mailto:info@fredonbytes.cloud"
+                  href="mailto:info@fredonbytes.cz"
                   className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast -subtle"
                 >
                   {t("footer.contact.email")}

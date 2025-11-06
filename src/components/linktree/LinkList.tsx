@@ -33,19 +33,19 @@ export default function LinkList() {
     {
       title: t("personalPortfolioTitle"),
       description: t("personalPortfolioDescription"),
-      url: "https://me.fredonbytes.cloud",
+      url: "https://me.fredonbytes.cz",
       icon: "portfolio",
     },
     {
       title: t("projectGalleryTitle"),
       description: t("projectGalleryDescription"),
-      url: "https://lib.fredonbytes.cloud",
+      url: "https://lib.fredonbytes.cz",
       icon: "gallery",
     },
     {
       title: t("techSupportTitle"),
       description: t("techSupportDescription"),
-      url: "https://tech.fredonbytes.cloud",
+      url: "https://tech.fredonbytes.cz",
       icon: "support",
     },
   ];

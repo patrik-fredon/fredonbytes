@@ -90,6 +90,35 @@ function configureHeadForTheme() {
   return (
     <head>
       <meta name="apple-mobile-web-app-title" content="FredonBytes" />
+
+      {/* Site Verification for Search Engines */}
+      {/* Google Search Console - Add your verification code to .env as NEXT_PUBLIC_GOOGLE_VERIFICATION */}
+      {process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION && (
+        <meta
+          name="google-site-verification"
+          content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION}
+        />
+      )}
+      {/* Bing Webmaster Tools - Add your verification code to .env as NEXT_PUBLIC_BING_VERIFICATION */}
+      {process.env.NEXT_PUBLIC_BING_VERIFICATION && (
+        <meta
+          name="msvalidate.01"
+          content={process.env.NEXT_PUBLIC_BING_VERIFICATION}
+        />
+      )}
+
+      {/* Resource hints for performance optimization */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+      <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+
+      {/* Geo-targeting for Czech Republic */}
+      <meta name="geo.region" content="CZ-JM" />
+      <meta name="geo.placename" content="Brno" />
+      <meta name="geo.position" content="49.1951;16.6068" />
+      <meta name="ICBM" content="49.1951, 16.6068" />
     </head>
   );
 }
@@ -128,7 +157,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <main id="main" className="flex-1 pt-16 lg:pt-20 relative z-10">
               {children}
             </main>
-            <Footer />
+            <Footer locale={locale} />
             <CookieConsentBanner />
             <ConditionalAnalytics />
             <WebVitals />

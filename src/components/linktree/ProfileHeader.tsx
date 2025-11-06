@@ -105,10 +105,10 @@ export default function ProfileHeader() {
         <div className="flex items-center space-x-2">
           <Mail className="w-4 h-4 text-code-green drop-shadow-[0_0_8px_currentColor]" />
           <a
-            href="mailto:info@fredonbytes.cloud"
+            href="mailto:info@fredonbytes.cz"
             className="hover:text-code-green transition-colors duration-[180ms]"
           >
-            info@fredonbytes.cloud
+            info@fredonbytes.cz
           </a>
         </div>
       </motion.div>

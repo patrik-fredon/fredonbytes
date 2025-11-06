@@ -1,7 +1,4 @@
-"use client";
-
 import {
-  ArrowRight,
   CheckCircle,
   Code,
   Globe,
@@ -10,16 +7,23 @@ import {
   Share2,
   Shield,
   Smartphone,
-  Zap,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
-import React, { useState } from "react";
+import { getTranslations } from "next-intl/server";
+import React from "react";
 import { Link } from "@/i18n/navigation";
 import TerminalWindow from "../dev-ui/TerminalWindow";
 
-export default function ServicesSection() {
-  const t = useTranslations();
-  const [activeTab, setActiveTab] = useState<string>("all");
+interface ServicesSectionProps {
+  locale: string;
+  category?: string;
+}
+
+export default async function ServicesSection({
+  locale,
+  category = "all"
+}: ServicesSectionProps) {
+  const t = await getTranslations({ locale });
+  const activeTab = category || "all";
   const stats = [
     {
       number: t("services.stats.support.number"),
@@ -173,19 +177,19 @@ export default function ServicesSection() {
           {/* IDE-Style Tab Navigation */}
           <div className="section-animate-child mb-8">
             <div className="flex flex-wrap justify-center gap-2 bg-terminal-dark border border-neon-purple/20  rounded-lg p-2">
-              {serviceCategories.map((category) => (
-                <button
-                  type="button"
-                  key={category.id}
-                  onClick={() => setActiveTab(category.id)}
+              {serviceCategories.map((cat) => (
+                <Link
+                  key={cat.id}
+                  href={cat.id === "all" ? "/#services" : `/#services?category=${cat.id}`}
+                  scroll={false}
                   className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-fast ${
-                    activeTab === category.id
+                    activeTab === cat.id
                       ? "bg-neon-cyan/20 text-neon-purple border border-neon-purple shadow-glow-purple-subtle"
                       : "text-slate-400 hover:text-white hover:bg-slate-800/50"
                   }`}
                 >
-                  {category.label}
-                </button>
+                  {cat.label}
+                </Link>
               ))}
             </div>
           </div>

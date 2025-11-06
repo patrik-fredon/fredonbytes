@@ -36,7 +36,7 @@ export interface ErrorStateProps {
  * @param message - The error message to display
  * @param actions - Array of action buttons (e.g., retry, cancel)
  * @param showSupport - Whether to show support contact information
- * @param supportEmail - Support email address (defaults to info@fredonbytes.cloud)
+ * @param supportEmail - Support email address (defaults to info@fredonbytes.cz)
  * @param icon - Icon type to display (error, warning, or info)
  * @param className - Additional CSS classes
  */
@@ -45,7 +45,7 @@ export default function ErrorState({
   message,
   actions = [],
   showSupport = true,
-  supportEmail = "info@fredonbytes.cloud",
+  supportEmail = "info@fredonbytes.cz",
   icon = "error",
   className = "",
 }: ErrorStateProps) {

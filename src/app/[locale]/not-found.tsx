@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/common/Button";
 import TerminalWindow from "@/components/dev-ui/TerminalWindow";
+
+export const metadata: Metadata = {
+  title: "404 - Page Not Found | FredonBytes",
+  description: "The page you're looking for doesn't exist or has been moved.",
+  robots: {
+    index: false, // Don't index 404 pages
+    follow: false,
+  },
+};
 
 export default async function NotFound() {
   const t = await getTranslations("notFound");

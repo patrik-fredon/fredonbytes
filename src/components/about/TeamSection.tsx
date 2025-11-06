@@ -6,7 +6,7 @@
  *
  * Features:
  * - Responsive grid (1 col mobile, 2 tablet, 3 desktop)
- * - Staggered animations using Framer Motion
+ * - CSS staggered animations (zero JS, better performance)
  * - Integration with TeamMemberCard components
  * - Full internationalization support
  * - AAA WCAG accessibility
@@ -14,12 +14,13 @@
  * @module components/about/TeamSection
  */
 
-"use client";
-
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import TeamMemberCard from "./TeamMemberCard";
+
+interface TeamSectionProps {
+  locale: string;
+}
 
 // Photo URLs mapping (static assets)
 const TEAM_PHOTOS: Record<string, string> = {
@@ -73,8 +74,8 @@ const TEAM_MEMBER_IDS = [
   "emily",
 ];
 
-export default function TeamSection() {
-  const t = useTranslations();
+export default async function TeamSection({ locale }: TeamSectionProps) {
+  const t = await getTranslations({ locale });
 
   // Build team members from translations
   const teamMembers = TEAM_MEMBER_IDS.map((id) => ({
@@ -85,18 +86,6 @@ export default function TeamSection() {
     summary: t(`about.team.members.${id}.expertise`),
   }));
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
   return (
     <section
       className="mb-16 sm:mb-20 "
@@ -105,46 +94,42 @@ export default function TeamSection() {
     >
       {/* Section Header */}
       <div className="text-center mb-8 sm:mb-12 px-4 sm:px-0">
-        <motion.h2
+        <h2
           id="team-heading"
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight font-mono"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.8 }}
-          transition={{ duration: 0.5 }}
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight font-mono animate-fade-in-down"
         >
           <span className="text-neon-cyan">{"<"}</span>
           {t("aboutPage.team.title")}
           <span className="text-neon-cyan">{" />"}</span>
-        </motion.h2>
-        <motion.p
-          className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-mono"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.8 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        </h2>
+        <p
+          className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-mono animate-fade-in"
+          style={{ animationDelay: '200ms' }}
         >
           <span className="text-neon-purple/50">// </span>
           {t("aboutPage.team.subtitle")}
-        </motion.p>
+        </p>
       </div>
 
-      {/* Team Grid */}
-      <motion.div
+      {/* Team Grid - CSS stagger with nth-child */}
+      <div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto px-4 sm:px-0 "
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
         role="list"
         aria-label="Team members"
       >
         {teamMembers.map((member, index) => (
-          <div key={TEAM_MEMBER_IDS[index]} role="listitem">
-            <TeamMemberCard member={member} index={index} />
+          <div
+            key={TEAM_MEMBER_IDS[index]}
+            role="listitem"
+            className="animate-fade-in-up"
+            style={{
+              animationDelay: `${(index * 100) + 200}ms`
+            }}
+          >
+            <TeamMemberCard member={member} locale={locale} index={index} />
           </div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

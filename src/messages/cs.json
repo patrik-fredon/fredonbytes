@@ -15,9 +15,14 @@
   "metadata": {
     "siteName": "Fredonbytes",
     "title": "Fredonbytes - Váš komplexní IT partner",
-    "description": "Od kódu po kliknutí, poskytujeme kompletní digitální řešení. Komplexní IT služby včetně vývoje softwaru, grafického designu, SEO a marketingu na sociálních sítích.",
+    "description": "🚀 Tvorba webů Brno | Vývoj aplikací | SEO optimalizace. Komplexní IT řešení pro vaši firmu. ✓ Moderní technologie ✓ 24/7 podpora ✓ Zaručená kvalita. Kontaktujte nás ještě dnes!",
     "keywords": "vývoj webu, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika",
     "logoAlt": "Logo Fredonbytes"
+  },
+  "manifest": {
+    "name": "Fredonbytes - Vaše komplexní IT řešení",
+    "shortName": "Fredonbytes",
+    "description": "Od kódu po kliknutí poskytujeme kompletní digitální dominanci. Komplexní IT řešení včetně vývoje software, grafického designu, SEO a marketingu na sociálních sítích."
   },
   "hero": {
     "title": "My jsme",
@@ -52,7 +57,7 @@
     "contact": {
       "location": "Brno, Česká republika",
       "phone": "+420 799 027 984",
-      "email": "info@fredonbytes.cloud"
+      "email": "info@fredonbytes.cz"
     },
     "sections": {
       "quickLinks": "Rychlé odkazy",
@@ -86,11 +91,14 @@
   },
   "seo": {
     "defaultTitle": "Fredonbytes - Vaše komplexní IT řešení",
-    "defaultDescription": "Od kódu po kliky, zajišťujeme kompletní digitální převahu. Komplexní IT řešení včetně vývoje softwaru, grafického designu, SEO a marketingu na sociálních sítích.",
-    "keywords": "vývoj webu, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika",
+    "defaultDescription": "Tvorba webů a aplikací na míru v Brně. ✓ React & Next.js experti ✓ SEO optimalizace ✓ Moderní design ✓ Rychlá realizace. Získejte ZDARMA konzultaci a odhad ceny!",
+    "keywords": "tvorba webových stránek Brno, vývoj webů Brno, IT firma Brno, vývoj software Brno, digitální marketing ČR, SEO optimalizace Brno, grafický design Brno, tvorba e-shopů, webové aplikace Brno, IT řešení pro firmy, vývoj mobilních aplikací ČR, WordPress Brno, Next.js vývoj, React vývoj Brno",
     "siteName": "Fredonbytes",
     "twitterHandle": "@Fredonbytes",
-    "twitterCreator": "@FredonBytes"
+    "twitterCreator": "@FredonBytes",
+    "title": "Fredonbytes - Váš komplexní IT partner",
+    "logoAlt": "Logo Fredonbytes",
+    "description": "🚀 Tvorba webů Brno | Vývoj aplikací | SEO optimalizace. Komplexní IT řešení pro vaši firmu. ✓ Moderní technologie ✓ 24/7 podpora ✓ Zaručená kvalita. Kontaktujte nás ještě dnes!"
   },
   "jsonLd": {
     "organizationName": "Fredonbytes",
@@ -106,7 +114,7 @@
     "contactPoint": {
       "telephone": "+420799027984",
       "contactType": "customer service",
-      "email": "info@fredonbytes.cloud"
+      "email": "info@fredonbytes.cz"
     },
     "services": [
       "Software Development",
@@ -571,7 +579,7 @@
       "title": "Kontaktujte nás",
       "email": {
         "title": "Email",
-        "value": "info@fredonbytes.cloud"
+        "value": "info@fredonbytes.cz"
       },
       "phone": {
         "title": "Telefon",
@@ -1175,7 +1183,7 @@
           "title": "13. Kontaktní informace",
           "intro": "Pro dotazy týkající se těchto Podmínek služby nás prosím kontaktujte:",
           "company": "Fredonbytes",
-          "email": "legal@fredonbytes.cloud",
+          "email": "legal@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Česká republika"
         }
@@ -1292,7 +1300,7 @@
           "title": "10. Kontaktujte nás",
           "intro": "Pokud máte jakékoli dotazy týkající se těchto zásad ochrany osobních údajů nebo si přejete uplatnit svá práva, kontaktujte nás:",
           "company": "Fredonbytes",
-          "email": "privacy@fredonbytes.cloud",
+          "email": "privacy@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Česká republika"
         }
@@ -1456,7 +1464,7 @@
           "title": "8. Kontaktujte nás",
           "intro": "Pokud máte jakékoli dotazy ohledně našeho používání cookies, kontaktujte nás:",
           "company": "Fredonbytes",
-          "email": "privacy@fredonbytes.cloud",
+          "email": "privacy@fredonbytes.cz",
           "phone": "+420 799 027 984",
           "address": "Brno, Česká republika"
         }
@@ -1558,7 +1566,7 @@
       "projectSummary": "Souhrn vašeho projektu:",
       "inTheMeantime": "Mezitím můžete:",
       "suggestions": [
-        "Podívejte se na naše <a href=\"https://fredonbytes.cloud\">projektové portfolio</a>",
+        "Podívejte se na naše <a href=\"https://fredonbytes.cz\">projektové portfolio</a>",
         "Sledujte nás na sociálních sítích pro aktualizace",
         "Zavolejte nám přímo na <a href=\"tel:+420799027984\">+420 799 027 984</a>"
       ],
@@ -1576,7 +1584,7 @@
       "privacyAccepted": "Přijaty zásady ochrany osobních údajů",
       "yes": "Ano",
       "no": "Ne",
-      "footerNote": "Tato zpráva byla odeslána z kontaktního formuláře na fredonbytes.cloud",
+      "footerNote": "Tato zpráva byla odeslána z kontaktního formuláře na fredonbytes.cz",
       "respondWithin": "Prosím, odpovězte do 24 hodin, jak je slíbeno na webu."
     },
     "common": {
@@ -1768,5 +1776,39 @@
     "notFoundHeading": "Stránka nenalezena",
     "notFoundDescription": "Je nám líto, ale zdá se, že došlo k problému, protože tuto stránku nemůžeme najít. \nZadali jste adresu správně?",
     "goHomeButton": "Jít domů"
+  },
+  "faq": {
+    "title": "Často kladené otázky",
+    "subtitle": "Máte otázky? Máme odpovědi. Prozkoumejte nejčastější dotazy o našich službách a procesech.",
+    "items": [
+      {
+        "question": "Jaké technologie používáte pro vývoj webových aplikací?",
+        "answer": "Používáme nejmodernější technologie včetně React, Next.js 15, TypeScript, Node.js a dalších. Specializujeme se na moderní framework pro rychlé, SEO-optimalizované a škálovatelné aplikace. Vybíráme technologie podle potřeb vašeho projektu."
+      },
+      {
+        "question": "Jak dlouho trvá vývoj webové stránky nebo aplikace?",
+        "answer": "Doba realizace závisí na složitosti projektu. Jednoduchá prezentační webová stránka může být hotová za 2-4 týdny, komplexní webová aplikace nebo e-shop za 2-4 měsíce. Po analýze vašich požadavků vám poskytneme přesný odhad."
+      },
+      {
+        "question": "Poskytujete podporu a údržbu po dokončení projektu?",
+        "answer": "Ano! Všechny naše balíčky zahrnují záruční podporu (3-6 měsíců podle plánu). Po skončení záruky nabízíme měsíční údržbu, aktualizace zabezpečení, monitoring výkonu a technickou podporu 24/7 pro Enterprise plán."
+      },
+      {
+        "question": "Jak řešíte SEO optimalizaci webových stránek?",
+        "answer": "SEO je součástí každého našeho projektu. Implementujeme technické SEO (rychlost načítání, strukturovaná data, meta tagy), on-page optimalizaci (klíčová slova, obsah, struktura) a zajišťujeme mobilní optimalizaci. Pro pokročilé SEO nabízíme měsíční služby včetně analýzy, link buildingu a content marketingu."
+      },
+      {
+        "question": "Můžu si vybrat vlastní design nebo používáte šablony?",
+        "answer": "Vytváříme 100% vlastní design na míru vašim potřebám a brandingu. Nepoužíváme prefabrikované šablony. Každý projekt začíná důkladnou analýzou vaší značky, cílové skupiny a konkurence. Design konzultujeme s vámi v každé fázi."
+      },
+      {
+        "question": "Jaké jsou platební podmínky a co je zahrnuto v ceně?",
+        "answer": "Běžně pracujeme se zálohou ve výši jedné třetiny při zahájení projektu a zbylých dvou třetin po jeho dokončení. Tato podmínka platí za předpokladu, že splníme všechna předem určená kritéria a stanovené termíny. Cena zahrnuje analýzu, design, vývoj, testování, nasazení a školení. Transparentní ceník najdete na stránce Ceník. Pro větší projekty nabízíme také měsíční splátky."
+      }
+    ],
+    "cta": {
+      "question": "Nenašli jste odpověď na svou otázku?",
+      "button": "Kontaktujte nás"
+    }
   }
 }

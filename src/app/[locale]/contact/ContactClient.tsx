@@ -266,10 +266,10 @@ export default function ContactClient({ locale }: ContactClientProps) {
                         {t("contact.email")}
                       </h3>
                       <a
-                        href="mailto:info@fredonbytes.cloud"
+                        href="mailto:info@fredonbytes.cz"
                         className="text-terminal-light/80 hover:text-neon-cyan transition-colors"
                       >
-                        info@fredonbytes.cloud
+                        info@fredonbytes.cz
                       </a>
                     </div>
                   </div>

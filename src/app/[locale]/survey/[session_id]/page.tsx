@@ -16,29 +16,55 @@ interface SurveyPageProps {
   }>;
 }
 
+// No caching for dynamic session pages
+export const revalidate = false;
+
 /**
  * Metadata for the customer satisfaction survey page
  */
-export const metadata: Metadata = {
-  title: "Customer Satisfaction Survey - FredonBytes",
-  description:
-    "Thank you for contacting FredonBytes. Please take a moment to complete this brief survey about your experience.",
-  openGraph: {
-    title: "Customer Satisfaction Survey - FredonBytes",
+export async function generateMetadata({
+  params,
+}: SurveyPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+
+  const titles = {
+    cs: "Průzkum spokojenosti zákazníků | FredonBytes",
+    en: "Customer Satisfaction Survey | FredonBytes",
+    de: "Kundenzufriedenheitsumfrage | FredonBytes",
+  };
+
+  const descriptions = {
+    cs: "Děkujeme, že jste kontaktovali FredonBytes. Věnujte prosím chvíli vyplnění tohoto krátkého průzkumu o vaší zkušenosti.",
+    en: "Thank you for contacting FredonBytes. Please take a moment to complete this brief survey about your experience.",
+    de: "Vielen Dank, dass Sie FredonBytes kontaktiert haben. Nehmen Sie sich bitte einen Moment Zeit, um diese kurze Umfrage über Ihre Erfahrungen auszufüllen.",
+  };
+
+  return {
+    title: titles[locale as keyof typeof titles] || titles.en,
     description:
-      "Thank you for contacting FredonBytes. Please share your feedback.",
-    url: "https://fredonbytes.cloud/survey",
-  },
-  twitter: {
-    title: "Customer Satisfaction Survey - FredonBytes",
-    description:
-      "Thank you for contacting FredonBytes. Please share your feedback.",
-  },
-  robots: {
-    index: false, // Don't index individual survey sessions
-    follow: false,
-  },
-};
+      descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    openGraph: {
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description:
+        descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      url: `${baseUrl}/${locale}/survey`,
+      siteName: "FredonBytes",
+      locale: locale === "cs" ? "cs_CZ" : locale === "de" ? "de_DE" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description:
+        descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      creator: "@FredonBytes",
+    },
+    robots: {
+      index: false, // Don't index individual survey sessions
+      follow: false,
+    },
+  };
+}
 
 export const viewport: Viewport = {
   width: "device-width",

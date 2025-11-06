@@ -322,7 +322,7 @@ export async function POST(request: NextRequest) {
         });
 
         await sendEmail({
-          from: "Fredonbytes <info@fredonbytes.com>",
+          from: "Fredonbytes <info@fredonbytes.cz>",
           to: email,
           subject: t("form.subject"),
           html: emailHtml,
@@ -373,8 +373,8 @@ export async function POST(request: NextRequest) {
 
         // Send email via SMTP
         await sendEmail({
-          from: "Customer Feedback <info@fredonbytes.com>",
-          to: process.env.ADMIN_EMAIL || "info@fredonbytes.com",
+          from: "Customer Feedback <info@fredonbytes.cz>",
+          to: process.env.ADMIN_EMAIL || "info@fredonbytes.cz",
           subject: `New Customer Satisfaction Form - ${sessionId!.substring(
             0,
             8,

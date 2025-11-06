@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
   ExternalLink,
   Github,
@@ -51,55 +50,19 @@ export default function LinkCard({
     }
   };
 
-  const cardVariants = {
-    hover: {
-      scale: 1.02,
-      y: -5,
-      transition: {
-        duration: 0.2,
-        ease: "easeOut" as const,
-      },
-    },
-    tap: {
-      scale: 0.98,
-      transition: {
-        duration: 0.1,
-      },
-    },
-  };
-
-  const iconVariants = {
-    hover: {
-      rotate: 5,
-      scale: 1.1,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
-
   return (
-    <motion.a
+    <a
       href={url}
       target={external ? "_blank" : "_self"}
       rel={external ? "noopener noreferrer" : undefined}
-      className={`block ${className}`}
-      variants={cardVariants}
-      whileHover="hover"
-      whileTap="tap"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      className={`block transition-all duration-300 ease-out hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98] ${className}`}
     >
       <div className="bg-terminal-dark rounded-2xl p-6 shadow-glow-cyan-subtle hover:shadow-glow-cyan-intense transition-all duration-300 border border-neon-cyan/20 group">
         <div className="flex items-center space-x-4">
           {/* Icon */}
-          <motion.div
-            variants={iconVariants}
-            className="shrink-0 w-12 h-12 bg-gradient-to-br from-neon-cyan to-electric-purple rounded-xl flex items-center justify-center text-white border border-neon-cyan/30 shadow-glow-cyan-subtle"
-          >
+          <div className="shrink-0 w-12 h-12 bg-gradient-to-br from-neon-cyan to-electric-purple rounded-xl flex items-center justify-center text-white border border-neon-cyan/30 shadow-glow-cyan-subtle transition-all duration-200 group-hover:rotate-[5deg] group-hover:scale-110">
             {getIcon(icon)}
-          </motion.div>
+          </div>
 
           {/* Content */}
           <div className="flex-1 min-w-0">
@@ -139,15 +102,12 @@ export default function LinkCard({
 
           {/* External Link Indicator */}
           {external && (
-            <motion.div
-              className="shrink-0 text-slate-400 group-hover:text-neon-cyan transition-colors duration-[180ms]"
-              variants={iconVariants}
-            >
+            <div className="shrink-0 text-slate-400 group-hover:text-neon-cyan transition-all duration-200 group-hover:rotate-[5deg] group-hover:scale-110">
               <ExternalLink className="w-5 h-5 drop-shadow-[0_0_8px_currentColor]" />
-            </motion.div>
+            </div>
           )}
         </div>
       </div>
-    </motion.a>
+    </a>
   );
 }

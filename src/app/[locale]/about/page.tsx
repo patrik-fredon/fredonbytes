@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "aboutPage.meta" });
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cloud";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz";
   const pageUrl = `${siteUrl}/${locale}/about`;
 
   return {
@@ -48,9 +48,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [
         {
           url: `${siteUrl}/fredonbytes-logo-with-background.png`,
+          secureUrl: `${siteUrl}/fredonbytes-logo-with-background.png`,
           width: 1200,
           height: 630,
           alt: "FredonBytes - Your All-in-One Digital Army",
+          type: "image/png",
         },
       ],
     },
@@ -75,11 +77,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// ISR configuration - revalidate every 7 days
+export const revalidate = 604800; // 7 days in seconds
+
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const metaT = await getTranslations({ locale, namespace: "aboutPage.meta" });
   const t = await getTranslations({ locale, namespace: "aboutPage" });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const localePrefix = locale === "cs" ? "" : `/${locale}`;
+
   // Structured data for SEO
   const structuredData = {
     "@context": "https://schema.org",
@@ -87,8 +95,8 @@ export default async function AboutPage({ params }: Props) {
     mainEntity: {
       "@type": "Organization",
       name: "FredonBytes",
-      url: "https://fredonbytes.cloud",
-      logo: "https://fredonbytes.cloud/fredonbytes-logo-with-background.png",
+      url: "https://fredonbytes.cz",
+      logo: "https://fredonbytes.cz/fredonbytes-logo-with-background.png",
       description: metaT("description"),
       foundingDate: "2023",
       founder: {
@@ -105,13 +113,34 @@ export default async function AboutPage({ params }: Props) {
         "@type": "ContactPoint",
         telephone: "+420799027984",
         contactType: "customer service",
-        email: "info@fredonbytes.cloud",
+        email: "info@fredonbytes.cz",
       },
       sameAs: [
         "https://github.com/FredonBytes",
+        "https://github.com/patrik-fredon",
         "https://linkedin.com/company/fredonbytes",
       ],
     },
+  };
+
+  // BreadcrumbList schema for navigation hierarchy
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: locale === "cs" ? "Domů" : locale === "de" ? "Startseite" : "Home",
+        item: `${baseUrl}${localePrefix}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: metaT("title"),
+        item: `${baseUrl}${localePrefix}/about`,
+      },
+    ],
   };
 
   return (
@@ -120,6 +149,10 @@ export default async function AboutPage({ params }: Props) {
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <section className="min-h-screen  relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 relative z-10">
@@ -134,10 +167,10 @@ export default async function AboutPage({ params }: Props) {
           </div>
 
           {/* Company Story Section */}
-          <CompanyStory />
+          <CompanyStory locale={locale} />
 
           {/* Team Section */}
-          <TeamSection />
+          <TeamSection locale={locale} />
         </div>
       </section>
     </>
