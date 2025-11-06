@@ -74,16 +74,7 @@ services:
       - NEXT_PUBLIC_GOOGLE_VERIFICATION=${NEXT_PUBLIC_GOOGLE_VERIFICATION:-}
       - NEXT_PUBLIC_BING_VERIFICATION=${NEXT_PUBLIC_BING_VERIFICATION:-}
 
-    labels:
-      # Coolify Management Labels
-      - "coolify.managed=true"
-      # Traefik Routing (for Coolify proxy integration)
-      - "traefik.enable=true"
-      - "traefik.http.routers.fredonbytes.rule=Host(`${NEXT_PUBLIC_PRIMARY_DOMAIN:?}`)"
-      - "traefik.http.routers.fredonbytes.entrypoints=websecure"
-      - "traefik.http.routers.fredonbytes.tls=true"
-      - "traefik.http.routers.fredonbytes.tls.certresolver=letsencrypt"
-      - "traefik.http.services.fredonbytes.loadbalancer.server.port=3000"
+
 
     depends_on:
       redis:
