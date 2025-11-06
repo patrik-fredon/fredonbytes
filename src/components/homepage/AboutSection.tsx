@@ -1,12 +1,12 @@
 import {
-  Users,
-  Award,
-  TrendingUp,
-  CheckCircle,
   ArrowRight,
+  Award,
+  CheckCircle,
   Globe,
-  Smartphone,
   Shield,
+  Smartphone,
+  TrendingUp,
+  Users,
 } from "lucide-react";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";

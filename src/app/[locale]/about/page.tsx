@@ -112,6 +112,7 @@ export default async function AboutPage({ params }: Props) {
       },
       sameAs: [
         "https://github.com/FredonBytes",
+        "https://github.com/patrik-fredon",
         "https://linkedin.com/company/fredonbytes",
       ],
     },
