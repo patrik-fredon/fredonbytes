@@ -1,17 +1,17 @@
 import { createHash, randomUUID } from "crypto";
 
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import * as z from "zod";
 
-import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from "@/lib/csrf";
+import { CSRF_TOKEN_HEADER_NAME, validateCsrfToken } from "@/lib/csrf";
 import { domainConfig } from "@/lib/domain-config";
 import { sendEmail } from "@/lib/email";
 import {
+  type ContactEmailData,
   generateAdminContactNotificationHTML,
   generateAdminContactNotificationText,
   generateCustomerConfirmationHTML,
   generateCustomerConfirmationText,
-  type ContactEmailData,
 } from "@/lib/email-templates";
 import { sanitizeString, sanitizeStringArray } from "@/lib/input-sanitization";
 import { supabase } from "@/lib/supabase";
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
 
     // Generate survey link
     const siteUrl = domainConfig.siteUrl;
-    const surveyLink = `${siteUrl}/survey/${sessionId}`;
+    const surveyLink = `${siteUrl}/${validatedData.locale}/survey/${sessionId}`;
 
     // Prepare database operations for parallel execution
     const surveyQuestionnaireId = "22222222-2222-2222-2222-222222222222";
@@ -124,35 +124,35 @@ export async function POST(request: NextRequest) {
 
     const newsletterPromise = validatedData.newsletter
       ? (supabase as any)
-          .from("newsletter_subscribers")
-          .insert({
-            email: validatedData.email,
-            first_name: sanitizedData.firstName,
-            last_name: sanitizedData.lastName,
-            locale: validatedData.locale,
-            active: true,
-            source: "contact_form",
-          })
-          .select()
-          .single()
+        .from("newsletter_subscribers")
+        .insert({
+          email: validatedData.email,
+          first_name: sanitizedData.firstName,
+          last_name: sanitizedData.lastName,
+          locale: validatedData.locale,
+          active: true,
+          source: "contact_form",
+        })
+        .select()
+        .single()
       : Promise.resolve({ data: null, error: null });
 
-    const sessionInsertPromise = (supabase as any)
-      .from("sessions")
-      .insert({
-        session_id: sessionId,
-        questionnaire_id: surveyQuestionnaireId,
-        locale: validatedData.locale,
-        ip_address_hash: ipAddressHash,
-        user_agent: userAgent,
-        email: validatedData.email,
-        newsletter_optin: validatedData.newsletter || false,
-      });
+    const sessionInsertPromise = (supabase as any).from("sessions").insert({
+      session_id: sessionId,
+      questionnaire_id: surveyQuestionnaireId,
+      locale: validatedData.locale,
+      ip_address_hash: ipAddressHash,
+      user_agent: userAgent,
+      email: validatedData.email,
+      newsletter_optin: validatedData.newsletter || false,
+    });
 
     // Execute all inserts in parallel
-    const [contactResult, newsletterResult, sessionResult] = await Promise.all(
-      [contactInsertPromise, newsletterPromise, sessionInsertPromise],
-    );
+    const [contactResult, newsletterResult, sessionResult] = await Promise.all([
+      contactInsertPromise,
+      newsletterPromise,
+      sessionInsertPromise,
+    ]);
 
     // Handle contact submission error
     if (contactResult.error || !contactResult.data) {
