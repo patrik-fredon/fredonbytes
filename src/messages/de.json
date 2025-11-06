@@ -611,7 +611,9 @@
     },
     "error": {
       "message": "Das Formular konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
-    }
+    },
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "agreeToPrivacy": "Stimmen Sie der Richtlinie zu"
   },
   "pricing": {
     "title": "Wählen Sie Ihren Plan",

@@ -319,9 +319,9 @@ export async function generateCustomerConfirmationHTML(
             <p style="color: #F1F5F9;">${t("customer.inTheMeantime")}</p>
             <ul style="color: #F1F5F9;">
               ${t
-                .raw("customer.suggestions")
-                .map((s: string) => `<li>${s}</li>`)
-                .join("")}
+      .raw("customer.suggestions")
+      .map((s: string) => `<li>${s}</li>`)
+      .join("")}
             </ul>
 
             <div style="text-align: center;">

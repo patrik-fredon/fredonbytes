@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { deduplicateRequest } from "@/lib/request-cache";
+import { getCachedData } from "@/lib/redis-request-cache";
 import { supabase, type Project } from "@/lib/supabase";
 
 // Response interface for projects endpoint
@@ -8,6 +8,9 @@ export interface ProjectsResponse {
   projects: Project[];
   error?: string;
 }
+
+// Cache TTL: 1 hour (matching HTTP Cache-Control)
+const CACHE_TTL_SECONDS = 3600;
 
 export async function GET(request: NextRequest) {
   try {
@@ -18,33 +21,40 @@ export async function GET(request: NextRequest) {
     const _locale = searchParams.get("locale") || "en"; // Accept locale parameter for future use
 
     // Generate cache key from query parameters
-    const cacheKey = `projects:${searchParams.toString()}`;
+    const cacheKey = searchParams.toString() || "all";
 
-    // Deduplicate concurrent requests
-    const { data, error } = await deduplicateRequest(cacheKey, async () => {
-      // Build query
-      let query = supabase
-        .from("projects")
-        .select("*")
-        .eq("visible", true)
-        .order("display_order", { ascending: true });
+    // Use Redis-backed distributed cache with 1-hour TTL
+    const { data, error } = await getCachedData(
+      cacheKey,
+      async () => {
+        // Build query
+        let query = supabase
+          .from("projects")
+          .select("*")
+          .eq("visible", true)
+          .order("display_order", { ascending: true });
 
-      // Apply optional filters
-      if (status && ["active", "completed", "archived"].includes(status)) {
-        query = query.eq("status", status);
+        // Apply optional filters
+        if (status && ["active", "completed", "archived"].includes(status)) {
+          query = query.eq("status", status);
+        }
+
+        if (category) {
+          query = query.eq("category", category);
+        }
+
+        if (featured === "true") {
+          query = query.eq("featured", true);
+        }
+
+        // Execute query
+        return await query;
+      },
+      {
+        ttl: CACHE_TTL_SECONDS,
+        prefix: "api:projects",
       }
-
-      if (category) {
-        query = query.eq("category", category);
-      }
-
-      if (featured === "true") {
-        query = query.eq("featured", true);
-      }
-
-      // Execute query
-      return await query;
-    });
+    );
 
     // Handle database errors
     if (error) {
