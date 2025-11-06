@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 
 import PricingClient from "./PricingClient";
+import { getPricingMetadata } from "@/lib/metadata/pricing";
+import { getPricingSchemas } from "@/lib/jsonLd/pricing";
 
 interface PricingPageProps {
   params: Promise<{
@@ -13,56 +14,7 @@ export async function generateMetadata({
   params,
 }: PricingPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pricing.meta" });
-
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
-  const localePrefix = locale === "cs" ? "" : `/${locale}`;
-  const canonicalUrl = `${baseUrl}${localePrefix}/pricing`;
-
-  return {
-    title: t("title"),
-    description: t("description"),
-    keywords: t("keywords"),
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        cs: `${baseUrl}/cs/pricing`,
-        en: `${baseUrl}/en/pricing`,
-        de: `${baseUrl}/de/pricing`,
-      },
-    },
-    openGraph: {
-      title: t("title"),
-      description: t("description"),
-      type: "website",
-      url: canonicalUrl,
-      siteName: "Fredonbytes",
-      locale: locale === "cs" ? "cs_CZ" : locale === "de" ? "de_DE" : "en_US",
-      images: [
-        {
-          url: `${baseUrl}/FredonBytes_GraphicLogo.png`,
-          secureUrl: `${baseUrl}/FredonBytes_GraphicLogo.png`,
-          width: 1200,
-          height: 630,
-          alt: "Fredonbytes Pricing Plans",
-          type: "image/png",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("title"),
-      description: t("description"),
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-      },
-    },
-  };
+  return getPricingMetadata(locale);
 }
 
 // ISR configuration - revalidate every 7 days
@@ -70,117 +22,20 @@ export const revalidate = 604800;
 
 export default async function PricingPage({ params }: PricingPageProps) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pricing" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
-
-  // JSON-LD Schema for Offers/Products
-  const offersSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Product",
-          name: t("plans.starter.name"),
-          description: t("plans.starter.description"),
-        },
-        priceCurrency: "CZK",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          price: "Od 15 000",
-          priceCurrency: "CZK",
-        },
-        seller: {
-          "@type": "Organization",
-          name: "Fredonbytes",
-          url: baseUrl,
-        },
-        availability: "https://schema.org/InStock",
-        validFrom: "2024-01-01",
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Product",
-          name: t("plans.professional.name"),
-          description: t("plans.professional.description"),
-        },
-        priceCurrency: "CZK",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          price: "Od 35 000",
-          priceCurrency: "CZK",
-        },
-        seller: {
-          "@type": "Organization",
-          name: "Fredonbytes",
-          url: baseUrl,
-        },
-        availability: "https://schema.org/InStock",
-        validFrom: "2024-01-01",
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Product",
-          name: t("plans.enterprise.name"),
-          description: t("plans.enterprise.description"),
-        },
-        price: "0",
-        priceCurrency: "CZK",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          priceCurrency: "CZK",
-          valueAddedTaxIncluded: true,
-        },
-        seller: {
-          "@type": "Organization",
-          name: "Fredonbytes",
-          url: baseUrl,
-        },
-        availability: "https://schema.org/InStock",
-        validFrom: "2024-01-01",
-      },
-    ],
-  };
-
-  // Breadcrumb schema for pricing page
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: locale === "cs" ? "Domů" : "Home",
-        item: baseUrl,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: locale === "cs" ? "Ceník" : "Pricing",
-        item: `${baseUrl}${locale === "cs" ? "" : `/${locale}`}/pricing`,
-      },
-    ],
-  };
+  // Get all JSON-LD schemas for the pricing page
+  const schemas = await getPricingSchemas(locale);
 
   return (
     <>
-      {/* JSON-LD Structured Data for Pricing */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(offersSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
-        }}
-      />
+      {/* Consolidated JSON-LD Structured Data */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <PricingClient locale={locale} />
     </>
   );

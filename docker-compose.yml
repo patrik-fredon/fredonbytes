@@ -23,6 +23,9 @@
 # - Port 3000 is exposed for local development/testing
 # - In Coolify, traffic is routed via Traefik proxy (labels configured)
 # - Redis is internal-only (traefik.enable=false)
+# - Multi-domain support: All domains (primary + secondary) are accepted by Traefik
+# - Application middleware handles 301 redirects from secondary to primary domain
+# - Compatible with Cloudflare tunnel routing all domains to localhost:3000
 #
 # VOLUMES:
 # - redis-data: Persistent Redis storage (managed by Coolify)
@@ -74,7 +77,18 @@ services:
       - NEXT_PUBLIC_GOOGLE_VERIFICATION=${NEXT_PUBLIC_GOOGLE_VERIFICATION:-}
       - NEXT_PUBLIC_BING_VERIFICATION=${NEXT_PUBLIC_BING_VERIFICATION:-}
 
-
+    labels:
+      # Coolify Management Labels
+      - "coolify.managed=true"
+      # Traefik Routing (for Coolify proxy integration)
+      # MULTI-DOMAIN SUPPORT: Accept all configured domains (primary + secondary)
+      # The middleware will handle 301 redirects from secondary to primary domain
+      - "traefik.enable=true"
+      - "traefik.http.routers.fredonbytes.rule=Host(`${NEXT_PUBLIC_PRIMARY_DOMAIN:?}`) || Host(`fredonbytes.cloud`) || Host(`fredonbytes.com`) || Host(`fredonbytes.eu`) || Host(`fredonbytes.tech`)"
+      - "traefik.http.routers.fredonbytes.entrypoints=websecure"
+      - "traefik.http.routers.fredonbytes.tls=true"
+      - "traefik.http.routers.fredonbytes.tls.certresolver=letsencrypt"
+      - "traefik.http.services.fredonbytes.loadbalancer.server.port=3000"
 
     depends_on:
       redis:
