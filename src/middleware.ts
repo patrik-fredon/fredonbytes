@@ -8,6 +8,7 @@ import {
   generateCsrfToken,
   validateCsrfToken,
 } from "./lib/csrf";
+import { domainConfig } from "./lib/domain-config";
 
 // Simple in-memory rate limiter
 // In production, consider using Redis or a dedicated rate limiting service
@@ -79,6 +80,21 @@ function checkRateLimit(key: string): {
 const handleI18nRouting = createIntlMiddleware(routing);
 
 export function middleware(request: NextRequest) {
+  // DOMAIN REDIRECT LOGIC - Execute first, before any other middleware
+  // Redirect secondary domains to primary domain (301 permanent redirect)
+  const host = request.headers.get("host");
+  if (host && domainConfig.shouldRedirect(host)) {
+    const protocol = request.headers.get("x-forwarded-proto") || "https";
+    const url = request.nextUrl.clone();
+
+    // Construct redirect URL with primary domain
+    url.protocol = protocol;
+    url.host = domainConfig.primary;
+
+    // 301 Permanent Redirect - SEO-friendly, tells search engines domain has moved
+    return NextResponse.redirect(url, 301);
+  }
+
   // Skip middleware for static metadata routes
   const pathname = request.nextUrl.pathname;
   if (

@@ -19,6 +19,11 @@
     "keywords": "vývoj webu, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika",
     "logoAlt": "Logo Fredonbytes"
   },
+  "manifest": {
+    "name": "Fredonbytes - Vaše komplexní IT řešení",
+    "shortName": "Fredonbytes",
+    "description": "Od kódu po kliknutí poskytujeme kompletní digitální dominanci. Komplexní IT řešení včetně vývoje software, grafického designu, SEO a marketingu na sociálních sítích."
+  },
   "hero": {
     "title": "My jsme",
     "titleHighlight": "FredonBytes",

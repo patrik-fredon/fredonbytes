@@ -1,9 +1,23 @@
 import { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
+import { domainConfig } from "@/lib/domain-config";
 
+/**
+ * Dynamic sitemap generation for multi-locale support
+ *
+ * Generates sitemap entries for all routes across all supported locales (cs, en, de).
+ * Uses primary domain from environment configuration for canonical URLs.
+ *
+ * SEO Features:
+ * - Automatic lastModified timestamps
+ * - Priority and changeFrequency based on page importance
+ * - Hreflang alternate language links for international SEO
+ * - Excludes session-based pages (/form/*, /survey/*)
+ *
+ * @returns {MetadataRoute.Sitemap} Array of sitemap entries
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = domainConfig.siteUrl;
 
   // Define all static routes (excluding session-based/invitation-only pages)
   const routes = [

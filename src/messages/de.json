@@ -19,6 +19,11 @@
     "keywords": "Webentwicklung, Softwareentwicklung, IT-Lösungen, Grafikdesign, SEO, Social-Media-Marketing, Brno, Tschechien",
     "logoAlt": "Fredonbytes Logo"
   },
+  "manifest": {
+    "name": "Fredonbytes - Ihr All-in-One IT-Kraftzentrum",
+    "shortName": "Fredonbytes",
+    "description": "Vom Code bis zum Klick bieten wir vollständige digitale Dominanz. Umfassende IT-Lösungen einschließlich Softwareentwicklung, Grafikdesign, SEO und Social-Media-Marketing."
+  },
   "hero": {
     "title": "Ihr All-in-One",
     "titleHighlight": "IT-Kraftzentrum",
