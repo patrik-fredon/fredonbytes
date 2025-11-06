@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { getCachedData } from "@/lib/redis-request-cache";
 import { supabase, type Technology } from "@/lib/supabase";
 
 // Response interface for technologies endpoint
@@ -8,14 +9,27 @@ export interface TechnologiesResponse {
   error?: string;
 }
 
+// Cache TTL: 24 hours (matching HTTP Cache-Control)
+const CACHE_TTL_SECONDS = 86400;
+
 export async function GET() {
   try {
-    // Execute query to get all technologies
-    const { data, error } = await supabase
-      .from("technologies")
-      .select("*")
-      .order("category", { ascending: true })
-      .order("name", { ascending: true });
+    // Use Redis-backed distributed cache with 24-hour TTL
+    const { data, error } = await getCachedData(
+      "all",
+      async () => {
+        // Execute query to get all technologies
+        return await supabase
+          .from("technologies")
+          .select("*")
+          .order("category", { ascending: true })
+          .order("name", { ascending: true });
+      },
+      {
+        ttl: CACHE_TTL_SECONDS,
+        prefix: "api:technologies",
+      }
+    );
 
     // Handle database errors
     if (error) {

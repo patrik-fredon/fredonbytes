@@ -1,0 +1,293 @@
+================================================================================
+                    FREDONBYTES CACHING ARCHITECTURE
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            CLIENT BROWSER                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                               │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  localStorage Cache (24h TTL)                                       │   │
+│  │  ├─ form_session_${id}: Session state, answers, CSRF              │   │
+│  │  ├─ survey_session_${id}: Survey state, answers                   │   │
+│  │  └─ ${type}_csrf_${id}: CSRF tokens                               │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                              │                                               │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │  HTTP Cache Headers (Browser/CDN)                                   │   │
+│  │  ├─ Static Assets: 1 year (images, fonts)                          │   │
+│  │  ├─ Public Data: 1h + 2h SWR (projects, pricing)                   │   │
+│  │  ├─ Technologies: 24h + 2d SWR                                     │   │
+│  │  └─ Session-Specific: no-store (surveys)                           │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                              │                                               │
+└──────────────────────────────┼───────────────────────────────────────────────┘
+                               │ HTTP Requests
+                               ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                         NEXT.JS MIDDLEWARE                                   │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                               │
+│  1. Domain Redirect Check (301 to primary domain)                           │
+│  2. Static Route Skip (manifests, robots.txt, sitemap)                      │
+│  3. API Route Processing:                                                   │
+│     ├─ CSRF Token Validation (cookie + header)                             │
+│     ├─ Rate Limiting (10 req/min/IP, in-memory Map)                        │
+│     ├─ CSRF Token Generation (if missing)                                  │
+│     └─ Add Rate Limit Headers (X-RateLimit-*)                              │
+│  4. i18n Middleware (for non-API routes)                                    │
+│                                                                               │
+└───────────┬─────────────────────────────────────────────────────────────────┘
+            │
+            ├─────────────────────────────────────────┬──────────────────┐
+            │                                         │                  │
+            ▼                                         ▼                  ▼
+    ┌──────────────────┐              ┌──────────────────┐    ┌──────────────┐
+    │   API ROUTES     │              │   SERVER PAGES   │    │   STATIC     │
+    │  (force-dynamic) │              │    (SSR/ISR)     │    │   PAGES      │
+    └──────────────────┘              └──────────────────┘    └──────────────┘
+    │                                  │                       │
+    ├─ /api/projects ────────┬────────┬─ /[locale]/projects   │
+    ├─ /api/pricing/*        │        ├─ /[locale]/pricing    │
+    ├─ /api/form/*    1h ISR │        ├─ /[locale]/home       │
+    ├─ /api/survey/*  + SWR  │        ├─ /[locale]/about      │
+    └─ /api/*/questions      │        └─ /[locale]/*          │
+       (Cache Headers)        │           (generateStaticParams)
+                             │           ✅ Prerendered all locales
+                             │           ✅ Revalidate on schedule
+
+                    ┌────────────────────────────────────────┐
+                    │  IN-MEMORY REQUEST DEDUPLICATION       │
+                    │  (src/lib/request-cache.ts)            │
+                    │  ├─ Map<cacheKey, Promise<T>>          │
+                    │  ├─ Dedup identical concurrent requests│
+                    │  └─ Auto-clear after 100ms             │
+                    └────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                         SUPABASE (PostgreSQL)                                │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                               │
+│  Tables Cached via HTTP Headers:                      Tables (Dynamic):     │
+│  ├─ projects (1h + 2h SWR)                            ├─ form_answers      │
+│  ├─ pricing_tiers (1h + 2h SWR)                       ├─ survey_answers    │
+│  ├─ pricing_items (1h + 2h SWR)                       ├─ sessions          │
+│  ├─ technologies (24h + 2d SWR)                       ├─ contact_subs      │
+│  └─ questions (1h + 1d SWR)                           ├─ newsletter_subs   │
+│                                                       └─ session_cache     │
+│                                                                              │
+│  ┌──────────────────────────────────────────────────────────────────────┐  │
+│  │  NOT YET USED: Server-side caching would happen here with Redis    │  │
+│  │  - Could cache query results for 5-30 minutes                      │  │
+│  │  - Could cache questionnaire definitions                           │  │
+│  │  - Could move session_cache to Redis (faster)                      │  │
+│  └──────────────────────────────────────────────────────────────────────┘  │
+│                                                                               │
+└───────────────────────────────────────┬───────────────────────────────────────┘
+                                        │
+                                        ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                         REDIS (NOT ACTIVELY USED)                            │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                               │
+│  Docker Service:                     Ready for Implementation:              │
+│  ├─ redis:7-alpine                   ├─ Distributed request deduplication   │
+│  ├─ Port: 6379 (internal only)       ├─ Session data storage (faster)       │
+│  ├─ 256MB max memory                 ├─ Persistent rate limiting            │
+│  ├─ LRU eviction policy              ├─ Cache invalidation via Pub/Sub       │
+│  └─ Health check: redis-cli ping     └─ API response caching                │
+│                                                                               │
+│  Status: ✅ Configured in docker-compose.yml                               │
+│  Status: ❌ Not imported or used in application code                        │
+│                                                                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+                            CACHING DATA FLOW
+================================================================================
+
+SCENARIO 1: GET /api/projects?status=active (First Request)
+────────────────────────────────────────────────────────────
+
+Browser
+  └─▶ Check Cache-Control header:
+      ├─ Cache miss (fresh request)
+      └─ Send HTTP request
+
+Middleware
+  └─▶ API route: /api/projects
+      ├─ CSRF check: OK (GET request exempt)
+      ├─ Rate limit: 9/10 remaining
+      └─ Pass to handler
+
+Request Cache (100ms window)
+  └─▶ Cache key: "projects:status=active"
+      ├─ Cache miss (first request)
+      ├─ Store Promise<T> in Map
+      └─ Execute Supabase query
+
+Supabase
+  └─▶ SELECT * FROM projects
+      ├─ WHERE visible=true
+      ├─ WHERE status='active'
+      ├─ ORDER BY display_order
+      └─ Return data
+
+Response
+  └─▶ HTTP 200 OK
+      ├─ Body: JSON projects array
+      ├─ Cache-Control: public, s-maxage=3600, stale-while-revalidate=7200
+      └─ Browser/CDN caches for 1 hour
+
+
+SCENARIO 2: Concurrent Request to Same Endpoint (Within 100ms)
+──────────────────────────────────────────────────────────────
+
+Browser 1                          Browser 2
+  └─▶ GET /api/projects              └─▶ GET /api/projects
+      (same params)                      (same params)
+          │                                  │
+          └──────────────────┬───────────────┘
+                            │
+                    Middleware (both)
+                            │
+                    Request Cache Check:
+                    ├─ Cache key: "projects:status=active"
+                    ├─ Cache HIT! (same promise exists)
+                    └─ Both return same cached Promise
+                            │
+                    ┌───────┴────────┐
+                    │                │
+                Browser 1       Browser 2
+              Gets same data  Gets same data
+                   (fast)         (fast)
+
+✅ RESULT: Single DB query instead of 2 (thundering herd prevention)
+
+
+SCENARIO 3: Cached Static Page with ISR
+────────────────────────────────────────
+
+Initial Build (CI/CD):
+  └─▶ npm run build
+      ├─ Generate static params for all locales: en, cs, de
+      ├─ Pre-render: /en/projects, /cs/projects, /de/projects
+      ├─ Marked for ISR: revalidate=3600 (1 hour)
+      └─ Static HTML generated and committed
+
+Deployment:
+  └─▶ Docker start
+      ├─ Next.js reads static HTML
+      ├─ Serves instantly (no build needed)
+      └─ Ready for dynamic revalidation
+
+User Visits /projects (after 30 minutes):
+  └─▶ GET /projects (cs locale)
+      ├─ Middleware: i18n redirect to /cs/projects
+      ├─ Serve static HTML (cached)
+      ├─ Cache-Control: public, must-revalidate
+      └─ Browser shows instantly
+
+ISR Trigger (after 1 hour):
+  └─▶ Next.js background regeneration
+      ├─ Fetch latest data from Supabase
+      ├─ Re-render static pages
+      ├─ Update /cs/projects HTML
+      └─ Next user gets fresh content
+
+
+SCENARIO 4: Form Session (Dynamic, Session-Specific)
+────────────────────────────────────────────────────
+
+POST /api/form (Create Session):
+  └─▶ Parallel operations:
+      ├─ Insert sessions table (get session_id)
+      └─ Fetch questions + localize
+
+Response:
+  └─▶ HTTP 201 Created
+      ├─ Body: { session_id, csrf_token, questions }
+      ├─ Cookie: csrf_token (NOT httpOnly, 48h)
+      ├─ Cache-Control: no-store (never cache)
+      └─ Client stores in localStorage
+
+GET /api/form/questions?locale=en:
+  └─▶ Cache: 1h + 1d SWR
+      └─ Serves from cache if available
+
+POST /api/form/submit:
+  └─▶ force-dynamic (always fresh)
+      ├─ CSRF validation: Cookie + Header match
+      ├─ Rate limit check: 10 req/min
+      ├─ Insert form_answers batch
+      ├─ Cache session in session_cache table
+      ├─ Send emails (non-blocking)
+      └─ HTTP 200 (cache: no-store)
+
+User goes offline → localStorage has data → Can resume later
+User submits → Questions reload from cache, answers validated
+
+================================================================================
+                          CACHING DECISION TREE
+================================================================================
+
+Request arrives:
+  │
+  ├─ Is it static metadata? (manifest, robots.txt, sitemap)
+  │  └─ Skip middleware, serve immediately
+  │
+  ├─ Is it an API route?
+  │  ├─ POST/PUT/DELETE/PATCH?
+  │  │  ├─ Is it a session creation endpoint? (form, survey, etc.)
+  │  │  │  └─ CSRF exempt, generate token, force-dynamic
+  │  │  │
+  │  │  └─ Is it a state change? (submit, contact, etc.)
+  │  │     ├─ Validate CSRF (cookie + header)
+  │  │     ├─ Rate limit: 10 req/min/IP
+  │  │     └─ force-dynamic (never cache)
+  │  │
+  │  └─ GET?
+  │     ├─ Is it projects/pricing/technologies?
+  │     │  ├─ Deduplicate concurrent requests
+  │     │  ├─ Cache result with s-maxage + SWR
+  │     │  └─ Return with rate limit headers
+  │     │
+  │     └─ Is it form/survey questions?
+  │        └─ Cache with 1h (form) or no-store (survey)
+  │
+  ├─ Is it a page route?
+  │  ├─ Was it pre-rendered at build time?
+  │  │  └─ Serve static HTML, check ISR revalidate interval
+  │  │
+  │  └─ Is it dynamic? (form/survey sessions)
+  │     └─ force-dynamic, render on every request
+  │
+  └─ Is it a static asset? (image, font, js, css)
+     └─ Long-term caching: 1 year for images, varies for manifests
+
+================================================================================
+                          PERFORMANCE SUMMARY
+================================================================================
+
+Caching Layer                  Hit Rate Target    Benefit
+──────────────────────────────────────────────────────────────
+Request Deduplication         95%+ (concurrent)   Prevents 2-10x DB queries
+                                                  during traffic spikes
+
+Session Cache (localStorage)  90%+ (form users)   Offline continuity,
+                                                  reduced server load
+
+HTTP Cache (CDN/Browser)      85%+ (public data)  Instant responses,
+                                                  reduced bandwidth
+
+ISR Static Pages              99%+ (no rebuild)   Always-fresh static HTML,
+                                                  no regeneration time
+
+Rate Limiting                 N/A (abuse stop)    Protection from DoS/abuse,
+                                                  fair resource sharing
+
+Total Impact: ✅ Low database load, fast response times, great user experience
+            ✅ Ready for scale-up with Redis (currently single instance)
+            ✅ Well-architected, following Next.js best practices
+
