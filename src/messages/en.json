@@ -611,7 +611,9 @@
     },
     "error": {
       "message": "Failed to submit form. Please try again."
-    }
+    },
+    "agreeToPrivacy": "Agree to policy",
+    "privacyPolicy": "Privacy Policy"
   },
   "pricing": {
     "title": "Choose Your Plan",
