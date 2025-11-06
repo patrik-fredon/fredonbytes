@@ -180,7 +180,7 @@ export default async function ServicesSection({
               {serviceCategories.map((cat) => (
                 <Link
                   key={cat.id}
-                  href={cat.id === "all" ? "/#services" : `/#services?category=${cat.id}`}
+                  href={cat.id === "all" ? "/" : `/?category=${cat.id}`}
                   scroll={false}
                   className={`px-4 py-2 rounded-md font-mono text-sm transition-all duration-fast ${
                     activeTab === cat.id

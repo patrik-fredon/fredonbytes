@@ -42,6 +42,7 @@ export default function TeamMemberCard({
   return (
     <article
       aria-label={`${member.name} - ${member.position}`}
+      tabIndex={0}
       className="h-full transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]"
     >
       <GlassCard variant="card" glowColor={glowColor} className="h-full">
