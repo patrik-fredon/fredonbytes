@@ -103,7 +103,8 @@ export function middleware(request: NextRequest) {
   );
 
   if (host && domainConfig.shouldRedirect(host)) {
-    const protocol = request.headers.get("x-forwarded-proto") || "https";
+    // Extract protocol from configured site URL to ensure consistent HTTPS redirects
+    const protocol = new URL(domainConfig.siteUrl).protocol.replace(":", "");
     const url = request.nextUrl.clone();
 
     // Construct redirect URL with primary domain
