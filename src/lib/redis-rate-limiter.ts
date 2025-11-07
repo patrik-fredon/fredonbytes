@@ -94,12 +94,10 @@ export async function checkRateLimit(
 
     if (count >= maxRequests) {
       // Get the oldest request timestamp
-      const oldestRequests = await client.zRange(key, 0, 0, {
-        WITHSCORES: true,
-      });
+      const oldestRequests = await client.zRangeWithScores(key, 0, 0);
 
       const oldestTimestamp = oldestRequests.length > 0
-        ? Number(oldestRequests[1])
+        ? oldestRequests[0].score
         : now;
 
       const resetTime = oldestTimestamp + windowMs;
