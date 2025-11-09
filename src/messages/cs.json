@@ -40,7 +40,10 @@
     "valueProps": {
       "development": "Vývoj",
       "design": "Design",
-      "marketing": "Marketing"
+      "marketing": "Marketing",
+      "hosting": "Hosting",
+      "branding": "Branding",
+      "consulting": "IT Poradenství"
     },
     "cta": {
       "startProject": "Spustit Projekt",

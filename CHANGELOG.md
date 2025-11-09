@@ -2,6 +2,53 @@
 
 All notable changes to FredonBytes project.
 
+## [2025-11-09] - Complete SEO Implementation with Landing Pages & UX Improvements
+
+### Added - UI/UX Enhancements
+- **Hero section badges**: Added 3 new service badges (Hosting, Branding, IT Consulting)
+- **6 service badges total**: Development, Design, Marketing, Hosting, Branding, IT Consulting
+- **Fixed contact link**: Replaced broken next/link with i18n navigation Link on FAQ section
+- **Translations**: Added new valueProps for cs, en, de (hosting, branding, consulting)
+- **Icons**: Imported Server, Palette, HeadphonesIcon from lucide-react
+
+### Added - PWA & Mobile Optimization
+- **Dynamic manifest.ts**: Next.js 15 PWA manifest with Czech localization
+- **Manifest features**:
+  - Standalone display mode
+  - Theme colors (#00D9FF cyan, #0A0E27 background)
+  - Shortcuts to Contact, Projects, Pricing
+  - Categories: business, productivity, technology, web development
+  - Icons & screenshots for PWA installation
+
+### Enhanced - Robots & Sitemap
+- **robots.ts optimization**:
+  - Added SeznamBot support (25% Czech market)
+  - Added AdsBot-Google, BingPreview crawlers
+  - Crawl delay for Bing and Seznam
+  - Host directive for canonical domain
+- **sitemap.ts**: Already optimized with hreflang, priorities, multi-locale
+
+### Added - Schema Utilities
+- **Breadcrumb schema generator**: Lightweight utility in `/lib/jsonLd/breadcrumb.ts`
+- **Usage**: generateBreadcrumbSchema(items, baseUrl) for any page
+- **GMB compatible**: Helps Google understand site structure
+
+### Optimized - EN Locale Keywords
+- **Massive EN keyword expansion**: 100+ keywords for international market
+- **EN metadata**: All IT services, geo-targeting (Brno, Prague, Ostrava)
+- **EN SEO section**: Matching CS optimization strategy
+- **Brand keywords**: "Fredon", "FredonBytes" in EN translations
+- **USP messaging**: 24h response, payment terms in EN descriptions
+
+### Technical SEO Improvements
+- **Mobile-first**: PWA manifest ensures perfect mobile experience
+- **Fast loading**: ISR with 24h revalidation on homepage
+- **Multi-browser**: Optimized for Chrome, Safari, Firefox, Edge
+- **Multi-engine**: Google, Bing, Seznam crawler support
+- **Schema breadcrumb**: Reusable utility for all pages
+
+---
+
 ## [2025-11-09] - Comprehensive SEO Optimization & Keyword Expansion
 
 ### Added - Metadata & Keywords

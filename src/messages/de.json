@@ -40,7 +40,10 @@
     "valueProps": {
       "development": "Entwicklung",
       "design": "Design",
-      "marketing": "Marketing"
+      "marketing": "Marketing",
+      "hosting": "Hosting",
+      "branding": "Branding",
+      "consulting": "IT-Beratung"
     },
     "cta": {
       "startProject": "Projekt starten",

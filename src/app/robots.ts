@@ -29,20 +29,25 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
       },
-      // Specific rules for major search engines
       {
-        userAgent: ["Googlebot", "Googlebot-Image", "Googlebot-News"],
+        userAgent: ["Googlebot", "Googlebot-Image", "Googlebot-News", "AdsBot-Google"],
         allow: "/",
         disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
       },
       {
-        userAgent: ["Bingbot", "msnbot"],
+        userAgent: ["Bingbot", "msnbot", "BingPreview"],
         allow: "/",
         disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
-        crawlDelay: 1, // Slight delay for Bing
+        crawlDelay: 1,
+      },
+      {
+        userAgent: "SeznamBot",
+        allow: "/",
+        disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
+        crawlDelay: 1,
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl, // Preferred domain - helps search engines understand canonical domain
+    host: siteUrl,
   };
 }
