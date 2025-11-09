@@ -31,6 +31,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projects",
     "/terms",
     "/gdpr",
+    "/services/hosting",
+    "/services/branding",
+    "/services/consulting",
   ];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
@@ -62,6 +65,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ) {
         // Important pages
         priority = 0.8;
+        changeFrequency = "weekly";
+      } else if (route.startsWith("/services/")) {
+        // Service landing pages
+        priority = 0.9;
         changeFrequency = "weekly";
       } else {
         // Other pages

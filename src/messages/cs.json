@@ -1840,5 +1840,47 @@
       "question": "Nenašli jste odpověď na svou otázku?",
       "button": "Kontaktujte nás"
     }
+  },
+  "services": {
+    "hosting": {
+      "title": "Webhosting Brno Praha Ostrava | Spolehlivý Hosting 99.9%",
+      "subtitle": "Rychlý a bezpečný webhosting s technickou podporou 24/7",
+      "description": "Profesionální webhosting pro vaše webové stránky a aplikace. Zaručujeme 99.9% dostupnost, SSD disky, denní zálohy a nepřetržitou technickou podporu.",
+      "features": {
+        "uptime": { "title": "99.9% Dostupnost", "description": "Garantovaná dostupnost vašich webových stránek s SLA smlouvou" },
+        "support": { "title": "Podpora 24/7", "description": "Nepřetržitá technická podpora v češtině, odezva do 1 hodiny" },
+        "backups": { "title": "Denní Zálohy", "description": "Automatické denní zálohy s možností okamžitého obnovení" },
+        "ssl": { "title": "SSL Certifikát Zdarma", "description": "Bezplatný SSL certifikát pro zabezpečené HTTPS připojení" }
+      },
+      "cta": "Získat Cenovou Nabídku"
+    },
+    "branding": {
+      "title": "Branding a Firemní Identita | Grafický Design Brno Praha",
+      "subtitle": "Vytvoříme unikátní značku, která osloví vaše zákazníky",
+      "description": "Komplexní tvorba firemní identity od loga přes barevnou paletu až po brand guidelines. Zajistíme konzistentní vizuální styl napříč všemi kanály.",
+      "features": {
+        "logo": { "title": "Design Loga", "description": "Profesionální návrh loga s neomezenými revizemi" },
+        "identity": { "title": "Firemní Identita", "description": "Kompletní vizuální styl včetně barev, typografie a prvků" },
+        "guidelines": { "title": "Brand Manual", "description": "Detailní průvodce používání značky pro konzistenci" },
+        "materials": { "title": "Marketingové Materiály", "description": "Vizitky, letáky, prezentace a další materiály" }
+      },
+      "cta": "Konzultace Zdarma"
+    },
+    "consulting": {
+      "title": "IT Poradenství Brno | Konzultace Technologií a Infrastruktury",
+      "subtitle": "Expertní poradenství pro digitální transformaci vaší firmy",
+      "description": "Pomůžeme vám vybrat správné technologie, optimalizovat IT infrastrukturu a naplánovat digitální strategii. Odezva do 24 hodin.",
+      "features": {
+        "strategy": { "title": "Digitální Strategie", "description": "Plánování technologického rozvoje a digitální transformace" },
+        "infrastructure": { "title": "IT Infrastruktura", "description": "Audit a optimalizace serverů, sítí a cloudových řešení" },
+        "security": { "title": "Kybernetická Bezpečnost", "description": "Bezpečnostní audity, penetrační testy a GDPR compliance" },
+        "training": { "title": "Školení Týmu", "description": "Vzdělávání zaměstnanců v nových technologiích" }
+      },
+      "cta": "Sjednat Konzultaci"
+    },
+    "breadcrumb": {
+      "home": "Domů",
+      "services": "Služby"
+    }
   }
 }

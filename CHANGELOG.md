@@ -2,6 +2,31 @@
 
 All notable changes to FredonBytes project.
 
+## [2025-11-09] - SEO Landing Pages & Complete Implementation
+
+### Added - Service Landing Pages (3 New Pages)
+- **`/services/hosting`**: Webhosting Brno Praha Ostrava landing page
+- **`/services/branding`**: Branding a Firemní Identita landing page
+- **`/services/consulting`**: IT Poradenství landing page
+- **Features per page:**
+  - H1 optimized for keywords (e.g., "Webhosting Brno Praha Ostrava")
+  - Breadcrumb schema for GMB compatibility
+  - 4 feature cards with benefits
+  - CTA buttons to contact page
+  - Lightweight: ~130 lines per page
+  - SSG rendering for performance
+- **Translations added**: cs.json services section (hosting, branding, consulting)
+- **Used components**: Button, Link (i18n), existing icons
+- **SEO keywords**: Location-specific, service-specific, USP messaging
+
+### Enhanced - Sitemap
+- Added 3 service pages to sitemap.ts
+- Priority: 0.9 (higher than other pages, lower than homepage)
+- Change frequency: weekly
+- Multi-locale: cs, en, de routes for each service
+
+---
+
 ## [2025-11-09] - Complete SEO Implementation with Landing Pages & UX Improvements
 
 ### Added - UI/UX Enhancements
