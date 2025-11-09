@@ -29,7 +29,7 @@ export default function manifest(): MetadataRoute.Manifest {
         src: "/FredonBytes_GraphicLogo.png",
         sizes: "any",
         type: "image/png",
-        purpose: "any maskable",
+        purpose: "maskable",
       },
       {
         src: "/FredonBytes_GraphicLogo.png",
