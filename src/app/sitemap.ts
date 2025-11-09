@@ -34,6 +34,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/hosting",
     "/services/branding",
     "/services/consulting",
+    "/services/seo",
+    "/services/social-media",
+    "/services/development",
+    "/services/design",
   ];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];

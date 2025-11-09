@@ -10,7 +10,14 @@
     "gallery": "Gallery",
     "support": "Support",
     "allLinks": "All Links",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "servicesHosting": "Hosting",
+    "servicesBranding": "Branding",
+    "servicesConsulting": "IT Consulting",
+    "servicesSeo": "SEO Optimization",
+    "servicesSocialMedia": "Social Media",
+    "servicesDevelopment": "Development",
+    "servicesDesign": "Design"
   },
   "metadata": {
     "siteName": "Fredonbytes",
@@ -1817,6 +1824,96 @@
     "cta": {
       "question": "Didn't find the answer to your question?",
       "button": "Contact us"
+    }
+  },
+  "services": {
+    "hosting": {
+      "title": "Web Hosting Brno Prague Ostrava | Reliable 99.9% Uptime",
+      "subtitle": "Fast and secure web hosting with 24/7 technical support",
+      "description": "Professional web hosting for your websites and applications. We guarantee 99.9% uptime, SSD drives, daily backups and continuous technical support.",
+      "features": {
+        "uptime": { "title": "99.9% Uptime", "description": "Guaranteed website availability with SLA agreement" },
+        "support": { "title": "24/7 Support", "description": "Continuous technical support in English, response within 1 hour" },
+        "backups": { "title": "Daily Backups", "description": "Automatic daily backups with instant recovery option" },
+        "ssl": { "title": "Free SSL Certificate", "description": "Free SSL certificate for secure HTTPS connection" }
+      },
+      "cta": "Get a Quote"
+    },
+    "branding": {
+      "title": "Branding & Corporate Identity | Graphic Design Brno Prague",
+      "subtitle": "We create a unique brand that engages your customers",
+      "description": "Comprehensive corporate identity creation from logo to color palette to brand guidelines. We ensure consistent visual style across all channels.",
+      "features": {
+        "logo": { "title": "Logo Design", "description": "Professional logo design with unlimited revisions" },
+        "identity": { "title": "Corporate Identity", "description": "Complete visual style including colors, typography and elements" },
+        "guidelines": { "title": "Brand Manual", "description": "Detailed brand usage guide for consistency" },
+        "materials": { "title": "Marketing Materials", "description": "Business cards, flyers, presentations and other materials" }
+      },
+      "cta": "Free Consultation"
+    },
+    "consulting": {
+      "title": "IT Consulting Brno | Technology & Infrastructure Advisory",
+      "subtitle": "Expert consulting for your company's digital transformation",
+      "description": "We help you choose the right technologies, optimize IT infrastructure and plan digital strategy. Response within 24 hours.",
+      "features": {
+        "strategy": { "title": "Digital Strategy", "description": "Technology development planning and digital transformation" },
+        "infrastructure": { "title": "IT Infrastructure", "description": "Audit and optimization of servers, networks and cloud solutions" },
+        "security": { "title": "Cybersecurity", "description": "Security audits, penetration tests and GDPR compliance" },
+        "training": { "title": "Team Training", "description": "Employee education in new technologies" }
+      },
+      "cta": "Schedule Consultation"
+    },
+    "seo": {
+      "title": "SEO Optimization Brno Prague | Google & Seznam Rankings",
+      "subtitle": "Professional SEO services for top search engine rankings",
+      "description": "Get to the top of Google and Seznam.cz search results. We provide complete SEO optimization including technical SEO, content strategy and link building.",
+      "features": {
+        "technical": { "title": "Technical SEO", "description": "Website speed optimization, structured data, meta tags" },
+        "content": { "title": "Content Strategy", "description": "Keyword research, SEO texts and content marketing" },
+        "local": { "title": "Local SEO", "description": "Google My Business optimization for local search" },
+        "reporting": { "title": "Analytics & Reports", "description": "Monthly reports with rankings, traffic and conversions" }
+      },
+      "cta": "Free SEO Audit"
+    },
+    "socialMedia": {
+      "title": "Social Media Management Brno | Instagram Facebook LinkedIn",
+      "subtitle": "Complete social media management with content creation",
+      "description": "We manage your social media, create engaging content and grow your online presence. Professional content, regular posting and community management.",
+      "features": {
+        "content": { "title": "Content Creation", "description": "Professional graphics, videos and copywriting" },
+        "management": { "title": "Community Management", "description": "Responding to comments, messages and reviews" },
+        "ads": { "title": "Social Media Ads", "description": "Facebook, Instagram and LinkedIn advertising campaigns" },
+        "analytics": { "title": "Performance Analysis", "description": "Monthly reports with reach, engagement and growth" }
+      },
+      "cta": "Get Started"
+    },
+    "development": {
+      "title": "Web Development Brno Prague | Next.js React Apps",
+      "subtitle": "Modern web applications built with cutting-edge technologies",
+      "description": "We build fast, scalable and SEO-optimized web applications using Next.js 15, React 19 and TypeScript. From simple websites to complex enterprise solutions.",
+      "features": {
+        "modern": { "title": "Modern Tech Stack", "description": "Next.js 15, React 19, TypeScript, Tailwind CSS" },
+        "performance": { "title": "Performance First", "description": "Lighthouse 95+ score, SSG/SSR optimization" },
+        "mobile": { "title": "Mobile-First Design", "description": "Responsive design for all devices and screen sizes" },
+        "seo": { "title": "SEO Optimized", "description": "Built-in SEO best practices, meta tags, structured data" }
+      },
+      "cta": "Start Project"
+    },
+    "design": {
+      "title": "UX/UI Design Brno Prague | Modern Web & App Design",
+      "subtitle": "User-centered design that converts visitors to customers",
+      "description": "We create beautiful and functional user interfaces. From wireframes to final design, we ensure excellent user experience and modern aesthetics.",
+      "features": {
+        "ux": { "title": "UX Research", "description": "User research, personas, user journey mapping" },
+        "prototyping": { "title": "Prototyping", "description": "Interactive prototypes in Figma for testing" },
+        "ui": { "title": "UI Design", "description": "Modern visual design with design systems" },
+        "testing": { "title": "User Testing", "description": "Usability testing and iterative improvements" }
+      },
+      "cta": "See Portfolio"
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "services": "Services"
     }
   }
 }

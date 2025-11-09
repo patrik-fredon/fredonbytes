@@ -10,7 +10,14 @@
     "gallery": "Galerie",
     "support": "Podpora",
     "allLinks": "Všechny odkazy",
-    "getStarted": "Začít"
+    "getStarted": "Začít",
+    "servicesHosting": "Hosting",
+    "servicesBranding": "Branding",
+    "servicesConsulting": "IT Poradenství",
+    "servicesSeo": "SEO Optimalizace",
+    "servicesSocialMedia": "Social Media",
+    "servicesDevelopment": "Vývoj Aplikací",
+    "servicesDesign": "Design"
   },
   "metadata": {
     "siteName": "Fredonbytes",
