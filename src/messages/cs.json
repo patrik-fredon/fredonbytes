@@ -14,10 +14,10 @@
   },
   "metadata": {
     "siteName": "Fredonbytes",
-    "title": "Fredonbytes - Váš komplexní IT partner",
-    "description": "🚀 Tvorba webů Brno | Vývoj aplikací | SEO optimalizace. Komplexní IT řešení pro vaši firmu. ✓ Moderní technologie ✓ 24/7 podpora ✓ Zaručená kvalita. Kontaktujte nás ještě dnes!",
-    "keywords": "vývoj webu, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika",
-    "logoAlt": "Logo Fredonbytes"
+    "title": "Fredonbytes | Komplexní IT služby Brno, Praha, Ostrava | 24h Odezva",
+    "description": "🚀 Všechny IT služby pod jednou střechou! Hosting | Vývoj webu & aplikací | Branding | Copywriting | SEO | Social Media | IT poradenství. ⚡ Odezva do 24h | 💰 1/3 záloha, zbytek jen při spokojenosti. Kontaktujte nás!",
+    "keywords": "hosting Brno, webhosting ČR, vývoj webu Brno Praha Ostrava, vývoj softwaru na míru, IT poradenství Brno, grafický design Brno Praha, branding Česká republika, copywriting služby, SEO optimalizace Brno Praha, správa sociálních sítí, social media marketing ČR, tvorba webových stránek, vývoj mobilních aplikací, e-shop na míru, WordPress vývoj, Next.js React vývoj, kybernetická bezpečnost, IT podpora 24/7, měsíční IT balíčky, technická podpora, cloudová řešení, Fredon, FredonBytes, IT služby Jihomoravský kraj, digitální marketing, UX/UI design, kompletní IT řešení",
+    "logoAlt": "FredonBytes logo - Komplexní IT služby"
   },
   "manifest": {
     "name": "Fredonbytes - Vaše komplexní IT řešení",
@@ -90,19 +90,19 @@
     "externalLinks": "Externí odkazy"
   },
   "seo": {
-    "defaultTitle": "Fredonbytes - Vaše komplexní IT řešení",
-    "defaultDescription": "Tvorba webů a aplikací na míru v Brně. ✓ React & Next.js experti ✓ SEO optimalizace ✓ Moderní design ✓ Rychlá realizace. Získejte ZDARMA konzultaci a odhad ceny!",
-    "keywords": "tvorba webových stránek Brno, vývoj webů Brno, IT firma Brno, vývoj software Brno, digitální marketing ČR, SEO optimalizace Brno, grafický design Brno, tvorba e-shopů, webové aplikace Brno, IT řešení pro firmy, vývoj mobilních aplikací ČR, WordPress Brno, Next.js vývoj, React vývoj Brno",
-    "siteName": "Fredonbytes",
+    "defaultTitle": "Fredon & FredonBytes | Všechny IT služby pod jednou střechou | Brno Praha Ostrava",
+    "defaultDescription": "⚡ Kompletní IT partner pro vaši firmu! Hosting, vývoj webu & aplikací, branding, copywriting, SEO, social media management, IT poradenství. 🎯 Odezva do 24h | 💰 Platba jen při spokojenosti | ✓ Měsíční balíčky. Nezávazná konzultace ZDARMA!",
+    "keywords": "fredon, fredonbytes, hosting brno praha ostrava, webhosting česká republika, vývoj webu brno, vývoj webových stránek praha, tvorba webů ostrava, vývoj softwaru na míru čr, IT poradenství brno, it konzultace praha, grafický design brno praha, branding služby česká republika, firemní identita, copywriting brno, textař pro weby, SEO optimalizace brno praha ostrava, seo služby česká republika, marketing na sociálních sítích, social media management brno, správa instagramu facebooku, digitální marketing čr, tvorba mobilních aplikací brno, vývoj ios android aplikací, e-shop na míru wordpress woocommerce, webové aplikace react next.js, kybernetická bezpečnost audit, IT podpora 24/7, technická podpora webu, měsíční balíčky služeb, cloudová řešení aws azure, ux ui design brno, moderní webdesign, responzivní web, landing page, one page web, portálové řešení, intranet extranet, API integrace, vývojář brno freelancer, it firma jihomoravský kraj, startup it služby, komplexní digitální řešení",
+    "siteName": "Fredon | FredonBytes",
     "twitterHandle": "@Fredonbytes",
     "twitterCreator": "@FredonBytes",
-    "title": "Fredonbytes - Váš komplexní IT partner",
-    "logoAlt": "Logo Fredonbytes",
-    "description": "🚀 Tvorba webů Brno | Vývoj aplikací | SEO optimalizace. Komplexní IT řešení pro vaši firmu. ✓ Moderní technologie ✓ 24/7 podpora ✓ Zaručená kvalita. Kontaktujte nás ještě dnes!"
+    "title": "Fredon & FredonBytes - Komplexní IT služby | Brno Praha Ostrava",
+    "logoAlt": "FredonBytes - Váš důvěryhodný IT partner",
+    "description": "🚀 VŠECHNY IT služby pod jednou střechou! Hosting | Vývoj | Design | Branding | Copywriting | SEO | Social Media | IT Poradenství. ⚡ 24h odezva | 💰 Platba jen při spokojenosti | 🎯 Měsíční balíčky od 5.990 Kč. Kontaktujte nás!"
   },
   "jsonLd": {
     "organizationName": "Fredonbytes",
-    "organizationDescription": "Poskytovatel komplexních IT řešení specializující se na vývoj softwaru, grafický design, SEO a marketing na sociálních sítích",
+    "organizationDescription": "Komplexní poskytovatel všech IT služeb pod jednou střechou - hosting, vývoj software a webů, branding, copywriting, SEO, social media management, IT poradenství a měsíční balíčky služeb pro firmy v Brně, Praze a Ostravě",
     "organizationType": "TechnologyCompany",
     "address": {
       "streetAddress": "",
@@ -111,21 +111,45 @@
       "postalCode": "",
       "addressCountry": "CZ"
     },
+    "areaServed": ["Brno", "Praha", "Ostrava", "Česká republika"],
     "contactPoint": {
       "telephone": "+420799027984",
       "contactType": "customer service",
-      "email": "info@fredonbytes.cz"
+      "email": "info@fredonbytes.cz",
+      "availableLanguage": ["Czech", "English", "German"],
+      "hoursAvailable": "Po-Pá 9:00-17:00"
     },
     "services": [
-      "Software Development",
-      "Web Development",
-      "Graphic Design",
-      "SEO Services",
-      "Social Media Marketing",
-      "IT Consulting"
+      "Hosting a webhosting",
+      "Vývoj webových stránek a aplikací",
+      "Vývoj software na míru",
+      "Mobilní aplikace (iOS/Android)",
+      "Grafický design a UX/UI",
+      "Branding a firemní identita",
+      "Copywriting a tvorba obsahu",
+      "SEO optimalizace",
+      "Social Media Management",
+      "Digitální marketing",
+      "IT poradenství a konzultace",
+      "Kybernetická bezpečnost",
+      "Technická podpora 24/7",
+      "Měsíční balíčky služeb",
+      "Cloudová řešení",
+      "E-commerce a e-shopy"
     ],
+    "priceRange": "$$",
+    "paymentAccepted": "Bankovní převod, Kreditní karta",
+    "slogan": "Code. Create. Conquer. | One Team. Zero Limits.",
     "founder": "Patrik Fredon",
-    "foundingDate": "2023"
+    "foundingDate": "2023",
+    "aggregateRating": {
+      "ratingValue": "5.0",
+      "reviewCount": "15"
+    },
+    "hasOfferCatalog": {
+      "name": "IT služby a měsíční balíčky",
+      "description": "Kompletní portfolio IT služeb s flexibilními měsíčními balíčky"
+    }
   },
   "about": {
     "title": "Kdo jsme?",

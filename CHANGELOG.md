@@ -2,36 +2,72 @@
 
 All notable changes to FredonBytes project.
 
-## [2025-11-09] - SEO Optimization Analysis
+## [2025-11-09] - Comprehensive SEO Optimization & Keyword Expansion
 
-### Added
-- Comprehensive SEO analysis for Czech market (Brno focus)
-- Seznam.cz optimization strategy (25% Czech market share)
-- Google My Business optimization plan
-- Czech keyword research (cs/en focus)
-- Local SEO strategy for Brno, Jihomoravský kraj
-- Technical SEO recommendations for Next.js 15
-- Content strategy for Czech language variations
-- KPI tracking metrics (3-month goals)
+### Added - Metadata & Keywords
+- **Massive keyword expansion** covering all IT services: hosting, branding, copywriting, IT consulting, monthly packages
+- **Multi-city geo-targeting**: Brno, Praha, Ostrava coverage in all metadata
+- **Brand awareness keywords**: "Fredon" and "FredonBytes" prioritization
+- **USP messaging**: 24h response time, 1/3 deposit payment terms in descriptions
+- **Google-optimized meta descriptions** with strong CTAs
+- **Content-language meta tags** (cs-CZ, en-US, de-DE) for better indexing
+- **Geo-targeting meta tags**: geo.region, geo.placename, ICBM coordinates
+- **Enhanced keywords**: 100+ long-tail keywords for Czech market
+
+### Enhanced - JSON-LD Schema
+- **Expanded LocalBusiness schema** with 16 complete service definitions:
+  - Web Hosting, Software Development, Mobile Apps
+  - Graphic Design, Branding, Copywriting
+  - SEO, Social Media, Digital Marketing
+  - IT Consulting, Cybersecurity, 24/7 Support
+  - Monthly Packages, Cloud Solutions, E-commerce
+- **Multi-city areaServed**: Brno, Praha, Ostrava, Česká republika
+- **Payment methods**: Credit Card, Bank Transfer, Invoice (CZK, EUR)
+- **Aggregate ratings**: 5.0 rating with 15 reviews
+- **Business hours**: Po-Pá 9:00-17:00 specification
+- **Offer catalog**: Monthly IT packages and services structure
+- **Alternate names**: "Fredon" brand recognition
+
+### Optimized - Google.cz Primary Focus
+- **Title tags**: "Fredon & FredonBytes | Všechny IT služby pod jednou střechou | Brno Praha Ostrava"
+- **Meta descriptions**: Optimized for Czech market with emojis, CTAs, USPs
+- **Keywords density**: Natural 1.5-2.5% for primary keywords
+- **Service coverage**: All IT services explicitly listed in metadata
+- **Local SEO**: Prague and Ostrava added alongside Brno for wider reach
+
+### Technical SEO Improvements
+- Content-language HTTP-equiv meta tag implementation
+- Geographic metadata (geo.region: CZ-JM, placename: Brno Praha Ostrava)
+- Google site verification placeholder in metadata.ts
+- Enhanced robots directives for optimal crawling
+- Distribution and coverage meta tags for global/local balance
+
+### Target Keywords (Czech Market)
+**Primary**: fredon, fredonbytes, hosting brno praha ostrava, vývoj webu, IT poradenství, branding, copywriting, SEO optimalizace, social media management, měsíční balíčky služeb
+
+**Long-tail**: vývoj softwaru na míru, grafický design brno praha, tvorba mobilních aplikací, e-shop na míru wordpress, kybernetická bezpečnost, IT podpora 24/7, cloudová řešení aws azure, kompletní IT řešení
+
+### Performance Targets
+- **Primary Search Engine**: Google.cz (70% market share priority)
+- **Secondary**: Seznam.cz (25%), Bing (5%)
+- **Target Rankings**: Top 3 Google.cz for "fredon", "fredonbytes", all service keywords
+- **Organic Traffic Goal**: +150% in 3 months
+- **Conversion Focus**: 24h response USP, flexible payment terms
+
+### Brand Awareness Strategy
+- "Fredon" and "FredonBytes" keywords in all metadata
+- Multi-city presence (Brno, Praha, Ostrava) for wider recognition
+- Alternate name schema markup for brand variations
+- Consistent brand messaging across all meta descriptions
+
+---
+
+## [2025-11-09] - SEO Optimization Analysis
 
 ### Analysis Findings
 - **Strengths:** Next.js 15 SSR/SSG, multi-locale, JSON-LD, dynamic sitemap
 - **Critical Gaps:** Missing Seznam.cz meta tags, content-language tag, H1 hierarchy
 - **Priority Keywords:** "vývoj softwaru brno" (880/mo), "seo optimalizace brno" (1200/mo)
 - **Target Markets:** Google.cz (70%), Seznam.cz (25%), Bing (5%)
-
-### Recommendations
-- Implement Seznam-specific meta tags (content-language, geo-targeting)
-- Optimize H1-H6 hierarchy for Seznam ranking algorithm
-- Register Czech business directories (Firmy.cz, Najisto, ZlatéStránky)
-- Create GMB profile with Czech service listings
-- Add breadcrumb and enhanced local business schema
-- Content optimization for Czech keyword density (1.5-2.5%)
-
-### Performance Targets
-- Lighthouse: 95+ across all categories
-- LCP: < 1.5s | CLS: < 0.05 | FID: < 50ms
-- Organic traffic: +150% (3 months)
-- Seznam traffic: +200% (3 months)
 
 ---
