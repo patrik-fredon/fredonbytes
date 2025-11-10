@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 
 /**
  * Dynamic PWA manifest generation per locale
@@ -14,18 +15,29 @@ import { getTranslations } from "next-intl/server";
  * - Proper categorization for app stores
  * - Multi-resolution icons (192x192, 512x512)
  *
- * @param {Promise<{locale: string}>} params - Route params with locale
+ * @param {Promise<{locale: string}>} params - Route params with locale (optional, defaults to 'cs')
  * @returns {Promise<MetadataRoute.Manifest>} Localized manifest configuration
  */
 
 interface ManifestProps {
-  params: Promise<{ locale: string }>;
+  params?: Promise<{ locale?: string }>;
+}
+
+/**
+ * Generate static params for all supported locales
+ * This enables Next.js to prerender the manifest for each locale at build time
+ */
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({
+    locale,
+  }));
 }
 
 export default async function manifest({
   params,
-}: ManifestProps): Promise<MetadataRoute.Manifest> {
-  const { locale } = await params;
+}: ManifestProps = {}): Promise<MetadataRoute.Manifest> {
+  // Use default locale if params are not provided (during prerendering)
+  const locale = params ? (await params).locale || routing.defaultLocale : routing.defaultLocale;
   const t = await getTranslations({ locale, namespace: "manifest" });
 
   return {
