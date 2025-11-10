@@ -42,17 +42,19 @@ export async function POST(request: NextRequest) {
         : undefined,
     };
 
-    // Log the metric (in production, you would send this to your analytics service)
-    // Using console.warn for visibility (ESLint allows warn/error)
-    console.warn("[Web Vitals Analytics]", {
-      timestamp: new Date().toISOString(),
-      metric: sanitizedMetric.name,
-      value: sanitizedMetric.value,
-      rating: sanitizedMetric.rating,
-      delta: sanitizedMetric.delta,
-      id: sanitizedMetric.id,
-      navigationType: sanitizedMetric.navigationType,
-    });
+    // Log the metric only if explicitly enabled via environment variable
+    // This prevents console spam in production
+    if (process.env.ENABLE_WEB_VITALS_LOGGING === "true") {
+      console.warn("[Web Vitals Analytics]", {
+        timestamp: new Date().toISOString(),
+        metric: sanitizedMetric.name,
+        value: sanitizedMetric.value,
+        rating: sanitizedMetric.rating,
+        delta: sanitizedMetric.delta,
+        id: sanitizedMetric.id,
+        navigationType: sanitizedMetric.navigationType,
+      });
+    }
 
     // Here you could integrate with analytics services like:
     // - Google Analytics 4
