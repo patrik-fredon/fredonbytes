@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
-import { JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
@@ -8,18 +7,16 @@ import { generateLocalizedMetadata } from "@/config/metadata";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
+// Import JetBrains Mono from fontsource (works offline/in Docker)
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/jetbrains-mono/600.css";
+import "@fontsource/jetbrains-mono/700.css";
+
 import GridBackground from "@/components/dev-ui/GridBackground";
 import ClientLayoutWrapper from "../../components/ClientLayoutWrapper";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  preload: true,
-  variable: "--font-jetbrains-mono",
-});
 
 // Dynamic imports for heavy components
 const AnimatedBackground = dynamic(
@@ -60,8 +57,8 @@ const WebVitals = dynamic(
 );
 
 // JetBrains Mono loaded via @fontsource imports above
-// Variable set via CSS: --font-jetbrains-mono
 // Font features: 'liga' 1, 'calt' 1 for ligatures
+// Applied globally via Tailwind config: font-family: 'JetBrains Mono'
 
 export async function generateMetadata({
   params,
@@ -144,7 +141,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`scroll-smooth ${jetbrainsMono.variable}`}
+      className="scroll-smooth"
       suppressHydrationWarning={true}
     >
       {configureHeadForTheme()}
