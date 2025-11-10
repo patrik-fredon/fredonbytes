@@ -468,7 +468,7 @@
           "description": "Bezplatný SSL certifikát pro zabezpečené HTTPS připojení"
         }
       },
-      "cta": "Získat Cenovou Nabídku"
+      "cta": "Připraveni na spolehlivý hosting?"
     },
     "branding": {
       "title": "Branding a Firemní Identita | Grafický Design Brno Praha",
@@ -492,7 +492,7 @@
           "description": "Vizitky, letáky, prezentace a další materiály"
         }
       },
-      "cta": "Konzultace Zdarma"
+      "cta": "Připraveni na silnou značku?"
     },
     "consulting": {
       "title": "IT Poradenství Brno | Konzultace Technologií a Infrastruktury",
@@ -516,7 +516,7 @@
           "description": "Vzdělávání zaměstnanců v nových technologiích"
         }
       },
-      "cta": "Sjednat Konzultaci"
+      "cta": "Připraveni na IT transformaci?"
     },
     "seo": {
       "title": "SEO Optimalizace Brno Praha | Google & Seznam Rankings",
@@ -540,7 +540,7 @@
           "description": "Měsíční reporty, sledování pozic a Google Analytics analýzy"
         }
       },
-      "cta": "Bezplatný SEO Audit"
+      "cta": "Připraveni na TOP rankings?"
     },
     "socialMedia": {
       "title": "Správa Sociálních Sítí Brno Praha | Facebook Instagram LinkedIn",
@@ -564,7 +564,7 @@
           "description": "Měsíční reporty, sledování metrik a optimalizace strategie"
         }
       },
-      "cta": "Konzultace Zdarma"
+      "cta": "Připraveni na růst na sociálních sítích?"
     },
     "development": {
       "title": "Vývoj Webů a Aplikací Brno Praha | Next.js React TypeScript",
@@ -588,7 +588,7 @@
           "description": "Strukturovaná data, meta tagy, sitemap, robots.txt"
         }
       },
-      "cta": "Začít Projekt"
+      "cta": "Připraveni na moderní web?"
     },
     "design": {
       "title": "UX/UI Design Brno Praha | Figma Prototyping & User Testing",
@@ -612,7 +612,7 @@
           "description": "Usability testy, A/B testování a iterace na základě feedbacku"
         }
       },
-      "cta": "Konzultace UX"
+      "cta": "Připraveni na vynikající UX?"
     },
     "breadcrumb": {
       "home": "Domů",

@@ -1,4 +1,4 @@
-import { Terminal } from "lucide-react";
+
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { ComponentType } from "react";
@@ -118,59 +118,61 @@ export default async function ServicePageTemplate({ params, config }: Props) {
       />
 
       <div className="min-h-screen pt-24 pb-16 relative z-10">
-        <TerminalWindow className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <div
-                className={`inline-flex items-center justify-center w-16 h-16 rounded-lg ${config.iconBgClass} border ${config.iconColorClass.replace("text-", "border-")}/20 mb-6`}
-              >
-                <IconComponent className={`w-8 h-8 ${config.iconColorClass}`} />
+        <TerminalWindow title={ts("title")} >
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <div
+                  className={`inline-flex items-center justify-center w-16 h-16 rounded-lg ${config.iconBgClass} border ${config.iconColorClass.replace("text-", "border-")}/20 mb-6`}
+                >
+                  <IconComponent className={`w-8 h-8 ${config.iconColorClass}`} />
+                </div>
+
+                <h1 className="text-4xl sm:text-5xl font-bold text-terminal-light mb-6 font-mono">
+                  {ts("title")}
+                </h1>
+
+                <p className="text-xl text-terminal-light/80 mb-4 font-mono">
+                  {ts("subtitle")}
+                </p>
+
+                <p className="text-lg text-terminal-light/70 max-w-3xl mx-auto">
+                  {ts("description")}
+                </p>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl font-bold text-terminal-light mb-6 font-mono">
-                {ts("title")}
-              </h1>
+              <div className="grid md:grid-cols-2 gap-6 mb-12">
+                {config.features.map((feature) => {
+                  const FeatureIcon = feature.icon;
+                  return (
+                    <div
+                      key={feature.key}
+                      className={`border border-slate-800/50 rounded-lg p-6 bg-glass-bg backdrop-blur-glass ${feature.hoverBorder} transition-all`}
+                    >
+                      <FeatureIcon
+                        className={`w-10 h-10 ${feature.iconColor} mb-4`}
+                      />
+                      <h3 className="text-xl font-bold text-terminal-light mb-2 font-mono">
+                        {ts(`features.${feature.key}.title`)}
+                      </h3>
+                      <p className="text-terminal-light/70">
+                        {ts(`features.${feature.key}.description`)}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
 
-              <p className="text-xl text-terminal-light/80 mb-4 font-mono">
-                {ts("subtitle")}
-              </p>
-
-              <p className="text-lg text-terminal-light/70 max-w-3xl mx-auto">
-                {ts("description")}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
-              {config.features.map((feature) => {
-                const FeatureIcon = feature.icon;
-                return (
-                  <div
-                    key={feature.key}
-                    className={`border border-slate-800/50 rounded-lg p-6 bg-glass-bg backdrop-blur-glass ${feature.hoverBorder} transition-all`}
-                  >
-                    <FeatureIcon
-                      className={`w-10 h-10 ${feature.iconColor} mb-4`}
-                    />
-                    <h3 className="text-xl font-bold text-terminal-light mb-2 font-mono">
-                      {ts(`features.${feature.key}.title`)}
-                    </h3>
-                    <p className="text-terminal-light/70">
-                      {ts(`features.${feature.key}.description`)}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="text-center border-t border-slate-800/50 pt-12">
-              <h2 className="text-2xl font-bold text-terminal-light mb-6 font-mono">
-                {config.ctaHeadline}
-              </h2>
-              <Link href="/contact">
-                <Button variant="gradient" size="xl" className="font-mono">
-                  {ts("cta")}
-                </Button>
-              </Link>
+              <div className="text-center border-t border-slate-800/50 pt-12">
+                <h2 className="text-2xl font-bold text-terminal-light mb-6 font-mono">
+                  {config.ctaHeadline}
+                </h2>
+                <Link href="/contact">
+                  <Button variant="gradient" size="xl" className="font-mono">
+                    {ts("cta")}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </TerminalWindow>
