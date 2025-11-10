@@ -72,7 +72,7 @@
     linear-gradient(var(--grid-color) 1px, transparent 1px);
 
   /* Typography */
-  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  --font-mono: "JetBrains Mono", monospace;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -155,7 +155,7 @@
   --radius-terminal: 0.5rem;
 
   /* Font Families */
-  --font-family-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  --font-family-mono: "JetBrains Mono", monospace;
 
   /* Font Sizes */
   --font-size-xs: 0.75rem;
