@@ -196,11 +196,11 @@
     0 0 30px rgba(168, 85, 247, 0.5), 0 6px 12px -2px rgb(0 0 0 / 0.6);
 
   /* Inset Shadows */
-  --inset-shadow-sm: inset 0 10px 10px 0 rgb(0 0 0 / 0.4);
-  --inset-shadow-2xs: inset 0 2px 24px rgb(0 0 0 / 0.05);
-  --inset-shadow-2xl: inset 10px 5px 10px rgb(0 0 0 / 0.2);
-  --inset-shadow-3xl: inset 0 1px 5px rgb(0 0 0 / 0.3);
-
+  --inset-shadow-sm: inset 0 5px 10px 10px rgb(0 0 0 / 0.4);
+  --inset-shadow-2xs: inset 0 2px 24px 2px rgb(0 0 0 / 0.05);
+  --inset-shadow-2xl: inset 10px 5px 10px 2px  rgb(0 0 0 / 0.2);
+  --inset-shadow-3xl: inset 0 0px 5px 2px rgb(0 0 0 / 0.3);
+  --inset-shadow-xl: inset 0 1px 5px 2px rgb(0 0 0 / 0.1);
   /* Transition Durations */
   --transition-duration-instant: 100ms;
   --transition-duration-fast: 180ms;

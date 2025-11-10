@@ -30,12 +30,12 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
       },
       {
-        userAgent: ["Googlebot", "Googlebot-Image", "Googlebot-News"],
+        userAgent: ["Googlebot", "Googlebot-Image", "Googlebot-News", "AdsBot-Google"],
         allow: "/",
         disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
       },
       {
-        userAgent: ["Bingbot", "msnbot"],
+        userAgent: ["Bingbot", "msnbot", "BingPreview"],
         allow: "/",
         disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
         crawlDelay: 1,

@@ -13,8 +13,11 @@ export async function getHomeMetadata(locale: string): Promise<Metadata> {
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
   const canonicalUrl = `${baseUrl}${localePrefix}`;
 
-  // Use comprehensive keywords from translations
-  const enhancedKeywords = seoT("keywords");
+  // Enhanced keywords with Czech market focus (all services)
+  const enhancedKeywords =
+    locale === "cs"
+      ? "fredon, fredonbytes, hosting brno praha ostrava, webhosting, vývoj webů brno praha, tvorba webových stránek, vývoj softwaru na míru, IT poradenství brno, grafický design brno praha, branding česká republika, copywriting služby, SEO optimalizace brno praha ostrava, social media management, digitální marketing, tvorba mobilních aplikací, e-shop na míru, wordpress vývoj, next.js react, kybernetická bezpečnost, IT podpora 24/7, měsíční balíčky služeb, cloudová řešení, ux ui design, kompletní it řešení, it firma jihomoravský kraj"
+      : t("keywords");
 
   return {
     title: t("title"),

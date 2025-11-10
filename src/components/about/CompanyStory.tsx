@@ -42,12 +42,7 @@ export default async function CompanyStory({ locale }: CompanyStoryProps) {
       id="company-story"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-0">
-        <h2
-          id="company-story-title"
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-center leading-tight font-mono animate-fade-in-down"
-        >
-          <span className="text-neon-cyan">//</span> {t("title")}
-        </h2>
+
 
         {/* 2-Column Layout: Story Content + Mission Card */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
@@ -55,10 +50,17 @@ export default async function CompanyStory({ locale }: CompanyStoryProps) {
           <div className="lg:col-span-2 animate-fade-in-scale">
             <GlassCard variant="window" glowColor="normal" className="h-full">
               <div className="space-y-4 sm:space-y-5">
+                <h2
+                  id="company-story-title"
+                  className="text-lg sm:text-xl lg:text-2xl font-bold mb-1 sm:mb-2 text-center leading-tight font-mono animate-fade-in-down"
+                >
+                  <span className="text-neon-purple">{'>> '}</span> {t("title")}
+                </h2>
+                <div className="text-center border-b border-neon-cyan w-full mx-auto max-w-xl rounded-b-4xl py-2"></div>
                 {contentParagraphs.map((paragraph, index) => (
                   <p
                     key={index}
-                    className="text-sm sm:text-base text-slate-300 leading-relaxed font-mono animate-fade-in-up"
+                    className="text-sm sm:text-base text-slate-300 leading-relaxed font-mono animate-fade-in-up px-2"
                     style={{
                       animationDelay: `${index * 150 + 200}ms`,
                     }}

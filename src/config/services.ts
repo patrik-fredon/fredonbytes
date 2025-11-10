@@ -1,0 +1,280 @@
+import {
+  BadgeCheck,
+  BarChart3,
+  BookOpen,
+  CheckCircle2,
+  Clock,
+  Code,
+  Figma,
+  FileText,
+  HeadphonesIcon,
+  MapPin,
+  MessageCircle,
+  Palette,
+  PieChart,
+  Search,
+  Server,
+  Share2,
+  Shield,
+  Smartphone,
+  TestTube2,
+  TrendingUp,
+  Users,
+  Zap,
+} from "lucide-react";
+import type { ServiceConfig } from "@/components/services/ServicePageTemplate";
+
+export const servicesConfig: Record<string, ServiceConfig> = {
+  hosting: {
+    slug: "hosting",
+    namespace: "services.hosting",
+    keywords:
+      "webhosting brno, hosting praha ostrava, spolehlivý hosting, webhosting 24/7, ssd hosting, hosting česká republika",
+    icon: Server,
+    iconBgClass: "bg-neon-purple/10",
+    iconColorClass: "text-neon-purple",
+    features: [
+      {
+        key: "uptime",
+        icon: CheckCircle2,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "support",
+        icon: Clock,
+        iconColor: "text-neon-purple",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+      {
+        key: "backups",
+        icon: Server,
+        iconColor: "text-neon-cyan",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "ssl",
+        icon: Shield,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+    ],
+    ctaHeadline: "services.hosting.cta",
+  },
+  branding: {
+    slug: "branding",
+    namespace: "services.branding",
+    keywords:
+      "branding brno, tvorba loga, firemní identita, brand design, grafický manuál, brandbook",
+    icon: Palette,
+    iconBgClass: "bg-neon-cyan/10",
+    iconColorClass: "text-neon-cyan",
+    features: [
+      {
+        key: "logo",
+        icon: CheckCircle2,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "identity",
+        icon: Palette,
+        iconColor: "text-neon-purple",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+      {
+        key: "guidelines",
+        icon: BookOpen,
+        iconColor: "text-neon-cyan",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "materials",
+        icon: FileText,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+    ],
+    ctaHeadline: "services.branding.cta",
+  },
+  consulting: {
+    slug: "consulting",
+    namespace: "services.consulting",
+    keywords:
+      "IT poradenství brno, konzultace technologií, digitální transformace, IT infrastruktura, kybernetická bezpečnost audit, IT strategie",
+    icon: HeadphonesIcon,
+    iconBgClass: "bg-neon-purple/10",
+    iconColorClass: "text-neon-purple",
+    features: [
+      {
+        key: "strategy",
+        icon: TrendingUp,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "infrastructure",
+        icon: Server,
+        iconColor: "text-neon-purple",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+      {
+        key: "security",
+        icon: Shield,
+        iconColor: "text-neon-cyan",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "training",
+        icon: Users,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+    ],
+    ctaHeadline: "services.consulting.cta",
+  },
+  seo: {
+    slug: "seo",
+    namespace: "services.seo",
+    keywords:
+      "seo optimalizace brno praha, seo služby, google ranking, seznam.cz optimalizace, lokální seo, link building",
+    icon: Search,
+    iconBgClass: "bg-neon-cyan/10",
+    iconColorClass: "text-neon-cyan",
+    features: [
+      {
+        key: "technical",
+        icon: TrendingUp,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "content",
+        icon: Search,
+        iconColor: "text-neon-purple",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+      {
+        key: "local",
+        icon: MapPin,
+        iconColor: "text-neon-cyan",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "reporting",
+        icon: BarChart3,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+    ],
+    ctaHeadline: "services.seo.cta",
+  },
+  "social-media": {
+    slug: "social-media",
+    namespace: "services.socialMedia",
+    keywords:
+      "social media marketing, správa sociálních sítí brno, facebook instagram linkedin, content marketing, social media ads",
+    icon: Share2,
+    iconBgClass: "bg-neon-purple/10",
+    iconColorClass: "text-neon-purple",
+    features: [
+      {
+        key: "content",
+        icon: Share2,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "management",
+        icon: MessageCircle,
+        iconColor: "text-neon-purple",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+      {
+        key: "ads",
+        icon: TrendingUp,
+        iconColor: "text-neon-cyan",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "analytics",
+        icon: PieChart,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+    ],
+    ctaHeadline: "services.socialMedia.cta",
+  },
+  development: {
+    slug: "development",
+    namespace: "services.development",
+    keywords:
+      "vývoj webu brno praha, next.js react development, typescript, moderní webové aplikace, fullstack development",
+    icon: Code,
+    iconBgClass: "bg-neon-cyan/10",
+    iconColorClass: "text-neon-cyan",
+    features: [
+      {
+        key: "modern",
+        icon: Code,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "performance",
+        icon: Zap,
+        iconColor: "text-neon-purple",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+      {
+        key: "mobile",
+        icon: Smartphone,
+        iconColor: "text-neon-cyan",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "seo",
+        icon: Search,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+    ],
+    ctaHeadline: "services.development.cta",
+  },
+  design: {
+    slug: "design",
+    namespace: "services.design",
+    keywords:
+      "ux ui design brno, webdesign, user experience, figma prototyping, design systém, uživatelské testování",
+    icon: Palette,
+    iconBgClass: "bg-neon-purple/10",
+    iconColorClass: "text-neon-purple",
+    features: [
+      {
+        key: "ux",
+        icon: Users,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "prototyping",
+        icon: Figma,
+        iconColor: "text-neon-purple",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+      {
+        key: "ui",
+        icon: Palette,
+        iconColor: "text-neon-cyan",
+        hoverBorder: "hover:border-neon-cyan/40",
+      },
+      {
+        key: "testing",
+        icon: TestTube2,
+        iconColor: "text-code-green",
+        hoverBorder: "hover:border-neon-purple/40",
+      },
+    ],
+    ctaHeadline: "services.design.cta",
+  },
+};

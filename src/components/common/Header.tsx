@@ -90,6 +90,16 @@ export default function Header({ className }: HeaderProps) {
     { href: "/contact", key: "navigation.contact", isRoute: true },
   ];
 
+  const servicesItems = [
+    { href: "/services/hosting", key: "navigation.servicesHosting" },
+    { href: "/services/branding", key: "navigation.servicesBranding" },
+    { href: "/services/consulting", key: "navigation.servicesConsulting" },
+    { href: "/services/seo", key: "navigation.servicesSeo" },
+    { href: "/services/social-media", key: "navigation.servicesSocialMedia" },
+    { href: "/services/development", key: "navigation.servicesDevelopment" },
+    { href: "/services/design", key: "navigation.servicesDesign" },
+  ];
+
   const externalLinks = [
     {
       href: "https://me.fredonbytes.cz",
@@ -163,6 +173,30 @@ export default function Header({ className }: HeaderProps) {
                   {t(item.key)}
                 </IntlLink>
               ))}
+
+              {/* Services Dropdown */}
+              <div className="relative group z-20">
+                <button
+                  type="button"
+                  className="py-3 px-5 text-terminal-light hover:text-neon-cyan transition-normal font-medium font-mono flex items-center space-x-1 hover:shadow-glow-cyan-subtle rounded-lg"
+                >
+                  <span>{t("navigation.services")}</span>
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                </button>
+                <div className="absolute top-full right-0 pt-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto z-dropdown">
+                  <div className="bg-terminal-dark/95 backdrop-blur-md rounded-lg border border-neon-cyan/30 py-2">
+                    {servicesItems.map((service) => (
+                      <IntlLink
+                        key={service.href}
+                        href={service.href}
+                        className="block px-5 py-3 text-terminal-light hover:text-neon-cyan hover:bg-neon-cyan/10 transition-fast font-mono"
+                      >
+                        {t(service.key)}
+                      </IntlLink>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
               {/* External Links Dropdown */}
               <div className="relative group z-20">
@@ -247,6 +281,24 @@ export default function Header({ className }: HeaderProps) {
                   {t(item.key)}
                 </IntlLink>
               ))}
+
+              <div className="border-t border-neon-cyan/20 pt-4 mt-4">
+                <p className="text-xs font-medium text-terminal-muted mb-3 px-2 font-mono uppercase tracking-wider">
+                  <span className="text-neon-cyan">{`// `}</span>
+                  {t("navigation.services")}
+                </p>
+                {servicesItems.map((service) => (
+                  <IntlLink
+                    key={service.href}
+                    href={service.href}
+                    onClick={closeMenu}
+                    className="flex items-center text-terminal-light hover:text-neon-cyan transition-fast py-3 px-4 rounded-lg hover:bg-neon-cyan/10 hover:border-neon-cyan/30 hover:shadow-glow-cyan-subtle min-h-11 font-mono border border-transparent"
+                  >
+                    <span className="text-neon-cyan mr-2">›</span>
+                    {t(service.key)}
+                  </IntlLink>
+                ))}
+              </div>
 
               <div className="border-t border-neon-cyan/20 pt-4 mt-4">
                 <p className="text-xs font-medium text-terminal-muted mb-3 px-2 font-mono uppercase tracking-wider">
