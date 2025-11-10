@@ -31,7 +31,7 @@ export async function generateServiceMetadata(
 ): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: config.namespace });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
   const pageUrl = `${baseUrl}${localePrefix}/services/${config.slug}`;
 
@@ -98,7 +98,7 @@ export default async function ServicePageTemplate({ params, config }: Props) {
   const t = await getTranslations({ locale, namespace: "services" });
   const ts = await getTranslations({ locale, namespace: config.namespace });
   const tcta = await getTranslations({ locale, namespace: "hero.cta" });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
 
   const breadcrumb = generateBreadcrumbSchema(
     [

@@ -32,7 +32,7 @@ interface ServiceDef {
 export async function getHomeSchemas(locale: string): Promise<Schema[]> {
   const jsonLdT = await getTranslations({ locale, namespace: "jsonLd" });
   const faqT = await getTranslations({ locale, namespace: "faq" });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
 
   // Organization schema
   const organizationSchema = createSchema("Organization", {
@@ -203,61 +203,6 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
       serviceType: "Web Hosting",
       cs: { name: "Hosting a webhosting", desc: "Spolehlivý webhosting s 99.9% dostupností a technickou podporou 24/7" },
       en: { name: "Web Hosting", desc: "Reliable web hosting with 99.9% uptime and 24/7 technical support" },
-    },
-    {
-      serviceType: "Software Development",
-      cs: {
-        name: "Vývoj software a aplikací",
-        desc: "Full-stack vývoj webových a mobilních aplikací, API integrace, cloudová řešení",
-      },
-      en: {
-        name: "Software & App Development",
-        desc: "Full-stack web and mobile app development, API integration, cloud solutions",
-      },
-    },
-    {
-      serviceType: "Graphic Design & UX/UI",
-      cs: {
-        name: "Grafický design a UX/UI",
-        desc: "Webdesign, branding, firemní identita, prototypování a vizuální komunikace",
-      },
-      en: {
-        name: "Graphic Design & UX/UI",
-        desc: "Web design, branding, corporate identity, prototyping and visual communication",
-      },
-    },
-    {
-      serviceType: "SEO & Digital Marketing",
-      cs: {
-        name: "SEO a digitální marketing",
-        desc: "SEO optimalizace, PPC kampaně, Google Ads, SEM služby, obsahový marketing",
-      },
-      en: {
-        name: "SEO & Digital Marketing",
-        desc: "SEO optimization, PPC campaigns, Google Ads, SEM services, content marketing",
-      },
-    },
-    {
-      serviceType: "Social Media Management",
-      cs: {
-        name: "Správa sociálních sítí",
-        desc: "Instagram, Facebook, LinkedIn marketing, tvorba obsahu, community management",
-      },
-      en: {
-        name: "Social Media Management",
-        desc: "Instagram, Facebook, LinkedIn marketing, content creation, community management",
-      },
-    },
-    {
-      serviceType: "Copywriting & Content",
-      cs: {
-        name: "Copywriting a tvorba obsahu",
-        desc: "SEO copywriting, marketing texty, obsahová strategie pro web a sociální sítě",
-      },
-      en: {
-        name: "Copywriting & Content",
-        desc: "SEO copywriting, marketing texts, content strategy for web and social media",
-      },
     },
     {
       serviceType: "Software Development",

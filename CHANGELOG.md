@@ -4,6 +4,32 @@ All notable changes to this project will be documented here.
 
 ## [Unreleased] - 2025-11-10
 
+### Fixed - Code Quality & Performance (November 10, 2025)
+
+#### Code Cleanup & Optimization
+- **Removed duplicate service definitions** in JSON-LD schema (src/lib/jsonLd/home.ts)
+  - Eliminated 5 duplicate service entries (Software Development, Graphic Design & UX/UI, SEO & Digital Marketing, Social Media Management, Copywriting & Content)
+  - Reduced JSON-LD payload size
+  - Maintained 17 unique service definitions
+
+#### Standardization
+- **Standardized base URL fallbacks** across all files to `fredonbytes.cz`
+  - Updated ServicePageTemplate.tsx (2 instances)
+  - Updated lib/jsonLd/home.ts
+  - Updated lib/metadata/home.ts
+  - Consistent domain references throughout codebase
+
+#### Dead Code Removal
+- **Removed unused files** for better performance:
+  - Deleted `/public/icon0.svg` (3.7MB unused file - not referenced anywhere)
+  - Deleted `/public/og_image.jpg` (755KB duplicate - kept PNG version only)
+  - **Total savings: ~4.4MB** from public directory
+
+#### Documentation Updates
+- Updated TODO.md with optimization tasks and recommendations
+- Added high/medium/low priority recommendations for future improvements
+- Documented technical debt for tracking
+
 ### Added - Comprehensive SEO Optimization
 
 #### Keywords & Metadata Expansion
