@@ -92,18 +92,22 @@ function configureHeadForTheme() {
       <meta name="apple-mobile-web-app-title" content="FredonBytes" />
 
       {/* Site Verification for Search Engines */}
-      {/* Google Search Console - Add your verification code to .env as NEXT_PUBLIC_GOOGLE_VERIFICATION */}
       {process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION && (
         <meta
           name="google-site-verification"
           content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION}
         />
       )}
-      {/* Bing Webmaster Tools - Add your verification code to .env as NEXT_PUBLIC_BING_VERIFICATION */}
       {process.env.NEXT_PUBLIC_BING_VERIFICATION && (
         <meta
           name="msvalidate.01"
           content={process.env.NEXT_PUBLIC_BING_VERIFICATION}
+        />
+      )}
+      {process.env.NEXT_PUBLIC_SEZNAM_VERIFICATION && (
+        <meta
+          name="seznam-wmt"
+          content={process.env.NEXT_PUBLIC_SEZNAM_VERIFICATION}
         />
       )}
 
@@ -113,11 +117,14 @@ function configureHeadForTheme() {
       <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-      {/* Geo-targeting for Czech Republic */}
+      {/* Geo-targeting for Czech Republic - Enhanced for local SEO */}
       <meta name="geo.region" content="CZ-JM" />
       <meta name="geo.placename" content="Brno" />
       <meta name="geo.position" content="49.1951;16.6068" />
       <meta name="ICBM" content="49.1951, 16.6068" />
+      <meta name="coverage" content="Czech Republic" />
+      <meta name="distribution" content="local" />
+      <meta name="target" content="Czech Republic, Brno, Jihomoravský kraj" />
     </head>
   );
 }

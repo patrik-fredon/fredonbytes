@@ -29,7 +29,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
       },
-      // Specific rules for major search engines
       {
         userAgent: ["Googlebot", "Googlebot-Image", "Googlebot-News"],
         allow: "/",
@@ -39,10 +38,16 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: ["Bingbot", "msnbot"],
         allow: "/",
         disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
-        crawlDelay: 1, // Slight delay for Bing
+        crawlDelay: 1,
+      },
+      {
+        userAgent: "SeznamBot",
+        allow: "/",
+        disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
+        crawlDelay: 2,
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl, // Preferred domain - helps search engines understand canonical domain
+    host: siteUrl,
   };
 }
