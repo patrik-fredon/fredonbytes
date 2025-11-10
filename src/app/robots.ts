@@ -65,8 +65,8 @@ export default function robots(): MetadataRoute.Robots {
           "/*.json$", // JSON data files
           "/*.xml$", // XML data files
           "/_next/static/chunks/*.js$", // Internal Next.js chunks
-          "/survey",
-          "/form",
+          "/survey/",
+          "/form/",
         ],
       },
       {
@@ -98,20 +98,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: sitemaps,
     host: siteUrl.replace(/https?:\/\//, ''),
   };
-}
-// Extension for image robots.txt (optional)
-export function generateImageRobots(): string {
-  return `
-# Image-specific directives
-User-agent: Googlebot-Image
-Allow: /public/images/
-Allow: /assets/images/
-Disallow: /private-images/
-
-User-agent: *
-Allow: /public/images/portfolio/
-Allow: /public/images/blog/
-Disallow: /public/images/avatars/
-Disallow: /public/images/temp/
-  `.trim()
 }

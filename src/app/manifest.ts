@@ -86,6 +86,12 @@ export default async function manifest({
         type: 'image/png',
         purpose: 'any',
       },
+      {
+        src: '/og-image.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any',
+      },
 
       // Android/Chrome Icons
       {
@@ -237,21 +243,21 @@ export default async function manifest({
         short_name: "Kontakt",
         description: "Kontaktujte nás pro nezávaznou konzultaci",
         url: "/contact",
-        icons: [{ src: "/FredonBytes_GraphicLogo.png", sizes: "192x192" }],
+        icons: [{ src: "/og-image.jpg", sizes: "192x192" }],
       },
       {
         name: "Projekty",
         short_name: "Projekty",
         description: "Prohlédněte si naše portfolio projektů",
         url: "/projects",
-        icons: [{ src: "/FredonBytes_GraphicLogo.png", sizes: "192x192" }],
+        icons: [{ src: "/og-image.jpg", sizes: "192x192" }],
       },
       {
         name: "Ceník",
         short_name: "Ceník",
         description: "Zjistěte ceny našich služeb",
         url: "/pricing",
-        icons: [{ src: "/FredonBytes_GraphicLogo.png", sizes: "192x192" }],
+        icons: [{ src: "/og-image.jpg", sizes: "192x192" }],
       },
     ],
 

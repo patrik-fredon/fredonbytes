@@ -32,7 +32,7 @@ interface ServiceDef {
 export async function getHomeSchemas(locale: string): Promise<Schema[]> {
   const jsonLdT = await getTranslations({ locale, namespace: "jsonLd" });
   const faqT = await getTranslations({ locale, namespace: "faq" });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
 
   // Organization schema
   const organizationSchema = createSchema("Organization", {
@@ -42,7 +42,7 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     url: baseUrl,
     logo: {
       "@type": "ImageObject",
-      url: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+      url: `${baseUrl}/og-image.png`,
       width: 1200,
       height: 630,
     },
@@ -86,8 +86,8 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     alternateName: "FredonBytes s.r.o.",
     description: jsonLdT("organizationDescription"),
     slogan: locale === "cs" ? "Všechny IT služby pod jednou střechou" : "All IT services under one roof",
-    image: `${baseUrl}/FredonBytes_GraphicLogo.png`,
-    logo: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+    image: `${baseUrl}/og-image.png`,
+    logo: `${baseUrl}/icon1.png`,
     telephone: "+420799027984",
     email: "info@fredonbytes.cz",
     address: {

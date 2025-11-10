@@ -9,7 +9,7 @@ export async function getHomeMetadata(locale: string): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "metadata" });
   const seoT = await getTranslations({ locale, namespace: "seo" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
   const canonicalUrl = `${baseUrl}${localePrefix}`;
 
@@ -54,8 +54,8 @@ export async function getHomeMetadata(locale: string): Promise<Metadata> {
       description: seoT("defaultDescription"),
       images: [
         {
-          url: `${baseUrl}/FredonBytes_GraphicLogo.png`,
-          secureUrl: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+          url: `${baseUrl}/og-image.png`,
+          secureUrl: `${baseUrl}/og-image.png`,
           width: 1200,
           height: 630,
           alt: t("logoAlt"),
@@ -69,7 +69,7 @@ export async function getHomeMetadata(locale: string): Promise<Metadata> {
       creator: "@FredonBytes",
       title: t("title"),
       description: seoT("defaultDescription"),
-      images: [`${baseUrl}/FredonBytes_GraphicLogo.png`],
+      images: [`${baseUrl}/og-image.png`],
     },
   };
 }
