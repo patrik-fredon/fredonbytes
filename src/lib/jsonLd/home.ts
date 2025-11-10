@@ -434,22 +434,42 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     ],
   });
 
-  // FAQ Schema for rich snippets - derive count from translations
-  const faqItems = faqT('items') as unknown;
-  const faqCount = Array.isArray(faqItems)
-    ? faqItems.length
-    : (faqItems && typeof faqItems === 'object' ? Object.keys(faqItems).length : 0);
+  // FAQ Schema for rich snippets
+  // Build FAQ list with safe error handling
+  const faqSchema = (() => {
+    try {
+      const faqQuestions = [];
+      // Try to build FAQ items - stop when translation key doesn't exist
+      for (let i = 0; i < 20; i++) { // Max 20 FAQs
+        try {
+          const question = faqT(`items.${i}.question`);
+          const answer = faqT(`items.${i}.answer`);
 
-  const faqSchema = createSchema("FAQPage", {
-    mainEntity: Array.from({ length: faqCount }, (_, i) =>
-      createSchema("Question", {
-        name: faqT(`items.${i}.question`),
-        acceptedAnswer: createSchema("Answer", {
-          text: faqT(`items.${i}.answer`),
-        }),
-      })
-    ),
-  });
+          faqQuestions.push(
+            createSchema("Question", {
+              name: question,
+              acceptedAnswer: createSchema("Answer", {
+                text: answer,
+              }),
+            })
+          );
+        } catch {
+          // No more FAQ items exist
+          break;
+        }
+      }
+
+      return createSchema("FAQPage", {
+        mainEntity: faqQuestions,
+      });
+    } catch (error) {
+      // Fallback: return minimal FAQ schema if something goes wrong
+      console.error("Error building FAQ schema:", error);
+      return createSchema("FAQPage", {
+        mainEntity: [],
+      });
+    }
+  })();
 
   return [
     organizationSchema,
