@@ -1,9 +1,11 @@
+import { Terminal } from "lucide-react";
 import type { Metadata } from "next";
-import type { ComponentType } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { generateBreadcrumbSchema } from "@/lib/jsonLd/breadcrumb";
-import { Link } from "@/i18n/navigation";
+import type { ComponentType } from "react";
 import { Button } from "@/components/common/Button";
+import TerminalWindow from "@/components/dev-ui/TerminalWindow";
+import { Link } from "@/i18n/navigation";
+import { generateBreadcrumbSchema } from "@/lib/jsonLd/breadcrumb";
 
 export interface FeatureConfig {
   key: string;
@@ -25,11 +27,11 @@ export interface ServiceConfig {
 
 export async function generateServiceMetadata(
   params: Promise<{ locale: string }>,
-  config: ServiceConfig
+  config: ServiceConfig,
 ): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: config.namespace });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
   const pageUrl = `${baseUrl}${localePrefix}/services/${config.slug}`;
 
@@ -54,8 +56,8 @@ export async function generateServiceMetadata(
       type: "website",
       images: [
         {
-          url: `${baseUrl}/fredonbytes-logo-with-background.png`,
-          secureUrl: `${baseUrl}/fredonbytes-logo-with-background.png`,
+          url: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+          secureUrl: `${baseUrl}/FredonBytes_GraphicLogo.png`,
           width: 1200,
           height: 630,
           alt: `FredonBytes ${t("title")}`,
@@ -68,7 +70,7 @@ export async function generateServiceMetadata(
       title: t("title"),
       description: t("description"),
       creator: "@FredonBytes",
-      images: [`${baseUrl}/fredonbytes-logo-with-background.png`],
+      images: [`${baseUrl}/FredonBytes_GraphicLogo.png`],
     },
     robots: {
       index: true,
@@ -95,7 +97,7 @@ export default async function ServicePageTemplate({ params, config }: Props) {
 
   const t = await getTranslations({ locale, namespace: "services" });
   const ts = await getTranslations({ locale, namespace: config.namespace });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
 
   const breadcrumb = generateBreadcrumbSchema(
     [
@@ -103,7 +105,7 @@ export default async function ServicePageTemplate({ params, config }: Props) {
       { name: t("breadcrumb.services"), url: `/${locale}/services` },
       { name: ts("title"), url: `/${locale}/services/${config.slug}` },
     ],
-    baseUrl
+    baseUrl,
   );
 
   const IconComponent = config.icon;
@@ -116,7 +118,7 @@ export default async function ServicePageTemplate({ params, config }: Props) {
       />
 
       <div className="min-h-screen pt-24 pb-16 relative z-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <TerminalWindow className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <div
@@ -146,7 +148,9 @@ export default async function ServicePageTemplate({ params, config }: Props) {
                     key={feature.key}
                     className={`border border-slate-800/50 rounded-lg p-6 bg-glass-bg backdrop-blur-glass ${feature.hoverBorder} transition-all`}
                   >
-                    <FeatureIcon className={`w-10 h-10 ${feature.iconColor} mb-4`} />
+                    <FeatureIcon
+                      className={`w-10 h-10 ${feature.iconColor} mb-4`}
+                    />
                     <h3 className="text-xl font-bold text-terminal-light mb-2 font-mono">
                       {ts(`features.${feature.key}.title`)}
                     </h3>
@@ -169,7 +173,7 @@ export default async function ServicePageTemplate({ params, config }: Props) {
               </Link>
             </div>
           </div>
-        </div>
+        </TerminalWindow>
       </div>
     </>
   );

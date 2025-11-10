@@ -418,10 +418,22 @@
       "subtitle": "Schnelles und sicheres Webhosting mit 24/7 Support",
       "description": "Professionelles Webhosting für Ihre Websites und Anwendungen. Wir garantieren 99,9% Verfügbarkeit, SSD-Laufwerke, tägliche Backups und kontinuierlichen technischen Support.",
       "features": {
-        "uptime": { "title": "99.9% Verfügbarkeit", "description": "Garantierte Website-Verfügbarkeit mit SLA-Vereinbarung" },
-        "support": { "title": "24/7 Support", "description": "Kontinuierlicher technischer Support, Antwort innerhalb 1 Stunde" },
-        "backups": { "title": "Tägliche Backups", "description": "Automatische tägliche Backups mit sofortiger Wiederherstellung" },
-        "ssl": { "title": "Kostenloses SSL", "description": "Kostenloses SSL-Zertifikat für sichere HTTPS-Verbindung" }
+        "uptime": {
+          "title": "99.9% Verfügbarkeit",
+          "description": "Garantierte Website-Verfügbarkeit mit SLA-Vereinbarung"
+        },
+        "support": {
+          "title": "24/7 Support",
+          "description": "Kontinuierlicher technischer Support, Antwort innerhalb 1 Stunde"
+        },
+        "backups": {
+          "title": "Tägliche Backups",
+          "description": "Automatische tägliche Backups mit sofortiger Wiederherstellung"
+        },
+        "ssl": {
+          "title": "Kostenloses SSL",
+          "description": "Kostenloses SSL-Zertifikat für sichere HTTPS-Verbindung"
+        }
       },
       "cta": "Angebot Erhalten"
     },
@@ -430,10 +442,22 @@
       "subtitle": "Wir schaffen eine einzigartige Marke für Ihr Unternehmen",
       "description": "Umfassende Entwicklung der Unternehmensidentität vom Logo über Farbpalette bis zu Brand Guidelines. Wir sorgen für einen konsistenten visuellen Stil über alle Kanäle.",
       "features": {
-        "logo": { "title": "Logo Design", "description": "Professionelles Logo-Design mit unbegrenzten Revisionen" },
-        "identity": { "title": "Corporate Identity", "description": "Kompletter visueller Stil inkl. Farben, Typografie und Elementen" },
-        "guidelines": { "title": "Brand Manual", "description": "Detaillierter Markennutzungsleitfaden für Konsistenz" },
-        "materials": { "title": "Marketing-Materialien", "description": "Visitenkarten, Flyer, Präsentationen und weitere Materialien" }
+        "logo": {
+          "title": "Logo Design",
+          "description": "Professionelles Logo-Design mit unbegrenzten Revisionen"
+        },
+        "identity": {
+          "title": "Corporate Identity",
+          "description": "Kompletter visueller Stil inkl. Farben, Typografie und Elementen"
+        },
+        "guidelines": {
+          "title": "Brand Manual",
+          "description": "Detaillierter Markennutzungsleitfaden für Konsistenz"
+        },
+        "materials": {
+          "title": "Marketing-Materialien",
+          "description": "Visitenkarten, Flyer, Präsentationen und weitere Materialien"
+        }
       },
       "cta": "Kostenlose Beratung"
     },
@@ -442,10 +466,22 @@
       "subtitle": "Expertenberatung für die digitale Transformation Ihres Unternehmens",
       "description": "Wir helfen Ihnen bei der Auswahl der richtigen Technologien, optimieren IT-Infrastruktur und planen digitale Strategie. Antwort innerhalb 24 Stunden.",
       "features": {
-        "strategy": { "title": "Digitale Strategie", "description": "Planung der Technologieentwicklung und digitalen Transformation" },
-        "infrastructure": { "title": "IT-Infrastruktur", "description": "Audit und Optimierung von Servern, Netzwerken und Cloud-Lösungen" },
-        "security": { "title": "Cybersicherheit", "description": "Sicherheitsaudits, Penetrationstests und GDPR-Compliance" },
-        "training": { "title": "Team-Schulung", "description": "Mitarbeiter-Schulung in neuen Technologien" }
+        "strategy": {
+          "title": "Digitale Strategie",
+          "description": "Planung der Technologieentwicklung und digitalen Transformation"
+        },
+        "infrastructure": {
+          "title": "IT-Infrastruktur",
+          "description": "Audit und Optimierung von Servern, Netzwerken und Cloud-Lösungen"
+        },
+        "security": {
+          "title": "Cybersicherheit",
+          "description": "Sicherheitsaudits, Penetrationstests und GDPR-Compliance"
+        },
+        "training": {
+          "title": "Team-Schulung",
+          "description": "Mitarbeiter-Schulung in neuen Technologien"
+        }
       },
       "cta": "Beratung Vereinbaren"
     },
@@ -454,10 +490,22 @@
       "subtitle": "Professionelle SEO-Dienste für Top-Suchmaschinen-Rankings",
       "description": "Erreichen Sie die Top-Positionen bei Google und Seznam.cz. Wir bieten komplette SEO-Optimierung inkl. technisches SEO, Content-Strategie und Linkaufbau.",
       "features": {
-        "technical": { "title": "Technisches SEO", "description": "Website-Geschwindigkeit, strukturierte Daten, Meta-Tags" },
-        "content": { "title": "Content-Strategie", "description": "Keyword-Recherche, SEO-Texte und Content-Marketing" },
-        "local": { "title": "Lokales SEO", "description": "Google My Business Optimierung für lokale Suche" },
-        "reporting": { "title": "Analytics & Berichte", "description": "Monatliche Berichte mit Rankings, Traffic und Conversions" }
+        "technical": {
+          "title": "Technisches SEO",
+          "description": "Website-Geschwindigkeit, strukturierte Daten, Meta-Tags"
+        },
+        "content": {
+          "title": "Content-Strategie",
+          "description": "Keyword-Recherche, SEO-Texte und Content-Marketing"
+        },
+        "local": {
+          "title": "Lokales SEO",
+          "description": "Google My Business Optimierung für lokale Suche"
+        },
+        "reporting": {
+          "title": "Analytics & Berichte",
+          "description": "Monatliche Berichte mit Rankings, Traffic und Conversions"
+        }
       },
       "cta": "Kostenloses SEO-Audit"
     },
@@ -466,10 +514,22 @@
       "subtitle": "Komplettes Social Media Management mit Content-Erstellung",
       "description": "Wir verwalten Ihre Social Media, erstellen ansprechende Inhalte und steigern Ihre Online-Präsenz. Professioneller Content, regelmäßiges Posten und Community-Management.",
       "features": {
-        "content": { "title": "Content-Erstellung", "description": "Professionelle Grafiken, Videos und Copywriting" },
-        "management": { "title": "Community Management", "description": "Beantwortung von Kommentaren, Nachrichten und Bewertungen" },
-        "ads": { "title": "Social Media Werbung", "description": "Facebook, Instagram und LinkedIn Werbekampagnen" },
-        "analytics": { "title": "Performance-Analyse", "description": "Monatliche Berichte mit Reichweite, Engagement und Wachstum" }
+        "content": {
+          "title": "Content-Erstellung",
+          "description": "Professionelle Grafiken, Videos und Copywriting"
+        },
+        "management": {
+          "title": "Community Management",
+          "description": "Beantwortung von Kommentaren, Nachrichten und Bewertungen"
+        },
+        "ads": {
+          "title": "Social Media Werbung",
+          "description": "Facebook, Instagram und LinkedIn Werbekampagnen"
+        },
+        "analytics": {
+          "title": "Performance-Analyse",
+          "description": "Monatliche Berichte mit Reichweite, Engagement und Wachstum"
+        }
       },
       "cta": "Jetzt Starten"
     },
@@ -478,10 +538,22 @@
       "subtitle": "Moderne Webanwendungen mit modernsten Technologien",
       "description": "Wir entwickeln schnelle, skalierbare und SEO-optimierte Webanwendungen mit Next.js 15, React 19 und TypeScript. Von einfachen Websites bis zu komplexen Enterprise-Lösungen.",
       "features": {
-        "modern": { "title": "Moderner Tech Stack", "description": "Next.js 15, React 19, TypeScript, Tailwind CSS" },
-        "performance": { "title": "Performance First", "description": "Lighthouse 95+ Score, SSG/SSR-Optimierung" },
-        "mobile": { "title": "Mobile-First Design", "description": "Responsive Design für alle Geräte und Bildschirmgrößen" },
-        "seo": { "title": "SEO-Optimiert", "description": "Integrierte SEO-Best-Practices, Meta-Tags, strukturierte Daten" }
+        "modern": {
+          "title": "Moderner Tech Stack",
+          "description": "Next.js 15, React 19, TypeScript, Tailwind CSS"
+        },
+        "performance": {
+          "title": "Performance First",
+          "description": "Lighthouse 95+ Score, SSG/SSR-Optimierung"
+        },
+        "mobile": {
+          "title": "Mobile-First Design",
+          "description": "Responsive Design für alle Geräte und Bildschirmgrößen"
+        },
+        "seo": {
+          "title": "SEO-Optimiert",
+          "description": "Integrierte SEO-Best-Practices, Meta-Tags, strukturierte Daten"
+        }
       },
       "cta": "Projekt Starten"
     },
@@ -490,10 +562,22 @@
       "subtitle": "Benutzerzentriertes Design, das Besucher zu Kunden macht",
       "description": "Wir erstellen schöne und funktionale Benutzeroberflächen. Von Wireframes bis zum finalen Design sorgen wir für exzellente User Experience und moderne Ästhetik.",
       "features": {
-        "ux": { "title": "UX Research", "description": "Benutzerforschung, Personas, User Journey Mapping" },
-        "prototyping": { "title": "Prototyping", "description": "Interaktive Prototypen in Figma zum Testen" },
-        "ui": { "title": "UI Design", "description": "Modernes visuelles Design mit Design-Systemen" },
-        "testing": { "title": "User Testing", "description": "Usability-Tests und iterative Verbesserungen" }
+        "ux": {
+          "title": "UX Research",
+          "description": "Benutzerforschung, Personas, User Journey Mapping"
+        },
+        "prototyping": {
+          "title": "Prototyping",
+          "description": "Interaktive Prototypen in Figma zum Testen"
+        },
+        "ui": {
+          "title": "UI Design",
+          "description": "Modernes visuelles Design mit Design-Systemen"
+        },
+        "testing": {
+          "title": "User Testing",
+          "description": "Usability-Tests und iterative Verbesserungen"
+        }
       },
       "cta": "Portfolio Ansehen"
     },
@@ -1989,5 +2073,11 @@
       "question": "Haben Sie keine Antwort auf Ihre Frage gefunden?",
       "button": "Kontaktieren Sie uns"
     }
+  },
+  "description": "Vom Code bis zu den Klicks liefern wir vollständige digitale Dominanz. \nUmfassende IT-Lösungen, einschließlich Softwareentwicklung, Grafikdesign, SEO und Social-Media-Marketing.",
+  "title": "Fredonbytes – Ihr All-in-One-IT-Kraftpaket",
+  "breadcrumb": {
+    "services": "Dienstleistungen",
+    "home": "Heim"
   }
 }
