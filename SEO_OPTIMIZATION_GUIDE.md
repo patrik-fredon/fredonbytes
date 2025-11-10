@@ -47,8 +47,7 @@ Tento dokument popisuje kompletní SEO optimalizace implementované v projektu F
 #### Technické specifikace:
 - **Rozměry:** 1200×630px (Facebook/LinkedIn optimum)
 - **Formát:** PNG
-- **Runtime:** Edge (nejrychlejší výkon)
-- **Generování:** Statické při build time
+- **Generování:** Statické při build time (Next.js default)
 - **Lokalizace:** Vlastní obsah pro cs, en, de
 
 #### Vlastnosti designu:
@@ -74,7 +73,7 @@ Tento dokument popisuje kompletní SEO optimalizace implementované v projektu F
 - **Rozměry:** 1200×630px (poměr 2:1)
 - **Formát:** PNG
 - **Max velikost:** <5MB (automaticky optimalizováno)
-- **Runtime:** Edge
+- **Generování:** Statické při build time (Next.js default)
 
 #### Optimalizace pro Twitter:
 - ✅ Velký, čitelný text (odolný vůči croppingu)
@@ -211,11 +210,11 @@ Tento dokument popisuje kompletní SEO optimalizace implementované v projektu F
 5. ✅ Alt texty u obrázků
 
 ### Technical:
-1. ✅ Edge runtime pro rychlost
-2. ✅ Static generation kde možno
-3. ✅ Optimalizované obrázky
-4. ✅ Lazy loading
-5. ✅ Cache headers
+1. ✅ Static generation kde možno
+2. ✅ Optimalizované obrázky
+3. ✅ Lazy loading
+4. ✅ Cache headers
+5. ✅ Next.js default optimizations
 
 ## 📞 Další kroky
 
