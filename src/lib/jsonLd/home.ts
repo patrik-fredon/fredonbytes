@@ -79,19 +79,23 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     ],
   });
 
-  // LocalBusiness schema with enhanced multi-city coverage and USPs
+  // LocalBusiness schema for better local SEO in Brno and GMB compatibility
   const localBusinessSchema = createSchema("LocalBusiness", {
     "@id": `${baseUrl}/#localbusiness`,
     name: "Fredonbytes",
-    alternateName: "Fredon",
+    alternateName: "FredonBytes s.r.o.",
+    description: jsonLdT("organizationDescription"),
     slogan: locale === "cs" ? "Všechny IT služby pod jednou střechou" : "All IT services under one roof",
     image: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+    logo: `${baseUrl}/FredonBytes_GraphicLogo.png`,
     telephone: "+420799027984",
     email: "info@fredonbytes.cz",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "",
       addressLocality: "Brno",
       addressRegion: "Jihomoravský kraj",
+      postalCode: "",
       addressCountry: "CZ",
     },
     areaServed: [
@@ -162,7 +166,22 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
           ]
         }
       ]
-    }
+    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Brno",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Jihomoravský kraj",
+      },
+      {
+        "@type": "Country",
+        name: "Česká republika",
+      },
+    ],
+    hasMap: "https://maps.google.com/?q=49.1951,16.6068",
   });
 
   // WebSite schema with sitelinks searchbox
