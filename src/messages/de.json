@@ -1982,7 +1982,14 @@
     },
     "breadcrumb": {
       "home": "Startseite",
-      "services": "Dienstleistungen"
+      "services": "Dienstleistungen",
+      "hosting": "Hosting",
+      "branding": "Branding",
+      "consulting": "IT-Beratung",
+      "seo": "SEO",
+      "social-media": "Social Media",
+      "development": "Entwicklung",
+      "design": "Design"
     }
   }
 }

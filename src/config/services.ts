@@ -47,13 +47,13 @@ export const servicesConfig: Record<string, ServiceConfig> = {
         hoverBorder: "hover:border-neon-purple/40",
       },
       {
-        key: "ssd",
-        icon: Zap,
+        key: "backups",
+        icon: Server,
         iconColor: "text-neon-cyan",
         hoverBorder: "hover:border-neon-cyan/40",
       },
       {
-        key: "security",
+        key: "ssl",
         icon: Shield,
         iconColor: "text-code-green",
         hoverBorder: "hover:border-neon-purple/40",

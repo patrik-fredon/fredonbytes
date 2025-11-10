@@ -1913,7 +1913,14 @@
     },
     "breadcrumb": {
       "home": "Home",
-      "services": "Services"
+      "services": "Services",
+      "hosting": "Hosting",
+      "branding": "Branding",
+      "consulting": "IT Consulting",
+      "seo": "SEO",
+      "social-media": "Social Media",
+      "development": "Development",
+      "design": "Design"
     }
   }
 }

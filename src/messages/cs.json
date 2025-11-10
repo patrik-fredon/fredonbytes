@@ -1885,9 +1885,64 @@
       },
       "cta": "Sjednat Konzultaci"
     },
+    "seo": {
+      "title": "SEO Optimalizace Brno Praha | Google & Seznam Rankings",
+      "subtitle": "Profesionální SEO služby pro TOP pozice ve vyhledávačích",
+      "description": "Dostaňte se na TOP pozice Google a Seznam.cz. Optimalizujeme váš web pro vyhledávače, zvýšíme organickou návštěvnost a sledujeme výsledky.",
+      "features": {
+        "technical": { "title": "Technické SEO", "description": "Optimalizace rychlosti webu, struktury URL, meta tagů a schema markup" },
+        "content": { "title": "Obsahová Strategie", "description": "Keyword research, tvorba SEO textů a optimalizace stávajícího obsahu" },
+        "local": { "title": "Lokální SEO", "description": "Google My Business optimalizace, lokální citace a recenze" },
+        "reporting": { "title": "Reporting & Analytics", "description": "Měsíční reporty, sledování pozic a Google Analytics analýzy" }
+      },
+      "cta": "Bezplatný SEO Audit"
+    },
+    "socialMedia": {
+      "title": "Správa Sociálních Sítí Brno Praha | Facebook Instagram LinkedIn",
+      "subtitle": "Profesionální social media marketing pro růst vaší značky",
+      "description": "Komplexní správa sociálních sítí včetně tvorby obsahu, plánování příspěvků, komunikace s fanoušky a placeného marketingu.",
+      "features": {
+        "content": { "title": "Tvorba Obsahu", "description": "Grafický design příspěvků, copywriting a video tvorba" },
+        "management": { "title": "Community Management", "description": "Odpovědi na komentáře, zprávy a budování komunity" },
+        "ads": { "title": "Placená Reklama", "description": "Facebook/Instagram Ads, LinkedIn Ads s optimalizací ROI" },
+        "analytics": { "title": "Analýza Výsledků", "description": "Měsíční reporty, sledování metrik a optimalizace strategie" }
+      },
+      "cta": "Konzultace Zdarma"
+    },
+    "development": {
+      "title": "Vývoj Webů a Aplikací Brno Praha | Next.js React TypeScript",
+      "subtitle": "Moderní webové aplikace postavené na nejnovějších technologiích",
+      "description": "Vyvíjíme rychlé, škálovatelné a SEO-friendly webové aplikace pomocí Next.js, React a TypeScript. Mobilní responsivita a skvělá UX zaručena.",
+      "features": {
+        "modern": { "title": "Moderní Technologie", "description": "Next.js 15, React 19, TypeScript, Tailwind CSS" },
+        "performance": { "title": "Vysoký Výkon", "description": "SSR, ISR, optimalizované images, Core Web Vitals 95+" },
+        "mobile": { "title": "Mobile-First", "description": "Responsivní design, PWA, optimalizace pro mobily" },
+        "seo": { "title": "SEO Ready", "description": "Strukturovaná data, meta tagy, sitemap, robots.txt" }
+      },
+      "cta": "Začít Projekt"
+    },
+    "design": {
+      "title": "UX/UI Design Brno Praha | Figma Prototyping & User Testing",
+      "subtitle": "Vytváříme uživatelsky přívětivé digitální produkty",
+      "description": "Komplexní UX/UI design od wireframů přes prototypy až po finální vizuály. Používáme Figma, provádíme uživatelské testování a zajišťujeme skvělou UX.",
+      "features": {
+        "ux": { "title": "UX Research & Design", "description": "User research, wireframing, user flows a informační architektura" },
+        "prototyping": { "title": "Interaktivní Prototypy", "description": "High-fidelity prototypy v Figma s kompletními interakcemi" },
+        "ui": { "title": "UI Design", "description": "Vizuální design, design systémy, komponenty a styly" },
+        "testing": { "title": "Uživatelské Testování", "description": "Usability testy, A/B testování a iterace na základě feedbacku" }
+      },
+      "cta": "Konzultace UX"
+    },
     "breadcrumb": {
       "home": "Domů",
-      "services": "Služby"
+      "services": "Služby",
+      "hosting": "Hosting",
+      "branding": "Branding",
+      "consulting": "IT Poradenství",
+      "seo": "SEO",
+      "social-media": "Social Media",
+      "development": "Vývoj",
+      "design": "Design"
     }
   }
 }
