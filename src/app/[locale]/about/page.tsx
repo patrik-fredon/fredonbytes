@@ -155,13 +155,13 @@ export default async function AboutPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <section className="min-h-screen  relative">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10">
           {/* Page Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20" role="banner">
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight font-mono text-terminal-light">
-              {t("title")}
+            <h1 className="text-xl sm:text-2xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight font-mono text-terminal-light">
+              <span className="text-neon-cyan">{'//'}</span> {t("title")}
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed px-4 font-mono">
+            <p className="text-sm sm:text-md lg:text-lg text-terminal-light/80 max-w-4xl mx-auto leading-relaxed px-4 font-mono">
               {metaT("description")}
             </p>
           </div>

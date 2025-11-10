@@ -1,6 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
-import { CheckCircle, Code, Globe, Zap, Server, Palette, HeadphonesIcon } from "lucide-react";
+import {
+  CheckCircle,
+  Code,
+  Globe,
+  HeadphonesIcon,
+  Palette,
+  Server,
+  Zap,
+} from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
@@ -160,10 +168,10 @@ export default function HeroSection() {
           prev.map((line, idx) =>
             idx === currentLineIndex
               ? {
-                  ...line,
-                  isTyping: true,
-                  displayText: targetText.substring(0, charIndex + 1),
-                }
+                ...line,
+                isTyping: true,
+                displayText: targetText.substring(0, charIndex + 1),
+              }
               : line,
           ),
         );
@@ -173,11 +181,11 @@ export default function HeroSection() {
           prev.map((line, idx) =>
             idx === currentLineIndex
               ? {
-                  ...line,
-                  isTyping: false,
-                  isComplete: true,
-                  displayText: targetText,
-                }
+                ...line,
+                isTyping: false,
+                isComplete: true,
+                displayText: targetText,
+              }
               : line,
           ),
         );
@@ -304,9 +312,8 @@ export default function HeroSection() {
         style={{ transform: lineTransform }}
       >
         <span
-          className={`text-slate-500 select-none w-10 text-right mr-4 transition-opacity duration-500 ${
-            isComplete || isTyping ? "opacity-100" : "opacity-0"
-          }`}
+          className={`text-slate-500 select-none w-10 text-right mr-4 transition-opacity duration-500 ${isComplete || isTyping ? "opacity-100" : "opacity-0"
+            }`}
         >
           {line.lineNumber}
         </span>
@@ -346,7 +353,7 @@ export default function HeroSection() {
   return (
     <>
       {/* Mobile/Tablet View (Hidden on lg) */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden lg:hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden xl:hidden">
         <div className="absolute inset-0">
           <GridBackground />
         </div>
@@ -430,27 +437,39 @@ export default function HeroSection() {
             >
               <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
                 <Code className="w-5 h-5 text-neon-cyan" />
-                <span className="font-medium font-mono text-sm">{t("hero.valueProps.development")}</span>
+                <span className="font-medium font-mono text-sm">
+                  {t("hero.valueProps.development")}
+                </span>
               </div>
               <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
                 <Zap className="w-5 h-5 text-neon-purple" />
-                <span className="font-medium font-mono text-sm">{t("hero.valueProps.design")}</span>
+                <span className="font-medium font-mono text-sm">
+                  {t("hero.valueProps.design")}
+                </span>
               </div>
               <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
                 <Globe className="w-5 h-5 text-neon-cyan" />
-                <span className="font-medium font-mono text-sm">{t("hero.valueProps.marketing")}</span>
+                <span className="font-medium font-mono text-sm">
+                  {t("hero.valueProps.marketing")}
+                </span>
               </div>
               <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
                 <Server className="w-5 h-5 text-neon-purple" />
-                <span className="font-medium font-mono text-sm">{t("hero.valueProps.hosting")}</span>
+                <span className="font-medium font-mono text-sm">
+                  {t("hero.valueProps.hosting")}
+                </span>
               </div>
               <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
                 <Palette className="w-5 h-5 text-neon-cyan" />
-                <span className="font-medium font-mono text-sm">{t("hero.valueProps.branding")}</span>
+                <span className="font-medium font-mono text-sm">
+                  {t("hero.valueProps.branding")}
+                </span>
               </div>
               <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
                 <HeadphonesIcon className="w-5 h-5 text-neon-purple" />
-                <span className="font-medium font-mono text-sm">{t("hero.valueProps.consulting")}</span>
+                <span className="font-medium font-mono text-sm">
+                  {t("hero.valueProps.consulting")}
+                </span>
               </div>
             </motion.div>
 
@@ -482,7 +501,7 @@ export default function HeroSection() {
       </section>
 
       {/* Desktop View (Hidden on mobile/tablet) */}
-      <section className="relative min-h-screen hidden lg:flex items-center justify-center overflow-hidden py-20">
+      <section className="relative min-h-screen hidden xl:flex items-center justify-center overflow-hidden py-20">
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
@@ -498,11 +517,11 @@ export default function HeroSection() {
                 <div className="w-full max-w-2xl lg:max-w-none">
                   <TerminalWindow
                     title={
-                      <div className="flex items-center justify-between w-full m-2 ">
+                      <div className="flex items-center justify-between w-full  mx-auto">
                         <div className="flex items-center gap-6 ">
                           {compilationStatus === "typing" && (
-                            <span className="text-xs text-yellow-400 animate-pulse flex items-center gap-2">
-                              <span className="w-2 h-2 bg-yellow-400 rounded-full animate-ping" />
+                            <span className="text-xs text-yellow-400 animate-pulse flex items-center gap-4 px-2">
+                              <span className="w-1 h-1 bg-yellow-400 rounded-full animate-ping" />
                               Building...
                             </span>
                           )}
@@ -555,43 +574,55 @@ export default function HeroSection() {
                     {t("hero.titleHighlight")}
                   </span>
                 </motion.h1>
-
+                <motion.div
+                  variants={itemVariants}
+                  className="flex flex-wrap justify-center gap-2"
+                >
+                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
+                    <Code className="w-5 h-5 text-neon-cyan" />
+                    <span className="font-medium font-mono text-sm">
+                      {t("hero.valueProps.development")}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
+                    <Zap className="w-5 h-5 text-neon-purple" />
+                    <span className="font-medium font-mono text-sm">
+                      {t("hero.valueProps.design")}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
+                    <Globe className="w-5 h-5 text-neon-cyan" />
+                    <span className="font-medium font-mono text-sm">
+                      {t("hero.valueProps.marketing")}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
+                    <Server className="w-5 h-5 text-neon-purple" />
+                    <span className="font-medium font-mono text-sm">
+                      {t("hero.valueProps.hosting")}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
+                    <Palette className="w-5 h-5 text-neon-cyan" />
+                    <span className="font-medium font-mono text-sm">
+                      {t("hero.valueProps.branding")}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
+                    <HeadphonesIcon className="w-5 h-5 text-neon-purple" />
+                    <span className="font-medium font-mono text-sm">
+                      {t("hero.valueProps.consulting")}
+                    </span>
+                  </div>
+                </motion.div>
                 <motion.p
                   variants={itemVariants}
-                  className="text-md sm:text-lg lg:text-xl text-terminal-light/80 max-w-2xl leading-relaxed"
+                  className="text-md sm:text-lg lg:text-xl text-terminal-light/80 max-w-2xl leading-relaxed "
                 >
                   {t("hero.subtitle")}
                 </motion.p>
 
-                <motion.div
-                  variants={itemVariants}
-                  className="flex flex-wrap justify-center lg:justify-start gap-3"
-                >
-                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
-                    <Code className="w-5 h-5 text-neon-cyan" />
-                    <span className="font-medium font-mono text-sm">{t("hero.valueProps.development")}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
-                    <Zap className="w-5 h-5 text-neon-purple" />
-                    <span className="font-medium font-mono text-sm">{t("hero.valueProps.design")}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
-                    <Globe className="w-5 h-5 text-neon-cyan" />
-                    <span className="font-medium font-mono text-sm">{t("hero.valueProps.marketing")}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
-                    <Server className="w-5 h-5 text-neon-purple" />
-                    <span className="font-medium font-mono text-sm">{t("hero.valueProps.hosting")}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
-                    <Palette className="w-5 h-5 text-neon-cyan" />
-                    <span className="font-medium font-mono text-sm">{t("hero.valueProps.branding")}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-purple/5 border border-neon-purple/20 hover:border-neon-purple/40 hover:shadow-glow-purple-subtle transition-all">
-                    <HeadphonesIcon className="w-5 h-5 text-neon-purple" />
-                    <span className="font-medium font-mono text-sm">{t("hero.valueProps.consulting")}</span>
-                  </div>
-                </motion.div>
+
 
                 <motion.div
                   variants={itemVariants}

@@ -54,7 +54,11 @@
     },
     "cta": {
       "startProject": "Start Your Project",
-      "viewWork": "View Our Work"
+      "viewWork": "View Our Work",
+      "breadcrumb": {
+        "home": "Home",
+        "services": "Services"
+      }
     },
     "stats": {
       "founded": "Founded",
@@ -313,7 +317,7 @@
       "noPhoto": "Team member photo",
       "readMore": "Read more about {name}"
     },
-    "title": "// About FredonBytes"
+    "title": "About FredonBytes"
   },
   "services": {
     "title": "Our Services",

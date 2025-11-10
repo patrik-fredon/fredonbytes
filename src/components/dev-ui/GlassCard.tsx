@@ -28,12 +28,6 @@ export default function GlassCard({
         ? "inset-shadow-sm inset-shadow-slate-950/80"
         : "inset-shadow-3xl inset-shadow-neon-purple/80";
 
-  const hoverShadow =
-    glowColor === "cyan"
-      ? "hover:-translate-y-1 hover:shadow-glow-cyan-strong hover:border-neon-cyan/50"
-      : glowColor === "normal"
-        ? ""
-        : "hover:-translate-y-1 hover:shadow-glow-purple-strong hover:border-neon-purple/50";
 
   return (
     <div
@@ -43,7 +37,7 @@ export default function GlassCard({
         border ${borderColor} 
         shadow-xl
         rounded-xl 
-        ${shadowClass} ${hoverShadow}
+        ${shadowClass}
         
         transition-normal
         ${variant === "window" ? "overflow-hidden" : ""}

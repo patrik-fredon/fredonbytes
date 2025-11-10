@@ -13,19 +13,19 @@ export default function TerminalWindow({
 }: TerminalWindowProps) {
   return (
     <div
-      className={`bg-terminal-dark border border-slate-950/80 rounded-lg shadow-xl overflow-hidden inset-shadow-2xs inset-shadow-slate-950 ${className}`}
+      className={`bg-terminal-dark border border-slate-950/80 rounded-lg shadow-xl overflow-hidden inset-shadow-3xl  ${className}`}
     >
       {/* Window Chrome */}
-      <div className="flex items-center justify-between px-4 py-3 bg-code-bg border-b border-slate-950/40 inset-shadow-2xs inset-shadow-slate-950">
+      <div className="flex items-center justify-between px-4 py-3 bg-code-bg border-b border-slate-950/40 inset-shadow-sm inset-shadow-slate-950">
         {/* Chrome Controls */}
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500 hover:w-4 hover:h-4" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500 hover:w-4 hover:h-4" />
-          <div className="w-3 h-3 rounded-full bg-green-500 hover:w-4 hover:h-4" />
+          <div className="w-4 h-4 rounded-full bg-red-500 hover:w-5 hover:h-4" />
+          <div className="w-4 h-4 rounded-full bg-yellow-500 hover:w-5 hover:h-4" />
+          <div className="w-4 h-4 rounded-full bg-green-500 hover:w-5 hover:h-4" />
         </div>
 
         {/* Title */}
-        <div className="relative left-1/2 -translate-x-1/2 font-mono text-sm text-terminal-muted">
+        <div className="relative left-1/2 -translate-x-1/2 font-mono text-xs text-terminal-muted">
           {title}
         </div>
 

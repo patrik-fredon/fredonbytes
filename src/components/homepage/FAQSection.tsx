@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/common/Button";
+import { Link } from "@/i18n/navigation";
 
 interface FAQItem {
   question: string;
@@ -42,14 +42,14 @@ export default async function FAQSection({ locale }: FAQSectionProps) {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 relative z-10">
+    <section className="py-10 sm:py-12 lg:py-14 relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-electric-purple font-mono">
             {t("title")}
           </h2>
-          <p className="text-lg sm:text-xl text-terminal-light/80 max-w-3xl mx-auto font-mono">
+          <p className="text-lg sm:text-xl text-terminal-light/90 max-w-3xl mx-auto font-mono">
             {t("subtitle")}
           </p>
         </div>
@@ -59,12 +59,14 @@ export default async function FAQSection({ locale }: FAQSectionProps) {
           {faqs.map((faq, index) => (
             <details
               key={index}
-              className="group border border-slate-800/50 rounded-lg overflow-hidden shadow-xl inset-shadow-sm inset-shadow-slate-950/80  bg-glass-bg backdrop-blur-glass  transition-all duration-300"
+              className="group border border-neon-cyan/10 rounded-lg overflow-hidden shadow-xl inset-shadow-xl inset-shadow-slate-950/80  bg-terminal-light/3 backdrop-blur-glass  transition-all duration-300"
             >
-              <summary className="px-6 py-4 flex items-center justify-between cursor-pointer list-none hover:bg-slate-800/50 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
+              <summary className="px-6 py-4 flex items-center justify-between cursor-pointer list-none hover:bg-terminal-dark/20 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
                 <h3 className="text-lg sm:text-xl font-semibold text-terminal-light/80 font-mono pr-4">
-                  <span className="text-neon-purple">{'// '}</span>{faq.question}
+                  <span className="text-neon-purple">{"// "}</span>
+                  {faq.question}
                 </h3>
+
                 <svg
                   className="flex-shrink-0 w-6 h-6 text-cyan-400 transition-transform duration-300 group-open:rotate-180"
                   fill="none"
@@ -79,7 +81,7 @@ export default async function FAQSection({ locale }: FAQSectionProps) {
                   />
                 </svg>
               </summary>
-
+              <div className="text-center border-b border-neon-cyan/20 m-2"></div>
               <div className="px-6 pb-4 text-terminal-light/80 font-mono leading-relaxed animate-in fade-in duration-200">
                 {faq.answer}
               </div>
