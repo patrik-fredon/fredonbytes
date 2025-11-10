@@ -79,17 +79,22 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     ],
   });
 
-  // LocalBusiness schema for better local SEO in Brno
+  // LocalBusiness schema for better local SEO in Brno and GMB compatibility
   const localBusinessSchema = createSchema("LocalBusiness", {
     "@id": `${baseUrl}/#localbusiness`,
     name: "Fredonbytes",
+    alternateName: "FredonBytes s.r.o.",
+    description: jsonLdT("organizationDescription"),
     image: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+    logo: `${baseUrl}/FredonBytes_GraphicLogo.png`,
     telephone: "+420799027984",
     email: "info@fredonbytes.cz",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "",
       addressLocality: "Brno",
       addressRegion: "Jihomoravský kraj",
+      postalCode: "",
       addressCountry: "CZ",
     },
     geo: {
@@ -99,12 +104,29 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     },
     url: baseUrl,
     priceRange: "$$",
+    currenciesAccepted: "CZK, EUR, USD",
+    paymentAccepted: "Cash, Credit Card, Bank Transfer",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "09:00",
       closes: "17:00",
     },
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Brno",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Jihomoravský kraj",
+      },
+      {
+        "@type": "Country",
+        name: "Česká republika",
+      },
+    ],
+    hasMap: "https://maps.google.com/?q=49.1951,16.6068",
   });
 
   // WebSite schema with sitelinks searchbox

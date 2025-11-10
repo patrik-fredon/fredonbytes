@@ -368,6 +368,16 @@ NEXT_PUBLIC_SITE_URL=https://fredonbytes.cloud
 
 ## Key Features
 
+### SEO Optimization (November 2025)
+
+- **Multi-Engine Support**: Optimized for Google, Bing, and Seznam.cz
+- **Local SEO**: Enhanced for Czech market with geo-targeting (Brno, Jihomoravský kraj)
+- **Rich Snippets**: Comprehensive JSON-LD schemas (Organization, LocalBusiness, FAQ, BreadcrumbList)
+- **GMB Compatible**: Full Google My Business integration with LocalBusiness schema
+- **Keywords**: Targeted Czech keywords for local search optimization
+- **Verification**: Support for Google, Bing, and Seznam verification meta tags
+- **Robots.txt**: Optimized with SeznamBot support and proper crawl delays
+
 ### Internationalization
 
 - 3 languages: Czech (default), German, English
