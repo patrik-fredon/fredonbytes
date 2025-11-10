@@ -103,7 +103,7 @@ All notable changes to FredonBytes project.
 ### Optimized - Google.cz Primary Focus
 - **Title tags**: "Fredon & FredonBytes | Všechny IT služby pod jednou střechou | Brno Praha Ostrava"
 - **Meta descriptions**: Optimized for Czech market with emojis, CTAs, USPs
-- **Keywords density**: Natural 1.5-2.5% for primary keywords
+- **Keyword density**: Natural 1.5-2.5% for primary keywords
 - **Service coverage**: All IT services explicitly listed in metadata
 - **Local SEO**: Prague and Ostrava added alongside Brno for wider reach
 

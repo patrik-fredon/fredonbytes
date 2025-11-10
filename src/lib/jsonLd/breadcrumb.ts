@@ -19,7 +19,7 @@ export function generateBreadcrumbSchema(
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `${baseUrl}${item.url}`,
+      item: item.url.startsWith("http") ? item.url : `${baseUrl}${item.url}`,
     })),
   };
 }

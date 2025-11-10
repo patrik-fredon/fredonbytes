@@ -133,6 +133,33 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
             { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Webhosting" : "Web Hosting" } },
             { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Vývoj webu" : "Web Development" } }
           ]
+        },
+        {
+          "@type": "OfferCatalog",
+          name: locale === "cs" ? "Design & Branding" : "Design & Branding",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Branding a identita" : "Branding & Identity" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "UX/UI Design" : "UX/UI Design" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Grafický design" : "Graphic Design" } }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          name: locale === "cs" ? "Marketing & SEO" : "Marketing & SEO",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "SEO optimalizace" : "SEO Optimization" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Správa sociálních sítí" : "Social Media Management" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Copywriting" : "Copywriting" } }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          name: locale === "cs" ? "Konzultace & Podpora" : "Consulting & Support",
+          itemListElement: [
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "IT poradenství" : "IT Consulting" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Technická podpora 24/7" : "Technical Support 24/7" } },
+            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Analýza potřeb" : "Needs Analysis" } }
+          ]
         }
       ]
     }

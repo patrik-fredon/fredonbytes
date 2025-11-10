@@ -22,17 +22,22 @@ export async function generateLocalizedMetadata(
     publisher: "Fredonbytes",
     robots:
       "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-    other: {
-      "content-language": locale === "cs" ? "cs-CZ" : locale === "en" ? "en-US" : "de-DE",
-      "geo.region": "CZ-JM",
-      "geo.placename": "Brno, Praha, Ostrava",
-      "geo.position": "49.1951;16.6068",
-      "ICBM": "49.1951, 16.6068",
-      "coverage": "Česká republika",
-      "distribution": "global",
-      "rating": "general",
-      "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
-    },
+    other: (() => {
+      const other: Record<string, string> = {
+        "content-language": locale === "cs" ? "cs-CZ" : locale === "en" ? "en-US" : "de-DE",
+        "geo.region": "CZ-JM",
+        "geo.placename": "Brno, Praha, Ostrava",
+        "geo.position": "49.1951;16.6068",
+        "ICBM": "49.1951, 16.6068",
+        "coverage": "Česká republika",
+        "distribution": "global",
+        "rating": "general",
+      };
+      if (process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION) {
+        other["google-site-verification"] = process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION;
+      }
+      return other;
+    })(),
     icons: {
       icon: "/FredonBytes_GraphicLogo.png",
       shortcut: "/FredonBytes_GraphicLogo.png",
