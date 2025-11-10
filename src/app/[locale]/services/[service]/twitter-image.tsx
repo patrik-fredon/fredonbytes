@@ -13,7 +13,6 @@ export const size = {
   height: 630,
 };
 export const contentType = "image/png";
-export const runtime = "edge";
 
 // Service configurations with localized content
 const serviceConfig = {

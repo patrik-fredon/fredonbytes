@@ -5,7 +5,6 @@ import { routing } from "@/i18n/routing";
  * Dynamic Open Graph Image Generator for Next.js 15
  *
  * Best Practices Implemented:
- * ✓ Edge Runtime for optimal performance
  * ✓ Standard OG image size (1200x630)
  * ✓ Localized content per language
  * ✓ Brand colors and typography
@@ -17,6 +16,7 @@ import { routing } from "@/i18n/routing";
  * - Format: PNG
  * - File size: Optimized automatically
  * - Cache: Static generation at build time
+ * - Runtime: Next.js default (no Edge runtime in metadata files)
  *
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
  */
@@ -28,9 +28,6 @@ export const size = {
   height: 630,
 };
 export const contentType = "image/png";
-
-// Use Edge Runtime for optimal performance
-export const runtime = "edge";
 
 // Localized content for each language
 const localizedContent = {

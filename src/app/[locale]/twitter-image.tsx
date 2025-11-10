@@ -5,7 +5,6 @@ import { routing } from "@/i18n/routing";
  * Dynamic Twitter Card Image Generator for Next.js 15
  *
  * Best Practices Implemented:
- * ✓ Edge Runtime for optimal performance
  * ✓ Twitter Card size (1200x630) - summary_large_image
  * ✓ Localized content per language
  * ✓ Brand-consistent design
@@ -18,6 +17,7 @@ import { routing } from "@/i18n/routing";
  * - Format: PNG
  * - Max file size: <5MB (Next.js optimizes automatically)
  * - Cache: Static generation at build time
+ * - Runtime: Next.js default (no Edge runtime in metadata files)
  *
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image
@@ -30,9 +30,6 @@ export const size = {
   height: 630,
 };
 export const contentType = "image/png";
-
-// Use Edge Runtime for optimal performance
-export const runtime = "edge";
 
 // Localized content for each language
 const localizedContent = {
