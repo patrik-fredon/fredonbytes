@@ -21,10 +21,10 @@
   },
   "metadata": {
     "siteName": "Fredonbytes",
-    "title": "Fredonbytes | All IT Services Under One Roof | Brno Prague Ostrava | 24h Response",
-    "description": "🚀 All IT services under one roof! Hosting | Web & App Development | Branding | Copywriting | SEO | Social Media | IT Consulting. ⚡ 24h response | 💰 1/3 deposit, rest only if satisfied. Contact us!",
-    "keywords": "Fredon, FredonBytes, hosting Brno Prague Ostrava, web hosting Czech Republic, web development Brno Prague, website creation, custom software development, IT consulting Brno, graphic design Brno Prague, branding services Czech Republic, copywriting services, SEO optimization Brno Prague Ostrava, social media management, social media marketing, digital marketing Czech Republic, mobile app development, custom e-shop, WordPress development, Next.js React development, cybersecurity, IT support 24/7, monthly service packages, cloud solutions, UX UI design, complete IT solutions, IT company South Moravia",
-    "logoAlt": "FredonBytes logo - Complete IT Services"
+    "title": "Fredonbytes - Complete IT Services | Development, Design, Marketing, Security",
+    "description": "🚀 Complete IT solutions Brno ✓ Software & mobile app development ✓ Graphic design & branding ✓ SEO & PPC ✓ Social media management ✓ Cybersecurity ✓ AI integration ✓ IT consulting ✓ Copywriting ✓ 24/7 support",
+    "keywords": "IT services Brno, digital agency Czech Republic, software development, mobile app development, full-stack development, web development, React development, Next.js, API integration, cloud solutions, e-commerce development, graphic design, UX/UI design, web design, branding, logo design, corporate identity, SEO optimization, digital marketing, PPC campaigns, Google Ads, SEM services, content marketing, email marketing, social media management, Instagram marketing, Facebook marketing, LinkedIn marketing, copywriting, SEO copywriting, IT consulting, cybersecurity, security audit, NIS2 compliance, GDPR consulting, digital transformation, web hosting, 24/7 IT support, AI integration, automation, artificial intelligence, data analytics, Czech Republic, South Moravia",
+    "logoAlt": "Fredonbytes Logo"
   },
   "manifest": {
     "name": "Fredonbytes - Your All-in-One IT Powerhouse",
@@ -104,15 +104,15 @@
     "externalLinks": "External Links"
   },
   "seo": {
-    "defaultTitle": "Fredon & FredonBytes | All IT Services Under One Roof | Brno Prague Ostrava",
-    "defaultDescription": "⚡ Complete IT partner for your business! Hosting, web & app development, branding, copywriting, SEO, social media management, IT consulting. 🎯 24h response | 💰 Pay only if satisfied | ✓ Monthly packages. Free consultation!",
-    "keywords": "fredon, fredonbytes, hosting brno prague ostrava, web hosting czech republic, web development brno, website creation prague, custom software development, IT consulting brno prague, graphic design brno prague, branding services czech republic, corporate identity, copywriting services, SEO optimization brno prague ostrava, seo services czech republic, social media marketing, social media management brno, instagram facebook management, digital marketing czech republic, mobile app development brno, iOS android app development, custom e-shop wordpress woocommerce, web applications react next.js, cybersecurity audit, IT support 24/7, website technical support, monthly service packages, cloud solutions aws azure, ux ui design brno, modern web design, responsive website, landing page, one page website, portal solution, intranet extranet, API integration, brno developer freelancer, IT company south moravia, startup IT services, complete digital solutions",
-    "siteName": "Fredon | FredonBytes",
+    "defaultTitle": "Fredonbytes - Complete IT Services Brno | Development, Design, Marketing",
+    "defaultDescription": "🚀 Complete IT solutions ✓ Software & mobile development ✓ Graphic design & UX/UI ✓ SEO & PPC campaigns ✓ Social media management ✓ Cybersecurity ✓ AI integration ✓ IT consulting ✓ Copywriting ✓ 24/7 support. FREE consultation!",
+    "keywords": "IT company Brno, complete IT services, digital agency Czech Republic, web development Brno, software development, mobile app development, full-stack developer, React development, Next.js development, API integration, cloud solutions, e-commerce development, web applications, responsive web design, graphic design Brno, UX/UI design, web design, branding Brno, logo design, corporate identity, visual identity, app prototyping, SEO optimization, digital marketing, PPC campaigns, Google Ads, SEM services, performance marketing, content marketing, email marketing, online marketing, social media management, Instagram marketing, Facebook marketing, LinkedIn marketing, content creation, copywriting, SEO copywriting, IT consulting Brno, cybersecurity, security audit, NIS2 compliance, GDPR consulting, digital transformation, IT consulting, web hosting, website management, 24/7 IT support, technical support, server monitoring, AI integration, process automation, artificial intelligence for business, data analytics, WordPress, custom programming, IT solutions for companies, Czech Republic, South Moravia",
+    "siteName": "Fredonbytes",
     "twitterHandle": "@Fredonbytes",
     "twitterCreator": "@FredonBytes",
-    "title": "Fredon & FredonBytes - Complete IT Services | Brno Prague Ostrava",
-    "logoAlt": "FredonBytes - Your Trusted IT Partner",
-    "description": "🚀 ALL IT services under one roof! Hosting | Development | Design | Branding | Copywriting | SEO | Social Media | IT Consulting. ⚡ 24h response | 💰 Pay only if satisfied | 🎯 Monthly packages from 5,990 CZK. Contact us!"
+    "title": "Fredonbytes - Your All-in-One IT Powerhouse",
+    "logoAlt": "Fredonbytes Logo",
+    "description": "🚀 Complete IT solutions ✓ Software & mobile development ✓ Graphic design & UX/UI ✓ SEO & PPC campaigns ✓ Social media management ✓ Cybersecurity ✓ AI integration ✓ IT consulting ✓ Copywriting ✓ 24/7 support. FREE consultation!"
   },
   "jsonLd": {
     "organizationName": "Fredonbytes",

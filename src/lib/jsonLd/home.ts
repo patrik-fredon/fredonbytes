@@ -211,19 +211,59 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
       en: { name: "Web Hosting", desc: "Reliable web hosting with 99.9% uptime and 24/7 technical support" },
     },
     {
-      serviceType: "Web Development",
-      cs: { name: "Vývoj webových stránek", desc: "Moderní webové stránky a aplikace na míru s Next.js, React a WordPress" },
-      en: { name: "Web Development", desc: "Modern custom websites and applications with Next.js, React and WordPress" },
-    },
-    {
       serviceType: "Software Development",
-      cs: { name: "Vývoj software na míru", desc: "Komplexní vývoj softwarových řešení přesně dle vašich požadavků" },
-      en: { name: "Custom Software Development", desc: "Comprehensive development of software solutions exactly to your requirements" },
+      cs: {
+        name: "Vývoj software a aplikací",
+        desc: "Full-stack vývoj webových a mobilních aplikací, API integrace, cloudová řešení",
+      },
+      en: {
+        name: "Software & App Development",
+        desc: "Full-stack web and mobile app development, API integration, cloud solutions",
+      },
     },
     {
-      serviceType: "Mobile App Development",
-      cs: { name: "Vývoj mobilních aplikací", desc: "Nativní iOS a Android aplikace s moderním designem a funkcionalitou" },
-      en: { name: "Mobile App Development", desc: "Native iOS and Android apps with modern design and functionality" },
+      serviceType: "Graphic Design & UX/UI",
+      cs: {
+        name: "Grafický design a UX/UI",
+        desc: "Webdesign, branding, firemní identita, prototypování a vizuální komunikace",
+      },
+      en: {
+        name: "Graphic Design & UX/UI",
+        desc: "Web design, branding, corporate identity, prototyping and visual communication",
+      },
+    },
+    {
+      serviceType: "SEO & Digital Marketing",
+      cs: {
+        name: "SEO a digitální marketing",
+        desc: "SEO optimalizace, PPC kampaně, Google Ads, SEM služby, obsahový marketing",
+      },
+      en: {
+        name: "SEO & Digital Marketing",
+        desc: "SEO optimization, PPC campaigns, Google Ads, SEM services, content marketing",
+      },
+    },
+    {
+      serviceType: "Social Media Management",
+      cs: {
+        name: "Správa sociálních sítí",
+        desc: "Instagram, Facebook, LinkedIn marketing, tvorba obsahu, community management",
+      },
+      en: {
+        name: "Social Media Management",
+        desc: "Instagram, Facebook, LinkedIn marketing, content creation, community management",
+      },
+    },
+    {
+      serviceType: "Copywriting & Content",
+      cs: {
+        name: "Copywriting a tvorba obsahu",
+        desc: "SEO copywriting, marketing texty, obsahová strategie pro web a sociální sítě",
+      },
+      en: {
+        name: "Copywriting & Content",
+        desc: "SEO copywriting, marketing texts, content strategy for web and social media",
+      },
     },
     {
       serviceType: "Graphic Design",
