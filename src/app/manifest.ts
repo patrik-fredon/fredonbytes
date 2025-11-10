@@ -1,21 +1,45 @@
 import type { MetadataRoute } from "next";
+import { getTranslations } from "next-intl/server";
 
-export default function manifest(): MetadataRoute.Manifest {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+/**
+ * Dynamic PWA manifest generation per locale
+ *
+ * Generates localized Progressive Web App manifest for each locale (cs, en, de).
+ * Provides translated app names and descriptions for better UX in different languages.
+ *
+ * PWA Features:
+ * - Standalone display mode (app-like experience)
+ * - Custom theme colors matching brand
+ * - Maskable icons for adaptive display
+ * - Proper categorization for app stores
+ * - Multi-resolution icons (192x192, 512x512)
+ *
+ * @param {Promise<{locale: string}>} params - Route params with locale
+ * @returns {Promise<MetadataRoute.Manifest>} Localized manifest configuration
+ */
+
+interface ManifestProps {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function manifest({
+  params,
+}: ManifestProps): Promise<MetadataRoute.Manifest> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "manifest" });
 
   return {
-    name: "Fredonbytes | Komplexní IT Služby Brno, Praha, Ostrava",
-    short_name: "Fredonbytes",
-    description:
-      "Všechny IT služby pod jednou střechou: Hosting, Vývoj, Design, Branding, Copywriting, SEO, Social Media, IT Poradenství. 24h odezva, platba jen při spokojenosti.",
-    start_url: "/",
+    name: t("name"),
+    short_name: t("shortName"),
+    description: t("description"),
+    start_url: `/${locale}`,
+    scope: "/",
+    lang: locale,
     display: "standalone",
     background_color: "#0A0E27",
     theme_color: "#00D9FF",
     orientation: "portrait-primary",
-    lang: "cs",
     dir: "ltr",
-    scope: "/",
     categories: [
       "business",
       "productivity",
@@ -23,8 +47,14 @@ export default function manifest(): MetadataRoute.Manifest {
       "web development",
       "design",
       "marketing",
+      "utilities", "developer-tools", "development", "hosting", "software"
     ],
     icons: [
+      {
+        src: "/favicon.ico",
+        sizes: "any",
+        type: "x-icon/"
+      },
       {
         src: "/FredonBytes_GraphicLogo.png",
         sizes: "any",
@@ -37,18 +67,74 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/png",
       },
       {
-        src: "/FredonBytes_GraphicLogo.png",
+        src: "/web-app-manifest-72x72.png",
+        sizes: "72x72",
+        type: "image/png",
+        purpose: "any", 
+      },
+      {
+        src: "/web-app-manifest-96x96.png",
+        sizes: "96x96",
+        type: "image/png",
+        purpose: "any", 
+      },
+      {
+        src: "/web-app-manifest-128x128.png",
+        sizes: "128x128",
+        type: "image/png",
+        purpose: "any", 
+      },
+      {
+        src: "/web-app-manifest-144x144.png",
+        sizes: "144x144",
+        type: "image/png",
+        purpose: "any", 
+      },
+      {
+        src: "/web-app-manifest-152x152.png",
+        sizes: "152x152",
+        type: "image/png",
+        purpose: "any", 
+      },
+      {
+        src: "/web-app-manifest-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "any", 
+      },
+      {
+        src: "/web-app-manifest-384x384.png",
+        sizes: "384x384",
+        type: "image/png",
+        purpose: "any", 
+      },
+      {
+        src: "/web-app-manifest-512x512.png",
         sizes: "512x512",
         type: "image/png",
+        purpose: "any",
       },
     ],
     screenshots: [
       {
-        src: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+        src: `/FredonBytes_GraphicLogo.png`,
         sizes: "1200x630",
         type: "image/png",
         form_factor: "wide",
       },
+      {
+        src: "/screenshot-desktop.png",
+        sizes: "1280x720",
+        type: "image/png",
+        form_factor: "wide",
+      },
+      {
+        src: "/screenshot-mobile.png",
+        sizes: "750x1334",
+        type: "image/png",
+        form_factor: "narrow",
+      },
+
     ],
     shortcuts: [
       {
@@ -73,6 +159,7 @@ export default function manifest(): MetadataRoute.Manifest {
         icons: [{ src: "/FredonBytes_GraphicLogo.png", sizes: "192x192" }],
       },
     ],
+
     related_applications: [],
     prefer_related_applications: false,
   };

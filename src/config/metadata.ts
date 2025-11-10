@@ -20,6 +20,7 @@ export async function generateLocalizedMetadata(
     authors: [{ name: "Fredonbytes", url: baseUrl }],
     creator: "Fredonbytes",
     publisher: "Fredonbytes",
+    manifest: '/manifest.webmanifest',
     robots:
       "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     other: (() => {
@@ -39,9 +40,16 @@ export async function generateLocalizedMetadata(
       return other;
     })(),
     icons: {
-      icon: "/FredonBytes_GraphicLogo.png",
       shortcut: "/FredonBytes_GraphicLogo.png",
-      apple: "/FredonBytes_GraphicLogo.png",
+      icon: [
+          { url: '/favicon.ico', sizes: 'any' },
+          { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+          { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+        ],
+        apple: [
+          { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+          { url: '/apple-icon.png', sizes: ''}
+        ],
     },
     alternates: {
       canonical: canonicalUrl,
