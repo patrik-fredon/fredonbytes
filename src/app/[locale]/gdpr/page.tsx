@@ -153,7 +153,7 @@ export default async function GDPRPage({
         }}
       />
 
-      <main className="min-h-screen bg-gradient-to-b from-background via-background/95 to-background/90">
+      <main className="min-h-screen">
         <article className="prose prose-lg dark:prose-invert max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <Content />
         </article>

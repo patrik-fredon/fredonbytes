@@ -149,7 +149,7 @@ export default async function TermsPage({ params }: Props) {
         }}
       />
 
-      <div className="min-h-screen bg-white dark:bg-slate-900 py-12">
+      <div className="min-h-screen py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-slate dark:prose-invert max-w-none">
