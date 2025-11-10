@@ -44,12 +44,6 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "SeznamBot",
         allow: "/",
         disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
-        crawlDelay: 1,
-      },
-      {
-        userAgent: "SeznamBot",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
         crawlDelay: 2,
       },
     ],

@@ -102,7 +102,15 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
       { "@type": "City", name: "Brno" },
       { "@type": "City", name: "Praha" },
       { "@type": "City", name: "Ostrava" },
-      { "@type": "Country", name: "Česká republika" }
+      { "@type": "Country", name: "Česká republika" },
+      {
+        "@type": "AdministrativeArea",
+        name: "Jihomoravský kraj",
+      },
+      {
+        "@type": "Country",
+        name: "Česká republika",
+      },
     ],
     geo: {
       "@type": "GeoCoordinates",
@@ -111,8 +119,8 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     },
     url: baseUrl,
     priceRange: "$$",
-    paymentAccepted: ["Credit Card", "Bank Transfer", "Invoice"],
-    currenciesAccepted: "CZK, EUR",
+    currenciesAccepted: "CZK, EUR, USD",
+    paymentAccepted: "Cash, Credit Card, Bank Transfer",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -167,20 +175,6 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
         }
       ]
     },
-    areaServed: [
-      {
-        "@type": "City",
-        name: "Brno",
-      },
-      {
-        "@type": "AdministrativeArea",
-        name: "Jihomoravský kraj",
-      },
-      {
-        "@type": "Country",
-        name: "Česká republika",
-      },
-    ],
     hasMap: "https://maps.google.com/?q=49.1951,16.6068",
   });
 
@@ -263,6 +257,94 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
       en: {
         name: "Copywriting & Content",
         desc: "SEO copywriting, marketing texts, content strategy for web and social media",
+      },
+    },
+    {
+      serviceType: "Software Development",
+      cs: {
+        name: "Vývoj software a aplikací",
+        desc: "Full-stack vývoj webových a mobilních aplikací, API integrace, cloudová řešení",
+      },
+      en: {
+        name: "Software & App Development",
+        desc: "Full-stack web and mobile app development, API integration, cloud solutions",
+      },
+    },
+    {
+      serviceType: "Graphic Design & UX/UI",
+      cs: {
+        name: "Grafický design a UX/UI",
+        desc: "Webdesign, branding, firemní identita, prototypování a vizuální komunikace",
+      },
+      en: {
+        name: "Graphic Design & UX/UI",
+        desc: "Web design, branding, corporate identity, prototyping and visual communication",
+      },
+    },
+    {
+      serviceType: "SEO & Digital Marketing",
+      cs: {
+        name: "SEO a digitální marketing",
+        desc: "SEO optimalizace, PPC kampaně, Google Ads, SEM služby, obsahový marketing",
+      },
+      en: {
+        name: "SEO & Digital Marketing",
+        desc: "SEO optimization, PPC campaigns, Google Ads, SEM services, content marketing",
+      },
+    },
+    {
+      serviceType: "Social Media Management",
+      cs: {
+        name: "Správa sociálních sítí",
+        desc: "Instagram, Facebook, LinkedIn marketing, tvorba obsahu, community management",
+      },
+      en: {
+        name: "Social Media Management",
+        desc: "Instagram, Facebook, LinkedIn marketing, content creation, community management",
+      },
+    },
+    {
+      serviceType: "Copywriting & Content",
+      cs: {
+        name: "Copywriting a tvorba obsahu",
+        desc: "SEO copywriting, marketing texty, obsahová strategie pro web a sociální sítě",
+      },
+      en: {
+        name: "Copywriting & Content",
+        desc: "SEO copywriting, marketing texts, content strategy for web and social media",
+      },
+    },
+    {
+      serviceType: "IT Consulting & Cybersecurity",
+      cs: {
+        name: "IT poradenství a kybernetická bezpečnost",
+        desc: "IT konzultace, bezpečnostní audit, NIS2 compliance, GDPR poradenství, digitální transformace",
+      },
+      en: {
+        name: "IT Consulting & Cybersecurity",
+        desc: "IT consulting, security audit, NIS2 compliance, GDPR consulting, digital transformation",
+      },
+    },
+    {
+      serviceType: "Hosting & Technical Support",
+      cs: {
+        name: "Webhosting a technická podpora",
+        desc: "Webhosting, správa serverů, 24/7 IT podpora, monitoring výkonu",
+      },
+      en: {
+        name: "Hosting & Technical Support",
+        desc: "Web hosting, server management, 24/7 IT support, performance monitoring",
+      },
+    },
+    {
+      serviceType: "AI Integration & Automation",
+      cs: {
+        name: "AI integrace a automatizace",
+        desc: "Integrace umělé inteligence, automatizace procesů, datová analytika",
+      },
+      en: {
+        name: "AI Integration & Automation",
+        desc: "Artificial intelligence integration, process automation, data analytics",
       },
     },
     {
