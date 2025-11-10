@@ -13,11 +13,8 @@ export async function getHomeMetadata(locale: string): Promise<Metadata> {
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
   const canonicalUrl = `${baseUrl}${localePrefix}`;
 
-  // Enhanced keywords with Czech market focus
-  const enhancedKeywords =
-    locale === "cs"
-      ? "tvorba webových stránek Brno, vývoj webů Brno, IT firma Brno, vývoj software Brno, digitální marketing ČR, SEO optimalizace Brno, grafický design Brno, tvorba e-shopů, webové aplikace Brno, IT řešení pro firmy, vývoj mobilních aplikací ČR, WordPress Brno, Next.js vývoj, React vývoj Brno"
-      : t("keywords");
+  // Use comprehensive keywords from translations
+  const enhancedKeywords = seoT("keywords");
 
   return {
     title: t("title"),

@@ -148,50 +148,94 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     },
   });
 
-  // Service definitions for mapping
+  // Service definitions for mapping - comprehensive IT services
   const serviceDefs: ServiceDef[] = [
     {
-      serviceType: "Web Development",
+      serviceType: "Software Development",
       cs: {
-        name: "Vývoj webových stránek",
-        desc: "Tvorba moderních, rychlých a SEO optimalizovaných webových stránek a aplikací",
+        name: "Vývoj software a aplikací",
+        desc: "Full-stack vývoj webových a mobilních aplikací, API integrace, cloudová řešení",
       },
       en: {
-        name: "Web Development",
-        desc: "Development of modern, fast and SEO optimized websites and applications",
+        name: "Software & App Development",
+        desc: "Full-stack web and mobile app development, API integration, cloud solutions",
       },
     },
     {
-      serviceType: "Graphic Design",
+      serviceType: "Graphic Design & UX/UI",
       cs: {
-        name: "Grafický design",
-        desc: "Profesionální grafický design pro vaši značku a online prezentaci",
+        name: "Grafický design a UX/UI",
+        desc: "Webdesign, branding, firemní identita, prototypování a vizuální komunikace",
       },
       en: {
-        name: "Graphic Design",
-        desc: "Professional graphic design for your brand and online presence",
+        name: "Graphic Design & UX/UI",
+        desc: "Web design, branding, corporate identity, prototyping and visual communication",
       },
     },
     {
-      serviceType: "SEO Services",
+      serviceType: "SEO & Digital Marketing",
       cs: {
-        name: "SEO optimalizace",
-        desc: "Komplexní SEO služby pro lepší viditelnost ve vyhledávačích",
+        name: "SEO a digitální marketing",
+        desc: "SEO optimalizace, PPC kampaně, Google Ads, SEM služby, obsahový marketing",
       },
       en: {
-        name: "SEO Optimization",
-        desc: "Comprehensive SEO services for better search engine visibility",
+        name: "SEO & Digital Marketing",
+        desc: "SEO optimization, PPC campaigns, Google Ads, SEM services, content marketing",
       },
     },
     {
-      serviceType: "Digital Marketing",
+      serviceType: "Social Media Management",
       cs: {
-        name: "Digitální marketing",
-        desc: "Marketing na sociálních sítích a online propagace",
+        name: "Správa sociálních sítí",
+        desc: "Instagram, Facebook, LinkedIn marketing, tvorba obsahu, community management",
       },
       en: {
-        name: "Digital Marketing",
-        desc: "Social media marketing and online promotion",
+        name: "Social Media Management",
+        desc: "Instagram, Facebook, LinkedIn marketing, content creation, community management",
+      },
+    },
+    {
+      serviceType: "Copywriting & Content",
+      cs: {
+        name: "Copywriting a tvorba obsahu",
+        desc: "SEO copywriting, marketing texty, obsahová strategie pro web a sociální sítě",
+      },
+      en: {
+        name: "Copywriting & Content",
+        desc: "SEO copywriting, marketing texts, content strategy for web and social media",
+      },
+    },
+    {
+      serviceType: "IT Consulting & Cybersecurity",
+      cs: {
+        name: "IT poradenství a kybernetická bezpečnost",
+        desc: "IT konzultace, bezpečnostní audit, NIS2 compliance, GDPR poradenství, digitální transformace",
+      },
+      en: {
+        name: "IT Consulting & Cybersecurity",
+        desc: "IT consulting, security audit, NIS2 compliance, GDPR consulting, digital transformation",
+      },
+    },
+    {
+      serviceType: "Hosting & Technical Support",
+      cs: {
+        name: "Webhosting a technická podpora",
+        desc: "Webhosting, správa serverů, 24/7 IT podpora, monitoring výkonu",
+      },
+      en: {
+        name: "Hosting & Technical Support",
+        desc: "Web hosting, server management, 24/7 IT support, performance monitoring",
+      },
+    },
+    {
+      serviceType: "AI Integration & Automation",
+      cs: {
+        name: "AI integrace a automatizace",
+        desc: "Integrace umělé inteligence, automatizace procesů, datová analytika",
+      },
+      en: {
+        name: "AI Integration & Automation",
+        desc: "Artificial intelligence integration, process automation, data analytics",
       },
     },
   ];
