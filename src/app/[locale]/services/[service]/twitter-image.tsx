@@ -138,19 +138,6 @@ const serviceConfig = {
   },
 };
 
-export async function generateStaticParams() {
-  const services = Object.keys(serviceConfig);
-  const params = [];
-
-  for (const locale of routing.locales) {
-    for (const service of services) {
-      params.push({ locale, service });
-    }
-  }
-
-  return params;
-}
-
 export default async function Image({
   params,
 }: {

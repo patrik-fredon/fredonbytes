@@ -54,16 +54,6 @@ const localizedContent = {
 };
 
 /**
- * Generate static params for all supported locales
- * Enables Next.js to prerender Twitter images for each locale at build time
- */
-export async function generateStaticParams() {
-  return routing.locales.map((locale) => ({
-    locale,
-  }));
-}
-
-/**
  * Generate Twitter Card Image
  *
  * This function creates a dynamic Twitter card image using JSX and CSS.

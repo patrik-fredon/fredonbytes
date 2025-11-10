@@ -52,16 +52,6 @@ const localizedContent = {
 };
 
 /**
- * Generate static params for all supported locales
- * Enables Next.js to prerender OG images for each locale at build time
- */
-export async function generateStaticParams() {
-  return routing.locales.map((locale) => ({
-    locale,
-  }));
-}
-
-/**
  * Generate Open Graph Image
  *
  * This function creates a dynamic OG image using JSX and CSS.
