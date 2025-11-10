@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { domainConfig } from "@/lib/domain-config";
 
 /**
@@ -21,24 +21,71 @@ import { domainConfig } from "@/lib/domain-config";
  */
 export default function robots(): MetadataRoute.Robots {
   const siteUrl = domainConfig.siteUrl;
+  const sitemaps = [
+    `${siteUrl}/sitemap.xml`,
+    // `${baseUrl}/sitemap-blog.xml`,    // If you have many blog posts
+    // `${baseUrl}/sitemap-products.xml`, // If you have many products
+  ];
 
   return {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
+        allow: [
+          "/",
+          "/about",
+          "/contact",
+          "/services/*",
+          "/terms",
+          "/policies",
+          "/gdpr",
+          "/cookies",
+          "/links",
+          "/projects",
+          "/pricing",
+          '/*.css$',              // CSS files for proper rendering
+          '/*.js$',               // JavaScript files
+          '/public/images/*',     // Image assets
+          '/public/fonts/*',      // Font files
+        ],
+        disallow: [
+          "/admin/", // Admin interfaces
+          "/api/", // API routes (except public ones)
+          "/private/", // Private user areas
+          "/dashboard/", // User dashboards
+          "/account/", // Account management
+          "/checkout/", // Checkout process
+          "/cart/", // Shopping cart
+          "/search/", // Internal search results
+          "/tmp/", // Temporary files
+          "/backup/", // Backup directories
+          "/node_modules/", // Dependencies
+          "/.env", // Environment files
+          "/.git/", // Version control
+          "/*.json$", // JSON data files
+          "/*.xml$", // XML data files
+          "/_next/static/chunks/*.js$", // Internal Next.js chunks
+          "/survey",
+          "/form",
+        ],
       },
       {
-        userAgent: ["Googlebot", "Googlebot-Image", "Googlebot-News", "AdsBot-Google"],
+        userAgent: [
+          "Googlebot",
+          "Googlebot-Image",
+          "Googlebot-News",
+          "AdsBot-Google",
+        ],
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
+        disallow: ["/api/", "/admin/", "/private/"],
+        crawlDelay: 1, // Be gentle on servers
       },
+      // Bingbot specific rules
       {
         userAgent: ["Bingbot", "msnbot", "BingPreview"],
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
-        crawlDelay: 1,
+        disallow: ["/api/", "/admin/", "/private/"],
+        crawlDelay: 2,
       },
       {
         userAgent: "SeznamBot",
@@ -47,7 +94,24 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 2,
       },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
+
+    sitemap: sitemaps,
+    host: siteUrl.replace(/https?:\/\//, ''),
   };
+}
+// Extension for image robots.txt (optional)
+export function generateImageRobots(): string {
+  return `
+# Image-specific directives
+User-agent: Googlebot-Image
+Allow: /public/images/
+Allow: /assets/images/
+Disallow: /private-images/
+
+User-agent: *
+Allow: /public/images/portfolio/
+Allow: /public/images/blog/
+Disallow: /public/images/avatars/
+Disallow: /public/images/temp/
+  `.trim()
 }

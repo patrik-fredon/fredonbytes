@@ -29,7 +29,11 @@
   "manifest": {
     "name": "Fredonbytes - Vaše komplexní IT řešení",
     "shortName": "Fredonbytes",
-    "description": "Od kódu po kliknutí poskytujeme kompletní digitální dominanci. Komplexní IT řešení včetně vývoje software, grafického designu, SEO a marketingu na sociálních sítích."
+    "description": "Od kódu po kliknutí poskytujeme kompletní digitální dominanci. Komplexní IT řešení včetně vývoje software, grafického designu, SEO a marketingu na sociálních sítích.",
+    "screenshots": {
+      "mobile": "Snímek obrazovky z mobilu",
+      "desktop": "Snímek obrazovky z plochy"
+    }
   },
   "hero": {
     "title": "My jsme",

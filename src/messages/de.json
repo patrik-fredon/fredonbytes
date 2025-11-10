@@ -29,7 +29,11 @@
   "manifest": {
     "name": "Fredonbytes - Ihr All-in-One IT-Kraftzentrum",
     "shortName": "Fredonbytes",
-    "description": "Vom Code bis zum Klick bieten wir vollständige digitale Dominanz. Umfassende IT-Lösungen einschließlich Softwareentwicklung, Grafikdesign, SEO und Social-Media-Marketing."
+    "description": "Vom Code bis zum Klick bieten wir vollständige digitale Dominanz. Umfassende IT-Lösungen einschließlich Softwareentwicklung, Grafikdesign, SEO und Social-Media-Marketing.",
+    "screenshots": {
+      "mobile": "Mobiler Screenshot",
+      "desktop": "Desktop-Screenshot"
+    }
   },
   "hero": {
     "title": "Ihr All-in-One",

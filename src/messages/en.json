@@ -29,7 +29,11 @@
   "manifest": {
     "name": "Fredonbytes - Your All-in-One IT Powerhouse",
     "shortName": "Fredonbytes",
-    "description": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing."
+    "description": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
+    "screenshots": {
+      "mobile": "Mobile screenshot",
+      "desktop": "Desktop screenshot"
+    }
   },
   "hero": {
     "title": "We are",
