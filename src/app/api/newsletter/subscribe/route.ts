@@ -114,8 +114,10 @@ export async function POST(request: NextRequest) {
           locale: sanitizedData.locale,
         });
 
+        const { domainConfig } = await import("@/lib/domain-config");
+
         await sendEmail({
-          from: "Fredonbytes Newsletter <info@fredonbytes.cz>",
+          from: `Fredonbytes Newsletter <${domainConfig.supportEmail}>`,
           to: sanitizedData.email,
           subject: t("newsletter.subject"),
           html: emailHtml,
@@ -183,8 +185,10 @@ export async function POST(request: NextRequest) {
         locale: sanitizedData.locale,
       });
 
+      const { domainConfig } = await import("@/lib/domain-config");
+
       await sendEmail({
-        from: "Fredonbytes Newsletter <info@fredonbytes.cz>",
+        from: `Fredonbytes Newsletter <${domainConfig.supportEmail}>`,
         to: sanitizedData.email,
         subject: t("newsletter.subject"),
         html: emailHtml,

@@ -766,7 +766,7 @@ ${t("newsletter.unsubscribeInfo")}
 
 ---
 ${t("common.companyName")} // ${t("common.tagline")}
-${t("common.location")} | info@fredonbytes.cz | +420 799 027 984
+${t("common.location")} | info@fredonbytes.com | +420 799 027 984
 // Code. Create. Conquer.
   `.trim();
 }
