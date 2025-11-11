@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
 import { useTranslations } from "next-intl";
 import LinkCard from "../common/LinkCard";
 
@@ -95,7 +94,7 @@ export default function LinkList() {
       {/* Main Platforms */}
       <motion.div variants={itemVariants}>
         <h2 className="text-2xl font-bold text-white mb-6 text-center font-mono">
-          <span className="text-neon-cyan">//</span>{" "}
+          <span className="text-neon-cyan">{"//"}</span>{" "}
           <span className="text-neon-purple">{t("ourPlatformsHeading")}</span>
         </h2>
         <div className="space-y-4">
@@ -115,7 +114,7 @@ export default function LinkList() {
       {/* GitHub Repositories */}
       <motion.div variants={itemVariants}>
         <h2 className="text-2xl font-bold text-white mb-6 text-center font-mono">
-          <span className="text-neon-cyan">//</span>{" "}
+          <span className="text-neon-cyan">{"//"}</span>{" "}
           <span className="text-neon-purple">{t("githubHeading")}</span>
         </h2>
         <div className="space-y-4">
@@ -136,7 +135,7 @@ export default function LinkList() {
       {/* Company Links */}
       <motion.div variants={itemVariants}>
         <h2 className="text-2xl font-bold text-white mb-6 text-center font-mono">
-          <span className="text-neon-cyan">//</span>{" "}
+          <span className="text-neon-cyan">{"//"}</span>{" "}
           <span className="text-neon-purple">{t("companyHeading")}</span>
         </h2>
         <div className="space-y-4">
@@ -156,7 +155,7 @@ export default function LinkList() {
       {/* Footer Info */}
       <motion.div variants={itemVariants} className="text-center pt-8 pb-4">
         <p className="text-slate-400 text-sm font-mono">
-          <span className="text-neon-cyan">//</span> {t("footerLocation")}
+          <span className="text-neon-cyan">{"//"}</span> {t("footerLocation")}
         </p>
         <p className="text-slate-500 text-xs mt-2 font-mono">
           $ {t("footerTagline")}

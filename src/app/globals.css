@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* Import dedicated animation module */
+@import "./animations.css";
 
 /* CSS Custom Properties for Design System - Dev Theme */
 :root {
@@ -1488,5 +1490,3 @@ input[type="checkbox"]:disabled {
   }
 }
 
-/* Import dedicated animation module */
-@import "./animations.css";

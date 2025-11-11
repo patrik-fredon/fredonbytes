@@ -55,7 +55,7 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 - **Animations:** Framer Motion
 - **Forms:** React Hook Form + Zod
 - **Database:** Supabase (PostgreSQL)
-- **Email:** Resend API
+- **Email:** SMTP server
 - **Icons:** Lucide React
 - **Deployment:** Vercel (recommended)
 
@@ -125,7 +125,7 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 
 ## 📱 Project Structure
 
-```
+```text
 src/
 ├── app/
 │   ├── components/

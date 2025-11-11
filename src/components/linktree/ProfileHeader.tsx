@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
-import React from "react";
 import { useTranslations } from "next-intl";
 
 export default function ProfileHeader() {
@@ -64,7 +63,7 @@ export default function ProfileHeader() {
         variants={itemVariants}
         className="text-3xl lg:text-4xl font-bold text-white mb-2 font-mono"
       >
-        <span className="text-neon-cyan">//</span>{" "}
+        <span className="text-neon-cyan">{'//'}</span>{" "}
         <span className="text-neon-purple">Fredonbytes</span>
       </motion.h1>
 
@@ -80,7 +79,7 @@ export default function ProfileHeader() {
         variants={itemVariants}
         className="text-slate-400 max-w-2xl mx-auto mb-6 leading-relaxed font-mono"
       >
-        <span className="text-neon-cyan">//</span>{" "}
+        <span className="text-neon-cyan">{'//'}</span>{" "}
         {t("profileHeader.description")}
       </motion.p>
 
@@ -108,7 +107,7 @@ export default function ProfileHeader() {
             href="mailto:info@fredonbytes.cz"
             className="hover:text-code-green transition-colors duration-[180ms]"
           >
-            info@fredonbytes.cz
+            info@fredonbytes.com
           </a>
         </div>
       </motion.div>

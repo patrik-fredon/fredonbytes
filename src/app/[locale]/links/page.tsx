@@ -87,8 +87,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: `${baseUrl}/FredonBytes_GraphicLogo.png`,
-          secureUrl: `${baseUrl}/FredonBytes_GraphicLogo.png`,
+          url: `${baseUrl}/og-image.png`,
+          secureUrl: `${baseUrl}/og-image.png`,
           width: 1200,
           height: 630,
           alt: "Fredonbytes Links",
@@ -102,7 +102,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description:
         descriptions[locale as keyof typeof descriptions] || descriptions.en,
       creator: "@FredonBytes",
-      images: [`${baseUrl}/FredonBytes_GraphicLogo.png`],
+      images: [`${baseUrl}/og-image.png`],
     },
     robots: {
       index: true,
@@ -114,7 +114,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function LinksPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
 
   const titles = {
     cs: "Odkazy",

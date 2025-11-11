@@ -23,7 +23,7 @@
     "siteName": "Fredonbytes",
     "title": "Fredonbytes | Komplexní IT služby Brno, Praha, Ostrava | 24h Odezva",
     "description": "🚀 Všechny IT služby pod jednou střechou! Hosting | Vývoj webu & aplikací | Branding | Copywriting | SEO | Social Media | IT poradenství. ⚡ Odezva do 24h | 💰 1/3 záloha, zbytek jen při spokojenosti. Kontaktujte nás!",
-    "keywords": "hosting Brno, webhosting ČR, vývoj webu Brno Praha Ostrava, vývoj softwaru na míru, IT poradenství Brno, grafický design Brno Praha, branding Česká republika, copywriting služby, SEO optimalizace Brno Praha, správa sociálních sítí, social media marketing ČR, tvorba webových stránek, vývoj mobilních aplikací, e-shop na míru, WordPress vývoj, Next.js React vývoj, kybernetická bezpečnost, IT podpora 24/7, měsíční IT balíčky, technická podpora, cloudová řešení, Fredon, FredonBytes, IT služby Jihomoravský kraj, digitální marketing, UX/UI design, kompletní IT řešení",
+    "keywords": "hosting Brno, webhosting ČR, vývoj webu Brno, vývoj webu Praha, vývoj webu Ostrava, webhosting Praha, webhosting Ostrava, vývoj softwaru na míru, IT poradenství Brno, grafický design Brno,grafický design Praha, branding Česká republika, copywriting služby, SEO optimalizace Brno, SEO optimalizace Praha, správa sociálních sítí, social media marketing ČR, tvorba webových stránek, vývoj mobilních aplikací, e-shop na míru, WordPress vývoj, Next.js React vývoj, kybernetická bezpečnost, IT podpora 24/7, měsíční IT balíčky, technická podpora, cloudová řešení, Fredon, FredonBytes, IT služby Jihomoravský kraj, digitální marketing, UX/UI design, kompletní IT řešení",
     "logoAlt": "FredonBytes logo - Komplexní IT služby"
   },
   "manifest": {
@@ -746,11 +746,11 @@
           "placeholder": "Jaký máte rozpočet pro tento projekt?",
           "required": true,
           "options": [
-            "Pod 5 000 $",
-            "5 000 $ - 15 000 $",
-            "15 000 $ - 50 000 $",
-            "50 000 $ - 100 000 $",
-            "Nad 100 000 $",
+            "Pod 20 000 korun",
+            "20 000 - 50 000 CZK",
+            "50 000 - 75 000 CZK",
+            "75 000 - 100 000 CZK",
+            "Nad 100 000 CZK",
             "Ještě nevím"
           ]
         },
@@ -1414,7 +1414,7 @@
           "title": "13. Kontaktní informace",
           "intro": "Pro dotazy týkající se těchto Podmínek služby nás prosím kontaktujte:",
           "company": "Fredonbytes",
-          "email": "legal@fredonbytes.cz",
+          "email": "legal@fredonbytes.com",
           "phone": "+420 799 027 984",
           "address": "Brno, Česká republika"
         }
@@ -1797,7 +1797,7 @@
       "projectSummary": "Souhrn vašeho projektu:",
       "inTheMeantime": "Mezitím můžete:",
       "suggestions": [
-        "Podívejte se na naše <a href=\"https://fredonbytes.cz\">projektové portfolio</a>",
+        "Podívejte se na naše <a href=\"https://fredonbytes.eu\">projektové portfolio</a>",
         "Sledujte nás na sociálních sítích pro aktualizace",
         "Zavolejte nám přímo na <a href=\"tel:+420799027984\">+420 799 027 984</a>"
       ],
@@ -1920,8 +1920,8 @@
         "contactNote": "// Otázky? \nKontaktujte nás na",
         "newsletterEmail": "$ E-mailová adresa",
         "newsletterInfo": "Přihlaste se k odběru aktualizací a novinek z FredonBytes",
-        "thankYouMessage": "Děkujeme, že nám pomáháte zlepšovat naše služby.",
-        "thankYouTitle": "// Vaše zpětná vazba byla úspěšně odeslána.",
+        "thankYouMessage": "$ Děkujeme, že nám pomáháte lépe vás poznat.",
+        "thankYouTitle": "// Vaše odpovědi byly úspěšně odeslány.",
         "thankYouHeading": "✓ Úspěšně nasazeno!"
       }
     },

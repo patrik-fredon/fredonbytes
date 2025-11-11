@@ -38,8 +38,6 @@ export default function FormNavigation({
   // Determine if we're on the last question
   const isOnLastQuestion = currentStep === totalSteps;
 
-  // Determine button text based on current step
-  const nextButtonText = isOnLastQuestion ? "Submit" : "Next";
   const t = useTranslations("form");
   // Determine if we're on a question step (not welcome or thank you)
   const isOnQuestion = currentStep > 0 && currentStep <= totalSteps;
@@ -67,15 +65,15 @@ export default function FormNavigation({
       )}
 
       {/* Terminal Navigation Buttons */}
-      <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full">
+      <div className="grid grid-cols-2 justify-center gap-3 sm:gap-4 w-full">
         {/* Previous button - hidden on welcome screen */}
         {canGoPrevious && (
           <Button
-            variant="gradient"
+            variant="secondary"
             prefix="$"
             onClick={onPrevious}
             disabled={!canGoPrevious || isSubmitting}
-            className="w-full sm:w-auto sm:min-w-[140px] mt-10"
+            className="mx-auto sm:w-auto sm:min-w-[140px] mb-2"
           >
             {t("previous")}
             <ChevronLeft className="w-4 h-4 ml-2" />
@@ -88,7 +86,7 @@ export default function FormNavigation({
           prefix="$"
           onClick={onNext}
           disabled={!canGoNext || isSubmitting}
-          className="max-w-1 flex mt-10  sm:flex-1 sm:min-w-[140px]"
+          className="mx-auto sm:flex-1 sm:min-w-[140px] mb-2"
         >
           {isSubmitting
             ? t("submitting")

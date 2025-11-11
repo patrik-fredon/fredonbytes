@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
 import { useTranslations } from "next-intl";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import React, { useState } from "react";
 import { getCsrfToken } from "@/hooks/useCsrfToken";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 import { Button } from "../common/Button";
 
@@ -105,11 +105,11 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
           prefersReducedMotion
             ? { duration: 0.01 }
             : {
-                type: "spring",
-                stiffness: 200,
-                damping: 15,
-                delay: 0.2,
-              }
+              type: "spring",
+              stiffness: 200,
+              damping: 15,
+              delay: 0.2,
+            }
         }
         className="flex justify-center"
       >
@@ -206,7 +206,7 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
 
               <Button
                 onClick={handleNewsletterSubscription}
-                variant="gradient"
+                variant="secondary"
                 prefix="$"
                 disabled={isSubscribing || !email}
                 className="w-full"
@@ -252,13 +252,13 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
       </div>
 
       {/* Terminal Contact Note */}
-      <p className="text-xs font-mono text-terminal-muted max-w-md mx-auto pt-4">
+      <p className="text-xs font-mono text-terminal-muted max-w-md mx-auto p-4">
         {t("contactNote")}{" "}
         <a
           href="mailto:info@fredonbytes.cz"
           className="text-neon-cyan hover:text-white transition-all duration-[180ms]"
         >
-          info@fredonbytes.cz
+          info@fredonbytes.com
         </a>
       </p>
     </motion.div>
