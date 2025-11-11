@@ -32,7 +32,6 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 
 ### Technical Features
 
-- **Email Integration** - Resend API for professional email handling
 - **Form Validation** - React Hook Form with Zod schema validation
 - **Database Integration** - Supabase PostgreSQL with Row Level Security
 - **Animations** - Framer Motion for smooth transitions
@@ -102,76 +101,6 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
    ```
 
 5. **Open [http://localhost:3000](http://localhost:3000) in your browser**
-
-## 🌐 Deployment
-
-### Vercel (Recommended)
-
-1. **Install Vercel CLI**
-
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **Deploy to Vercel**
-
-   ```bash
-   vercel
-   ```
-
-3. **Add environment variables in Vercel dashboard**
-   - Go to your project settings
-   - Add `RESEND_API_KEY` and other environment variables
-
-### Other Platforms
-
-The project can be deployed to any platform that supports Next.js:
-
-- Netlify
-- Railway
-- DigitalOcean App Platform
-- AWS Amplify
-
-## 📧 Email Setup
-
-1. **Sign up for Resend**
-
-   - Go to [resend.com](https://resend.com)
-   - Create an account and get your API key
-
-2. **Configure your domain**
-
-   - Add your domain in Resend dashboard
-   - Set up DNS records for email authentication
-
-3. **Update email addresses**
-   - Update sender addresses in `/src/app/api/contact/route.ts`
-   - Update form notification recipient in `/src/app/api/form/submit/route.ts`
-   - Ensure they match your verified domain
-
-## 💾 Database Setup (Customer Satisfaction Form)
-
-1. **Create Supabase Account**
-
-   - Go to [supabase.com](https://supabase.com)
-   - Create a new project
-
-2. **Run Database Migrations**
-
-   - Open Supabase SQL Editor
-   - Execute the schema from `docs/database-schema.sql`
-   - This creates tables for questions, options, sessions, and responses
-
-3. **Seed Sample Questions**
-
-   - Run the seed script from `scripts/seed-form-questions.sql`
-   - This adds 7 sample questions covering all question types
-
-4. **Configure Environment Variables**
-   - Add Supabase URL and anon key to `.env.local`
-   - See detailed setup guide in `docs/FORM_SETUP.md`
-
-For complete database setup instructions, see [Form Setup Guide](docs/FORM_SETUP.md)
 
 ## 🎨 Customization
 
