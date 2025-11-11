@@ -66,7 +66,7 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
         "@type": "ContactPoint",
         telephone: "+420799027984",
         contactType: "customer service",
-        email: "info@fredonbytes.eu",
+        email: "info@fredonbytes.com",
         availableLanguage: ["Czech", "English", "German"],
         areaServed: "CZ",
       },

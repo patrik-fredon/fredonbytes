@@ -10,7 +10,7 @@ All notable changes to this project will be documented here.
 - **Changed primary domain from fredonbytes.cz to fredonbytes.eu**
   - Updated all fallback URLs across the codebase
   - Modified domain-config.ts: primary domain and siteUrl
-  - Updated email addresses from @fredonbytes.cz to @fredonbytes.eu
+  - Email addresses remain at @fredonbytes.com (existing email infrastructure)
   - Changed .env.example documentation to reflect new primary domain
   - Updated fallback values in:
     - src/lib/metadata/home.ts

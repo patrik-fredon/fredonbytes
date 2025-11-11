@@ -48,13 +48,13 @@ export const domainConfig = {
    * Support/contact email address
    * Used in email templates and contact forms
    */
-  supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "info@fredonbytes.eu",
+  supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "info@fredonbytes.com",
 
   /**
    * Contact form recipient email
    */
   contactEmail:
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@fredonbytes.eu",
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@fredonbytes.com",
 
   /**
    * Domain strategy: "primary" (redirect all to primary) or "multi" (serve all)
