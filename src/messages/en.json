@@ -37,8 +37,8 @@
   },
   "hero": {
     "title": "We are",
-    "titleHighlight": "FredonBytes",
-    "subtitle": "From code to clicks, we deliver complete digital dominance. Eliminate complexity and supercharge your brand's potential with our unified IT solutions.",
+    "titleHighlight": " FredonBytes",
+    "subtitle": "Need five different agencies for one project? That's like trying to assemble the Avengers from random passersby.",
     "codeComments": {
       "creating": "Creating digital excellence...",
       "snippets": [
@@ -68,7 +68,11 @@
       "founded": "Founded",
       "coreServices": "Core Services",
       "clientFocus": "Client Focus"
-    }
+    },
+    "subtitle2": "We're the complete team that assembled ready for action. We have developers who build code faster than Ironman suits up, designers with Thor's vision, and strategists with Black Widow's cunning. One agency, all superpowers.",
+    "subtitle3": "Stop complicating things. Assemble us instead.\nWe are FredonBytes.",
+    "start": "🦸 Assemble the Team",
+    "team": "💥 More about us"
   },
   "footer": {
     "description": "Your All-in-One IT Powerhouse. From code to clicks, we deliver complete digital dominance.",

@@ -37,8 +37,8 @@
   },
   "hero": {
     "title": "My jsme",
-    "titleHighlight": "FredonBytes",
-    "subtitle": "Proměňte kód v úspěch. Tvoříme digitální řešení, která posilují výkon, zjednodušují procesy a zvyšují viditelnost vaší značky online. S námi získáte skutečnou technologickou převahu.",
+    "titleHighlight": " FredonBytes",
+    "subtitle": "Shánět pět firem na jeden projekt? To je jako skládat Avengers z náhodných kolemjdoucích.",
     "codeComments": {
       "creating": "Vytváříme digitální dokonalost...",
       "snippets": [
@@ -64,7 +64,9 @@
       "founded": "Založeno",
       "coreServices": "Základní služby",
       "clientFocus": "Zaměření na klienty"
-    }
+    },
+    "subtitle2": "My jsme kompletní tým, který se sešel rovnou v plné síle. Máme kodéry, co staví kód rychleji než Ironman svůj oblek, designéry s vizí Thora a stratégy s důvtipem Black Widow. Jedna firma, všechny superschopnosti.",
+    "subtitle3": "Nekomplikujte si život. Svolejte nás. My jsme FredonBytes."
   },
   "footer": {
     "description": "Vaše komplexní IT řešení. Od kódu po kliky, zajišťujeme kompletní digitální převahu.",

@@ -370,7 +370,7 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     try {
       const faqQuestions = [];
       // Try to build FAQ items - stop when translation key doesn't exist
-      for (let i = 0; i < 20; i++) { // Max 20 FAQs
+      for (let i = 0; i < 5; i++) { // Max 20 FAQs
         try {
           const question = faqT(`items.${i}.question`);
           const answer = faqT(`items.${i}.answer`);

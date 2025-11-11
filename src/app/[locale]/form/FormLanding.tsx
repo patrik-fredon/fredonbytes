@@ -7,8 +7,8 @@ import { useState } from "react";
 
 import type { CreateFormSessionResponse } from "@/app/api/form/route";
 import { Button } from "@/components/common/Button";
-import { useRouter } from "@/i18n/navigation";
 import TerminalWindow from "@/components/dev-ui/TerminalWindow";
+import { useRouter } from "@/i18n/navigation";
 /**
  * FormLanding component - Welcome screen for customer satisfaction form.
  * Features IT-themed animations and a Start button to begin the form.
@@ -143,7 +143,7 @@ export default function FormLanding() {
             </div>
 
             {/* Privacy Note */}
-            <p className="text-xs text-white/50 dark:text-white/50 max-w-md mx-auto">
+            <p className="text-xs text-white/50 dark:text-white/50 max-w-md mx-auto pt-6">
               {t("privacyNote")}
             </p>
           </div>
