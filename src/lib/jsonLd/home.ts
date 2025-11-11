@@ -32,7 +32,7 @@ interface ServiceDef {
 export async function getHomeSchemas(locale: string): Promise<Schema[]> {
   const jsonLdT = await getTranslations({ locale, namespace: "jsonLd" });
   const faqT = await getTranslations({ locale, namespace: "faq" });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
 
   // Organization schema
   const organizationSchema = createSchema("Organization", {
@@ -66,7 +66,7 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
         "@type": "ContactPoint",
         telephone: "+420799027984",
         contactType: "customer service",
-        email: "info@fredonbytes.cz",
+        email: "info@fredonbytes.eu",
         availableLanguage: ["Czech", "English", "German"],
         areaServed: "CZ",
       },

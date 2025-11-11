@@ -185,7 +185,7 @@ const nextConfig: NextConfig = {
             key: "Access-Control-Allow-Origin",
             value:
               process.env.NODE_ENV === "production"
-                ? process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz"
+                ? process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.eu"
                 : "*",
           },
           {

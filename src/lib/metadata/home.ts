@@ -9,7 +9,7 @@ export async function getHomeMetadata(locale: string): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "metadata" });
   const seoT = await getTranslations({ locale, namespace: "seo" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
   const canonicalUrl = `${baseUrl}${localePrefix}`;
 

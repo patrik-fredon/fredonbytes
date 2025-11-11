@@ -4,10 +4,11 @@
 
 ### Code Optimization & Refactoring (November 2025)
 - [x] Fix duplicate service definitions in JSON-LD schema (removed 5 duplicates)
-- [x] Standardize base URL fallbacks across all files (fredonbytes.cz)
+- [x] Standardize base URL fallbacks across all files (fredonbytes.eu)
 - [x] Remove duplicate og_image.jpg (kept PNG only)
 - [x] Remove unused icon0.svg (3.7MB dead code)
 - [x] Fix sitemap.xml domain redirect issue for Google Search Console
+- [x] Change primary domain from .cz to .eu across entire codebase
 - [ ] Optimize large images (requires manual optimization):
   - placeholder-project-fredon.png (8.1MB → target <500KB)
   - FredonBytes_GraphicLogo.png (2.8MB → target <500KB)
