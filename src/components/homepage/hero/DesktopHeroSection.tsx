@@ -100,7 +100,7 @@ export default function DesktopClient() {
                                         $ start_project --now
                                     </Button>
                                 </Link>
-                                <Link href="/projects" className="w-full sm:w-auto">
+                                <Link href="/about" className="w-full sm:w-auto">
                                     <Button
                                         variant="secondary"
                                         size="lg"

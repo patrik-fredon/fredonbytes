@@ -87,13 +87,13 @@ export default function MobileClient() {
                     <p className="text-sm text-terminal-light/80 max-w-2xl leading-relaxed m-2">
                         {t("hero.subtitle2")}
                     </p>
-                    <Link href="/projects" >
+                    <Link href="/about" >
                         <Button
                             variant="secondary"
                             size="sm"
                             className="font-mono w-full sm:w-auto mx-auto px-2"
                         >
-                            $ view_portfolio
+                            $ view_team
                         </Button>
                     </Link>
 
