@@ -7,6 +7,7 @@
 - [x] Standardize base URL fallbacks across all files (fredonbytes.cz)
 - [x] Remove duplicate og_image.jpg (kept PNG only)
 - [x] Remove unused icon0.svg (3.7MB dead code)
+- [x] Fix sitemap.xml domain redirect issue for Google Search Console
 - [ ] Optimize large images (requires manual optimization):
   - placeholder-project-fredon.png (8.1MB → target <500KB)
   - FredonBytes_GraphicLogo.png (2.8MB → target <500KB)
@@ -25,7 +26,7 @@
 ### Documentation
 - [x] Create General.md
 - [x] Update TODO.md
-- [ ] Update CHANGELOG.md with refactoring changes
+- [x] Update CHANGELOG.md with refactoring changes
 
 ## Recommendations
 

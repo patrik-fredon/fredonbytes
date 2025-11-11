@@ -2,7 +2,17 @@
 
 All notable changes to this project will be documented here.
 
-## [Unreleased] - 2025-11-10
+## [Unreleased] - 2025-11-11
+
+### Fixed - Google Search Console Sitemap Issue (November 11, 2025)
+
+#### Sitemap Accessibility Fix
+- **Fixed sitemap.xml redirect issue** in middleware.ts
+  - Moved static file check BEFORE domain redirect logic
+  - sitemap.xml now accessible on all domains without 301 redirect
+  - Resolves Google Search Console "couldn't fetch sitemap" error on secondary domains
+  - Allows proper sitemap verification on fredonbytes.eu, fredonbytes.com, etc.
+  - Maintains canonical URLs within sitemap (pointing to primary domain)
 
 ### Fixed - Code Quality & Performance (November 10, 2025)
 

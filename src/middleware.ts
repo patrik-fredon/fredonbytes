@@ -89,7 +89,19 @@ function checkRateLimit(key: string): {
 const handleI18nRouting = createIntlMiddleware(routing);
 
 export function middleware(request: NextRequest) {
-  // DOMAIN REDIRECT LOGIC - Execute first, before any other middleware
+  const pathname = request.nextUrl.pathname;
+
+  // Skip middleware for static metadata routes BEFORE domain redirect
+  // This allows sitemap.xml and robots.txt to be accessible on all domains without redirect
+  if (
+    pathname === "/manifest.webmanifest" ||
+    pathname === "/robots.txt" ||
+    pathname === "/sitemap.xml"
+  ) {
+    return NextResponse.next();
+  }
+
+  // DOMAIN REDIRECT LOGIC - Execute after static files check
   // Redirect secondary domains to primary domain (301 permanent redirect)
   const host = request.headers.get("host");
 
@@ -122,16 +134,6 @@ export function middleware(request: NextRequest) {
 
     // 301 Permanent Redirect - SEO-friendly, tells search engines domain has moved
     return NextResponse.redirect(url, 301);
-  }
-
-  // Skip middleware for static metadata routes
-  const pathname = request.nextUrl.pathname;
-  if (
-    pathname === "/manifest.webmanifest" ||
-    pathname === "/robots.txt" ||
-    pathname === "/sitemap.xml"
-  ) {
-    return NextResponse.next();
   }
 
   // Handle API routes separately (CSRF + rate limiting)
