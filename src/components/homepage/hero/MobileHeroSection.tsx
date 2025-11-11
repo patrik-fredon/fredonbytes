@@ -56,15 +56,16 @@ export default function MobileClient() {
                         variants={itemVariants}
                         className="mb-10 mx-auto max-w-md"
                     >
-                        <div className="relative w-full h-26 sm:h-30 mx-auto">
+                        <div className="relative w-full aspect-[2/1] max-h-32 mx-auto">
                             <Image
-                                src="/FredonBytes_GraphicLogo.png"
+                                src="/FredonBytes_GraphicLogo.webp"
                                 alt="FredonBytes Logo"
-                                fill
-                                className="object-contain"
+                                width={256}
+                                height={128}
+                                className="object-contain w-full h-full"
                                 priority
-                                quality={100}
-                                sizes="(max-width: 840px) 120vw, 648px"
+                                quality={90}
+                                sizes="(max-width: 640px) 256px, 384px"
                             />
                         </div>
                     </motion.div>

@@ -146,14 +146,15 @@ export default function Header({ className }: HeaderProps) {
               className="flex items-center space-x-2 group"
               onClick={closeMenu}
             >
-              <div className="relative w-8 h-8 lg:w-10 lg:h-10">
+              <div className="relative w-8 h-8 lg:w-10 lg:h-10 flex-shrink-0">
                 <Image
-                  src="/FredonBytes_GraphicLogo.png"
+                  src="/FredonBytes_GraphicLogo.webp"
                   alt="Fredonbytes Logo"
-                  fill
-                  className="object-contain transition-transform duration-200 group-hover:scale-110"
+                  width={40}
+                  height={40}
+                  className="object-contain transition-transform duration-200 group-hover:scale-110 w-full h-full"
                   priority
-                  quality={85}
+                  quality={90}
                   sizes="(max-width: 1024px) 32px, 40px"
                 />
               </div>
