@@ -2,7 +2,34 @@
 
 All notable changes to this project will be documented here.
 
-## [Unreleased] - 2025-11-10
+## [Unreleased] - 2025-11-11
+
+### Changed - Primary Domain Migration (November 11, 2025)
+
+#### Domain Configuration Update
+- **Changed primary domain from fredonbytes.cz to fredonbytes.eu**
+  - Updated all fallback URLs across the codebase
+  - Modified domain-config.ts: primary domain and siteUrl
+  - Email addresses remain at @fredonbytes.com (existing email infrastructure)
+  - Changed .env.example documentation to reflect new primary domain
+  - Updated fallback values in:
+    - src/lib/metadata/home.ts
+    - src/lib/jsonLd/home.ts
+    - src/components/services/ServicePageTemplate.tsx
+    - next.config.ts
+  - fredonbytes.cz now redirects to fredonbytes.eu (301)
+  - SEO: All canonical URLs now point to .eu domain
+  - Sitemap now uses fredonbytes.eu as base URL
+
+### Fixed - Google Search Console Sitemap Issue (November 11, 2025)
+
+#### Sitemap Accessibility Fix
+- **Fixed sitemap.xml redirect issue** in middleware.ts
+  - Moved static file check BEFORE domain redirect logic
+  - sitemap.xml now accessible on all domains without 301 redirect
+  - Resolves Google Search Console "couldn't fetch sitemap" error on secondary domains
+  - Allows proper sitemap verification on all domains (fredonbytes.eu, fredonbytes.com, fredonbytes.cz, etc.)
+  - Maintains canonical URLs within sitemap (pointing to primary domain fredonbytes.eu)
 
 ### Fixed - Code Quality & Performance (November 10, 2025)
 

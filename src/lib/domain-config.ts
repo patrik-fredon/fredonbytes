@@ -8,8 +8,8 @@
  * - SEO canonical URLs
  *
  * Environment Variables:
- * - NEXT_PUBLIC_SITE_URL: Full URL with protocol (e.g., https://fredonbytes.cz)
- * - NEXT_PUBLIC_PRIMARY_DOMAIN: Primary domain only (e.g., fredonbytes.cz)
+ * - NEXT_PUBLIC_SITE_URL: Full URL with protocol (e.g., https://fredonbytes.eu)
+ * - NEXT_PUBLIC_PRIMARY_DOMAIN: Primary domain only (e.g., fredonbytes.eu)
  * - NEXT_PUBLIC_SECONDARY_DOMAINS: Comma-separated list of domains to redirect
  * - NEXT_PUBLIC_SUPPORT_EMAIL: Support/contact email address
  */
@@ -19,13 +19,13 @@ export const domainConfig = {
    * Primary domain (without protocol)
    * Used for domain validation and redirects
    */
-  primary: process.env.NEXT_PUBLIC_PRIMARY_DOMAIN || "fredonbytes.cz",
+  primary: process.env.NEXT_PUBLIC_PRIMARY_DOMAIN || "fredonbytes.eu",
 
   /**
    * Full site URL with protocol
    * Used for canonical URLs, sitemaps, and metadata
    */
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.eu",
 
   /**
    * Secondary domains that should redirect to primary
@@ -41,20 +41,20 @@ export const domainConfig = {
     // Use fallback if env var is not set or results in empty array
     return envDomains.length > 0
       ? envDomains
-      : ["fredonbytes.cloud", "fredonbytes.com", "fredonbytes.eu", "fredonbytes.tech"];
+      : ["fredonbytes.cloud", "fredonbytes.com", "fredonbytes.cz", "fredonbytes.tech"];
   },
 
   /**
    * Support/contact email address
    * Used in email templates and contact forms
    */
-  supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "info@fredonbytes.cz",
+  supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "info@fredonbytes.com",
 
   /**
    * Contact form recipient email
    */
   contactEmail:
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@fredonbytes.cz",
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@fredonbytes.com",
 
   /**
    * Domain strategy: "primary" (redirect all to primary) or "multi" (serve all)
