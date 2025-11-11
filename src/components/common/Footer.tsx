@@ -117,7 +117,7 @@ export default async function Footer({ locale }: FooterProps) {
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-neon-cyan shrink-0" />
                 <a
-                  href="mailto:info@fredonbytes.cz"
+                  href="mailto:info@fredonbytes.com"
                   className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast -subtle"
                 >
                   {t("footer.contact.email")}

@@ -89,7 +89,7 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     image: `${baseUrl}/og-image.png`,
     logo: `${baseUrl}/icon1.png`,
     telephone: "+420799027984",
-    email: "info@fredonbytes.cz",
+    email: "info@fredonbytes.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "",
@@ -126,13 +126,6 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "09:00",
       closes: "17:00",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: 15,
-      bestRating: "5",
-      worstRating: "1"
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -178,7 +171,7 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     hasMap: "https://maps.google.com/?q=49.1951,16.6068",
   });
 
-  // WebSite schema with sitelinks searchbox
+  // WebSite schema
   const websiteSchema = createSchema("WebSite", {
     "@id": `${baseUrl}/#website`,
     url: baseUrl,
@@ -186,14 +179,6 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     description: jsonLdT("organizationDescription"),
     publisher: {
       "@id": `${baseUrl}/#organization`,
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${baseUrl}/search?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
     },
   });
 

@@ -105,7 +105,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
         {
           "@type": "ContactPoint",
           telephone: "+420799027984",
-          email: "info@fredonbytes.cz",
+          email: "info@fredonbytes.com",
           contactType: "Customer Service",
           areaServed: "CZ",
           availableLanguage: ["Czech", "English", "German"],

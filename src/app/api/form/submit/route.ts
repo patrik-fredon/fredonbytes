@@ -321,8 +321,10 @@ export async function POST(request: NextRequest) {
           locale: sessionLocale,
         });
 
+        const { domainConfig } = await import("@/lib/domain-config");
+
         await sendEmail({
-          from: "Fredonbytes <info@fredonbytes.cz>",
+          from: `Fredonbytes <${domainConfig.supportEmail}>`,
           to: email,
           subject: t("form.subject"),
           html: emailHtml,
@@ -372,9 +374,11 @@ export async function POST(request: NextRequest) {
         });
 
         // Send email via SMTP
+        const { domainConfig } = await import("@/lib/domain-config");
+
         await sendEmail({
-          from: "Customer Feedback <info@fredonbytes.cz>",
-          to: process.env.ADMIN_EMAIL || "info@fredonbytes.cz",
+          from: `Customer Feedback <${domainConfig.supportEmail}>`,
+          to: process.env.ADMIN_EMAIL || domainConfig.supportEmail,
           subject: `New Customer Satisfaction Form - ${sessionId!.substring(
             0,
             8,

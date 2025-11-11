@@ -113,7 +113,7 @@ export default async function AboutPage({ params }: Props) {
         "@type": "ContactPoint",
         telephone: "+420799027984",
         contactType: "customer service",
-        email: "info@fredonbytes.cz",
+        email: "info@fredonbytes.com",
       },
       sameAs: [
         "https://github.com/FredonBytes",

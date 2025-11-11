@@ -250,8 +250,10 @@ export async function POST(request: NextRequest) {
           locale,
         });
 
+        const { domainConfig } = await import("@/lib/domain-config");
+
         await sendEmail({
-          from: "Fredonbytes <noreply@fredonbytes.cz>",
+          from: `Fredonbytes <${domainConfig.supportEmail}>`,
           to: customerEmail,
           subject: t("survey.subject"),
           html: emailHtml,
@@ -318,9 +320,11 @@ export async function POST(request: NextRequest) {
           responses: formattedResponses,
         });
 
+        const { domainConfig } = await import("@/lib/domain-config");
+
         await sendEmail({
-          from: "Survey System <noreply@fredonbytes.cz>",
-          to: "info@fredonbytes.cz",
+          from: `Survey System <${domainConfig.supportEmail}>`,
+          to: domainConfig.supportEmail,
           subject: `New Survey Submission - ${session_id}`,
           html: adminEmailHtml,
         });
