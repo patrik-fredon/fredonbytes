@@ -621,7 +621,12 @@ export default function HeroSection() {
                 >
                   {t("hero.subtitle")}
                 </motion.p>
-
+                <motion.p
+                  variants={itemVariants}
+                  className="text-md sm:text-lg lg:text-xl text-terminal-light/80 max-w-2xl leading-relaxed "
+                >
+                  {t("hero.subtitle")}
+                </motion.p>
 
 
                 <motion.div
