@@ -332,7 +332,7 @@ export default function TerminalLayout() {
     };
     return (
         <>
-            <section className="relative hidden xl:flex w-full max-w-3xl lg:max-w-none mx-auto items-center justify-center overflow-hidden">
+            <section className="relative hidden xl:flex w-full max-w-5xl lg:max-w-none mx-auto items-center justify-center overflow-hidden">
                 <motion.div
                     variants={itemVariants}
                     className="flex w-full max-w-2xl lg:max-w-none mx-auto items-center lg:items-start"
@@ -375,7 +375,7 @@ export default function TerminalLayout() {
                         </TerminalWindow>
                         <motion.div
                             variants={itemVariants}
-                            className="flex flex-wrap justify-center gap-2 py-4"
+                            className="flex flex-wrap justify-center gap-2 py-8"
                         >
                             <div className="flex items-center space-x-2 text-terminal-light px-4 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
                                 <Code className="w-5 h-5 text-neon-cyan" />

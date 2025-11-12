@@ -52,7 +52,7 @@ export default function DesktopClient() {
                                 variants={itemVariants}
                                 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-terminal-light leading-tight font-mono items-center justify-center"
                             >
-                                <div className="relative w-full max-w-lg lg:max-w-none aspect-[2/1] max-h-60 mx-auto lg:mx-0">
+                                <div className="relative w-full mx-auto m-4">
                                     <Image
                                         src="/FredonBytes_GraphicLogo.webp"
                                         alt="FredonBytes Logo"

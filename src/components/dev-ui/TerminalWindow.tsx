@@ -13,7 +13,7 @@ export default function TerminalWindow({
 }: TerminalWindowProps) {
   return (
     <div
-      className={`bg-terminal-dark border border-slate-950/80 rounded-lg shadow-xl overflow-hidden inset-shadow-3xl  ${className}`}
+      className={`bg-terminal-dark/90 border border-slate-950/80 rounded-lg shadow-xl overflow-hidden inset-shadow-3xl  ${className}`}
     >
       {/* Window Chrome */}
       <div className="flex items-center justify-between px-4 py-3 bg-code-bg border-b border-slate-950/40 inset-shadow-sm inset-shadow-slate-950">
