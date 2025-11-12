@@ -121,6 +121,39 @@ services:
       retries: 5
       start_period: 10s
 
+  redis-insight:
+    container_name: fredonbytes-redis-insight
+    image: redis/redisinsight:latest
+    ports:
+      - "5487:5540"
+    volumes:
+      - redis-insight-data:/data
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    labels:
+      # Coolify Management Labels
+      - "coolify.managed=true"
+      # Traefik routing for Redis Insight (optional - only if you want web access)
+      # Uncomment the lines below if you want to expose Redis Insight via subdomain
+      # - "traefik.enable=true"
+      # - "traefik.http.routers.redis-insight.rule=Host(`redis.${NEXT_PUBLIC_PRIMARY_DOMAIN:?}`)"
+      # - "traefik.http.routers.redis-insight.entrypoints=websecure"
+      # - "traefik.http.routers.redis-insight.tls=true"
+      # - "traefik.http.routers.redis-insight.tls.certresolver=letsencrypt"
+      # - "traefik.http.services.redis-insight.loadbalancer.server.port=5540"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5540/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
 volumes:
   redis-data:
+    driver: local
+  redis-insight-data:
     driver: local
