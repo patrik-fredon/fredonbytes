@@ -79,7 +79,7 @@ export function generateAdminNotificationHTML(
             padding: 20px;
           }
           .header {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            background:  #8b5cf6;
             color: white;
             padding: 40px 30px;
             border-radius: 12px 12px 0 0;
@@ -262,7 +262,7 @@ export async function generateCustomerConfirmationHTML(
     ? `
       <div style="background: rgba(14, 19, 48, 0.85); border: 1px solid rgba(0, 217, 255, 0.3); border-radius: 12px; padding: 20px; margin: 25px 0; text-align: center; box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);">
         <h3 style="margin: 0 0 10px 0; color: #00D9FF; font-size: 16px; font-family: 'Courier New', monospace;"><span style="color: #00D9FF;">//</span> 📊 ${t("customer.surveyInvitation")}</h3>
-        <a href="${data.surveyLink}" style="background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 10px 0; font-weight: 600; box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);">
+        <a href="${data.surveyLink}" style="background: #A855F7; color: #0A0E27; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 10px 0; font-weight: 600; box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);">
           ${t("customer.surveyButton")}
         </a>
       </div>
@@ -279,11 +279,11 @@ export async function generateCustomerConfirmationHTML(
         <style>
           body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
+          .header { background:  #A855F7; color: #0A0E27; padding: 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
           .content { background: #0A0E27; padding: 30px; border-radius: 0 0 12px 12px; border: 1px solid rgba(0, 217, 255, 0.3); }
           .highlight { background: rgba(14, 19, 48, 0.85); padding: 20px; border-radius: 8px; border-left: 4px solid #10B981; margin: 20px 0; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
           .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 217, 255, 0.3); color: #94A3B8; }
-          .cta { background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 20px 0; font-weight: 600; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
+          .cta { background: #A855F7; color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 20px 0; font-weight: 600; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
         </style>
       </head>
       <body>
@@ -421,7 +421,7 @@ export async function generateAdminContactNotificationHTML(
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; }
+          .header { background: #A855F7; color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; }
           .content { background: #f8fafc; padding: 30px; border-radius: 0 0 8px 8px; }
           .section { margin-bottom: 25px; }
           .label { font-weight: 600; color: #475569; margin-bottom: 5px; }
@@ -513,7 +513,7 @@ export async function generateSurveyThankYouHTML(
         <style>
           body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 40px 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5); }
+          .header { background: #A855F7; color: #0A0E27; padding: 40px 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5); }
           .content { background: #0A0E27; padding: 30px; border-radius: 0 0 12px 12px; border: 1px solid rgba(16, 185, 129, 0.3); }
           .highlight { background: rgba(14, 19, 48, 0.85); padding: 20px; border-radius: 8px; border-left: 4px solid #10B981; margin: 20px 0; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
           .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 217, 255, 0.3); color: #94A3B8; }
@@ -544,7 +544,7 @@ export async function generateSurveyThankYouHTML(
             <p style="color: #F1F5F9;">${t("survey.gratitude")}</p>
 
             <div style="text-align: center; margin-top: 30px;">
-              <a href="${domainConfig.siteUrl}" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t("customer.visitWebsite")}</a>
+              <a href="${domainConfig.siteUrl}" style="background: #A855F7; color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t("customer.visitWebsite")}</a>
             </div>
           </div>
 
@@ -674,11 +674,11 @@ export async function generateNewsletterWelcomeHTML(
         <style>
           body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 40px 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
+          .header { background: #A855F7; color: #0A0E27; padding: 40px 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
           .content { background: #0A0E27; padding: 30px; border-radius: 0 0 12px 12px; border: 1px solid rgba(0, 217, 255, 0.3); }
           .highlight { background: rgba(14, 19, 48, 0.85); padding: 20px; border-radius: 8px; border-left: 4px solid #10B981; margin: 20px 0; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
           .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 217, 255, 0.3); color: #94A3B8; }
-          .cta { background: linear-gradient(135deg, #00D9FF, #A855F7); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 20px 0; font-weight: 600; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
+          .cta { background: #A855F7; color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin: 20px 0; font-weight: 600; box-shadow: 0 0 30px rgba(0, 217, 255, 0.5); }
         </style>
       </head>
       <body>
@@ -800,7 +800,7 @@ export async function generateFormThankYouHTML(
         <style>
           body { font-family: 'Courier New', monospace; line-height: 1.6; color: #F1F5F9; background-color: #060A1F; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 40px 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5); }
+          .header { background: #00D9FF; color: #0A0E27; padding: 40px 30px; border-radius: 12px 12px 0 0; text-align: center; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5); }
           .content { background: #0A0E27; padding: 30px; border-radius: 0 0 12px 12px; border: 1px solid rgba(16, 185, 129, 0.3); }
           .highlight { background: rgba(14, 19, 48, 0.85); padding: 20px; border-radius: 8px; border-left: 4px solid #10B981; margin: 20px 0; box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
           .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 217, 255, 0.3); color: #94A3B8; }
@@ -832,7 +832,7 @@ export async function generateFormThankYouHTML(
             <p style="color: #F1F5F9;">${t("form.gratitude")}</p>
 
             <div style="text-align: center; margin-top: 30px;">
-              <a href="${domainConfig.siteUrl}" style="background: linear-gradient(135deg, #10B981, #00D9FF); color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t("customer.visitWebsite")}</a>
+              <a href="${domainConfig.siteUrl}" style="background: #00D9FF; color: #0A0E27; padding: 15px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);">${t("customer.visitWebsite")}</a>
             </div>
           </div>
 
