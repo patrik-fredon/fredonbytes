@@ -50,13 +50,13 @@ export default function MobileClient() {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="max-w-5xl mx-auto"
+                    className="w-full mx-auto"
                 >
                     <motion.div
                         variants={itemVariants}
-                        className="mb-10 mx-auto max-w-md"
+                        className="m-10 mx-auto "
                     >
-                        <div className="relative w-full aspect-[2/1] max-h-32 mx-auto">
+                        <div className="relative w-1/2 mx-auto  ">
                             <Image
                                 src="/FredonBytes_GraphicLogo.webp"
                                 alt="FredonBytes Logo"
@@ -80,19 +80,19 @@ export default function MobileClient() {
                         </span>
                     </motion.h1>
 
-                    <p className="text-md sm:text-lg lg:text-xl text-terminal-light/80 max-w-2xl leading-relaxed mb-2">
+                    <p className="text-md sm:text-lg lg:text-xl text-terminal-light/80  leading-relaxed mb-2">
                         {t("hero.subtitle")}
                     </p>
                     <TerminalLayout />
 
-                    <p className="text-sm text-terminal-light/80 max-w-2xl leading-relaxed m-2">
+                    <p className="text-sm text-terminal-light/80 leading-relaxed m-4">
                         {t("hero.subtitle2")}
                     </p>
                     <Link href="/about" >
                         <Button
                             variant="secondary"
                             size="sm"
-                            className="font-mono w-full sm:w-auto mx-auto px-2"
+                            className="font-mono w-auto mx-auto px-2"
                         >
                             $ view_team
                         </Button>
@@ -100,21 +100,21 @@ export default function MobileClient() {
 
 
 
-                    <p className="text-sm lg:text-md text-terminal-light/80 max-w-2xl leading-relaxed mt-2">
+                    <p className="text-sm lg:text-md text-terminal-light/80 leading-relaxed m-2">
                         {t("hero.subtitle3")}
                     </p>
                     <Link href="/contact" >
                         <Button
                             variant="gradient"
                             size="sm"
-                            className="font-mono w-full sm:w-auto mx-auto px-2"
+                            className="font-mono w-auto mx-auto px-2"
                         >
                             $ start_project --now
                         </Button>
                     </Link>
                     <motion.div
                         variants={itemVariants}
-                        className="flex flex-wrap justify-center gap-1 mb-2"
+                        className="flex flex-wrap justify-center gap-1 m-8"
                     >
                         <div className="flex items-center space-x-2 text-terminal-light px-2 py-2 rounded-lg bg-neon-cyan/5 border border-neon-cyan/20 hover:border-neon-cyan/40 hover:shadow-glow-cyan-subtle transition-all">
                             <Code className="w-3 h-3 text-neon-cyan" />

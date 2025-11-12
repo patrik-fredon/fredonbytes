@@ -419,10 +419,10 @@ export default function TerminalLayout() {
                 </motion.div>
 
             </section>
-            <section className="relative flex items-center w-full mx-auto justify-between overflow-hidden xl:hidden">
-                <motion.div variants={itemVariants} className="mb-4 mx-auto max-w-5xl">
+            <section className="relative flex items-center w-full pb-6 justify-center overflow-hidden xl:hidden">
+                <motion.div variants={itemVariants} className="flex w-full m-4 ">
                     {isMobileTerminalVisible ? (
-                        <TerminalWindow title="fredonbytes.ts" className="w-full mx-auto">
+                        <TerminalWindow title="fredonbytes.ts" className="w-full">
                             <div className="font-mono text-xs sm:text-sm space-y-1 py-1">
                                 <div className="flex">
                                     <span className="text-slate-500 select-none w-6 sm:w-8 text-right mr-2 sm:mr-4">
