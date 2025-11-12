@@ -6,9 +6,9 @@ interface GridBackgroundProps {
 }
 
 export default function GridBackground({
-  density = 40,
+  density = 30,
   color = "rgba(0, 217, 255, 0.1)",
-  opacity = 0.1,
+  opacity = 0.32,
   className = "",
 }: GridBackgroundProps) {
   return (
@@ -20,6 +20,10 @@ export default function GridBackground({
           linear-gradient(${color} 1px, transparent 1px)
         `,
         backgroundSize: `${density}px ${density}px`,
+        WebkitMaskImage:
+          "radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)",
+        maskImage:
+          "radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)",
         opacity,
         zIndex: 0,
       }}
