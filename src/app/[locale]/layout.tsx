@@ -111,19 +111,22 @@ function configureHeadForTheme() {
       {/* Resource hints for analytics - Fonts are self-hosted via @fontsource */}
       <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-      <link rel="dns-prefetch" href="https://plausible.homelab-fredon.space" />
+      <link rel="dns-prefetch" href="https://plausible.io" />
 
       {/* Plausible Analytics - Defer loading for performance */}
       <script
         defer
         data-domain="fredonbytes.eu"
-        src="https://plausible.homelab-fredon.space/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"
+        src="https://plausible.io/js/pa-xYvMSJJOWbsGiAgM3L2IU.js"
       />
       <script
         dangerouslySetInnerHTML={{
-          __html: `window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`,
+          __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()`,
         }}
       />
+
+
 
       {/* Geo-targeting for Czech Republic - Enhanced for local SEO */}
       <meta name="geo.region" content="CZ-JM" />
