@@ -76,14 +76,15 @@ export default async function Footer({ locale }: FooterProps) {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2 mb-4 group">
-              <div className="relative w-8 h-8">
+              <div className="relative w-8 h-8 flex-shrink-0">
                 <Image
-                  src="/FredonBytes_GraphicLogo.png"
+                  src="/FredonBytes_GraphicLogo.webp"
                   alt="Fredonbytes Logo"
-                  fill
-                  className="object-contain transition-transform duration-200 group-hover:scale-110"
+                  width={32}
+                  height={32}
+                  className="object-contain transition-transform duration-200 group-hover:scale-110 w-full h-full"
                   loading="lazy"
-                  quality={80}
+                  quality={85}
                   sizes="32px"
                 />
               </div>
