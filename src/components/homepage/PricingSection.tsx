@@ -14,7 +14,7 @@ export default function PricingSection() {
     <section id="pricing" className="py-12 lg:py-14 ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="section-animate">
-          <GlassCard className="px-8 py-16" glowColor="normal" strongGlow>
+          <GlassCard className="px-8 py-16 bg-terminal-darker/80" glowColor="normal" strongGlow>
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 justify-center items-center gap-12">
               <div className="">
                 <h2 className="text-3xl text-center md:text-left lg:text-4xl font-extrabold mb-6 leading-tight font-mono text-terminal-light">

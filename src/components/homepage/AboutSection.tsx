@@ -160,7 +160,7 @@ export default async function AboutSection({
 
           {/* Mission & Vision - Terminal Styled */}
           <div className="section-animate-child grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-            <GlassCard className="p-8" glowColor="cyan">
+            <GlassCard className="p-8 bg-terminal-darker/50" glowColor="cyan">
               <h3 className="flex justify-center text-2xl font-bold text-terminal-light mb-4 font-mono">
                 <span className="text-neon-cyan">{'//'}</span>{" "}
                 {t("about.mission.title")}
@@ -169,7 +169,7 @@ export default async function AboutSection({
                 &ldquo;{t("about.mission.description")}&rdquo;
               </p>
             </GlassCard>
-            <GlassCard className="p-8" glowColor="purple">
+            <GlassCard className="p-8 bg-terminal-darker/50" glowColor="purple">
               <h3 className="text-2xl flex justify-center font-bold text-terminal-light mb-4 font-mono">
                 <span className="text-neon-purple">{'//'}</span>{" "}
                 {t("about.vision.title")}
@@ -191,7 +191,7 @@ export default async function AboutSection({
                 const Icon = value.icon;
                 return (
                   <div key={index} className="text-center">
-                    <GlassCard className="p-6 h-full hover:inset-shadow-xl hover:inset-shadow-neon-purple/10" glowColor="normal">
+                    <GlassCard className="p-6 h-full hover:inset-shadow-xl hover:inset-shadow-neon-purple/10 bg-terminal-darker/50" glowColor="normal">
                       <div className="w-16 h-16 mx-auto mb-4 bg-neon-cyan/10  hover:border-2 hover:border-neon-cyan border border-neon-cyan/40 rounded-xl flex items-center justify-center">
                         <Icon className="w-8 h-8 text-neon-cyan" />
                       </div>

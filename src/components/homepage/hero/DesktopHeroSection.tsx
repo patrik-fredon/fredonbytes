@@ -90,12 +90,12 @@ export default function DesktopClient() {
                             </motion.p>
                             <motion.div
                                 variants={itemVariants}
-                                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full sm:w-auto"
+                                className="flex flex-col sm:flex-row items-center justify-center  gap-4 w-full "
                             >
                                 <Link href="/contact" className="w-full sm:w-auto">
                                     <Button
                                         variant="gradient"
-                                        size="lg"
+                                        size="xl"
                                         className="font-mono w-full sm:w-auto"
                                     >
                                         $ start_project --now
@@ -104,7 +104,7 @@ export default function DesktopClient() {
                                 <Link href="/about" className="w-full sm:w-auto">
                                     <Button
                                         variant="secondary"
-                                        size="lg"
+                                        size="sm"
                                         className="font-mono w-full sm:w-auto"
                                     >
                                         $ view_team

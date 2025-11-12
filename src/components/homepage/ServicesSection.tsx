@@ -200,7 +200,7 @@ export default async function ServicesSection({
               const Icon = service.icon;
               return (
                 <div key={index} className="group">
-                  <TerminalWindow title={service.title} className="h-full">
+                  <TerminalWindow title={service.title} className="h-full bg-terminal-darker">
                     <div className="p-4 space-y-4">
                       <div className="flex items-center space-x-3">
                         <div

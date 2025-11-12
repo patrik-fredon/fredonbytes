@@ -363,7 +363,7 @@ export default function TerminalLayout() {
                                     </div>
                                     <span>fredonbytes.ts</span>
                                 </div>
-                            }
+                            } className="bg-terminal-darker"
                         >
                             <div className="py-1 space-y-1 max-h-[530px]">
                                 {terminalLines.map((line) => (
@@ -422,7 +422,7 @@ export default function TerminalLayout() {
             <section className="relative flex items-center w-full pb-6 justify-center overflow-hidden xl:hidden">
                 <motion.div variants={itemVariants} className="flex w-full m-4 ">
                     {isMobileTerminalVisible ? (
-                        <TerminalWindow title="fredonbytes.ts" className="w-full">
+                        <TerminalWindow title="fredonbytes.ts" className="w-full bg-terminal-darker">
                             <div className="font-mono text-xs sm:text-sm space-y-1 py-1">
                                 <div className="flex">
                                     <span className="text-slate-500 select-none w-6 sm:w-8 text-right mr-2 sm:mr-4">
