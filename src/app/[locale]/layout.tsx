@@ -59,7 +59,6 @@ const WebVitals = dynamic(
 const PlausibleAnalytics = dynamic(
   () => import("../../components/common/PlausibleAnalytics"),
   {
-    ssr: false, // Analytics should not run on server
     loading: () => null,
   },
 );
