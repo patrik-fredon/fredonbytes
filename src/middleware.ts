@@ -269,6 +269,8 @@ export function middleware(request: NextRequest) {
   //    - Blocks cookies on cross-site POST/PUT/DELETE (CSRF protection)
   //    - Preferred over 'strict' for multi-domain support
   //    - Compatible with subdomain navigation and OAuth flows
+  //    - SAFE: GET endpoint audit (2025-11-12) confirmed no state-changing operations
+  //      See SECURITY.md for full audit report (all 12 GET endpoints verified)
   //
   // 3. secure: true (production only)
   //    - Ensures cookie only sent over HTTPS in production

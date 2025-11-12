@@ -36,6 +36,55 @@ The double-submit pattern requires JavaScript to read the cookie and include it 
 
 **Reference:** [OWASP CSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)
 
+**Why sameSite: 'lax'?**
+
+We use `sameSite: 'lax'` instead of `'strict'` for the following reasons:
+
+1. **Multi-domain Support** - Compatible with our secondary domains (fredonbytes.com, .cloud, .cz, .tech)
+2. **CSRF Protection** - Blocks cookies on cross-site POST/PUT/DELETE requests (where CSRF attacks occur)
+3. **User Experience** - Allows cookies on top-level navigation (GET requests), enabling seamless multi-domain browsing
+4. **OAuth Compatibility** - Works with third-party authentication flows if needed in the future
+
+**GET Endpoint Security Audit (2025-11-12):**
+
+A comprehensive audit of all GET endpoints confirmed **no state-changing operations are performed via GET requests**. This is critical for `sameSite: 'lax'` security, as it allows cookies on cross-site GET requests.
+
+**Audited Endpoints:**
+
+| Endpoint | Purpose | State-Changing? | Security Status |
+|----------|---------|-----------------|-----------------|
+| `/api/health` | Health check | ❌ No | ✅ Safe |
+| `/api/csrf` | CSRF token info | ❌ No | ✅ Safe |
+| `/api/redis-health` | Redis status | ❌ No | ✅ Safe |
+| `/api/cookies/consent` | Fetch consent | ❌ No (read-only) | ✅ Safe |
+| `/api/form/questions` | Fetch form questions | ❌ No (read-only) | ✅ Safe |
+| `/api/survey/questions` | Fetch survey questions | ❌ No (read-only) | ✅ Safe |
+| `/api/projects` | Fetch projects | ❌ No (read-only + cached) | ✅ Safe |
+| `/api/projects/technologies` | Fetch technologies | ❌ No (read-only + cached) | ✅ Safe |
+| `/api/pricing/tiers` | Fetch pricing tiers | ❌ No (read-only + cached) | ✅ Safe |
+| `/api/pricing/items` | Fetch pricing items | ❌ No (read-only + cached) | ✅ Safe |
+| `/api/handle-protocol` | PWA protocol handler | ❌ No (redirect only) | ✅ Safe |
+| `/api/open-file` | PWA file handler | ❌ No (redirect only) | ✅ Safe |
+
+**State-Changing Operations:**
+
+All state-changing operations (create, update, delete) are properly restricted to POST/PUT/DELETE methods and protected by:
+- CSRF token validation (middleware)
+- Input sanitization (Zod schemas)
+- Rate limiting (Redis)
+- Server-side validation
+
+**GET Endpoint Guidelines for Developers:**
+
+When creating new GET endpoints, ensure:
+- [ ] **No state changes** - Never create, update, or delete data via GET
+- [ ] **Read-only operations** - Only fetch and return data
+- [ ] **Idempotent** - Multiple identical requests have the same effect
+- [ ] **Cacheable** - Can be safely cached (use appropriate Cache-Control headers)
+- [ ] **No sensitive actions** - Never trigger emails, notifications, or billing via GET
+
+**Reference:** [OWASP REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)
+
 ### 2. Content Security Policy (CSP)
 
 **Location:** `next.config.ts` (lines 161-173)
@@ -182,7 +231,8 @@ When adding new features:
 
 - [ ] Sanitize all user inputs
 - [ ] Validate with Zod schemas server-side
-- [ ] Apply CSRF protection to state-changing operations
+- [ ] Apply CSRF protection to state-changing operations (POST/PUT/DELETE only)
+- [ ] Ensure GET endpoints perform NO state-changing operations
 - [ ] Test with CSP enabled
 - [ ] Apply rate limiting to public endpoints
 - [ ] Use HTTPS-only cookies in production
@@ -213,8 +263,9 @@ When adding new features:
 
 | Date | Type | Findings | Status |
 |------|------|----------|--------|
-| 2025-11-12 | Code Review | CSRF sameSite policy | Fixed |
-| 2025-11-12 | Code Review | XSS documentation | Documented |
+| 2025-11-12 | Code Review | CSRF sameSite policy | ✅ Fixed (changed to 'lax') |
+| 2025-11-12 | Code Review | XSS documentation | ✅ Documented (comprehensive inline docs) |
+| 2025-11-12 | GET Endpoint Audit | All 12 GET endpoints audited | ✅ Passed (no state-changing operations) |
 
 ## Resources
 
@@ -226,5 +277,5 @@ When adding new features:
 ---
 
 **Last Updated:** 2025-11-12
-**Version:** 1.0
+**Version:** 1.1
 **Maintainer:** Fredonbytes Security Team
