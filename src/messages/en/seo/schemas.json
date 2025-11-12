@@ -1,0 +1,29 @@
+{
+  "jsonLd": {
+    "organizationName": "Fredonbytes",
+    "organizationDescription": "Full-spectrum IT solutions provider specializing in software development, graphic design, SEO, and social media marketing",
+    "organizationType": "TechnologyCompany",
+    "address": {
+      "streetAddress": "",
+      "addressLocality": "Brno",
+      "addressRegion": "South Moravian Region",
+      "postalCode": "",
+      "addressCountry": "CZ"
+    },
+    "contactPoint": {
+      "telephone": "+420733517625",
+      "contactType": "customer service",
+      "email": "info@fredonbytes.com"
+    },
+    "services": [
+      "Software Development",
+      "Web Development",
+      "Graphic Design",
+      "SEO Services",
+      "Social Media Marketing",
+      "IT Consulting"
+    ],
+    "founder": "Patrik Fredon",
+    "foundingDate": "2023"
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "about": {
+    "title": "Wer sind wir?",
+    "company": "Fredonbytes!",
+    "subtitle": "Gegründet im Jahr 2023, eliminieren wir die Notwendigkeit mehrerer Anbieter, indem wir Ihre digitale All-in-One-Armee werden und nahtlose, wirkungsvolle Ergebnisse unter einem Dach gewährleisten.",
+    "highlight": " digitale All-in-One-Armee",
+    "mission": {
+      "title": "Unsere Mission",
+      "description": "Unternehmen mit vereinten, modernsten IT-Lösungen zu stärken—Geschwindigkeit, Kreativität und unermüdliche Effizienz zu liefern."
+    },
+    "vision": {
+      "title": "Unsere Vision",
+      "description": "Eine Welt, in der Marken digital ohne Fragmentierung gedeihen—Fredonbytes als globaler Standard für integrierte Tech-Exzellenz."
+    },
+    "values": {
+      "title": "Unsere Grundwerte",
+      "unifiedExcellence": {
+        "title": "Vereinte Exzellenz",
+        "description": "Ein Team, unendliche Lösungen."
+      },
+      "clientCentric": {
+        "title": "Kundenorientierte Agilität",
+        "description": "Ihre Ziele treiben unsere Technik an."
+      },
+      "innovation": {
+        "title": "Innovation ohne Kompromisse",
+        "description": "Mutige Ideen, perfekte Ausführung."
+      },
+      "transparency": {
+        "title": "Transparenz & Vertrauen",
+        "description": "Keine Black Boxes, nur Ergebnisse."
+      }
+    },
+    "motto": {
+      "title": "Code. Erstellen. Erobern.",
+      "subtitle": "Unser Motto"
+    },
+    "team": {
+      "title": "Lernen Sie unser Team kennen",
+      "members": {
+        "patrik": {
+          "name": "Bc. Patrik Fredon BSc.",
+          "role": "CEO & Gründer",
+          "expertise": "Full-Stack-Entwicklung, Digitale Strategie",
+          "quote": "Effizienz ist die neue Innovation."
+        },
+        "jana": {
+          "name": "Ing. Jana Dvořáková",
+          "role": "CTO",
+          "expertise": "KI, Cloud-Architektur",
+          "quote": "Wenn es nicht skalierbar ist, ist es nicht nachhaltig."
+        },
+        "lucie": {
+          "name": "Ing. Lucie Dvořáková",
+          "role": "Creative Director",
+          "expertise": "Markenbildung, UX/UI-Design",
+          "quote": "Pixelperfekt ist kein Ziel—es ist die Grundlage."
+        },
+        "tomas": {
+          "name": "Mgr. Tomáš Horák",
+          "role": "SEO & Metadata-Spezialist",
+          "expertise": "Datenanalyse, SEM",
+          "quote": "Sichtbarkeit ohne Strategie ist nur Lärm."
+        },
+        "chloe": {
+          "name": "Chloe Zaytko",
+          "role": "UI/UX Designer",
+          "expertise": "Benutzeroberflächendesign, Benutzererfahrung",
+          "quote": "Design ist nicht nur, wie es aussieht, sondern wie es funktioniert."
+        },
+        "petra": {
+          "name": "Petra Chromá",
+          "role": "UI/UX Designer",
+          "expertise": "Benutzeroberflächendesign, Benutzererfahrung",
+          "quote": "Design ist nicht nur, wie es aussieht, sondern wie es funktioniert"
+        },
+        "levi": {
+          "name": "Levi",
+          "role": "Technischer Leiter",
+          "expertise": "Teamführung, Best Practices",
+          "quote": "Führung bedeutet, anderen zu ermöglichen, Großes zu erreichen"
+        },
+        "david": {
+          "name": "Bc. David Ondra",
+          "role": "UI/UX Designer",
+          "expertise": "Strategisches Denken, Innovation",
+          "quote": "Innovation unterscheidet einen Führer von einem Nachfolger"
+        },
+        "petr": {
+          "name": "Mgr. Petr Kouba",
+          "role": "Systemingenieur",
+          "expertise": "Infrastruktur, Systemarchitektur",
+          "quote": "Robuste Systeme bauen, die der Zeit standhalten"
+        },
+        "thomas": {
+          "name": "Thomas Goethe",
+          "role": "Systemanalyst",
+          "expertise": "Systemoptimierung, Workflow-Analyse",
+          "quote": "Systeme zu verstehen ist der Schlüssel zu ihrer Verbesserung"
+        },
+        "andrea": {
+          "name": "Andrea",
+          "role": "Site Reliability Engineer",
+          "expertise": "Verfügbarkeit, Überwachung, Vorfallreaktion",
+          "quote": "Zuverlässigkeit ist nicht nur eine Funktion, es ist ein Versprechen"
+        },
+        "jess": {
+          "name": "Jess Letcher",
+          "role": "Scrum Master",
+          "expertise": "Agile Praktiken, Team-Facilitation",
+          "quote": "Großartige Teams basieren auf Vertrauen und Zusammenarbeit"
+        },
+        "matthew": {
+          "name": "Matthew Brusnighan",
+          "role": "QA Tester",
+          "expertise": "Qualitätssicherung, Testing",
+          "quote": "Qualität ist niemals ein Zufall; sie ist immer das Ergebnis von Anstrengung"
+        },
+        "michal": {
+          "name": "Michal Reiner",
+          "role": "IT-Projektmanager",
+          "expertise": "Projektmanagement, Geschäftsausrichtung",
+          "quote": "Erfolg ist das Ergebnis klarer Vision und präziser Ausführung"
+        },
+        "ella": {
+          "name": "Ella Dean",
+          "role": "QA Tester",
+          "expertise": "Testing, Softwarequalität",
+          "quote": "Starke Fundamente bauen leistungsstarke Lösungen"
+        },
+        "olive": {
+          "name": "Olive Dsouza",
+          "role": "HR & Kundenakquise",
+          "expertise": "Personalwesen, Kundenbeziehungen",
+          "quote": "Menschen sind das Herz jedes großartigen Unternehmens"
+        },
+        "emily": {
+          "name": "Bc. Emily Dsouza",
+          "role": "Head HR & Kundenakquise",
+          "expertise": "Personalwesen, Kundenbeziehungen",
+          "quote": "Starke Menschen bauen starke Unternehmen"
+        }
+      }
+    },
+    "founderQuote": {
+      "quote": "In einer fragmentierten digitalen Welt sind wir der Klebstoff—verschmelzen Kreativität, Technologie und Strategie zu einer unaufhaltsamen Kraft.",
+      "author": "Bc. Patrik \"Fredon\" Svoboda BSc., CEO & Gründer"
+    },
+    "mantra": "Ein Team. Keine Grenzen."
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "Über uns - FredonBytes | Ihre All-in-One digitale Armee",
+      "description": "Entdecken Sie die Geschichte hinter FredonBytes und lernen Sie das Team kennen, das Ihre digitale Zukunft aufbaut. Von Code bis Klicks liefern wir vollständige digitale Dominanz."
+    },
+    "navigation": {
+      "label": "Über uns"
+    },
+    "companyStory": {
+      "title": "Unsere Geschichte: Die Geburt der digitalen Armee",
+      "content": [
+        "In der sich ständig weiterentwickelnden Technologielandschaft sah ein Entwickler ein Muster: Unternehmen ertranken in der Fragmentierung von Anbietern, sprangen zwischen Agenturen für Entwicklung, Design, Marketing und Support. Jede Übergabe bedeutete verlorenen Kontext, verzögerte Zeitpläne und verwässerte Vision.",
+        "Was als Fredons persönliche Mission begann, dieses Chaos zu beseitigen, wurde zu FredonBytes - eine vereinte Kraft, in der Code, Kreativität und Strategie zusammenkommen. Wir sind nicht nur eine weitere Agentur; wir sind Ihre All-in-One digitale Armee, entwickelt, um nahtlose, wirkungsvolle Ergebnisse ohne Komplexität zu liefern.",
+        "Der Weg war nicht ohne Herausforderungen. Späte Nächte beim Debuggen von Code, unzählige Kundenbesprechungen, Pivots und Iterationen - jedes Hindernis wurde zu einer Lektion, die unseren Ansatz formte. Wir lernten, dass wahre Exzellenz nicht aus der perfekten Ausführung einer Sache kommt, sondern aus der Orchestrierung mehrerer Disziplinen in perfekter Harmonie. Diese Erkenntnis wurde zum Eckpfeiler unserer Philosophie.",
+        "Als unser Team wuchs, wuchsen auch unsere Fähigkeiten. Wir zogen leidenschaftliche Fachleute an, die unsere Vision teilten - Designer, die wie Entwickler denken, Vermarkter, die UX verstehen, Ingenieure, die Branding schätzen. Jedes neue Mitglied fügte nicht nur Fähigkeiten hinzu; sie vervielfachten unser kollektives Potenzial durch Zusammenarbeit und funktionsübergreifende Expertise.",
+        "Von bescheidenen Anfängen als Solo-Entwickler zu einem umfassenden IT-Kraftwerk wurde unsere Reise von einer Kernüberzeugung angetrieben: Exzellenz sollte nicht fragmentiert sein. Jede Codezeile, jedes Pixel, jede Kampagne - unter einem Dach erstellt, von einer Vision geleitet, von einem unaufhaltsamen Team ausgeführt.",
+        "Heute steht FredonBytes als Beweis dafür, dass vereintes Fachwissen überlegene Ergebnisse liefert. Wir bauen nicht nur Websites oder schalten Anzeigen - wir architektieren vollständige digitale Ökosysteme, in denen jedes Element in perfekter Harmonie zusammenarbeitet, um das Potenzial Ihrer Marke zu verstärken. Unsere Kunden müssen nicht mehrere Anbieter verwalten, verschiedene Teams verfolgen oder sich um Integrations-Albträume sorgen. Sie haben einen Partner, einen Ansprechpartner, ein Team, dem ihr Erfolg wirklich am Herzen liegt."
+      ],
+      "founder": "Fredon",
+      "mission": "Die All-in-One digitale Armee zu sein, die Unternehmen brauchen - vereinte IT-Exzellenz ohne Anbieter-Fragmentierung liefern"
+    },
+    "team": {
+      "title": "Unser Team",
+      "subtitle": "Die digitale Armee hinter Ihrem Erfolg",
+      "noPhoto": "Teammitglied Foto",
+      "readMore": "Mehr über {name} erfahren"
+    },
+    "title": "Über FredonBytes"
+  }
+}

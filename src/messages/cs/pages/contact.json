@@ -1,0 +1,213 @@
+{
+  "contact": {
+    "meta": {
+      "title": "Kontakt - FredonBytes | Spojte se s námi",
+      "description": "Připraveni transformovat vaši digitální přítomnost? Kontaktujte FredonBytes pro odborné IT poradenství, vývoj softwaru a digitální marketing. Získejte bezplatnou konzultaci ještě dnes."
+    },
+    "title": "Pojďme spolupracovat",
+    "subtitle": "Připraveni transformovat vaši digitální přítomnost? Pojďme probrat váš projekt a vytvořit něco úžasného společně.",
+    "sectionTitle": "Pojďme spolupracovat",
+    "sectionDescription": "Připraveni transformovat vaši digitální přítomnost? Pojďme probrat váš projekt a vytvořit něco úžasného společně.",
+    "getInTouch": "Kontaktujte nás",
+    "email": "Email",
+    "phone": "Telefon",
+    "location": "Lokace",
+    "responseTime": "Čas odpovědi",
+    "responseTimeValue": "Do 24 hodin",
+    "secureConfidential": {
+      "title": "Zabezpečené a důvěrné",
+      "message": "Vaše informace jsou šifrované a chráněné. Respektujeme vaše soukromí a nikdy nebudeme sdílet vaše údaje s třetími stranami."
+    },
+    "step": "Krok",
+    "of": "z",
+    "complete": "Dokončeno",
+    "basicInfo": "Základní informace",
+    "firstName": "Jméno",
+    "lastName": "Příjmení",
+    "firstNamePlaceholder": "Jan",
+    "lastNamePlaceholder": "Novák",
+    "emailPlaceholder": "jan@priklad.cz",
+    "phonePlaceholder": "+420 123 456 789",
+    "continue": "Pokračovat",
+    "projectDetails": "Detaily projektu",
+    "company": "Název společnosti",
+    "companyPlaceholder": "Vaše společnost (Volitelné)",
+    "projectType": "Typ projektu",
+    "selectProjectType": "Jaký typ projektu potřebujete?",
+    "budget": "Rozpočet",
+    "selectBudget": "Jaký máte rozpočet pro tento projekt?",
+    "timeline": "Časový harmonogram",
+    "selectTimeline": "Kdy potřebujete projekt dokončit?",
+    "back": "Zpět",
+    "projectRequirements": "Požadavky projektu",
+    "projectDescription": "Detaily projektu",
+    "projectDescriptionPlaceholder": "Řekněte nám více o požadavcích vašeho projektu, cílech a specifických funkcích, které potřebujete...",
+    "additionalRequirements": "Požadované funkce (Volitelné)",
+    "subscribeNewsletter": "Přihlásit se k odběru newsletteru pro aktualizace a tipy",
+    "agreePolicies": "Souhlasím se Zásadami ochrany osobních údajů",
+    "sendMessage": "Odeslat zprávu",
+    "success": {
+      "title": "Děkujeme!",
+      "message": "Vaše zpráva byla úspěšně odeslána. Ozveme se vám do 24 hodin.",
+      "cta": "Přejít na domovskou stránku"
+    },
+    "form": {
+      "steps": {
+        "step": "Krok {current} z {total}",
+        "progress": "Dokončeno {percent}%"
+      },
+      "image": {
+        "label": "Nahrát obrázky",
+        "uploading": "Nahrávání...",
+        "uploadedFile": "Obrázek úspěšně nahrán",
+        "sizeWarning": "Maximálně 5MB na obrázek, 50MB celkem",
+        "remaining": "Zbývá: {size}"
+      },
+      "basicInfo": {
+        "title": "Základní informace",
+        "firstName": {
+          "label": "Jméno",
+          "placeholder": "Jan",
+          "required": true
+        },
+        "lastName": {
+          "label": "Příjmení",
+          "placeholder": "Novák",
+          "required": true
+        },
+        "email": {
+          "label": "Emailová adresa",
+          "placeholder": "jan@priklad.cz",
+          "required": true
+        },
+        "phone": {
+          "label": "Telefonní číslo",
+          "placeholder": "+420 123 456 789",
+          "required": true
+        }
+      },
+      "projectDetails": {
+        "title": "Detaily projektu",
+        "company": {
+          "label": "Název společnosti",
+          "placeholder": "Vaše společnost (Volitelné)"
+        },
+        "projectType": {
+          "label": "Typ projektu",
+          "placeholder": "Jaký typ projektu potřebujete?",
+          "required": true,
+          "options": [
+            "Vývoj webu",
+            "Vývoj mobilní aplikace",
+            "E-commerce platforma",
+            "Design značky a identity",
+            "SEO a digitální marketing",
+            "Správa sociálních sítí",
+            "IT poradenství",
+            "Vlastní software",
+            "Jiné"
+          ]
+        },
+        "budget": {
+          "label": "Rozpočet",
+          "placeholder": "Jaký máte rozpočet pro tento projekt?",
+          "required": true,
+          "options": [
+            "Pod 20 000 korun",
+            "20 000 - 50 000 CZK",
+            "50 000 - 75 000 CZK",
+            "75 000 - 100 000 CZK",
+            "Nad 100 000 CZK",
+            "Ještě nevím"
+          ]
+        },
+        "timeline": {
+          "label": "Časový harmonogram",
+          "placeholder": "Kdy potřebujete projekt dokončit?",
+          "required": true,
+          "options": [
+            "Co nejdříve (Rychlý projekt)",
+            "1-2 měsíce",
+            "3-6 měsíců",
+            "6-12 měsíců",
+            "Více než 12 měsíců",
+            "Flexibilní časový harmonogram"
+          ]
+        }
+      },
+      "requirements": {
+        "title": "Požadavky projektu",
+        "message": {
+          "label": "Detaily projektu",
+          "placeholder": "Řekněte nám více o požadavcích vašeho projektu, cílech a specifických funkcích, které potřebujete...",
+          "required": true
+        },
+        "features": {
+          "label": "Požadované funkce (Volitelné)",
+          "options": [
+            "Responzivní design",
+            "E-commerce funkcionalita",
+            "Správa obsahu",
+            "Uživatelská autentizace",
+            "Platební integrace",
+            "Analytika a reportování",
+            "Integrace třetích stran",
+            "Vícejazyčná podpora"
+          ]
+        },
+        "newsletter": {
+          "label": "Přihlásit se k odběru newsletteru pro aktualizace a tipy"
+        },
+        "privacy": {
+          "label": "Souhlasím s {link}Zásadami ochrany osobních údajů{/link}",
+          "required": true
+        }
+      },
+      "actions": {
+        "next": "Další krok",
+        "previous": "Předchozí",
+        "submit": "Odeslat zprávu",
+        "submitting": "Odesílání..."
+      }
+    },
+    "info": {
+      "title": "Kontaktujte nás",
+      "email": {
+        "title": "Email",
+        "value": "info@fredonbytes.cz"
+      },
+      "phone": {
+        "title": "Telefon",
+        "value": "+420 799 027 984"
+      },
+      "location": {
+        "title": "Lokace",
+        "value": "Brno, Česká republika"
+      },
+      "responseTime": {
+        "title": "Čas odpovědi",
+        "value": "Do 24 hodin"
+      }
+    },
+    "security": {
+      "title": "Zabezpečené a důvěrné",
+      "description": "Vaše informace jsou šifrované a chráněné. Respektujeme vaše soukromí a nikdy nebudeme sdílet vaše údaje s třetími stranami."
+    },
+    "errors": {
+      "firstName": "Jméno musí mít alespoň 2 znaky",
+      "lastName": "Příjmení musí mít alespoň 2 znaky",
+      "email": "Zadejte platnou emailovou adresu",
+      "phone": "Zadejte platné telefonní číslo",
+      "projectType": "Vyberte typ projektu",
+      "budget": "Vyberte rozpočet",
+      "timeline": "Vyberte časový harmonogram",
+      "message": "Poskytněte více detailů o vašem projektu",
+      "privacy": "Musíte souhlasit se zásadami ochrany osobních údajů"
+    },
+    "error": {
+      "message": "Odeslání formuláře se nezdařilo. Zkuste to prosím znovu."
+    },
+    "privacyPolicy": "Zásady ochrany osobních údajů",
+    "agreeToPrivacy": "Souhlas se zásadami"
+  }
+}

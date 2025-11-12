@@ -1,0 +1,150 @@
+{
+  "external": {
+    "externalLinks": "External Links"
+  },
+  "emails": {
+    "customer": {
+      "subject": "Thank you for contacting Fredonbytes - We'll be in touch soon!",
+      "greeting": "Thank You",
+      "thankYou": "Your message has been received",
+      "confirmationMessage": "We've received your inquiry and will respond within 24 hours.",
+      "responseTime": "We commit to responding within 24 hours",
+      "surveyInvitation": "Help us improve! Please take a moment to complete our quick satisfaction survey.",
+      "surveyButton": "Complete Survey",
+      "whatHappensNext": "What happens next?",
+      "steps": {
+        "review": "Review (within 2 hours): Our team will review your requirements",
+        "response": "Response (within 24 hours): We'll reach out to discuss your project",
+        "consultation": "Consultation: Free strategy session to understand your needs",
+        "proposal": "Proposal: Detailed project proposal and timeline"
+      },
+      "projectSummary": "Your Project Summary:",
+      "inTheMeantime": "In the meantime, feel free to:",
+      "suggestions": [
+        "Check out our <a href=\"https://fredonbytes.cz\">project portfolio</a>",
+        "Follow us on social media for updates",
+        "Call us directly at <a href=\"tel:+420799027984\">+420 799 027 984</a>"
+      ],
+      "visitWebsite": "Visit Our Website"
+    },
+    "admin": {
+      "subject": "New Contact Form Submission",
+      "newSubmission": "New Contact Form Submission",
+      "contactInfo": "Contact Information",
+      "projectDetails": "Project Details",
+      "projectDescription": "Project Description",
+      "additionalRequirements": "Additional Requirements",
+      "preferences": "Preferences",
+      "newsletterSubscription": "Newsletter subscription",
+      "privacyAccepted": "Privacy policy accepted",
+      "yes": "Yes",
+      "no": "No",
+      "footerNote": "This message was sent from the contact form on fredonbytes.cz",
+      "respondWithin": "Please respond within 24 hours as promised on the website."
+    },
+    "common": {
+      "companyName": "Fredonbytes",
+      "tagline": "Your All-in-One IT Powerhouse",
+      "location": "Brno, Czech Republic"
+    },
+    "survey": {
+      "subject": "Thank you for your feedback - Fredonbytes",
+      "thankYou": "Thank You for Your Feedback",
+      "feedbackReceived": "We've received your survey response",
+      "greeting": "Thank you",
+      "completionMessage": "Your survey has been submitted successfully!",
+      "feedbackValue": "Your feedback is invaluable in helping us improve our services and better meet your needs.",
+      "whatNext": "What happens next?",
+      "reviewFeedback": "Our team will carefully review your feedback",
+      "improveServices": "We'll use your insights to enhance our services",
+      "followUp": "If needed, we may reach out to discuss your feedback further",
+      "gratitude": "Thank you for taking the time to help us serve you better!"
+    },
+    "form": {
+      "subject": "Thank you for your feedback - Fredonbytes",
+      "thankYou": "Thank You for Your Feedback",
+      "feedbackReceived": "We've received your form response",
+      "greeting": "Thank you",
+      "completionMessage": "Your form has been submitted successfully!",
+      "feedbackValue": "Your requirements will better help us design a tailor-made solution for you!",
+      "whatNext": "What happens next?",
+      "reviewFeedback": "Our team will carefully review your needs",
+      "improveServices": "Your answers will help us create the implementation plan and future steps.",
+      "followUp": "If needed, we may reach out to discuss your feedback further",
+      "gratitude": "Thank you for taking the time to enter the IT world without worries!",
+      "next": "We will schedule the first meeting (online or in person) and we can start!"
+    },
+    "newsletter": {
+      "subject": "Welcome to Fredonbytes Newsletter!",
+      "welcome": "Welcome to Our Newsletter",
+      "thanksForSubscribing": "Thank you for subscribing",
+      "greeting": "Hello",
+      "subscriptionConfirmed": "Your subscription has been confirmed!",
+      "whatToExpect": "You're now part of our community and will receive the latest updates, tips, and exclusive offers.",
+      "youWillReceive": "Here's what you can expect:",
+      "benefits": {
+        "updates": "Latest project updates and case studies",
+        "tips": "Expert tips and insights on web development and digital marketing",
+        "offers": "Exclusive offers and early access to new services",
+        "news": "Industry news and trends"
+      },
+      "stayTuned": "Stay tuned for our next newsletter!",
+      "unsubscribeInfo": "You can unsubscribe at any time by clicking the unsubscribe link in any email."
+    }
+  },
+  "company": {
+    "foundingDate": "2023"
+  },
+  "pages": {
+    "home": {
+      "title": "Fredonbytes - Your All-in-One IT Powerhouse",
+      "description": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
+      "keywords": "web development, software development, IT solutions, graphic design, SEO, social media marketing, Brno, Czech Republic"
+    },
+    "about": {
+      "title": "About Fredonbytes - Your Digital Transformation Partner",
+      "description": "Founded in 2023, Fredonbytes eliminates the need for multiple vendors by becoming your one-stop digital army, ensuring seamless, high-impact results under one roof.",
+      "keywords": "about fredonbytes, digital transformation, IT company, software development team, Brno tech"
+    },
+    "services": {
+      "title": "IT Services - Software Development, Design & Marketing",
+      "description": "Comprehensive IT solutions from development to marketing. Eliminate complexity with our unified approach to software development, design, SEO, and social media management.",
+      "keywords": "IT services, software development, web development, graphic design, SEO services, social media marketing"
+    },
+    "projects": {
+      "title": "Our Portfolio - Fredonbytes Project Gallery",
+      "description": "Explore our latest work and see how we've helped businesses transform their digital presence with cutting-edge solutions.",
+      "keywords": "portfolio, web development projects, software projects, design showcase, case studies"
+    },
+    "pricing": {
+      "title": "Transparent Pricing Plans - Choose Your IT Solution",
+      "description": "Transparent pricing with no hidden fees. Scale your business with our flexible IT solutions from starter to enterprise plans.",
+      "keywords": "pricing, IT services cost, web development pricing, transparent pricing, business plans"
+    },
+    "contact": {
+      "title": "Contact Fredonbytes - Let's Work Together",
+      "description": "Ready to transform your digital presence? Contact our team in Brno, Czech Republic for a free consultation on your next IT project.",
+      "keywords": "contact, Brno IT company, free consultation, project inquiry, Czech Republic tech"
+    },
+    "links": {
+      "title": "Fredonbytes Links - Connect With Us Everywhere",
+      "description": "All our important links in one place. Connect with Fredonbytes on social media, GitHub, and our various platforms.",
+      "keywords": "social links, GitHub, LinkedIn, contact links, Fredonbytes platforms"
+    },
+    "privacy-policy": {
+      "title": "Privacy Policy - How We Protect Your Data",
+      "description": "Learn how Fredonbytes collects, uses, and protects your personal information. We are committed to maintaining your privacy and data security.",
+      "keywords": "privacy policy, data protection, GDPR compliance, personal information, data security"
+    },
+    "terms-of-service": {
+      "title": "Terms of Service - Fredonbytes Usage Agreement",
+      "description": "Terms and conditions for using Fredonbytes services. Understand your rights and obligations when working with our IT solutions.",
+      "keywords": "terms of service, usage agreement, service terms, legal terms, conditions"
+    },
+    "cookie-policy": {
+      "title": "Cookie Policy - How We Use Cookies",
+      "description": "Information about how Fredonbytes uses cookies to improve your browsing experience and analyze website usage.",
+      "keywords": "cookie policy, website cookies, tracking, analytics, user experience"
+    }
+  }
+}

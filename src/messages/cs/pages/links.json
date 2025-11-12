@@ -1,0 +1,28 @@
+{
+  "linktree": {
+    "linktree": {
+      "companyWebsiteTitle": "Hlavní web"
+    },
+    "personalPortfolioTitle": "Osobní Fredonovo portfolio",
+    "personalPortfolioDescription": "Zde najdete osobní CV Fredona",
+    "projectGalleryTitle": "Galerie projektů",
+    "projectGalleryDescription": "Galerie projektů a dev hub FredonBytes | \nUžitečné úryvky komponent, dokumentace a mnoho dalšího!",
+    "techSupportTitle": "Máte problém? \nDejte nám vědět!",
+    "techSupportDescription": "Vyplňte formulář a kontaktujte nás s jakýmkoliv problémem ohledně některého z našich projektů!﻿",
+    "githubOrgTitle": "FredonBytes | \nGitHub",
+    "githubOrgDescription": "Oficiální GitHub úložiště FredonBytes",
+    "githubPersonalTitle": "Patrik Fredon | \nGitHub",
+    "githubPersonalDescription": "Oficiální úložiště GitHub Patrika Fredona",
+    "companyWebsiteTitle": "FredonBytes | \nHlavní stránka",
+    "ourPlatformsHeading": "FredonBytes | \nLinktree",
+    "githubHeading": "GitHub",
+    "companyHeading": "Společnost",
+    "footerLocation": "Et in tenebris codicem inveni lucem.",
+    "footerTagline": "- Fredon",
+    "profileHeader": {
+      "title": "$ Vaše IT síla na jednom místě",
+      "description": "Od kódu po kliknutí poskytujeme kompletní digitální dominanci.         \nPlnospektrální IT řešení kombinující špičkový vývoj, výrazný design a strategický marketing – vše pod jednou střechou."
+    },
+    "companyWebsiteDescription": "Oficiální hlavní stránka FredonBytes."
+  }
+}

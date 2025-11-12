@@ -1,0 +1,118 @@
+{
+  "navigation": {
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "links": "Links",
+    "portfolio": "Portfolio",
+    "gallery": "Gallery",
+    "support": "Support",
+    "allLinks": "All Links",
+    "getStarted": "Get Started",
+    "servicesHosting": "Hosting",
+    "servicesBranding": "Branding",
+    "servicesConsulting": "IT Consulting",
+    "servicesSeo": "SEO Optimization",
+    "servicesSocialMedia": "Social Media",
+    "servicesDevelopment": "Development",
+    "servicesDesign": "Design"
+  },
+  "footer": {
+    "description": "Your All-in-One IT Powerhouse. From code to clicks, we deliver complete digital dominance.",
+    "contact": {
+      "location": "Brno, Czech Republic",
+      "phone": "+420 733 517 625",
+      "email": "info@fredonbytes.com"
+    },
+    "sections": {
+      "quickLinks": "Quick Links",
+      "ourPlatforms": "Our Platforms",
+      "legalSocial": "Legal & Social"
+    },
+    "links": {
+      "aboutUs": "About Us",
+      "personalPortfolio": "Personal Portfolio",
+      "projectGallery": "Project Gallery",
+      "technicalSupport": "Technical Support",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "cookiePolicy": "Cookie Policy",
+      "gdpr": "GDPR"
+    },
+    "social": {
+      "githubFredon": "GitHub - FredonBytes",
+      "githubPatrik": "GitHub - Patrik Fredon",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "copyright": "© {year} Fredonbytes. All rights reserved.",
+    "taglines": {
+      "madeWith": "Made with ❤️ in Czech Republic",
+      "motto": "Code. Create. Conquer."
+    }
+  },
+  "metadata": {
+    "siteName": "Fredonbytes",
+    "title": "Fredonbytes - Complete IT Services | Development, Design, Marketing, Security",
+    "description": "🚀 Complete IT solutions Brno ✓ Software & mobile app development ✓ Graphic design & branding ✓ SEO & PPC ✓ Social media management ✓ Cybersecurity ✓ AI integration ✓ IT consulting ✓ Copywriting ✓ 24/7 support",
+    "keywords": "IT services Brno, digital agency Czech Republic, software development, mobile app development, full-stack development, web development, React development, Next.js, API integration, cloud solutions, e-commerce development, graphic design, UX/UI design, web design, branding, logo design, corporate identity, SEO optimization, digital marketing, PPC campaigns, Google Ads, SEM services, content marketing, email marketing, social media management, Instagram marketing, Facebook marketing, LinkedIn marketing, copywriting, SEO copywriting, IT consulting, cybersecurity, security audit, NIS2 compliance, GDPR consulting, digital transformation, web hosting, 24/7 IT support, AI integration, automation, artificial intelligence, data analytics, Czech Republic, South Moravia",
+    "logoAlt": "Fredonbytes Logo"
+  },
+  "manifest": {
+    "name": "Fredonbytes - Your All-in-One IT Powerhouse",
+    "shortName": "Fredonbytes",
+    "description": "From code to clicks, we deliver complete digital dominance. Full-spectrum IT solutions including software development, graphic design, SEO, and social media marketing.",
+    "screenshots": {
+      "mobile": "Mobile screenshot",
+      "desktop": "Desktop screenshot"
+    }
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "services": "services"
+  },
+  "common": {
+    "buttons": {
+      "getStarted": "Get Started",
+      "learnMore": "Learn More",
+      "viewMore": "View More",
+      "contactUs": "Contact Us",
+      "tryFree": "Try Free",
+      "readMore": "Read More",
+      "close": "Close",
+      "next": "Next",
+      "previous": "Previous",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "save": "Save",
+      "edit": "Edit",
+      "delete": "Delete",
+      "loading": "Loading...",
+      "viewAll": "View All"
+    },
+    "status": {
+      "success": "Success",
+      "error": "Error",
+      "warning": "Warning",
+      "info": "Info",
+      "loading": "Loading"
+    },
+    "labels": {
+      "required": "Required",
+      "optional": "Optional",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "company": "Company",
+      "website": "Website"
+    }
+  },
+  "notFound": {
+    "notFoundHeading": "Page Not Found",
+    "notFoundDescription": "We are sorry, but there seems to be an issue as we cannot find this page. Did you type the address correctly?",
+    "goHomeButton": "Go Home"
+  }
+}

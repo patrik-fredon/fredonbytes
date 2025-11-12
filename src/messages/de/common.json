@@ -1,0 +1,118 @@
+{
+  "navigation": {
+    "about": "Über uns",
+    "services": "Dienstleistungen",
+    "projects": "Projekte",
+    "pricing": "Preise",
+    "contact": "Kontakt",
+    "links": "Links",
+    "portfolio": "Portfolio",
+    "gallery": "Galerie",
+    "support": "Support",
+    "allLinks": "Alle Links",
+    "getStarted": "Loslegen",
+    "servicesHosting": "Hosting",
+    "servicesBranding": "Branding",
+    "servicesConsulting": "IT-Beratung",
+    "servicesSeo": "SEO-Optimierung",
+    "servicesSocialMedia": "Social Media",
+    "servicesDevelopment": "Entwicklung",
+    "servicesDesign": "Design"
+  },
+  "footer": {
+    "description": "Ihr All-in-One IT-Kraftzentrum. Von Code bis Klicks liefern wir komplette digitale Dominanz.",
+    "contact": {
+      "location": "Brünn, Tschechische Republik",
+      "phone": "+420 799 027 984",
+      "email": "info@fredonbytes.com"
+    },
+    "sections": {
+      "quickLinks": "Schnellzugriff",
+      "ourPlatforms": "Unsere Plattformen",
+      "legalSocial": "Rechtliches & Soziales"
+    },
+    "links": {
+      "aboutUs": "Über uns",
+      "personalPortfolio": "Persönliches Portfolio",
+      "projectGallery": "Projektgalerie",
+      "technicalSupport": "Technischer Support",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "termsOfService": "Nutzungsbedingungen",
+      "cookiePolicy": "Cookie-Richtlinie",
+      "gdpr": "DSGVO"
+    },
+    "social": {
+      "githubFredon": "GitHub - FredonBytes",
+      "githubPatrik": "GitHub - Patrik Fredon",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "copyright": "© {year} Fredonbytes. Alle Rechte vorbehalten.",
+    "taglines": {
+      "madeWith": "Mit ❤️ in Tschechien erstellt",
+      "motto": "Code. Erstellen. Erobern."
+    }
+  },
+  "metadata": {
+    "siteName": "Fredonbytes",
+    "title": "Fredonbytes - Komplette IT-Dienstleistungen | Entwicklung, Design, Marketing",
+    "description": "🚀 Komplette IT-Lösungen Brünn ✓ Software & Mobile-Entwicklung ✓ Grafikdesign & Branding ✓ SEO & PPC ✓ Social Media Management ✓ Cybersicherheit ✓ KI-Integration ✓ IT-Beratung ✓ Copywriting ✓ 24/7 Support",
+    "keywords": "IT-Dienstleistungen Brünn, Digitalagentur Tschechien, Softwareentwicklung, Mobile-App-Entwicklung, Full-Stack-Entwicklung, Webentwicklung, React-Entwicklung, Next.js, API-Integration, Cloud-Lösungen, E-Commerce-Entwicklung, Grafikdesign, UX/UI-Design, Webdesign, Branding, Logo-Design, Corporate Identity, SEO-Optimierung, Digitales Marketing, PPC-Kampagnen, Google Ads, SEM-Dienstleistungen, Content-Marketing, E-Mail-Marketing, Social Media Management, Instagram-Marketing, Facebook-Marketing, LinkedIn-Marketing, Copywriting, SEO-Copywriting, IT-Beratung, Cybersicherheit, Sicherheitsaudit, NIS2-Compliance, GDPR-Beratung, Digitale Transformation, Webhosting, 24/7 IT-Support, KI-Integration, Automatisierung, Künstliche Intelligenz, Datenanalyse, Tschechische Republik, Südmähren",
+    "logoAlt": "Fredonbytes Logo"
+  },
+  "manifest": {
+    "name": "Fredonbytes - Ihr All-in-One IT-Kraftzentrum",
+    "shortName": "Fredonbytes",
+    "description": "Vom Code bis zum Klick bieten wir vollständige digitale Dominanz. Umfassende IT-Lösungen einschließlich Softwareentwicklung, Grafikdesign, SEO und Social-Media-Marketing.",
+    "screenshots": {
+      "mobile": "Mobiler Screenshot",
+      "desktop": "Desktop-Screenshot"
+    }
+  },
+  "breadcrumb": {
+    "services": "Dienstleistungen",
+    "home": "Heim"
+  },
+  "common": {
+    "buttons": {
+      "getStarted": "Loslegen",
+      "learnMore": "Mehr erfahren",
+      "viewMore": "Mehr anzeigen",
+      "contactUs": "Kontakt aufnehmen",
+      "tryFree": "Kostenlos testen",
+      "readMore": "Weiterlesen",
+      "close": "Schließen",
+      "next": "Weiter",
+      "previous": "Zurück",
+      "submit": "Absenden",
+      "cancel": "Abbrechen",
+      "save": "Speichern",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "loading": "Lädt...",
+      "viewAll": "Alle anzeigen"
+    },
+    "status": {
+      "success": "Erfolg",
+      "error": "Fehler",
+      "warning": "Warnung",
+      "info": "Info",
+      "loading": "Lädt"
+    },
+    "labels": {
+      "required": "Erforderlich",
+      "optional": "Optional",
+      "name": "Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "message": "Nachricht",
+      "company": "Unternehmen",
+      "website": "Website"
+    }
+  },
+  "notFound": {
+    "notFoundHeading": "Seite nicht gefunden",
+    "notFoundDescription": "Es tut uns leid, aber es scheint ein Problem zu geben, da wir diese Seite nicht finden können. \nHaben Sie die Adresse richtig eingegeben?",
+    "goHomeButton": "Nach Hause gehen"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "survey": {
+    "title": "Průzkum spokojenosti zákazníků",
+    "subtitle": "Děkujeme, že si uděláte čas a podělíte se s námi o svou zpětnou vazbu. Vaše poznatky nám pomáhají zlepšovat naše služby.",
+    "estimatedTime": "Odhadovaný čas: 3-5 minut",
+    "startButton": "Začít průzkum",
+    "starting": "Spouštění...",
+    "privacyNote": "Vaše odpovědi jsou důvěrné a budou použity pouze ke zlepšení našich služeb.",
+    "errorStarting": "Chyba při spuštění průzkumu",
+    "loadingQuestions": "Načítání otázek...",
+    "submitButton": "Odeslat průzkum",
+    "submitting": "Odesílání...",
+    "nextButton": "Další",
+    "previousButton": "Předchozí",
+    "step": "Krok",
+    "of": "z",
+    "required": "Povinné",
+    "optional": "Volitelné",
+    "thankYou": {
+      "title": "Děkujeme!",
+      "message": "Vaše zpětná vazba byla úspěšně odeslána.",
+      "redirect": "Přesměrování na domovskou stránku za",
+      "seconds": "sekund"
+    },
+    "newsletter": {
+      "title": "Zůstaňte v obraze",
+      "subscribe": "Přihlaste se k odběru našeho newsletteru",
+      "email": "Vaše emailová adresa"
+    },
+    "errors": {
+      "required": "Toto pole je povinné",
+      "invalidEmail": "Zadejte prosím platnou emailovou adresu",
+      "submissionFailed": "Odeslání průzkumu se nezdařilo. Zkuste to prosím znovu.",
+      "loadFailed": "Načtení otázek se nezdařilo. Obnovte prosím stránku."
+    }
+  }
+}

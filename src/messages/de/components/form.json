@@ -1,0 +1,64 @@
+{
+  "form": {
+    "title": "// Lasst uns einander kennenlernen!",
+    "subtitle": "Vielen Dank für das Ausfüllen dieses Formulars! \nEs wird eine große Hilfe sein, um sicherzustellen, dass wir das perfekte Wireframe für Ihr Projekt erhalten, und wir freuen uns sehr, Sie besser kennenzulernen.",
+    "estimatedTime": "Geschätzte Zeit: 3-5 Minuten",
+    "startButton": "Starten",
+    "starting": "Wird gestartet...",
+    "privacyNote": "Ihre Antworten sind vertraulich und werden ausschließlich zur Verbesserung unserer Dienstleistungen verwendet.",
+    "errorStarting": "Fehler beim Starten des Formulars",
+    "loadingQuestions": "Fragen werden geladen...",
+    "submitButton": "Absenden",
+    "submitting": "Wird gesendet...",
+    "nextButton": "Weiter",
+    "previousButton": "Zurück",
+    "step": "Schritt",
+    "of": "von",
+    "required": "Erforderlich",
+    "optional": "Optional",
+    "thankYou": {
+      "title": "Vielen Dank!",
+      "message": "Ihr Feedback wurde erfolgreich übermittelt.",
+      "redirect": "Weiterleitung zur Startseite in",
+      "seconds": "Sekunden"
+    },
+    "newsletter": {
+      "title": "Bleiben Sie informiert",
+      "subscribe": "Abonnieren Sie unseren Newsletter",
+      "email": "Ihre E-Mail-Adresse"
+    },
+    "errors": {
+      "required": "Dieses Feld ist erforderlich",
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "submissionFailed": "Das Absenden des Formulars ist fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "loadFailed": "Das Laden der Fragen ist fehlgeschlagen. Bitte aktualisieren Sie die Seite."
+    },
+    "image": {
+      "remaining": "Übrig",
+      "sizeWarning": "Maximal 50 MB Bilder hochladen. \n5 MB pro Bild.",
+      "uploading": "Hochladen",
+      "label": "Bild",
+      "uploadedFile": "Bild hochgeladen"
+    },
+    "thankYouScreen": {
+      "newsletterInfo": {
+        "subscriptionInfo": "// Wir senden nur gelegentlich Updates. \nAbmelden jederzeit möglich.",
+        "subscribing": "Verarbeitung..",
+        "subscribe_newsletter": "Newsletter abonnieren",
+        "subscriptionSuccess": "✓ Newsletter erfolgreich abonniert!",
+        "subscriptionThanks": "// Überprüfen Sie Ihren Posteingang auf Bestätigung",
+        "finishButton": "return_to_homepage",
+        "contactNote": "// Fragen? \nKontaktieren Sie uns unter",
+        "newsletterEmail": "$ E-Mail-Adresse",
+        "newsletterInfo": "Abonnieren Sie Updates und Neuigkeiten von FredonBytes",
+        "thankYouMessage": "$ Vielen Dank, dass Sie uns dabei geholfen haben, Sie besser kennenzulernen.",
+        "thankYouTitle": "// Ihre Antworten wurden erfolgreich übermittelt.",
+        "thankYouHeading": "✓ Erfolgreich bereitgestellt!"
+      }
+    },
+    "question": "Frage",
+    "previous": "vorherige",
+    "submit": "Einreichen",
+    "next": "Nächste"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "contact": {
+    "meta": {
+      "title": "Kontakt - FredonBytes | Nehmen Sie Kontakt auf",
+      "description": "Bereit, Ihre digitale Präsenz zu transformieren? Kontaktieren Sie FredonBytes für professionelle IT-Beratung, Softwareentwicklung und digitales Marketing. Holen Sie sich noch heute Ihre kostenlose Beratung."
+    },
+    "title": "Lassen Sie uns zusammenarbeiten",
+    "subtitle": "Bereit, Ihre digitale Präsenz zu transformieren? Lassen Sie uns über Ihr Projekt sprechen und gemeinsam etwas Erstaunliches schaffen.",
+    "sectionTitle": "Lassen Sie uns zusammenarbeiten",
+    "sectionDescription": "Bereit, Ihre digitale Präsenz zu transformieren? Lassen Sie uns über Ihr Projekt sprechen und gemeinsam etwas Erstaunliches schaffen.",
+    "getInTouch": "Kontakt aufnehmen",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "location": "Standort",
+    "responseTime": "Antwortzeit",
+    "responseTimeValue": "Innerhalb von 24 Stunden",
+    "secureConfidential": {
+      "title": "Sicher & Vertraulich",
+      "message": "Ihre Informationen sind verschlüsselt und geschützt. Wir respektieren Ihre Privatsphäre und werden Ihre Daten niemals an Dritte weitergeben."
+    },
+    "step": "Schritt",
+    "of": "von",
+    "complete": "Abgeschlossen",
+    "basicInfo": "Grundinformationen",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "firstNamePlaceholder": "Max",
+    "lastNamePlaceholder": "Mustermann",
+    "emailPlaceholder": "max@beispiel.de",
+    "phonePlaceholder": "+420 123 456 789",
+    "continue": "Weiter",
+    "projectDetails": "Projektdetails",
+    "company": "Firmenname",
+    "companyPlaceholder": "Ihr Unternehmen (Optional)",
+    "projectType": "Projekttyp",
+    "selectProjectType": "Welche Art von Projekt benötigen Sie?",
+    "budget": "Budgetbereich",
+    "selectBudget": "Wie hoch ist Ihr Budget für dieses Projekt?",
+    "timeline": "Zeitrahmen",
+    "selectTimeline": "Wann soll dies fertiggestellt werden?",
+    "back": "Zurück",
+    "projectRequirements": "Projektanforderungen",
+    "projectDescription": "Projektdetails",
+    "projectDescriptionPlaceholder": "Erzählen Sie uns mehr über Ihre Projektanforderungen, Ziele und spezifische Funktionen, die Sie benötigen...",
+    "additionalRequirements": "Erforderliche Funktionen (Optional)",
+    "subscribeNewsletter": "Abonnieren Sie unseren Newsletter für Updates und Tipps",
+    "agreePolicies": "Ich akzeptiere die Datenschutzrichtlinie",
+    "sendMessage": "Nachricht senden",
+    "success": {
+      "title": "Vielen Dank!",
+      "message": "Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+      "cta": "Gehen Sie zur Startseite"
+    },
+    "form": {
+      "steps": {
+        "step": "Schritt {current} von {total}",
+        "progress": "{percent}% Abgeschlossen"
+      },
+      "image": {
+        "label": "Bilder hochladen",
+        "uploading": "Wird hochgeladen...",
+        "uploadedFile": "Bild erfolgreich hochgeladen",
+        "sizeWarning": "Maximal 5MB pro Bild, 50MB gesamt",
+        "remaining": "Verbleibend: {size}"
+      },
+      "basicInfo": {
+        "title": "Grundinformationen",
+        "firstName": {
+          "label": "Vorname",
+          "placeholder": "Max",
+          "required": true
+        },
+        "lastName": {
+          "label": "Nachname",
+          "placeholder": "Mustermann",
+          "required": true
+        },
+        "email": {
+          "label": "E-Mail-Adresse",
+          "placeholder": "max@beispiel.de",
+          "required": true
+        },
+        "phone": {
+          "label": "Telefonnummer",
+          "placeholder": "+420 123 456 789",
+          "required": true
+        }
+      },
+      "projectDetails": {
+        "title": "Projektdetails",
+        "company": {
+          "label": "Firmenname",
+          "placeholder": "Ihr Unternehmen (Optional)"
+        },
+        "projectType": {
+          "label": "Projekttyp",
+          "placeholder": "Welche Art von Projekt benötigen Sie?",
+          "required": true,
+          "options": [
+            "Website-Entwicklung",
+            "Mobile App-Entwicklung",
+            "E-Commerce-Plattform",
+            "Markendesign & Identität",
+            "SEO & Digitales Marketing",
+            "Social Media Management",
+            "IT-Beratung",
+            "Individuelle Software",
+            "Sonstiges"
+          ]
+        },
+        "budget": {
+          "label": "Budgetbereich",
+          "placeholder": "Wie hoch ist Ihr Budget für dieses Projekt?",
+          "required": true,
+          "options": [
+            "Unter $5.000",
+            "$5.000 - $15.000",
+            "$15.000 - $50.000",
+            "$50.000 - $100.000",
+            "Über $100.000",
+            "Noch unsicher"
+          ]
+        },
+        "timeline": {
+          "label": "Zeitrahmen",
+          "placeholder": "Wann soll dies fertiggestellt werden?",
+          "required": true,
+          "options": [
+            "So schnell wie möglich (Eilprojekt)",
+            "1-2 Monate",
+            "3-6 Monate",
+            "6-12 Monate",
+            "Mehr als 12 Monate",
+            "Flexibler Zeitrahmen"
+          ]
+        }
+      },
+      "requirements": {
+        "title": "Projektanforderungen",
+        "message": {
+          "label": "Projektdetails",
+          "placeholder": "Erzählen Sie uns mehr über Ihre Projektanforderungen, Ziele und spezifische Funktionen, die Sie benötigen...",
+          "required": true
+        },
+        "features": {
+          "label": "Erforderliche Funktionen (Optional)",
+          "options": [
+            "Responsive Design",
+            "E-Commerce-Funktionalität",
+            "Content-Management",
+            "Benutzerauthentifizierung",
+            "Zahlungsintegration",
+            "Analytics & Reporting",
+            "Drittanbieter-Integrationen",
+            "Mehrsprachige Unterstützung"
+          ]
+        },
+        "newsletter": {
+          "label": "Abonnieren Sie unseren Newsletter für Updates und Tipps"
+        },
+        "privacy": {
+          "label": "Ich akzeptiere die {link}Datenschutzrichtlinie{/link}",
+          "required": true
+        }
+      },
+      "actions": {
+        "next": "Nächster Schritt",
+        "previous": "Zurück",
+        "submit": "Nachricht senden",
+        "submitting": "Wird gesendet..."
+      }
+    },
+    "info": {
+      "title": "Kontakt aufnehmen",
+      "email": {
+        "title": "E-Mail",
+        "value": "info@fredonbytes.cz"
+      },
+      "phone": {
+        "title": "Telefon",
+        "value": "+420 799 027 984"
+      },
+      "location": {
+        "title": "Standort",
+        "value": "Brünn, Tschechische Republik"
+      },
+      "responseTime": {
+        "title": "Antwortzeit",
+        "value": "Innerhalb von 24 Stunden"
+      }
+    },
+    "security": {
+      "title": "Sicher & Vertraulich",
+      "description": "Ihre Informationen sind verschlüsselt und geschützt. Wir respektieren Ihre Privatsphäre und werden Ihre Daten niemals an Dritte weitergeben."
+    },
+    "errors": {
+      "firstName": "Der Vorname muss mindestens 2 Zeichen lang sein",
+      "lastName": "Der Nachname muss mindestens 2 Zeichen lang sein",
+      "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "phone": "Bitte geben Sie eine gültige Telefonnummer ein",
+      "projectType": "Bitte wählen Sie einen Projekttyp aus",
+      "budget": "Bitte wählen Sie einen Budgetbereich aus",
+      "timeline": "Bitte wählen Sie einen Zeitrahmen aus",
+      "message": "Bitte geben Sie weitere Details zu Ihrem Projekt an",
+      "privacy": "Sie müssen die Datenschutzrichtlinie akzeptieren"
+    },
+    "error": {
+      "message": "Das Formular konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+    },
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "agreeToPrivacy": "Stimmen Sie der Richtlinie zu"
+  }
+}

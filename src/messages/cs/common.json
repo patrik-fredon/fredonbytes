@@ -1,0 +1,118 @@
+{
+  "navigation": {
+    "about": "O nás",
+    "services": "Služby",
+    "projects": "Projekty",
+    "pricing": "Ceník",
+    "contact": "Kontakt",
+    "links": "Odkazy",
+    "portfolio": "Portfolio",
+    "gallery": "Galerie",
+    "support": "Podpora",
+    "allLinks": "Všechny odkazy",
+    "getStarted": "Začít",
+    "servicesHosting": "Hosting",
+    "servicesBranding": "Branding",
+    "servicesConsulting": "IT Poradenství",
+    "servicesSeo": "SEO Optimalizace",
+    "servicesSocialMedia": "Social Media",
+    "servicesDevelopment": "Vývoj Aplikací",
+    "servicesDesign": "Design"
+  },
+  "footer": {
+    "description": "Vaše komplexní IT řešení. Od kódu po kliky, zajišťujeme kompletní digitální převahu.",
+    "contact": {
+      "location": "Brno, Česká republika",
+      "phone": "+420 799 027 984",
+      "email": "info@fredonbytes.com"
+    },
+    "sections": {
+      "quickLinks": "Rychlé odkazy",
+      "ourPlatforms": "Naše platformy",
+      "legalSocial": "Právní a sociální"
+    },
+    "links": {
+      "aboutUs": "O nás",
+      "personalPortfolio": "Osobní portfolio",
+      "projectGallery": "Galerie projektů",
+      "technicalSupport": "Technická podpora",
+      "privacyPolicy": "Zásady ochrany osobních údajů",
+      "termsOfService": "Podmínky služby",
+      "cookiePolicy": "Zásady používání cookies",
+      "gdpr": "GDPR"
+    },
+    "social": {
+      "githubFredon": "GitHub - FredonBytes",
+      "githubPatrik": "GitHub - Patrik Fredon",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    },
+    "copyright": "© {year} Fredonbytes. Všechna práva vyhrazena.",
+    "taglines": {
+      "madeWith": "Vytvořeno s ❤️ v České republice",
+      "motto": "Kód. Tvoř. Ovládni."
+    }
+  },
+  "metadata": {
+    "siteName": "Fredonbytes",
+    "title": "Fredonbytes | Komplexní IT služby Brno, Praha, Ostrava | 24h Odezva",
+    "description": "🚀 Všechny IT služby pod jednou střechou! Hosting | Vývoj webu & aplikací | Branding | Copywriting | SEO | Social Media | IT poradenství. ⚡ Odezva do 24h | 💰 1/3 záloha, zbytek jen při spokojenosti. Kontaktujte nás!",
+    "keywords": "hosting Brno, webhosting ČR, vývoj webu Brno, vývoj webu Praha, vývoj webu Ostrava, webhosting Praha, webhosting Ostrava, vývoj softwaru na míru, IT poradenství Brno, grafický design Brno,grafický design Praha, branding Česká republika, copywriting služby, SEO optimalizace Brno, SEO optimalizace Praha, správa sociálních sítí, social media marketing ČR, tvorba webových stránek, vývoj mobilních aplikací, e-shop na míru, WordPress vývoj, Next.js React vývoj, kybernetická bezpečnost, IT podpora 24/7, měsíční IT balíčky, technická podpora, cloudová řešení, Fredon, FredonBytes, IT služby Jihomoravský kraj, digitální marketing, UX/UI design, kompletní IT řešení",
+    "logoAlt": "FredonBytes logo - Komplexní IT služby"
+  },
+  "manifest": {
+    "name": "Fredonbytes - Vaše komplexní IT řešení",
+    "shortName": "Fredonbytes",
+    "description": "Od kódu po kliknutí poskytujeme kompletní digitální dominanci. Komplexní IT řešení včetně vývoje software, grafického designu, SEO a marketingu na sociálních sítích.",
+    "screenshots": {
+      "mobile": "Snímek obrazovky z mobilu",
+      "desktop": "Snímek obrazovky z plochy"
+    }
+  },
+  "breadcrumb": {
+    "services": "služby",
+    "home": "Domov"
+  },
+  "common": {
+    "buttons": {
+      "getStarted": "Začít",
+      "learnMore": "Zjistit více",
+      "viewMore": "Zobrazit více",
+      "contactUs": "Kontaktujte nás",
+      "tryFree": "Vyzkoušet zdarma",
+      "readMore": "Číst více",
+      "close": "Zavřít",
+      "next": "Další",
+      "previous": "Předchozí",
+      "submit": "Odeslat",
+      "cancel": "Zrušit",
+      "save": "Uložit",
+      "edit": "Upravit",
+      "delete": "Smazat",
+      "loading": "Načítání...",
+      "viewAll": "Zobrazit vše"
+    },
+    "status": {
+      "success": "Úspěch",
+      "error": "Chyba",
+      "warning": "Varování",
+      "info": "Info",
+      "loading": "Načítání"
+    },
+    "labels": {
+      "required": "Povinné",
+      "optional": "Volitelné",
+      "name": "Jméno",
+      "email": "Email",
+      "phone": "Telefon",
+      "message": "Zpráva",
+      "company": "Společnost",
+      "website": "Webová stránka"
+    }
+  },
+  "notFound": {
+    "notFoundHeading": "Stránka nenalezena",
+    "notFoundDescription": "Je nám líto, ale zdá se, že došlo k problému, protože tuto stránku nemůžeme najít. \nZadali jste adresu správně?",
+    "goHomeButton": "Jít domů"
+  }
+}
