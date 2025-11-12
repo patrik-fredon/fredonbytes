@@ -56,13 +56,6 @@ const WebVitals = dynamic(
   },
 );
 
-const PlausibleAnalytics = dynamic(
-  () => import("../../components/common/PlausibleAnalytics"),
-  {
-    loading: () => null,
-  },
-);
-
 // JetBrains Mono loaded via @fontsource imports above
 // Font features: 'liga' 1, 'calt' 1 for ligatures
 // Applied globally via Tailwind config: font-family: 'JetBrains Mono'
