@@ -1,0 +1,45 @@
+{
+  "homepage": {
+    "pricingSection": {
+      "cta": "JETZT STARTEN",
+      "title": "Ihre digitale Freiheit beginnt hier!",
+      "description": "Werden Sie jetzt Mitglied und Sie werden es nicht bereuen!",
+      "start": "STARTEN SIE HIER"
+    },
+    "servicesSection": {
+      "title": "Sind Sie bereit, Ihre Reise zu beginnen?",
+      "description": "Sie sind nur einen Klick davon entfernt, in der digitalen Welt beruhigt zu sein ..."
+    }
+  },
+  "hero": {
+    "title": "Ihr All-in-One",
+    "titleHighlight": " FredonBytes",
+    "subtitle": "Von Code bis Klicks liefern wir komplette digitale Dominanz. Beseitigen Sie Komplexität und stärken Sie das Potenzial Ihrer Marke mit unseren vereinheitlichten IT-Lösungen.",
+    "codeComments": {
+      "creating": "Digitale Exzellenz schaffen...",
+      "snippets": [
+        "const erfolg = await erstelleGrandioseWebsite();",
+        "function erschaffeDigitaleDominanz() { return \"Fredonbytes\"; }",
+        "const innovation = () => code + kreativitaet + strategie;",
+        "export default class Fredonbytes extends Exzellenz {}"
+      ]
+    },
+    "valueProps": {
+      "development": "Entwicklung",
+      "design": "Design",
+      "marketing": "Marketing",
+      "hosting": "Hosting",
+      "branding": "Branding",
+      "consulting": "IT-Beratung"
+    },
+    "cta": {
+      "startProject": "Projekt starten",
+      "viewWork": "Unsere Arbeit ansehen"
+    },
+    "stats": {
+      "founded": "Gegründet",
+      "coreServices": "Kerndienstleistungen",
+      "clientFocus": "Kundenfokus"
+    }
+  }
+}

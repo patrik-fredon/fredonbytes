@@ -1,0 +1,62 @@
+{
+  "jsonLd": {
+    "organizationName": "Fredonbytes",
+    "organizationDescription": "Komplexní poskytovatel všech IT služeb pod jednou střechou - hosting, vývoj software a webů, branding, copywriting, SEO, social media management, IT poradenství a měsíční balíčky služeb pro firmy v Brně, Praze a Ostravě",
+    "organizationType": "TechnologyCompany",
+    "address": {
+      "streetAddress": "",
+      "addressLocality": "Brno",
+      "addressRegion": "Jihomoravský kraj",
+      "postalCode": "",
+      "addressCountry": "CZ"
+    },
+    "areaServed": [
+      "Brno",
+      "Praha",
+      "Ostrava",
+      "Česká republika"
+    ],
+    "contactPoint": {
+      "telephone": "+420799027984",
+      "contactType": "customer service",
+      "email": "info@fredonbytes.com",
+      "availableLanguage": [
+        "Czech",
+        "English",
+        "German"
+      ],
+      "hoursAvailable": "Po-Pá 9:00-17:00"
+    },
+    "services": [
+      "Hosting a webhosting",
+      "Vývoj webových stránek a aplikací",
+      "Vývoj software na míru",
+      "Mobilní aplikace (iOS/Android)",
+      "Grafický design a UX/UI",
+      "Branding a firemní identita",
+      "Copywriting a tvorba obsahu",
+      "SEO optimalizace",
+      "Social Media Management",
+      "Digitální marketing",
+      "IT poradenství a konzultace",
+      "Kybernetická bezpečnost",
+      "Technická podpora 24/7",
+      "Měsíční balíčky služeb",
+      "Cloudová řešení",
+      "E-commerce a e-shopy"
+    ],
+    "priceRange": "$$",
+    "paymentAccepted": "Bankovní převod, Kreditní karta",
+    "slogan": "Code. Create. Conquer. | One Team. Zero Limits.",
+    "founder": "Patrik Fredon",
+    "foundingDate": "2023",
+    "aggregateRating": {
+      "ratingValue": "5.0",
+      "reviewCount": "15"
+    },
+    "hasOfferCatalog": {
+      "name": "IT služby a měsíční balíčky",
+      "description": "Kompletní portfolio IT služeb s flexibilními měsíčními balíčky"
+    }
+  }
+}

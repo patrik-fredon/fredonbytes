@@ -1,0 +1,45 @@
+{
+  "projects": {
+    "title": "Unsere Projekte",
+    "subtitle": "Entdecken Sie unser Portfolio erfolgreicher Projekte. Von Unternehmensanwendungen bis hin zu innovativen Startups liefern wir Lösungen, die Ergebnisse erzielen.",
+    "filters": {
+      "title": "Filter",
+      "clearAll": "Alle löschen",
+      "category": "Kategorie",
+      "status": "Status",
+      "technologies": "Technologien"
+    },
+    "categories": {
+      "web_development": "Webentwicklung",
+      "mobile_app": "Mobile App",
+      "software_development": "Softwareentwicklung",
+      "marketing": "Marketing",
+      "graphic_design": "Grafikdesign",
+      "cloud_solution": "Cloud-Lösung",
+      "database": "Datenbank",
+      "consulting": "Beratung",
+      "web_application": "Webanwendung"
+    },
+    "status": {
+      "active": "Aktiv",
+      "completed": "Abgeschlossen",
+      "archived": "Archiviert"
+    },
+    "badges": {
+      "featured": "Empfohlen"
+    },
+    "actions": {
+      "viewLiveDemo": "Live-Demo ansehen",
+      "viewOnGithub": "Auf GitHub ansehen",
+      "viewDetails": "Details ansehen"
+    },
+    "modal": {
+      "technologies": "Technologien",
+      "createdOn": "Erstellt am"
+    },
+    "empty": {
+      "noProjects": "Derzeit sind keine Projekte verfügbar. Schauen Sie später wieder vorbei!",
+      "noResults": "Keine Projekte entsprechen Ihren Filtern. Versuchen Sie, Ihre Auswahl anzupassen."
+    }
+  }
+}

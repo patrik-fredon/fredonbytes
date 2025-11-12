@@ -1,0 +1,28 @@
+{
+  "linktree": {
+    "linktree": {
+      "companyWebsiteTitle": "Hauptwebsite"
+    },
+    "personalPortfolioTitle": "Persönliches Fredons Portfolio",
+    "personalPortfolioDescription": "Den persönlichen Lebenslauf von Fredon finden Sie hier",
+    "projectGalleryTitle": "Projektgalerie",
+    "projectGalleryDescription": "Projektgalerie und Entwicklungszentrum von FredonBytes | \nNützliche Komponentenausschnitte, Dokumentation und vieles mehr!",
+    "techSupportTitle": "Haben Sie ein Problem? \nLassen Sie es uns wissen!",
+    "techSupportDescription": "Füllen Sie das Formular aus, um uns bei Problemen mit einem unserer Projekte zu erreichen!﻿",
+    "githubOrgTitle": "FredonBytes | \nGitHub",
+    "githubOrgDescription": "Offizielles GitHub-Repository von FredonBytes",
+    "githubPersonalTitle": "Patrik Fredon | \nGitHub",
+    "githubPersonalDescription": "Offizielles GitHub-Repository von Patrik Fredon",
+    "companyWebsiteTitle": "FredonBytes | \nHauptseite",
+    "ourPlatformsHeading": "FredonBytes | \nLinktree",
+    "githubHeading": "GitHub",
+    "companyHeading": "Unternehmen",
+    "footerLocation": "Et in tenebris codicem inveni lucem.",
+    "footerTagline": "- Fredon",
+    "profileHeader": {
+      "title": "$ Ihr All-in-One-IT-Kraftpaket",
+      "description": "Vom Code bis zu den Klicks liefern wir vollständige digitale Dominanz.         \nUmfassende IT-Lösungen, die modernste Entwicklung, markantes Design und strategisches Marketing vereinen – alles unter einem Dach."
+    },
+    "companyWebsiteDescription": "Offizielle Hauptseite von FredonBytes."
+  }
+}

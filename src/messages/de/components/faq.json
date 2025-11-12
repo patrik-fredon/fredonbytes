@@ -1,0 +1,36 @@
+{
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Haben Sie Fragen? Wir haben Antworten. Entdecken Sie die häufigsten Fragen zu unseren Dienstleistungen und Prozessen.",
+    "items": [
+      {
+        "question": "Welche Technologien verwenden Sie für die Webentwicklung?",
+        "answer": "Wir verwenden modernste Technologien wie React, Next.js 15, TypeScript, Node.js und andere. Wir spezialisieren uns auf moderne Frameworks für schnelle, SEO-optimierte und skalierbare Anwendungen. Wir wählen die Technologien entsprechend den Anforderungen Ihres Projekts aus."
+      },
+      {
+        "question": "Wie lange dauert die Entwicklung einer Website oder Anwendung?",
+        "answer": "Die Implementierungszeit hängt von der Komplexität des Projekts ab. Eine einfache Präsentationswebsite kann in 2-4 Wochen fertiggestellt werden, eine komplexe Webanwendung oder ein E-Shop in 2-4 Monaten. Nach der Analyse Ihrer Anforderungen erstellen wir eine genaue Schätzung."
+      },
+      {
+        "question": "Bieten Sie Support und Wartung nach Projektabschluss an?",
+        "answer": "Ja! Alle unsere Pakete beinhalten Garantie-Support (3-6 Monate je nach Plan). Nach Ablauf der Garantie bieten wir monatliche Wartung, Sicherheitsupdates, Leistungsüberwachung und 24/7 technischen Support für den Enterprise-Plan an."
+      },
+      {
+        "question": "Wie handhaben Sie die SEO-Optimierung von Websites?",
+        "answer": "SEO ist Teil jedes unserer Projekte. Wir implementieren technisches SEO (Ladegeschwindigkeit, strukturierte Daten, Meta-Tags), On-Page-Optimierung (Keywords, Inhalte, Struktur) und sorgen für mobile Optimierung. Für erweiterte SEO bieten wir monatliche Dienstleistungen inklusive Analyse, Linkaufbau und Content-Marketing an."
+      },
+      {
+        "question": "Kann ich mein eigenes Design wählen oder verwenden Sie Vorlagen?",
+        "answer": "Wir erstellen 100 % individuelle Designs, die auf Ihre Bedürfnisse und Ihre Marke zugeschnitten sind. Wir verwenden keine vorgefertigten Vorlagen. Jedes Projekt beginnt mit einer gründlichen Analyse Ihrer Marke, Zielgruppe und Wettbewerber. Wir besprechen das Design mit Ihnen in jeder Phase."
+      },
+      {
+        "question": "Was sind die Zahlungsbedingungen und was ist im Preis enthalten?",
+        "answer": "In der Regel arbeiten wir mit einer 1/3-Anzahlung zu Projektbeginn und den restlichen 2/3 nach Abschluss, sofern alle vorab vereinbarten Kriterien und von uns gesetzten Fristen erfüllt sind. Der Preis umfasst Analyse, Design, Entwicklung, Testing, Deployment und Schulung. Einen transparenten Preisplan finden Sie auf der Seite Preisgestaltung. Für größere Projekte bieten wir auch monatliche Ratenzahlung an."
+      }
+    ],
+    "cta": {
+      "question": "Haben Sie keine Antwort auf Ihre Frage gefunden?",
+      "button": "Kontaktieren Sie uns"
+    }
+  }
+}

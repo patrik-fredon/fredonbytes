@@ -1,0 +1,148 @@
+{
+  "external": {
+    "externalLinks": "Externí odkazy"
+  },
+  "emails": {
+    "customer": {
+      "subject": "Děkujeme za kontaktování Fredonbytes - Brzy se vám ozveme!",
+      "greeting": "Děkujeme",
+      "thankYou": "Vaše zpráva byla přijata",
+      "confirmationMessage": "Obdrželi jsme váš dotaz a odpovíme do 24 hodin.",
+      "responseTime": "Zavazujeme se odpovědět do 24 hodin",
+      "surveyInvitation": "Pomozte nám zlepšovat! Prosím, věnujte chvíli vyplnění našeho rychlého dotazníku spokojenosti.",
+      "surveyButton": "Vyplnit dotazník",
+      "whatHappensNext": "Co bude dál?",
+      "steps": {
+        "review": "<strong>Recenze (do 2 hodin):</strong> Náš tým přezkoumá vaše požadavky",
+        "response": "<strong>Odpověď (do 24 hodin):</strong> Ozveme se vám a probereme váš projekt",
+        "consultation": "<strong>Konzultace:</strong> Bezplatná strategická schůzka k pochopení vašich potřeb",
+        "proposal": "<strong>Nabídka:</strong> Podrobná projektová nabídka a časový harmonogram"
+      },
+      "projectSummary": "Souhrn vašeho projektu:",
+      "inTheMeantime": "Mezitím můžete:",
+      "suggestions": [
+        "Podívejte se na naše <a href=\"https://fredonbytes.eu\">projektové portfolio</a>",
+        "Sledujte nás na sociálních sítích pro aktualizace",
+        "Zavolejte nám přímo na <a href=\"tel:+420799027984\">+420 799 027 984</a>"
+      ],
+      "visitWebsite": "Navštivte náš web"
+    },
+    "admin": {
+      "subject": "Nové odeslání kontaktního formuláře",
+      "newSubmission": "Nové odeslání kontaktního formuláře",
+      "contactInfo": "Kontaktní informace",
+      "projectDetails": "Detaily projektu",
+      "projectDescription": "Popis projektu",
+      "additionalRequirements": "Dodatečné požadavky",
+      "preferences": "Preference",
+      "newsletterSubscription": "Odběr newsletteru",
+      "privacyAccepted": "Přijaty zásady ochrany osobních údajů",
+      "yes": "Ano",
+      "no": "Ne",
+      "footerNote": "Tato zpráva byla odeslána z kontaktního formuláře na fredonbytes.cz",
+      "respondWithin": "Prosím, odpovězte do 24 hodin, jak je slíbeno na webu."
+    },
+    "common": {
+      "companyName": "Fredonbytes",
+      "tagline": "Vaše komplexní IT řešení",
+      "location": "Brno, Česká republika"
+    },
+    "survey": {
+      "subject": "Děkujeme za vaši zpětnou vazbu - Fredonbytes",
+      "thankYou": "Děkujeme za vaši zpětnou vazbu",
+      "feedbackReceived": "Vaše zpětná vazba byla přijata",
+      "greeting": "Děkujeme",
+      "completionMessage": "Obdrželi jsme vaši zpětnou vazbu z průzkumu spokojenosti.",
+      "feedbackValue": "Vaše názory jsou pro nás velmi důležité a pomohou nám neustále zlepšovat naše služby.",
+      "whatNext": "Co bude dál?",
+      "reviewFeedback": "<strong>Přezkoumáme vaši zpětnou vazbu:</strong> Náš tým pečlivě analyzuje vaše odpovědi",
+      "improveServices": "<strong>Implementujeme vylepšení:</strong> Vaše návrhy nám pomohou vylepšit naše služby",
+      "followUp": "<strong>Sledování (pokud je potřeba):</strong> Můžeme vás kontaktovat pro další upřesnění",
+      "gratitude": "Děkujeme, že jste součástí naší cesty k dokonalosti!"
+    },
+    "form": {
+      "subject": "Děkujeme za vaši zpětnou vazbu - Fredonbytes",
+      "thankYou": "Děkujeme za vaši zpětnou vazbu",
+      "feedbackReceived": "Vaše odpovědi z formuláře byly přijaty",
+      "greeting": "Děkujeme",
+      "completionMessage": "Váš formulář byl úspěšně odeslán!",
+      "feedbackValue": "Vaše požadavky nám lépe pomohou navrhnout Vám řešení na míru!",
+      "whatNext": "Co bude dál?",
+      "reviewFeedback": "Náš tým pečlivě přezkoumá vaši zpětnou vazbu",
+      "improveServices": "Váše odpovědi nám pomohou vytvořit implementační plán a budoucí kroky.",
+      "followUp": "V případě potřeby vás můžeme kontaktovat pro další upřesnění",
+      "gratitude": "Děkujeme, že jste si našli čas pro váš vstup do IT světa bez starostí!",
+      "next": "Naplánujeme první schůzku (online nebo osobně) a můžeme začít!"
+    },
+    "newsletter": {
+      "subject": "Vítejte v newsletteru Fredonbytes!",
+      "welcome": "Vítejte v našem newsletteru",
+      "thanksForSubscribing": "Děkujeme za přihlášení k odběru",
+      "greeting": "Ahoj",
+      "subscriptionConfirmed": "Váš odběr byl potvrzen!",
+      "whatToExpect": "Nyní jste součástí naší komunity a budete dostávat nejnovější aktualizace, tipy a exkluzivní nabídky.",
+      "youWillReceive": "Co můžete očekávat:",
+      "benefits": {
+        "updates": "Nejnovější aktualizace projektů a případové studie",
+        "tips": "Odborné tipy a poznatky o webovém vývoji a digitálním marketingu",
+        "offers": "Exkluzivní nabídky a přednostní přístup k novým službám",
+        "news": "Novinky a trendy z oboru"
+      },
+      "stayTuned": "Těšte se na náš další newsletter!",
+      "unsubscribeInfo": "Z odběru se můžete kdykoli odhlásit kliknutím na odkaz pro odhlášení v kterémkoli e-mailu."
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Fredonbytes - Vaše komplexní IT řešení",
+      "description": "Od kódu po kliky, zajišťujeme kompletní digitální převahu. Komplexní IT řešení včetně vývoje softwaru, grafického designu, SEO a marketingu na sociálních sítích.",
+      "keywords": "vývoj webu, vývoj softwaru, IT řešení, grafický design, SEO, marketing na sociálních sítích, Brno, Česká republika"
+    },
+    "about": {
+      "company": "Fredonbytes",
+      "title": "O Fredonbytes - Váš partner pro digitální transformaci",
+      "description": "Založeno v roce 2023, Fredonbytes odstraňuje potřebu více dodavatelů tím, že se stane vaší kompletní digitální armádou, zajišťující bezproblémové a vysoce efektivní výsledky pod jednou střechou.",
+      "keywords": "o fredonbytes, digitální transformace, IT společnost, tým pro vývoj softwaru, brněnská technologie"
+    },
+    "services": {
+      "title": "IT služby - Vývoj softwaru, Design a Marketing",
+      "description": "Komplexní IT řešení od vývoje po marketing. Odstraňte složitost s naším jednotným přístupem k vývoji softwaru, designu, SEO a správě sociálních sítí.",
+      "keywords": "IT služby, vývoj softwaru, vývoj webu, grafický design, SEO služby, marketing na sociálních sítích"
+    },
+    "projects": {
+      "title": "Naše portfolio - Galerie projektů Fredonbytes",
+      "description": "Prozkoumejte naši nejnovější práci a podívejte se, jak jsme pomohli firmám transformovat jejich digitální přítomnost s špičkovými řešeními.",
+      "keywords": "portfolio, projekty vývoje webu, softwarové projekty, ukázka designu, případové studie"
+    },
+    "pricing": {
+      "title": "Transparentní ceník - Vyberte si své IT řešení",
+      "description": "Transparentní ceny bez skrytých poplatků. Škálujte svůj business s našimi flexibilními IT řešeními od startovních po podnikové plány.",
+      "keywords": "ceník, cena IT služeb, ceny vývoje webu, transparentní ceny, obchodní plány"
+    },
+    "contact": {
+      "title": "Kontaktujte Fredonbytes - Pojďme spolupracovat",
+      "description": "Připraveni transformovat vaši digitální přítomnost? Kontaktujte náš tým v Brně, Česká republika pro bezplatnou konzultaci vašeho dalšího IT projektu.",
+      "keywords": "kontakt, brněnská IT společnost, bezplatná konzultace, dotaz na projekt, česká technologie"
+    },
+    "links": {
+      "title": "Odkazy Fredonbytes - Spojte se s námi všude",
+      "description": "Všechny naše důležité odkazy na jednom místě. Spojte se s Fredonbytes na sociálních sítích, GitHubu a našich různých platformách.",
+      "keywords": "sociální odkazy, GitHub, LinkedIn, kontaktní odkazy, platformy Fredonbytes"
+    },
+    "privacy-policy": {
+      "title": "Zásady ochrany osobních údajů - Jak chráníme vaše data",
+      "description": "Zjistěte, jak Fredonbytes shromažďuje, používá a chrání vaše osobní údaje. Jsme odhodláni zachovat vaše soukromí a zabezpečení dat.",
+      "keywords": "zásady ochrany osobních údajů, ochrana dat, soulad s GDPR, osobní údaje, zabezpečení dat"
+    },
+    "terms-of-service": {
+      "title": "Podmínky služby - Dohoda o používání Fredonbytes",
+      "description": "Podmínky a podmínky pro používání služeb Fredonbytes. Pochopte svá práva a povinnosti při práci s našimi IT řešeními.",
+      "keywords": "podmínky služby, dohoda o používání, podmínky služby, právní podmínky, podmínky"
+    },
+    "cookie-policy": {
+      "title": "Zásady používání cookies - Jak používáme cookies",
+      "description": "Informace o tom, jak Fredonbytes používá cookies ke zlepšení vašeho zážitku z prohlížení a analýze využití webu.",
+      "keywords": "zásady cookies, cookies webových stránek, sledování, analytika, uživatelský zážitek"
+    }
+  }
+}

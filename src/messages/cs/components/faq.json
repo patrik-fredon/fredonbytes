@@ -1,0 +1,36 @@
+{
+  "faq": {
+    "title": "Často kladené otázky",
+    "subtitle": "Máte otázky? Máme odpovědi. Prozkoumejte nejčastější dotazy o našich službách a procesech.",
+    "items": [
+      {
+        "question": "Jaké technologie používáte pro vývoj webových aplikací?",
+        "answer": "Používáme nejmodernější technologie včetně React, Next.js 15, TypeScript, Node.js a dalších. Specializujeme se na moderní framework pro rychlé, SEO-optimalizované a škálovatelné aplikace. Vybíráme technologie podle potřeb vašeho projektu."
+      },
+      {
+        "question": "Jak dlouho trvá vývoj webové stránky nebo aplikace?",
+        "answer": "Doba realizace závisí na složitosti projektu. Jednoduchá prezentační webová stránka může být hotová za 2-4 týdny, komplexní webová aplikace nebo e-shop za 2-4 měsíce. Po analýze vašich požadavků vám poskytneme přesný odhad."
+      },
+      {
+        "question": "Poskytujete podporu a údržbu po dokončení projektu?",
+        "answer": "Ano! Všechny naše balíčky zahrnují záruční podporu (3-6 měsíců podle plánu). Po skončení záruky nabízíme měsíční údržbu, aktualizace zabezpečení, monitoring výkonu a technickou podporu 24/7 pro Enterprise plán."
+      },
+      {
+        "question": "Jak řešíte SEO optimalizaci webových stránek?",
+        "answer": "SEO je součástí každého našeho projektu. Implementujeme technické SEO (rychlost načítání, strukturovaná data, meta tagy), on-page optimalizaci (klíčová slova, obsah, struktura) a zajišťujeme mobilní optimalizaci. Pro pokročilé SEO nabízíme měsíční služby včetně analýzy, link buildingu a content marketingu."
+      },
+      {
+        "question": "Můžu si vybrat vlastní design nebo používáte šablony?",
+        "answer": "Vytváříme 100% vlastní design na míru vašim potřebám a brandingu. Nepoužíváme prefabrikované šablony. Každý projekt začíná důkladnou analýzou vaší značky, cílové skupiny a konkurence. Design konzultujeme s vámi v každé fázi."
+      },
+      {
+        "question": "Jaké jsou platební podmínky a co je zahrnuto v ceně?",
+        "answer": "Běžně pracujeme se zálohou ve výši jedné třetiny při zahájení projektu a zbylých dvou třetin po jeho dokončení. Tato podmínka platí za předpokladu, že splníme všechna předem určená kritéria a stanovené termíny. Cena zahrnuje analýzu, design, vývoj, testování, nasazení a školení. Transparentní ceník najdete na stránce Ceník. Pro větší projekty nabízíme také měsíční splátky."
+      }
+    ],
+    "cta": {
+      "question": "Nenašli jste odpověď na svou otázku?",
+      "button": "Kontaktujte nás"
+    }
+  }
+}

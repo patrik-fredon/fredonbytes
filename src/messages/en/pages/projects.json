@@ -1,0 +1,45 @@
+{
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Explore our portfolio of successful projects. From enterprise applications to innovative startups, we deliver solutions that drive results.",
+    "filters": {
+      "title": "Filters",
+      "clearAll": "Clear All",
+      "category": "Category",
+      "status": "Status",
+      "technologies": "Technologies"
+    },
+    "categories": {
+      "web_development": "Web Development",
+      "mobile_app": "Mobile App",
+      "software_development": "Software Development",
+      "marketing": "Marketing",
+      "graphic_design": "Graphic Design",
+      "cloud_solution": "Cloud Solution",
+      "database": "Database",
+      "consulting": "Consulting",
+      "web_application": "Web Application"
+    },
+    "status": {
+      "active": "Active",
+      "completed": "Completed",
+      "archived": "Archived"
+    },
+    "badges": {
+      "featured": "Featured"
+    },
+    "actions": {
+      "viewLiveDemo": "View Live Demo",
+      "viewOnGithub": "View on GitHub",
+      "viewDetails": "View Details"
+    },
+    "modal": {
+      "technologies": "Technologies",
+      "createdOn": "Created on"
+    },
+    "empty": {
+      "noProjects": "No projects available at the moment. Check back soon!",
+      "noResults": "No projects match your filters. Try adjusting your selection."
+    }
+  }
+}

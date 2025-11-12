@@ -12,9 +12,12 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = routing.defaultLocale;
   }
 
+  // Dynamic import of modular translations
+  // Webpack will automatically code-split the translation chunks
+  // for better performance and smaller initial bundle size
   return {
     locale,
-    messages: (await import(`../messages/${locale}.json`)).default,
+    messages: (await import(`../messages/${locale}.ts`)).default,
     timeZone: "Europe/Prague",
     now: new Date(),
   };
