@@ -1,0 +1,180 @@
+{
+  "about": {
+    "title": "Who are we?",
+    "company": "Fredonbytes!",
+    "subtitle": "Founded in 2023, we eliminate the need for multiple vendors by becoming your one-stop digital army, ensuring seamless, high-impact results under one roof.",
+    "highlight": " one-stop digital army",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To empower businesses with unified, cutting-edge IT solutions—delivering speed, creativity, and relentless efficiency."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "A world where brands thrive digitally without fragmentation—Fredonbytes as the global standard for integrated tech excellence."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "unifiedExcellence": {
+        "title": "Unified Excellence",
+        "description": "One team, infinite solutions."
+      },
+      "clientCentric": {
+        "title": "Client-Centric Agility",
+        "description": "Your goals drive our tech."
+      },
+      "innovation": {
+        "title": "Innovation Without Compromise",
+        "description": "Bold ideas, flawless execution."
+      },
+      "transparency": {
+        "title": "Transparency & Trust",
+        "description": "No black boxes, just results."
+      }
+    },
+    "motto": {
+      "title": "Code. Create. Conquer.",
+      "subtitle": "Our Motto"
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "members": {
+        "patrik": {
+          "name": "Bc. Patrik Fredon BSc.",
+          "role": "CEO & Founder",
+          "expertise": "Full-Stack Development, Digital Strategy",
+          "quote": "Efficiency is the new innovation."
+        },
+        "jana": {
+          "name": "Ing. Jana Dvořáková",
+          "role": "CTO",
+          "expertise": "AI, Cloud Architecture",
+          "quote": "If it's not scalable, it's not sustainable."
+        },
+        "lucie": {
+          "name": "Ing. Lucie Dvořáková",
+          "role": "Creative Director",
+          "expertise": "Branding, UX/UI Design",
+          "quote": "Pixel-perfect isn't a goal—it's the baseline."
+        },
+        "tomas": {
+          "name": "Mgr. Tomáš Horák",
+          "role": "SEO & Metadata Specialist",
+          "expertise": "Data Analytics, SEM",
+          "quote": "Visibility without strategy is just noise."
+        },
+        "chloe": {
+          "name": "Chloe Zaytko",
+          "role": "UI/UX Designer",
+          "expertise": "User Interface Design, User Experience",
+          "quote": "Design is not just what it looks like, design is how it works."
+        },
+        "petra": {
+          "name": "Petra Chromá",
+          "role": "UI/UX Designer",
+          "expertise": "User Interface Design, User Experience",
+          "quote": "Every problem has a solution, you just need to find it."
+        },
+        "levi": {
+          "name": "Levi",
+          "role": "Web Developer",
+          "expertise": "Web Development, Best Practices",
+          "quote": "Web development is the art of turning coffee into code"
+        },
+        "david": {
+          "name": "Bc. David Ondra",
+          "role": "UI/UX Designer",
+          "expertise": "Strategic Thinking, Innovation",
+          "quote": "Innovation distinguishes between a leader and a follower"
+        },
+        "petr": {
+          "name": "Mgr. Petr Kouba",
+          "role": "Systems Engineer",
+          "expertise": "Infrastructure, System Architecture",
+          "quote": "Building robust systems that stand the test of time"
+        },
+        "thomas": {
+          "name": "Thomas Goethe",
+          "role": "Systems Analyst",
+          "expertise": "System Optimization, Workflow Analysis",
+          "quote": "Understanding systems is the key to improving them"
+        },
+        "andrea": {
+          "name": "Andrea",
+          "role": "Site Reliability Engineer",
+          "expertise": "Uptime, Monitoring, Incident Response",
+          "quote": "Reliability is not just a feature, it's a promise"
+        },
+        "jess": {
+          "name": "Jess Letcher",
+          "role": "Scrum Master",
+          "expertise": "Agile Practices, Team Facilitation",
+          "quote": "Great teams are built on trust and collaboration"
+        },
+        "matthew": {
+          "name": "Matthew Brusnighan",
+          "role": "QA Tester",
+          "expertise": "Quality Assurance, Testing",
+          "quote": "Quality is never an accident; it is always the result of effort"
+        },
+        "michal": {
+          "name": "Michal Reiner",
+          "role": "IT Project Manager",
+          "expertise": "Project Management, Business Alignment",
+          "quote": "Success is the result of clear vision and precise execution"
+        },
+        "ella": {
+          "name": "Ella Dean",
+          "role": "QA Tester",
+          "expertise": "Testing, Software Quality",
+          "quote": "Strong foundations build powerful solutions"
+        },
+        "olive": {
+          "name": "Olive Dsouza",
+          "role": "HR & Client Acquisition",
+          "expertise": "Human Resources, Client Relations",
+          "quote": "People are the heart of every great company"
+        },
+        "emily": {
+          "name": "Bc. Emily Dsouza",
+          "role": "Head HR & Client Acquisition",
+          "expertise": "Human Resources, Client Relationships",
+          "quote": "Strong people build strong companies"
+        }
+      }
+    },
+    "founderQuote": {
+      "quote": "In a fragmented digital world, we are the glue—merging creativity, technology, and strategy into one unstoppable force.",
+      "author": "Bc. Patrik \"Fredon\" Svoboda BSc., CEO & Founder"
+    },
+    "mantra": "One Team. Zero Limits."
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "About Us - FredonBytes | Your All-in-One Digital Army",
+      "description": "Discover the story behind FredonBytes and meet the team building your digital future. From code to clicks, we deliver complete digital dominance."
+    },
+    "navigation": {
+      "label": "About"
+    },
+    "companyStory": {
+      "title": "Our Story: The Birth of the Digital Army",
+      "content": [
+        "In the ever-evolving landscape of technology, one developer saw a pattern: businesses were drowning in vendor fragmentation, jumping between agencies for development, design, marketing, and support. Each handoff meant lost context, delayed timelines, and diluted vision.",
+        "What started as Fredon's personal mission to eliminate this chaos became FredonBytes—a unified force where code, creativity, and strategy converge. We're not just another agency; we're your all-in-one digital army, engineered to deliver seamless, high-impact results without the complexity.",
+        "The journey wasn't without its challenges. Late nights debugging code, countless client meetings, pivots and iterations—each obstacle became a lesson that shaped our approach. We learned that true excellence comes not from doing one thing perfectly, but from orchestrating multiple disciplines in perfect harmony. This revelation became the cornerstone of our philosophy.",
+        "As our team grew, so did our capabilities. We attracted passionate professionals who shared our vision—designers who think like developers, marketers who understand UX, engineers who appreciate branding. Each new member didn't just add skills; they multiplied our collective potential through collaboration and cross-functional expertise.",
+        "From humble beginnings as a solo developer to a comprehensive IT powerhouse, our journey has been driven by one core belief: excellence shouldn't be fragmented. Every line of code, every pixel, every campaign—crafted under one roof, guided by one vision, executed by one unstoppable team.",
+        "Today, FredonBytes stands as proof that unified expertise delivers superior results. We don't just build websites or run ads—we architect complete digital ecosystems where every element works in perfect harmony to amplify your brand's potential. Our clients don't need to manage multiple vendors, chase down different teams, or worry about integration nightmares. They have one partner, one point of contact, one team that genuinely cares about their success."
+      ],
+      "founder": "Fredon",
+      "mission": "To be the all-in-one digital army that businesses need—delivering unified IT excellence without vendor fragmentation"
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "The digital army behind your success",
+      "noPhoto": "Team member photo",
+      "readMore": "Read more about {name}"
+    },
+    "title": "About FredonBytes"
+  }
+}

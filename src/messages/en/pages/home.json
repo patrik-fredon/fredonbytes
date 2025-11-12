@@ -1,0 +1,53 @@
+{
+  "homepage": {
+    "servicesSection": {
+      "title": "Ready to start you journey?",
+      "description": "You are just one click away from peace of mind in the digital world..."
+    },
+    "pricingSection": {
+      "cta": "START NOW",
+      "title": "Your digital freedom begins here!",
+      "description": "Join us now, and you won't regret it!",
+      "start": "START HERE"
+    }
+  },
+  "hero": {
+    "title": "We are",
+    "titleHighlight": " FredonBytes",
+    "subtitle": "Need five different agencies for one project? That's like trying to assemble the Avengers from random passersby.",
+    "codeComments": {
+      "creating": "Creating digital excellence...",
+      "snippets": [
+        "const success = await buildAmazingWebsite();",
+        "function createDigitalDominance() { return \"Fredonbytes\"; }",
+        "const innovation = () => code + creativity + strategy;",
+        "export default class Fredonbytes extends Excellence {}"
+      ]
+    },
+    "valueProps": {
+      "development": "Development",
+      "design": "Design",
+      "marketing": "Marketing",
+      "hosting": "Hosting",
+      "branding": "Branding",
+      "consulting": "IT Consulting"
+    },
+    "cta": {
+      "startProject": "Start Your Project",
+      "viewWork": "View Our Work",
+      "breadcrumb": {
+        "home": "Home",
+        "services": "Services"
+      }
+    },
+    "stats": {
+      "founded": "Founded",
+      "coreServices": "Core Services",
+      "clientFocus": "Client Focus"
+    },
+    "subtitle2": "We're the complete team that assembled ready for action. We have developers who build code faster than Ironman suits up, designers with Thor's vision, and strategists with Black Widow's cunning. One agency, all superpowers.",
+    "subtitle3": "Stop complicating things. Assemble us instead.\nWe are FredonBytes.",
+    "start": "🦸 Assemble the Team",
+    "team": "💥 More about us"
+  }
+}

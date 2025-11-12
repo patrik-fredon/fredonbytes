@@ -1,0 +1,45 @@
+{
+  "projects": {
+    "title": "Naše projekty",
+    "subtitle": "Prozkoumejte naše portfolio úspěšných projektů. Od podnikových aplikací po inovativní startupy, dodáváme řešení, která přinášejí výsledky.",
+    "filters": {
+      "title": "Filtry",
+      "clearAll": "Vymazat vše",
+      "category": "Kategorie",
+      "status": "Stav",
+      "technologies": "Technologie"
+    },
+    "categories": {
+      "web_development": "Vývoj webů",
+      "mobile_app": "Mobilní aplikace",
+      "cloud_solution": "Cloudové řešení",
+      "database": "Databáze",
+      "consulting": "Konzultace",
+      "software_development": "Vývoj softwaru",
+      "marketing": "Marketing",
+      "graphic_design": "Grafický design",
+      "web_application": "Webové aplikace"
+    },
+    "status": {
+      "active": "Aktivní",
+      "completed": "Dokončený",
+      "archived": "Archivovaný"
+    },
+    "badges": {
+      "featured": "Doporučený"
+    },
+    "actions": {
+      "viewLiveDemo": "Zobrazit demo",
+      "viewOnGithub": "Zobrazit na GitHubu",
+      "viewDetails": "Zobrazit detaily"
+    },
+    "modal": {
+      "technologies": "Technologie",
+      "createdOn": "Vytvořeno"
+    },
+    "empty": {
+      "noProjects": "Momentálně nejsou k dispozici žádné projekty. Zkuste to později!",
+      "noResults": "Žádné projekty neodpovídají vašim filtrům. Zkuste upravit výběr."
+    }
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "services": {
+    "title": "Naše služby",
+    "subtitle": "Nabízíme komplexní sadu IT řešení navržených tak, aby odstranila potřebu více dodavatelů. Od vývoje po marketing, máme vše pokryto.",
+    "categories": {
+      "development": "Vývoj softwaru",
+      "design": "Grafický & UX/UI design",
+      "seo": "SEO & Digitální marketing",
+      "social": "Správa sociálních sítí",
+      "consulting": "IT poradenství & Kybernetická bezpečnost",
+      "maintenance": "Údržba & Podpora",
+      "all": "Všechny služby",
+      "marketing": "Marketing"
+    },
+    "items": {
+      "development": {
+        "title": "Vývoj softwaru",
+        "description": "Vlastní webové aplikace, mobilní aplikace a podniková řešení postavená na špičkových technologiích.",
+        "features": [
+          "Full-Stack vývoj",
+          "Mobilní aplikace",
+          "API integrace",
+          "Cloudová řešení"
+        ]
+      },
+      "design": {
+        "title": "Grafický & UX/UI design",
+        "description": "Úchvatné vizuální identity, uživatelská rozhraní a značkové zážitky, které okouzlí a konvertují.",
+        "features": [
+          "Brand identita",
+          "UX/UI design",
+          "Prototypování",
+          "Design systémy"
+        ]
+      },
+      "seo": {
+        "title": "SEO & Digitální marketing",
+        "description": "Strategie založené na datech pro zvýšení vaší online viditelnosti a přilákání cíleného trafficu.",
+        "features": [
+          "Optimalizace pro vyhledávače",
+          "Obsahová strategie",
+          "Analytika a reportování",
+          "PPC kampaně"
+        ]
+      },
+      "social": {
+        "title": "Správa sociálních sítí",
+        "description": "Poutavá tvorba obsahu a strategické kampaně na sociálních sítích, které budují komunity a pohánějí růst.",
+        "features": [
+          "Tvorba obsahu",
+          "Správa komunity",
+          "Reklamy na sociálních sítích",
+          "Růstové strategie"
+        ]
+      },
+      "consulting": {
+        "title": "IT poradenství & Kybernetická bezpečnost",
+        "description": "Strategické technologické vedení a robustní bezpečnostní řešení pro ochranu a optimalizaci vaší digitální infrastruktury.",
+        "features": [
+          "Bezpečnostní audity",
+          "Plánování infrastruktury",
+          "Technologické poradenství",
+          "Hodnocení rizik"
+        ]
+      },
+      "maintenance": {
+        "title": "Údržba & Podpora",
+        "description": "Proaktivní monitorování, aktualizace a podpora pro zajištění hladkého chodu vašich digitálních řešení.",
+        "features": [
+          "Pravidelné aktualizace",
+          "Monitorování výkonu",
+          "Zálohy a obnova",
+          "Podpora 24/7"
+        ]
+      }
+    },
+    "stats": {
+      "satisfaction": {
+        "number": "100%",
+        "label": "Spokojenost klientů"
+      },
+      "coreServices": {
+        "number": "5+",
+        "label": "Základní služby"
+      },
+      "support": {
+        "number": "24/7",
+        "label": "Dostupná podpora"
+      },
+      "team": {
+        "number": "1",
+        "label": "Jednotný tým"
+      }
+    },
+    "cta": "Objevte, jak vám můžeme pomoci",
+    "whyChooseUs": {
+      "title": "Proč si vybrat nás?",
+      "description": "Protože zůstáváme tam, kde ostatní odcházejí!"
+    },
+    "hosting": {
+      "title": "Webhosting Brno Praha Ostrava | Spolehlivý Hosting 99.9%",
+      "subtitle": "Rychlý a bezpečný webhosting s technickou podporou 24/7",
+      "description": "Profesionální webhosting pro vaše webové stránky a aplikace. Zaručujeme 99.9% dostupnost, SSD disky, denní zálohy a nepřetržitou technickou podporu.",
+      "features": {
+        "uptime": {
+          "title": "99.9% Dostupnost",
+          "description": "Garantovaná dostupnost vašich webových stránek s SLA smlouvou"
+        },
+        "support": {
+          "title": "Podpora 24/7",
+          "description": "Nepřetržitá technická podpora v češtině, odezva do 1 hodiny"
+        },
+        "backups": {
+          "title": "Denní Zálohy",
+          "description": "Automatické denní zálohy s možností okamžitého obnovení"
+        },
+        "ssl": {
+          "title": "SSL Certifikát Zdarma",
+          "description": "Bezplatný SSL certifikát pro zabezpečené HTTPS připojení"
+        }
+      },
+      "cta": "Připraveni na spolehlivý hosting?"
+    },
+    "branding": {
+      "title": "Branding a Firemní Identita | Grafický Design Brno Praha",
+      "subtitle": "Vytvoříme unikátní značku, která osloví vaše zákazníky",
+      "description": "Komplexní tvorba firemní identity od loga přes barevnou paletu až po brand guidelines. Zajistíme konzistentní vizuální styl napříč všemi kanály.",
+      "features": {
+        "logo": {
+          "title": "Design Loga",
+          "description": "Profesionální návrh loga s neomezenými revizemi"
+        },
+        "identity": {
+          "title": "Firemní Identita",
+          "description": "Kompletní vizuální styl včetně barev, typografie a prvků"
+        },
+        "guidelines": {
+          "title": "Brand Manual",
+          "description": "Detailní průvodce používání značky pro konzistenci"
+        },
+        "materials": {
+          "title": "Marketingové Materiály",
+          "description": "Vizitky, letáky, prezentace a další materiály"
+        }
+      },
+      "cta": "Připraveni na silnou značku?"
+    },
+    "consulting": {
+      "title": "IT Poradenství Brno | Konzultace Technologií a Infrastruktury",
+      "subtitle": "Expertní poradenství pro digitální transformaci vaší firmy",
+      "description": "Pomůžeme vám vybrat správné technologie, optimalizovat IT infrastrukturu a naplánovat digitální strategii. Odezva do 24 hodin.",
+      "features": {
+        "strategy": {
+          "title": "Digitální Strategie",
+          "description": "Plánování technologického rozvoje a digitální transformace"
+        },
+        "infrastructure": {
+          "title": "IT Infrastruktura",
+          "description": "Audit a optimalizace serverů, sítí a cloudových řešení"
+        },
+        "security": {
+          "title": "Kybernetická Bezpečnost",
+          "description": "Bezpečnostní audity, penetrační testy a GDPR compliance"
+        },
+        "training": {
+          "title": "Školení Týmu",
+          "description": "Vzdělávání zaměstnanců v nových technologiích"
+        }
+      },
+      "cta": "Připraveni na IT transformaci?"
+    },
+    "seo": {
+      "title": "SEO Optimalizace Brno Praha | Google & Seznam Rankings",
+      "subtitle": "Profesionální SEO služby pro TOP pozice ve vyhledávačích",
+      "description": "Dostaňte se na TOP pozice Google a Seznam.cz. Optimalizujeme váš web pro vyhledávače, zvýšíme organickou návštěvnost a sledujeme výsledky.",
+      "features": {
+        "technical": {
+          "title": "Technické SEO",
+          "description": "Optimalizace rychlosti webu, struktury URL, meta tagů a schema markup"
+        },
+        "content": {
+          "title": "Obsahová Strategie",
+          "description": "Keyword research, tvorba SEO textů a optimalizace stávajícího obsahu"
+        },
+        "local": {
+          "title": "Lokální SEO",
+          "description": "Google My Business optimalizace, lokální citace a recenze"
+        },
+        "reporting": {
+          "title": "Reporting & Analytics",
+          "description": "Měsíční reporty, sledování pozic a Google Analytics analýzy"
+        }
+      },
+      "cta": "Připraveni na TOP rankings?"
+    },
+    "socialMedia": {
+      "title": "Správa Sociálních Sítí Brno Praha | Facebook Instagram LinkedIn",
+      "subtitle": "Profesionální social media marketing pro růst vaší značky",
+      "description": "Komplexní správa sociálních sítí včetně tvorby obsahu, plánování příspěvků, komunikace s fanoušky a placeného marketingu.",
+      "features": {
+        "content": {
+          "title": "Tvorba Obsahu",
+          "description": "Grafický design příspěvků, copywriting a video tvorba"
+        },
+        "management": {
+          "title": "Community Management",
+          "description": "Odpovědi na komentáře, zprávy a budování komunity"
+        },
+        "ads": {
+          "title": "Placená Reklama",
+          "description": "Facebook/Instagram Ads, LinkedIn Ads s optimalizací ROI"
+        },
+        "analytics": {
+          "title": "Analýza Výsledků",
+          "description": "Měsíční reporty, sledování metrik a optimalizace strategie"
+        }
+      },
+      "cta": "Připraveni na růst na sociálních sítích?"
+    },
+    "development": {
+      "title": "Vývoj Webů a Aplikací Brno Praha | Next.js React TypeScript",
+      "subtitle": "Moderní webové aplikace postavené na nejnovějších technologiích",
+      "description": "Vyvíjíme rychlé, škálovatelné a SEO-friendly webové aplikace pomocí Next.js, React a TypeScript. Mobilní responsivita a skvělá UX zaručena.",
+      "features": {
+        "modern": {
+          "title": "Moderní Technologie",
+          "description": "Next.js 15, React 19, TypeScript, Tailwind CSS"
+        },
+        "performance": {
+          "title": "Vysoký Výkon",
+          "description": "SSR, ISR, optimalizované images, Core Web Vitals 95+"
+        },
+        "mobile": {
+          "title": "Mobile-First",
+          "description": "Responsivní design, PWA, optimalizace pro mobily"
+        },
+        "seo": {
+          "title": "SEO Ready",
+          "description": "Strukturovaná data, meta tagy, sitemap, robots.txt"
+        }
+      },
+      "cta": "Připraveni na moderní web?"
+    },
+    "design": {
+      "title": "UX/UI Design Brno Praha | Figma Prototyping & User Testing",
+      "subtitle": "Vytváříme uživatelsky přívětivé digitální produkty",
+      "description": "Komplexní UX/UI design od wireframů přes prototypy až po finální vizuály. Používáme Figma, provádíme uživatelské testování a zajišťujeme skvělou UX.",
+      "features": {
+        "ux": {
+          "title": "UX Research & Design",
+          "description": "User research, wireframing, user flows a informační architektura"
+        },
+        "prototyping": {
+          "title": "Interaktivní Prototypy",
+          "description": "High-fidelity prototypy v Figma s kompletními interakcemi"
+        },
+        "ui": {
+          "title": "UI Design",
+          "description": "Vizuální design, design systémy, komponenty a styly"
+        },
+        "testing": {
+          "title": "Uživatelské Testování",
+          "description": "Usability testy, A/B testování a iterace na základě feedbacku"
+        }
+      },
+      "cta": "Připraveni na vynikající UX?"
+    },
+    "breadcrumb": {
+      "home": "Domů",
+      "services": "Služby",
+      "hosting": "Hosting",
+      "branding": "Branding",
+      "consulting": "IT Poradenství",
+      "seo": "SEO",
+      "social-media": "Social Media",
+      "development": "Vývoj",
+      "design": "Design"
+    }
+  }
+}

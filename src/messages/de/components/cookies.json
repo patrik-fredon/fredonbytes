@@ -1,0 +1,238 @@
+{
+  "cookies": {
+    "banner": {
+      "title": "Wir verwenden Cookies",
+      "description": "Wir verwenden Cookies, um Ihr Browsing-Erlebnis zu verbessern, personalisierte Inhalte bereitzustellen und unseren Traffic zu analysieren. Durch Klicken auf \"Alle akzeptieren\" stimmen Sie der Verwendung von Cookies zu.",
+      "learnMore": "Mehr erfahren",
+      "acceptAll": "Alle akzeptieren",
+      "necessaryOnly": "Nur notwendige",
+      "customize": "Anpassen",
+      "savePreferences": "Einstellungen speichern",
+      "preferences": {
+        "title": "Cookie-Einstellungen",
+        "description": "Passen Sie unten Ihre Cookie-Einstellungen an. Sie können verschiedene Arten von Cookies nach Ihren Präferenzen aktivieren oder deaktivieren.",
+        "necessary": {
+          "title": "Notwendige Cookies",
+          "description": "Erforderlich für das ordnungsgemäße Funktionieren der Website. Kann nicht deaktiviert werden."
+        },
+        "analytics": {
+          "title": "Analyse-Cookies",
+          "description": "Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren."
+        },
+        "marketing": {
+          "title": "Marketing-Cookies",
+          "description": "Werden verwendet, um relevante Werbung zu liefern und deren Wirksamkeit zu messen."
+        },
+        "preferences": {
+          "title": "Präferenz-Cookies",
+          "description": "Merken sich Ihre Präferenzen und Einstellungen für ein besseres Erlebnis."
+        }
+      }
+    },
+    "termsOfService": {
+      "title": "Nutzungsbedingungen",
+      "subtitle": "Rechtliche Bedingungen für die Nutzung unserer Dienste",
+      "lastUpdated": "Zuletzt aktualisiert: 6. Januar 2025",
+      "agreementOverview": {
+        "title": "Vereinbarungsübersicht",
+        "description": "Durch den Zugriff auf unsere Website oder die Nutzung unserer Dienste stimmen Sie diesen Bedingungen zu. Bitte lesen Sie diese sorgfältig durch, bevor Sie fortfahren."
+      },
+      "sections": {
+        "acceptanceOfTerms": {
+          "title": "1. Annahme der Bedingungen",
+          "content": [
+            "Durch den Zugriff auf oder die Nutzung der Fredonbytes-Website und -Dienste bestätigen Sie, dass Sie diese Nutzungsbedingungen und unsere Datenschutzrichtlinie gelesen, verstanden und zugestimmt haben. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie bitte unsere Dienste nicht.",
+            "Diese Bedingungen gelten für alle Besucher, Nutzer und andere, die auf unsere Dienste zugreifen oder sie nutzen."
+          ]
+        },
+        "servicesDescription": {
+          "title": "2. Dienstbeschreibung",
+          "intro": "Fredonbytes bietet umfassende IT-Lösungen, einschließlich:",
+          "services": [
+            "Softwareentwicklung und Webanwendungen",
+            "Grafikdesign und Markenidentitätsdienste",
+            "SEO und digitale Marketing-Lösungen",
+            "Social Media Management",
+            "IT-Beratung und Cybersicherheitsdienste",
+            "Verwandter technischer Support und Wartung"
+          ]
+        },
+        "userResponsibilities": {
+          "title": "3. Nutzerverantwortlichkeiten",
+          "intro": "Bei der Nutzung unserer Dienste verpflichten Sie sich:",
+          "responsibilities": [
+            "Genaue und wahrheitsgemäße Informationen bereitzustellen",
+            "Unsere Dienste nur für rechtmäßige Zwecke zu nutzen",
+            "Rechte an geistigem Eigentum zu respektieren",
+            "Sich nicht an schädlichen oder störenden Aktivitäten zu beteiligen",
+            "Die Vertraulichkeit von Anmeldedaten zu wahren"
+          ],
+          "prohibitedUses": {
+            "title": "Verbotene Nutzung",
+            "intro": "Sie dürfen unsere Dienste nicht verwenden, um:",
+            "prohibitions": [
+              "Geltende Gesetze oder Vorschriften zu verletzen",
+              "Die Rechte anderer zu verletzen",
+              "Malware oder schädlichen Code zu verbreiten",
+              "Sich an unbefugter Datensammlung zu beteiligen",
+              "Zu versuchen, unbefugten Zugang zu unseren Systemen zu erlangen"
+            ]
+          }
+        },
+        "serviceAgreements": {
+          "title": "4. Servicevereinbarungen und Verträge",
+          "intro": "Spezifische Projekte und Dienste werden durch separate schriftliche Vereinbarungen geregelt, die folgendes detaillieren:",
+          "details": [
+            "Projektumfang und Ergebnisse",
+            "Zeitplan und Meilensteine",
+            "Zahlungsbedingungen",
+            "Eigentum an geistigem Eigentum",
+            "Vertraulichkeitsbestimmungen"
+          ],
+          "conflictResolution": "Bei Konflikten zwischen diesen Nutzungsbedingungen und einer spezifischen Servicevereinbarung hat die Servicevereinbarung Vorrang."
+        },
+        "paymentTerms": {
+          "title": "5. Zahlungsbedingungen",
+          "pricingAndInvoicing": {
+            "title": "Preisgestaltung und Rechnungsstellung",
+            "terms": [
+              "Alle Preise werden in USD oder EUR wie angegeben angegeben",
+              "Rechnungen sind innerhalb von 30 Tagen nach Ausstellungsdatum zu bezahlen",
+              "Verspätete Zahlungen können zusätzliche Gebühren nach sich ziehen",
+              "Wir behalten uns das Recht vor, Dienste bei überfälligen Konten zu sperren"
+            ]
+          },
+          "refundsAndCancellations": {
+            "title": "Rückerstattungen und Stornierungen",
+            "terms": [
+              "Rückerstattungsrichtlinien sind in individuellen Servicevereinbarungen festgelegt",
+              "Vor der Stornierung abgeschlossene Arbeiten sind nicht erstattungsfähig",
+              "Stornierungsanträge müssen schriftlich eingereicht werden",
+              "Individuelle Entwicklungsarbeiten können unterschiedliche Stornierungsbedingungen haben"
+            ]
+          }
+        },
+        "intellectualProperty": {
+          "title": "6. Geistiges Eigentum",
+          "ourProperty": {
+            "title": "Unser geistiges Eigentum",
+            "description": "Die Fredonbytes-Website, das Logo, der Inhalt und die Methodologien sind durch Urheberrecht und andere Gesetze zum geistigen Eigentum geschützt. Sie dürfen ohne unsere schriftliche Genehmigung nicht reproduzieren, verteilen oder abgeleitete Werke erstellen."
+          },
+          "clientProperty": {
+            "title": "Geistiges Eigentum des Kunden",
+            "description": "Das Eigentum an Ergebnissen und geistigem Eigentum, das für Kunden erstellt wird, wird in der relevanten Servicevereinbarung festgelegt. Im Allgemeinen behalten Kunden das Eigentum an ihren Inhalten und Markenmaterialien, während bei individueller Entwicklung geteilte oder übertragene Eigentumsrechte beteiligt sein können."
+          }
+        },
+        "confidentiality": {
+          "title": "7. Vertraulichkeit",
+          "intro": "Wir verstehen die Wichtigkeit des Schutzes vertraulicher Informationen. Wir verpflichten uns zu:",
+          "commitments": [
+            "Strenge Vertraulichkeit von Kundeninformationen zu wahren",
+            "Kundeninformationen nur für autorisierte Zwecke zu verwenden",
+            "Angemessene Sicherheitsmaßnahmen zu implementieren",
+            "Vertrauliche Informationen nicht an Dritte weiterzugeben",
+            "Vertrauliche Informationen auf Anfrage zurückzugeben oder zu vernichten"
+          ]
+        },
+        "disclaimersAndLimitations": {
+          "title": "8. Haftungsausschlüsse und Beschränkungen",
+          "serviceAvailability": {
+            "title": "Dienstverfügbarkeit",
+            "description": "Während wir uns um hohe Verfügbarkeit bemühen, können wir keinen ununterbrochenen Zugang zu unserer Website oder unseren Diensten garantieren. Wir behalten uns das Recht vor, Dienste mit angemessener Vorankündigung zu ändern, zu suspendieren oder einzustellen."
+          },
+          "limitationOfLiability": {
+            "title": "Haftungsbeschränkung",
+            "description": "Unsere Haftung ist auf den für den spezifischen Dienst gezahlten Betrag beschränkt, der Anlass für den Anspruch gibt. Wir haften nicht für indirekte, zufällige oder Folgeschäden, einschließlich Verlust von Gewinnen, Daten oder Geschäftsmöglichkeiten."
+          }
+        },
+        "dataProtectionAndPrivacy": {
+          "title": "9. Datenschutz und Privatsphäre",
+          "content": [
+            "Wir sind dem Schutz Ihrer Privatsphäre und der Einhaltung geltender Datenschutzgesetze, einschließlich DSGVO, verpflichtet. Unsere Datenpraktiken sind in unserer Datenschutzrichtlinie detailliert beschrieben, die einen integralen Bestandteil dieser Bedingungen bildet.",
+            "Durch die Nutzung unserer Dienste stimmen Sie der Sammlung, Nutzung und Verarbeitung Ihrer Daten wie in unserer Datenschutzrichtlinie beschrieben zu."
+          ]
+        },
+        "governingLawAndDisputes": {
+          "title": "10. Geltendes Recht und Streitigkeiten",
+          "content": [
+            "Diese Bedingungen unterliegen den Gesetzen der Tschechischen Republik. Alle Streitigkeiten, die aus diesen Bedingungen oder unseren Diensten entstehen, unterliegen der ausschließlichen Gerichtsbarkeit der Gerichte in Brünn, Tschechische Republik.",
+            "Wir ermutigen zur Lösung von Streitigkeiten durch direkte Kommunikation, bevor rechtliche Schritte eingeleitet werden."
+          ]
+        },
+        "changesToTerms": {
+          "title": "11. Änderungen der Bedingungen",
+          "content": [
+            "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen werden mit der Veröffentlichung auf unserer Website wirksam. Wir werden Nutzer über wesentliche Änderungen per E-Mail oder Website-Benachrichtigung informieren.",
+            "Ihre fortgesetzte Nutzung unserer Dienste nach Änderungen stellt die Annahme der geänderten Bedingungen dar."
+          ]
+        },
+        "termination": {
+          "title": "12. Kündigung",
+          "intro": "Jede Partei kann die Servicebeziehung mit angemessener Kündigung beenden, wie in der relevanten Servicevereinbarung angegeben. Bei Kündigung:",
+          "consequences": [
+            "Alle ausstehenden Rechnungen werden sofort fällig",
+            "Der Zugang zu unseren Diensten und Systemen wird widerrufen",
+            "Vertraulichkeitsverpflichtungen bleiben in Kraft",
+            "Datenrückgabe oder -vernichtung wird wie vereinbart behandelt"
+          ]
+        },
+        "contactInformation": {
+          "title": "13. Kontaktinformationen",
+          "intro": "Für Fragen zu diesen Nutzungsbedingungen kontaktieren Sie uns bitte:",
+          "company": "Fredonbytes",
+          "email": "legal@fredonbytes.cz",
+          "phone": "+420 799 027 984",
+          "address": "Brünn, Tschechische Republik"
+        }
+      },
+      "legalNotice": {
+        "title": "Rechtlicher Hinweis",
+        "description": "Diese Bedingungen stellen eine rechtlich bindende Vereinbarung dar. Wenn Sie diesen Bedingungen nicht zustimmen, stellen Sie bitte die Nutzung unserer Website und Dienste sofort ein."
+      }
+    },
+    "pricingSection": {
+      "calculator": {
+        "title": "Individueller Angebots-Rechner",
+        "description": "Erhalten Sie sofort eine Schätzung für Ihr individuelles Projekt, indem Sie die benötigten Services auswählen.",
+        "toggleButton": "Individuelles Angebot berechnen",
+        "services": {
+          "webDevelopment": {
+            "name": "Webentwicklung",
+            "description": "Individuelle Websites und Webanwendungen",
+            "included": "Im Preis inbegriffen"
+          },
+          "mobileApp": {
+            "name": "Mobile App",
+            "description": "iOS- und Android-Anwendungen",
+            "included": "Im Preis inbegriffen"
+          },
+          "brandDesign": {
+            "name": "Design-Services",
+            "description": "UI/UX- und Grafikdesign",
+            "included": "Im Preis inbegriffen"
+          },
+          "seoMarketing": {
+            "name": "SEO & Marketing",
+            "description": "Suchoptimierung und digitales Marketing",
+            "included": "Im Preis inbegriffen"
+          },
+          "socialMedia": {
+            "name": "Social Media",
+            "description": "Social Media Management und Content-Erstellung",
+            "included": "Im Preis inbegriffen"
+          },
+          "itConsulting": {
+            "name": "IT-Beratung",
+            "description": "Strategische Technologieberatung",
+            "included": "Im Preis inbegriffen"
+          }
+        }
+      }
+    },
+    "preferences": {
+      "savePreferences": "Einstellungen speichern",
+      "acceptAll": "Alle akzeptieren",
+      "rejectAll": "Nur notwendig"
+    }
+  }
+}

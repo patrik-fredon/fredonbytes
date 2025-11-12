@@ -1,0 +1,64 @@
+{
+  "form": {
+    "title": "// Let's get to know each other!",
+    "subtitle": "Thanks so much for filling out this form! It's going to be a big help in making sure we get the perfect wireframe for your project, and we're really excited to get to know you better.",
+    "estimatedTime": "Estimated time: 3-5 minutes",
+    "startButton": "Start",
+    "starting": "Starting...",
+    "privacyNote": "Your responses are confidential and will be used solely to improve our services.",
+    "errorStarting": "Error starting form",
+    "loadingQuestions": "Loading questions...",
+    "submitButton": "Submit",
+    "submitting": "Submitting...",
+    "nextButton": "Next",
+    "previousButton": "Previous",
+    "step": "Step",
+    "of": "of",
+    "required": "Required",
+    "optional": "Optional",
+    "thankYou": {
+      "title": "Thank You!",
+      "message": "Your feedback has been submitted successfully.",
+      "redirect": "Redirecting to homepage in",
+      "seconds": "seconds"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "subscribe": "Subscribe to our newsletter",
+      "email": "Your email address"
+    },
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "submissionFailed": "Failed to submit form. Please try again.",
+      "loadFailed": "Failed to load questions. Please refresh the page."
+    },
+    "image": {
+      "remaining": "Remaining",
+      "sizeWarning": "Maximum 50MB images upload. 5MB per image.",
+      "uploading": "Uploading",
+      "label": "Image",
+      "uploadedFile": "Image uploaded"
+    },
+    "thankYouScreen": {
+      "newsletterInfo": {
+        "subscriptionInfo": "We'll only send occasional updates. Unsubscribe anytime.",
+        "subscribing": "Processing..",
+        "subscribe_newsletter": "Subscribe newsletter",
+        "subscriptionSuccess": "✓ Successfully subscribed to newsletter!",
+        "subscriptionThanks": "Check your inbox for confirmation",
+        "finishButton": "return_to_homepage",
+        "contactNote": "// Questions? Contact us at",
+        "newsletterEmail": "$ Email Address",
+        "newsletterInfo": "Subscribe to updates and news from FredonBytes",
+        "thankYouMessage": "$ Thank you for helping us to get you know better.",
+        "thankYouTitle": "// Your answers has been successfully submitted.",
+        "thankYouHeading": "✓ Successfully Deployed!"
+      }
+    },
+    "question": "Question",
+    "previous": "previous",
+    "submit": "Submit",
+    "next": "Next"
+  }
+}

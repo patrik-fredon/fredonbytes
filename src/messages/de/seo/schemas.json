@@ -1,0 +1,29 @@
+{
+  "jsonLd": {
+    "organizationName": "Fredonbytes",
+    "organizationDescription": "Vollspektrum-IT-Lösungsanbieter spezialisiert auf Softwareentwicklung, Grafikdesign, SEO und Social Media Marketing",
+    "organizationType": "TechnologyCompany",
+    "address": {
+      "streetAddress": "",
+      "addressLocality": "Brünn",
+      "addressRegion": "Südmährische Region",
+      "postalCode": "",
+      "addressCountry": "CZ"
+    },
+    "contactPoint": {
+      "telephone": "+420799027984",
+      "contactType": "Kundendienst",
+      "email": "info@fredonbytes.com"
+    },
+    "services": [
+      "Softwareentwicklung",
+      "Webentwicklung",
+      "Grafikdesign",
+      "SEO-Dienstleistungen",
+      "Social Media Marketing",
+      "IT-Beratung"
+    ],
+    "founder": "Patrik Fredon",
+    "foundingDate": "2023"
+  }
+}
