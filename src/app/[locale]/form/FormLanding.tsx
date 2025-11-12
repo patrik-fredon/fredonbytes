@@ -80,12 +80,13 @@ export default function FormLanding() {
             {/* Logo */}
             <div className="relative w-32 h-32 mx-auto mb-6">
               <Image
-                src="/FredonBytes_GraphicLogo.png"
+                src="/FredonBytes_GraphicLogo.webp"
                 alt="FredonBytes Logo"
-                fill
-                className="object-contain"
+                width={128}
+                height={128}
+                className="object-contain w-full h-full"
                 priority
-                quality={85}
+                quality={90}
                 sizes="128px"
               />
             </div>

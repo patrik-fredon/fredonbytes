@@ -52,15 +52,16 @@ export default function DesktopClient() {
                                 variants={itemVariants}
                                 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-terminal-light leading-tight font-mono items-center justify-center"
                             >
-                                <div className="relative w-full max-w-lg lg:max-w-none h-60">
+                                <div className="relative w-full max-w-lg lg:max-w-none aspect-[2/1] max-h-60 mx-auto lg:mx-0">
                                     <Image
-                                        src="/FredonBytes_GraphicLogo.png"
+                                        src="/FredonBytes_GraphicLogo.webp"
                                         alt="FredonBytes Logo"
-                                        fill
-                                        className="object-contain"
+                                        width={480}
+                                        height={240}
+                                        className="object-contain w-full h-full"
                                         priority
-                                        quality={100}
-                                        sizes="400px"
+                                        quality={90}
+                                        sizes="(max-width: 1024px) 400px, 480px"
                                     />
                                 </div>
                                 {t("hero.title")}

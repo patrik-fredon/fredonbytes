@@ -47,12 +47,13 @@ export default function ProfileHeader() {
         <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan to-electric-purple rounded-full animate-pulse shadow-glow-cyan-intense"></div>
         <div className="relative w-full h-full bg-terminal-dark border-2 border-neon-cyan rounded-full p-1">
           <Image
-            src="/FredonBytes_GraphicLogo.png"
+            src="/FredonBytes_GraphicLogo.webp"
             alt="Fredonbytes Logo"
-            fill
-            className="object-contain rounded-full p-4"
+            width={128}
+            height={128}
+            className="object-contain rounded-full p-4 w-full h-full"
             priority
-            quality={85}
+            quality={90}
             sizes="128px"
           />
         </div>

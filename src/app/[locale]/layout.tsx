@@ -56,6 +56,14 @@ const WebVitals = dynamic(
   },
 );
 
+const PlausibleAnalytics = dynamic(
+  () => import("../../components/common/PlausibleAnalytics"),
+  {
+    ssr: false, // Analytics should not run on server
+    loading: () => null,
+  },
+);
+
 // JetBrains Mono loaded via @fontsource imports above
 // Font features: 'liga' 1, 'calt' 1 for ligatures
 // Applied globally via Tailwind config: font-family: 'JetBrains Mono'
@@ -108,11 +116,10 @@ function configureHeadForTheme() {
         />
       )}
 
-      {/* Resource hints for performance optimization */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      {/* Resource hints for analytics - Fonts are self-hosted via @fontsource */}
       <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+      <link rel="dns-prefetch" href="https://plausible.homelab-fredon.space" />
 
       {/* Geo-targeting for Czech Republic - Enhanced for local SEO */}
       <meta name="geo.region" content="CZ-JM" />
@@ -164,6 +171,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <CookieConsentBanner />
             <ConditionalAnalytics />
             <WebVitals />
+            <PlausibleAnalytics />
           </ClientLayoutWrapper>
         </NextIntlClientProvider>
       </body>
