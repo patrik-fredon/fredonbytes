@@ -120,6 +120,18 @@ function configureHeadForTheme() {
       <link rel="dns-prefetch" href="https://www.google-analytics.com" />
       <link rel="dns-prefetch" href="https://plausible.homelab-fredon.space" />
 
+      {/* Plausible Analytics - Defer loading for performance */}
+      <script
+        defer
+        data-domain="fredonbytes.eu"
+        src="https://plausible.homelab-fredon.space/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`,
+        }}
+      />
+
       {/* Geo-targeting for Czech Republic - Enhanced for local SEO */}
       <meta name="geo.region" content="CZ-JM" />
       <meta name="geo.placename" content="Brno" />
@@ -170,7 +182,6 @@ export default async function LocaleLayout({ children, params }: Props) {
             <CookieConsentBanner />
             <ConditionalAnalytics />
             <WebVitals />
-            <PlausibleAnalytics />
           </ClientLayoutWrapper>
         </NextIntlClientProvider>
       </body>
