@@ -1,12 +1,12 @@
+import bundleAnalyzer from "@next/bundle-analyzer";
+import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
-import createMDX from "@next/mdx";
-import bundleAnalyzer from "@next/bundle-analyzer";
-import remarkGfm from "remark-gfm";
-import remarkFrontmatter from "remark-frontmatter";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -72,8 +72,8 @@ const nextConfig: NextConfig = {
     removeConsole:
       process.env.NODE_ENV === "production"
         ? {
-            exclude: ["error", "warn"],
-          }
+          exclude: ["error", "warn"],
+        }
         : false,
   },
 
@@ -94,28 +94,28 @@ const nextConfig: NextConfig = {
             // Framework chunk for React/Next.js core
             framework: {
               name: "framework",
-              test: /[\/]node_modules[\/](react|react-dom|next|scheduler)[\/]/,
+              test: /[/]node_modules[/](react|react-dom|next|scheduler)[/]/,
               priority: 40,
               enforce: true,
             },
             // Radix UI components chunk
             radixUI: {
               name: "radix-ui",
-              test: /[\/]node_modules[\/]@radix-ui[\/]/,
+              test: /[/]node_modules[/]@radix-ui[/]/,
               priority: 35,
               enforce: true,
             },
             // Framer Motion chunk (large animation library)
             framerMotion: {
               name: "framer-motion",
-              test: /[\/]node_modules[\/]framer-motion[\/]/,
+              test: /[/]node_modules[/]framer-motion[/]/,
               priority: 30,
               enforce: true,
             },
             // Vendor chunk for other node_modules
             vendor: {
               name: "vendor",
-              test: /[\/]node_modules[\/]/,
+              test: /[/]node_modules[/]/,
               priority: 20,
             },
             // Common chunk for shared code
@@ -161,7 +161,7 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://plausible.homelab-fredon.space https://vercel.live",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://plausible.io https://vercel.live",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' data: https:",
               "font-src 'self' data: https://fonts.gstatic.com",
