@@ -55,9 +55,10 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
 - **Animations:** Framer Motion
 - **Forms:** React Hook Form + Zod
 - **Database:** Supabase (PostgreSQL)
-- **Email:** SMTP server
+- **Caching:** Redis 7
+- **Email:** SMTP via Nodemailer
 - **Icons:** Lucide React
-- **Deployment:** Vercel (recommended)
+- **Deployment:** Coolify (Docker Compose) / Vercel
 
 ## 📦 Installation
 
@@ -101,6 +102,66 @@ A comprehensive business website and link tree ecosystem built with Next.js 15, 
    ```
 
 5. **Open [http://localhost:3000](http://localhost:3000) in your browser**
+
+## 🐳 Docker Deployment
+
+### Using Docker Compose (Recommended for Production)
+
+The project includes a production-ready `docker-compose.yml` optimized for Coolify hosting.
+
+**Services included:**
+- **app** - Next.js application (port 3000)
+- **redis** - Redis cache server (internal only)
+- **redis-insight** - Redis GUI management tool (port 5487)
+
+**Quick start:**
+
+```bash
+# Start all services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f app
+
+# Access Redis Insight
+open http://localhost:5487
+
+# Stop all services
+docker-compose down
+```
+
+**Environment Variables:**
+
+All required environment variables are documented in `.env.example`. In Coolify:
+1. Variables marked with `:?` are required (shown with red border in UI)
+2. Variables marked with `:-` are optional with defaults
+3. Configure all variables in Coolify UI before deploying
+
+**Redis Configuration:**
+- Redis runs with 256MB memory limit and LRU eviction policy
+- Data persisted in `redis-data` volume
+- Health checks ensure service availability
+- Used for caching, session management, and rate limiting
+
+**Redis Insight:**
+- Web-based GUI for Redis management
+- Access locally at `http://localhost:5487`
+- For production subdomain access, uncomment Traefik labels in docker-compose.yml
+- Data persisted in `redis-insight-data` volume
+
+**Coolify Deployment:**
+1. Create new "Docker Compose" service in Coolify
+2. Copy `docker-compose.yml` content
+3. Configure environment variables in Coolify UI
+4. Set primary domain for the app service
+5. Deploy!
+
+**Multi-Domain Support:**
+- Configure all domains (primary + secondary) in Traefik labels
+- Application middleware handles 301 redirects from secondary to primary
+- Compatible with Cloudflare tunnel and reverse proxies
+
+For detailed deployment instructions, see comments in `docker-compose.yml`
 
 ## 🎨 Customization
 

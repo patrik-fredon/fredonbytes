@@ -247,7 +247,22 @@ export function middleware(request: NextRequest) {
   }
 
   // For all other routes, use next-intl middleware
-  return handleI18nRouting(request);
+  const response = handleI18nRouting(request);
+
+  // Set CSRF token cookie if not present (for all routes including page routes)
+  // NOT httpOnly so JavaScript can read it for x-csrf-token header (double-submit pattern)
+  if (!request.cookies.get(CSRF_TOKEN_COOKIE_NAME)) {
+    const newCsrfToken = generateCsrfToken();
+    response.cookies.set(CSRF_TOKEN_COOKIE_NAME, newCsrfToken, {
+      httpOnly: false, // Client needs to read this for x-csrf-token header
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/",
+      maxAge: 60 * 60 * 24, // 24 hours
+    });
+  }
+
+  return response;
 }
 
 // Configure which routes the middleware runs on
