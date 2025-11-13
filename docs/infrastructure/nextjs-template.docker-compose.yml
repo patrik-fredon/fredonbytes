@@ -1,66 +1,52 @@
 # =============================================================================
-# FREDONBYTES - MAIN APPLICATION
+# NEXT.JS APPLICATION TEMPLATE
 # =============================================================================
-# Next.js application with Traefik routing
-# Uses shared Redis from ~/infrastructure setup
-#
-# Stack: Lightweight Production Setup
-# - Traefik: Reverse proxy (from infrastructure)
-# - Redis DB 0: Shared cache (from infrastructure)
-#
-# Domains: fredonbytes.eu, .com, .tech, .cloud, .cz
+# Copy this to your Next.js project root as docker-compose.yml
+# Customize container name, domains, and Redis DB number
 # =============================================================================
 
 services:
   app:
-    container_name: fredonbytes-app
+    container_name: YOUR-APP-NAME  # Change this! (e.g., fredonbytes-app)
     build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    environment:
-      # Node.js & Application
-      - NODE_ENV=production
-      - REDIS_URL=redis://redis-shared:6379/0
-      - CSRF_SECRET=${CSRF_SECRET:?}
 
-      # Multi-Domain Configuration
+    environment:
+      # Core
+      - NODE_ENV=production
+      - REDIS_URL=redis://redis-shared:6379/0  # Change DB number per project!
+      - CSRF_SECRET=${CSRF_SECRET:?}
+      - BEHIND_PROXY=true
+
+      # Domains
       - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:?}
       - NEXT_PUBLIC_PRIMARY_DOMAIN=${NEXT_PUBLIC_PRIMARY_DOMAIN:?}
       - NEXT_PUBLIC_SECONDARY_DOMAINS=${NEXT_PUBLIC_SECONDARY_DOMAINS:-}
-      - NEXT_PUBLIC_DOMAIN_STRATEGY=${NEXT_PUBLIC_DOMAIN_STRATEGY:-primary}
-      - BEHIND_PROXY=${BEHIND_PROXY:-true}
 
-      # Email Configuration (Domain-Aware)
+      # Email
       - NEXT_PUBLIC_SUPPORT_EMAIL=${NEXT_PUBLIC_SUPPORT_EMAIL:?}
       - NEXT_PUBLIC_CONTACT_EMAIL=${NEXT_PUBLIC_CONTACT_EMAIL:?}
-
-      # SMTP Configuration (Nodemailer)
-      - SMTP_HOST=${SMTP_HOST:-smtp.forpsi.com}
+      - SMTP_HOST=${SMTP_HOST:?}
       - SMTP_PORT=${SMTP_PORT:-587}
-      - SMTP_SECURE=${SMTP_SECURE:-false}
       - SMTP_USER=${SMTP_USER:?}
       - SMTP_PASS=${SMTP_PASS:?}
-      - SMTP_REJECT_UNAUTHORIZED=${SMTP_REJECT_UNAUTHORIZED:-true}
 
       # Database (Supabase)
       - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL:?}
       - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY:?}
       - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY:?}
 
-      # SEO Verification (Optional)
-      - NEXT_PUBLIC_GOOGLE_VERIFICATION=${NEXT_PUBLIC_GOOGLE_VERIFICATION:-}
-      - NEXT_PUBLIC_BING_VERIFICATION=${NEXT_PUBLIC_BING_VERIFICATION:-}
-
     networks:
       - web
 
     labels:
-      # Traefik Routing
+      # Traefik Routing - CUSTOMIZE THESE!
       - "traefik.enable=true"
-      - "traefik.http.routers.fredonbytes-main.rule=Host(`fredonbytes.eu`) || Host(`fredonbytes.com`) || Host(`fredonbytes.tech`) || Host(`fredonbytes.cloud`) || Host(`fredonbytes.cz`)"
-      - "traefik.http.routers.fredonbytes-main.entrypoints=web"
-      - "traefik.http.services.fredonbytes-main.loadbalancer.server.port=3000"
+      - "traefik.http.routers.YOUR-ROUTER-NAME.rule=Host(`your-domain.com`) || Host(`www.your-domain.com`)"
+      - "traefik.http.routers.YOUR-ROUTER-NAME.entrypoints=web"
+      - "traefik.http.services.YOUR-SERVICE-NAME.loadbalancer.server.port=3000"
 
     healthcheck:
       test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => process.exit(r.statusCode === 200 ? 0 : 1))"]

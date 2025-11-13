@@ -1,0 +1,20 @@
+# =============================================================================
+# CROWDSEC ACQUISITION - Log Sources
+# =============================================================================
+
+# Docker containers
+source: docker
+container_name:
+  - traefik
+  - fredonbytes-app
+  - fredonbytes-tech
+labels:
+  type: docker
+
+---
+# System auth logs (SSH, sudo)
+filenames:
+  - /var/log/auth.log
+  - /var/log/secure
+labels:
+  type: syslog
