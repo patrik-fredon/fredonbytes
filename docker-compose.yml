@@ -1,39 +1,9 @@
 # =============================================================================
-# FREDONBYTES - DOCKER COMPOSE FOR COOLIFY
+# FREDONBYTES - MAIN APPLICATION
 # =============================================================================
-#
-# This docker-compose file is optimized for Coolify hosting platform.
-# https://coolify.io/docs/knowledge-base/docker/compose
-#
-# DEPLOYMENT STEPS:
-#
-# 1. Create a new service in Coolify with type "Docker Compose"
-# 2. Copy this docker-compose.yml content to Coolify
-# 3. Configure environment variables in Coolify UI:
-#    - Required variables (marked with :?) will show with red border
-#    - Optional variables (marked with :-) have default values
-# 4. Set primary domain in Coolify for your app service
-# 5. Deploy!
-#
-# ENVIRONMENT VARIABLES:
-# All environment variables are auto-detected by Coolify UI.
-# See .env.example for detailed documentation of each variable.
-#
-# NETWORKING:
-# - Port 3000 is exposed for local development/testing
-# - In Coolify, traffic is routed via Traefik proxy (labels configured)
-# - Redis is internal-only (traefik.enable=false)
-# - Multi-domain support: All domains (primary + secondary) are accepted by Traefik
-# - Application middleware handles 301 redirects from secondary to primary domain
-# - Compatible with Cloudflare tunnel routing all domains to localhost:3000
-#
-# VOLUMES:
-# - redis-data: Persistent Redis storage (managed by Coolify)
-#
-# HEALTH CHECKS:
-# - App: HTTP check on /api/health endpoint
-# - Redis: Redis CLI ping command
-#
+# Next.js application with Traefik routing
+# Uses shared Redis from infrastructure setup
+# Domains: fredonbytes.eu, .com, .tech, .cloud, .cz
 # =============================================================================
 
 services:
@@ -42,10 +12,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    restart: unless-stopped
     environment:
       # Node.js & Application
       - NODE_ENV=production
-      - REDIS_URL=redis://redis:6379
+      - REDIS_URL=redis://redis-shared:6379/0
       - CSRF_SECRET=${CSRF_SECRET:?}
 
       # Multi-Domain Configuration
@@ -76,26 +47,16 @@ services:
       - NEXT_PUBLIC_GOOGLE_VERIFICATION=${NEXT_PUBLIC_GOOGLE_VERIFICATION:-}
       - NEXT_PUBLIC_BING_VERIFICATION=${NEXT_PUBLIC_BING_VERIFICATION:-}
 
+    networks:
+      - web
+
     labels:
-      # Coolify Management Labels
-      - "coolify.managed=true"
-      # Traefik Routing (for Coolify proxy integration)
-      # MULTI-DOMAIN SUPPORT: Accept all configured domains (primary + secondary)
-      # The middleware will handle 301 redirects from secondary to primary domain
+      # Traefik Routing
       - "traefik.enable=true"
       - "traefik.http.routers.fredonbytes-main.rule=Host(`fredonbytes.eu`) || Host(`fredonbytes.com`) || Host(`fredonbytes.tech`) || Host(`fredonbytes.cloud`) || Host(`fredonbytes.cz`)"
-      - "traefik.http.routers.fredonbytes-main.entrypoints=websecure"
-      - "traefik.http.routers.fredonbytes-main.tls=true"
-      - "traefik.http.routers.fredonbytes-main.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.fredonbytes-main.entrypoints=web"
       - "traefik.http.services.fredonbytes-main.loadbalancer.server.port=3000"
 
-    depends_on:
-      redis:
-        condition: service_healthy
-    restart: unless-stopped
-    networks:
-      - fredonbytes
-      - coolify
     healthcheck:
       test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => process.exit(r.statusCode === 200 ? 0 : 1))"]
       interval: 30s
@@ -103,70 +64,7 @@ services:
       retries: 3
       start_period: 40s
 
-  redis:
-    container_name: fredonbytes-redis
-    image: redis:7-alpine
-    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
-    volumes:
-      - redis-data:/data
-    restart: unless-stopped
-    networks:
-      - fredonbytes
-    labels:
-      # Coolify Management Labels
-      - "coolify.managed=true"
-      # Exclude from public exposure (internal service only)
-      - "traefik.enable=false"
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
-
-  redis-insight:
-    container_name: fredonbytes-redis-insight
-    image: redis/redisinsight:latest
-    ports:
-      - "127.0.0.1:5487:5540"
-    volumes:
-      - redis-insight-data:/data
-    environment:
-      - REDIS_HOSTS=local:redis:6379
-    depends_on:
-      redis:
-        condition: service_healthy
-    restart: unless-stopped
-    networks:
-      - fredonbytes
-    labels:
-      # Coolify Management Labels
-      - "coolify.managed=true"
-      # Traefik routing for Redis Insight (optional - only if you want web access)
-      # Uncomment the lines below if you want to expose Redis Insight via subdomain
-      # - "traefik.enable=true"
-      # - "traefik.http.routers.redis-insight.rule=Host(`redis.${NEXT_PUBLIC_PRIMARY_DOMAIN:?}`)"
-      # - "traefik.http.routers.redis-insight.entrypoints=websecure"
-      # - "traefik.http.routers.redis-insight.tls=true"
-      # - "traefik.http.routers.redis-insight.tls.certresolver=letsencrypt"
-      # - "traefik.http.services.redis-insight.loadbalancer.server.port=5540"
-    healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5540/api/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 20s
-
-volumes:
-  redis-data:
-    driver: local
-  redis-insight-data:
-    driver: local
-
 networks:
-  fredonbytes:
-    name: fredonbytes
-    driver: bridge
-  coolify:
+  web:
     external: true
-    name: coolify
+    name: web
