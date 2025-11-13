@@ -254,9 +254,15 @@ For a complete list of available scripts, see `package.json`
 ## 🛡️ Security & Compliance
 
 - **GDPR Compliant** - Full European data protection compliance
-- **Cookie Management** - Granular consent controls
-- **Form Validation** - Server-side validation with Zod
-- **Data Protection** - Secure handling of user information
+- **CSRF Protection** - Double-submit cookie pattern with comprehensive XSS mitigation
+- **Content Security Policy** - Strict CSP headers preventing injection attacks
+- **Input Sanitization** - All user inputs sanitized to prevent XSS
+- **Rate Limiting** - Redis-based distributed rate limiting
+- **Cookie Management** - Granular consent controls with secure cookie policies
+- **Form Validation** - Server-side validation with Zod schemas
+- **Data Protection** - Encrypted connections, secure headers, RLS policies
+
+For detailed security information, see [SECURITY.md](SECURITY.md)
 
 ## 🤝 Contributing
 
