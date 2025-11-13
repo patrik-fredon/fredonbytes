@@ -55,14 +55,14 @@ export default async function FAQSection({ locale }: FAQSectionProps) {
         </div>
 
         {/* FAQ Items - Native HTML details/summary for zero-JS accordion */}
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-7xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
             <details
               key={index}
-              className="group border border-neon-cyan/10 rounded-lg overflow-hidden shadow-xl inset-shadow-xl inset-shadow-slate-950/80  bg-terminal-light/3 backdrop-blur-glass  transition-all duration-300"
+              className="group border border-neon-cyan/10 rounded-lg overflow-hidden shadow-xl inset-shadow-xl inset-shadow-slate-950/80  bg-terminal-darker backdrop-blur-glass  transition-all duration-300"
             >
               <summary className="px-6 py-4 flex items-center justify-between cursor-pointer list-none hover:bg-terminal-dark/20 transition-colors duration-200 [&::-webkit-details-marker]:hidden">
-                <h3 className="text-lg sm:text-xl font-semibold text-terminal-light/80 font-mono pr-4">
+                <h3 className="text-md sm:text-xl font-semibold text-terminal-light/80 font-mono pr-4">
                   <span className="text-neon-purple">{"// "}</span>
                   {faq.question}
                 </h3>
