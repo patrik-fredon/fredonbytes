@@ -1,0 +1,160 @@
+# =============================================================================
+# LIGHTWEIGHT PRODUCTION INFRASTRUCTURE
+# =============================================================================
+# Simple, efficient stack for Next.js applications
+#
+# Stack Components:
+# - Traefik v3: Reverse proxy with dashboard
+# - CrowdSec: Modern intrusion prevention (replaces Fail2Ban)
+# - Redis: Shared cache for all Next.js apps
+# - Beszel: Lightweight server monitoring
+# - Dozzle: Real-time Docker logs viewer
+#
+# Resources: ~400-500MB RAM | 6 containers | Clean & Simple
+# =============================================================================
+
+services:
+  # ===========================================================================
+  # REVERSE PROXY
+  # ===========================================================================
+  traefik:
+    container_name: traefik
+    image: traefik:v3.0
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - traefik-certs:/letsencrypt
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dashboard.rule=Host(\`traefik.localhost\`)"
+      - "traefik.http.routers.dashboard.service=api@internal"
+      - "traefik.http.routers.dashboard.entrypoints=web"
+
+  # ===========================================================================
+  # SECURITY - CrowdSec
+  # ===========================================================================
+  crowdsec:
+    container_name: crowdsec
+    image: crowdsecurity/crowdsec:latest
+    restart: unless-stopped
+    environment:
+      - COLLECTIONS=crowdsecurity/traefik crowdsecurity/http-cve crowdsecurity/linux
+      - GID=\${GID:-1000}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./crowdsec/acquis.yaml:/etc/crowdsec/acquis.yaml:ro
+      - crowdsec-db:/var/lib/crowdsec/data
+      - crowdsec-config:/etc/crowdsec
+      - /var/log:/var/log:ro
+    networks:
+      - web
+
+  crowdsec-bouncer:
+    container_name: crowdsec-bouncer
+    image: fbonalair/traefik-crowdsec-bouncer:latest
+    restart: unless-stopped
+    environment:
+      - CROWDSEC_BOUNCER_API_KEY=\${CROWDSEC_KEY:?}
+      - CROWDSEC_AGENT_HOST=crowdsec:8080
+      - GIN_MODE=release
+    networks:
+      - web
+    depends_on:
+      - crowdsec
+
+  # ===========================================================================
+  # MONITORING - Beszel (lightweight alternative to Grafana)
+  # ===========================================================================
+  beszel:
+    container_name: beszel
+    image: henrygd/beszel:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8090:8090"
+    volumes:
+      - beszel-data:/beszel_data
+    networks:
+      - web
+
+  beszel-agent:
+    container_name: beszel-agent
+    image: henrygd/beszel-agent:latest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - PORT=45876
+      - KEY=\${BESZEL_KEY:?}
+
+  # ===========================================================================
+  # LOGGING - Dozzle
+  # ===========================================================================
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8081:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - DOZZLE_NO_ANALYTICS=true
+      - DOZZLE_LEVEL=info
+      - DOZZLE_FILTER=status=running
+    networks:
+      - web
+
+  # ===========================================================================
+  # SHARED CACHE - Redis
+  # ===========================================================================
+  redis:
+    container_name: redis-shared
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --maxmemory 512mb --maxmemory-policy allkeys-lru --databases 16
+    volumes:
+      - redis-data:/data
+    networks:
+      - web
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis-insight:
+    container_name: redis-insight
+    image: redis/redisinsight:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5540:5540"
+    volumes:
+      - redis-insight-data:/data
+    environment:
+      - REDIS_HOSTS=shared:redis-shared:6379
+    networks:
+      - web
+    depends_on:
+      redis:
+        condition: service_healthy
+
+volumes:
+  traefik-certs:
+  crowdsec-db:
+  crowdsec-config:
+  beszel-data:
+  redis-data:
+  redis-insight-data:
+
+networks:
+  web:
+    name: web
+    driver: bridge
