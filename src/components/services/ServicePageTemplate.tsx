@@ -5,6 +5,7 @@ import { Button } from "@/components/common/Button";
 import GlassCard from "@/components/dev-ui/GlassCard";
 import TerminalWindow from "@/components/dev-ui/TerminalWindow";
 import { Link } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 import { generateBreadcrumbSchema } from "@/lib/jsonLd/breadcrumb";
 
 export interface FeatureConfig {
@@ -31,9 +32,15 @@ export async function generateServiceMetadata(
 ): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: config.namespace });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
-  const localePrefix = locale === "cs" ? "" : `/${locale}`;
-  const pageUrl = `${baseUrl}${localePrefix}/services/${config.slug}`;
+  const baseUrlEnv = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
+  const baseUrl = baseUrlEnv.replace(/\/$/, "");
+  const pageUrl = `${baseUrl}/${locale}/services/${config.slug}`;
+
+  const languages = routing.locales.reduce<Record<string, string>>((acc, currentLocale) => {
+    acc[currentLocale] = `${baseUrl}/${currentLocale}/services/${config.slug}`;
+    return acc;
+  }, {});
+  languages["x-default"] = `${baseUrl}/${routing.defaultLocale}/services/${config.slug}`;
 
   return {
     title: t("title"),
@@ -41,11 +48,7 @@ export async function generateServiceMetadata(
     keywords: config.keywords,
     alternates: {
       canonical: pageUrl,
-      languages: {
-        cs: `${baseUrl}/cs/services/${config.slug}`,
-        en: `${baseUrl}/en/services/${config.slug}`,
-        de: `${baseUrl}/de/services/${config.slug}`,
-      },
+      languages,
     },
     openGraph: {
       title: t("title"),
@@ -83,6 +86,7 @@ export async function generateServiceMetadata(
         "max-snippet": -1,
       },
     },
+    metadataBase: new URL(baseUrl),
   };
 }
 

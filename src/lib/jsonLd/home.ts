@@ -6,6 +6,19 @@ type SchemaProps = Record<string, unknown>;
 // Schema.org context constant
 const SCHEMA_CONTEXT = "https://schema.org";
 
+function resolveBusinessAddress() {
+  const street = process.env.NEXT_PUBLIC_BUSINESS_STREET;
+  const postalCode = process.env.NEXT_PUBLIC_BUSINESS_POSTAL_CODE;
+
+  if (!street || !postalCode) {
+    throw new Error(
+      "Missing NEXT_PUBLIC_BUSINESS_STREET or NEXT_PUBLIC_BUSINESS_POSTAL_CODE environment variables",
+    );
+  }
+
+  return { street, postalCode };
+}
+
 /**
  * Helper to create a schema object with @context and @type
  */
@@ -33,6 +46,7 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
   const jsonLdT = await getTranslations({ locale, namespace: "jsonLd" });
   const faqT = await getTranslations({ locale, namespace: "faq" });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
+  const { street, postalCode } = resolveBusinessAddress();
 
   // Organization schema
   const organizationSchema = createSchema("Organization", {
@@ -92,10 +106,10 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     email: "info@fredonbytes.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "",
+      streetAddress: street,
       addressLocality: "Brno",
       addressRegion: "Jihomoravský kraj",
-      postalCode: "",
+      postalCode,
       addressCountry: "CZ",
     },
     areaServed: [

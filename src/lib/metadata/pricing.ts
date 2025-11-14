@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 
 /**
  * Generate metadata for the pricing page
@@ -7,9 +8,15 @@ import { getTranslations } from "next-intl/server";
 export async function getPricingMetadata(locale: string): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "pricing.meta" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
-  const localePrefix = locale === "cs" ? "" : `/${locale}`;
-  const canonicalUrl = `${baseUrl}${localePrefix}/pricing`;
+  const baseUrlEnv = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = baseUrlEnv.replace(/\/$/, "");
+  const canonicalUrl = `${baseUrl}/${locale}/pricing`;
+
+  const languages = routing.locales.reduce<Record<string, string>>((acc, currentLocale) => {
+    acc[currentLocale] = `${baseUrl}/${currentLocale}/pricing`;
+    return acc;
+  }, {});
+  languages["x-default"] = `${baseUrl}/${routing.defaultLocale}/pricing`;
 
   return {
     title: t("title"),
@@ -17,11 +24,7 @@ export async function getPricingMetadata(locale: string): Promise<Metadata> {
     keywords: t("keywords"),
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        cs: `${baseUrl}/cs/pricing`,
-        en: `${baseUrl}/en/pricing`,
-        de: `${baseUrl}/de/pricing`,
-      },
+      languages,
     },
     openGraph: {
       title: t("title"),
@@ -54,5 +57,6 @@ export async function getPricingMetadata(locale: string): Promise<Metadata> {
         follow: true,
       },
     },
+    metadataBase: new URL(baseUrl),
   };
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 
 /**
  * Generate metadata for the home page
@@ -9,9 +10,15 @@ export async function getHomeMetadata(locale: string): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "metadata" });
   const seoT = await getTranslations({ locale, namespace: "seo" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
-  const localePrefix = locale === "cs" ? "" : `/${locale}`;
-  const canonicalUrl = `${baseUrl}${localePrefix}`;
+  const baseUrlEnv = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
+  const baseUrl = baseUrlEnv.replace(/\/$/, "");
+  const canonicalUrl = `${baseUrl}/${locale}`;
+
+  const languages = routing.locales.reduce<Record<string, string>>((acc, currentLocale) => {
+    acc[currentLocale] = `${baseUrl}/${currentLocale}`;
+    return acc;
+  }, {});
+  languages["x-default"] = `${baseUrl}/${routing.defaultLocale}`;
 
   // Enhanced keywords with Czech market focus (all services)
   const enhancedKeywords =
@@ -39,11 +46,7 @@ export async function getHomeMetadata(locale: string): Promise<Metadata> {
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        cs: baseUrl,
-        en: `${baseUrl}/en`,
-        de: `${baseUrl}/de`,
-      },
+      languages,
     },
     openGraph: {
       type: "website",
@@ -71,5 +74,6 @@ export async function getHomeMetadata(locale: string): Promise<Metadata> {
       description: seoT("defaultDescription"),
       images: [`${baseUrl}/og-image.png`],
     },
+    metadataBase: new URL(baseUrl),
   };
 }
