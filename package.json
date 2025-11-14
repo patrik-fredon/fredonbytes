@@ -10,7 +10,10 @@
     "format": "biome format --write",
     "analyze": "ANALYZE=true npm run build",
     "type-check": "tsc --noEmit",
-    "generate-icons": "node scripts/generate-icons.js"
+    "generate-icons": "node scripts/generate-icons.js",
+    "validate:jsonld": "node scripts/validate-jsonld.js",
+    "validate:canonical": "node scripts/validate-canonical.js",
+    "validate:seo": "npm run validate:jsonld && npm run validate:canonical"
   },
   "dependencies": {
     "@fontsource/jetbrains-mono": "^5.2.8",

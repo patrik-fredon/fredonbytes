@@ -102,7 +102,9 @@ export default async function ServicePageTemplate({ params, config }: Props) {
   const t = await getTranslations({ locale, namespace: "services" });
   const ts = await getTranslations({ locale, namespace: config.namespace });
   const tcta = await getTranslations({ locale, namespace: "hero.cta" });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
+  const baseUrlEnv = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
+  const baseUrl = baseUrlEnv.replace(/\/$/, "");
+  const pageUrl = `${baseUrl}/${locale}/services/${config.slug}`;
 
   const breadcrumb = generateBreadcrumbSchema(
     [
@@ -113,6 +115,26 @@ export default async function ServicePageTemplate({ params, config }: Props) {
     baseUrl,
   );
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${pageUrl}#service`,
+    name: ts("title"),
+    description: ts("description"),
+    provider: { "@id": `${baseUrl}/#organization` },
+    serviceType: config.slug,
+    url: pageUrl,
+    areaServed: ["CZ"],
+    inLanguage: locale,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "CZK",
+      price: "0",
+      availability: "https://schema.org/InStock",
+      url: `${pageUrl}#contact`,
+    },
+  };
+
   const IconComponent = config.icon;
 
   return (
@@ -120,6 +142,10 @@ export default async function ServicePageTemplate({ params, config }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
 
       <div className="min-h-screen pt-8 pb-14 relative z-10">

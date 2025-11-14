@@ -1,20 +1,54 @@
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { generateLocalizedMetadata } from "@/config/metadata";
 import { routing } from "@/i18n/routing";
+import { getOrganizationSchemas } from "@/lib/jsonLd/organization";
 import "../globals.css";
-
-// Import JetBrains Mono from fontsource (works offline/in Docker)
-import "@fontsource/jetbrains-mono/400.css";
-import "@fontsource/jetbrains-mono/500.css";
-import "@fontsource/jetbrains-mono/600.css";
-import "@fontsource/jetbrains-mono/700.css";
 
 import GridBackground from "@/components/dev-ui/GridBackground";
 import ClientLayoutWrapper from "../../components/ClientLayoutWrapper";
+
+// JetBrains Mono font with optimal loading
+const jetbrainsMono = localFont({
+  src: [
+    {
+      path: "../../../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-600-normal.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+  preload: true,
+  fallback: [
+    "ui-monospace",
+    "SFMono-Regular",
+    "Menlo",
+    "Monaco",
+    "Consolas",
+    "monospace",
+  ],
+});
+
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
 
@@ -22,7 +56,6 @@ import Header from "../../components/common/Header";
 const AnimatedBackground = dynamic(
   () => import("../../components/common/AnimatedBackground"),
   {
-
     loading: () => (
       <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
     ),
@@ -32,7 +65,6 @@ const AnimatedBackground = dynamic(
 const CookieConsentBanner = dynamic(
   () => import("../../components/common/CookieConsentBanner"),
   {
-
     loading: () => null,
   },
 );
@@ -40,7 +72,6 @@ const CookieConsentBanner = dynamic(
 const ConditionalAnalytics = dynamic(
   () => import("../../components/common/ConditionalAnalytics"),
   {
-
     loading: () => null,
   },
 );
@@ -51,7 +82,6 @@ const WebVitals = dynamic(
       default: mod.WebVitals,
     })),
   {
-
     loading: () => null,
   },
 );
@@ -108,10 +138,24 @@ function configureHeadForTheme() {
         />
       )}
 
-      {/* Resource hints for analytics - Fonts are self-hosted via @fontsource */}
+      {/* Critical resource preloads for LCP optimization */}
+      <link
+        rel="preload"
+        href="/FredonBytes_GraphicLogo.webp"
+        as="image"
+        type="image/webp"
+      />
+      <link rel="preload" href="/og-image.png" as="image" type="image/png" />
+
+      {/* Resource hints for analytics and third-party */}
       <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       <link rel="dns-prefetch" href="https://www.google-analytics.com" />
       <link rel="dns-prefetch" href="https://plausible.io" />
+      <link
+        rel="preconnect"
+        href="https://plausible.io"
+        crossOrigin="anonymous"
+      />
 
       {/* Plausible Analytics - Defer loading for performance */}
       <script
@@ -125,8 +169,6 @@ function configureHeadForTheme() {
   plausible.init()`,
         }}
       />
-
-
 
       {/* Geo-targeting for Czech Republic - Enhanced for local SEO */}
       <meta name="geo.region" content="CZ-JM" />
@@ -151,15 +193,25 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   const messages = await getMessages();
+  const organizationSchemas = await getOrganizationSchemas(locale);
 
   return (
     <html
       lang={locale}
-      className="scroll-smooth"
+      className={`scroll-smooth ${jetbrainsMono.variable}`}
       suppressHydrationWarning={true}
     >
       {configureHeadForTheme()}
-      <body className="antialiased min-h-screen flex flex-col relative font-jetbrains-mono">
+      <body
+        className="antialiased min-h-screen flex flex-col relative"
+        style={{ fontFamily: "var(--font-jetbrains-mono)" }}
+      >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchemas),
+          }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-slate-900 focus:text-cyan-400 focus:rounded-md focus:border focus:border-cyan-400 focus:shadow-[0_0_10px_rgba(0,217,255,0.5)]"

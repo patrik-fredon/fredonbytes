@@ -8,7 +8,7 @@ type Schema = Record<string, unknown>;
  */
 interface PlanConfig {
   key: "starter" | "professional" | "enterprise";
-  price: string;
+  priceCZK: number;
   vatIncluded?: boolean;
 }
 
@@ -24,9 +24,9 @@ interface BreadcrumbConfig {
 
 // Plan configuration array
 const PLAN_CONFIGS: PlanConfig[] = [
-  { key: "starter", price: "Od 15 000" },
-  { key: "professional", price: "Od 35 000" },
-  { key: "enterprise", price: "0", vatIncluded: true },
+  { key: "starter", priceCZK: 15000 },
+  { key: "professional", priceCZK: 35000 },
+  { key: "enterprise", priceCZK: 0, vatIncluded: true },
 ];
 
 // Breadcrumb configuration array
@@ -47,7 +47,7 @@ export async function getPricingSchemas(locale: string): Promise<Schema[]> {
   const offersSchema: Schema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: PLAN_CONFIGS.map(({ key, price, vatIncluded }) => ({
+    itemListElement: PLAN_CONFIGS.map(({ key, priceCZK, vatIncluded }) => ({
       "@type": "Offer",
       itemOffered: {
         "@type": "Product",
@@ -57,10 +57,11 @@ export async function getPricingSchemas(locale: string): Promise<Schema[]> {
       priceCurrency: "CZK",
       priceSpecification: {
         "@type": "PriceSpecification",
-        price,
+        price: priceCZK,
         priceCurrency: "CZK",
         ...(vatIncluded && { valueAddedTaxIncluded: true }),
       },
+      price: priceCZK,
       seller: {
         "@type": "Organization",
         name: "Fredonbytes",
