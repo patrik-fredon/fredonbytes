@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import GridBackground from "@/components/dev-ui/GridBackground";
-import { PricingTier, PricingItem } from "@/lib/supabase";
+import type { PricingItem, PricingTier } from "@/lib/supabase";
 
 import CurrencyToggle from "./components/CurrencyToggle";
 import PricingCalculator from "./components/PricingCalculator";
@@ -29,22 +29,50 @@ export default function PricingClient({ locale }: PricingClientProps) {
     const fetchPricingData = async () => {
       try {
         setLoading(true);
+        const FETCH_TIMEOUT_MS = parseInt(
+          process.env.NEXT_PUBLIC_PRICING_FETCH_TIMEOUT_MS || "3000",
+        );
 
-        // Fetch pricing tiers and items in parallel
-        const [tiersResponse, itemsResponse] = await Promise.all([
-          fetch(`/api/pricing/tiers?locale=${locale}`),
-          fetch(`/api/pricing/items?locale=${locale}`),
+        const fetchWithTimeout = (input: string) => {
+          return Promise.race([
+            fetch(input),
+            new Promise((_, reject) =>
+              setTimeout(
+                () => reject(new Error("Fetch timeout")),
+                FETCH_TIMEOUT_MS,
+              ),
+            ),
+          ]) as Promise<Response>;
+        };
+
+        // Perform both fetches in parallel and handle results individually
+        const [tiersResult, itemsResult] = await Promise.allSettled([
+          fetchWithTimeout(`/api/pricing/tiers?locale=${locale}`),
+          fetchWithTimeout(`/api/pricing/items?locale=${locale}`),
         ]);
 
-        if (!tiersResponse.ok || !itemsResponse.ok) {
-          throw new Error("Failed to fetch pricing data");
+        // Handle results
+        let fetchError = false;
+
+        if (tiersResult.status === "fulfilled" && tiersResult.value.ok) {
+          const tiersData = await tiersResult.value.json();
+          setTiers(tiersData.tiers || []);
+        } else {
+          console.warn("Warning: failed to fetch pricing tiers", tiersResult);
+          fetchError = true;
         }
 
-        const tiersData = await tiersResponse.json();
-        const itemsData = await itemsResponse.json();
+        if (itemsResult.status === "fulfilled" && itemsResult.value.ok) {
+          const itemsData = await itemsResult.value.json();
+          setItems(itemsData.items || []);
+        } else {
+          console.warn("Warning: failed to fetch pricing items", itemsResult);
+          fetchError = true;
+        }
 
-        setTiers(tiersData.tiers || []);
-        setItems(itemsData.items || []);
+        if (fetchError && !tiers.length && !items.length) {
+          throw new Error("Failed to fetch pricing data");
+        }
       } catch (err) {
         console.error("Error fetching pricing data:", err);
         setError("Failed to load pricing information");

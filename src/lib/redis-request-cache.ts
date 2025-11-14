@@ -1,4 +1,4 @@
-import { redisGet, redisSet } from './redis';
+import { getRedisClientOrNull, redisGet, redisSet } from "./redis";
 
 /**
  * Redis-backed request cache with in-memory deduplication fallback
@@ -59,26 +59,33 @@ export interface CacheOptions {
 export async function getCachedData<T>(
   cacheKey: string,
   fetchFn: () => Promise<T>,
-  options: CacheOptions = {}
+  options: CacheOptions = {},
 ): Promise<T> {
-  const {
-    ttl = 300,
-    prefix = '',
-    skipRedis = false,
-  } = options;
+  const { ttl = 300, prefix = "", skipRedis = false } = options;
 
   const fullKey = prefix ? `${prefix}:${cacheKey}` : cacheKey;
 
   // Step 1: Try Redis cache (distributed)
   if (!skipRedis) {
     try {
-      const cached = await redisGet<T>(fullKey);
-      if (cached !== null) {
-        console.log(`[Cache HIT] Redis: ${fullKey}`);
-        return cached;
+      // Fast check: if Redis is clearly unavailable, skip the check to avoid blocking
+      const clientAvailable = await getRedisClientOrNull(10);
+      if (!clientAvailable) {
+        console.log(
+          `[Cache SKIP] Redis unavailable, fetching, key: ${fullKey}`,
+        );
+      } else {
+        const cached = await redisGet<T>(fullKey);
+        if (cached !== null) {
+          console.log(`[Cache HIT] Redis: ${fullKey}`);
+          return cached;
+        }
       }
     } catch (error) {
-      console.warn(`[Cache MISS] Redis error for ${fullKey}, falling back to fetch`, error);
+      console.warn(
+        `[Cache MISS] Redis error for ${fullKey}, falling back to fetch`,
+        error,
+      );
     }
   }
 
@@ -130,13 +137,13 @@ export async function getCachedData<T>(
  */
 export async function invalidateCache(
   cacheKey: string,
-  options: Pick<CacheOptions, 'prefix'> = {}
+  options: Pick<CacheOptions, "prefix"> = {},
 ): Promise<void> {
-  const { prefix = '' } = options;
+  const { prefix = "" } = options;
   const fullKey = prefix ? `${prefix}:${cacheKey}` : cacheKey;
 
   try {
-    const { redisDel } = await import('./redis');
+    const { redisDel } = await import("./redis");
     await redisDel(fullKey);
     console.log(`[Cache INVALIDATE] ${fullKey}`);
   } catch (error) {
@@ -157,21 +164,21 @@ export async function invalidateCache(
  */
 export async function invalidateCacheMultiple(
   cacheKeys: string[],
-  options: Pick<CacheOptions, 'prefix'> = {}
+  options: Pick<CacheOptions, "prefix"> = {},
 ): Promise<void> {
-  const { prefix = '' } = options;
-  const fullKeys = cacheKeys.map(key => prefix ? `${prefix}:${key}` : key);
+  const { prefix = "" } = options;
+  const fullKeys = cacheKeys.map((key) => (prefix ? `${prefix}:${key}` : key));
 
   try {
-    const { redisDel } = await import('./redis');
+    const { redisDel } = await import("./redis");
     const deleted = await redisDel(fullKeys);
     console.log(`[Cache INVALIDATE] Deleted ${deleted} keys`);
   } catch (error) {
-    console.error('[Cache ERROR] Failed to invalidate multiple keys:', error);
+    console.error("[Cache ERROR] Failed to invalidate multiple keys:", error);
   }
 
   // Also remove from in-memory cache
-  fullKeys.forEach(key => inMemoryCache.delete(key));
+  fullKeys.forEach((key) => inMemoryCache.delete(key));
 }
 
 /**
@@ -189,5 +196,5 @@ export function getCacheStats() {
  */
 export function clearInMemoryCache(): void {
   inMemoryCache.clear();
-  console.log('[Cache] In-memory cache cleared');
+  console.log("[Cache] In-memory cache cleared");
 }

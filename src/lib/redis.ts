@@ -4,6 +4,7 @@ const redisUrl = process.env.REDIS_URL || 'redis://redis:6379';
 
 let redisClient: RedisClientType | null = null;
 let isConnecting = false;
+let redisDownUntil: number | null = null;
 
 /**
  * Get or create Redis client instance
@@ -78,22 +79,84 @@ async function getRedisClient(): Promise<RedisClientType> {
 }
 
 /**
+ * Attempt to get a redis client but do not block requests for long.
+ * Returns a client if available/open within `timeoutMs` or `null` when not.
+ */
+export async function getRedisClientOrNull(timeoutMs = 200): Promise<RedisClientType | null> {
+  const CIRCUIT_BREAK_MS = parseInt(process.env.REDIS_CIRCUIT_BREAK_MS || '30000');
+
+  // Fast-fail when we recently detected Redis being down
+  if (redisDownUntil && Date.now() < redisDownUntil) {
+    console.log(`[Redis] Circuit open until ${new Date(redisDownUntil).toISOString()}`);
+    return null;
+  }
+  if (redisClient?.isOpen) return redisClient;
+
+  // If a connection is already being attempted, wait briefly up to timeout
+  if (isConnecting) {
+    const step = 10;
+    let waited = 0;
+    while (isConnecting && waited < timeoutMs) {
+      // quick sleep
+      await new Promise((res) => setTimeout(res, step));
+      waited += step;
+    }
+
+    if (redisClient?.isOpen) return redisClient;
+    return null;
+  }
+
+  // Try to connect but bound the wait time to `timeoutMs`.
+  try {
+    const clientPromise = getRedisClient();
+    const result = await Promise.race([
+      clientPromise,
+      new Promise<null>((res) => setTimeout(() => res(null), timeoutMs)),
+    ]);
+
+    return result as RedisClientType | null;
+  } catch (error) {
+    // Set circuit breaker to avoid repeated connection attempts
+    redisDownUntil = Date.now() + CIRCUIT_BREAK_MS;
+    console.error('[Redis] getRedisClientOrNull error:', error);
+    return null;
+  }
+}
+
+// Helper for operation timeouts
+async function promiseWithTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+  let timer: NodeJS.Timeout | null = null;
+  try {
+    return await Promise.race([
+      p,
+      new Promise<T>((_, reject) => {
+        timer = setTimeout(() => reject(new Error('Operation timed out')), ms);
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
+/**
  * Get value from Redis cache
  * @param key Cache key
  * @returns Parsed JSON value or null if not found/error
  */
-export async function redisGet<T = any>(key: string): Promise<T | null> {
+export async function redisGet<T = unknown>(key: string): Promise<T | null> {
   try {
-    const client = await getRedisClient();
-    const value = await client.get(key);
+    const OP_TIMEOUT_MS = parseInt(process.env.REDIS_OP_TIMEOUT_MS || '250');
 
-    if (!value) {
-      return null;
-    }
+    const client = await getRedisClientOrNull(OP_TIMEOUT_MS);
+    if (!client) return null;
+
+    const value = await promiseWithTimeout(client.get(key), OP_TIMEOUT_MS);
+
+    if (!value) return null;
 
     return JSON.parse(value) as T;
   } catch (error) {
-    console.error(`[Redis] GET error for key "${key}":`, error);
+    console.warn(`[Redis] GET error/timeout for key "${key}":`, error);
     return null;
   }
 }
@@ -106,22 +169,27 @@ export async function redisGet<T = any>(key: string): Promise<T | null> {
  */
 export async function redisSet(
   key: string,
-  value: any,
+  value: unknown,
   expirySeconds?: number
 ): Promise<boolean> {
   try {
-    const client = await getRedisClient();
+    const OP_TIMEOUT_MS = parseInt(process.env.REDIS_OP_TIMEOUT_MS || '250');
+
+    const client = await getRedisClientOrNull(OP_TIMEOUT_MS);
+    if (!client) return false;
     const serialized = JSON.stringify(value);
 
     if (expirySeconds) {
-      await client.setEx(key, expirySeconds, serialized);
+      await promiseWithTimeout(client.setEx(key, expirySeconds, serialized), OP_TIMEOUT_MS);
     } else {
-      await client.set(key, serialized);
+      await promiseWithTimeout(client.set(key, serialized), OP_TIMEOUT_MS);
     }
 
     return true;
   } catch (error) {
-    console.error(`[Redis] SET error for key "${key}":`, error);
+    const CIRCUIT_BREAK_MS = parseInt(process.env.REDIS_CIRCUIT_BREAK_MS || '30000');
+    redisDownUntil = Date.now() + CIRCUIT_BREAK_MS;
+    console.warn(`[Redis] SET error/timeout for key "${key}":`, error);
     return false;
   }
 }
