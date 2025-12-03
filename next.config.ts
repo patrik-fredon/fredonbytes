@@ -46,9 +46,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "ihvltxbaodpqgbnwfxdd.supabase.co",
+        hostname: "db.fredonbytes.eu",
         port: "",
-        pathname: "/storage/v1/object/public/**",
+        pathname: "/storage/v1/object/public/fredonbytes/**",
       },
     ],
   },
