@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { QuestionOption } from "@/lib/supabase";
 
@@ -51,7 +51,7 @@ export default function LongTextInput({
       // Set height to scrollHeight to fit content
       textarea.style.height = `${textarea.scrollHeight}px`;
     }
-  }, [value]);
+  }, []);
 
   return (
     <div className="space-y-2">

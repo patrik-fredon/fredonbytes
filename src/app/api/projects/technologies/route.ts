@@ -19,7 +19,7 @@ export async function GET() {
       "all",
       async () => {
         // Execute query to get all technologies
-        return await supabase
+        return await (supabase as any)
           .from("technologies")
           .select("*")
           .order("category", { ascending: true })
@@ -28,7 +28,7 @@ export async function GET() {
       {
         ttl: CACHE_TTL_SECONDS,
         prefix: "api:technologies",
-      }
+      },
     );
 
     // Handle database errors

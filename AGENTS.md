@@ -3,7 +3,8 @@ applyTo: "**"
 ---
 
 # Workflow
-
+This document defines the absolute constraints, coding standards, structure, and workflow for all projects. Adherence to these rules is mandatory for all code contributions.
+**Always use the ask_user tool before completing any task to confirm with the user that the request was fulfilled correctly.**
 **Minimal, correct, production-usable code** — no over-engineering, no abstraction, no fallback.
 
 ## Tech Stack
@@ -22,6 +23,7 @@ applyTo: "**"
 ## ⚙️ Absolute Constraints
 
 **NO:**
+
 - Tests unless explicitly requested
 - Defensive coding, fallback systems, robustness patterns
 - Unnecessary abstractions, wrappers, complex providers
@@ -31,13 +33,14 @@ applyTo: "**"
 - Additional documentation files beyond `.github/`
 
 **ALWAYS:**
+
 - Implement `todos` and requirements exactly as specified
 - Prefer direct, explicit code over indirection
 - Fail clearly — never suppress or hide errors
 - Follow official docs: Next.js, Tailwind, TypeScript, Supabase, next-intl
 - Keep architecture lean, DRY, deterministic, verifiable
 - Comment only critical logic and integration points
-- Ask for clarification if requirements are unclear
+- Ask for clarification through tool `askUser` if requirements are unclear
 
 ## 📁 File Rules
 
@@ -104,6 +107,7 @@ supabase/migrations/  # Database
 ## 🛠️ MCP Tools Workflow
 
 **Planning Phase:**
+
 - Use `sequentialthinking` for step-by-step planning
 - Use `serena` to search/crawl project files
 - Use `context7` and `nextjs` tools for knowledge
@@ -111,17 +115,20 @@ supabase/migrations/  # Database
 - **NEVER** use file editing tools during planning
 
 **Coding Phase:**
+
 - Update `serena` memory after each change
 - Implement directly — no changing plans mid-task
 - **NEVER** change todos unless explicitly requested
 
 **Debugging Phase:**
+
 - Use `playwright` or browser devtools for frontend issues
 - Use `serena` for code analysis
 
 **Always:**
+
 - Update memory after mandated changes
-- Address all `todos` and TODO.md items directly
+- Address all `todo` and TODO.md items directly
 - Never implement unrequested features
 - Never claim "production-ready" without successful build
 

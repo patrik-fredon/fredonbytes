@@ -130,7 +130,8 @@ export default async function SurveyPage({ params }: Props) {
       {
         "@type": "ListItem",
         position: 1,
-        name: locale === "cs" ? "Domů" : locale === "de" ? "Startseite" : "Home",
+        name:
+          locale === "cs" ? "Domů" : locale === "de" ? "Startseite" : "Home",
         item: `${baseUrl}/${locale}`,
       },
       {

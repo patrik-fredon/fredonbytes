@@ -11,5 +11,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function DesignPage(props: Props) {
-  return <ServicePageTemplate params={props.params} config={servicesConfig.design} />;
+  return (
+    <ServicePageTemplate params={props.params} config={servicesConfig.design} />
+  );
 }

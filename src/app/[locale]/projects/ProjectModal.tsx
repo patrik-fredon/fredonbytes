@@ -1,14 +1,14 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Github, Calendar, Tag } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Calendar, ExternalLink, Github, Tag, X } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import type { Project } from "@/lib/supabase";
 import { getBlurDataURL } from "@/lib/image-utils";
+import type { Project } from "@/lib/supabase";
 
 interface ProjectModalProps {
   project: Project | null;

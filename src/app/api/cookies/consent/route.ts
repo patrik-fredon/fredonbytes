@@ -1,6 +1,6 @@
 import crypto from "crypto";
 
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 import { sanitizeString } from "@/lib/input-sanitization";
@@ -64,7 +64,6 @@ export async function POST(request: NextRequest) {
     const userAgent = rawUserAgent ? sanitizeString(rawUserAgent) : null;
 
     // Check if consent already exists for this session
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { data: existingConsent } = await (supabase as any)
       .from("cookie_consents")
       .select("id")
@@ -73,7 +72,6 @@ export async function POST(request: NextRequest) {
 
     if (existingConsent) {
       // Update existing consent
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { error: updateError } = await (supabase as any)
         .from("cookie_consents")
         .update({
@@ -106,7 +104,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Insert new consent
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error: insertError } = await (supabase as any)
       .from("cookie_consents")
       .insert({
@@ -180,7 +177,6 @@ export async function GET(request: NextRequest) {
     }
 
     // Fetch consent from database
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { data, error } = await (supabase as any)
       .from("cookie_consents")
       .select("*")

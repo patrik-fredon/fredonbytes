@@ -11,5 +11,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function HostingPage(props: Props) {
-  return <ServicePageTemplate params={props.params} config={servicesConfig.hosting} />;
+  return (
+    <ServicePageTemplate
+      params={props.params}
+      config={servicesConfig.hosting}
+    />
+  );
 }

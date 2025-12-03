@@ -5,10 +5,9 @@ import {
   Github,
   Globe,
   Headphones,
-  User,
   Library,
+  User,
 } from "lucide-react";
-import React from "react";
 
 interface LinkCardProps {
   title: string;

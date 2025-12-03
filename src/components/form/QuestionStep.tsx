@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
 
 import ChecklistInput from "@/components/form/inputs/ChecklistInput";
 import ImageUploadInput from "@/components/form/inputs/ImageUploadInput";

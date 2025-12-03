@@ -166,7 +166,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }
 
       // Add x-default for international targeting
-      languages["x-default"] = `${baseUrl}/${routing.defaultLocale}${route.path}`;
+      languages["x-default"] =
+        `${baseUrl}/${routing.defaultLocale}${route.path}`;
 
       sitemapEntries.push({
         url,

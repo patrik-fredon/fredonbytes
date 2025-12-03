@@ -9,16 +9,14 @@
  * - Metadata tracking in form_answer_images
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { type NextRequest, NextResponse } from "next/server";
 import { logError } from "@/lib/error-logger";
 import {
+  generateUniqueFileName,
   validateImageFile,
   validateSessionTotalSize,
-  generateUniqueFileName,
-  MAX_FILE_SIZE,
-  MAX_SESSION_SIZE,
 } from "@/lib/form-image-utils";
+import { supabase } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60; // Allow up to 60s for large uploads
@@ -53,11 +51,11 @@ export async function POST(
     // This endpoint is protected because it's a POST request not in csrfExemptPaths
 
     // Validate session exists and not expired
-    const { data: session, error: sessionError } = await supabase
+    const { data: session, error: sessionError } = await (supabase as any)
       .from("sessions")
       .select("session_id, expires_at")
       .eq("session_id", sessionId)
-      .single<{ session_id: string; expires_at: string }>();
+      .single();
 
     if (sessionError || !session) {
       logError("SessionValidation", new Error("Invalid or expired session"), {
@@ -86,14 +84,13 @@ export async function POST(
     }
 
     // Check current session total size
-    const { data: currentImages } = await supabase
+    const { data: currentImages } = (await (supabase as any)
       .from("form_answer_images")
       .select("file_size")
-      .eq("session_id", sessionId)
-      .returns<Array<{ file_size: number }>>();
+      .eq("session_id", sessionId)) as { data: Array<{ file_size: number }> | null };
 
     const currentTotalSize =
-      currentImages?.reduce((sum, img) => sum + img.file_size, 0) || 0;
+      currentImages?.reduce((sum: number, img: { file_size: number }) => sum + img.file_size, 0) || 0;
 
     // Validate session total size
     const sizeValidation = validateSessionTotalSize(
@@ -140,7 +137,7 @@ export async function POST(
     const imageUrl = urlData.publicUrl;
 
     // Store metadata in form_answer_images table
-    const { error: metadataError } = await supabase
+    const { error: metadataError } = await (supabase as any)
       .from("form_answer_images")
       .insert({
         session_id: sessionId,

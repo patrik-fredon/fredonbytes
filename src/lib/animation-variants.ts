@@ -4,7 +4,7 @@
  * Transform & opacity only, respects prefers-reduced-motion
  */
 
-import type { Variant, Transition } from "framer-motion";
+import type { Transition, Variant } from "framer-motion";
 
 // Motion Timing Tokens
 export const motionTokens = {

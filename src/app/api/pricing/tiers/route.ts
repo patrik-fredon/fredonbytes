@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 import { getCachedData } from "@/lib/redis-request-cache";
-import { supabase, type PricingTier } from "@/lib/supabase";
+import { type PricingTier, supabase } from "@/lib/supabase";
 
 // Response interface for pricing tiers endpoint
 export interface PricingTiersResponse {
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
       cacheKey,
       async () => {
         // Build query
-        let query = supabase
+        let query = (supabase as any)
           .from("pricing_tiers")
           .select("*")
           .eq("active", true)
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
       {
         ttl: CACHE_TTL_SECONDS,
         prefix: "api:pricing-tiers",
-      }
+      },
     );
 
     // Handle database errors

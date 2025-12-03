@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { generateCsrfToken, CSRF_TOKEN_COOKIE_NAME } from "@/lib/csrf";
+import { CSRF_TOKEN_COOKIE_NAME, generateCsrfToken } from "@/lib/csrf";
 import { supabase } from "@/lib/supabase";
 
 // Schema for session creation request
@@ -40,10 +40,7 @@ export async function POST(request: NextRequest) {
     const { locale } = validationResult.data;
 
     // Find active survey questionnaire
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data: questionnaireData, error: questionnaireError } = await (
-      supabase as any
-    )
+    const { data: questionnaireData, error: questionnaireError } = await (supabase as any)
       .from("questionnaires")
       .select("id")
       .eq("type", "survey")
@@ -66,13 +63,11 @@ export async function POST(request: NextRequest) {
 
     // Create session
     const sessionId = crypto.randomUUID();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error: sessionError } = await (supabase as any)
       .from("sessions")
       .insert({
         session_id: sessionId,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        questionnaire_id: (questionnaireData as any).id,
+        questionnaire_id: questionnaireData.id,
         locale,
         csrf_token: csrfToken,
         started_at: new Date().toISOString(),

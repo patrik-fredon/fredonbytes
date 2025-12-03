@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 
 import type { Project } from "@/lib/supabase";
 

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import React, { useState } from "react";
+import { useState } from "react";
 import { getCsrfToken } from "@/hooks/useCsrfToken";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -105,11 +105,11 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
           prefersReducedMotion
             ? { duration: 0.01 }
             : {
-              type: "spring",
-              stiffness: 200,
-              damping: 15,
-              delay: 0.2,
-            }
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+                delay: 0.2,
+              }
         }
         className="flex justify-center"
       >

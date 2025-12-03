@@ -1,4 +1,4 @@
-import type { Question, AnswerValue } from "./supabase";
+import type { AnswerValue, Question } from "./supabase";
 
 // Generic question interface for validation that works with both Question and AdaptedQuestion
 export interface ValidatableQuestion {

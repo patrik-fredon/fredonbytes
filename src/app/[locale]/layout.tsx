@@ -22,7 +22,6 @@ import Header from "../../components/common/Header";
 const AnimatedBackground = dynamic(
   () => import("../../components/common/AnimatedBackground"),
   {
-
     loading: () => (
       <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
     ),
@@ -32,7 +31,6 @@ const AnimatedBackground = dynamic(
 const CookieConsentBanner = dynamic(
   () => import("../../components/common/CookieConsentBanner"),
   {
-
     loading: () => null,
   },
 );
@@ -40,7 +38,6 @@ const CookieConsentBanner = dynamic(
 const ConditionalAnalytics = dynamic(
   () => import("../../components/common/ConditionalAnalytics"),
   {
-
     loading: () => null,
   },
 );
@@ -51,7 +48,6 @@ const WebVitals = dynamic(
       default: mod.WebVitals,
     })),
   {
-
     loading: () => null,
   },
 );
@@ -125,8 +121,6 @@ function configureHeadForTheme() {
   plausible.init()`,
         }}
       />
-
-
 
       {/* Geo-targeting for Czech Republic - Enhanced for local SEO */}
       <meta name="geo.region" content="CZ-JM" />

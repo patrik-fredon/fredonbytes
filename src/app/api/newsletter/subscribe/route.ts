@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from "@/lib/csrf";
+import { CSRF_TOKEN_HEADER_NAME, validateCsrfToken } from "@/lib/csrf";
 import { sanitizeString } from "@/lib/input-sanitization";
 import { supabase } from "@/lib/supabase";
 
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Check if email already exists
-    const { data: existingSubscriber } = await supabase
+    const { data: existingSubscriber } = await (supabase as any)
       .from("newsletter_subscribers")
       .select("id, active, unsubscribed_at")
       .eq("email", sanitizedData.email)
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
       }
 
       // If subscriber exists but unsubscribed, reactivate
-      const { error: updateError } = await supabase
+      const { error: updateError } = await (supabase as any)
         .from("newsletter_subscribers")
         .update({
           active: true,
@@ -143,7 +143,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create new subscriber
-    const { error: insertError } = await supabase
+    const { error: insertError } = await (supabase as any)
       .from("newsletter_subscribers")
       .insert({
         email: sanitizedData.email,

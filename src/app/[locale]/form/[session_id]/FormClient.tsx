@@ -2,12 +2,11 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { useState, useEffect, useCallback, useRef } from "react";
-
+import { useCallback, useEffect, useRef, useState } from "react";
+import TerminalWindow from "@/components/dev-ui/TerminalWindow";
 import ErrorState from "@/components/form/ErrorState";
 import FormNavigation from "@/components/form/FormNavigation";
 import QuestionStep from "@/components/form/QuestionStep";
-import TerminalWindow from "@/components/dev-ui/TerminalWindow";
 
 // Lazy load ThankYouScreen since it's only needed at the end
 const ThankYouScreen = dynamic(
@@ -21,17 +20,18 @@ const ThankYouScreen = dynamic(
     ),
   },
 );
+
 import { getCsrfToken } from "@/hooks/useCsrfToken";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { logError, getUserFriendlyErrorMessage } from "@/lib/error-logger";
-import { loadAnswers, saveAnswer, clearStorageData } from "@/lib/form-storage";
+import { getUserFriendlyErrorMessage, logError } from "@/lib/error-logger";
+import { clearStorageData, loadAnswers, saveAnswer } from "@/lib/form-storage";
 import {
-  validateAnswer,
-  validateAllAnswers,
   findFirstUnansweredRequired,
   type ValidatableQuestion,
+  validateAllAnswers,
+  validateAnswer,
 } from "@/lib/form-validation";
-import type { Question, AnswerValue, LocalizedString } from "@/lib/supabase";
+import type { AnswerValue, LocalizedString, Question } from "@/lib/supabase";
 
 // Helper function to extract localized string based on locale
 function getLocalizedString(
@@ -544,7 +544,6 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   return (
     <main
       className="min-h-screen flex items-center justify-center p-3 relative overflow-hidden"
-      role="main"
       aria-label="Customer Project Initiation Form"
     >
       <TerminalWindow

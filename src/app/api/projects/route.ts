@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 import { getCachedData } from "@/lib/redis-request-cache";
-import { supabase, type Project } from "@/lib/supabase";
+import { type Project, supabase } from "@/lib/supabase";
 
 // Response interface for projects endpoint
 export interface ProjectsResponse {
@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
       cacheKey,
       async () => {
         // Build query
-        let query = supabase
+        let query = (supabase as any)
           .from("projects")
           .select("*")
           .eq("visible", true)
@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
       {
         ttl: CACHE_TTL_SECONDS,
         prefix: "api:projects",
-      }
+      },
     );
 
     // Handle database errors

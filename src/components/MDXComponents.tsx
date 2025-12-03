@@ -4,7 +4,7 @@
  * Enhanced components for better MDX rendering with modern styling
  */
 
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface MDXComponentProps {

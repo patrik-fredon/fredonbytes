@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-
-import PricingClient from "./PricingClient";
-import { getPricingMetadata } from "@/lib/metadata/pricing";
 import { getPricingSchemas } from "@/lib/jsonLd/pricing";
+import { getPricingMetadata } from "@/lib/metadata/pricing";
+import PricingClient from "./PricingClient";
 
 interface PricingPageProps {
   params: Promise<{

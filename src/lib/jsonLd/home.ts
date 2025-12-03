@@ -11,7 +11,7 @@ const SCHEMA_CONTEXT = "https://schema.org";
  */
 function createSchema<T extends string>(
   type: T,
-  props: Omit<SchemaProps, "@context" | "@type">
+  props: Omit<SchemaProps, "@context" | "@type">,
 ): Record<"@context" | "@type", string> & SchemaProps {
   return { "@context": SCHEMA_CONTEXT, "@type": type, ...props };
 }
@@ -85,7 +85,10 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     name: "Fredonbytes",
     alternateName: "FredonBytes s.r.o.",
     description: jsonLdT("organizationDescription"),
-    slogan: locale === "cs" ? "Všechny IT služby pod jednou střechou" : "All IT services under one roof",
+    slogan:
+      locale === "cs"
+        ? "Všechny IT služby pod jednou střechou"
+        : "All IT services under one roof",
     image: `${baseUrl}/og-image.png`,
     logo: `${baseUrl}/icon1.png`,
     telephone: "+420799027984",
@@ -129,44 +132,123 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: locale === "cs" ? "Měsíční IT balíčky a služby" : "Monthly IT packages and services",
+      name:
+        locale === "cs"
+          ? "Měsíční IT balíčky a služby"
+          : "Monthly IT packages and services",
       itemListElement: [
         {
           "@type": "OfferCatalog",
           name: locale === "cs" ? "Vývoj & Hosting" : "Development & Hosting",
           itemListElement: [
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Webhosting" : "Web Hosting" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Vývoj webu" : "Web Development" } }
-          ]
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: locale === "cs" ? "Webhosting" : "Web Hosting",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: locale === "cs" ? "Vývoj webu" : "Web Development",
+              },
+            },
+          ],
         },
         {
           "@type": "OfferCatalog",
           name: locale === "cs" ? "Design & Branding" : "Design & Branding",
           itemListElement: [
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Branding a identita" : "Branding & Identity" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "UX/UI Design" : "UX/UI Design" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Grafický design" : "Graphic Design" } }
-          ]
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name:
+                  locale === "cs"
+                    ? "Branding a identita"
+                    : "Branding & Identity",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: locale === "cs" ? "UX/UI Design" : "UX/UI Design",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: locale === "cs" ? "Grafický design" : "Graphic Design",
+              },
+            },
+          ],
         },
         {
           "@type": "OfferCatalog",
           name: locale === "cs" ? "Marketing & SEO" : "Marketing & SEO",
           itemListElement: [
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "SEO optimalizace" : "SEO Optimization" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Správa sociálních sítí" : "Social Media Management" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Copywriting" : "Copywriting" } }
-          ]
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: locale === "cs" ? "SEO optimalizace" : "SEO Optimization",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name:
+                  locale === "cs"
+                    ? "Správa sociálních sítí"
+                    : "Social Media Management",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: locale === "cs" ? "Copywriting" : "Copywriting",
+              },
+            },
+          ],
         },
         {
           "@type": "OfferCatalog",
-          name: locale === "cs" ? "Konzultace & Podpora" : "Consulting & Support",
+          name:
+            locale === "cs" ? "Konzultace & Podpora" : "Consulting & Support",
           itemListElement: [
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "IT poradenství" : "IT Consulting" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Technická podpora 24/7" : "Technical Support 24/7" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: locale === "cs" ? "Analýza potřeb" : "Needs Analysis" } }
-          ]
-        }
-      ]
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: locale === "cs" ? "IT poradenství" : "IT Consulting",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name:
+                  locale === "cs"
+                    ? "Technická podpora 24/7"
+                    : "Technical Support 24/7",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: locale === "cs" ? "Analýza potřeb" : "Needs Analysis",
+              },
+            },
+          ],
+        },
+      ],
     },
     hasMap: "https://maps.google.com/?q=49.1951,16.6068",
   });
@@ -186,8 +268,14 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
   const serviceDefs: ServiceDef[] = [
     {
       serviceType: "Web Hosting",
-      cs: { name: "Hosting a webhosting", desc: "Spolehlivý webhosting s 99.9% dostupností a technickou podporou 24/7" },
-      en: { name: "Web Hosting", desc: "Reliable web hosting with 99.9% uptime and 24/7 technical support" },
+      cs: {
+        name: "Hosting a webhosting",
+        desc: "Spolehlivý webhosting s 99.9% dostupností a technickou podporou 24/7",
+      },
+      en: {
+        name: "Web Hosting",
+        desc: "Reliable web hosting with 99.9% uptime and 24/7 technical support",
+      },
     },
     {
       serviceType: "Software Development",
@@ -279,63 +367,135 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     },
     {
       serviceType: "Graphic Design",
-      cs: { name: "Grafický design a UX/UI", desc: "Profesionální grafický design, wireframy, prototypy a uživatelské rozhraní" },
-      en: { name: "Graphic Design & UX/UI", desc: "Professional graphic design, wireframes, prototypes and user interfaces" },
+      cs: {
+        name: "Grafický design a UX/UI",
+        desc: "Profesionální grafický design, wireframy, prototypy a uživatelské rozhraní",
+      },
+      en: {
+        name: "Graphic Design & UX/UI",
+        desc: "Professional graphic design, wireframes, prototypes and user interfaces",
+      },
     },
     {
       serviceType: "Branding",
-      cs: { name: "Branding a firemní identita", desc: "Komplexní tvorba značky, loga, firemních barev a jednotného vizuálního stylu" },
-      en: { name: "Branding & Corporate Identity", desc: "Complete brand creation, logo, corporate colors and unified visual style" },
+      cs: {
+        name: "Branding a firemní identita",
+        desc: "Komplexní tvorba značky, loga, firemních barev a jednotného vizuálního stylu",
+      },
+      en: {
+        name: "Branding & Corporate Identity",
+        desc: "Complete brand creation, logo, corporate colors and unified visual style",
+      },
     },
     {
       serviceType: "Copywriting",
-      cs: { name: "Copywriting a tvorba obsahu", desc: "SEO texty, obsahové strategie, blogy a marketingové materiály" },
-      en: { name: "Copywriting & Content Creation", desc: "SEO texts, content strategies, blogs and marketing materials" },
+      cs: {
+        name: "Copywriting a tvorba obsahu",
+        desc: "SEO texty, obsahové strategie, blogy a marketingové materiály",
+      },
+      en: {
+        name: "Copywriting & Content Creation",
+        desc: "SEO texts, content strategies, blogs and marketing materials",
+      },
     },
     {
       serviceType: "SEO Services",
-      cs: { name: "SEO optimalizace", desc: "Optimalizace pro Google, Seznam.cz, lokální SEO a analýza konkurence" },
-      en: { name: "SEO Optimization", desc: "Optimization for Google, Seznam.cz, local SEO and competitor analysis" },
+      cs: {
+        name: "SEO optimalizace",
+        desc: "Optimalizace pro Google, Seznam.cz, lokální SEO a analýza konkurence",
+      },
+      en: {
+        name: "SEO Optimization",
+        desc: "Optimization for Google, Seznam.cz, local SEO and competitor analysis",
+      },
     },
     {
       serviceType: "Social Media Management",
-      cs: { name: "Správa sociálních sítí", desc: "Kompletní management Instagramu, Facebooku, LinkedIn s tvorbou obsahu" },
-      en: { name: "Social Media Management", desc: "Complete management of Instagram, Facebook, LinkedIn with content creation" },
+      cs: {
+        name: "Správa sociálních sítí",
+        desc: "Kompletní management Instagramu, Facebooku, LinkedIn s tvorbou obsahu",
+      },
+      en: {
+        name: "Social Media Management",
+        desc: "Complete management of Instagram, Facebook, LinkedIn with content creation",
+      },
     },
     {
       serviceType: "Digital Marketing",
-      cs: { name: "Digitální marketing", desc: "PPC kampaně, remarketing, e-mail marketing a měření výkonnosti" },
-      en: { name: "Digital Marketing", desc: "PPC campaigns, remarketing, email marketing and performance measurement" },
+      cs: {
+        name: "Digitální marketing",
+        desc: "PPC kampaně, remarketing, e-mail marketing a měření výkonnosti",
+      },
+      en: {
+        name: "Digital Marketing",
+        desc: "PPC campaigns, remarketing, email marketing and performance measurement",
+      },
     },
     {
       serviceType: "IT Consulting",
-      cs: { name: "IT poradenství", desc: "Konzultace infrastruktury, výběr technologií a digitální transformace" },
-      en: { name: "IT Consulting", desc: "Infrastructure consulting, technology selection and digital transformation" },
+      cs: {
+        name: "IT poradenství",
+        desc: "Konzultace infrastruktury, výběr technologií a digitální transformace",
+      },
+      en: {
+        name: "IT Consulting",
+        desc: "Infrastructure consulting, technology selection and digital transformation",
+      },
     },
     {
       serviceType: "Cybersecurity",
-      cs: { name: "Kybernetická bezpečnost", desc: "Bezpečnostní audity, penetrační testy a GDPR compliance" },
-      en: { name: "Cybersecurity", desc: "Security audits, penetration tests and GDPR compliance" },
+      cs: {
+        name: "Kybernetická bezpečnost",
+        desc: "Bezpečnostní audity, penetrační testy a GDPR compliance",
+      },
+      en: {
+        name: "Cybersecurity",
+        desc: "Security audits, penetration tests and GDPR compliance",
+      },
     },
     {
       serviceType: "Technical Support",
-      cs: { name: "Technická podpora 24/7", desc: "Nepřetržitá podpora, monitoring, aktualizace a zálohy" },
-      en: { name: "24/7 Technical Support", desc: "Continuous support, monitoring, updates and backups" },
+      cs: {
+        name: "Technická podpora 24/7",
+        desc: "Nepřetržitá podpora, monitoring, aktualizace a zálohy",
+      },
+      en: {
+        name: "24/7 Technical Support",
+        desc: "Continuous support, monitoring, updates and backups",
+      },
     },
     {
       serviceType: "Monthly Service Packages",
-      cs: { name: "Měsíční balíčky služeb", desc: "Flexibilní měsíční balíčky s kombinací služeb od 5.990 Kč" },
-      en: { name: "Monthly Service Packages", desc: "Flexible monthly packages with service combinations from 5,990 CZK" },
+      cs: {
+        name: "Měsíční balíčky služeb",
+        desc: "Flexibilní měsíční balíčky s kombinací služeb od 5.990 Kč",
+      },
+      en: {
+        name: "Monthly Service Packages",
+        desc: "Flexible monthly packages with service combinations from 5,990 CZK",
+      },
     },
     {
       serviceType: "Cloud Solutions",
-      cs: { name: "Cloudová řešení", desc: "Migrace do cloudu, AWS, Azure, správa cloudové infrastruktury" },
-      en: { name: "Cloud Solutions", desc: "Cloud migration, AWS, Azure, cloud infrastructure management" },
+      cs: {
+        name: "Cloudová řešení",
+        desc: "Migrace do cloudu, AWS, Azure, správa cloudové infrastruktury",
+      },
+      en: {
+        name: "Cloud Solutions",
+        desc: "Cloud migration, AWS, Azure, cloud infrastructure management",
+      },
     },
     {
       serviceType: "E-commerce",
-      cs: { name: "E-commerce a e-shopy", desc: "Kompletní e-shopy na míru s WooCommerce, Shopify nebo custom řešení" },
-      en: { name: "E-commerce Solutions", desc: "Complete custom e-shops with WooCommerce, Shopify or custom solutions" },
+      cs: {
+        name: "E-commerce a e-shopy",
+        desc: "Kompletní e-shopy na míru s WooCommerce, Shopify nebo custom řešení",
+      },
+      en: {
+        name: "E-commerce Solutions",
+        desc: "Complete custom e-shops with WooCommerce, Shopify or custom solutions",
+      },
     },
   ];
 
@@ -348,7 +508,7 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
         provider: { "@id": `${baseUrl}/#organization` },
         areaServed: "CZ",
         serviceType,
-      })
+      }),
     ),
   });
 
@@ -370,7 +530,8 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
     try {
       const faqQuestions = [];
       // Try to build FAQ items - stop when translation key doesn't exist
-      for (let i = 0; i < 5; i++) { // Max 20 FAQs
+      for (let i = 0; i < 5; i++) {
+        // Max 20 FAQs
         try {
           const question = faqT(`items.${i}.question`);
           const answer = faqT(`items.${i}.answer`);
@@ -381,7 +542,7 @@ export async function getHomeSchemas(locale: string): Promise<Schema[]> {
               acceptedAnswer: createSchema("Answer", {
                 text: answer,
               }),
-            })
+            }),
           );
         } catch {
           // No more FAQ items exist

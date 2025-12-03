@@ -239,14 +239,13 @@ export async function POST(request: NextRequest) {
 
     // Link session to contact submission if session was created successfully
     if (!sessionResult.error) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await (supabase as any)
         .from("contact_submissions")
         .update({
           session_id: sessionId,
           survey_sent: true,
         })
-        .eq("id", (contactSubmission as any).id);
+        .eq("id", contactSubmission.id);
     }
 
     return NextResponse.json(

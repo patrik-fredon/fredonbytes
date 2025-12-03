@@ -28,7 +28,6 @@ export default function GlassCard({
         ? "inset-shadow-sm inset-shadow-slate-950/80"
         : "inset-shadow-3xl inset-shadow-neon-purple/80";
 
-
   return (
     <div
       className={`

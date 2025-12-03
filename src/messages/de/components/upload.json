@@ -1,0 +1,32 @@
+{
+  "upload": {
+    "title": "Dateien hochladen",
+    "subtitle": "Teilen Sie Dateien für Ihr Projekt sicher und einfach.",
+    "projectLabel": "Projekt auswählen",
+    "projectPlaceholder": "-- Projekt auswählen --",
+    "passwordLabel": "Zugangscode",
+    "passwordPlaceholder": "Projekt-Zugangscode eingeben",
+    "submitButton": "Weiter",
+    "submitting": "Überprüfen...",
+    "infoNote": "Sie haben den Zugangscode von FredonBytes erhalten. Kontaktieren Sie uns, wenn Sie ihn nicht haben.",
+    "uploadTitle": "Dateien hochladen",
+    "dropZone": "Dateien hierher ziehen",
+    "orClickToBrowse": "oder klicken zum Durchsuchen",
+    "fileTypesInfo": "Bilder (JPG, PNG, GIF, WebP) und Dokumente (PDF, DOC, DOCX, TXT)",
+    "maxSizeInfo": "Max. {size} pro Datei",
+    "filesUploaded": "{count} von {max} Dateien hochgeladen",
+    "uploadedFiles": "Hochgeladene Dateien",
+    "uploadSuccess": "{count} Dateien erfolgreich hochgeladen",
+    "sessionExpired": "Sitzung abgelaufen",
+    "sessionExpiredMessage": "Ihre Sitzung ist abgelaufen. Bitte starten Sie erneut.",
+    "errors": {
+      "loadProjectsFailed": "Projekte konnten nicht geladen werden",
+      "wrongPassword": "Ungültiger Zugangscode",
+      "uploadsDisabled": "Datei-Uploads sind für dieses Projekt nicht aktiviert",
+      "tooManyAttempts": "Zu viele Versuche. Bitte versuchen Sie es später erneut.",
+      "sessionFailed": "Sitzung konnte nicht erstellt werden",
+      "uploadFailed": "Datei-Upload fehlgeschlagen",
+      "maxFilesReached": "Maximale Anzahl an Dateien erreicht"
+    }
+  }
+}

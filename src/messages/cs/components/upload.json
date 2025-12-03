@@ -1,0 +1,32 @@
+{
+  "upload": {
+    "title": "Nahrát soubory",
+    "subtitle": "Sdílejte soubory ke svému projektu bezpečně a jednoduše.",
+    "projectLabel": "Vyberte projekt",
+    "projectPlaceholder": "-- Vyberte projekt --",
+    "passwordLabel": "Přístupový kód",
+    "passwordPlaceholder": "Zadejte přístupový kód k projektu",
+    "submitButton": "Pokračovat",
+    "submitting": "Ověřování...",
+    "infoNote": "Přístupový kód jste obdrželi od FredonBytes. Kontaktujte nás, pokud jej nemáte.",
+    "uploadTitle": "Nahrát soubory",
+    "dropZone": "Přetáhněte soubory sem",
+    "orClickToBrowse": "nebo klikněte pro výběr souborů",
+    "fileTypesInfo": "Obrázky (JPG, PNG, GIF, WebP) a dokumenty (PDF, DOC, DOCX, TXT)",
+    "maxSizeInfo": "Max. {size} na soubor",
+    "filesUploaded": "{count} z {max} souborů nahráno",
+    "uploadedFiles": "Nahrané soubory",
+    "uploadSuccess": "{count} souborů úspěšně nahráno",
+    "sessionExpired": "Session vypršela",
+    "sessionExpiredMessage": "Vaše session vypršela. Prosím začněte znovu.",
+    "errors": {
+      "loadProjectsFailed": "Nepodařilo se načíst projekty",
+      "wrongPassword": "Nesprávný přístupový kód",
+      "uploadsDisabled": "Nahrávání souborů není pro tento projekt povoleno",
+      "tooManyAttempts": "Příliš mnoho pokusů. Zkuste to prosím později.",
+      "sessionFailed": "Nepodařilo se vytvořit session",
+      "uploadFailed": "Nahrávání souboru selhalo",
+      "maxFilesReached": "Byl dosažen maximální počet souborů"
+    }
+  }
+}

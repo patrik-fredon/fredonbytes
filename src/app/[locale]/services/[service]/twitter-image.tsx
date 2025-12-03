@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og";
-import { routing } from "@/i18n/routing";
 
 /**
  * Service-Specific Twitter Card Image Generator
@@ -146,130 +145,126 @@ export default async function Image({
   const serviceData =
     serviceConfig[service as keyof typeof serviceConfig]?.[
       locale as keyof (typeof serviceConfig)[keyof typeof serviceConfig]
-    ] ||
-    serviceConfig.development.en;
+    ] || serviceConfig.development.en;
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#0A0E27",
+        backgroundImage:
+          "linear-gradient(135deg, #0A0E27 0%, #1a1f3a 50%, #0A0E27 100%)",
+        position: "relative",
+      }}
+    >
+      {/* Gradient orbs */}
       <div
         style={{
-          height: "100%",
-          width: "100%",
+          position: "absolute",
+          top: "-10%",
+          left: "-5%",
+          width: "40%",
+          height: "40%",
+          background:
+            "radial-gradient(circle, rgba(0, 217, 255, 0.2) 0%, transparent 70%)",
+          borderRadius: "50%",
+          filter: "blur(60px)",
+        }}
+      />
+
+      {/* Content */}
+      <div
+        style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#0A0E27",
-          backgroundImage:
-            "linear-gradient(135deg, #0A0E27 0%, #1a1f3a 50%, #0A0E27 100%)",
-          position: "relative",
+          padding: "80px",
+          zIndex: 1,
         }}
       >
-        {/* Gradient orbs */}
+        {/* Icon */}
         <div
           style={{
-            position: "absolute",
-            top: "-10%",
-            left: "-5%",
-            width: "40%",
-            height: "40%",
-            background:
-              "radial-gradient(circle, rgba(0, 217, 255, 0.2) 0%, transparent 70%)",
-            borderRadius: "50%",
-            filter: "blur(60px)",
-          }}
-        />
-
-        {/* Content */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "80px",
-            zIndex: 1,
+            fontSize: "120px",
+            marginBottom: "30px",
           }}
         >
-          {/* Icon */}
-          <div
-            style={{
-              fontSize: "120px",
-              marginBottom: "30px",
-            }}
-          >
-            {serviceData.icon}
-          </div>
-
-          {/* Title */}
-          <div
-            style={{
-              fontSize: "72px",
-              fontWeight: "bold",
-              color: "#FFFFFF",
-              marginBottom: "20px",
-              textAlign: "center",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {serviceData.title}
-          </div>
-
-          {/* Subtitle */}
-          <div
-            style={{
-              fontSize: "36px",
-              fontWeight: "600",
-              background:
-                "linear-gradient(90deg, #00D9FF 0%, #FFFFFF 100%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              textAlign: "center",
-            }}
-          >
-            {serviceData.subtitle}
-          </div>
+          {serviceData.icon}
         </div>
 
-        {/* Brand badge */}
+        {/* Title */}
         <div
           style={{
-            position: "absolute",
-            top: "40px",
-            right: "40px",
-            backgroundColor: "rgba(0, 217, 255, 0.1)",
-            borderRadius: "12px",
-            padding: "12px 24px",
-            border: "2px solid rgba(0, 217, 255, 0.3)",
+            fontSize: "72px",
+            fontWeight: "bold",
+            color: "#FFFFFF",
+            marginBottom: "20px",
+            textAlign: "center",
+            letterSpacing: "-0.02em",
           }}
         >
-          <div
-            style={{
-              fontSize: "20px",
-              color: "#00D9FF",
-              fontWeight: "600",
-            }}
-          >
-            @FredonBytes
-          </div>
+          {serviceData.title}
         </div>
 
-        {/* Accent bar */}
+        {/* Subtitle */}
         <div
           style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "8px",
-            background: "linear-gradient(90deg, #00D9FF 0%, #0099CC 100%)",
+            fontSize: "36px",
+            fontWeight: "600",
+            background: "linear-gradient(90deg, #00D9FF 0%, #FFFFFF 100%)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+            textAlign: "center",
           }}
-        />
+        >
+          {serviceData.subtitle}
+        </div>
       </div>
-    ),
+
+      {/* Brand badge */}
+      <div
+        style={{
+          position: "absolute",
+          top: "40px",
+          right: "40px",
+          backgroundColor: "rgba(0, 217, 255, 0.1)",
+          borderRadius: "12px",
+          padding: "12px 24px",
+          border: "2px solid rgba(0, 217, 255, 0.3)",
+        }}
+      >
+        <div
+          style={{
+            fontSize: "20px",
+            color: "#00D9FF",
+            fontWeight: "600",
+          }}
+        >
+          @FredonBytes
+        </div>
+      </div>
+
+      {/* Accent bar */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: "8px",
+          background: "linear-gradient(90deg, #00D9FF 0%, #0099CC 100%)",
+        }}
+      />
+    </div>,
     {
       ...size,
-    }
+    },
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertCircle, RefreshCw, Mail } from "lucide-react";
+import { AlertCircle, Mail, RefreshCw } from "lucide-react";
 
 import CommandButton from "@/components/dev-ui/CommandButton";
 import TerminalWindow from "../dev-ui/TerminalWindow";

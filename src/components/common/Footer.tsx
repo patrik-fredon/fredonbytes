@@ -1,7 +1,6 @@
 import { Github, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import React from "react";
 import { Link } from "@/i18n/navigation";
 
 import CookieSettingsLink from "./CookieSettingsLink";

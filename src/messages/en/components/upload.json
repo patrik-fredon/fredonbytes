@@ -1,0 +1,32 @@
+{
+  "upload": {
+    "title": "Upload Files",
+    "subtitle": "Share files for your project securely and easily.",
+    "projectLabel": "Select project",
+    "projectPlaceholder": "-- Select a project --",
+    "passwordLabel": "Access code",
+    "passwordPlaceholder": "Enter project access code",
+    "submitButton": "Continue",
+    "submitting": "Verifying...",
+    "infoNote": "You received the access code from FredonBytes. Contact us if you don't have it.",
+    "uploadTitle": "Upload Files",
+    "dropZone": "Drag and drop files here",
+    "orClickToBrowse": "or click to browse",
+    "fileTypesInfo": "Images (JPG, PNG, GIF, WebP) and documents (PDF, DOC, DOCX, TXT)",
+    "maxSizeInfo": "Max. {size} per file",
+    "filesUploaded": "{count} of {max} files uploaded",
+    "uploadedFiles": "Uploaded files",
+    "uploadSuccess": "{count} files uploaded successfully",
+    "sessionExpired": "Session Expired",
+    "sessionExpiredMessage": "Your session has expired. Please start again.",
+    "errors": {
+      "loadProjectsFailed": "Failed to load projects",
+      "wrongPassword": "Invalid access code",
+      "uploadsDisabled": "File uploads are not enabled for this project",
+      "tooManyAttempts": "Too many attempts. Please try again later.",
+      "sessionFailed": "Failed to create session",
+      "uploadFailed": "File upload failed",
+      "maxFilesReached": "Maximum number of files reached"
+    }
+  }
+}

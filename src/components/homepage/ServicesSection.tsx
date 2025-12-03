@@ -9,7 +9,6 @@ import {
   Smartphone,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import React from "react";
 import { Link } from "@/i18n/navigation";
 import TerminalWindow from "../dev-ui/TerminalWindow";
 
@@ -20,7 +19,7 @@ interface ServicesSectionProps {
 
 export default async function ServicesSection({
   locale,
-  category = "all"
+  category = "all",
 }: ServicesSectionProps) {
   const t = await getTranslations({ locale });
   const activeTab = category || "all";
@@ -200,7 +199,10 @@ export default async function ServicesSection({
               const Icon = service.icon;
               return (
                 <div key={index} className="group">
-                  <TerminalWindow title={service.title} className="h-full bg-terminal-darker">
+                  <TerminalWindow
+                    title={service.title}
+                    className="h-full bg-terminal-darker"
+                  >
                     <div className="p-4 space-y-4">
                       <div className="flex items-center space-x-3">
                         <div

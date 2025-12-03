@@ -200,7 +200,7 @@
   /* Inset Shadows */
   --inset-shadow-sm: inset 0 5px 10px 10px rgb(0 0 0 / 0.4);
   --inset-shadow-2xs: inset 0 2px 24px 2px rgb(0 0 0 / 0.05);
-  --inset-shadow-2xl: inset 10px 5px 10px 2px  rgb(0 0 0 / 0.2);
+  --inset-shadow-2xl: inset 10px 5px 10px 2px rgb(0 0 0 / 0.2);
   --inset-shadow-3xl: inset 0 0px 5px 2px rgb(0 0 0 / 0.3);
   --inset-shadow-xl: inset 0 1px 5px 2px rgb(0 0 0 / 0.1);
   /* Transition Durations */
@@ -588,10 +588,10 @@ body {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
   }
 }
 
@@ -613,10 +613,10 @@ body {
   *,
   *::before,
   *::after {
-    background: transparent !important;
-    color: black !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
+    background: transparent;
+    color: black;
+    box-shadow: none;
+    text-shadow: none;
   }
 
   a,
@@ -638,7 +638,7 @@ body {
   }
 
   pre {
-    white-space: pre-wrap !important;
+    white-space: pre-wrap;
   }
 
   pre,
@@ -669,7 +669,7 @@ body {
   }
 
   .no-print {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -1037,10 +1037,10 @@ code {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
   }
 
   /* Disable glow effects for reduced motion */
@@ -1048,7 +1048,7 @@ code {
   .glow-purple,
   *:focus,
   *:focus-visible {
-    box-shadow: none !important;
+    box-shadow: none;
   }
 }
 
@@ -1177,9 +1177,9 @@ input[type="checkbox"]:disabled {
 @media (prefers-reduced-motion: reduce) {
   .section-animate,
   .section-animate-child {
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 }
 
@@ -1471,7 +1471,7 @@ input[type="checkbox"]:disabled {
   .hover-lift:hover,
   .hover-scale:hover,
   .hover-scale-sm:hover {
-    transform: none !important;
+    transform: none;
   }
 
   .modal-backdrop,
@@ -1484,9 +1484,8 @@ input[type="checkbox"]:disabled {
   .animate-float,
   .pulse-glow,
   .progress-animate {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
-

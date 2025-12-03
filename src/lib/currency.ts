@@ -50,7 +50,6 @@ function getLocaleCode(locale: Locale): string {
       return "cs-CZ";
     case "de":
       return "de-DE";
-    case "en":
     default:
       return "en-US";
   }
@@ -104,8 +103,6 @@ export function getDefaultCurrency(locale: Locale): Currency {
   switch (locale) {
     case "cs":
       return "CZK";
-    case "de":
-    case "en":
     default:
       return "EUR";
   }

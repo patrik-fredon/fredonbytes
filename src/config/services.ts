@@ -1,5 +1,4 @@
 import {
-  BadgeCheck,
   BarChart3,
   BookOpen,
   CheckCircle2,

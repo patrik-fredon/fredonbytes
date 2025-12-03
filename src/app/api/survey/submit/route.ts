@@ -1,13 +1,13 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from "@/lib/csrf";
+import { CSRF_TOKEN_HEADER_NAME, validateCsrfToken } from "@/lib/csrf";
 import { sanitizeAnswerValue } from "@/lib/input-sanitization";
 import {
-  supabase,
-  type Session,
-  type Questionnaire,
   type LocalizedString,
+  type Questionnaire,
+  type Session,
+  supabase,
 } from "@/lib/supabase";
 
 // Zod schema for request validation
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
     const { session_id, responses, metadata } = validationResult.data;
 
     // Check if session exists and is valid
-    const { data: sessionData, error: sessionCheckError } = await supabase
+    const { data: sessionData, error: sessionCheckError } = await (supabase as any)
       .from("sessions")
       .select("session_id, questionnaire_id, completed_at, expires_at")
       .eq("session_id", session_id)
@@ -128,7 +128,7 @@ export async function POST(request: NextRequest) {
 
     // Verify session is for a survey questionnaire
     const { data: questionnaireData, error: questionnaireError } =
-      await supabase
+      await (supabase as any)
         .from("questionnaires")
         .select("type")
         .eq("id", session.questionnaire_id)
@@ -174,7 +174,7 @@ export async function POST(request: NextRequest) {
       answer_value: response.answer_value as never, // Type workaround for JSONB
     }));
 
-    const { error: answersError } = await supabase
+    const { error: answersError } = await (supabase as any)
       .from("survey_answers")
       .insert(surveyAnswers as never[]);
 
@@ -191,7 +191,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Update session to mark as completed
-    const { error: sessionUpdateError } = await supabase
+    const { error: sessionUpdateError } = await (supabase as any)
       .from("sessions")
       .update({
         completed_at: new Date().toISOString(),
@@ -206,14 +206,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Update contact_submissions to mark survey as completed if session is linked
-    const { data: contactData } = await supabase
+    const { data: contactData } = await (supabase as any)
       .from("contact_submissions")
       .select("id, email, first_name, locale")
       .eq("session_id", session_id)
       .maybeSingle();
 
     if (contactData) {
-      const { error: contactUpdateError } = await supabase
+      const { error: contactUpdateError } = await (supabase as any)
         .from("contact_submissions")
         .update({ survey_completed: true } as never)
         .eq("session_id", session_id);
@@ -276,7 +276,7 @@ export async function POST(request: NextRequest) {
 
       // Fetch questions for admin notification
       const questionIds = sanitizedResponses.map((r) => r.question_id);
-      const { data: questionsData } = await supabase
+      const { data: questionsData } = await (supabase as any)
         .from("questions")
         .select("id, question_text, answer_type")
         .in("id", questionIds);

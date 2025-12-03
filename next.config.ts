@@ -113,8 +113,8 @@ const nextConfig: NextConfig = {
               enforce: true,
             },
             // Vendor chunk for other node_modules
-            vendor: {
-              name: "vendor",
+            libs: {
+              name: "libs",
               test: /[/]node_modules[/]/,
               priority: 20,
             },
