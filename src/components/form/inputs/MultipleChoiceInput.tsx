@@ -52,7 +52,7 @@ export default function MultipleChoiceInput({
         checkboxGroupRef.current?.querySelectorAll('input[type="checkbox"]') ||
           [],
       ) as HTMLInputElement[];
-      const currentIndex = checkboxes.indexOf(document.activeElement);
+      const currentIndex = checkboxes.indexOf(document.activeElement as HTMLInputElement);
 
       if (e.key === "ArrowDown" || e.key === "ArrowRight") {
         e.preventDefault();

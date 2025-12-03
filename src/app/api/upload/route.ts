@@ -70,11 +70,14 @@ export async function POST(
       .select("id, title, upload_password")
       .eq("id", project_id)
       .eq("visible", true)
-      .single<{
-        id: string;
-        title: string | Record<string, string>;
-        upload_password: string | null;
-      }>();
+      .single() as {
+        data: {
+          id: string;
+          title: string | Record<string, string>;
+          upload_password: string | null;
+        } | null;
+        error: Error | null;
+      };
 
     if (projectError || !project) {
       return NextResponse.json(

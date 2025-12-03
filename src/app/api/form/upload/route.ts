@@ -55,7 +55,7 @@ export async function POST(
       .from("sessions")
       .select("session_id, expires_at")
       .eq("session_id", sessionId)
-      .single<{ session_id: string; expires_at: string }>();
+      .single();
 
     if (sessionError || !session) {
       logError("SessionValidation", new Error("Invalid or expired session"), {
@@ -84,14 +84,13 @@ export async function POST(
     }
 
     // Check current session total size
-    const { data: currentImages } = await (supabase as any)
+    const { data: currentImages } = (await (supabase as any)
       .from("form_answer_images")
       .select("file_size")
-      .eq("session_id", sessionId)
-      .returns<Array<{ file_size: number }>>();
+      .eq("session_id", sessionId)) as { data: Array<{ file_size: number }> | null };
 
     const currentTotalSize =
-      currentImages?.reduce((sum, img) => sum + img.file_size, 0) || 0;
+      currentImages?.reduce((sum: number, img: { file_size: number }) => sum + img.file_size, 0) || 0;
 
     // Validate session total size
     const sizeValidation = validateSessionTotalSize(
