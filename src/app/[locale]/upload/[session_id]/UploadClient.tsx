@@ -103,3 +103,49 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
       ));
     }
   };
+
+
+  const handleFiles = useCallback((fileList: FileList | File[]) => {
+    const filesToUpload = Array.from(fileList);
+    const successCount = files.filter(f => f.status === "success").length;
+    const remaining = MAX_FILES_PER_SESSION - successCount;
+
+    if (remaining <= 0) {
+      alert(t("errors.maxFilesReached"));
+      return;
+    }
+
+    const validFiles = filesToUpload
+      .slice(0, remaining)
+      .filter(file => {
+        if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+          console.warn(`Invalid file type: ${file.type}`);
+          return false;
+        }
+        if (file.size > MAX_FILE_SIZE) {
+          console.warn(`File too large: ${file.name}`);
+          return false;
+        }
+        return true;
+      });
+
+    validFiles.forEach(uploadFile);
+  }, [files, t]);
+
+  const handleDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  }, []);
+
+  const handleDragLeave = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  }, []);
+
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files.length > 0) {
+      handleFiles(e.dataTransfer.files);
+    }
+  }, [handleFiles]);
