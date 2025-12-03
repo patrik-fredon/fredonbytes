@@ -42,6 +42,7 @@ const translations = {
   ...cookiesTranslations,
   ...formTranslations,
   ...surveyTranslations,
+  ...uploadTranslations,
   ...faqTranslations,
   ...seoMetaTranslations,
   ...seoSchemasTranslations,

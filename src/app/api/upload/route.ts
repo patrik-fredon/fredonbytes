@@ -70,7 +70,11 @@ export async function POST(
       .select("id, title, upload_password")
       .eq("id", project_id)
       .eq("visible", true)
-      .single();
+      .single<{
+        id: string;
+        title: string | Record<string, string>;
+        upload_password: string | null;
+      }>();
 
     if (projectError || !project) {
       return NextResponse.json(
@@ -101,7 +105,8 @@ export async function POST(
     const sessionId = crypto.randomUUID();
 
     // Create upload session
-    const { error: sessionError } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error: sessionError } = await (supabase as any)
       .from("upload_sessions")
       .insert({
         session_id: sessionId,

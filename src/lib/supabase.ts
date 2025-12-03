@@ -221,8 +221,34 @@ export interface Project {
   display_order: number;
   featured: boolean;
   visible: boolean;
+  upload_password?: string | null;
   created_at?: string;
   updated_at?: string;
+}
+
+// Upload system interfaces
+export interface UploadSession {
+  id: string;
+  session_id: string;
+  project_id: string;
+  locale: string;
+  file_count: number;
+  total_size_bytes: number;
+  created_at: string;
+  expires_at: string;
+  completed_at?: string | null;
+}
+
+export interface UploadedFile {
+  id: string;
+  session_id: string;
+  project_id: string;
+  file_url: string;
+  file_path: string;
+  file_size: number;
+  mime_type: string;
+  original_filename: string;
+  created_at: string;
 }
 
 export interface ProjectTechnology {
