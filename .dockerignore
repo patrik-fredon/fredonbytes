@@ -12,5 +12,4 @@ README.md
 Dockerfile
 docker-compose.yml
 *.md
-!package.json
-!package-lock.json
+
