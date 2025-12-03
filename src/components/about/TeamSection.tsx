@@ -25,34 +25,34 @@ interface TeamSectionProps {
 // Photo URLs mapping (static assets)
 const TEAM_PHOTOS: Record<string, string> = {
   patrik:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/fullstack-developer-fredon-ceo-co-founder-fredonbytes.avif",
-  jana: "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/devsecops-engineer-fredonbytes-zoe.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/fullstack-developer-fredon-ceo-co-founder-fredonbytes.avif",
+  jana: "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/devsecops-engineer-fredonbytes-zoe.avif",
   lucie:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/agile-coach-fredonbytes-violet.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/agile-coach-fredonbytes-violet.avif",
   tomas:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/database-architect-fredonbytes-tony.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/database-architect-fredonbytes-tony.avif",
   chloe:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/ui-ux-designer-fredonbytes-chloe.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/ui-ux-designer-fredonbytes-chloe.avif",
   petra:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/technical-support-specialist-fredonbytes-petra.avif",
-  levi: "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/technical-lead-fredonbytes-levi.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/technical-support-specialist-fredonbytes-petra.avif",
+  levi: "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/technical-lead-fredonbytes-levi.avif",
   david:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/technical-director-fredonbytes-david.avif",
-  petr: "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/systems-engineer-fredonbytes-petr.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/technical-director-fredonbytes-david.avif",
+  petr: "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/systems-engineer-fredonbytes-petr.avif",
   thomas:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/systems-analyst-fredonbytes-thomas.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/systems-analyst-fredonbytes-thomas.avif",
   andrea:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/site-reliability-engineer-fredonbytes-andrea.avif",
-  jess: "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/software-architect-fredonbytes-mia.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/site-reliability-engineer-fredonbytes-andrea.avif",
+  jess: "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/software-architect-fredonbytes-mia.avif",
   matthew:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/qa-tester-fredonbytes-matthew.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/qa-tester-fredonbytes-matthew.avif",
   michal:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/it-project-manager-fredonbytes-michal.avif",
-  ella: "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/infrastructure-engineer-fredonbytes-ella.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/it-project-manager-fredonbytes-michal.avif",
+  ella: "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/infrastructure-engineer-fredonbytes-ella.avif",
   olive:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/hr-client-acquisition-fredonbytes-olive.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/hr-client-acquisition-fredonbytes-olive.avif",
   emily:
-    "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/it-consultant-fredonbytes-simona.avif",
+    "https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/about/team/it-consultant-fredonbytes-simona.avif",
 };
 
 // Team member IDs in display order

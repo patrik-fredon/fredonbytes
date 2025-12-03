@@ -22,7 +22,7 @@ export const revalidate = 3600;
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "projects" });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
   const pageUrl = `${baseUrl}${localePrefix}/projects`;
 
@@ -87,7 +87,7 @@ export default async function ProjectsPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("projects");
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
 
   // CollectionPage schema for SEO

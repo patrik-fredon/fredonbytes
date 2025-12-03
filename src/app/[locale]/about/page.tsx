@@ -11,7 +11,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "aboutPage.meta" });
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.eu";
   const pageUrl = `${siteUrl}/${locale}/about`;
 
   return {
@@ -83,7 +83,7 @@ export default async function AboutPage({ params }: Props) {
   setRequestLocale(locale);
   const metaT = await getTranslations({ locale, namespace: "aboutPage.meta" });
   const t = await getTranslations({ locale, namespace: "aboutPage" });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
   const localePrefix = locale === "cs" ? "" : `/${locale}`;
 
   // Structured data for SEO
@@ -93,8 +93,8 @@ export default async function AboutPage({ params }: Props) {
     mainEntity: {
       "@type": "Organization",
       name: "FredonBytes",
-      url: "https://fredonbytes.cz",
-      logo: "https://fredonbytes.cz/fredonbytes-logo-with-background.png",
+      url: "https://fredonbytes.eu",
+      logo: "https://fredonbytes.eu/fredonbytes-logo-with-background.png",
       description: metaT("description"),
       foundingDate: "2023",
       founder: {

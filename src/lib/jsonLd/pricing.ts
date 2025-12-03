@@ -41,7 +41,7 @@ const BREADCRUMB_CONFIG: BreadcrumbConfig[] = [
  */
 export async function getPricingSchemas(locale: string): Promise<Schema[]> {
   const t = await getTranslations({ locale, namespace: "pricing" });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
 
   // Offers/Products schema - map over plan configs
   const offersSchema: Schema = {
