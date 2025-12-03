@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
 
     // Fetch the survey questionnaire
     const { data: questionnaireData, error: questionnaireError } =
-      await supabase
+      await (supabase as any)
         .from("questionnaires")
         .select("id")
         .eq("type", "survey")
@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
     const questionnaire = questionnaireData as Questionnaire;
 
     // Fetch active survey questions with their options
-    const { data, error } = await supabase
+    const { data, error } = await (supabase as any)
       .from("questions")
       .select(`
         *,

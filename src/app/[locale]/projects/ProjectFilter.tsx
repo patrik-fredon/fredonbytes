@@ -61,7 +61,7 @@ export default function ProjectFilter({
     <div className="mb-8">
       {/* Filter Toggle Button */}
       <div className="flex items-center justify-between mb-4">
-        <button
+        <button type="button"
           onClick={() => setIsOpen(!isOpen)}
           className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-lg transition-shadow"
           aria-expanded={isOpen}
@@ -81,7 +81,7 @@ export default function ProjectFilter({
         </button>
 
         {hasActiveFilters && (
-          <button
+          <button type="button"
             onClick={onClearFilters}
             className="flex items-center gap-2 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
             aria-label="Clear all filters"
@@ -114,7 +114,7 @@ export default function ProjectFilter({
             </h3>
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
-                <button
+                <button type="button"
                   key={category}
                   onClick={() => handleCategoryChange(category)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
@@ -137,7 +137,7 @@ export default function ProjectFilter({
             </h3>
             <div className="flex flex-wrap gap-2">
               {statuses.map((status) => (
-                <button
+                <button type="button"
                   key={status}
                   onClick={() => handleStatusChange(status)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
@@ -160,7 +160,7 @@ export default function ProjectFilter({
             </h3>
             <div className="flex flex-wrap gap-2">
               {technologies.map((tech) => (
-                <button
+                <button type="button"
                   key={tech}
                   onClick={() => toggleTechnology(tech)}
                   className={`px-3 py-1.5 rounded-md text-sm transition-all ${

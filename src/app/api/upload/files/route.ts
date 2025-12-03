@@ -48,7 +48,6 @@ export async function POST(
     }
 
     // Validate session exists and not expired
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { data: session, error: sessionError } = (await (supabase as any)
       .from("upload_sessions")
       .select(
@@ -56,15 +55,15 @@ export async function POST(
       )
       .eq("session_id", sessionId)
       .single()) as {
-      data: {
-        session_id: string;
-        project_id: string;
-        file_count: number;
-        total_size_bytes: number;
-        expires_at: string;
-      } | null;
-      error: Error | null;
-    };
+        data: {
+          session_id: string;
+          project_id: string;
+          file_count: number;
+          total_size_bytes: number;
+          expires_at: string;
+        } | null;
+        error: Error | null;
+      };
 
     if (sessionError || !session) {
       logError("UploadSessionValidation", new Error("Invalid session"), {
@@ -135,7 +134,6 @@ export async function POST(
 
     // Store metadata in uploaded_files table
     // Note: trigger will update upload_sessions.file_count and total_size_bytes
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error: metadataError } = await (supabase as any)
       .from("uploaded_files")
       .insert({

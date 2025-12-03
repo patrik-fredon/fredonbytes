@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
       cacheKey,
       async () => {
         // Build query
-        let query = supabase
+        let query = (supabase as any)
           .from("projects")
           .select("*")
           .eq("visible", true)

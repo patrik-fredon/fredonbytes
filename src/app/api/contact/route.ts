@@ -124,17 +124,17 @@ export async function POST(request: NextRequest) {
 
     const newsletterPromise = validatedData.newsletter
       ? (supabase as any)
-          .from("newsletter_subscribers")
-          .insert({
-            email: validatedData.email,
-            first_name: sanitizedData.firstName,
-            last_name: sanitizedData.lastName,
-            locale: validatedData.locale,
-            active: true,
-            source: "contact_form",
-          })
-          .select()
-          .single()
+        .from("newsletter_subscribers")
+        .insert({
+          email: validatedData.email,
+          first_name: sanitizedData.firstName,
+          last_name: sanitizedData.lastName,
+          locale: validatedData.locale,
+          active: true,
+          source: "contact_form",
+        })
+        .select()
+        .single()
       : Promise.resolve({ data: null, error: null });
 
     const sessionInsertPromise = (supabase as any).from("sessions").insert({
@@ -239,14 +239,13 @@ export async function POST(request: NextRequest) {
 
     // Link session to contact submission if session was created successfully
     if (!sessionResult.error) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await (supabase as any)
         .from("contact_submissions")
         .update({
           session_id: sessionId,
           survey_sent: true,
         })
-        .eq("id", (contactSubmission as any).id);
+        .eq("id", contactSubmission.id);
     }
 
     return NextResponse.json(

@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
       locale && ["en", "cs", "de"].includes(locale) ? locale : "en";
 
     // Get the form questionnaire ID
-    const { data: questionnaire, error: questionnaireError } = await supabase
+    const { data: questionnaire, error: questionnaireError } = await (supabase as any)
       .from("questionnaires")
       .select("id")
       .eq("type", "form")
@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
 
     // If session_id is provided, verify it exists and isn't completed
     if (sessionId) {
-      const { data: existingSession, error: sessionCheckError } = await supabase
+      const { data: existingSession, error: sessionCheckError } = await (supabase as any)
         .from("sessions")
         .select("session_id, completed_at, questionnaire_id")
         .eq("session_id", sessionId)
@@ -168,7 +168,6 @@ export async function POST(request: NextRequest) {
       // If session doesn't exist, create it
       if (!existingSession) {
         // If session doesn't exist, create it
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const { error: createSessionError } = await (supabase as any)
           .from("sessions")
           .insert({
@@ -199,10 +198,7 @@ export async function POST(request: NextRequest) {
       }
     } else {
       // Create new session
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { data: newSession, error: createSessionError } = await (
-        supabase as any
-      )
+      const { data: newSession, error: createSessionError } = await (supabase as any)
         .from("sessions")
         .insert({
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -236,7 +232,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Update session to mark as completed
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error: updateSessionError } = await (supabase as any)
       .from("sessions")
       .update({
@@ -266,7 +261,6 @@ export async function POST(request: NextRequest) {
     }));
 
     // Batch insert form_answers (using sanitized responses)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error: answersError } = await (supabase as any)
       .from("form_answers")
       .insert(formAnswers);
@@ -285,7 +279,6 @@ export async function POST(request: NextRequest) {
 
     // Cache session data for offline continuity
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await (supabase as any).from("session_cache").upsert({
         session_id: sessionId!,
         cache_key: "form_submission",
@@ -342,7 +335,7 @@ export async function POST(request: NextRequest) {
     try {
       // Fetch question details to include in email
       const questionIds = sanitizedResponses.map((r) => r.question_id);
-      const { data: questions, error: questionsError } = await supabase
+      const { data: questions, error: questionsError } = await (supabase as any)
         .from("questions")
         .select("id, question_text, answer_type")
         .in("id", questionIds);

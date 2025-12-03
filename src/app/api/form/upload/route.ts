@@ -51,7 +51,7 @@ export async function POST(
     // This endpoint is protected because it's a POST request not in csrfExemptPaths
 
     // Validate session exists and not expired
-    const { data: session, error: sessionError } = await supabase
+    const { data: session, error: sessionError } = await (supabase as any)
       .from("sessions")
       .select("session_id, expires_at")
       .eq("session_id", sessionId)
@@ -84,7 +84,7 @@ export async function POST(
     }
 
     // Check current session total size
-    const { data: currentImages } = await supabase
+    const { data: currentImages } = await (supabase as any)
       .from("form_answer_images")
       .select("file_size")
       .eq("session_id", sessionId)
@@ -138,7 +138,7 @@ export async function POST(
     const imageUrl = urlData.publicUrl;
 
     // Store metadata in form_answer_images table
-    const { error: metadataError } = await supabase
+    const { error: metadataError } = await (supabase as any)
       .from("form_answer_images")
       .insert({
         session_id: sessionId,

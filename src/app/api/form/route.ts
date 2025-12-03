@@ -15,13 +15,13 @@ export interface LocalizedQuestion {
   question_text: string;
   description?: string | null;
   answer_type:
-    | "short_text"
-    | "long_text"
-    | "single_choice"
-    | "multiple_choice"
-    | "checklist"
-    | "rating"
-    | "image";
+  | "short_text"
+  | "long_text"
+  | "single_choice"
+  | "multiple_choice"
+  | "checklist"
+  | "rating"
+  | "image";
   required: boolean;
   display_order: number;
   active: boolean;
@@ -67,10 +67,7 @@ export async function POST(request: NextRequest) {
     const { locale } = validationResult.data;
 
     // Find active form questionnaire
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data: questionnaireData, error: questionnaireError } = await (
-      supabase as any
-    )
+    const { data: questionnaireData, error: questionnaireError } = await (supabase as any)
       .from("questionnaires")
       .select("id")
       .eq("type", "form")
@@ -91,7 +88,7 @@ export async function POST(request: NextRequest) {
     // Generate CSRF token and session ID
     const csrfToken = generateCsrfToken();
     const sessionId = crypto.randomUUID();
-    const questionnaireId = (questionnaireData as any).id;
+    const questionnaireId = questionnaireData.id;
 
     // Prepare parallel operations
     const sessionInsertPromise = (supabase as any).from("sessions").insert({
@@ -103,7 +100,7 @@ export async function POST(request: NextRequest) {
       expires_at: new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString(),
     });
 
-    const questionsFetchPromise = supabase
+    const questionsFetchPromise = (supabase as any)
       .from("questions")
       .select(`
         id,

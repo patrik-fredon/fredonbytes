@@ -72,8 +72,8 @@ const nextConfig: NextConfig = {
     removeConsole:
       process.env.NODE_ENV === "production"
         ? {
-            exclude: ["error", "warn"],
-          }
+          exclude: ["error", "warn"],
+        }
         : false,
   },
 
@@ -113,8 +113,8 @@ const nextConfig: NextConfig = {
               enforce: true,
             },
             // Vendor chunk for other node_modules
-            vendor: {
-              name: "vendor",
+            libs: {
+              name: "libs",
               test: /[/]node_modules[/]/,
               priority: 20,
             },

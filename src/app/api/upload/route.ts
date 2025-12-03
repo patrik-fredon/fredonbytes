@@ -65,7 +65,7 @@ export async function POST(
     const { project_id, password, locale } = validationResult.data;
 
     // Fetch project and validate password
-    const { data: project, error: projectError } = await supabase
+    const { data: project, error: projectError } = await (supabase as any)
       .from("projects")
       .select("id, title, upload_password")
       .eq("id", project_id)
@@ -104,7 +104,6 @@ export async function POST(
     const sessionId = crypto.randomUUID();
 
     // Create upload session
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error: sessionError } = await (supabase as any)
       .from("upload_sessions")
       .insert({
@@ -128,8 +127,8 @@ export async function POST(
     const projectTitle =
       typeof project.title === "object"
         ? (project.title as Record<string, string>)[locale] ||
-          (project.title as Record<string, string>).en ||
-          "Project"
+        (project.title as Record<string, string>).en ||
+        "Project"
         : String(project.title);
 
     // Create response with CSRF token
