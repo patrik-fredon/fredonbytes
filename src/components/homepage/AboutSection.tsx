@@ -119,7 +119,7 @@ export default async function AboutSection({
           {/* Section Header */}
           <div className="section-animate-child text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-terminal-light mb-6 font-mono">
-              <span className="text-neon-cyan">{'//'}</span> {t("about.title")}{" "}
+              <span className="text-neon-cyan">{"//"}</span> {t("about.title")}{" "}
               <span className="text-neon-cyan">{t("about.company")}</span>
             </h2>
             <p className="text-xl text-terminal-light/80 max-w-3xl mx-auto leading-relaxed mb-8">
@@ -162,7 +162,7 @@ export default async function AboutSection({
           <div className="section-animate-child grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             <GlassCard className="p-8 bg-terminal-darker/50" glowColor="cyan">
               <h3 className="flex justify-center text-2xl font-bold text-terminal-light mb-4 font-mono">
-                <span className="text-neon-cyan">{'//'}</span>{" "}
+                <span className="text-neon-cyan">{"//"}</span>{" "}
                 {t("about.mission.title")}
               </h3>
               <p className="text-terminal-light/80 leading-relaxed italic">
@@ -171,7 +171,7 @@ export default async function AboutSection({
             </GlassCard>
             <GlassCard className="p-8 bg-terminal-darker/50" glowColor="purple">
               <h3 className="text-2xl flex justify-center font-bold text-terminal-light mb-4 font-mono">
-                <span className="text-neon-purple">{'//'}</span>{" "}
+                <span className="text-neon-purple">{"//"}</span>{" "}
                 {t("about.vision.title")}
               </h3>
               <p className="text-terminal-light/80 leading-relaxed italic">
@@ -183,7 +183,7 @@ export default async function AboutSection({
           {/* Core Values - Terminal Cards */}
           <div className="section-animate-child mb-20">
             <h3 className="text-3xl font-bold text-terminal-light text-center mb-12 font-mono">
-              <span className="text-neon-cyan">{'//'}</span>{" "}
+              <span className="text-neon-cyan">{"//"}</span>{" "}
               {t("about.values.title")}
             </h3>
             <div className="grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-4 gap-8">
@@ -191,7 +191,10 @@ export default async function AboutSection({
                 const Icon = value.icon;
                 return (
                   <div key={index} className="text-center">
-                    <GlassCard className="p-6 h-full hover:inset-shadow-xl hover:inset-shadow-neon-purple/10 bg-terminal-darker/50" glowColor="normal">
+                    <GlassCard
+                      className="p-6 h-full hover:inset-shadow-xl hover:inset-shadow-neon-purple/10 bg-terminal-darker/50"
+                      glowColor="normal"
+                    >
                       <div className="w-16 h-16 mx-auto mb-4 bg-neon-cyan/10  hover:border-2 hover:border-neon-cyan border border-neon-cyan/40 rounded-xl flex items-center justify-center">
                         <Icon className="w-8 h-8 text-neon-cyan" />
                       </div>
@@ -210,7 +213,7 @@ export default async function AboutSection({
           {/* Founder Quote - Terminal Styled */}
           <div className="section-animate-child m-20">
             <blockquote className="text-lg font-medium text-terminal-light mb-6 leading-relaxed font-mono">
-              <span className="text-neon-purple">{'//'}</span> &ldquo;
+              <span className="text-neon-purple">{"//"}</span> &ldquo;
               {t("about.founderQuote.quote")}&rdquo;
             </blockquote>
             <cite className="text-terminal-light/70 text-sm font-mono">
@@ -269,7 +272,7 @@ export default async function AboutSection({
           {/* Company Mantra - Terminal Styled */}
           <div className="section-animate-child mt-12 text-center">
             <p className="text-4xl font-bold bg-linear-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent font-mono">
-              <span className="">{'//'}</span> {t("about.mantra")}
+              <span className="">{"//"}</span> {t("about.mantra")}
             </p>
             <div className="text-center w-full mx-auto max-w-xl border-b-6 border-neon-purple/20 rounded-b-2xl py-2"></div>
           </div>

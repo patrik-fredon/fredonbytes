@@ -1,20 +1,20 @@
 import crypto from "crypto";
 
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from "@/lib/csrf";
+import { CSRF_TOKEN_HEADER_NAME, validateCsrfToken } from "@/lib/csrf";
 import { sendEmail } from "@/lib/email";
 import {
-  generateAdminNotificationHTML,
   type FormResponseData,
+  generateAdminNotificationHTML,
 } from "@/lib/email-templates";
 import { sanitizeAnswerValue } from "@/lib/input-sanitization";
 import {
-  supabase,
   type AnswerValue,
-  type Question,
   type LocalizedString,
+  type Question,
+  supabase,
 } from "@/lib/supabase";
 
 // Hash IP address for privacy

@@ -20,36 +20,38 @@ export async function generateLocalizedMetadata(
     authors: [{ name: "Fredonbytes", url: baseUrl }],
     creator: "Fredonbytes",
     publisher: "Fredonbytes",
-    manifest: '/manifest.webmanifest',
+    manifest: "/manifest.webmanifest",
     robots:
       "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     other: (() => {
       const other: Record<string, string> = {
-        "content-language": locale === "cs" ? "cs-CZ" : locale === "en" ? "en-US" : "de-DE",
+        "content-language":
+          locale === "cs" ? "cs-CZ" : locale === "en" ? "en-US" : "de-DE",
         "geo.region": "CZ-JM",
         "geo.placename": "Brno, Praha, Ostrava",
         "geo.position": "49.1951;16.6068",
-        "ICBM": "49.1951, 16.6068",
-        "coverage": "Česká republika",
-        "distribution": "global",
-        "rating": "general",
+        ICBM: "49.1951, 16.6068",
+        coverage: "Česká republika",
+        distribution: "global",
+        rating: "general",
       };
       if (process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION) {
-        other["google-site-verification"] = process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION;
+        other["google-site-verification"] =
+          process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION;
       }
       return other;
     })(),
     icons: {
       shortcut: "/FredonBytes_GraphicLogo.png",
       icon: [
-          { url: '/favicon.ico', sizes: 'any' },
-          { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-          { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-        ],
-        apple: [
-          { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-          { url: '/apple-icon.png', sizes: ''}
-        ],
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      ],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+        { url: "/apple-icon.png", sizes: "" },
+      ],
     },
     alternates: {
       canonical: canonicalUrl,

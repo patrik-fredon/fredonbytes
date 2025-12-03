@@ -127,21 +127,12 @@
       "postalCode": "",
       "addressCountry": "CZ"
     },
-    "areaServed": [
-      "Brno",
-      "Praha",
-      "Ostrava",
-      "Česká republika"
-    ],
+    "areaServed": ["Brno", "Praha", "Ostrava", "Česká republika"],
     "contactPoint": {
       "telephone": "+420799027984",
       "contactType": "customer service",
       "email": "info@fredonbytes.com",
-      "availableLanguage": [
-        "Czech",
-        "English",
-        "German"
-      ],
+      "availableLanguage": ["Czech", "English", "German"],
       "hoursAvailable": "Po-Pá 9:00-17:00"
     },
     "services": [

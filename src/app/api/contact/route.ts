@@ -124,17 +124,17 @@ export async function POST(request: NextRequest) {
 
     const newsletterPromise = validatedData.newsletter
       ? (supabase as any)
-        .from("newsletter_subscribers")
-        .insert({
-          email: validatedData.email,
-          first_name: sanitizedData.firstName,
-          last_name: sanitizedData.lastName,
-          locale: validatedData.locale,
-          active: true,
-          source: "contact_form",
-        })
-        .select()
-        .single()
+          .from("newsletter_subscribers")
+          .insert({
+            email: validatedData.email,
+            first_name: sanitizedData.firstName,
+            last_name: sanitizedData.lastName,
+            locale: validatedData.locale,
+            active: true,
+            source: "contact_form",
+          })
+          .select()
+          .single()
       : Promise.resolve({ data: null, error: null });
 
     const sessionInsertPromise = (supabase as any).from("sessions").insert({

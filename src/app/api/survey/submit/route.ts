@@ -1,13 +1,13 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from "@/lib/csrf";
+import { CSRF_TOKEN_HEADER_NAME, validateCsrfToken } from "@/lib/csrf";
 import { sanitizeAnswerValue } from "@/lib/input-sanitization";
 import {
-  supabase,
-  type Session,
-  type Questionnaire,
   type LocalizedString,
+  type Questionnaire,
+  type Session,
+  supabase,
 } from "@/lib/supabase";
 
 // Zod schema for request validation

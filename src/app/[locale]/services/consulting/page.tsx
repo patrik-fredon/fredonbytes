@@ -11,5 +11,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function ConsultingPage(props: Props) {
-  return <ServicePageTemplate params={props.params} config={servicesConfig.consulting} />;
+  return (
+    <ServicePageTemplate
+      params={props.params}
+      config={servicesConfig.consulting}
+    />
+  );
 }

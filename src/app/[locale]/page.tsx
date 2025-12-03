@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { setRequestLocale } from "next-intl/server";
-
-import { PricingSectionSkeleton } from "../../components/homepage/HomepageSkeletons";
-import FAQSection from "../../components/homepage/FAQSection";
-import AboutSection from "../../components/homepage/AboutSection";
-import ServicesSection from "../../components/homepage/ServicesSection";
-import { getHomeMetadata } from "@/lib/metadata/home";
 import { getHomeSchemas } from "@/lib/jsonLd/home";
+import { getHomeMetadata } from "@/lib/metadata/home";
+import AboutSection from "../../components/homepage/AboutSection";
+import FAQSection from "../../components/homepage/FAQSection";
+import { PricingSectionSkeleton } from "../../components/homepage/HomepageSkeletons";
+import ServicesSection from "../../components/homepage/ServicesSection";
 
 // Hero section - client-only for optimal animation performance
 const HeroSection = dynamic(

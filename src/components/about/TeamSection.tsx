@@ -104,7 +104,7 @@ export default async function TeamSection({ locale }: TeamSectionProps) {
         </h2>
         <p
           className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-mono animate-fade-in"
-          style={{ animationDelay: '200ms' }}
+          style={{ animationDelay: "200ms" }}
         >
           <span className="text-neon-purple/50">// </span>
           {t("aboutPage.team.subtitle")}
@@ -123,7 +123,7 @@ export default async function TeamSection({ locale }: TeamSectionProps) {
             role="listitem"
             className="animate-fade-in-up"
             style={{
-              animationDelay: `${(index * 100) + 200}ms`
+              animationDelay: `${index * 100 + 200}ms`,
             }}
           >
             <TeamMemberCard member={member} locale={locale} index={index} />

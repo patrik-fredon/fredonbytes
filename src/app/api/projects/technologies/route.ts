@@ -28,7 +28,7 @@ export async function GET() {
       {
         ttl: CACHE_TTL_SECONDS,
         prefix: "api:technologies",
-      }
+      },
     );
 
     // Handle database errors

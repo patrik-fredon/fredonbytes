@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Check, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React from "react";
 
 import { Button } from "@/components/common/Button";
-import { PricingTier, LocalizedString } from "@/lib/supabase";
+import type { LocalizedString, PricingTier } from "@/lib/supabase";
 
-import { Currency } from "../PricingClient";
+import type { Currency } from "../PricingClient";
 
 interface PricingTiersProps {
   tiers: PricingTier[];

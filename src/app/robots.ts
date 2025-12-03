@@ -43,10 +43,10 @@ export default function robots(): MetadataRoute.Robots {
           "/links",
           "/projects",
           "/pricing",
-          '/*.css$',              // CSS files for proper rendering
-          '/*.js$',               // JavaScript files
-          '/public/images/*',     // Image assets
-          '/public/fonts/*',      // Font files
+          "/*.css$", // CSS files for proper rendering
+          "/*.js$", // JavaScript files
+          "/public/images/*", // Image assets
+          "/public/fonts/*", // Font files
         ],
         disallow: [
           "/admin/", // Admin interfaces
@@ -91,12 +91,19 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "SeznamBot",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/", "/upload/"],
+        disallow: [
+          "/api/",
+          "/_next/",
+          "/admin/",
+          "/form/",
+          "/survey/",
+          "/upload/",
+        ],
         crawlDelay: 2,
       },
     ],
 
     sitemap: sitemaps,
-    host: siteUrl.replace(/https?:\/\//, ''),
+    host: siteUrl.replace(/https?:\/\//, ""),
   };
 }

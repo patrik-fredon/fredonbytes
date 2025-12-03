@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import ContactClient from "./ContactClient";
@@ -17,8 +17,7 @@ export async function generateMetadata({
 }: ContactPageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact.meta" });
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz";
   const pageUrl = `${siteUrl}/${locale}/contact`;
 
   return {
@@ -128,7 +127,8 @@ export default async function ContactPage({ params }: ContactPageProps) {
       {
         "@type": "ListItem",
         position: 1,
-        name: locale === "cs" ? "Domů" : locale === "de" ? "Startseite" : "Home",
+        name:
+          locale === "cs" ? "Domů" : locale === "de" ? "Startseite" : "Home",
         item: `${baseUrl}${localePrefix}`,
       },
       {

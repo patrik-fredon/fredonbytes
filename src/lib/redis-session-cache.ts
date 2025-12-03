@@ -1,4 +1,4 @@
-import { redisGet, redisSet, redisDel, redisExpire } from './redis';
+import { redisDel, redisExpire, redisGet, redisSet } from "./redis";
 
 /**
  * Redis-based session cache store
@@ -9,7 +9,7 @@ import { redisGet, redisSet, redisDel, redisExpire } from './redis';
 
 export interface SessionData {
   sessionId: string;
-  type: 'form' | 'survey';
+  type: "form" | "survey";
   locale: string;
   userId?: string;
   createdAt: number;
@@ -24,7 +24,7 @@ const SESSION_TTL_SECONDS = 48 * 60 * 60;
 /**
  * Generate session cache key
  */
-function getSessionKey(sessionId: string, type: 'form' | 'survey'): string {
+function getSessionKey(sessionId: string, type: "form" | "survey"): string {
   return `session:${type}:${sessionId}`;
 }
 
@@ -47,9 +47,9 @@ function getSessionKey(sessionId: string, type: 'form' | 'survey'): string {
  */
 export async function setSessionData(
   sessionId: string,
-  type: 'form' | 'survey',
-  data: Omit<SessionData, 'sessionId' | 'type'>,
-  ttlSeconds: number = SESSION_TTL_SECONDS
+  type: "form" | "survey",
+  data: Omit<SessionData, "sessionId" | "type">,
+  ttlSeconds: number = SESSION_TTL_SECONDS,
 ): Promise<boolean> {
   try {
     const key = getSessionKey(sessionId, type);
@@ -90,7 +90,7 @@ export async function setSessionData(
  */
 export async function getSessionData(
   sessionId: string,
-  type: 'form' | 'survey'
+  type: "form" | "survey",
 ): Promise<SessionData | null> {
   try {
     const key = getSessionKey(sessionId, type);
@@ -133,14 +133,16 @@ export async function getSessionData(
  */
 export async function updateSessionData(
   sessionId: string,
-  type: 'form' | 'survey',
-  updates: Partial<Omit<SessionData, 'sessionId' | 'type'>>
+  type: "form" | "survey",
+  updates: Partial<Omit<SessionData, "sessionId" | "type">>,
 ): Promise<boolean> {
   try {
     const existing = await getSessionData(sessionId, type);
 
     if (!existing) {
-      console.warn(`[Session Cache] Cannot update non-existent session ${sessionId}`);
+      console.warn(
+        `[Session Cache] Cannot update non-existent session ${sessionId}`,
+      );
       return false;
     }
 
@@ -154,7 +156,10 @@ export async function updateSessionData(
 
     return await setSessionData(sessionId, type, updatedData);
   } catch (error) {
-    console.error(`[Session Cache] Failed to update session ${sessionId}:`, error);
+    console.error(
+      `[Session Cache] Failed to update session ${sessionId}:`,
+      error,
+    );
     return false;
   }
 }
@@ -172,7 +177,7 @@ export async function updateSessionData(
  */
 export async function deleteSessionData(
   sessionId: string,
-  type: 'form' | 'survey'
+  type: "form" | "survey",
 ): Promise<boolean> {
   try {
     const key = getSessionKey(sessionId, type);
@@ -185,7 +190,10 @@ export async function deleteSessionData(
 
     return false;
   } catch (error) {
-    console.error(`[Session Cache] Failed to delete session ${sessionId}:`, error);
+    console.error(
+      `[Session Cache] Failed to delete session ${sessionId}:`,
+      error,
+    );
     return false;
   }
 }
@@ -205,8 +213,8 @@ export async function deleteSessionData(
  */
 export async function extendSessionTTL(
   sessionId: string,
-  type: 'form' | 'survey',
-  ttlSeconds: number = SESSION_TTL_SECONDS
+  type: "form" | "survey",
+  ttlSeconds: number = SESSION_TTL_SECONDS,
 ): Promise<boolean> {
   try {
     const key = getSessionKey(sessionId, type);
@@ -218,7 +226,10 @@ export async function extendSessionTTL(
 
     return success;
   } catch (error) {
-    console.error(`[Session Cache] Failed to extend session ${sessionId}:`, error);
+    console.error(
+      `[Session Cache] Failed to extend session ${sessionId}:`,
+      error,
+    );
     return false;
   }
 }
@@ -238,7 +249,7 @@ export async function extendSessionTTL(
  */
 export async function sessionExists(
   sessionId: string,
-  type: 'form' | 'survey'
+  type: "form" | "survey",
 ): Promise<boolean> {
   const session = await getSessionData(sessionId, type);
   return session !== null;
@@ -254,22 +265,22 @@ export async function sessionExists(
  * @returns Array of session IDs
  */
 export async function getAllSessionIds(
-  type?: 'form' | 'survey'
+  type?: "form" | "survey",
 ): Promise<string[]> {
   try {
-    const { getRedisClient } = await import('./redis');
+    const { getRedisClient } = await import("./redis");
     const client = await getRedisClient();
 
-    const pattern = type ? `session:${type}:*` : 'session:*';
+    const pattern = type ? `session:${type}:*` : "session:*";
     const keys = await client.keys(pattern);
 
     // Extract session IDs from keys
-    return keys.map(key => {
-      const parts = key.split(':');
+    return keys.map((key) => {
+      const parts = key.split(":");
       return parts[parts.length - 1];
     });
   } catch (error) {
-    console.error('[Session Cache] Failed to get all session IDs:', error);
+    console.error("[Session Cache] Failed to get all session IDs:", error);
     return [];
   }
 }

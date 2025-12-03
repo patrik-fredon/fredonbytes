@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: titles[locale as keyof typeof titles] || titles.en,
-    description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    description:
+      descriptions[locale as keyof typeof descriptions] || descriptions.en,
     alternates: {
       canonical: pageUrl,
       languages: {
@@ -39,7 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       title: titles[locale as keyof typeof titles] || titles.en,
-      description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      description:
+        descriptions[locale as keyof typeof descriptions] || descriptions.en,
       url: pageUrl,
       siteName: "FredonBytes",
       locale: locale === "cs" ? "cs_CZ" : locale === "de" ? "de_DE" : "en_US",
@@ -52,7 +54,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
   };
 }
-
 
 export default async function UploadPage({ params }: Props) {
   const { locale } = await params;

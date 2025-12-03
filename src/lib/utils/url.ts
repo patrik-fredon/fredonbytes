@@ -21,7 +21,7 @@ export function normalizeUrl(url: string): string {
     return parsed.href;
   } catch {
     // Fallback: Remove duplicate slashes only in path/query/hash, preserving protocol and authority
-    const match = url.match(/^([a-zA-Z][a-zA-Z0-9+\-.]*:\/\/[^\/?#]+)([\/\S]*)$/);
+    const match = url.match(/^([a-zA-Z][a-zA-Z0-9+\-.]*:\/\/[^/?#]+)([/\S]*)$/);
     if (match) {
       const [, protocolAndAuthority, rest] = match;
       // Remove duplicate slashes in the rest (path/query/hash)

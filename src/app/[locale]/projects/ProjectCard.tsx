@@ -4,18 +4,18 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { useState, memo } from "react";
+import { memo, useState } from "react";
 
 import TerminalWindow from "@/components/dev-ui/TerminalWindow";
-import {
-  projectCardVariants,
-  projectCardHoverVariants,
-  projectCardTransition,
-} from "@/lib/animation-variants";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import type { Project } from "@/lib/supabase";
+import {
+  projectCardHoverVariants,
+  projectCardTransition,
+  projectCardVariants,
+} from "@/lib/animation-variants";
 import { getBlurDataURL } from "@/lib/image-utils";
+import type { Project } from "@/lib/supabase";
 
 interface ProjectCardProps {
   project: Project;

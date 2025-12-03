@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { generateCsrfToken, CSRF_TOKEN_COOKIE_NAME } from "@/lib/csrf";
-import { supabase } from "@/lib/supabase";
+import { CSRF_TOKEN_COOKIE_NAME, generateCsrfToken } from "@/lib/csrf";
 import { checkRateLimit, getRateLimitHeaders } from "@/lib/redis-rate-limiter";
+import { supabase } from "@/lib/supabase";
 
 // Schema for session creation request
 const createUploadSessionSchema = z.object({
@@ -31,10 +31,11 @@ export async function POST(
 ): Promise<NextResponse<CreateUploadSessionResponse>> {
   try {
     // Rate limiting for brute-force protection (5 attempts/min per IP)
-    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() 
-      || request.headers.get("x-real-ip") 
-      || "unknown";
-    
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      request.headers.get("x-real-ip") ||
+      "unknown";
+
     const rateLimitResult = await checkRateLimit(`upload_auth:${ip}`, {
       maxRequests: 5,
       windowMs: 60 * 1000, // 1 minute
@@ -44,8 +45,8 @@ export async function POST(
     if (!rateLimitResult.allowed) {
       return NextResponse.json(
         { success: false, error: "Too many attempts. Please try again later." },
-        { 
-          status: 429, 
+        {
+          status: 429,
           headers: getRateLimitHeaders(rateLimitResult),
         },
       );
@@ -62,7 +63,6 @@ export async function POST(
     }
 
     const { project_id, password, locale } = validationResult.data;
-
 
     // Fetch project and validate password
     const { data: project, error: projectError } = await supabase
@@ -99,7 +99,6 @@ export async function POST(
       );
     }
 
-
     // Generate CSRF token and session ID
     const csrfToken = generateCsrfToken();
     const sessionId = crypto.randomUUID();
@@ -126,10 +125,12 @@ export async function POST(
     }
 
     // Extract localized title
-    const projectTitle = typeof project.title === "object" 
-      ? (project.title as Record<string, string>)[locale] || (project.title as Record<string, string>).en || "Project"
-      : String(project.title);
-
+    const projectTitle =
+      typeof project.title === "object"
+        ? (project.title as Record<string, string>)[locale] ||
+          (project.title as Record<string, string>).en ||
+          "Project"
+        : String(project.title);
 
     // Create response with CSRF token
     const response = NextResponse.json(

@@ -23,7 +23,10 @@ interface CompanyStoryProps {
 }
 
 export default async function CompanyStory({ locale }: CompanyStoryProps) {
-  const t = await getTranslations({ locale, namespace: "aboutPage.companyStory" });
+  const t = await getTranslations({
+    locale,
+    namespace: "aboutPage.companyStory",
+  });
 
   // Get content array from translations
   const contentParagraphs = [
@@ -42,8 +45,6 @@ export default async function CompanyStory({ locale }: CompanyStoryProps) {
       id="company-story"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-0">
-
-
         {/* 2-Column Layout: Story Content + Mission Card */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
           {/* Story Content - Left Column (2/3 width on desktop) */}
@@ -54,7 +55,7 @@ export default async function CompanyStory({ locale }: CompanyStoryProps) {
                   id="company-story-title"
                   className="text-lg sm:text-xl lg:text-2xl font-bold mb-1 sm:mb-2 text-center leading-tight font-mono animate-fade-in-down"
                 >
-                  <span className="text-neon-purple">{'>> '}</span> {t("title")}
+                  <span className="text-neon-purple">{">> "}</span> {t("title")}
                 </h2>
                 <div className="text-center border-b border-neon-cyan w-full mx-auto max-w-xl rounded-b-4xl py-2"></div>
                 {contentParagraphs.map((paragraph, index) => (
@@ -73,7 +74,10 @@ export default async function CompanyStory({ locale }: CompanyStoryProps) {
           </div>
 
           {/* Mission Statement - Right Column (1/3 width on desktop) */}
-          <div className="lg:col-span-1 animate-fade-in-scale" style={{ animationDelay: '300ms' }}>
+          <div
+            className="lg:col-span-1 animate-fade-in-scale"
+            style={{ animationDelay: "300ms" }}
+          >
             <GlassCard
               variant="card"
               glowColor="normal"

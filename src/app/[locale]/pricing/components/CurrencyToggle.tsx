@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-import { Currency } from "../PricingClient";
+import type { Currency } from "../PricingClient";
 
 interface CurrencyToggleProps {
   currency: Currency;

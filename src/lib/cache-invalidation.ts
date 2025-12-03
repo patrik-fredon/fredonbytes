@@ -1,4 +1,4 @@
-import { getRedisClient } from './redis';
+import { getRedisClient } from "./redis";
 
 /**
  * Cache invalidation utilities for Redis-backed caching system
@@ -23,19 +23,24 @@ import { getRedisClient } from './redis';
 export async function invalidateProjectsCache(): Promise<void> {
   try {
     const client = await getRedisClient();
-    const pattern = 'api:projects:*';
+    const pattern = "api:projects:*";
 
     // Get all keys matching the pattern
     const keys = await client.keys(pattern);
 
     if (keys.length > 0) {
       await client.del(keys);
-      console.log(`[Cache Invalidation] Deleted ${keys.length} projects cache entries`);
+      console.log(
+        `[Cache Invalidation] Deleted ${keys.length} projects cache entries`,
+      );
     } else {
-      console.log('[Cache Invalidation] No projects cache entries to delete');
+      console.log("[Cache Invalidation] No projects cache entries to delete");
     }
   } catch (error) {
-    console.error('[Cache Invalidation] Failed to invalidate projects cache:', error);
+    console.error(
+      "[Cache Invalidation] Failed to invalidate projects cache:",
+      error,
+    );
   }
 }
 
@@ -55,18 +60,25 @@ export async function invalidateProjectsCache(): Promise<void> {
 export async function invalidatePricingTiersCache(): Promise<void> {
   try {
     const client = await getRedisClient();
-    const pattern = 'api:pricing-tiers:*';
+    const pattern = "api:pricing-tiers:*";
 
     const keys = await client.keys(pattern);
 
     if (keys.length > 0) {
       await client.del(keys);
-      console.log(`[Cache Invalidation] Deleted ${keys.length} pricing tiers cache entries`);
+      console.log(
+        `[Cache Invalidation] Deleted ${keys.length} pricing tiers cache entries`,
+      );
     } else {
-      console.log('[Cache Invalidation] No pricing tiers cache entries to delete');
+      console.log(
+        "[Cache Invalidation] No pricing tiers cache entries to delete",
+      );
     }
   } catch (error) {
-    console.error('[Cache Invalidation] Failed to invalidate pricing tiers cache:', error);
+    console.error(
+      "[Cache Invalidation] Failed to invalidate pricing tiers cache:",
+      error,
+    );
   }
 }
 
@@ -86,18 +98,25 @@ export async function invalidatePricingTiersCache(): Promise<void> {
 export async function invalidatePricingItemsCache(): Promise<void> {
   try {
     const client = await getRedisClient();
-    const pattern = 'api:pricing-items:*';
+    const pattern = "api:pricing-items:*";
 
     const keys = await client.keys(pattern);
 
     if (keys.length > 0) {
       await client.del(keys);
-      console.log(`[Cache Invalidation] Deleted ${keys.length} pricing items cache entries`);
+      console.log(
+        `[Cache Invalidation] Deleted ${keys.length} pricing items cache entries`,
+      );
     } else {
-      console.log('[Cache Invalidation] No pricing items cache entries to delete');
+      console.log(
+        "[Cache Invalidation] No pricing items cache entries to delete",
+      );
     }
   } catch (error) {
-    console.error('[Cache Invalidation] Failed to invalidate pricing items cache:', error);
+    console.error(
+      "[Cache Invalidation] Failed to invalidate pricing items cache:",
+      error,
+    );
   }
 }
 
@@ -117,18 +136,25 @@ export async function invalidatePricingItemsCache(): Promise<void> {
 export async function invalidateTechnologiesCache(): Promise<void> {
   try {
     const client = await getRedisClient();
-    const pattern = 'api:technologies:*';
+    const pattern = "api:technologies:*";
 
     const keys = await client.keys(pattern);
 
     if (keys.length > 0) {
       await client.del(keys);
-      console.log(`[Cache Invalidation] Deleted ${keys.length} technologies cache entries`);
+      console.log(
+        `[Cache Invalidation] Deleted ${keys.length} technologies cache entries`,
+      );
     } else {
-      console.log('[Cache Invalidation] No technologies cache entries to delete');
+      console.log(
+        "[Cache Invalidation] No technologies cache entries to delete",
+      );
     }
   } catch (error) {
-    console.error('[Cache Invalidation] Failed to invalidate technologies cache:', error);
+    console.error(
+      "[Cache Invalidation] Failed to invalidate technologies cache:",
+      error,
+    );
   }
 }
 
@@ -146,18 +172,23 @@ export async function invalidateTechnologiesCache(): Promise<void> {
 export async function invalidateAllApiCaches(): Promise<void> {
   try {
     const client = await getRedisClient();
-    const pattern = 'api:*';
+    const pattern = "api:*";
 
     const keys = await client.keys(pattern);
 
     if (keys.length > 0) {
       await client.del(keys);
-      console.log(`[Cache Invalidation] Deleted ${keys.length} total API cache entries`);
+      console.log(
+        `[Cache Invalidation] Deleted ${keys.length} total API cache entries`,
+      );
     } else {
-      console.log('[Cache Invalidation] No API cache entries to delete');
+      console.log("[Cache Invalidation] No API cache entries to delete");
     }
   } catch (error) {
-    console.error('[Cache Invalidation] Failed to invalidate all API caches:', error);
+    console.error(
+      "[Cache Invalidation] Failed to invalidate all API caches:",
+      error,
+    );
   }
 }
 
@@ -184,7 +215,10 @@ export async function invalidateSpecificCache(fullKey: string): Promise<void> {
       console.log(`[Cache Invalidation] Cache key not found: ${fullKey}`);
     }
   } catch (error) {
-    console.error(`[Cache Invalidation] Failed to invalidate ${fullKey}:`, error);
+    console.error(
+      `[Cache Invalidation] Failed to invalidate ${fullKey}:`,
+      error,
+    );
   }
 }
 
@@ -196,9 +230,9 @@ export async function invalidateSpecificCache(fullKey: string): Promise<void> {
 export async function getAllApiCacheKeys(): Promise<string[]> {
   try {
     const client = await getRedisClient();
-    return await client.keys('api:*');
+    return await client.keys("api:*");
   } catch (error) {
-    console.error('[Cache] Failed to get cache keys:', error);
+    console.error("[Cache] Failed to get cache keys:", error);
     return [];
   }
 }
@@ -226,11 +260,11 @@ export async function getCacheStatistics(): Promise<{
       pricingItemsKeys,
       technologiesKeys,
     ] = await Promise.all([
-      client.keys('api:*'),
-      client.keys('api:projects:*'),
-      client.keys('api:pricing-tiers:*'),
-      client.keys('api:pricing-items:*'),
-      client.keys('api:technologies:*'),
+      client.keys("api:*"),
+      client.keys("api:projects:*"),
+      client.keys("api:pricing-tiers:*"),
+      client.keys("api:pricing-items:*"),
+      client.keys("api:technologies:*"),
     ]);
 
     return {
@@ -239,10 +273,15 @@ export async function getCacheStatistics(): Promise<{
       pricingTiers: pricingTiersKeys.length,
       pricingItems: pricingItemsKeys.length,
       technologies: technologiesKeys.length,
-      other: allKeys.length - projectsKeys.length - pricingTiersKeys.length - pricingItemsKeys.length - technologiesKeys.length,
+      other:
+        allKeys.length -
+        projectsKeys.length -
+        pricingTiersKeys.length -
+        pricingItemsKeys.length -
+        technologiesKeys.length,
     };
   } catch (error) {
-    console.error('[Cache] Failed to get cache statistics:', error);
+    console.error("[Cache] Failed to get cache statistics:", error);
     return {
       totalKeys: 0,
       projects: 0,

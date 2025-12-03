@@ -41,7 +41,12 @@ export const domainConfig = {
     // Use fallback if env var is not set or results in empty array
     return envDomains.length > 0
       ? envDomains
-      : ["fredonbytes.cloud", "fredonbytes.com", "fredonbytes.cz", "fredonbytes.tech"];
+      : [
+          "fredonbytes.cloud",
+          "fredonbytes.com",
+          "fredonbytes.cz",
+          "fredonbytes.tech",
+        ];
   },
 
   /**
@@ -53,13 +58,14 @@ export const domainConfig = {
   /**
    * Contact form recipient email
    */
-  contactEmail:
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@fredonbytes.com",
+  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@fredonbytes.com",
 
   /**
    * Domain strategy: "primary" (redirect all to primary) or "multi" (serve all)
    */
-  strategy: (process.env.NEXT_PUBLIC_DOMAIN_STRATEGY as "primary" | "multi") || "primary",
+  strategy:
+    (process.env.NEXT_PUBLIC_DOMAIN_STRATEGY as "primary" | "multi") ||
+    "primary",
 
   /**
    * Get all domains (primary + secondary)

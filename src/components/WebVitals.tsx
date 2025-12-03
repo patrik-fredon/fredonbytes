@@ -64,13 +64,13 @@ export function WebVitals() {
       console.groupCollapsed(
         `%c⚡ Web Vitals: ${metric.name} %c${metric.rating}`,
         "color: #00D9FF; font-weight: bold;",
-        getRatingColor(metric.rating)
+        getRatingColor(metric.rating),
       );
       console.table({
         Value: formatValue(metric.name, metric.value),
         Rating: metric.rating,
         Delta: formatValue(metric.name, metric.delta),
-        ID: metric.id.substring(0, 12) + "...",
+        ID: `${metric.id.substring(0, 12)}...`,
       });
       console.groupEnd();
     }
@@ -133,4 +133,3 @@ function formatValue(name: string, value: number): string {
   // Default
   return value.toString();
 }
-

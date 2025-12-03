@@ -9,16 +9,16 @@
  * - Metadata tracking in form_answer_images
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { type NextRequest, NextResponse } from "next/server";
 import { logError } from "@/lib/error-logger";
 import {
-  validateImageFile,
-  validateSessionTotalSize,
   generateUniqueFileName,
   MAX_FILE_SIZE,
   MAX_SESSION_SIZE,
+  validateImageFile,
+  validateSessionTotalSize,
 } from "@/lib/form-image-utils";
+import { supabase } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60; // Allow up to 60s for large uploads

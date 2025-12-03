@@ -1,14 +1,14 @@
 "use client";
 
-import { Calculator, Plus, Minus, Check, ArrowRight } from "lucide-react";
+import { ArrowRight, Calculator, Check, Minus, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button } from "@/components/common/Button";
-import { PricingItem, LocalizedString } from "@/lib/supabase";
 import { getIconComponent } from "@/lib/icon-mapper";
+import type { LocalizedString, PricingItem } from "@/lib/supabase";
 
-import { Currency } from "../PricingClient";
+import type { Currency } from "../PricingClient";
 
 interface PricingCalculatorProps {
   items: PricingItem[];

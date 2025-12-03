@@ -3,13 +3,13 @@
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import type { CreateUploadSessionResponse } from "@/app/api/upload/route";
 import { Button } from "@/components/common/Button";
 import TerminalWindow from "@/components/dev-ui/TerminalWindow";
 import { useRouter } from "@/i18n/navigation";
-import type { Project, LocalizedString } from "@/lib/supabase";
+import type { LocalizedString, Project } from "@/lib/supabase";
 
 interface ProjectOption {
   id: string;
@@ -21,7 +21,7 @@ export default function UploadLanding() {
   const params = useParams();
   const locale = (params.locale as string) || "cs";
   const t = useTranslations("upload");
-  
+
   const [projects, setProjects] = useState<ProjectOption[]>([]);
   const [selectedProject, setSelectedProject] = useState<string>("");
   const [password, setPassword] = useState("");
@@ -35,14 +35,21 @@ export default function UploadLanding() {
       try {
         const response = await fetch("/api/projects?status=active");
         const data = await response.json();
-        
+
         if (data.projects) {
-          const projectOptions: ProjectOption[] = data.projects.map((p: Project) => ({
-            id: p.id,
-            title: typeof p.title === "object" 
-              ? (p.title as LocalizedString)[locale as keyof LocalizedString] || (p.title as LocalizedString).en || "Project"
-              : String(p.title),
-          }));
+          const projectOptions: ProjectOption[] = data.projects.map(
+            (p: Project) => ({
+              id: p.id,
+              title:
+                typeof p.title === "object"
+                  ? (p.title as LocalizedString)[
+                      locale as keyof LocalizedString
+                    ] ||
+                    (p.title as LocalizedString).en ||
+                    "Project"
+                  : String(p.title),
+            }),
+          );
           setProjects(projectOptions);
         }
       } catch (err) {
@@ -96,7 +103,10 @@ export default function UploadLanding() {
 
       // Store project info for upload page
       if (data.project_title) {
-        sessionStorage.setItem(`upload_project_${data.session_id}`, data.project_title);
+        sessionStorage.setItem(
+          `upload_project_${data.session_id}`,
+          data.project_title,
+        );
       }
 
       router.push(`/upload/${data.session_id}`);
@@ -106,7 +116,6 @@ export default function UploadLanding() {
       setIsSubmitting(false);
     }
   };
-
 
   return (
     <div className="container mx-auto px-4 py-12 lg:py-20">
@@ -141,7 +150,10 @@ export default function UploadLanding() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Project Selection */}
               <div>
-                <label htmlFor="project" className="block text-sm font-medium text-white/80 mb-2">
+                <label
+                  htmlFor="project"
+                  className="block text-sm font-medium text-white/80 mb-2"
+                >
                   {t("projectLabel")} *
                 </label>
                 <select
@@ -163,7 +175,10 @@ export default function UploadLanding() {
 
               {/* Password Input */}
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-white/80 mb-2">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-white/80 mb-2"
+                >
                   {t("passwordLabel")} *
                 </label>
                 <input
@@ -173,11 +188,11 @@ export default function UploadLanding() {
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={isSubmitting}
                   placeholder={t("passwordPlaceholder")}
+                  autoComplete="new-password"
                   className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white placeholder:text-white/40 focus:ring-2 focus:ring-neon-cyan focus:border-transparent disabled:opacity-50"
                   required
                 />
               </div>
-
 
               {/* Error Message */}
               {error && (
@@ -192,7 +207,9 @@ export default function UploadLanding() {
                 variant="gradient"
                 size="lg"
                 loading={isSubmitting}
-                disabled={isSubmitting || !selectedProject || !password || isLoading}
+                disabled={
+                  isSubmitting || !selectedProject || !password || isLoading
+                }
                 className="w-full min-h-[44px] flex items-center justify-center"
               >
                 {isSubmitting ? t("submitting") : t("submitButton")}

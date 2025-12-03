@@ -52,7 +52,9 @@ export default function LanguageSwitcher({
     ) : (
       <div className="flex items-center space-x-2 text-white">
         <Globe className="w-4 h-4" />
-        <span className="hidden sm:inline">🇺🇸 English</span>
+        <span className="hidden sm:inline">
+          {languageFlags[locale]} {localeDisplayNames[locale]}
+        </span>
       </div>
     );
   }

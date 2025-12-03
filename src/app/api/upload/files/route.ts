@@ -10,14 +10,14 @@
  * - Metadata tracking in uploaded_files table
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { type NextRequest, NextResponse } from "next/server";
 import { logError } from "@/lib/error-logger";
+import { supabase } from "@/lib/supabase";
 import {
-  validateUploadFile,
-  validateSessionLimits,
   generateUniqueUploadFileName,
   MAX_FILES_PER_SESSION,
+  validateSessionLimits,
+  validateUploadFile,
 } from "@/lib/upload-file-utils";
 
 export const dynamic = "force-dynamic";
@@ -30,7 +30,6 @@ interface UploadFilesResponse {
   file_count?: number;
   error?: string;
 }
-
 
 export async function POST(
   request: NextRequest,
@@ -51,26 +50,32 @@ export async function POST(
 
     // Validate session exists and not expired
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data: session, error: sessionError } = await (supabase as any)
+    const { data: session, error: sessionError } = (await (supabase as any)
       .from("upload_sessions")
-      .select("session_id, project_id, file_count, total_size_bytes, expires_at")
+      .select(
+        "session_id, project_id, file_count, total_size_bytes, expires_at",
+      )
       .eq("session_id", sessionId)
-      .single() as { data: {
+      .single()) as {
+      data: {
         session_id: string;
         project_id: string;
         file_count: number;
         total_size_bytes: number;
         expires_at: string;
-      } | null; error: Error | null };
+      } | null;
+      error: Error | null;
+    };
 
     if (sessionError || !session) {
-      logError("UploadSessionValidation", new Error("Invalid session"), { sessionId });
+      logError("UploadSessionValidation", new Error("Invalid session"), {
+        sessionId,
+      });
       return NextResponse.json(
         { success: false, error: "Invalid or expired session" },
         { status: 404 },
       );
     }
-
 
     if (new Date(session.expires_at) < new Date()) {
       return NextResponse.json(
@@ -101,7 +106,6 @@ export async function POST(
       );
     }
 
-
     // Generate unique file path: {project_id}/{session_id}/{unique_filename}
     const uniqueFileName = generateUniqueUploadFileName(file.name);
     const filePath = `${session.project_id}/${sessionId}/${uniqueFileName}`;
@@ -129,7 +133,6 @@ export async function POST(
       .getPublicUrl(filePath);
 
     const fileUrl = urlData.publicUrl;
-
 
     // Store metadata in uploaded_files table
     // Note: trigger will update upload_sessions.file_count and total_size_bytes
@@ -167,7 +170,8 @@ export async function POST(
       { status: 200 },
     );
   } catch (error) {
-    const err = error instanceof Error ? error : new Error("Unknown upload error");
+    const err =
+      error instanceof Error ? error : new Error("Unknown upload error");
     logError("ClientFileUpload", err, {});
     return NextResponse.json(
       { success: false, error: "Internal server error during upload" },

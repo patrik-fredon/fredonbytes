@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
-import { redisPing, redisInfo } from '@/lib/redis';
-import { getCacheStatistics } from '@/lib/cache-invalidation';
+import { NextResponse } from "next/server";
+import { getCacheStatistics } from "@/lib/cache-invalidation";
+import { redisInfo, redisPing } from "@/lib/redis";
 
 /**
  * Redis health check endpoint
@@ -36,14 +36,14 @@ export async function GET() {
     if (!isConnected) {
       return NextResponse.json(
         {
-          status: 'unhealthy',
+          status: "unhealthy",
           redis: {
             connected: false,
-            error: 'Failed to connect to Redis',
+            error: "Failed to connect to Redis",
           },
           timestamp: new Date().toISOString(),
         },
-        { status: 503 }
+        { status: 503 },
       );
     }
 
@@ -51,19 +51,19 @@ export async function GET() {
     const cacheStats = await getCacheStatistics();
 
     // Get Redis info (optional, can be expensive)
-    const info = await redisInfo('stats');
-    const memoryInfo = await redisInfo('memory');
+    const info = await redisInfo("stats");
+    const memoryInfo = await redisInfo("memory");
 
     // Parse Redis info for useful metrics
     const parseRedisInfo = (infoString: string | null) => {
       if (!infoString) return {};
 
-      const lines = infoString.split('\r\n');
+      const lines = infoString.split("\r\n");
       const metrics: Record<string, string> = {};
 
       for (const line of lines) {
-        if (line && !line.startsWith('#')) {
-          const [key, value] = line.split(':');
+        if (line && !line.startsWith("#")) {
+          const [key, value] = line.split(":");
           if (key && value) {
             metrics[key] = value;
           }
@@ -78,17 +78,17 @@ export async function GET() {
 
     return NextResponse.json(
       {
-        status: 'healthy',
+        status: "healthy",
         redis: {
           connected: true,
-          ping: 'PONG',
+          ping: "PONG",
           version: statsMetrics.redis_version,
         },
         cache: cacheStats,
         memory: {
           usedMemory: memoryMetrics.used_memory_human,
           usedMemoryPeak: memoryMetrics.used_memory_peak_human,
-          maxMemory: memoryMetrics.maxmemory_human || '256MB',
+          maxMemory: memoryMetrics.maxmemory_human || "256MB",
         },
         stats: {
           totalConnectionsReceived: statsMetrics.total_connections_received,
@@ -100,23 +100,23 @@ export async function GET() {
       {
         status: 200,
         headers: {
-          'Cache-Control': 'no-store, must-revalidate',
+          "Cache-Control": "no-store, must-revalidate",
         },
-      }
+      },
     );
   } catch (error) {
-    console.error('[Redis Health] Error:', error);
+    console.error("[Redis Health] Error:", error);
 
     return NextResponse.json(
       {
-        status: 'error',
+        status: "error",
         redis: {
           connected: false,
-          error: error instanceof Error ? error.message : 'Unknown error',
+          error: error instanceof Error ? error.message : "Unknown error",
         },
         timestamp: new Date().toISOString(),
       },
-      { status: 503 }
+      { status: 503 },
     );
   }
 }

@@ -105,11 +105,11 @@ export default function ThankYouScreen({ onRedirect }: ThankYouScreenProps) {
           prefersReducedMotion
             ? { duration: 0.01 }
             : {
-              type: "spring",
-              stiffness: 200,
-              damping: 15,
-              delay: 0.2,
-            }
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+                delay: 0.2,
+              }
         }
         className="flex justify-center"
       >

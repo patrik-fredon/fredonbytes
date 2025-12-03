@@ -78,7 +78,7 @@
     "description": "Your All-in-One IT Powerhouse. From code to clicks, we deliver complete digital dominance.",
     "contact": {
       "location": "Brno, Czech Republic",
-      "phone": "+420 733 517 625",
+      "phone": "+420 799 027 984",
       "email": "info@fredonbytes.com"
     },
     "sections": {
@@ -134,7 +134,7 @@
       "addressCountry": "CZ"
     },
     "contactPoint": {
-      "telephone": "+420733517625",
+      "telephone": "+420799027984",
       "contactType": "customer service",
       "email": "info@fredonbytes.com"
     },
@@ -1687,11 +1687,7 @@
           "webDevelopment": {
             "name": "Web Development",
             "description": "Custom website or web application",
-            "included": [
-              "Responsive Design",
-              "SEO Basic",
-              "Contact Forms"
-            ]
+            "included": ["Responsive Design", "SEO Basic", "Contact Forms"]
           },
           "mobileApp": {
             "name": "Mobile App",
@@ -1714,11 +1710,7 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monthly SEO and digital marketing services",
-            "included": [
-              "Keyword Research",
-              "Content Strategy",
-              "Analytics"
-            ]
+            "included": ["Keyword Research", "Content Strategy", "Analytics"]
           },
           "socialMedia": {
             "name": "Social Media",

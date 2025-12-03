@@ -1778,11 +1778,7 @@
           "seoMarketing": {
             "name": "SEO & Marketing",
             "description": "Monatliche SEO und digitale Marketing-Dienste",
-            "included": [
-              "Keyword-Recherche",
-              "Content-Strategie",
-              "Analytik"
-            ]
+            "included": ["Keyword-Recherche", "Content-Strategie", "Analytik"]
           },
           "socialMedia": {
             "name": "Social Media",

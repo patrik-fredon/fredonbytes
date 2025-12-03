@@ -200,7 +200,7 @@
   /* Inset Shadows */
   --inset-shadow-sm: inset 0 5px 10px 10px rgb(0 0 0 / 0.4);
   --inset-shadow-2xs: inset 0 2px 24px 2px rgb(0 0 0 / 0.05);
-  --inset-shadow-2xl: inset 10px 5px 10px 2px  rgb(0 0 0 / 0.2);
+  --inset-shadow-2xl: inset 10px 5px 10px 2px rgb(0 0 0 / 0.2);
   --inset-shadow-3xl: inset 0 0px 5px 2px rgb(0 0 0 / 0.3);
   --inset-shadow-xl: inset 0 1px 5px 2px rgb(0 0 0 / 0.1);
   /* Transition Durations */
@@ -1489,4 +1489,3 @@ input[type="checkbox"]:disabled {
     transform: none !important;
   }
 }
-

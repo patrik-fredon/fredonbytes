@@ -1,6 +1,6 @@
-import { createClient, type RedisClientType } from 'redis';
+import { createClient, type RedisClientType } from "redis";
 
-const redisUrl = process.env.REDIS_URL || 'redis://redis:6379';
+const redisUrl = process.env.REDIS_URL || "redis://redis:6379";
 
 let redisClient: RedisClientType | null = null;
 let isConnecting = false;
@@ -19,7 +19,7 @@ async function getRedisClient(): Promise<RedisClientType> {
   if (isConnecting) {
     // Wait for the connection to complete
     while (isConnecting) {
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
     }
     if (redisClient?.isOpen) {
       return redisClient;
@@ -34,43 +34,45 @@ async function getRedisClient(): Promise<RedisClientType> {
       socket: {
         reconnectStrategy: (retries) => {
           if (retries > 10) {
-            console.error('[Redis] Max reconnection attempts (10) reached');
-            return new Error('Max retries reached');
+            console.error("[Redis] Max reconnection attempts (10) reached");
+            return new Error("Max retries reached");
           }
           const delay = Math.min(retries * 100, 3000);
-          console.log(`[Redis] Reconnecting... attempt ${retries}, delay ${delay}ms`);
+          console.log(
+            `[Redis] Reconnecting... attempt ${retries}, delay ${delay}ms`,
+          );
           return delay;
         },
         connectTimeout: 10000,
       },
     });
 
-    redisClient.on('error', (err) => {
-      console.error('[Redis] Client error:', err);
+    redisClient.on("error", (err) => {
+      console.error("[Redis] Client error:", err);
     });
 
-    redisClient.on('connect', () => {
-      console.log('[Redis] Client connected');
+    redisClient.on("connect", () => {
+      console.log("[Redis] Client connected");
     });
 
-    redisClient.on('ready', () => {
-      console.log('[Redis] Client ready');
+    redisClient.on("ready", () => {
+      console.log("[Redis] Client ready");
     });
 
-    redisClient.on('reconnecting', () => {
-      console.log('[Redis] Client reconnecting...');
+    redisClient.on("reconnecting", () => {
+      console.log("[Redis] Client reconnecting...");
     });
 
-    redisClient.on('end', () => {
-      console.log('[Redis] Connection closed');
+    redisClient.on("end", () => {
+      console.log("[Redis] Connection closed");
     });
 
     await redisClient.connect();
-    console.log('[Redis] Successfully connected to', redisUrl);
+    console.log("[Redis] Successfully connected to", redisUrl);
 
     return redisClient;
   } catch (error) {
-    console.error('[Redis] Failed to connect:', error);
+    console.error("[Redis] Failed to connect:", error);
     redisClient = null;
     throw error;
   } finally {
@@ -82,12 +84,18 @@ async function getRedisClient(): Promise<RedisClientType> {
  * Attempt to get a redis client but do not block requests for long.
  * Returns a client if available/open within `timeoutMs` or `null` when not.
  */
-export async function getRedisClientOrNull(timeoutMs = 200): Promise<RedisClientType | null> {
-  const CIRCUIT_BREAK_MS = parseInt(process.env.REDIS_CIRCUIT_BREAK_MS || '30000');
+export async function getRedisClientOrNull(
+  timeoutMs = 200,
+): Promise<RedisClientType | null> {
+  const CIRCUIT_BREAK_MS = parseInt(
+    process.env.REDIS_CIRCUIT_BREAK_MS || "30000",
+  );
 
   // Fast-fail when we recently detected Redis being down
   if (redisDownUntil && Date.now() < redisDownUntil) {
-    console.log(`[Redis] Circuit open until ${new Date(redisDownUntil).toISOString()}`);
+    console.log(
+      `[Redis] Circuit open until ${new Date(redisDownUntil).toISOString()}`,
+    );
     return null;
   }
   if (redisClient?.isOpen) return redisClient;
@@ -118,7 +126,7 @@ export async function getRedisClientOrNull(timeoutMs = 200): Promise<RedisClient
   } catch (error) {
     // Set circuit breaker to avoid repeated connection attempts
     redisDownUntil = Date.now() + CIRCUIT_BREAK_MS;
-    console.error('[Redis] getRedisClientOrNull error:', error);
+    console.error("[Redis] getRedisClientOrNull error:", error);
     return null;
   }
 }
@@ -130,7 +138,7 @@ async function promiseWithTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
     return await Promise.race([
       p,
       new Promise<T>((_, reject) => {
-        timer = setTimeout(() => reject(new Error('Operation timed out')), ms);
+        timer = setTimeout(() => reject(new Error("Operation timed out")), ms);
       }),
     ]);
   } finally {
@@ -145,7 +153,7 @@ async function promiseWithTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
  */
 export async function redisGet<T = unknown>(key: string): Promise<T | null> {
   try {
-    const OP_TIMEOUT_MS = parseInt(process.env.REDIS_OP_TIMEOUT_MS || '250');
+    const OP_TIMEOUT_MS = parseInt(process.env.REDIS_OP_TIMEOUT_MS || "250");
 
     const client = await getRedisClientOrNull(OP_TIMEOUT_MS);
     if (!client) return null;
@@ -170,24 +178,29 @@ export async function redisGet<T = unknown>(key: string): Promise<T | null> {
 export async function redisSet(
   key: string,
   value: unknown,
-  expirySeconds?: number
+  expirySeconds?: number,
 ): Promise<boolean> {
   try {
-    const OP_TIMEOUT_MS = parseInt(process.env.REDIS_OP_TIMEOUT_MS || '250');
+    const OP_TIMEOUT_MS = parseInt(process.env.REDIS_OP_TIMEOUT_MS || "250");
 
     const client = await getRedisClientOrNull(OP_TIMEOUT_MS);
     if (!client) return false;
     const serialized = JSON.stringify(value);
 
     if (expirySeconds) {
-      await promiseWithTimeout(client.setEx(key, expirySeconds, serialized), OP_TIMEOUT_MS);
+      await promiseWithTimeout(
+        client.setEx(key, expirySeconds, serialized),
+        OP_TIMEOUT_MS,
+      );
     } else {
       await promiseWithTimeout(client.set(key, serialized), OP_TIMEOUT_MS);
     }
 
     return true;
   } catch (error) {
-    const CIRCUIT_BREAK_MS = parseInt(process.env.REDIS_CIRCUIT_BREAK_MS || '30000');
+    const CIRCUIT_BREAK_MS = parseInt(
+      process.env.REDIS_CIRCUIT_BREAK_MS || "30000",
+    );
     redisDownUntil = Date.now() + CIRCUIT_BREAK_MS;
     console.warn(`[Redis] SET error/timeout for key "${key}":`, error);
     return false;
@@ -205,7 +218,7 @@ export async function redisDel(keys: string | string[]): Promise<number> {
     const deleted = await client.del(keysArray);
     return deleted;
   } catch (error) {
-    console.error('[Redis] DEL error:', error);
+    console.error("[Redis] DEL error:", error);
     return 0;
   }
 }
@@ -230,7 +243,10 @@ export async function redisExists(key: string): Promise<boolean> {
  * @param key Cache key
  * @param seconds TTL in seconds
  */
-export async function redisExpire(key: string, seconds: number): Promise<boolean> {
+export async function redisExpire(
+  key: string,
+  seconds: number,
+): Promise<boolean> {
   try {
     const client = await getRedisClient();
     const result = await client.expire(key, seconds);
@@ -263,10 +279,10 @@ export async function redisFlush(): Promise<boolean> {
   try {
     const client = await getRedisClient();
     await client.flushDb();
-    console.log('[Redis] Database flushed');
+    console.log("[Redis] Database flushed");
     return true;
   } catch (error) {
-    console.error('[Redis] FLUSHDB error:', error);
+    console.error("[Redis] FLUSHDB error:", error);
     return false;
   }
 }
@@ -279,7 +295,7 @@ export async function redisInfo(section?: string): Promise<string | null> {
     const client = await getRedisClient();
     return await client.info(section);
   } catch (error) {
-    console.error('[Redis] INFO error:', error);
+    console.error("[Redis] INFO error:", error);
     return null;
   }
 }
@@ -291,9 +307,9 @@ export async function redisPing(): Promise<boolean> {
   try {
     const client = await getRedisClient();
     const pong = await client.ping();
-    return pong === 'PONG';
+    return pong === "PONG";
   } catch (error) {
-    console.error('[Redis] PING error:', error);
+    console.error("[Redis] PING error:", error);
     return false;
   }
 }
@@ -306,10 +322,10 @@ export async function redisDisconnect(): Promise<void> {
     if (redisClient?.isOpen) {
       await redisClient.quit();
       redisClient = null;
-      console.log('[Redis] Connection closed gracefully');
+      console.log("[Redis] Connection closed gracefully");
     }
   } catch (error) {
-    console.error('[Redis] Disconnect error:', error);
+    console.error("[Redis] Disconnect error:", error);
   }
 }
 

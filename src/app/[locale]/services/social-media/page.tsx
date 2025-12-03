@@ -11,5 +11,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function SocialMediaPage(props: Props) {
-  return <ServicePageTemplate params={props.params} config={servicesConfig["social-media"]} />;
+  return (
+    <ServicePageTemplate
+      params={props.params}
+      config={servicesConfig["social-media"]}
+    />
+  );
 }

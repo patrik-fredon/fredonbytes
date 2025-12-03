@@ -23,7 +23,9 @@ interface UploadPageProps {
 
 export const revalidate = false;
 
-export async function generateMetadata({ params }: UploadPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: UploadPageProps): Promise<Metadata> {
   const { locale } = await params;
 
   const titles = {
@@ -40,7 +42,8 @@ export async function generateMetadata({ params }: UploadPageProps): Promise<Met
 
   return {
     title: titles[locale as keyof typeof titles] || titles.en,
-    description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    description:
+      descriptions[locale as keyof typeof descriptions] || descriptions.en,
     robots: {
       index: false,
       follow: false,
@@ -56,10 +59,10 @@ export const viewport: Viewport = {
 };
 
 function isValidUUID(uuid: string): boolean {
-  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  const uuidRegex =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   return uuidRegex.test(uuid);
 }
-
 
 export default async function UploadPage({ params }: UploadPageProps) {
   const { locale, session_id } = await params;

@@ -107,11 +107,16 @@ export function middleware(request: NextRequest) {
 
   // Debug logging for multi-domain setup
   debug(
-    "Host:", host,
-    "Primary:", domainConfig.primary,
-    "Secondaries:", domainConfig.secondary,
-    "Strategy:", domainConfig.strategy,
-    "WillRedirect:", !!host && domainConfig.shouldRedirect(host)
+    "Host:",
+    host,
+    "Primary:",
+    domainConfig.primary,
+    "Secondaries:",
+    domainConfig.secondary,
+    "Strategy:",
+    domainConfig.strategy,
+    "WillRedirect:",
+    !!host && domainConfig.shouldRedirect(host),
   );
 
   if (host && domainConfig.shouldRedirect(host)) {

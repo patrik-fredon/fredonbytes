@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { validateCsrfToken, CSRF_TOKEN_HEADER_NAME } from "@/lib/csrf";
+import { CSRF_TOKEN_HEADER_NAME, validateCsrfToken } from "@/lib/csrf";
 import { sanitizeString } from "@/lib/input-sanitization";
 import { supabase } from "@/lib/supabase";
 

@@ -52,15 +52,21 @@ interface ContactClientProps {
 }
 
 // Lazy load Step 2 & 3 components (loaded only when needed)
-const Step2Content = dynamic(() => import("./Step2").then(mod => ({ default: mod.Step2 })), {
-  loading: () => <FormSkeleton />,
-  ssr: false
-});
+const Step2Content = dynamic(
+  () => import("./Step2").then((mod) => ({ default: mod.Step2 })),
+  {
+    loading: () => <FormSkeleton />,
+    ssr: false,
+  },
+);
 
-const Step3Content = dynamic(() => import("./Step3").then(mod => ({ default: mod.Step3 })), {
-  loading: () => <FormSkeleton />,
-  ssr: false
-});
+const Step3Content = dynamic(
+  () => import("./Step3").then((mod) => ({ default: mod.Step3 })),
+  {
+    loading: () => <FormSkeleton />,
+    ssr: false,
+  },
+);
 
 export default function ContactClient({ locale }: ContactClientProps) {
   const t = useTranslations();
@@ -197,7 +203,7 @@ export default function ContactClient({ locale }: ContactClientProps) {
       console.error("Error submitting form:", error);
       alert(
         t("contact.error.message") ||
-        "Failed to submit form. Please try again.",
+          "Failed to submit form. Please try again.",
       );
     } finally {
       setIsSubmitting(false);

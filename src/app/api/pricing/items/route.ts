@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 import { getCachedData } from "@/lib/redis-request-cache";
-import { supabase, type PricingItem } from "@/lib/supabase";
+import { type PricingItem, supabase } from "@/lib/supabase";
 
 // Response interface for pricing items endpoint
 export interface PricingItemsResponse {
@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
       {
         ttl: CACHE_TTL_SECONDS,
         prefix: "api:pricing-items",
-      }
+      },
     );
 
     // Handle database errors

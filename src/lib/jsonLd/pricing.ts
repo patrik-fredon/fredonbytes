@@ -75,12 +75,16 @@ export async function getPricingSchemas(locale: string): Promise<Schema[]> {
   const breadcrumbSchema: Schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: BREADCRUMB_CONFIG.map(({ pos, labelCs, labelEn, path }) => ({
-      "@type": "ListItem",
-      position: pos,
-      name: locale === "cs" ? labelCs : labelEn,
-      item: normalizeUrl(`${baseUrl}${locale === "cs" ? "" : `/${locale}`}${path}`),
-    })),
+    itemListElement: BREADCRUMB_CONFIG.map(
+      ({ pos, labelCs, labelEn, path }) => ({
+        "@type": "ListItem",
+        position: pos,
+        name: locale === "cs" ? labelCs : labelEn,
+        item: normalizeUrl(
+          `${baseUrl}${locale === "cs" ? "" : `/${locale}`}${path}`,
+        ),
+      }),
+    ),
   };
 
   return [offersSchema, breadcrumbSchema];

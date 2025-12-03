@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { generateCsrfToken, CSRF_TOKEN_COOKIE_NAME } from "@/lib/csrf";
-import { supabase, type Question, type LocalizedString } from "@/lib/supabase";
+import { CSRF_TOKEN_COOKIE_NAME, generateCsrfToken } from "@/lib/csrf";
+import { type LocalizedString, type Question, supabase } from "@/lib/supabase";
 
 // Schema for session creation request
 const createSessionSchema = z.object({
@@ -94,16 +94,14 @@ export async function POST(request: NextRequest) {
     const questionnaireId = (questionnaireData as any).id;
 
     // Prepare parallel operations
-    const sessionInsertPromise = (supabase as any)
-      .from("sessions")
-      .insert({
-        session_id: sessionId,
-        questionnaire_id: questionnaireId,
-        locale,
-        csrf_token: csrfToken,
-        started_at: new Date().toISOString(),
-        expires_at: new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString(),
-      });
+    const sessionInsertPromise = (supabase as any).from("sessions").insert({
+      session_id: sessionId,
+      questionnaire_id: questionnaireId,
+      locale,
+      csrf_token: csrfToken,
+      started_at: new Date().toISOString(),
+      expires_at: new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString(),
+    });
 
     const questionsFetchPromise = supabase
       .from("questions")

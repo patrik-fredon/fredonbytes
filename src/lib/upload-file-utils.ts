@@ -35,7 +35,8 @@ export const FILE_TYPE_LABELS: Record<string, string> = {
   "image/webp": "WebP",
   "application/pdf": "PDF",
   "application/msword": "DOC",
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "DOCX",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+    "DOCX",
   "text/plain": "TXT",
 };
 
@@ -56,7 +57,9 @@ export function validateUploadFile(file: File): UploadValidationResult {
   }
 
   if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-    const allowedLabels = [...new Set(Object.values(FILE_TYPE_LABELS))].join(", ");
+    const allowedLabels = [...new Set(Object.values(FILE_TYPE_LABELS))].join(
+      ", ",
+    );
     return {
       valid: false,
       error: `Invalid file type. Allowed: ${allowedLabels}`,
@@ -99,7 +102,6 @@ export function validateSessionLimits(
 
   return { valid: true };
 }
-
 
 /**
  * Format bytes into human-readable size string
@@ -158,7 +160,8 @@ export function isDocumentFile(mimeType: string): boolean {
   return (
     mimeType === "application/pdf" ||
     mimeType === "application/msword" ||
-    mimeType === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+    mimeType ===
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
     mimeType === "text/plain"
   );
 }

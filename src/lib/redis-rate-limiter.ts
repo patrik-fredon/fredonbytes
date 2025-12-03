@@ -1,4 +1,4 @@
-import { getRedisClient } from './redis';
+import { getRedisClient } from "./redis";
 
 /**
  * Redis-based distributed rate limiter
@@ -37,7 +37,7 @@ export interface RateLimitConfig {
 
 const DEFAULT_MAX_REQUESTS = 10;
 const DEFAULT_WINDOW_MS = 60 * 1000; // 1 minute
-const DEFAULT_PREFIX = 'rate-limit';
+const DEFAULT_PREFIX = "rate-limit";
 
 /**
  * Check rate limit for a given identifier (e.g., IP address, user ID)
@@ -72,7 +72,7 @@ const DEFAULT_PREFIX = 'rate-limit';
  */
 export async function checkRateLimit(
   identifier: string,
-  config: RateLimitConfig = {}
+  config: RateLimitConfig = {},
 ): Promise<RateLimitResult> {
   const {
     maxRequests = DEFAULT_MAX_REQUESTS,
@@ -87,7 +87,7 @@ export async function checkRateLimit(
     const key = `${prefix}:${identifier}`;
 
     // Remove old entries outside the current window
-    await client.zRemRangeByScore(key, '-inf', windowStart);
+    await client.zRemRangeByScore(key, "-inf", windowStart);
 
     // Count requests in current window
     const count = await client.zCard(key);
@@ -96,9 +96,8 @@ export async function checkRateLimit(
       // Get the oldest request timestamp
       const oldestRequests = await client.zRangeWithScores(key, 0, 0);
 
-      const oldestTimestamp = oldestRequests.length > 0
-        ? oldestRequests[0].score
-        : now;
+      const oldestTimestamp =
+        oldestRequests.length > 0 ? oldestRequests[0].score : now;
 
       const resetTime = oldestTimestamp + windowMs;
       const retryAfter = Math.ceil((resetTime - now) / 1000);
@@ -132,7 +131,7 @@ export async function checkRateLimit(
       resetTime,
     };
   } catch (error) {
-    console.error('[Rate Limiter] Error checking rate limit:', error);
+    console.error("[Rate Limiter] Error checking rate limit:", error);
 
     // On error, allow the request (fail open)
     // In production, you might want to fail closed instead
@@ -159,7 +158,7 @@ export async function checkRateLimit(
  */
 export async function resetRateLimit(
   identifier: string,
-  prefix: string = DEFAULT_PREFIX
+  prefix: string = DEFAULT_PREFIX,
 ): Promise<boolean> {
   try {
     const client = await getRedisClient();
@@ -173,7 +172,10 @@ export async function resetRateLimit(
 
     return false;
   } catch (error) {
-    console.error(`[Rate Limiter] Failed to reset rate limit for ${identifier}:`, error);
+    console.error(
+      `[Rate Limiter] Failed to reset rate limit for ${identifier}:`,
+      error,
+    );
     return false;
   }
 }
@@ -193,8 +195,8 @@ export async function resetRateLimit(
  */
 export async function getRateLimitStatus(
   identifier: string,
-  config: RateLimitConfig = {}
-): Promise<Omit<RateLimitResult, 'allowed'>> {
+  config: RateLimitConfig = {},
+): Promise<Omit<RateLimitResult, "allowed">> {
   const {
     maxRequests = DEFAULT_MAX_REQUESTS,
     windowMs = DEFAULT_WINDOW_MS,
@@ -208,7 +210,7 @@ export async function getRateLimitStatus(
     const key = `${prefix}:${identifier}`;
 
     // Count requests in current window
-    const count = await client.zCount(key, windowStart, '+inf');
+    const count = await client.zCount(key, windowStart, "+inf");
 
     const remaining = Math.max(0, maxRequests - count);
     const resetTime = now + windowMs;
@@ -219,7 +221,7 @@ export async function getRateLimitStatus(
       resetTime,
     };
   } catch (error) {
-    console.error('[Rate Limiter] Error getting rate limit status:', error);
+    console.error("[Rate Limiter] Error getting rate limit status:", error);
     return {
       limit: maxRequests,
       remaining: maxRequests,
@@ -247,15 +249,17 @@ export async function getRateLimitStatus(
  * });
  * ```
  */
-export function getRateLimitHeaders(result: RateLimitResult): Record<string, string> {
+export function getRateLimitHeaders(
+  result: RateLimitResult,
+): Record<string, string> {
   const headers: Record<string, string> = {
-    'X-RateLimit-Limit': result.limit.toString(),
-    'X-RateLimit-Remaining': result.remaining.toString(),
-    'X-RateLimit-Reset': result.resetTime.toString(),
+    "X-RateLimit-Limit": result.limit.toString(),
+    "X-RateLimit-Remaining": result.remaining.toString(),
+    "X-RateLimit-Reset": result.resetTime.toString(),
   };
 
   if (!result.allowed && result.retryAfter) {
-    headers['Retry-After'] = result.retryAfter.toString();
+    headers["Retry-After"] = result.retryAfter.toString();
   }
 
   return headers;
@@ -274,11 +278,11 @@ export function getRateLimitHeaders(result: RateLimitResult): Record<string, str
  */
 export async function batchResetRateLimits(
   identifiers: string[],
-  prefix: string = DEFAULT_PREFIX
+  prefix: string = DEFAULT_PREFIX,
 ): Promise<number> {
   try {
     const client = await getRedisClient();
-    const keys = identifiers.map(id => `${prefix}:${id}`);
+    const keys = identifiers.map((id) => `${prefix}:${id}`);
 
     if (keys.length === 0) {
       return 0;
@@ -289,7 +293,7 @@ export async function batchResetRateLimits(
 
     return deleted;
   } catch (error) {
-    console.error('[Rate Limiter] Failed to batch reset rate limits:', error);
+    console.error("[Rate Limiter] Failed to batch reset rate limits:", error);
     return 0;
   }
 }

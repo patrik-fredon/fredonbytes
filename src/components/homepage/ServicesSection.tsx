@@ -20,7 +20,7 @@ interface ServicesSectionProps {
 
 export default async function ServicesSection({
   locale,
-  category = "all"
+  category = "all",
 }: ServicesSectionProps) {
   const t = await getTranslations({ locale });
   const activeTab = category || "all";
@@ -200,7 +200,10 @@ export default async function ServicesSection({
               const Icon = service.icon;
               return (
                 <div key={index} className="group">
-                  <TerminalWindow title={service.title} className="h-full bg-terminal-darker">
+                  <TerminalWindow
+                    title={service.title}
+                    className="h-full bg-terminal-darker"
+                  >
                     <div className="p-4 space-y-4">
                       <div className="flex items-center space-x-3">
                         <div

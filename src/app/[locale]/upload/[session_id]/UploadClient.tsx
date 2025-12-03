@@ -1,17 +1,24 @@
 "use client";
 
+import {
+  AlertCircle,
+  CheckCircle,
+  FileText,
+  Image as ImageIcon,
+  Upload,
+  X,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState, useCallback, useEffect, useRef } from "react";
-import { Upload, X, FileText, Image as ImageIcon, CheckCircle, AlertCircle } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/common/Button";
 import TerminalWindow from "@/components/dev-ui/TerminalWindow";
-import { 
-  ALLOWED_FILE_TYPES, 
-  MAX_FILE_SIZE, 
-  MAX_FILES_PER_SESSION,
+import {
+  ALLOWED_FILE_TYPES,
   formatFileSize,
   isImageFile,
+  MAX_FILE_SIZE,
+  MAX_FILES_PER_SESSION,
 } from "@/lib/upload-file-utils";
 
 interface UploadClientProps {
@@ -30,11 +37,10 @@ interface UploadedFile {
   url?: string;
 }
 
-
 export default function UploadClient({ sessionId, locale }: UploadClientProps) {
   const t = useTranslations("upload");
   const fileInputRef = useRef<HTMLInputElement>(null);
-  
+
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [projectTitle, setProjectTitle] = useState<string>("");
@@ -54,7 +60,7 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
 
   const uploadFile = async (file: File): Promise<void> => {
     const fileId = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-    
+
     // Add file to list with uploading status
     const newFile: UploadedFile = {
       id: fileId,
@@ -64,8 +70,7 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
       status: "uploading",
       progress: 0,
     };
-    setFiles(prev => [...prev, newFile]);
-
+    setFiles((prev) => [...prev, newFile]);
 
     try {
       const csrfToken = getCsrfToken();
@@ -89,35 +94,47 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
       }
 
       // Update file status to success
-      setFiles(prev => prev.map(f => 
-        f.id === fileId 
-          ? { ...f, status: "success" as const, progress: 100, url: data.file_url }
-          : f
-      ));
+      setFiles((prev) =>
+        prev.map((f) =>
+          f.id === fileId
+            ? {
+                ...f,
+                status: "success" as const,
+                progress: 100,
+                url: data.file_url,
+              }
+            : f,
+        ),
+      );
     } catch (err) {
       // Update file status to error
-      setFiles(prev => prev.map(f => 
-        f.id === fileId 
-          ? { ...f, status: "error" as const, error: err instanceof Error ? err.message : t("errors.uploadFailed") }
-          : f
-      ));
+      setFiles((prev) =>
+        prev.map((f) =>
+          f.id === fileId
+            ? {
+                ...f,
+                status: "error" as const,
+                error:
+                  err instanceof Error ? err.message : t("errors.uploadFailed"),
+              }
+            : f,
+        ),
+      );
     }
   };
 
+  const handleFiles = useCallback(
+    (fileList: FileList | File[]) => {
+      const filesToUpload = Array.from(fileList);
+      const successCount = files.filter((f) => f.status === "success").length;
+      const remaining = MAX_FILES_PER_SESSION - successCount;
 
-  const handleFiles = useCallback((fileList: FileList | File[]) => {
-    const filesToUpload = Array.from(fileList);
-    const successCount = files.filter(f => f.status === "success").length;
-    const remaining = MAX_FILES_PER_SESSION - successCount;
+      if (remaining <= 0) {
+        alert(t("errors.maxFilesReached"));
+        return;
+      }
 
-    if (remaining <= 0) {
-      alert(t("errors.maxFilesReached"));
-      return;
-    }
-
-    const validFiles = filesToUpload
-      .slice(0, remaining)
-      .filter(file => {
+      const validFiles = filesToUpload.slice(0, remaining).filter((file) => {
         if (!ALLOWED_FILE_TYPES.includes(file.type)) {
           console.warn(`Invalid file type: ${file.type}`);
           return false;
@@ -129,8 +146,10 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
         return true;
       });
 
-    validFiles.forEach(uploadFile);
-  }, [files, t]);
+      validFiles.forEach(uploadFile);
+    },
+    [files, t],
+  );
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -142,27 +161,32 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
     setIsDragging(false);
   }, []);
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragging(false);
-    if (e.dataTransfer.files.length > 0) {
-      handleFiles(e.dataTransfer.files);
-    }
-  }, [handleFiles]);
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      setIsDragging(false);
+      if (e.dataTransfer.files.length > 0) {
+        handleFiles(e.dataTransfer.files);
+      }
+    },
+    [handleFiles],
+  );
 
-
-  const handleFileSelect = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      handleFiles(e.target.files);
-      e.target.value = ""; // Reset input
-    }
-  }, [handleFiles]);
+  const handleFileSelect = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files && e.target.files.length > 0) {
+        handleFiles(e.target.files);
+        e.target.value = ""; // Reset input
+      }
+    },
+    [handleFiles],
+  );
 
   const removeFile = useCallback((fileId: string) => {
-    setFiles(prev => prev.filter(f => f.id !== fileId));
+    setFiles((prev) => prev.filter((f) => f.id !== fileId));
   }, []);
 
-  const successCount = files.filter(f => f.status === "success").length;
+  const successCount = files.filter((f) => f.status === "success").length;
   const canUploadMore = successCount < MAX_FILES_PER_SESSION && !sessionExpired;
 
   if (sessionExpired) {
@@ -172,7 +196,9 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
           <TerminalWindow className="w-full max-w-2xl rounded-xl shadow-2xl">
             <div className="p-8 lg:p-12 text-center">
               <AlertCircle className="w-16 h-16 mx-auto mb-4 text-red-400" />
-              <h2 className="text-2xl font-bold text-white mb-2">{t("sessionExpired")}</h2>
+              <h2 className="text-2xl font-bold text-white mb-2">
+                {t("sessionExpired")}
+              </h2>
               <p className="text-white/60">{t("sessionExpiredMessage")}</p>
             </div>
           </TerminalWindow>
@@ -180,7 +206,6 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
       </div>
     );
   }
-
 
   return (
     <div className="container mx-auto px-4 py-12 lg:py-20">
@@ -196,7 +221,10 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
                 <p className="text-lg text-white/80">{projectTitle}</p>
               )}
               <p className="text-sm text-white/50 mt-2">
-                {t("filesUploaded", { count: successCount, max: MAX_FILES_PER_SESSION })}
+                {t("filesUploaded", {
+                  count: successCount,
+                  max: MAX_FILES_PER_SESSION,
+                })}
               </p>
             </div>
 
@@ -210,9 +238,10 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
                 className={`
                   relative border-2 border-dashed rounded-xl p-12 text-center cursor-pointer
                   transition-all duration-200
-                  ${isDragging 
-                    ? "border-neon-cyan bg-neon-cyan/10" 
-                    : "border-slate-600 hover:border-slate-500 hover:bg-slate-800/30"
+                  ${
+                    isDragging
+                      ? "border-neon-cyan bg-neon-cyan/10"
+                      : "border-slate-600 hover:border-slate-500 hover:bg-slate-800/30"
                   }
                 `}
               >
@@ -228,7 +257,8 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
                 <p className="text-lg text-white/80 mb-2">{t("dropZone")}</p>
                 <p className="text-sm text-white/50">{t("orClickToBrowse")}</p>
                 <p className="text-xs text-white/40 mt-4">
-                  {t("fileTypesInfo")} • {t("maxSizeInfo", { size: formatFileSize(MAX_FILE_SIZE) })}
+                  {t("fileTypesInfo")} •{" "}
+                  {t("maxSizeInfo", { size: formatFileSize(MAX_FILE_SIZE) })}
                 </p>
               </div>
             )}
@@ -236,8 +266,10 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
             {/* File List */}
             {files.length > 0 && (
               <div className="mt-8 space-y-3">
-                <h3 className="text-sm font-medium text-white/80 mb-4">{t("uploadedFiles")}</h3>
-                {files.map(file => (
+                <h3 className="text-sm font-medium text-white/80 mb-4">
+                  {t("uploadedFiles")}
+                </h3>
+                {files.map((file) => (
                   <div
                     key={file.id}
                     className="flex items-center gap-4 p-4 bg-slate-800/50 rounded-lg"
@@ -254,9 +286,13 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
                     {/* File Info */}
                     <div className="flex-1 min-w-0">
                       <p className="text-sm text-white truncate">{file.name}</p>
-                      <p className="text-xs text-white/50">{formatFileSize(file.size)}</p>
+                      <p className="text-xs text-white/50">
+                        {formatFileSize(file.size)}
+                      </p>
                       {file.status === "error" && (
-                        <p className="text-xs text-red-400 mt-1">{file.error}</p>
+                        <p className="text-xs text-red-400 mt-1">
+                          {file.error}
+                        </p>
                       )}
                     </div>
 
@@ -286,7 +322,9 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
             {successCount > 0 && (
               <div className="mt-8 p-4 bg-green-900/20 border border-green-800 rounded-lg text-center">
                 <CheckCircle className="w-8 h-8 mx-auto mb-2 text-green-400" />
-                <p className="text-green-400">{t("uploadSuccess", { count: successCount })}</p>
+                <p className="text-green-400">
+                  {t("uploadSuccess", { count: successCount })}
+                </p>
               </div>
             )}
           </div>

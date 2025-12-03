@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { generateCsrfToken, CSRF_TOKEN_COOKIE_NAME } from "@/lib/csrf";
+import { CSRF_TOKEN_COOKIE_NAME, generateCsrfToken } from "@/lib/csrf";
 import { supabase } from "@/lib/supabase";
 
 // Schema for session creation request

@@ -11,5 +11,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function SEOPage(props: Props) {
-  return <ServicePageTemplate params={props.params} config={servicesConfig.seo} />;
+  return (
+    <ServicePageTemplate params={props.params} config={servicesConfig.seo} />
+  );
 }

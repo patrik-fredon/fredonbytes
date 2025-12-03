@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
-import { supabase, type Question, type Questionnaire } from "@/lib/supabase";
+import { type Question, type Questionnaire, supabase } from "@/lib/supabase";
 
 // Response interface for survey questions endpoint
 export interface SurveyQuestionsResponse {

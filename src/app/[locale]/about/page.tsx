@@ -12,8 +12,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "aboutPage.meta" });
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://fredonbytes.cz";
   const pageUrl = `${siteUrl}/${locale}/about`;
 
   return {
@@ -131,7 +130,8 @@ export default async function AboutPage({ params }: Props) {
       {
         "@type": "ListItem",
         position: 1,
-        name: locale === "cs" ? "Domů" : locale === "de" ? "Startseite" : "Home",
+        name:
+          locale === "cs" ? "Domů" : locale === "de" ? "Startseite" : "Home",
         item: `${baseUrl}${localePrefix}`,
       },
       {
@@ -159,7 +159,7 @@ export default async function AboutPage({ params }: Props) {
           {/* Page Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20" role="banner">
             <h1 className="text-xl sm:text-2xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight font-mono text-terminal-light">
-              <span className="text-neon-cyan">{'//'}</span> {t("title")}
+              <span className="text-neon-cyan">{"//"}</span> {t("title")}
             </h1>
             <p className="text-sm sm:text-md lg:text-lg text-terminal-light/80 max-w-4xl mx-auto leading-relaxed px-4 font-mono">
               {metaT("description")}

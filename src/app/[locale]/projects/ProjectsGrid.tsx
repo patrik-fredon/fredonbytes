@@ -1,12 +1,15 @@
 import { getTranslations } from "next-intl/server";
 
-import { supabase, type Project } from "@/lib/supabase";
+import { type Project, supabase } from "@/lib/supabase";
 
 import ProjectsClient from "./ProjectsClient";
 
 // Fetch projects from database with caching
 async function getProjects(): Promise<Project[]> {
   try {
+    const startTime = Date.now();
+    console.log("[ProjectsGrid] Fetching projects from Supabase...");
+
     const { data, error } = await supabase
       .from("projects")
       .select("*")
@@ -14,13 +17,25 @@ async function getProjects(): Promise<Project[]> {
       .order("display_order", { ascending: true });
 
     if (error) {
-      console.error("Error fetching projects:", error);
+      console.error("[ProjectsGrid] Supabase error:", {
+        message: error.message,
+        code: error.code,
+        details: error.details,
+        hint: error.hint,
+        duration: `${Date.now() - startTime}ms`,
+      });
       return [];
     }
 
+    console.log(
+      `[ProjectsGrid] Successfully fetched ${data?.length || 0} projects in ${Date.now() - startTime}ms`,
+    );
     return (data || []) as Project[];
   } catch (error) {
-    console.error("Unexpected error fetching projects:", error);
+    console.error(
+      "[ProjectsGrid] Unexpected error fetching projects:",
+      error instanceof Error ? error.message : error,
+    );
     return [];
   }
 }

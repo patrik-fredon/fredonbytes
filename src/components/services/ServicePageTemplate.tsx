@@ -132,17 +132,19 @@ export default async function ServicePageTemplate({ params, config }: Props) {
                   >
                     <IconComponent
                       className={`w-18 h-18 ${config.iconColorClass}`}
-                    /></div>
+                    />
+                  </div>
                   <div className="flex px-12 text-center  md:text-start  mx-auto">
                     <h1 className="text-2xl sm:text-4xl font-bold text-terminal-light  font-mono">
                       {ts("title")}
-                    </h1></div>
+                    </h1>
+                  </div>
                 </div>
                 <div className="text-center border-t border-neon-purple/20 pt-8 rounded-t-xl"></div>
 
-
                 <p className="text-xl text-terminal-light/80 mb-4 font-mono">
-                  <span className=" text-neon-purple">{'>> '}</span>{ts("subtitle")}
+                  <span className=" text-neon-purple">{">> "}</span>
+                  {ts("subtitle")}
                 </p>
 
                 <p className="text-md text-terminal-light/70 max-w-3xl mx-auto">
@@ -151,16 +153,17 @@ export default async function ServicePageTemplate({ params, config }: Props) {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-12">
-
                 {config.features.map((feature) => {
                   const FeatureIcon = feature.icon;
                   return (
-
                     <div
                       key={feature.key}
                       className={`${feature.hoverBorder} transition-all`}
                     >
-                      <GlassCard className="p-2 md:p-4 h-full " glowColor="normal">
+                      <GlassCard
+                        className="p-2 md:p-4 h-full "
+                        glowColor="normal"
+                      >
                         <FeatureIcon
                           className={`w-10 h-10 ${feature.iconColor} mb-4 `}
                         />
@@ -170,14 +173,11 @@ export default async function ServicePageTemplate({ params, config }: Props) {
                         <p className="text-terminal-light/70">
                           {ts(`features.${feature.key}.description`)}
                         </p>
-
                       </GlassCard>
                     </div>
                   );
                 })}
-
               </div>
-
 
               <div className="text-center border-b border-neon-purple/20 pb-8 rounded-b-xl ">
                 <h2 className="text-2xl font-bold text-terminal-light mb-6 font-mono">

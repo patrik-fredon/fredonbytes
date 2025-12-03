@@ -3,8 +3,8 @@
  * Replaces Resend API with standard SMTP configuration
  */
 
-import nodemailer from "nodemailer";
 import type { Transporter } from "nodemailer";
+import nodemailer from "nodemailer";
 
 // Email configuration interface
 export interface EmailOptions {
