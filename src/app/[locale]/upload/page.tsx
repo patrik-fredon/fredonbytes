@@ -15,21 +15,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const pageUrl = `${baseUrl}/${locale}/upload`;
 
   const titles = {
-    cs: "Nahrání souborů | Fredonbytes",
-    en: "File Upload | Fredonbytes",
-    de: "Datei-Upload | Fredonbytes",
+    cs: "Nahrát soubory | Fredonbytes",
+    en: "Upload Files | Fredonbytes",
+    de: "Dateien hochladen | Fredonbytes",
   };
 
   const descriptions = {
-    cs: "Nahrajte soubory ke svému projektu. Bezpečné sdílení dokumentů a obrázků.",
-    en: "Upload files to your project. Secure document and image sharing.",
-    de: "Laden Sie Dateien zu Ihrem Projekt hoch. Sicheres Teilen von Dokumenten und Bildern.",
+    cs: "Nahrajte soubory ke svému projektu. Bezpečný přenos souborů pro klienty Fredonbytes.",
+    en: "Upload files to your project. Secure file transfer for Fredonbytes clients.",
+    de: "Laden Sie Dateien zu Ihrem Projekt hoch. Sichere Dateiübertragung für Fredonbytes-Kunden.",
   };
 
   return {
     title: titles[locale as keyof typeof titles] || titles.en,
-    description:
-      descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
     alternates: {
       canonical: pageUrl,
       languages: {
@@ -38,12 +37,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         de: `${baseUrl}/de/upload`,
       },
     },
+    openGraph: {
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      url: pageUrl,
+      siteName: "FredonBytes",
+      locale: locale === "cs" ? "cs_CZ" : locale === "de" ? "de_DE" : "en_US",
+      type: "website",
+    },
     robots: {
       index: false,
       follow: false,
+      noarchive: true,
     },
   };
 }
+
 
 export default async function UploadPage({ params }: Props) {
   const { locale } = await params;
@@ -51,9 +60,9 @@ export default async function UploadPage({ params }: Props) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.cz";
 
   const titles = {
-    cs: "Nahrání souborů",
-    en: "File Upload",
-    de: "Datei-Upload",
+    cs: "Nahrát soubory",
+    en: "Upload Files",
+    de: "Dateien hochladen",
   };
 
   const webPageSchema = {
@@ -70,38 +79,11 @@ export default async function UploadPage({ params }: Props) {
     inLanguage: locale,
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: locale === "cs" ? "Domů" : locale === "de" ? "Startseite" : "Home",
-        item: `${baseUrl}/${locale}`,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: titles[locale as keyof typeof titles] || titles.en,
-        item: `${baseUrl}/${locale}/upload`,
-      },
-    ],
-  };
-
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(webPageSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
       <UploadLanding />
     </>

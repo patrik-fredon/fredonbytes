@@ -17,6 +17,7 @@ export interface CreateUploadSessionResponse {
   success: boolean;
   session_id?: string;
   csrf_token?: string;
+  project_id?: string;
   project_title?: string;
   error?: string;
 }
@@ -25,31 +26,28 @@ export interface CreateUploadSessionResponse {
  * POST /api/upload
  * Creates a new upload session with project password validation
  */
-export async function POST(request: NextRequest) {
+export async function POST(
+  request: NextRequest,
+): Promise<NextResponse<CreateUploadSessionResponse>> {
   try {
-    // Get client IP for rate limiting
-    const forwardedFor = request.headers.get("x-forwarded-for");
-    const ip = forwardedFor
-      ? forwardedFor.split(",")[0]?.trim() || "unknown"
-      : request.headers.get("x-real-ip") || "unknown";
-
-    // Strict rate limiting for password attempts (5 per minute per IP)
+    // Rate limiting for brute-force protection (5 attempts/min per IP)
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() 
+      || request.headers.get("x-real-ip") 
+      || "unknown";
+    
     const rateLimitResult = await checkRateLimit(`upload_auth:${ip}`, {
       maxRequests: 5,
-      windowMs: 60 * 1000,
-      prefix: "upload_auth",
+      windowMs: 60 * 1000, // 1 minute
+      prefix: "rl",
     });
 
     if (!rateLimitResult.allowed) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Too many attempts. Please try again later.",
-        } as CreateUploadSessionResponse,
-        {
-          status: 429,
+        { success: false, error: "Too many attempts. Please try again later." },
+        { 
+          status: 429, 
           headers: getRateLimitHeaders(rateLimitResult),
-        }
+        },
       );
     }
 
@@ -58,56 +56,47 @@ export async function POST(request: NextRequest) {
 
     if (!validationResult.success) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Invalid request data",
-        } as CreateUploadSessionResponse,
-        { status: 400 }
+        { success: false, error: "Invalid request data" },
+        { status: 400 },
       );
     }
 
     const { project_id, password, locale } = validationResult.data;
 
+
     // Fetch project and validate password
     const { data: project, error: projectError } = await supabase
       .from("projects")
-      .select("id, title, upload_password, visible")
+      .select("id, title, upload_password")
       .eq("id", project_id)
+      .eq("visible", true)
       .single();
 
     if (projectError || !project) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Project not found",
-        } as CreateUploadSessionResponse,
-        { status: 404 }
+        { success: false, error: "Project not found" },
+        { status: 404 },
       );
     }
 
-    // Check if project allows uploads (has password set)
+    // Check if upload is enabled for this project
     if (!project.upload_password) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Uploads not enabled for this project",
-        } as CreateUploadSessionResponse,
-        { status: 403 }
+        { success: false, error: "Uploads not enabled for this project" },
+        { status: 403 },
       );
     }
 
     // Validate password (plain text comparison)
     if (project.upload_password !== password) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Invalid password",
-        } as CreateUploadSessionResponse,
-        { status: 401 }
+        { success: false, error: "Invalid password" },
+        { status: 401 },
       );
     }
 
-    // Generate session ID and CSRF token
+
+    // Generate CSRF token and session ID
     const csrfToken = generateCsrfToken();
     const sessionId = crypto.randomUUID();
 
@@ -126,21 +115,16 @@ export async function POST(request: NextRequest) {
     if (sessionError) {
       console.error("Error creating upload session:", sessionError);
       return NextResponse.json(
-        {
-          success: false,
-          error: "Failed to create session",
-        } as CreateUploadSessionResponse,
-        { status: 500 }
+        { success: false, error: "Failed to create session" },
+        { status: 500 },
       );
     }
 
-    // Get project title for display
-    const projectTitle =
-      typeof project.title === "object"
-        ? project.title[locale as keyof typeof project.title] ||
-          project.title.en ||
-          "Project"
-        : project.title;
+    // Extract localized title
+    const projectTitle = typeof project.title === "object" 
+      ? (project.title as Record<string, string>)[locale] || (project.title as Record<string, string>).en || "Project"
+      : String(project.title);
+
 
     // Create response with CSRF token
     const response = NextResponse.json(
@@ -148,9 +132,10 @@ export async function POST(request: NextRequest) {
         success: true,
         session_id: sessionId,
         csrf_token: csrfToken,
+        project_id: project_id,
         project_title: projectTitle,
-      } as CreateUploadSessionResponse,
-      { status: 201 }
+      },
+      { status: 201 },
     );
 
     // Set CSRF token cookie
@@ -158,7 +143,7 @@ export async function POST(request: NextRequest) {
       httpOnly: false,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: 24 * 60 * 60,
+      maxAge: 24 * 60 * 60, // 24 hours
       path: "/",
     });
 
@@ -166,11 +151,8 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Unexpected error in upload session creation:", error);
     return NextResponse.json(
-      {
-        success: false,
-        error: "Internal server error",
-      } as CreateUploadSessionResponse,
-      { status: 500 }
+      { success: false, error: "Internal server error" },
+      { status: 500 },
     );
   }
 }
