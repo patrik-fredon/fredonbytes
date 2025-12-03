@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og";
-import { routing } from "@/i18n/routing";
 
 /**
  * Service-Specific Twitter Card Image Generator

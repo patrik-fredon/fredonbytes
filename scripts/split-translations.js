@@ -4,8 +4,8 @@
  * for better performance and maintainability
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
 const LOCALES = ["en", "cs", "de"];
 const BASE_PATH = path.join(__dirname, "../src/messages");
@@ -44,8 +44,8 @@ function splitTranslations(locale) {
   const originalPath = path.join(BASE_PATH, `${locale}.json`);
   const originalData = JSON.parse(fs.readFileSync(originalPath, "utf-8"));
 
-  let totalSize = JSON.stringify(originalData).length;
-  let processedKeys = new Set();
+  const totalSize = JSON.stringify(originalData).length;
+  const processedKeys = new Set();
 
   // Process each split configuration
   for (const [targetFile, keys] of Object.entries(SPLIT_CONFIG)) {

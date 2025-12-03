@@ -15,7 +15,6 @@ import { logError } from "@/lib/error-logger";
 import { supabase } from "@/lib/supabase";
 import {
   generateUniqueUploadFileName,
-  MAX_FILES_PER_SESSION,
   validateSessionLimits,
   validateUploadFile,
 } from "@/lib/upload-file-utils";

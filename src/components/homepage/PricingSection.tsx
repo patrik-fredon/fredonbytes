@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import type React from "react";
 import { Link } from "@/i18n/navigation";
 import { Button } from "../common/Button";
 import GlassCard from "../dev-ui/GlassCard";

@@ -192,7 +192,7 @@ export function supportsWebP(): boolean {
   if (typeof window === "undefined") return true; // SSR assumes support
 
   const elem = document.createElement("canvas");
-  if (elem.getContext && elem.getContext("2d")) {
+  if (elem.getContext?.("2d")) {
     return elem.toDataURL("image/webp").indexOf("data:image/webp") === 0;
   }
   return false;

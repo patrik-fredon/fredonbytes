@@ -3,7 +3,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import CompanyStory from "@/components/about/CompanyStory";
 import TeamSection from "@/components/about/TeamSection";
-import GridBackground from "@/components/dev-ui/GridBackground";
 
 type Props = {
   params: Promise<{ locale: string }>;

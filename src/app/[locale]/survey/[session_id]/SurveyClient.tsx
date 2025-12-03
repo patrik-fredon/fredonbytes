@@ -180,7 +180,7 @@ export default function SurveyClient({
         error: getUserFriendlyErrorMessage(error),
       }));
     }
-  }, [sessionId, locale, invalidSession]);
+  }, [sessionId, locale, invalidSession, getLocalizedText]);
 
   // Retry function for question loading
   const retryLoadQuestions = () => {

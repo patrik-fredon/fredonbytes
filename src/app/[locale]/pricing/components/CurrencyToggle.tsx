@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import React from "react";
 
 import type { Currency } from "../PricingClient";
 

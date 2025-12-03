@@ -544,7 +544,6 @@ export default function FormClient({ sessionId, locale }: FormClientProps) {
   return (
     <main
       className="min-h-screen flex items-center justify-center p-3 relative overflow-hidden"
-      role="main"
       aria-label="Customer Project Initiation Form"
     >
       <TerminalWindow

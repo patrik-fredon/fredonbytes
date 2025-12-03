@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og";
-import { routing } from "@/i18n/routing";
 
 /**
  * Dynamic Open Graph Image Generator for Next.js 15

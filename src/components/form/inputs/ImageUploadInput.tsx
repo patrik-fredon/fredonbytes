@@ -1,13 +1,12 @@
 "use client";
 
-import { Image as ImageIcon, Upload, X } from "lucide-react";
+import { Upload, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 
 import {
   getFormattedSize,
   getRemainingSize,
-  MAX_FILE_SIZE,
   validateImageFile,
 } from "@/lib/form-image-utils";
 import { getTotalImageSize, updateTotalImageSize } from "@/lib/form-storage";

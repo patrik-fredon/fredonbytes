@@ -10,8 +10,8 @@
  * Requirements: npm install sharp
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 const sharp = require("sharp");
 
 const publicDir = path.join(__dirname, "..", "public");
@@ -80,7 +80,7 @@ async function generateIcons() {
 function generateIconsWithImageMagick() {
   console.log("🔄 Generating icons using ImageMagick...");
 
-  const { execSync } = require("child_process");
+  const { execSync } = require("node:child_process");
 
   try {
     // Check if ImageMagick is installed

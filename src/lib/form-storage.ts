@@ -191,7 +191,7 @@ export function getAllFormSessionKeys(): string[] {
     const keys: string[] = [];
     for (let i = 0; i < window.localStorage.length; i++) {
       const key = window.localStorage.key(i);
-      if (key && key.startsWith(STORAGE_KEY)) {
+      if (key?.startsWith(STORAGE_KEY)) {
         keys.push(key);
       }
     }

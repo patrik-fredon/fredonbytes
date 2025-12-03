@@ -106,7 +106,7 @@ export default function AnimatedBackground() {
     updateIcons();
     window.addEventListener("resize", updateIcons);
     return () => window.removeEventListener("resize", updateIcons);
-  }, []);
+  }, [allFloatingIcons]);
 
   const floatingVariants = {
     animate: prefersReducedMotion

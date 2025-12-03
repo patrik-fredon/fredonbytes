@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og";
-import { routing } from "@/i18n/routing";
 
 /**
  * Dynamic Twitter Card Image Generator for Next.js 15

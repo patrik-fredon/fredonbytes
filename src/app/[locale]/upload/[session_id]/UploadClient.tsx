@@ -11,7 +11,6 @@ import {
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { Button } from "@/components/common/Button";
 import TerminalWindow from "@/components/dev-ui/TerminalWindow";
 import {
   ALLOWED_FILE_TYPES,
@@ -148,7 +147,7 @@ export default function UploadClient({ sessionId, locale }: UploadClientProps) {
 
       validFiles.forEach(uploadFile);
     },
-    [files, t],
+    [files, t, uploadFile],
   );
 
   const handleDragOver = useCallback((e: React.DragEvent) => {

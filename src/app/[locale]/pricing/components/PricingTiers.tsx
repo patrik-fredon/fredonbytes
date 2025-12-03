@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Star } from "lucide-react";
 import { useTranslations } from "next-intl";
-import React from "react";
 
 import { Button } from "@/components/common/Button";
 import type { LocalizedString, PricingTier } from "@/lib/supabase";

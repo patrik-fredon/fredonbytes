@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import React, { useState } from "react";
+import { useState } from "react";
 import { getCsrfToken } from "@/hooks/useCsrfToken";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 

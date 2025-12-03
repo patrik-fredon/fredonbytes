@@ -9,7 +9,6 @@ import {
   Smartphone,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import React from "react";
 import { Link } from "@/i18n/navigation";
 import TerminalWindow from "../dev-ui/TerminalWindow";
 

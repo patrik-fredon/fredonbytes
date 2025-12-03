@@ -13,8 +13,6 @@ import { type NextRequest, NextResponse } from "next/server";
 import { logError } from "@/lib/error-logger";
 import {
   generateUniqueFileName,
-  MAX_FILE_SIZE,
-  MAX_SESSION_SIZE,
   validateImageFile,
   validateSessionTotalSize,
 } from "@/lib/form-image-utils";

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import type { ValidatableQuestionOption } from "@/lib/form-validation";
 
@@ -57,9 +57,7 @@ export default function ChecklistInput({
         checkboxGroupRef.current?.querySelectorAll('input[type="checkbox"]') ||
           [],
       ) as HTMLInputElement[];
-      const currentIndex = checkboxes.findIndex(
-        (cb) => cb === document.activeElement,
-      );
+      const currentIndex = checkboxes.indexOf(document.activeElement);
 
       if (e.key === "ArrowDown" || e.key === "ArrowRight") {
         e.preventDefault();

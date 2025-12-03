@@ -89,6 +89,7 @@ export async function getRedisClientOrNull(
 ): Promise<RedisClientType | null> {
   const CIRCUIT_BREAK_MS = parseInt(
     process.env.REDIS_CIRCUIT_BREAK_MS || "30000",
+    10,
   );
 
   // Fast-fail when we recently detected Redis being down
@@ -153,7 +154,10 @@ async function promiseWithTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
  */
 export async function redisGet<T = unknown>(key: string): Promise<T | null> {
   try {
-    const OP_TIMEOUT_MS = parseInt(process.env.REDIS_OP_TIMEOUT_MS || "250");
+    const OP_TIMEOUT_MS = parseInt(
+      process.env.REDIS_OP_TIMEOUT_MS || "250",
+      10,
+    );
 
     const client = await getRedisClientOrNull(OP_TIMEOUT_MS);
     if (!client) return null;
@@ -181,7 +185,10 @@ export async function redisSet(
   expirySeconds?: number,
 ): Promise<boolean> {
   try {
-    const OP_TIMEOUT_MS = parseInt(process.env.REDIS_OP_TIMEOUT_MS || "250");
+    const OP_TIMEOUT_MS = parseInt(
+      process.env.REDIS_OP_TIMEOUT_MS || "250",
+      10,
+    );
 
     const client = await getRedisClientOrNull(OP_TIMEOUT_MS);
     if (!client) return false;
@@ -200,6 +207,7 @@ export async function redisSet(
   } catch (error) {
     const CIRCUIT_BREAK_MS = parseInt(
       process.env.REDIS_CIRCUIT_BREAK_MS || "30000",
+      10,
     );
     redisDownUntil = Date.now() + CIRCUIT_BREAK_MS;
     console.warn(`[Redis] SET error/timeout for key "${key}":`, error);

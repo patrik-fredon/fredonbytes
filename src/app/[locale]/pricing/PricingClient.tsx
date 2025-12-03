@@ -31,6 +31,7 @@ export default function PricingClient({ locale }: PricingClientProps) {
         setLoading(true);
         const FETCH_TIMEOUT_MS = parseInt(
           process.env.NEXT_PUBLIC_PRICING_FETCH_TIMEOUT_MS || "3000",
+          10,
         );
 
         const fetchWithTimeout = (input: string) => {
@@ -70,7 +71,7 @@ export default function PricingClient({ locale }: PricingClientProps) {
           fetchError = true;
         }
 
-        if (fetchError && !tiers.length && !items.length) {
+        if (fetchError && tiersResult.status !== "fulfilled" && itemsResult.status !== "fulfilled") {
           throw new Error("Failed to fetch pricing data");
         }
       } catch (err) {

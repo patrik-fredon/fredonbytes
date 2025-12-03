@@ -69,7 +69,7 @@
   .animate-fade-in,
   .animate-fade-in-up,
   .animate-fade-in-down {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
   }
 }

@@ -379,7 +379,7 @@ export async function POST(request: NextRequest) {
         await sendEmail({
           from: `Customer Feedback <${domainConfig.supportEmail}>`,
           to: process.env.ADMIN_EMAIL || domainConfig.supportEmail,
-          subject: `New Customer Satisfaction Form - ${sessionId!.substring(
+          subject: `New Customer Satisfaction Form - ${sessionId?.substring(
             0,
             8,
           )}`,

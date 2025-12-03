@@ -2,7 +2,7 @@
 
 import { ArrowRight, Calculator, Check, Minus, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/common/Button";
 import { getIconComponent } from "@/lib/icon-mapper";
