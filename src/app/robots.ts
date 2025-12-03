@@ -67,6 +67,7 @@ export default function robots(): MetadataRoute.Robots {
           "/_next/static/chunks/*.js$", // Internal Next.js chunks
           "/survey/",
           "/form/",
+          "/upload/",
         ],
       },
       {
@@ -90,7 +91,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "SeznamBot",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/"],
+        disallow: ["/api/", "/_next/", "/admin/", "/form/", "/survey/", "/upload/"],
         crawlDelay: 2,
       },
     ],

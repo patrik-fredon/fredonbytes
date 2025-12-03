@@ -1,0 +1,43 @@
+{
+  "upload": {
+    "title": "// Sdílení souborů",
+    "subtitle": "Nahrajte soubory ke svému projektu. Podporujeme obrázky a dokumenty.",
+    "selectProject": "Vyberte projekt",
+    "selectProjectPlaceholder": "Zvolte projekt ze seznamu",
+    "accessCode": "Přístupový kód",
+    "accessCodePlaceholder": "Zadejte přístupový kód k projektu",
+    "continueButton": "Pokračovat",
+    "verifying": "Ověřování...",
+    "dropzone": {
+      "title": "Přetáhněte soubory sem",
+      "or": "nebo",
+      "browse": "Procházet soubory",
+      "hint": "Podporované formáty: JPG, PNG, GIF, WebP, PDF, DOC, DOCX, TXT",
+      "sizeLimit": "Max 5 MB na soubor • Max 20 souborů"
+    },
+    "uploading": "Nahrávání...",
+    "uploaded": "Nahráno",
+    "fileCount": "souborů nahráno",
+    "removeFile": "Odebrat soubor",
+    "uploadMore": "Nahrát další",
+    "done": "Hotovo",
+    "errors": {
+      "projectRequired": "Vyberte prosím projekt",
+      "codeRequired": "Zadejte prosím přístupový kód",
+      "invalidCode": "Nesprávný přístupový kód",
+      "sessionExpired": "Relace vypršela. Obnovte prosím stránku.",
+      "fileTooLarge": "Soubor je příliš velký. Maximum je 5 MB.",
+      "invalidFileType": "Nepodporovaný typ souboru",
+      "maxFilesReached": "Dosažen maximální počet souborů (20)",
+      "uploadFailed": "Nahrávání se nezdařilo. Zkuste to prosím znovu.",
+      "projectNotFound": "Projekt nenalezen",
+      "uploadsDisabled": "Nahrávání není pro tento projekt povoleno"
+    },
+    "success": {
+      "title": "Soubory úspěšně nahrány!",
+      "message": "Děkujeme za sdílení souborů k vašemu projektu.",
+      "uploadMore": "Nahrát další soubory",
+      "backToHome": "Zpět na hlavní stránku"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "upload": {
+    "title": "// File Sharing",
+    "subtitle": "Upload files to your project. We support images and documents.",
+    "selectProject": "Select project",
+    "selectProjectPlaceholder": "Choose a project from the list",
+    "accessCode": "Access code",
+    "accessCodePlaceholder": "Enter project access code",
+    "continueButton": "Continue",
+    "verifying": "Verifying...",
+    "dropzone": {
+      "title": "Drag and drop files here",
+      "or": "or",
+      "browse": "Browse files",
+      "hint": "Supported formats: JPG, PNG, GIF, WebP, PDF, DOC, DOCX, TXT",
+      "sizeLimit": "Max 5 MB per file • Max 20 files"
+    },
+    "uploading": "Uploading...",
+    "uploaded": "Uploaded",
+    "fileCount": "files uploaded",
+    "removeFile": "Remove file",
+    "uploadMore": "Upload more",
+    "done": "Done",
+    "errors": {
+      "projectRequired": "Please select a project",
+      "codeRequired": "Please enter the access code",
+      "invalidCode": "Invalid access code",
+      "sessionExpired": "Session expired. Please refresh the page.",
+      "fileTooLarge": "File is too large. Maximum is 5 MB.",
+      "invalidFileType": "Unsupported file type",
+      "maxFilesReached": "Maximum number of files reached (20)",
+      "uploadFailed": "Upload failed. Please try again.",
+      "projectNotFound": "Project not found",
+      "uploadsDisabled": "Uploads are not enabled for this project"
+    },
+    "success": {
+      "title": "Files uploaded successfully!",
+      "message": "Thank you for sharing files to your project.",
+      "uploadMore": "Upload more files",
+      "backToHome": "Back to homepage"
+    }
+  }
+}

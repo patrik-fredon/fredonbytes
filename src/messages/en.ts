@@ -22,6 +22,7 @@ import cookiesTranslations from './en/components/cookies.json';
 import formTranslations from './en/components/form.json';
 import surveyTranslations from './en/components/survey.json';
 import faqTranslations from './en/components/faq.json';
+import uploadTranslations from './en/components/upload.json';
 
 // Import SEO translations
 import seoMetaTranslations from './en/seo/meta.json';

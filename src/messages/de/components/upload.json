@@ -1,0 +1,43 @@
+{
+  "upload": {
+    "title": "// Dateifreigabe",
+    "subtitle": "Laden Sie Dateien zu Ihrem Projekt hoch. Wir unterstützen Bilder und Dokumente.",
+    "selectProject": "Projekt auswählen",
+    "selectProjectPlaceholder": "Wählen Sie ein Projekt aus der Liste",
+    "accessCode": "Zugangscode",
+    "accessCodePlaceholder": "Projekt-Zugangscode eingeben",
+    "continueButton": "Weiter",
+    "verifying": "Überprüfung...",
+    "dropzone": {
+      "title": "Dateien hierher ziehen",
+      "or": "oder",
+      "browse": "Dateien durchsuchen",
+      "hint": "Unterstützte Formate: JPG, PNG, GIF, WebP, PDF, DOC, DOCX, TXT",
+      "sizeLimit": "Max 5 MB pro Datei • Max 20 Dateien"
+    },
+    "uploading": "Hochladen...",
+    "uploaded": "Hochgeladen",
+    "fileCount": "Dateien hochgeladen",
+    "removeFile": "Datei entfernen",
+    "uploadMore": "Mehr hochladen",
+    "done": "Fertig",
+    "errors": {
+      "projectRequired": "Bitte wählen Sie ein Projekt",
+      "codeRequired": "Bitte geben Sie den Zugangscode ein",
+      "invalidCode": "Ungültiger Zugangscode",
+      "sessionExpired": "Sitzung abgelaufen. Bitte aktualisieren Sie die Seite.",
+      "fileTooLarge": "Datei ist zu groß. Maximum ist 5 MB.",
+      "invalidFileType": "Nicht unterstützter Dateityp",
+      "maxFilesReached": "Maximale Anzahl an Dateien erreicht (20)",
+      "uploadFailed": "Hochladen fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "projectNotFound": "Projekt nicht gefunden",
+      "uploadsDisabled": "Uploads sind für dieses Projekt nicht aktiviert"
+    },
+    "success": {
+      "title": "Dateien erfolgreich hochgeladen!",
+      "message": "Vielen Dank für das Teilen von Dateien zu Ihrem Projekt.",
+      "uploadMore": "Mehr Dateien hochladen",
+      "backToHome": "Zurück zur Startseite"
+    }
+  }
+}

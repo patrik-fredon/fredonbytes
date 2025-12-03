@@ -4,6 +4,7 @@ applyTo: "**"
 
 # Workflow
 
+**Always use the ask_user tool before completing any task to confirm with the user that the request was fulfilled correctly.**
 **Minimal, correct, production-usable code** — no over-engineering, no abstraction, no fallback.
 
 ## Tech Stack

@@ -22,6 +22,7 @@ import cookiesTranslations from './cs/components/cookies.json';
 import formTranslations from './cs/components/form.json';
 import surveyTranslations from './cs/components/survey.json';
 import faqTranslations from './cs/components/faq.json';
+import uploadTranslations from './cs/components/upload.json';
 
 // Import SEO translations
 import seoMetaTranslations from './cs/seo/meta.json';
@@ -41,6 +42,7 @@ const translations = {
   ...cookiesTranslations,
   ...formTranslations,
   ...surveyTranslations,
+  ...uploadTranslations,
   ...faqTranslations,
   ...seoMetaTranslations,
   ...seoSchemasTranslations,

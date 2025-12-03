@@ -145,6 +145,7 @@ export function middleware(request: NextRequest) {
     const csrfExemptPaths = [
       "/api/form", // Form session creation
       "/api/survey", // Survey session creation
+      "/api/upload", // Upload session creation
       "/api/cookies/consent", // Cookie consent
       "/api/analytics", // Analytics tracking
       "/api/share", // PWA share target
