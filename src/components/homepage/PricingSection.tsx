@@ -36,7 +36,7 @@ export default function PricingSection() {
               </div>
               <div className="text-center relative w-full aspect-video max-w-2xl mx-auto">
                 <Image
-                  src="https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/general-assets/fredobytes-company-logo.webp"
+                  src="/fredonbytes-company-logo.avif"
                   alt="Fredonbytes Company Logo - Premium Benefits and Features"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
