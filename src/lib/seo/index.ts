@@ -26,6 +26,8 @@ export {
   getPricingSchemas,
   generateBreadcrumbSchema,
   buildBreadcrumbItems,
+  generateWebPageSchema,
+  webPageSchemas,
   type BreadcrumbItem,
 } from "./jsonld";
 

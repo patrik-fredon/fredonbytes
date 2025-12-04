@@ -68,6 +68,14 @@
 
 ## ✅ Completed / Verified
 
+### SEO Phase 4: WebPage Schema (2025-12-04)
+
+- ✅ Created `src/lib/seo/jsonld/webpage.ts` with WebPage schema generator
+- ✅ `generateWebPageSchema()` - generic WebPage schema
+- ✅ `webPageSchemas` presets for common pages (home, about, contact, pricing, projects)
+- ✅ Connected to WebSite and Organization via `@id` references
+- ✅ Support for multiple page types (WebPage, AboutPage, ContactPage, etc.)
+
 ### SEO Phase 3: Image Optimization (2025-12-04)
 
 - ✅ Created `src/lib/seo/image-alt.ts` with alt text generation utilities

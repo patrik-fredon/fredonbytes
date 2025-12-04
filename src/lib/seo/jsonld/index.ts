@@ -9,3 +9,4 @@ export {
   buildBreadcrumbItems,
   type BreadcrumbItem,
 } from "./breadcrumb";
+export { generateWebPageSchema, webPageSchemas } from "./webpage";
