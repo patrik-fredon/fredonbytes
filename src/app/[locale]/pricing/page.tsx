@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { getPricingSchemas } from "@/lib/jsonLd/pricing";
-import { getPricingMetadata } from "@/lib/metadata/pricing";
+import { getPricingSchemas, getPricingMetadata } from "@/lib/seo";
 import PricingClient from "./PricingClient";
 
 interface PricingPageProps {

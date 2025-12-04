@@ -1,5 +1,13 @@
+/**
+ * Pricing page JSON-LD schemas
+ *
+ * @see AGENTS.md Phase 4: JSON-LD Schema Implementation
+ */
+
 import { getTranslations } from "next-intl/server";
 import { normalizeUrl } from "@/lib/utils/url";
+import { seoConfig } from "@/lib/config/seo.config";
+import { businessConfig } from "@/lib/config/business.config";
 
 type Schema = Record<string, unknown>;
 
@@ -19,6 +27,7 @@ interface BreadcrumbConfig {
   pos: number;
   labelCs: string;
   labelEn: string;
+  labelDe: string;
   path: string;
 }
 
@@ -31,8 +40,8 @@ const PLAN_CONFIGS: PlanConfig[] = [
 
 // Breadcrumb configuration array
 const BREADCRUMB_CONFIG: BreadcrumbConfig[] = [
-  { pos: 1, labelCs: "Domů", labelEn: "Home", path: "" },
-  { pos: 2, labelCs: "Ceník", labelEn: "Pricing", path: "/pricing" },
+  { pos: 1, labelCs: "Domů", labelEn: "Home", labelDe: "Startseite", path: "" },
+  { pos: 2, labelCs: "Ceník", labelEn: "Pricing", labelDe: "Preise", path: "/pricing" },
 ];
 
 /**
@@ -41,7 +50,7 @@ const BREADCRUMB_CONFIG: BreadcrumbConfig[] = [
  */
 export async function getPricingSchemas(locale: string): Promise<Schema[]> {
   const t = await getTranslations({ locale, namespace: "pricing" });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fredonbytes.eu";
+  const baseUrl = seoConfig.baseUrl;
 
   // Offers/Products schema - map over plan configs
   const offersSchema: Schema = {
@@ -63,7 +72,7 @@ export async function getPricingSchemas(locale: string): Promise<Schema[]> {
       },
       seller: {
         "@type": "Organization",
-        name: "Fredonbytes",
+        name: businessConfig.company.displayName,
         url: baseUrl,
       },
       availability: "https://schema.org/InStock",
@@ -76,13 +85,11 @@ export async function getPricingSchemas(locale: string): Promise<Schema[]> {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: BREADCRUMB_CONFIG.map(
-      ({ pos, labelCs, labelEn, path }) => ({
+      ({ pos, labelCs, labelEn, labelDe, path }) => ({
         "@type": "ListItem",
         position: pos,
-        name: locale === "cs" ? labelCs : labelEn,
-        item: normalizeUrl(
-          `${baseUrl}${locale === "cs" ? "" : `/${locale}`}${path}`,
-        ),
+        name: locale === "cs" ? labelCs : locale === "de" ? labelDe : labelEn,
+        item: normalizeUrl(`${baseUrl}/${locale}${path}`),
       }),
     ),
   };

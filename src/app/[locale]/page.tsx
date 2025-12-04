@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { setRequestLocale } from "next-intl/server";
-import { getHomeSchemas } from "@/lib/jsonLd/home";
-import { getHomeMetadata } from "@/lib/metadata/home";
+import { getHomeSchemas, getHomeMetadata } from "@/lib/seo";
 import AboutSection from "../../components/homepage/AboutSection";
 import FAQSection from "../../components/homepage/FAQSection";
 import { PricingSectionSkeleton } from "../../components/homepage/HomepageSkeletons";

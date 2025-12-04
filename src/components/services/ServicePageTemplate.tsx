@@ -5,7 +5,7 @@ import { Button } from "@/components/common/Button";
 import GlassCard from "@/components/dev-ui/GlassCard";
 import TerminalWindow from "@/components/dev-ui/TerminalWindow";
 import { Link } from "@/i18n/navigation";
-import { generateBreadcrumbSchema } from "@/lib/jsonLd/breadcrumb";
+import { generateBreadcrumbSchema } from "@/lib/seo";
 
 export interface FeatureConfig {
   key: string;
