@@ -8,7 +8,6 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import React from "react";
 
@@ -19,12 +18,10 @@ import GlassCard from "../dev-ui/GlassCard";
 
 interface AboutSectionProps {
   locale: string;
-  showTeam?: boolean;
 }
 
 export default async function AboutSection({
   locale,
-  showTeam = true,
 }: AboutSectionProps) {
   const t = await getTranslations({ locale });
   const stats = [
@@ -77,40 +74,6 @@ export default async function AboutSection({
     },
   ];
 
-  const teamMembers = [
-    {
-      name: t("about.team.members.patrik.name"),
-      role: t("about.team.members.patrik.role"),
-      expertise: t("about.team.members.patrik.expertise"),
-      quote: t("about.team.members.patrik.quote"),
-      image:
-        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/fullstack-developer-fredon-ceo-co-founder-fredonbytes.avif",
-    },
-    {
-      name: t("about.team.members.jana.name"),
-      role: t("about.team.members.jana.role"),
-      expertise: t("about.team.members.jana.expertise"),
-      quote: t("about.team.members.jana.quote"),
-      image:
-        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/devsecops-engineer-fredonbytes-zoe.avif",
-    },
-    {
-      name: t("about.team.members.lucie.name"),
-      role: t("about.team.members.lucie.role"),
-      expertise: t("about.team.members.lucie.expertise"),
-      quote: t("about.team.members.lucie.quote"),
-      image:
-        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/agile-coach-fredonbytes-violet.avif",
-    },
-    {
-      name: t("about.team.members.tomas.name"),
-      role: t("about.team.members.tomas.role"),
-      expertise: t("about.team.members.tomas.expertise"),
-      quote: t("about.team.members.tomas.quote"),
-      image:
-        "https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/database-architect-fredonbytes-tony.avif",
-    },
-  ];
 
   return (
     <section id="about" className="py-20 lg:py-24">
@@ -221,53 +184,7 @@ export default async function AboutSection({
             </cite>
           </div>
 
-          {/* Team Section - GlassCard */}
-          {showTeam && (
-            <div className="section-animate-child">
-              <h3 className="text-3xl font-bold text-terminal-light text-center mb-12 font-mono">
-                <span className="text-neon-cyan">//</span>{" "}
-                {t("about.team.title")}
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {teamMembers.map((member, index) => (
-                  <div key={index} className="group">
-                    <GlassCard className="p-6 h-full" glowColor="cyan">
-                      <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-neon-cyan/50 shadow-glow-cyan group-hover:border-neon-cyan group-hover:shadow-glow-cyan-strong transition-all duration-200">
-                        {member.image === "user-placeholder" ? (
-                          <div className="w-full h-full bg-linear-to-br from-terminal-dark to-slate-900 flex items-center justify-center">
-                            <Users className="w-12 h-12 text-neon-cyan" />
-                          </div>
-                        ) : (
-                          <Image
-                            src={member.image}
-                            alt={member.name}
-                            fill
-                            className="object-cover group-hover:scale-110 transition-transform duration-300"
-                            loading="lazy"
-                            quality={80}
-                            sizes="(max-width: 768px) 96px, (max-width: 1024px) 96px, 96px"
-                          />
-                        )}
-                      </div>
-                      <h4 className="text-lg font-semibold text-terminal-light text-center mb-1 font-mono">
-                        {member.name}
-                      </h4>
-                      <p className="text-neon-cyan text-sm text-center mb-2 font-medium font-mono">
-                        {member.role}
-                      </p>
-                      <p className="text-terminal-light/70 text-xs text-center mb-3">
-                        {member.expertise}
-                      </p>
-                      <p className="text-terminal-light/80 text-xs text-center italic">
-                        <span className="text-neon-cyan">//</span> &ldquo;
-                        {member.quote}&rdquo;
-                      </p>
-                    </GlassCard>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+    
 
           {/* Company Mantra - Terminal Styled */}
           <div className="section-animate-child mt-12 text-center">

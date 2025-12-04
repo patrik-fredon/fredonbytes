@@ -67,7 +67,7 @@ export default async function Home({ params, searchParams }: Props) {
       <div className="min-h-screen relative z-10">
         <HeroSection />
         <ServicesSection locale={locale} category={category} />
-        <AboutSection locale={locale} showTeam={false} />
+        <AboutSection locale={locale} />
         <PricingSection />
         <FAQSection locale={locale} />
       </div>

@@ -36,8 +36,8 @@ export default function PricingSection() {
               </div>
               <div className="text-center relative w-full aspect-video max-w-2xl mx-auto">
                 <Image
-                  src="https://ihvltxbaodpqgbnwfxdd.supabase.co/storage/v1/object/public/fredonbytes/fredonbytes-assets/logo_bigger.avif"
-                  alt="Premium Benefits - Fredonbytes Professional Services"
+                  src="https://db.fredonbytes.eu/storage/v1/object/public/fredonbytes/general-assets/fredobytes-company-logo.webp"
+                  alt="Fredonbytes Company Logo - Premium Benefits and Features"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                   className="object-contain rounded-lg "
