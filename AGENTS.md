@@ -3,6 +3,7 @@ applyTo: "**"
 ---
 
 # Workflow
+
 This document defines the absolute constraints, coding standards, structure, and workflow for all projects. Adherence to these rules is mandatory for all code contributions.
 **Always use the ask_user tool before completing any task to confirm with the user that the request was fulfilled correctly.**
 **Minimal, correct, production-usable code** — no over-engineering, no abstraction, no fallback.
@@ -92,7 +93,7 @@ This document defines the absolute constraints, coding standards, structure, and
 
 ## 📂 Structure
 
-```
+```project structure
 src/
 ├── app/[locale]/     # Locale routes
 ├── components/       # Reusable UI
