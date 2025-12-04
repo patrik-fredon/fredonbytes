@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 
 import ChecklistInput from "@/components/form/inputs/ChecklistInput";
 import ImageUploadInput from "@/components/form/inputs/ImageUploadInput";
+import LongTextInput from "@/components/form/inputs/LongTextInput";
 import MultipleChoiceInput from "@/components/form/inputs/MultipleChoiceInput";
+import ShortTextInput from "@/components/form/inputs/ShortTextInput";
 import SingleChoiceInput from "@/components/form/inputs/SingleChoiceInput";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { ValidatableQuestion } from "@/lib/form-validation";
@@ -42,42 +44,26 @@ export default function QuestionStep({
   const renderInput = () => {
     switch (question.answer_type) {
       case "short_text":
-        // TODO: Replace with ShortTextInput component (Task 11.1)
         return (
-          <input
-            type="text"
+          <ShortTextInput
             value={(answer as string) || ""}
-            onChange={(e) => onAnswerChange(e.target.value)}
-            placeholder="Enter your answer..."
-            className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700
-                     focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                     transition-all duration-200
-                     text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500"
-            maxLength={200}
-            aria-label={question.question_text}
-            aria-required={question.required}
-            aria-invalid={!!error}
-            aria-describedby={error ? `error-${question.id}` : undefined}
+            onChange={(value) => onAnswerChange(value)}
+            required={question.required}
+            error={error || undefined}
+            questionId={question.id}
+            questionText={question.question_text}
           />
         );
 
       case "long_text":
-        // TODO: Replace with LongTextInput component (Task 11.2)
         return (
-          <textarea
+          <LongTextInput
             value={(answer as string) || ""}
-            onChange={(e) => onAnswerChange(e.target.value)}
-            placeholder="Enter your detailed answer..."
-            rows={5}
-            className="w-full px-4 py-3 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700
-                     focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                     transition-all duration-200 resize-y
-                     text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500"
-            maxLength={1000}
-            aria-label={question.question_text}
-            aria-required={question.required}
-            aria-invalid={!!error}
-            aria-describedby={error ? `error-${question.id}` : undefined}
+            onChange={(value) => onAnswerChange(value)}
+            required={question.required}
+            error={error || undefined}
+            questionId={question.id}
+            questionText={question.question_text}
           />
         );
 
