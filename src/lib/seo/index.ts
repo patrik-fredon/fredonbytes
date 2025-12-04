@@ -5,6 +5,7 @@
  * - Hreflang generation
  * - Metadata generators
  * - JSON-LD schema generators
+ * - Image optimization utilities
  *
  * @see AGENTS.md SEO Optimization Instructions
  */
@@ -27,3 +28,10 @@ export {
   buildBreadcrumbItems,
   type BreadcrumbItem,
 } from "./jsonld";
+
+// Image SEO utilities
+export {
+  generateImageAlt,
+  generateLocalizedImageAlt,
+  generateImageFileName,
+} from "./image-alt";
