@@ -2,13 +2,6 @@
 
 ## 🔴 Critical Issues
 
-### C1: Phone Number Mismatch in Footer
-
-- **Location**: [src/components/Footer.tsx](../src/components/Footer.tsx)
-- **Issue**: Footer displays `+420 733 517 625` but `tel:` href links to `+420799027984`
-- **Fix**: Update tel: href to match displayed number or update displayed number to match href
-- **Priority**: Critical
-
 ### C2: 500 Internal Server Errors on Projects Page
 
 - **Location**: [src/app/[locale]/projects/page.tsx](../src/app/%5Blocale%5D/projects/page.tsx)
@@ -74,6 +67,15 @@
 ---
 
 ## ✅ Completed / Verified
+
+### SEO Phase 1: Foundation Configuration (2025-12-04)
+
+- ✅ Created centralized `src/lib/config/seo.config.ts` with SEO settings
+- ✅ Created `src/lib/config/business.config.ts` with NAP data (single source of truth)
+- ✅ Updated Footer.tsx to use businessConfig for phone/email hrefs
+- ✅ Updated jsonLd/home.ts to use centralized config
+- ✅ Phone number now consistent everywhere: `+420 799 027 984` (display) / `+420799027984` (tel:)
+- ✅ C1 issue resolved: NAP data centralized
 
 ### Upload Feature (2025-12-03)
 

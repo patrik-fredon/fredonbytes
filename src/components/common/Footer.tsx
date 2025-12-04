@@ -2,6 +2,7 @@ import { Github, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { businessConfig } from "@/lib/config/business.config";
 
 import CookieSettingsLink from "./CookieSettingsLink";
 
@@ -108,7 +109,7 @@ export default async function Footer({ locale }: FooterProps) {
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-neon-cyan shrink-0" />
                 <a
-                  href="tel:+420799027984"
+                  href={`tel:${businessConfig.contact.phoneRaw}`}
                   className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast -subtle"
                 >
                   {t("footer.contact.phone")}
@@ -117,7 +118,7 @@ export default async function Footer({ locale }: FooterProps) {
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-neon-cyan shrink-0" />
                 <a
-                  href="mailto:info@fredonbytes.com"
+                  href={`mailto:${businessConfig.contact.email}`}
                   className="text-terminal-muted text-sm font-mono hover:text-neon-cyan transition-fast -subtle"
                 >
                   {t("footer.contact.email")}
